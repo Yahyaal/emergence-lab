@@ -272,6 +272,11 @@ def innovation_verdict(probe: dict | None, ext: dict | None, floor: int, damage_
         return "none (in an exact cycle before the second half)", 0
     if est <= floor:
         return "no evidence of ongoing innovation", est
+    # "still innovating" is a claim about the present: the long run must not have settled
+    if ext is not None and (ext["metrics"]["cycle_found"]
+                            or run_settled(ext["metrics"], ext.get("cls", ext.get("class", "")))):
+        when = f" at t={ext['metrics']['transient']}" if ext["metrics"]["cycle_found"] else ""
+        return f"transient innovation that ended (the universe settled{when})", est
     c = inn["new_per_sample"]
     q = max(1, len(c) // 4)
     first, last = sum(c[:q]), sum(c[-q:])

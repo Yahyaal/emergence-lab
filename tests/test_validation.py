@@ -178,3 +178,12 @@ def test_innovation_verdict_rules():
     dec = {"innovation": {"steps": 2000, "established_late": 6, "new_per_sample": [20] * 8 + [5] * 16 + [2] * 8}}
     assert innovation_verdict(dec, None, 0, 0.45)[0] == "still innovating"
     assert innovation_verdict(probe, None, 6, 0.0)[0].startswith("no evidence")   # at the noise floor
+
+
+def test_innovation_that_ends_is_not_ongoing():
+    from emergence.discovery import innovation_verdict
+    dec = {"innovation": {"steps": 2000, "established_late": 10, "new_per_sample": [20] * 8 + [5] * 16 + [2] * 8}}
+    settled_late = {"cls": "periodic", "metrics": {"cycle_found": True, "transient": 1737, "local_periodic_frac": 1.0}}
+    oscillating = {"cls": "periodic", "metrics": {"cycle_found": False, "transient": None, "local_periodic_frac": 0.97}}
+    assert innovation_verdict(dec, settled_late, 0, 0.0)[0].startswith("transient innovation that ended")
+    assert innovation_verdict(dec, oscillating, 0, 0.0)[0].startswith("transient innovation that ended")
