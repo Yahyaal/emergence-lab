@@ -13,12 +13,16 @@ DAMAGE_STEPS = 64
 
 
 def study(spec: UniverseSpec, steps: int = 500, window: int = 100) -> Observation:
+    return study_universe(Universe.from_spec(spec), spec.seed, steps, window)
+
+
+def study_universe(u: Universe, seed: int, steps: int = 500, window: int = 100) -> Observation:
+    """Observe an already-constructed universe (used for controls with hand-made initial states)."""
     window = min(window, steps + 1)
-    u = Universe.from_spec(spec)
     # the observer's own randomness (surrogates, probe locations) is derived from
     # the seed but kept in a separate stream from the universe's randomness
-    obs = Observer(total_steps=steps, window=window, seed=spec.seed ^ 0x5EED)
-    probe_rng = np.random.default_rng([spec.seed, 7])
+    obs = Observer(total_steps=steps, window=window, seed=seed ^ 0x5EED)
+    probe_rng = np.random.default_rng([seed, 7])
     dmg_steps = min(DAMAGE_STEPS, steps, window - 1) if window > 1 else 0
     t_probe = steps - dmg_steps
     snapshot = None
@@ -32,7 +36,7 @@ def study(spec: UniverseSpec, steps: int = 500, window: int = 100) -> Observatio
             snapshot = np.array(u.state)
     reference = list(obs.frames)[-dmg_steps:] if dmg_steps else []
     damage = damage_spreading(u.physics, snapshot, reference, probe_rng) if dmg_steps else None
-    result = obs.finalize(damage, num_states=u.physics.num_states)
+    result = obs.finalize(damage, num_states=u.physics.num_states, physics=u.physics)
     result.final_hash = state_hash(u.state)
     result.metrics.update(u.physics.rule_features())
     return result

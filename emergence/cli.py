@@ -30,6 +30,18 @@ def main(argv: list[str] | None = None) -> int:
     ex.add_argument("--seed", type=int, default=d.seed, help="master random seed")
     ex.add_argument("--workers", type=int, default=d.workers, help="processes (0 = all cores, 1 = no multiprocessing)")
     ex.add_argument("--followups", type=int, default=d.followups, help="candidates to re-test for robustness")
+    ex.add_argument("--screen-seeds", type=int, default=d.screen_seeds, help="seeds per rule during exploration")
+    ex.add_argument("--extend", type=int, default=d.extend_factor, help="follow-up runs this many times longer")
+    ex.add_argument("--baseline-random", action="store_true",
+                    help="control condition: every generation is fresh random rules (no selection)")
+
+    cp = sub.add_parser("compare", help="compare experiments, e.g. engine vs random baseline")
+    cp.add_argument("experiments", type=int, nargs="+")
+
+    bm = sub.add_parser("benchmark", help="validate the observatory on controls and known rules")
+    bm.add_argument("--seeds", type=int, default=3)
+    bm.add_argument("--steps", type=int, default=500)
+    bm.add_argument("--probes", action="store_true", help="also run the hard controls for innovation/replication probes")
 
     sub.add_parser("list", help="list experiments")
 
@@ -64,6 +76,16 @@ def main(argv: list[str] | None = None) -> int:
         from .server import serve
         serve(a.db, a.host, a.port)
         return 0
+    if a.cmd == "benchmark":
+        from .benchmark import run_benchmark
+        r = run_benchmark(a.seeds, a.steps)
+        ok = r["passed"] == r["total"]
+        if a.probes:
+            from .benchmark_probes import run_probe_benchmark
+            print()
+            p = run_probe_benchmark()
+            ok = ok and p["passed"] == p["total"]
+        return 0 if ok else 1
     if a.cmd == "observe":
         rule = OuterTotalistic.parse(a.rule)
         t = time.time()
@@ -76,10 +98,15 @@ def main(argv: list[str] | None = None) -> int:
     store = Store(a.db)
     if a.cmd == "explore":
         cfg = ExploreConfig(name=a.name, population=a.universes, generations=a.generations, steps=a.steps,
-                            width=a.size, height=a.size, seed=a.seed, workers=a.workers, followups=a.followups)
+                            width=a.size, height=a.size, seed=a.seed, workers=a.workers, followups=a.followups,
+                            screen_seeds=a.screen_seeds, extend_factor=a.extend,
+                            selection="random" if a.baseline_random else "engine")
         t = time.time()
         eid = Explorer(store, cfg).run()
         print(f"done: experiment #{eid} in {time.time() - t:.1f}s. View with: emergence --db {a.db} serve")
+    elif a.cmd == "compare":
+        from .analysis import compare
+        compare(store, a.experiments)
     elif a.cmd == "list":
         for e in store.experiments():
             print(f"#{e['id']:<4} {e['name']:<20} {e['status']:<9} seed={e['master_seed']:<8} "
@@ -88,12 +115,13 @@ def main(argv: list[str] | None = None) -> int:
         rows = sorted((u for u in store.universes(a.experiment, role="explore") if u["priority"]),
                       key=lambda u: u["priority"])[: a.n]
         print(f"{'prio':>4} {'id':>5} {'rule':<18} {'class':<9} {'front':>5} {'novelty':>7} {'activity':>8} "
-              f"{'movers':>6} {'vocab':>5}")
+              f"{'movers':>6} {'vocab':>5} {'seeds':>5}  niche")
         for u in rows:
             m = u["metrics"]
             print(f"{u['priority']:>4} {u['id']:>5} {u['rule']:<18} {u['class']:<9} "
                   f"{'-' if u['pareto_rank'] is None else u['pareto_rank']:>5} {u['novelty']:>7.3f} "
-                  f"{m['activity_late']:>8.4f} {m.get('mover_events', 0):>6.0f} {m.get('vocabulary', 0):>5.0f}")
+                  f"{m['activity_late']:>8.4f} {m.get('self_propelled_shapes') or 0:>6.0f} {m.get('vocabulary', 0):>5.0f} "
+                  f"{(u['aggregate'] or {}).get('seed_agreement', 1):>5.0%}  {(u['aggregate'] or {}).get('niche') or '-'}")
     elif a.cmd == "discoveries":
         for dsc in store.discoveries(a.experiment):
             print(f"[{dsc['kind']}] universe #{dsc['universe_id']}: {dsc['summary']}")

@@ -21,7 +21,7 @@ import numpy as np
 from .discovery import OBJECTIVES
 from .engine import Universe, UniverseSpec
 from .observatory import CLASS_HELP, CLASSES, DESCRIPTOR_FIELDS
-from .physics import OuterTotalistic
+from .physics import OuterTotalistic, physics_from_dict
 from .storage import Store
 
 WEB = Path(__file__).parent / "web"
@@ -128,7 +128,7 @@ def make_handler(store: Store, cache: FrameCache):
                     p = pu["parent_id"]
                 u["lineage"] = lineage
                 u["children"] = [{"id": c["id"], "rule": c["rule"], "class": c["class"], "role": c["role"],
-                                  "size": c["spec"]["width"]} for c in store.children(u["id"])]
+                                  "size": c["spec"]["width"], "steps": c["steps"]} for c in store.children(u["id"])]
                 return self._json(u)
             if what == "frames":
                 if "id" in q:
@@ -145,7 +145,7 @@ def make_handler(store: Store, cache: FrameCache):
                 start = max(0, int(q.get("start", 0)))
                 count = min(MAX_FRAMES, max(1, int(q.get("count", 100))))
                 frames = cache.frames(spec, start, count)
-                n_states = OuterTotalistic.parse(spec.physics["rule"]).num_states
+                n_states = physics_from_dict(spec.physics).num_states
                 return self._json({"start": start, "count": len(frames), "width": spec.width, "height": spec.height,
                                    "num_states": n_states, "rule": spec.physics["rule"], "spec": spec.to_dict(),
                                    "frames": b64(np.stack(frames))})

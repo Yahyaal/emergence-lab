@@ -1,0 +1,1345 @@
+{
+ "label": "R1 engine vs random baseline",
+ "code_commit": "b77f873",
+ "command": "for s in 11 12: emergence explore --name engine-s$s --generations 6 --steps 500 --seed $s --followups 6 [--baseline-random]",
+ "experiments": [
+  {
+   "id": 1,
+   "name": "engine-s11",
+   "master_seed": 11,
+   "status": "finished",
+   "config": {
+    "name": "engine-s11",
+    "population": 100,
+    "generations": 6,
+    "steps": 500,
+    "window": 100,
+    "width": 96,
+    "height": 96,
+    "density_min": 0.15,
+    "density_max": 0.5,
+    "screen_seeds": 2,
+    "immigrant_fraction": 0.2,
+    "novelty_k": 10,
+    "followups": 6,
+    "followup_seeds": 3,
+    "extend_factor": 4,
+    "seed": 11,
+    "workers": 0,
+    "selection": "engine"
+   },
+   "environment": {
+    "emergence": "0.2.0",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v236-x86_64-with-glibc2.39"
+   },
+   "selection": "engine",
+   "final": {
+    "generation": 5,
+    "rules": 600,
+    "niches": 34,
+    "self_propelled": 81,
+    "complex_all_seeds": 53,
+    "structured": 68
+   },
+   "curve": [
+    {
+     "generation": 0,
+     "rules": 100,
+     "niches": 15,
+     "self_propelled": 9,
+     "complex_all_seeds": 3,
+     "structured": 3
+    },
+    {
+     "generation": 1,
+     "rules": 200,
+     "niches": 23,
+     "self_propelled": 21,
+     "complex_all_seeds": 11,
+     "structured": 15
+    },
+    {
+     "generation": 2,
+     "rules": 300,
+     "niches": 25,
+     "self_propelled": 33,
+     "complex_all_seeds": 17,
+     "structured": 22
+    },
+    {
+     "generation": 3,
+     "rules": 400,
+     "niches": 29,
+     "self_propelled": 49,
+     "complex_all_seeds": 29,
+     "structured": 37
+    },
+    {
+     "generation": 4,
+     "rules": 500,
+     "niches": 31,
+     "self_propelled": 66,
+     "complex_all_seeds": 41,
+     "structured": 54
+    },
+    {
+     "generation": 5,
+     "rules": 600,
+     "niches": 34,
+     "self_propelled": 81,
+     "complex_all_seeds": 53,
+     "structured": 68
+    }
+   ],
+   "discoveries": [
+    {
+     "universe_id": 933,
+     "rule": "B2/S124678",
+     "class": "complex",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2/S124678"
+      },
+      "seed": 2768244402255530355,
+      "width": 96,
+      "height": 96,
+      "density": 0.1647
+     },
+     "summary": "B2/S124678 looks complex; 0 of 8 candidate mover shape(s) self-propelled in isolation; 165 persistent shapes; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.18 (<= calibrated 0.33; larger than 67% of same-rule seed pairs, 4% of different-rule pairs); same class in 4/6 runs; run 2000 steps: becomes periodic (cycle of period 60 from t=470)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.1762,
+      "robust_threshold": 0.331,
+      "spread_pct_within": 0.6658536585365854,
+      "spread_pct_between": 0.0354,
+      "niche": "2state|st1|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.7061686974791431,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1141,
+     "rule": "B237/S35/C6",
+     "class": "extinct",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B237/S35/C6"
+      },
+      "seed": 137082775302642114,
+      "width": 96,
+      "height": 96,
+      "density": 0.2761
+     },
+     "summary": "B237/S35/C6 looks extinct; cycle period 1 after 12 steps; damage spread 0.00; seed re-run spread 1.59 (> calibrated 0.33; larger than 99% of same-rule seed pairs, 67% of different-rule pairs); same class in 1/6 runs; run 2000 steps: becomes extinct (cycle of period 1 from t=12)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.5889,
+      "robust_threshold": 0.331,
+      "spread_pct_within": 0.9902439024390244,
+      "spread_pct_between": 0.6748,
+      "niche": "multi|st0|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.6393597106776295,
+      "replicate_classes": [
+       "periodic",
+       "periodic",
+       "drifting",
+       "periodic"
+      ],
+      "extended_class": "extinct"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 383,
+     "rule": "B235/S35/C6",
+     "class": "drifting",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B235/S35/C6"
+      },
+      "seed": 2117084273750003817,
+      "width": 96,
+      "height": 96,
+      "density": 0.2927
+     },
+     "summary": "B235/S35/C6 looks drifting; 0 of 1 candidate mover shape(s) self-propelled in isolation; 1 persistent shapes; cycle period 1 after 152 steps; damage spread 0.00; seed re-run spread 0.80 (> calibrated 0.33; larger than 98% of same-rule seed pairs, 46% of different-rule pairs); same class in 3/6 runs; run 2000 steps: becomes drifting (cycle of period 1 from t=152)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.7976,
+      "robust_threshold": 0.331,
+      "spread_pct_within": 0.9780487804878049,
+      "spread_pct_between": 0.465,
+      "niche": "multi|st0|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.6131598724375834,
+      "replicate_classes": [
+       "periodic",
+       "periodic",
+       "periodic",
+       "drifting"
+      ],
+      "extended_class": "drifting"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 485,
+     "rule": "B23/S35/C6",
+     "class": "drifting",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B23/S35/C6"
+      },
+      "seed": 1865858056625729768,
+      "width": 96,
+      "height": 96,
+      "density": 0.2202
+     },
+     "summary": "B23/S35/C6 looks drifting; 4 of 4 candidate mover shape(s) self-propelled in isolation; 4 persistent shapes; cycle period 48 after 55 steps; damage spread 0.00; seed re-run spread 1.04 (> calibrated 0.33; larger than 98% of same-rule seed pairs, 55% of different-rule pairs); same class in 4/6 runs; run 2000 steps: becomes drifting (cycle of period 48 from t=55)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.037,
+      "robust_threshold": 0.331,
+      "spread_pct_within": 0.9780487804878049,
+      "spread_pct_between": 0.5464,
+      "niche": "multi|st0|lp1|dmg0|mov1",
+      "pareto_rank": 0,
+      "novelty": 0.5817382873983638,
+      "replicate_classes": [
+       "drifting",
+       "drifting",
+       "drifting",
+       "periodic"
+      ],
+      "extended_class": "drifting"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 173,
+     "rule": "B1678/S13478",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B1678/S13478"
+      },
+      "seed": 3148756609927542825,
+      "width": 96,
+      "height": 96,
+      "density": 0.1601
+     },
+     "summary": "B1678/S13478 looks active; 0 of 1 candidate mover shape(s) self-propelled in isolation; 96 persistent shapes; no recurrence within 500 steps; damage spread 0.45; seed re-run spread 0.28 (<= calibrated 0.33; larger than 87% of same-rule seed pairs, 11% of different-rule pairs); same class in 2/6 runs; run 2000 steps: still chaotic, activity trend 1.08",
+     "evidence": {
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.2835,
+      "robust_threshold": 0.331,
+      "spread_pct_within": 0.8682926829268293,
+      "spread_pct_between": 0.1054,
+      "niche": "2state|st3|lp0|dmg1|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.5789193681887613,
+      "replicate_classes": [
+       "chaotic",
+       "chaotic",
+       "chaotic",
+       "active"
+      ],
+      "extended_class": "chaotic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 457,
+     "rule": "B124568/S016",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B124568/S016"
+      },
+      "seed": 2512070235137647033,
+      "width": 96,
+      "height": 96,
+      "density": 0.2004
+     },
+     "summary": "B124568/S016 looks active; 16 persistent shapes; no recurrence within 500 steps; damage spread 0.05; seed re-run spread 0.07 (<= calibrated 0.33; larger than 35% of same-rule seed pairs, 0% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 1.00",
+     "evidence": {
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.0672,
+      "robust_threshold": 0.331,
+      "spread_pct_within": 0.348780487804878,
+      "spread_pct_between": 0.004,
+      "niche": "2state|st3|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.5759212484207418,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 209,
+     "rule": "B34568/S7",
+     "class": "periodic",
+     "kind": "most-novel/robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B34568/S7"
+      },
+      "seed": 864293609140979634,
+      "width": 96,
+      "height": 96,
+      "density": 0.1523
+     },
+     "summary": "B34568/S7 looks periodic; 0 of 5 candidate mover shape(s) self-propelled in isolation; 47 persistent shapes; cycle period 2 after 15 steps; damage spread 0.00; seed re-run spread 0.15 (<= calibrated 0.33; larger than 60% of same-rule seed pairs, 3% of different-rule pairs); same class in 6/6 runs; run 2000 steps: becomes periodic (cycle of period 2 from t=15)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.1477,
+      "robust_threshold": 0.331,
+      "spread_pct_within": 0.5951219512195122,
+      "spread_pct_between": 0.0256,
+      "niche": null,
+      "pareto_rank": null,
+      "novelty": 1.3440323386900919,
+      "replicate_classes": [
+       "periodic",
+       "periodic",
+       "periodic",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": "random-s11",
+   "master_seed": 11,
+   "status": "finished",
+   "config": {
+    "name": "random-s11",
+    "population": 100,
+    "generations": 6,
+    "steps": 500,
+    "window": 100,
+    "width": 96,
+    "height": 96,
+    "density_min": 0.15,
+    "density_max": 0.5,
+    "screen_seeds": 2,
+    "immigrant_fraction": 0.2,
+    "novelty_k": 10,
+    "followups": 6,
+    "followup_seeds": 3,
+    "extend_factor": 4,
+    "seed": 11,
+    "workers": 0,
+    "selection": "random"
+   },
+   "environment": {
+    "emergence": "0.2.0",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v236-x86_64-with-glibc2.39"
+   },
+   "selection": "random",
+   "final": {
+    "generation": 5,
+    "rules": 600,
+    "niches": 27,
+    "self_propelled": 29,
+    "complex_all_seeds": 8,
+    "structured": 13
+   },
+   "curve": [
+    {
+     "generation": 0,
+     "rules": 100,
+     "niches": 15,
+     "self_propelled": 9,
+     "complex_all_seeds": 3,
+     "structured": 3
+    },
+    {
+     "generation": 1,
+     "rules": 200,
+     "niches": 17,
+     "self_propelled": 13,
+     "complex_all_seeds": 4,
+     "structured": 5
+    },
+    {
+     "generation": 2,
+     "rules": 300,
+     "niches": 22,
+     "self_propelled": 18,
+     "complex_all_seeds": 7,
+     "structured": 9
+    },
+    {
+     "generation": 3,
+     "rules": 400,
+     "niches": 26,
+     "self_propelled": 21,
+     "complex_all_seeds": 7,
+     "structured": 9
+    },
+    {
+     "generation": 4,
+     "rules": 500,
+     "niches": 27,
+     "self_propelled": 27,
+     "complex_all_seeds": 8,
+     "structured": 12
+    },
+    {
+     "generation": 5,
+     "rules": 600,
+     "niches": 27,
+     "self_propelled": 29,
+     "complex_all_seeds": 8,
+     "structured": 13
+    }
+   ],
+   "discoveries": [
+    {
+     "universe_id": 1812,
+     "rule": "B2345/S05678/C8",
+     "class": "complex",
+     "kind": "most-novel/seed-sensitive/loops",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2345/S05678/C8"
+      },
+      "seed": 4466465969207338282,
+      "width": 96,
+      "height": 96,
+      "density": 0.3843
+     },
+     "summary": "B2345/S05678/C8 looks complex; 6 of 6 candidate mover shape(s) self-propelled in isolation; 6 persistent shapes; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.33 (> calibrated 0.30; larger than 93% of same-rule seed pairs, 27% of different-rule pairs); same class in 5/6 runs; run 2000 steps: becomes periodic (cycle of period 96 from t=757); period is a multiple of the world size and movers exist: likely movers circulating on the finite torus",
+     "evidence": {
+      "persists": false,
+      "torus_loop": true,
+      "descriptor_spread": 0.3265,
+      "robust_threshold": 0.2965,
+      "spread_pct_within": 0.9321428571428572,
+      "spread_pct_between": 0.2696,
+      "niche": "multi|st0|lp0|dmg0|mov1",
+      "pareto_rank": 0,
+      "novelty": 1.3449452492563259,
+      "replicate_classes": [
+       "active",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1750,
+     "rule": "B238/S0123578",
+     "class": "periodic",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B238/S0123578"
+      },
+      "seed": 740429803039254579,
+      "width": 96,
+      "height": 96,
+      "density": 0.372
+     },
+     "summary": "B238/S0123578 looks periodic; 0 of 4 candidate mover shape(s) self-propelled in isolation; 102 persistent shapes; cycle period 40 after 456 steps; damage spread 0.00; seed re-run spread 0.97 (> calibrated 0.30; larger than 99% of same-rule seed pairs, 80% of different-rule pairs); same class in 6/6 runs; run 2000 steps: becomes periodic (cycle of period 40 from t=456)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.9692,
+      "robust_threshold": 0.2965,
+      "spread_pct_within": 0.9928571428571429,
+      "spread_pct_between": 0.8004,
+      "niche": "2state|st0|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 1.1770886203418311,
+      "replicate_classes": [
+       "periodic",
+       "periodic",
+       "periodic",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1610,
+     "rule": "B27/S1245",
+     "class": "complex",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B27/S1245"
+      },
+      "seed": 1985123827397561760,
+      "width": 96,
+      "height": 96,
+      "density": 0.4951
+     },
+     "summary": "B27/S1245 looks complex; 0 of 16 candidate mover shape(s) self-propelled in isolation; 179 persistent shapes; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.58 (> calibrated 0.30; larger than 99% of same-rule seed pairs, 55% of different-rule pairs); same class in 3/6 runs; run 2000 steps: becomes periodic (cycle of period 6 from t=509)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.5765,
+      "robust_threshold": 0.2965,
+      "spread_pct_within": 0.9928571428571429,
+      "spread_pct_between": 0.5522,
+      "niche": "2state|st1|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 1.0931467189037942,
+      "replicate_classes": [
+       "complex",
+       "periodic",
+       "complex",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1692,
+     "rule": "B24/S/C3",
+     "class": "complex",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B24/S/C3"
+      },
+      "seed": 3270864680707215865,
+      "width": 96,
+      "height": 96,
+      "density": 0.3686
+     },
+     "summary": "B24/S/C3 looks complex; 74 of 82 candidate mover shape(s) self-propelled in isolation; 82 persistent shapes; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.23 (<= calibrated 0.30; larger than 84% of same-rule seed pairs, 15% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still complex, activity trend 0.99",
+     "evidence": {
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.2344,
+      "robust_threshold": 0.2965,
+      "spread_pct_within": 0.8357142857142857,
+      "spread_pct_between": 0.1508,
+      "niche": "multi|st1|lp0|dmg0|mov1",
+      "pareto_rank": 0,
+      "novelty": 0.9547516374446463,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "complex"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1408,
+     "rule": "B1678/S13478",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B1678/S13478"
+      },
+      "seed": 3148756609927542825,
+      "width": 96,
+      "height": 96,
+      "density": 0.1601
+     },
+     "summary": "B1678/S13478 looks active; 0 of 1 candidate mover shape(s) self-propelled in isolation; 96 persistent shapes; no recurrence within 500 steps; damage spread 0.45; seed re-run spread 0.28 (<= calibrated 0.30; larger than 90% of same-rule seed pairs, 22% of different-rule pairs); same class in 2/6 runs; run 2000 steps: still chaotic, activity trend 1.08",
+     "evidence": {
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.2835,
+      "robust_threshold": 0.2965,
+      "spread_pct_within": 0.8964285714285715,
+      "spread_pct_between": 0.2156,
+      "niche": "2state|st3|lp0|dmg1|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.8961713943198744,
+      "replicate_classes": [
+       "chaotic",
+       "chaotic",
+       "chaotic",
+       "active"
+      ],
+      "extended_class": "chaotic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1432,
+     "rule": "B235/S57/C6",
+     "class": "extinct",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B235/S57/C6"
+      },
+      "seed": 538442040191792824,
+      "width": 96,
+      "height": 96,
+      "density": 0.2088
+     },
+     "summary": "B235/S57/C6 looks extinct; cycle period 1 after 12 steps; damage spread 0.00; seed re-run spread 0.58 (> calibrated 0.30; larger than 99% of same-rule seed pairs, 55% of different-rule pairs); same class in 3/6 runs; run 2000 steps: becomes extinct (cycle of period 1 from t=12)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.5757,
+      "robust_threshold": 0.2965,
+      "spread_pct_within": 0.9928571428571429,
+      "spread_pct_between": 0.551,
+      "niche": "multi|st0|lp1|dmg0|mov1",
+      "pareto_rank": 0,
+      "novelty": 0.8154738931628168,
+      "replicate_classes": [
+       "extinct",
+       "periodic",
+       "extinct",
+       "periodic"
+      ],
+      "extended_class": "extinct"
+     },
+     "replication": null,
+     "innovation": null
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "engine-s12",
+   "master_seed": 12,
+   "status": "finished",
+   "config": {
+    "name": "engine-s12",
+    "population": 100,
+    "generations": 6,
+    "steps": 500,
+    "window": 100,
+    "width": 96,
+    "height": 96,
+    "density_min": 0.15,
+    "density_max": 0.5,
+    "screen_seeds": 2,
+    "immigrant_fraction": 0.2,
+    "novelty_k": 10,
+    "followups": 6,
+    "followup_seeds": 3,
+    "extend_factor": 4,
+    "seed": 12,
+    "workers": 0,
+    "selection": "engine"
+   },
+   "environment": {
+    "emergence": "0.2.0",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v236-x86_64-with-glibc2.39"
+   },
+   "selection": "engine",
+   "final": {
+    "generation": 5,
+    "rules": 600,
+    "niches": 32,
+    "self_propelled": 99,
+    "complex_all_seeds": 60,
+    "structured": 93
+   },
+   "curve": [
+    {
+     "generation": 0,
+     "rules": 100,
+     "niches": 13,
+     "self_propelled": 10,
+     "complex_all_seeds": 3,
+     "structured": 6
+    },
+    {
+     "generation": 1,
+     "rules": 200,
+     "niches": 22,
+     "self_propelled": 27,
+     "complex_all_seeds": 11,
+     "structured": 21
+    },
+    {
+     "generation": 2,
+     "rules": 300,
+     "niches": 24,
+     "self_propelled": 41,
+     "complex_all_seeds": 23,
+     "structured": 34
+    },
+    {
+     "generation": 3,
+     "rules": 400,
+     "niches": 27,
+     "self_propelled": 59,
+     "complex_all_seeds": 34,
+     "structured": 54
+    },
+    {
+     "generation": 4,
+     "rules": 500,
+     "niches": 30,
+     "self_propelled": 80,
+     "complex_all_seeds": 48,
+     "structured": 74
+    },
+    {
+     "generation": 5,
+     "rules": 600,
+     "niches": 32,
+     "self_propelled": 99,
+     "complex_all_seeds": 60,
+     "structured": 93
+    }
+   ],
+   "discoveries": [
+    {
+     "universe_id": 3238,
+     "rule": "B1234568/S07/C7",
+     "class": "active",
+     "kind": "most-novel/robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B1234568/S07/C7"
+      },
+      "seed": 437398002849518148,
+      "width": 96,
+      "height": 96,
+      "density": 0.4116
+     },
+     "summary": "B1234568/S07/C7 looks active; no recurrence within 500 steps; damage spread 0.50; seed re-run spread 0.22 (<= calibrated 0.31; larger than 82% of same-rule seed pairs, 6% of different-rule pairs); same class in 5/6 runs; run 2000 steps: still active, activity trend 0.94",
+     "evidence": {
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.2241,
+      "robust_threshold": 0.3147,
+      "spread_pct_within": 0.815347721822542,
+      "spread_pct_between": 0.0614,
+      "niche": "multi|st0|lp0|dmg1|mov0",
+      "pareto_rank": 0,
+      "novelty": 1.081753932528213,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3554,
+     "rule": "B127/S123",
+     "class": "complex",
+     "kind": "seed-sensitive/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B127/S123"
+      },
+      "seed": 3000326850224357972,
+      "width": 96,
+      "height": 96,
+      "density": 0.1962
+     },
+     "summary": "B127/S123 looks complex; 0 of 6 candidate mover shape(s) self-propelled in isolation; 271 persistent shapes; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.80 (> calibrated 0.31; larger than 98% of same-rule seed pairs, 44% of different-rule pairs); same class in 5/6 runs; run 2000 steps: still complex, activity trend 1.00",
+     "evidence": {
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.7996,
+      "robust_threshold": 0.3147,
+      "spread_pct_within": 0.9808153477218226,
+      "spread_pct_between": 0.4366,
+      "niche": "2state|st1|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.9457541073360218,
+      "replicate_classes": [
+       "complex",
+       "periodic",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "complex"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3414,
+     "rule": "B2345/S15/C5",
+     "class": "periodic",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2345/S15/C5"
+      },
+      "seed": 2862109923883994815,
+      "width": 96,
+      "height": 96,
+      "density": 0.4757
+     },
+     "summary": "B2345/S15/C5 looks periodic; 84 persistent shapes; cycle period 36 after 428 steps; damage spread 0.00; seed re-run spread 0.94 (> calibrated 0.31; larger than 98% of same-rule seed pairs, 50% of different-rule pairs); same class in 4/6 runs; run 2000 steps: becomes periodic (cycle of period 36 from t=428)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.9382,
+      "robust_threshold": 0.3147,
+      "spread_pct_within": 0.9832134292565947,
+      "spread_pct_between": 0.4984,
+      "niche": "multi|st0|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.9434612636394455,
+      "replicate_classes": [
+       "complex",
+       "periodic",
+       "periodic",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3472,
+     "rule": "B3/S0123678",
+     "class": "complex",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B3/S0123678"
+      },
+      "seed": 1268249793189106389,
+      "width": 96,
+      "height": 96,
+      "density": 0.4769
+     },
+     "summary": "B3/S0123678 looks complex; 0 of 10 candidate mover shape(s) self-propelled in isolation; 176 persistent shapes; no recurrence within 500 steps; damage spread 0.01; seed re-run spread 0.11 (<= calibrated 0.31; larger than 47% of same-rule seed pairs, 1% of different-rule pairs); same class in 5/6 runs; run 2000 steps: becomes periodic (cycle of period 20 from t=1737)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.1051,
+      "robust_threshold": 0.3147,
+      "spread_pct_within": 0.4724220623501199,
+      "spread_pct_between": 0.0134,
+      "niche": "2state|st1|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.9385045208690924,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3634,
+     "rule": "B268/S0123/C3",
+     "class": "complex",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B268/S0123/C3"
+      },
+      "seed": 2810312895777188172,
+      "width": 96,
+      "height": 96,
+      "density": 0.3664
+     },
+     "summary": "B268/S0123/C3 looks complex; 349 persistent shapes; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 1.30 (> calibrated 0.31; larger than 99% of same-rule seed pairs, 62% of different-rule pairs); same class in 1/6 runs; run 2000 steps: becomes periodic (cycle of period 60 from t=640)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.3014,
+      "robust_threshold": 0.3147,
+      "spread_pct_within": 0.9904076738609112,
+      "spread_pct_between": 0.6242,
+      "niche": "multi|st1|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.6824381166358925,
+      "replicate_classes": [
+       "periodic",
+       "periodic",
+       "periodic",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3420,
+     "rule": "B17/S1348/C7",
+     "class": "active",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B17/S1348/C7"
+      },
+      "seed": 808231870999773719,
+      "width": 96,
+      "height": 96,
+      "density": 0.3519
+     },
+     "summary": "B17/S1348/C7 looks active; 0 of 1 candidate mover shape(s) self-propelled in isolation; 154 persistent shapes; no recurrence within 500 steps; damage spread 0.02; seed re-run spread 0.08 (<= calibrated 0.31; larger than 41% of same-rule seed pairs, 1% of different-rule pairs); same class in 6/6 runs; run 2000 steps: becomes periodic",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.083,
+      "robust_threshold": 0.3147,
+      "spread_pct_within": 0.41007194244604317,
+      "spread_pct_between": 0.0086,
+      "niche": "multi|st2|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.6760999969961545,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "random-s12",
+   "master_seed": 12,
+   "status": "finished",
+   "config": {
+    "name": "random-s12",
+    "population": 100,
+    "generations": 6,
+    "steps": 500,
+    "window": 100,
+    "width": 96,
+    "height": 96,
+    "density_min": 0.15,
+    "density_max": 0.5,
+    "screen_seeds": 2,
+    "immigrant_fraction": 0.2,
+    "novelty_k": 10,
+    "followups": 6,
+    "followup_seeds": 3,
+    "extend_factor": 4,
+    "seed": 12,
+    "workers": 0,
+    "selection": "random"
+   },
+   "environment": {
+    "emergence": "0.2.0",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v236-x86_64-with-glibc2.39"
+   },
+   "selection": "random",
+   "final": {
+    "generation": 5,
+    "rules": 600,
+    "niches": 23,
+    "self_propelled": 29,
+    "complex_all_seeds": 8,
+    "structured": 20
+   },
+   "curve": [
+    {
+     "generation": 0,
+     "rules": 100,
+     "niches": 13,
+     "self_propelled": 10,
+     "complex_all_seeds": 3,
+     "structured": 6
+    },
+    {
+     "generation": 1,
+     "rules": 200,
+     "niches": 16,
+     "self_propelled": 11,
+     "complex_all_seeds": 4,
+     "structured": 7
+    },
+    {
+     "generation": 2,
+     "rules": 300,
+     "niches": 17,
+     "self_propelled": 16,
+     "complex_all_seeds": 5,
+     "structured": 9
+    },
+    {
+     "generation": 3,
+     "rules": 400,
+     "niches": 20,
+     "self_propelled": 20,
+     "complex_all_seeds": 7,
+     "structured": 11
+    },
+    {
+     "generation": 4,
+     "rules": 500,
+     "niches": 20,
+     "self_propelled": 26,
+     "complex_all_seeds": 8,
+     "structured": 16
+    },
+    {
+     "generation": 5,
+     "rules": 600,
+     "niches": 23,
+     "self_propelled": 29,
+     "complex_all_seeds": 8,
+     "structured": 20
+    }
+   ],
+   "discoveries": [
+    {
+     "universe_id": 4702,
+     "rule": "B3/S0123678",
+     "class": "complex",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B3/S0123678"
+      },
+      "seed": 1268249793189106389,
+      "width": 96,
+      "height": 96,
+      "density": 0.4769
+     },
+     "summary": "B3/S0123678 looks complex; 0 of 10 candidate mover shape(s) self-propelled in isolation; 176 persistent shapes; no recurrence within 500 steps; damage spread 0.01; seed re-run spread 0.21 (<= calibrated 0.25; larger than 85% of same-rule seed pairs, 13% of different-rule pairs); same class in 4/6 runs; run 2000 steps: becomes periodic (cycle of period 20 from t=1737)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.2052,
+      "robust_threshold": 0.2469,
+      "spread_pct_within": 0.8450704225352113,
+      "spread_pct_between": 0.1342,
+      "niche": "2state|st1|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 1.266850068986291,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "active",
+       "complex"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 4708,
+     "rule": "B2356/S168/C8",
+     "class": "active",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2356/S168/C8"
+      },
+      "seed": 2133855674950445950,
+      "width": 96,
+      "height": 96,
+      "density": 0.3912
+     },
+     "summary": "B2356/S168/C8 looks active; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.35 (> calibrated 0.25; larger than 96% of same-rule seed pairs, 32% of different-rule pairs); same class in 5/6 runs; run 2000 steps: becomes periodic (cycle of period 20 from t=1428)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.352,
+      "robust_threshold": 0.2469,
+      "spread_pct_within": 0.9647887323943662,
+      "spread_pct_between": 0.3168,
+      "niche": "multi|st0|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 1.1970247641928533,
+      "replicate_classes": [
+       "periodic",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 4648,
+     "rule": "B14567/S0",
+     "class": "periodic",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B14567/S0"
+      },
+      "seed": 2724409813979147528,
+      "width": 96,
+      "height": 96,
+      "density": 0.1727
+     },
+     "summary": "B14567/S0 looks periodic; 58 persistent shapes; cycle period 4 after 422 steps; damage spread 0.00; seed re-run spread 1.08 (> calibrated 0.25; larger than 99% of same-rule seed pairs, 80% of different-rule pairs); same class in 2/6 runs; run 2000 steps: becomes periodic (cycle of period 4 from t=422)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.084,
+      "robust_threshold": 0.2469,
+      "spread_pct_within": 0.9929577464788732,
+      "spread_pct_between": 0.8014,
+      "niche": "2state|st1|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 1.1417670138569966,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3768,
+     "rule": "B2358/S0467/C8",
+     "class": "complex",
+     "kind": "seed-sensitive/loops",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2358/S0467/C8"
+      },
+      "seed": 2704860873743087103,
+      "width": 96,
+      "height": 96,
+      "density": 0.2166
+     },
+     "summary": "B2358/S0467/C8 looks complex; 15 of 15 candidate mover shape(s) self-propelled in isolation; 15 persistent shapes; no recurrence within 500 steps; damage spread 0.33; seed re-run spread 0.29 (> calibrated 0.25; larger than 93% of same-rule seed pairs, 22% of different-rule pairs); same class in 6/6 runs; run 2000 steps: becomes periodic (cycle of period 96 from t=1156); period is a multiple of the world size and movers exist: likely movers circulating on the finite torus",
+     "evidence": {
+      "persists": false,
+      "torus_loop": true,
+      "descriptor_spread": 0.2859,
+      "robust_threshold": 0.2469,
+      "spread_pct_within": 0.926056338028169,
+      "spread_pct_between": 0.2248,
+      "niche": "multi|st0|lp0|dmg1|mov1",
+      "pareto_rank": 0,
+      "novelty": 1.1054698741154363,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3750,
+     "rule": "B26/S01236",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B26/S01236"
+      },
+      "seed": 105411577364183845,
+      "width": 96,
+      "height": 96,
+      "density": 0.1852
+     },
+     "summary": "B26/S01236 looks active; 423 persistent shapes; no recurrence within 500 steps; damage spread 0.01; seed re-run spread 0.15 (<= calibrated 0.25; larger than 65% of same-rule seed pairs, 7% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 0.87",
+     "evidence": {
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.15,
+      "robust_threshold": 0.2469,
+      "spread_pct_within": 0.6514084507042254,
+      "spread_pct_between": 0.0724,
+      "niche": "2state|st3|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 1.0346589709342608,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 3918,
+     "rule": "B1/S348/C7",
+     "class": "active",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B1/S348/C7"
+      },
+      "seed": 4237246637343390059,
+      "width": 96,
+      "height": 96,
+      "density": 0.3011
+     },
+     "summary": "B1/S348/C7 looks active; 0 of 1 candidate mover shape(s) self-propelled in isolation; 26 persistent shapes; no recurrence within 500 steps; damage spread 0.01; seed re-run spread 0.23 (<= calibrated 0.25; larger than 87% of same-rule seed pairs, 15% of different-rule pairs); same class in 6/6 runs; run 2000 steps: becomes periodic (cycle of period 56 from t=1286)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.2275,
+      "robust_threshold": 0.2469,
+      "spread_pct_within": 0.8732394366197183,
+      "spread_pct_between": 0.1522,
+      "niche": "multi|st2|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.9558220954455612,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 4510,
+     "rule": "B34/S12468/C4",
+     "class": "active",
+     "kind": "most-novel/seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B34/S12468/C4"
+      },
+      "seed": 4357032545675379360,
+      "width": 96,
+      "height": 96,
+      "density": 0.1745
+     },
+     "summary": "B34/S12468/C4 looks active; 1 persistent shapes; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.94 (> calibrated 0.25; larger than 99% of same-rule seed pairs, 75% of different-rule pairs); same class in 4/6 runs; run 2000 steps: becomes frozen (cycle of period 1 from t=683)",
+     "evidence": {
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.9358,
+      "robust_threshold": 0.2469,
+      "spread_pct_within": 0.9894366197183099,
+      "spread_pct_between": 0.7538,
+      "niche": "multi|st1|lp0|dmg0|mov0",
+      "pareto_rank": 2,
+      "novelty": 1.3188463648096063,
+      "replicate_classes": [
+       "active",
+       "active",
+       "complex",
+       "frozen"
+      ],
+      "extended_class": "frozen"
+     },
+     "replication": null,
+     "innovation": null
+    }
+   ]
+  }
+ ]
+}
