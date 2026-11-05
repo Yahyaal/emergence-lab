@@ -90,7 +90,7 @@ def test_screening_followups_and_extension(tmp_path):
     fups = store.universes(eid, role="followup")
     assert any(f["steps"] == 300 for f in fups)  # extended runs
     for d in store.discoveries(eid):
-        assert d["kind"].split("/")[-1] in {"persists", "fades"}
+        assert d["kind"].split("/")[-1] in {"persists", "fades", "loops"}
         assert "extended_id" in d["evidence"]
 
 
@@ -111,3 +111,15 @@ def test_old_database_is_migrated(tmp_path):
 def test_benchmark_passes():
     r = run_benchmark(seeds=1, steps=300, log=lambda *_: None)
     assert r["passed"] == r["total"], [c for c in r["cases"] if not all(x["ok"] for x in c["runs"])]
+
+
+def test_cycling_extended_run_is_not_persisting(tmp_path):
+    """Regression: an extended run that ends in an exact cycle must be 'fades', not 'persists'."""
+    cfg = ExploreConfig(population=6, generations=1, steps=80, window=40, width=24, height=24,
+                        screen_seeds=1, followups=3, followup_seeds=1, extend_factor=3, seed=11, workers=1)
+    store = Store(tmp_path / "y.db")
+    eid = Explorer(store, cfg, log=lambda *_: None).run()
+    for d in store.discoveries(eid):
+        ext = store.universe(d["evidence"]["extended_id"])
+        if ext["metrics"]["cycle_found"]:
+            assert d["kind"].split("/")[-1] in {"fades", "loops"} and not d["evidence"]["persists"]

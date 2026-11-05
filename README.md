@@ -149,7 +149,10 @@ active`) are coarse, transparent labels for humans (see `classify()` in
    * *robust* means the re-runs' mean distance from the original in descriptor space
      is below 0.5. It's a continuous test; class labels are reported but don't decide it.
    * *persists* or *fades* is what the longer run showed: still unsettled and not
-     fading, or settled into something trivial (with the time of settling).
+     fading, or settled into an exact cycle or something trivial (with the time of
+     settling). *loops* means it settled into a cycle whose period is a multiple of the
+     world size while verified movers exist. That's most likely movers circulating
+     around the finite torus: a property of the finite world, not trivial dynamics.
 
 ## Reproducibility
 

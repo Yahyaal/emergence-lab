@@ -349,9 +349,21 @@ class Explorer:
         classes = agg["classes"] + [r["cls"] for r in replicas]
         agree = classes.count(u["class"])
         robust = spread < ROBUST_SPREAD
-        persists = ext is not None and not run_settled(ext["metrics"], ext["cls"]) and \
-            ext["metrics"].get("activity_trend", 1.0) >= 0.5
-        kind = ("robust" if robust else "seed-sensitive") + ("" if ext is None else ("/persists" if persists else "/fades"))
+        # persists = never fell into an exact global cycle, is not merely oscillating
+        # in place, and its activity is not fading at the (longer) horizon
+        persists = (ext is not None and not ext["metrics"]["cycle_found"]
+                    and not run_settled(ext["metrics"], ext["cls"])
+                    and ext["metrics"].get("activity_trend", 1.0) >= 0.5)
+        # A cycle whose period is a multiple of the world size while self-propelled movers
+        # exist is most likely movers circulating around the finite torus: a property of
+        # the finite world, not evidence that the dynamics became trivial.
+        loops = False
+        if ext is not None and not persists and ext["metrics"]["cycle_found"]:
+            per, side = ext["metrics"]["period"], u["spec"]["width"]
+            loops = per % side == 0 or per % u["spec"]["height"] == 0
+            loops = loops and (movers(ext["metrics"]) >= 1 or movers(u["metrics"]) >= 1)
+        verdict = "/persists" if persists else "/loops" if loops else "/fades"
+        kind = ("robust" if robust else "seed-sensitive") + ("" if ext is None else verdict)
         if u["id"] == most_novel_id:
             kind = "most-novel/" + kind
         m = u["metrics"]
@@ -372,13 +384,15 @@ class Explorer:
             bits.append(f"run {em['steps']} steps: still {ext['cls']}, activity trend {em.get('activity_trend', 0):.2f}"
                         if persists else
                         f"run {em['steps']} steps: becomes {ext['cls']}"
-                        + (f" (cycle from t={em['transient']})" if em["cycle_found"] else ""))
+                        + (f" (cycle of period {em['period']} from t={em['transient']})" if em["cycle_found"] else "")
+                        + ("; period is a multiple of the world size and movers exist: likely movers circulating"
+                           " on the finite torus" if loops else ""))
         evidence = {
             "pareto_rank": u["pareto_rank"], "novelty": u["novelty"], "priority": u["priority"],
             "niche": agg["niche"], "screen_runs": agg["runs"], "screen_classes": agg["classes"],
             "replicate_classes": [r["cls"] for r in replicas], "replicate_ids": [r["id"] for r in replicas],
             "extended_id": ext["id"] if ext else None, "extended_class": ext["cls"] if ext else None,
-            "persists": persists, "descriptor_spread": round(spread, 4),
+            "persists": persists, "torus_loop": loops, "descriptor_spread": round(spread, 4),
             "objectives": {k: round(v, 5) for k, v in agg["objectives"].items()},
         }
         self.store.add_discovery(exp_id, u["id"], kind, "; ".join(bits), evidence)
