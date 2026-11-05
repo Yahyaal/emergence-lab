@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "emergence-lab"
+version = "0.1.0"
+description = "Explore many simple rule sets and automatically discover emergent complexity"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+emergence = "emergence.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["emergence*"]
+
+[tool.setuptools.package-data]
+emergence = ["web/*"]

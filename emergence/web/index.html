@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emergence Lab</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Emergence Lab</h1>
+  <label class="field">Experiment
+    <select id="exp-select"></select>
+  </label>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="explore" class="active">Universes</button>
+    <button role="tab" data-tab="discoveries">Discoveries <span id="disc-count" class="badge"></span></button>
+  </nav>
+  <form id="adhoc" class="adhoc" title="Open any rule, e.g. B3/S23 (Life) or B2/S/C3 (Brian's Brain)">
+    <input name="rule" placeholder="Rule, e.g. B3/S23" required size="12" aria-label="Rule">
+    <input name="seed" type="number" value="1" aria-label="Seed" title="Seed">
+    <input name="size" type="number" value="64" min="8" max="512" aria-label="Grid size" title="Grid size">
+    <button type="submit">Open</button>
+  </form>
+  <button id="theme-toggle" class="ghost" title="Toggle light/dark">Theme</button>
+</header>
+
+<section id="summary" class="summary"></section>
+
+<main id="tab-explore" class="layout">
+  <aside class="gallery-col">
+    <div class="gallery-controls">
+      <label class="field">Sort
+        <select id="sort">
+          <option value="priority">Priority (Pareto rank, then novelty)</option>
+          <option value="novelty">Novelty</option>
+          <option value="activity_late">Activity (late)</option>
+          <option value="local_periodic_frac">Local periodicity</option>
+          <option value="mover_events">Moving structures</option>
+          <option value="vocabulary">Persistent shapes</option>
+          <option value="spacetime_ratio">Space-time randomness</option>
+          <option value="damage_norm">Damage spreading</option>
+          <option value="transient">Transient length</option>
+          <option value="generation">Generation</option>
+        </select>
+      </label>
+      <label class="field">Class <select id="class-filter"><option value="">All</option></select></label>
+      <label class="field">Role
+        <select id="role-filter">
+          <option value="explore">Exploration</option>
+          <option value="followup">Robustness re-runs</option>
+          <option value="">All</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="animate"> Animate</label>
+    </div>
+    <p class="hint">Click to view · Shift+click to add to comparison (up to 4)</p>
+    <div id="gallery" class="gallery"></div>
+  </aside>
+
+  <section class="viewer-col">
+    <div class="viewer-toolbar">
+      <label class="check"><input type="checkbox" id="sync"> Sync panels</label>
+      <span class="hint">Scroll to zoom · drag to pan · double-click to reset · Space play/pause · ←/→ step</span>
+    </div>
+    <div id="panels" class="panels"><div class="empty">Select a universe on the left.</div></div>
+    <div id="details" class="details"></div>
+  </section>
+</main>
+
+<main id="tab-discoveries" class="disc-page" hidden>
+  <p class="hint">Candidates chosen by the discovery engine (Pareto front + novelty) and re-run with fresh seeds and a 2× larger world.
+  “robust” = same class in every re-run; “seed-sensitive” = behaviour depends on the initial condition.</p>
+  <div id="disc-list" class="disc-list"></div>
+</main>
+
+<div id="tooltip" class="tooltip" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
