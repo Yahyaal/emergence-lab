@@ -38,6 +38,7 @@ emergence benchmark --seeds 5                    # validation report: PASS/FAIL 
 emergence benchmark --probes                     # + 14 hard/deceptive controls for the v0.3 probes
 emergence explore --baseline-random --seed 11    # control condition: random search, same budget
 emergence compare 1 2                            # engine vs baseline (counts per rule)
+emergence conditions --rules B3/S23,B36/S23      # same rules from different starting worlds (paired study)
 emergence list                    # experiments in lab.db
 emergence top 1 -n 20             # highest-priority universes of experiment #1
 emergence discoveries 1           # what the engine flagged, with evidence

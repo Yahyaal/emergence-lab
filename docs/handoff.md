@@ -7,9 +7,19 @@ description: Everything a new contributor or AI agent needs to continue the work
 
 Read this page first if you are picking up the project, then the latest [Journal]({{ '/journal.html' | relative_url }}) entries.
 
+## Goal
+
+Find out whether complex, persistent and possibly evolving structure emerges spontaneously from simple fixed rules, and which rules or initial conditions make it likely. We don't simulate our universe and we don't build life by design. Full goal, objectives (O1–O7), the owner's original requirements and principles: [Research → Goal and objectives]({{ '/research.html#goal-and-objectives' | relative_url }}).
+
 ## State in one paragraph
 
-Emergence Lab (v0.3, Python) runs many 2D cellular-automaton universes (Life-like B/S and Generations B/S/C rules on a torus). A passive observatory measures them, and a discovery engine searches rule space: Pareto ranking, novelty search, MAP-Elites niches and seed screening. Promising rules get follow-ups: new seeds, a larger world, a 4× longer run, an innovation-over-time probe, and a replication probe on isolated clones. Each discovery gets an evidence level (1–5). So far the engine beats random search (preliminary), the best evidence reached is level 2 (self-propelled structures), and no replication or ongoing innovation has been observed. The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
+Emergence Lab (v0.4, Python) runs many 2D cellular-automaton universes (Life-like B/S and Generations B/S/C rules on a torus). A passive observatory measures them, and a discovery engine searches rule space: Pareto ranking, novelty search, MAP-Elites niches and seed screening. Promising rules get follow-ups: new seeds, a larger world, a 4× longer run, an innovation-over-time probe, and a replication probe on isolated clones. Each discovery gets an evidence level (1–5). v0.4 added initial-condition generators (`UniverseSpec.init`), a paired conditions study (`emergence conditions`) and a causal knockout probe calibrated with placebo deletions. So far:
+- the engine beats random search (preliminary);
+- the best evidence reached is level 2 (self-propelled structures);
+- no replication or cumulative innovation has been observed: knockouts ≈ placebo;
+- starting from a patch only mattered through the amount of matter.
+
+The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
 ## Run it
 
@@ -57,13 +67,16 @@ emergence compare 1 2                    # e.g. engine vs --baseline-random
 - Sparse sampling of a long exact cycle looks like innovation. Innovation can't be counted after a cycle begins.
 - i.i.d. noise is not a matched null for correlated chaos.
 - Niche axes must be checked against the data: the first set put 90% of rules into one niche.
+- Environment comparisons need matched density: a "patch" effect was really just less matter (E-10).
+- In sensitive universes compare interventions with *placebo* interventions: a fixed threshold produced 5 false "dependencies" (J-010).
+- The 64-step damage measure underestimates sensitivity over 1000-step horizons.
 
 ## Open problems, in priority order
 
-1. A matched null and a causal test for cumulative innovation (Track A, steps 2–3).
-2. Statistical power for H1 (10–30 runs per arm).
-3. An initial-conditions generator (Track B).
-4. Lenia physics with its own structure detector (Track C).
+1. Lenia physics with its own structure detector, run through the same probes (Track C); now the most promising lever.
+2. A density sweep for rules whose behaviour changed with density (E-09, E-10).
+3. Statistical power for H1 (10–30 runs per arm).
+4. Sampling validation of the innovation probe, and a same-rule null (Track A).
 5. Replication: more nulls, copy-origin tracing, multi-part candidates.
 
 ## Owner preferences
