@@ -7,8 +7,8 @@ searches rule space for universes that are unusual or promising, with no
 predefined notion of what "life" or "complexity" should look like.
 
 Runs on a normal laptop: pure Python + NumPy/SciPy, no GPU, no cloud, no paid APIs.
-The default experiment (100 universes × 5 generations + robustness re-runs) takes
-about a minute on 4 cores.
+The default experiment (100 rules × 2 seeds × 5 generations on 96×96, plus
+follow-ups) takes a few minutes on 4 cores. `--size 64 --screen-seeds 1` is ~5× faster.
 
 ## Quick start
 
@@ -18,7 +18,8 @@ cd emergence-lab
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -e '.[dev]'
 
-emergence explore                 # 100 universes x 5 generations -> lab.db
+emergence benchmark               # validate the observatory first (controls + known rules)
+emergence explore                 # 100 rules x 2 seeds x 5 generations -> lab.db
 emergence serve                   # open http://127.0.0.1:8000
 ```
 
@@ -27,7 +28,9 @@ Python 3.10+ is required.
 ### Other commands
 
 ```bash
-emergence explore --universes 100 --generations 10 --steps 800 --size 64 --seed 7 --name long-run
+emergence explore --universes 100 --generations 10 --steps 800 --size 96 --seed 7 --name long-run
+emergence explore --screen-seeds 3 --extend 8   # stricter screening, much longer follow-up runs
+emergence benchmark --seeds 5                    # validation report: PASS/FAIL per check
 emergence list                    # experiments in lab.db
 emergence top 1 -n 20             # highest-priority universes of experiment #1
 emergence discoveries 1           # what the engine flagged, with evidence
@@ -101,7 +104,9 @@ Established, simple estimators, each answering a different question:
 | Spatial & space-time compressibility | Ordered or noise-like? | zlib size ÷ zlib size of a shuffled surrogate with the same cell statistics (≈1 = noise) |
 | Global recurrence | Has it settled into a cycle? | state hashing; shifted cycles via Fourier-magnitude candidates verified exactly |
 | Local periodicity | Is the activity mere oscillation? | fraction of *changing* cells whose own time series has period ≤ 32 |
-| Still / persistent / moving structures | Are there coherent objects? | 8-connected components; a shape counts as persistent when seen at the same place at t, t+p, t+2p, and as a mover when seen at a, a+d, a+2d at t, t+τ, t+2τ |
+| Still / persistent / moving structures | Are there coherent objects? | 8-connected components; a shape counts as persistent when seen at the same place at t, t+p, t+2p, and as a *candidate* mover when seen at a, a+d, a+2d at t, t+τ, t+2τ |
+| Verified movers | Is a candidate one self-propelled object, or a coincidence? | intervention on an isolated clone: the shape is copied alone into an empty world and must travel by 2d in 2τ steps by itself |
+| Activity trend | Sustained, or slowly dying? | activity in the last window ÷ activity in the window before |
 | Damage spreading | Ordered, chaotic, or in between? | flip one cell in a forked twin and track the Hamming distance (a discrete Lyapunov analogue) |
 | Langton's λ | Static property of the rule | weighted fraction of rule-table entries that produce a live cell |
 
@@ -117,22 +122,34 @@ active`) are coarse, transparent labels for humans (see `classify()` in
 
 **Discovery engine** (`discovery.py`):
 
-1. Every universe gets a 14-dimensional behaviour descriptor.
-2. **Novelty** is the mean distance to its 10 nearest neighbours among everything
-   seen so far (novelty search, Lehman & Stanley 2011).
+1. **Seed screening**: every rule runs on `--screen-seeds` (default 2) random
+   initial conditions. Ranking uses the seed average, so a rule must be
+   interesting in general, not because of one lucky soup.
+2. Every universe gets a 16-dimensional behaviour descriptor.
+   **Novelty** is the mean distance to the 10 nearest neighbours among all rules seen
+   so far (novelty search, Lehman & Stanley 2011).
 3. **Pareto ranking** (non-dominated sorting) runs over independent objectives:
-   aperiodic activity, order (1 − space-time compressibility), mover sightings,
-   persistent-shape vocabulary and transient length. Nothing is summed or weighted.
-   Universes that are dead, frozen or purely oscillating are recorded and shown but
-   not ranked or bred from.
-4. **Priority**: the Pareto rank comes first, and novelty breaks ties. Parents are
-   picked by tournament selection on priority and mutated (birth/survival bits
-   flipped, state count changed). 20% of each generation is fresh random rules,
-   and duplicate rules are skipped.
-5. **Robustness follow-up**: the top candidates, plus the single most novel
-   universe, are re-run with 3 new seeds and once on a 2× larger world for 2× as
-   many steps. A discovery is *robust* if it keeps the same class in every run
-   and its descriptor stays close to the original.
+   aperiodic activity, order (1 − space-time compressibility), *verified* movers,
+   persistent-shape vocabulary, and *sustained* dynamics. "Sustained" means a long
+   transient before a cycle, or steps × min(1, activity trend), so a slowly dying
+   universe earns less than one that keeps going. Nothing is summed or weighted.
+   Rules that are dead, frozen or purely oscillating on *every* seed are recorded and
+   shown but not ranked.
+4. **MAP-Elites-style parent selection** (Mouret & Clune 2015): each ranked rule is
+   placed in a coarse behaviour niche: rule family (2-state / multi-state) × order
+   (4 bins, finer near noise) × local periodicity (3) × damage spreading (3: heals /
+   intermediate / chaotic) × verified movers (yes/no), giving up to 144 niches.
+   A niche is drawn *uniformly over occupied niches*, then a parent by binary
+   tournament within it, and mutated. This keeps one productive rule family from taking over the
+   search (v0.1 went from 28% to 73% multi-state rules in 10 generations). 20% of each
+   generation is fresh random rules.
+5. **Follow-up**: candidates are chosen best-per-niche first, plus the single most
+   novel rule. Each gets 3 new seeds, a 2× larger world for 2× as many steps, and the
+   *original universe observed `--extend` (4) times as long*.
+   * *robust* means the re-runs' mean distance from the original in descriptor space
+     is below 0.5. It's a continuous test; class labels are reported but don't decide it.
+   * *persists* or *fades* is what the longer run showed: still unsettled and not
+     fading, or settled into something trivial (with the time of settling).
 
 ## Reproducibility
 
@@ -148,13 +165,42 @@ active`) are coarse, transparent labels for humans (see `classify()` in
 * Each experiment stores its full config and environment (Python, NumPy and SciPy
   versions, platform). `lab.db` is plain SQLite, and `emergence export` writes JSON.
 
+## Validation
+
+`emergence benchmark` runs synthetic controls with known answers and rules with
+documented behaviour, 3 seeds each, and reports PASS/FAIL per check. Current result:
+**39/39 pass**.
+
+| Case | Must hold | Observed |
+|---|---|---|
+| i.i.d. noise (`NoiseControl` physics) | chaotic, 0 verified movers | chaotic; 1 coincidental candidate mover in 3 runs, rejected by the isolation test |
+| empty world / lone glider / blinker field / still lifes | extinct / drifting with verified mover / periodic / frozen | as expected |
+| Seeds B2/S | chaotic, damage spreads | chaotic, damage ≈ 0.95 |
+| Brian's Brain B2/S/C3 | never settles, verified gliders | 43–91 verified mover shapes |
+| Life, HighLife, Day & Night | not chaotic | complex / periodic, damage < 0.1 |
+| Maze, Life without death, B8/S | frozen-periodic / frozen / extinct | as expected |
+
+The noise control is the point of the exercise: shape matching alone *does*
+produce rare false movers, and the isolation test removes them. On real rules,
+some candidate movers fail isolation because they only move with help from their
+surroundings (waves, trails). Those are reported as candidates, not verified movers.
+
 ## Known limitations and next steps
 
 * Objects that straddle the torus seam are split in two by the component census,
   so they are briefly lost while they wrap.
 * Thresholds in `classify()` are heuristics tuned on well-known rules (Life,
   HighLife, Seeds, Brian's Brain, Day & Night, Maze, ...). They label universes for
-  humans; they don't drive the search.
+  humans; they don't drive the search or the robustness verdict.
+* Verified movers are objects that travel *alone*. Collective objects (waves,
+  distributed patterns) and objects whose movement needs context are only counted
+  as candidates. Structure detection is still based on connected cells; the
+  compression, damage and periodicity measures don't depend on it.
+* **Evolution is not measured yet.** Persistence and movement are not reproduction,
+  heredity or variation. The planned next step is a replication probe on isolated
+  clones (does a pattern give rise to copies of itself?), validated against Fredkin's
+  replicator B1357/S1357 as a known positive and against non-replicating rules as
+  negatives, before any lineage tracking is built on top of it.
 * 64×64 tori and 500 steps are small. Long transients (Life-like soups) can be cut
   off, so raise `--steps`/`--size` for serious runs. A 64×64 torus also has
   peculiarities: linear rules such as B1357/S1357 die out completely on

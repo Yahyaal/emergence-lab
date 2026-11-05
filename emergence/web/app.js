@@ -112,12 +112,14 @@ function renderSummary() {
   for (const u of ex) counts[u.class] = (counts[u.class] || 0) + 1;
   const cfg = S.exp.config, env = S.exp.environment;
   el.append(h("div", { class: "stats" },
-    h("span", {}, "Universes ", h("b", {}, ex.length)),
+    h("span", {}, "Rules ", h("b", {}, ex.length)),
+    h("span", {}, "Seeds/rule ", h("b", {}, cfg.screen_seeds || 1)),
     h("span", {}, "Generations ", h("b", {}, cfg.generations)),
     h("span", {}, "Grid ", h("b", {}, `${cfg.width}×${cfg.height}`)),
     h("span", {}, "Steps ", h("b", {}, cfg.steps)),
     h("span", {}, "Master seed ", h("b", {}, S.exp.master_seed)),
     h("span", {}, "Pareto front ", h("b", {}, ex.filter((u) => u.pareto_rank === 0).length)),
+    h("span", {}, "Niches ", h("b", {}, new Set(ex.map((u) => u.aggregate?.niche).filter(Boolean)).size)),
     h("span", {}, "Discoveries ", h("b", {}, S.discoveries.length)),
     h("span", { title: JSON.stringify(env) }, "Status ", h("b", {}, S.exp.status)),
   ));
@@ -382,7 +384,8 @@ const METRIC_LABELS = [
   ["spatial_ratio_late", "Spatial compressibility vs noise"], ["spacetime_ratio", "Space-time compressibility vs noise"],
   ["damage_norm", "Damage spreading (0 heal · 1 chaos)"], ["period", "Cycle period"], ["transient", "Transient length"],
   ["cycle_shift", "Cycle drift (dy,dx)"], ["still_structures", "Still structures"], ["vocabulary", "Persistent shapes"],
-  ["mover_shapes", "Moving shapes"], ["mover_events", "Mover sightings"], ["mover_velocities", "Distinct velocities"],
+  ["verified_mover_shapes", "Verified movers (travel alone in isolated clone)"], ["mover_shapes", "Candidate mover shapes"],
+  ["mover_events", "Mover sightings"], ["mover_velocities", "Distinct velocities"], ["activity_trend", "Activity trend (last vs previous window)"],
   ["local_periodic_frac", "Changing cells that oscillate locally"], ["objects_per_frame", "Objects / frame"], ["langton_lambda", "Langton λ (rule)"],
 ];
 let cursorFns = [];
@@ -403,6 +406,12 @@ async function renderDetails(p) {
   tbl.append(h("tr", {}, h("td", {}, "Universe"), h("td", {}, `#${u.id} · gen ${u.generation} · ${u.role}`)));
   tbl.append(h("tr", {}, h("td", {}, "Seed / density / size"), h("td", {}, `${u.spec.seed} / ${u.spec.density} / ${u.spec.width}×${u.spec.height}`)));
   tbl.append(h("tr", {}, h("td", {}, "Priority / Pareto rank / novelty"), h("td", {}, `${fmt(u.priority)} / ${fmt(u.pareto_rank)} / ${fmt(u.novelty)}`)));
+  const ag = u.aggregate;
+  if (ag) {
+    tbl.append(h("tr", {}, h("td", {}, "Seed screens: same class"), h("td", {}, `${Math.round(ag.seed_agreement * 100)}% (${ag.classes.join(", ")})`)));
+    tbl.append(h("tr", {}, h("td", {}, "Behaviour niche"), h("td", {}, ag.niche || "settled (not ranked)")));
+    for (const [k, v] of Object.entries(ag.objectives)) tbl.append(h("tr", {}, h("td", {}, `Objective: ${k.replace("_", " ")} (seed mean)`), h("td", {}, fmt(v))));
+  }
   for (const [k, label] of METRIC_LABELS) tbl.append(h("tr", {}, h("td", {}, label), h("td", {}, Array.isArray(m[k]) ? m[k].join(",") : fmt(m[k]))));
   tbl.append(h("tr", {}, h("td", {}, "Final-state hash"), h("td", { title: u.final_hash }, u.final_hash.slice(0, 12) + "…")));
   el.append(h("div", { class: "box" }, h("h3", {}, `Measurements · ${u.rule}`), tbl,
@@ -425,8 +434,10 @@ async function renderDetails(p) {
   const link = (x) => h("a", { onclick: (e) => openPanel({ kind: "id", id: x.id }, !e.shiftKey) }, `#${x.id} ${x.rule}`);
   if (u.lineage.length) links.append(h("div", {}, "Ancestors (mutation chain):"), h("ul", {}, u.lineage.map((x) => h("li", {}, link(x), " ", chip(x.class), ` gen ${x.generation}`))));
   else links.append(h("div", { class: "hint" }, u.role === "explore" ? "No parent: random rule (generation 0 or immigrant)." : ""));
-  const reps = u.children.filter((c) => c.role === "followup"), kids = u.children.filter((c) => c.role !== "followup");
-  if (reps.length) links.append(h("div", {}, "Robustness re-runs (new seeds / larger world):"), h("ul", {}, reps.map((x) => h("li", {}, link(x), " ", chip(x.class), ` ${x.size}²`))));
+  const reps = u.children.filter((c) => c.role === "followup"), screens = u.children.filter((c) => c.role === "screen");
+  const kids = u.children.filter((c) => c.role === "explore");
+  if (screens.length) links.append(h("div", {}, "Seed screens (same rule, other seeds):"), h("ul", {}, screens.map((x) => h("li", {}, link(x), " ", chip(x.class)))));
+  if (reps.length) links.append(h("div", {}, "Follow-ups (new seeds / larger world / longer run):"), h("ul", {}, reps.map((x) => h("li", {}, link(x), " ", chip(x.class), ` ${x.size}² · ${x.steps} steps`))));
   if (kids.length) links.append(h("div", {}, `Mutant offspring (${kids.length}):`), h("ul", {}, kids.slice(0, 12).map((x) => h("li", {}, link(x), " ", chip(x.class)))));
   for (const d of disc) links.append(h("div", { style: "margin-top:8px" }, h("b", {}, `Discovery [${d.kind}]`), h("div", { class: "hint" }, d.summary)));
   el.append(links);
@@ -478,7 +489,8 @@ function renderDiscoveries() {
     el.append(h("div", { class: "disc", onclick: () => { setTab("explore"); openPanel({ kind: "id", id: u.id }, true); } },
       cv, h("div", {}, h("div", { class: "kind" }, d.kind), h("div", { class: "rule" }, `#${u.id} ${u.rule} `, chip(u.class)),
         h("div", { class: "sum" }, d.summary),
-        h("div", { class: "hint" }, `Pareto rank ${fmt(ev.pareto_rank)} · novelty ${fmt(ev.novelty)} · re-run classes: ${ev.replicate_classes.join(", ")}`))));
+        h("div", { class: "hint" }, `Niche ${ev.niche || "–"} · Pareto rank ${fmt(ev.pareto_rank)} · novelty ${fmt(ev.novelty)} · re-run classes: ${ev.replicate_classes.join(", ")}`
+          + (ev.extended_class ? ` · longer run: ${ev.extended_class}` : "")))));
   }
 }
 

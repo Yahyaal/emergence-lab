@@ -21,6 +21,7 @@ DESCRIPTOR_FIELDS = [
     "density_late", "activity_late_sqrt", "entropy_late", "spatial_order",
     "spacetime_ratio", "cycle_found", "log_period", "transient_frac", "damage_norm",
     "movers", "vocabulary", "still", "activity_persistence", "local_periodic",
+    "verified_movers", "activity_trend",
 ]
 
 CLASSES = ["extinct", "saturated", "frozen", "periodic", "drifting", "chaotic", "complex", "active"]
@@ -32,7 +33,7 @@ CLASS_HELP = {
     "periodic": "whole universe repeats exactly, or every changing cell oscillates on its own",
     "drifting": "whole universe repeats up to a translation",
     "chaotic": "sustained activity, nearly incompressible (noise-like)",
-    "complex": "sustained, compressible activity with persistent or moving structures",
+    "complex": "sustained (not fading), compressible activity with persistent or self-propelled structures",
     "active": "still changing at the horizon, no clear signature (long transient?)",
 }
 
@@ -76,13 +77,16 @@ class Observer:
         self.last_t = t
 
     # ------------------------------------------------------------------ summary
-    def finalize(self, damage: dict[str, Any] | None = None, num_states: int = 2) -> Observation:
+    def finalize(self, damage: dict[str, Any] | None = None, num_states: int = 2, physics=None) -> Observation:
         final = self.prev
         frames = list(self.frames)
         W = len(frames)
         act = np.array(self.activity) if self.activity else np.zeros(1)
         late_act = float(act[-W:].mean())
         early_act = float(act[: max(1, min(50, len(act)))].mean())
+        # Is activity holding up or fading? Compare the last window with the one before.
+        prev_act = float(act[-2 * W:-W].mean()) if len(act) >= 2 * W else early_act
+        trend = min(late_act / prev_act, 2.0) if prev_act > 0 else (1.0 if late_act > 0 else 0.0)
         t_arr = np.array(self.ts["t"])
         late_mask = t_arr >= self.last_t - W
         late = {k: float(np.mean(np.array(v)[late_mask])) for k, v in self.ts.items() if k != "t"}
@@ -90,7 +94,7 @@ class Observer:
         st = np.stack(frames)
         spacetime = M.compression_ratio(st, self.rng)
         local_periodic = M.local_periodicity(st)
-        structs = analyse(frames)
+        structs = analyse(frames, physics)
         rec = self.recur.result
         damage = damage or {}
 
@@ -102,6 +106,7 @@ class Observer:
             "activity_early": early_act,
             "activity_late": late_act,
             "activity_persistence": min(late_act / early_act, 1.0) if early_act > 0 else 0.0,
+            "activity_trend": trend,
             "entropy_late": late["entropy"],
             "spatial_ratio_late": late["spatial_ratio"],
             "spacetime_ratio": spacetime,
@@ -143,9 +148,10 @@ def classify(m: dict[str, Any], final: np.ndarray, num_states: int) -> str:
         return "periodic"
     if m["activity_late"] > 0.02 and m["spacetime_ratio"] > 0.85 and (m["damage_norm"] or 0) > 0.5:
         return "chaotic"
-    if m["activity_late"] > 0.0005 and m["spacetime_ratio"] <= 0.85 and (
-        m.get("mover_shapes", 0) >= 1 or m.get("vocabulary", 0) >= 4
-    ):
+    movers = m.get("verified_mover_shapes")
+    movers = m.get("mover_shapes", 0) if movers is None else movers
+    if (m["activity_late"] > 0.0005 and m["spacetime_ratio"] <= 0.85 and m.get("activity_trend", 1.0) >= 0.5
+            and (movers >= 1 or m.get("vocabulary", 0) >= 4)):
         return "complex"
     return "active"
 
@@ -169,5 +175,7 @@ def descriptor(m: dict[str, Any]) -> list[float]:
         clip(log1p(m.get("still_structures", 0)) / log1p(100)),
         clip(m["activity_persistence"]),
         clip(m["local_periodic_frac"]),
+        clip(log1p(m.get("verified_mover_shapes") or 0) / log1p(50)),
+        clip(m.get("activity_trend", 1.0), 2.0) / 2.0,
     ]
     return [round(v, 5) for v in vec]

@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS universes (
     novelty REAL,
     pareto_rank INTEGER,
     priority INTEGER,
+    aggregate TEXT,
     created_at REAL
 );
 CREATE INDEX IF NOT EXISTS ix_univ_exp ON universes(experiment_id);
@@ -72,6 +73,9 @@ class Store:
         self.path = str(path)
         self._local = threading.local()
         self.db.executescript(SCHEMA)
+        cols = {r[1] for r in self.db.execute("PRAGMA table_info(universes)")}
+        if "aggregate" not in cols:  # databases from v0.1
+            self.db.execute("ALTER TABLE universes ADD COLUMN aggregate TEXT")
         self.db.commit()
 
     @property
@@ -133,14 +137,14 @@ class Store:
         )
         return int(cur.lastrowid)
 
-    def set_rankings(self, rows: list[tuple[float, int | None, int | None, int]]) -> None:
-        self.db.executemany("UPDATE universes SET novelty=?, pareto_rank=?, priority=? WHERE id=?", rows)
+    def set_rankings(self, rows: list[tuple[float, int | None, int | None, str | None, int]]) -> None:
+        self.db.executemany("UPDATE universes SET novelty=?, pareto_rank=?, priority=?, aggregate=? WHERE id=?", rows)
 
     def commit(self) -> None:
         self.db.commit()
 
     _LIST_COLS = ("id, experiment_id, generation, role, parent_id, rule, spec, steps, class, metrics, "
-                  "descriptor, novelty, pareto_rank, priority, final_hash")
+                  "descriptor, novelty, pareto_rank, priority, aggregate, final_hash")
 
     def universes(self, exp_id: int, role: str | None = None, with_state: bool = False) -> list[dict[str, Any]]:
         cols = self._LIST_COLS + (", final_state" if with_state else "")
@@ -157,7 +161,7 @@ class Store:
     @staticmethod
     def _univ(r: sqlite3.Row) -> dict[str, Any]:
         d = dict(r)
-        for k in ("spec", "metrics", "descriptor", "timeseries"):
+        for k in ("spec", "metrics", "descriptor", "timeseries", "aggregate"):
             if k in d and d[k] is not None:
                 d[k] = json.loads(d[k])
         if "final_state" in d and d["final_state"] is not None:

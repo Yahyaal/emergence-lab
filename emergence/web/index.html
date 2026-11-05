@@ -36,7 +36,9 @@
           <option value="novelty">Novelty</option>
           <option value="activity_late">Activity (late)</option>
           <option value="local_periodic_frac">Local periodicity</option>
-          <option value="mover_events">Moving structures</option>
+          <option value="verified_mover_shapes">Verified movers</option>
+          <option value="mover_events">Mover sightings (candidates)</option>
+          <option value="activity_trend">Activity trend (fading &lt; 1 &lt; growing)</option>
           <option value="vocabulary">Persistent shapes</option>
           <option value="spacetime_ratio">Space-time randomness</option>
           <option value="damage_norm">Damage spreading</option>
@@ -48,7 +50,8 @@
       <label class="field">Role
         <select id="role-filter">
           <option value="explore">Exploration</option>
-          <option value="followup">Robustness re-runs</option>
+          <option value="screen">Seed screens</option>
+          <option value="followup">Follow-ups (seeds, large, extended)</option>
           <option value="">All</option>
         </select>
       </label>
@@ -69,8 +72,10 @@
 </main>
 
 <main id="tab-discoveries" class="disc-page" hidden>
-  <p class="hint">Candidates chosen by the discovery engine (Pareto front + novelty) and re-run with fresh seeds and a 2× larger world.
-  “robust” = same class in every re-run; “seed-sensitive” = behaviour depends on the initial condition.</p>
+  <p class="hint">Candidates chosen by the discovery engine (best of each behaviour niche, then Pareto front + novelty), re-run with fresh seeds,
+  a 2× larger world, and the original universe observed several times longer.
+  <b>robust</b> = re-runs stay close in behaviour-descriptor space; <b>seed-sensitive</b> = behaviour depends on the initial condition;
+  <b>persists</b> / <b>fades</b> = what the longer run showed. These are observations, not claims of life or evolution.</p>
   <div id="disc-list" class="disc-list"></div>
 </main>
 
