@@ -5,14 +5,14 @@ established ideas:
 
 1. **Pareto ranking** (non-dominated sorting) over several *independent*
    objectives, averaged over a rule's seeds: aperiodic activity, order
-   (compressibility), self-propelled movers (verified in isolation), persistent
+   (compressibility), self-propelled shapes (tested on an isolated clone), persistent
    shapes, and sustained dynamics. Nothing is summed or weighted.
 2. **Novelty search** (Lehman & Stanley): mean distance to the k nearest
    neighbours in behaviour-descriptor space. Rewards "different from what we've
    already found", with no target.
 3. **MAP-Elites-style parent selection** (Mouret & Clune): rules are binned into
    coarse behaviour niches (rule family x order x local periodicity x damage
-   spreading x verified movers); a niche is drawn uniformly over occupied niches,
+   spreading x self-propelled shapes); a niche is drawn uniformly over occupied niches,
    then a parent by tournament within it. This keeps one productive family or
    behaviour from taking over the search.
 
@@ -40,7 +40,34 @@ from .physics import OuterTotalistic, physics_from_dict
 from .storage import Store
 
 TRIVIAL = {"extinct", "saturated", "frozen"}
-ROBUST_SPREAD = 0.5  # max mean descriptor distance of re-runs to call a finding robust
+FALLBACK_ROBUST_SPREAD = 0.3  # used only when an experiment has too few seed screens to calibrate
+ROBUST_QUANTILE = 0.9         # robust = re-run spread within the 90th pct of same-rule seed variation
+
+
+def _dist(a, b) -> float:
+    return float(np.linalg.norm(np.asarray(a, float) - np.asarray(b, float)))
+
+
+def calibrate(primaries: list[dict], screens: dict[int, list[dict]], seed: int) -> dict[str, Any]:
+    """Empirical null distributions from the experiment's own data:
+    * within: descriptor distance between two seeds of the SAME rule (seed noise)
+    * between: distance between two DIFFERENT rules
+    A finding is robust if its re-runs vary no more than a typical rule varies with its seed."""
+    within = [_dist(u["descriptor"], s["descriptor"]) for u in primaries for s in screens.get(u["id"], [])]
+    rng = np.random.default_rng([seed, 20_000])
+    between = []
+    if len(primaries) > 1:
+        for _ in range(min(5000, len(primaries) * 20)):
+            i, j = rng.choice(len(primaries), 2, replace=False)
+            between.append(_dist(primaries[i]["descriptor"], primaries[j]["descriptor"]))
+    within, between = np.sort(within), np.sort(between)
+    threshold = float(np.quantile(within, ROBUST_QUANTILE)) if len(within) >= 20 else FALLBACK_ROBUST_SPREAD
+    return {"within": within, "between": between, "threshold": threshold, "n_within": len(within),
+            "n_between": len(between)}
+
+
+def _pct(sorted_arr: np.ndarray, x: float) -> float | None:
+    return None if len(sorted_arr) == 0 else float(np.searchsorted(sorted_arr, x, side="right") / len(sorted_arr))
 
 
 def run_settled(m: dict, cls: str) -> bool:
@@ -49,7 +76,10 @@ def run_settled(m: dict, cls: str) -> bool:
 
 
 def movers(m: dict) -> float:
-    v = m.get("verified_mover_shapes")
+    """Shapes shown to travel on their own in an isolated clone (self-propelled).
+    This does NOT prove that the original sightings were one causally connected
+    object; it shows the shape *can* move under this physics by itself."""
+    v = m.get("self_propelled_shapes", m.get("verified_mover_shapes"))  # v0.2 name
     return float(m.get("mover_shapes", 0.0) if v is None else v)
 
 
@@ -58,7 +88,7 @@ OBJECTIVES: dict[str, Callable[[dict], float]] = {
     "aperiodic_activity": lambda m: m["activity_late"] * (1.0 - m.get("local_periodic_frac", 0.0)),
     "order": lambda m: 1.0 - min(m["spacetime_ratio"], 1.0),
     # distinct shapes that travel on their own in an isolated clone
-    "verified_movers": movers,
+    "self_propelled": movers,
     "vocabulary": lambda m: m.get("vocabulary", 0.0),
     # a long transient before a cycle, or dynamics that are not fading at the horizon;
     # a universe that is merely dying slowly earns proportionally less
@@ -86,6 +116,7 @@ class ExploreConfig:
     extend_factor: int = 4      # extended run = extend_factor x steps on the original seed
     seed: int = 42
     workers: int = 0            # 0 = all cores
+    selection: str = "engine"   # "engine" (Pareto + novelty + niches) or "random" (baseline: random rules only)
 
 
 # ----------------------------------------------------------------- ranking
@@ -141,7 +172,7 @@ def aggregate(u: dict, screens: list[dict]) -> dict[str, Any]:
     keys = ["activity_late", "local_periodic_frac", "spacetime_ratio", "mover_shapes", "vocabulary",
             "activity_trend", "damage_norm", "steps"]
     mean_m = {k: float(np.mean([r["metrics"].get(k) or 0.0 for r in runs])) for k in keys}
-    mean_m["verified_mover_shapes"] = float(np.mean([movers(r["metrics"]) for r in runs]))
+    mean_m["self_propelled_shapes"] = float(np.mean([movers(r["metrics"]) for r in runs]))
     objectives = {k: float(np.mean([f(r["metrics"]) for r in runs])) for k, f in OBJECTIVES.items()}
     classes = [r["class"] for r in runs]
     settled = all(run_settled(r["metrics"], r["class"]) for r in runs)
@@ -276,7 +307,8 @@ class Explorer:
             if niche:
                 members.setdefault(niche, []).append(u)
         niche_list = sorted(members)
-        n_imm = cfg.population if gen == 0 or not niche_list else int(round(cfg.population * cfg.immigrant_fraction))
+        n_imm = cfg.population if (gen == 0 or not niche_list or cfg.selection == "random") \
+            else int(round(cfg.population * cfg.immigrant_fraction))
         attempts = 0
         while len(out) < cfg.population and attempts < cfg.population * 50:
             attempts += 1
@@ -284,7 +316,8 @@ class Explorer:
                 rule, parent = OuterTotalistic.random(rng), None
             else:
                 group = members[niche_list[int(rng.integers(len(niche_list)))]]
-                p = group[int(rng.integers(len(group), size=2).min())]  # sorted by priority
+                a, b = (group[int(i)] for i in rng.integers(len(group), size=2))
+                p = a if a["priority"] <= b["priority"] else b  # explicit binary tournament
                 rule, parent = physics_from_dict(p["spec"]["physics"]).mutate(rng), p["id"]
             label = rule.label()
             if label in seen:
@@ -331,6 +364,10 @@ class Explorer:
             jobs.append((u["spec"], cfg.steps * cfg.extend_factor, cfg.window))  # same universe, observed longer
             meta.append((u, "extended"))
         results = self._map(pool, jobs)
+        self.calib = calibrate(eligible or univ, self._screens(exp_id), cfg.seed)
+        self.log(f"  calibration: same-rule seed spread p50={np.median(self.calib['within']) if self.calib['n_within'] else float('nan'):.2f}"
+                 f", robust threshold (p{int(ROBUST_QUANTILE * 100)}) = {self.calib['threshold']:.2f}; "
+                 f"different-rule p50={np.median(self.calib['between']) if self.calib['n_between'] else float('nan'):.2f}")
         by_parent: dict[int, list[dict]] = {}
         for (u, kind), (spec, steps, _), res in zip(meta, jobs, results):
             uid = self.store.add_universe(exp_id, -1, "followup", u["id"], spec, steps, cfg.window, res)
@@ -344,11 +381,19 @@ class Explorer:
         agg = u["aggregate"]
         d0 = np.array(u["descriptor"])
         replicas = [r for r in reps if r["kind"] in ("seed", "large")]
+        seed_reps = [r for r in reps if r["kind"] == "seed"]
+        large = next((r for r in reps if r["kind"] == "large"), None)
         ext = next((r for r in reps if r["kind"] == "extended"), None)
-        spread = float(np.mean([np.linalg.norm(np.array(r["descriptor"]) - d0) for r in replicas])) if replicas else 0.0
+        # robustness is judged on same-size seed re-runs only (world size changes descriptors
+        # for reasons unrelated to the rule, e.g. how long movers take to collide)
+        spread = float(np.mean([_dist(r["descriptor"], d0) for r in seed_reps])) if seed_reps else 0.0
+        large_spread = _dist(large["descriptor"], d0) if large else None
+        cal = getattr(self, "calib", None) or {"within": np.array([]), "between": np.array([]),
+                                                "threshold": FALLBACK_ROBUST_SPREAD}
         classes = agg["classes"] + [r["cls"] for r in replicas]
         agree = classes.count(u["class"])
-        robust = spread < ROBUST_SPREAD
+        robust = spread <= cal["threshold"]
+        spread_pct_within, spread_pct_between = _pct(cal["within"], spread), _pct(cal["between"], spread)
         # persists = never fell into an exact global cycle, is not merely oscillating
         # in place, and its activity is not fading at the (longer) horizon
         persists = (ext is not None and not ext["metrics"]["cycle_found"]
@@ -369,7 +414,7 @@ class Explorer:
         m = u["metrics"]
         bits = [f"{u['rule']} looks {u['class']}"]
         if m.get("mover_shapes"):
-            bits.append(f"{int(movers(m))} of {int(m['mover_shapes'])} candidate mover shape(s) verified in isolation")
+            bits.append(f"{int(movers(m))} of {int(m['mover_shapes'])} candidate mover shape(s) self-propelled in isolation")
         if m.get("vocabulary"):
             bits.append(f"{int(m['vocabulary'])} persistent shapes")
         if m["cycle_found"]:
@@ -377,7 +422,9 @@ class Explorer:
         else:
             bits.append(f"no recurrence within {m['steps']} steps")
         bits.append(f"damage spread {m['damage_norm'] or 0:.2f}")
-        bits.append(f"descriptor spread across re-runs {spread:.2f} ({'<' if robust else '>='} {ROBUST_SPREAD})")
+        bits.append(f"seed re-run spread {spread:.2f} ({'<=' if robust else '>'} calibrated {cal['threshold']:.2f}; "
+                    f"larger than {spread_pct_within or 0:.0%} of same-rule seed pairs, "
+                    f"{spread_pct_between or 0:.0%} of different-rule pairs)")
         bits.append(f"same class in {agree}/{len(classes)} runs")
         if ext is not None:
             em = ext["metrics"]
@@ -393,6 +440,9 @@ class Explorer:
             "replicate_classes": [r["cls"] for r in replicas], "replicate_ids": [r["id"] for r in replicas],
             "extended_id": ext["id"] if ext else None, "extended_class": ext["cls"] if ext else None,
             "persists": persists, "torus_loop": loops, "descriptor_spread": round(spread, 4),
+            "robust_threshold": round(cal["threshold"], 4), "spread_pct_within": spread_pct_within,
+            "spread_pct_between": spread_pct_between,
+            "large_world_spread": None if large_spread is None else round(large_spread, 4),
             "objectives": {k: round(v, 5) for k, v in agg["objectives"].items()},
         }
         self.store.add_discovery(exp_id, u["id"], kind, "; ".join(bits), evidence)

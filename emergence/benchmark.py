@@ -72,15 +72,15 @@ def _noise(seed):
 
 
 def _movers(m):
-    return m.get("verified_mover_shapes") or 0
+    return m.get("self_propelled_shapes") or 0
 
 
 CASES = [
     # --- synthetic controls -------------------------------------------------
-    Case("control: i.i.d. noise", "chaotic; 0 verified movers (unverified candidates = false-positive rate)",
+    Case("control: i.i.d. noise", "chaotic; 0 self-propelled shapes (candidates = false-positive rate)",
          _noise, lambda m, c: c == "chaotic" and _movers(m) == 0),
     Case("control: empty world", "extinct", _placed("B3/S23", lambda s, n: []), lambda m, c: c == "extinct"),
-    Case("control: lone glider (Life)", "drifting; verified mover (4 shapes = the glider's 4 phases)",
+    Case("control: lone glider (Life)", "drifting; self-propelled (4 shapes = the glider's 4 phases)",
          _placed("B3/S23", _glider), lambda m, c: c == "drifting" and _movers(m) >= 1),
     Case("control: blinker field (Life)", "periodic; no movers",
          _placed("B3/S23", _blinkers), lambda m, c: c == "periodic" and m["mover_shapes"] == 0),
@@ -89,7 +89,7 @@ CASES = [
     # --- known rules from random soups ---------------------------------------
     Case("Seeds B2/S", "chaotic (explosive, no stable objects)", _rule("B2/S"),
          lambda m, c: c == "chaotic" and (m["damage_norm"] or 0) > 0.5),
-    Case("Brian's Brain B2/S/C3", "never settles; abundant verified gliders", _rule("B2/S/C3"),
+    Case("Brian's Brain B2/S/C3", "never settles; abundant self-propelled gliders", _rule("B2/S/C3"),
          lambda m, c: c not in {"extinct", "frozen"} and _movers(m) >= 1),
     Case("Life B3/S23", "not chaotic; settles to ash or is still evolving", _rule("B3/S23"),
          lambda m, c: c != "chaotic" and (m["damage_norm"] or 0) < 0.5),
@@ -112,7 +112,7 @@ def run_benchmark(seeds: int = 3, steps: int = 500, log=print) -> dict:
             u, seed = case.make(s)
             o = study_universe(u, seed, steps=steps)
             ok = bool(case.check(o.metrics, o.cls))
-            results.append({"seed": seed, "class": o.cls, "ok": ok, "verified_movers": _movers(o.metrics),
+            results.append({"seed": seed, "class": o.cls, "ok": ok, "self_propelled": _movers(o.metrics),
                             "candidate_movers": o.metrics.get("mover_shapes", 0),
                             "damage_norm": o.metrics.get("damage_norm"),
                             "local_periodic_frac": o.metrics.get("local_periodic_frac")})
@@ -122,7 +122,7 @@ def run_benchmark(seeds: int = 3, steps: int = 500, log=print) -> dict:
         mark = "PASS" if all(r["ok"] for r in results) else "FAIL"
         log(f"{mark}  {case.name:34s} expect: {case.expectation}")
         log("        " + "  ".join(f"seed{r['seed']}:{r['class']}"
-                                   f"(mov {r['verified_movers']:.0f}/{r['candidate_movers']:.0f}"
+                                   f"(mov {r['self_propelled']:.0f}/{r['candidate_movers']:.0f}"
                                    f", dmg {r['damage_norm'] or 0:.2f})" + ("" if r["ok"] else "!")
                                    for r in results))
     noise = next(r for r in rows if r["case"].startswith("control: i.i.d."))["runs"]

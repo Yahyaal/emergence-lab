@@ -384,7 +384,7 @@ const METRIC_LABELS = [
   ["spatial_ratio_late", "Spatial compressibility vs noise"], ["spacetime_ratio", "Space-time compressibility vs noise"],
   ["damage_norm", "Damage spreading (0 heal · 1 chaos)"], ["period", "Cycle period"], ["transient", "Transient length"],
   ["cycle_shift", "Cycle drift (dy,dx)"], ["still_structures", "Still structures"], ["vocabulary", "Persistent shapes"],
-  ["verified_mover_shapes", "Verified movers (travel alone in isolated clone)"], ["mover_shapes", "Candidate mover shapes"],
+  ["self_propelled_shapes", "Self-propelled shapes (travel alone in an isolated clone)"], ["mover_shapes", "Candidate mover shapes"],
   ["mover_events", "Mover sightings"], ["mover_velocities", "Distinct velocities"], ["activity_trend", "Activity trend (last vs previous window)"],
   ["local_periodic_frac", "Changing cells that oscillate locally"], ["objects_per_frame", "Objects / frame"], ["langton_lambda", "Langton λ (rule)"],
 ];

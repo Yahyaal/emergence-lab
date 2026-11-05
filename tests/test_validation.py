@@ -21,7 +21,7 @@ def test_glider_verified_in_isolation():
         frames.append(s)
         s = LIFE.step(s)
     a = analyse(frames, LIFE)
-    assert a["mover_shapes"] >= 1 and a["verified_mover_shapes"] == a["mover_shapes"]
+    assert a["mover_shapes"] >= 1 and a["self_propelled_shapes"] == a["mover_shapes"]
 
 
 def test_coincidental_sightings_are_rejected():
@@ -35,7 +35,7 @@ def test_coincidental_sightings_are_rejected():
         frames.append(g)
     a = analyse(frames, LIFE)
     assert a["mover_shapes"] == 1          # candidate
-    assert a["verified_mover_shapes"] == 0  # rejected
+    assert a["self_propelled_shapes"] == 0  # rejected
     key = next(iter(census(frames[0])))
     assert not verify_in_isolation(LIFE, key, (1, 0), 1)
 
@@ -44,7 +44,7 @@ def test_noise_control_is_deterministic_and_structureless():
     spec = UniverseSpec(NoiseControl(0.3).to_dict(), 5, 64, 64, 0.3)
     a, b = study(spec, steps=200), study(spec, steps=200)
     assert a.final_hash == b.final_hash
-    assert a.cls == "chaotic" and a.metrics["verified_mover_shapes"] == 0
+    assert a.cls == "chaotic" and a.metrics["self_propelled_shapes"] == 0
 
 
 def test_activity_trend_flags_fading():
@@ -73,7 +73,7 @@ def test_activity_trend_flags_fading():
 
 def test_niche_binning_separates_families():
     m = {"spacetime_ratio": 0.5, "activity_late": 0.1, "local_periodic_frac": 0.0, "damage_norm": 0.3,
-         "verified_mover_shapes": 2}
+         "self_propelled_shapes": 2}
     assert niche_of("B3/S23", m) != niche_of("B2/S/C3", m)
     assert niche_of("B3/S23", m).startswith("2state") and "mov1" in niche_of("B3/S23", m)
 
@@ -123,3 +123,20 @@ def test_cycling_extended_run_is_not_persisting(tmp_path):
         ext = store.universe(d["evidence"]["extended_id"])
         if ext["metrics"]["cycle_found"]:
             assert d["kind"].split("/")[-1] in {"fades", "loops"} and not d["evidence"]["persists"]
+
+
+def test_calibration_separates_seed_noise_from_rule_differences():
+    from emergence.discovery import calibrate
+    rng = np.random.default_rng(0)
+    prim = [{"id": i, "descriptor": rng.random(5).tolist()} for i in range(40)]
+    screens = {p["id"]: [{"descriptor": (np.array(p["descriptor"]) + rng.normal(0, 0.01, 5)).tolist()}] for p in prim}
+    cal = calibrate(prim, screens, seed=1)
+    assert cal["n_within"] == 40 and cal["threshold"] < np.median(cal["between"]) / 5
+
+
+def test_random_baseline_never_breeds(tmp_path):
+    cfg = ExploreConfig(population=6, generations=3, steps=60, window=30, width=24, height=24, screen_seeds=1,
+                        followups=0, seed=5, workers=1, selection="random")
+    store = Store(tmp_path / "r.db")
+    eid = Explorer(store, cfg, log=lambda *_: None).run()
+    assert all(u["parent_id"] is None for u in store.universes(eid, role="explore"))

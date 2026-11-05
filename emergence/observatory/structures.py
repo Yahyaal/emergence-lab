@@ -12,11 +12,12 @@ From the census we derive:
 * movers           - a shape seen at a, a+d, a+2d at times t, t+tau, t+2tau
                      (d != 0): a *candidate* translating object. Shape matching
                      alone does not prove the sightings are one causal object, so:
-* verified movers  - each candidate shape is copied alone into an empty, separate
+* self-propelled   - each candidate shape is copied alone into an empty, separate
                      world (an isolated clone, never the original universe) and
-                     run for 2*tau steps. It is verified only if it reappears
-                     displaced by 2d by itself, i.e. it is a self-propelled object
-                     under this physics, not a coincidence or context effect.
+                     run for 2*tau steps. It counts only if it reappears displaced
+                     by 2d by itself. This shows the shape CAN move on its own under
+                     this physics; it does not prove the original sightings were one
+                     causally connected object (trajectory identity is not checked).
 
 Limitation (documented, acceptable for an MVP): components crossing the torus
 seam are split in two, so objects are lost briefly while they wrap.
@@ -134,7 +135,7 @@ def analyse(frames: list[np.ndarray], physics=None) -> dict[str, float]:
         verified = sum(verify_in_isolation(physics, k, d, tau) for k, (d, tau) in examples.items())
 
     return {
-        "verified_mover_shapes": None if verified is None else float(verified),
+        "self_propelled_shapes": None if verified is None else float(verified),
         "objects_per_frame": n_objects / W,
         "still_structures": float(len(still)),
         "vocabulary": float(len(persistent | mover_shapes)),

@@ -21,7 +21,7 @@ DESCRIPTOR_FIELDS = [
     "density_late", "activity_late_sqrt", "entropy_late", "spatial_order",
     "spacetime_ratio", "cycle_found", "log_period", "transient_frac", "damage_norm",
     "movers", "vocabulary", "still", "activity_persistence", "local_periodic",
-    "verified_movers", "activity_trend",
+    "self_propelled", "activity_trend",
 ]
 
 CLASSES = ["extinct", "saturated", "frozen", "periodic", "drifting", "chaotic", "complex", "active"]
@@ -148,7 +148,7 @@ def classify(m: dict[str, Any], final: np.ndarray, num_states: int) -> str:
         return "periodic"
     if m["activity_late"] > 0.02 and m["spacetime_ratio"] > 0.85 and (m["damage_norm"] or 0) > 0.5:
         return "chaotic"
-    movers = m.get("verified_mover_shapes")
+    movers = m.get("self_propelled_shapes")
     movers = m.get("mover_shapes", 0) if movers is None else movers
     if (m["activity_late"] > 0.0005 and m["spacetime_ratio"] <= 0.85 and m.get("activity_trend", 1.0) >= 0.5
             and (movers >= 1 or m.get("vocabulary", 0) >= 4)):
@@ -175,7 +175,7 @@ def descriptor(m: dict[str, Any]) -> list[float]:
         clip(log1p(m.get("still_structures", 0)) / log1p(100)),
         clip(m["activity_persistence"]),
         clip(m["local_periodic_frac"]),
-        clip(log1p(m.get("verified_mover_shapes") or 0) / log1p(50)),
+        clip(log1p(m.get("self_propelled_shapes") or 0) / log1p(50)),
         clip(m.get("activity_trend", 1.0), 2.0) / 2.0,
     ]
     return [round(v, 5) for v in vec]
