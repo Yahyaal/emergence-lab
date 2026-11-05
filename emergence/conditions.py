@@ -27,7 +27,7 @@ from .discovery import _evaluate, environment_info, innovation_verdict, movers, 
 from .engine import Universe, UniverseSpec
 from .observatory.innovation import innovation_profile
 from .observatory.knockout import knockout_experiment
-from .physics import OuterTotalistic
+from .physics import parse_rule
 from .storage import Store
 
 DEFAULT_INITS = ["uniform", "gradient", "patch", "spots"]
@@ -63,7 +63,7 @@ def run_conditions(store: Store, rules: list[str], inits: list[str], seeds: int,
     rng = np.random.default_rng([master_seed, 777])
     jobs, meta = [], []
     for rule in rules:
-        phys = OuterTotalistic.parse(rule).to_dict()
+        phys = parse_rule(rule).to_dict()
         rule_seeds = [int(x) for x in rng.integers(0, 2**62, size=seeds)]  # same seeds across conditions (paired)
         for ii, kind in enumerate(inits):
             for s in rule_seeds:

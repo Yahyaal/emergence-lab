@@ -30,12 +30,25 @@ const S = { meta: null, exp: null, universes: [], byId: new Map(), discoveries: 
 
 // ------------------------------------------------------------ cell rendering
 // Universe view uses its own dark "observation window" in both themes.
+const _palCache = new Map();
 function cellPalette(n) {
+  if (_palCache.has(n)) return _palCache.get(n);
+  if (n > 32) {  // continuous states (Lenia): dark -> blue -> light ramp
+    const stops = [[16, 17, 19], [28, 92, 171], [57, 135, 229], [242, 239, 230]];
+    const pal = [];
+    for (let i = 0; i < n; i++) {
+      const x = i / (n - 1) * (stops.length - 1), k = Math.min(stops.length - 2, Math.floor(x)), f = x - k;
+      pal.push(stops[k].map((c, j) => Math.round(c + (stops[k + 1][j] - c) * f)));
+    }
+    _palCache.set(n, pal);
+    return pal;
+  }
   const pal = [[16, 17, 19], [242, 239, 230]];
   for (let s = 2; s < n; s++) {               // refractory / dying states fade orange -> dim
     const f = (s - 2) / Math.max(1, n - 3);
     pal.push([Math.round(235 - 165 * f), Math.round(104 - 60 * f), Math.round(52 - 10 * f)]);
   }
+  _palCache.set(n, pal);
   return pal;
 }
 function paint(ctx, data, w, hgt, n) {
@@ -48,7 +61,10 @@ function paint(ctx, data, w, hgt, n) {
   ctx.putImageData(img, 0, 0);
 }
 const b64bytes = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
-const numStates = (rule) => { const m = /\/C(\d+)/i.exec(rule || ""); return m ? +m[1] : 2; };
+const numStates = (rule) => {
+  if (/^LENIA\//i.test(rule || "")) return 256;
+  const m = /\/C(\d+)/i.exec(rule || ""); return m ? +m[1] : 2;
+};
 
 // ------------------------------------------------------------ tooltip
 const tip = $("#tooltip");

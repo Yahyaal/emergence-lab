@@ -18,6 +18,14 @@ Each case is built to fool a weaker test:
 * knockout, negative    deleting a block the collision never touches: independent.
 * knockout, deceptive   Brian's Brain: ANY deletion rewrites the future (damage
                    spreading); must not be reported as a dependency.
+
+Continuous physics (Lenia), tolerant structure detector (observatory/continuous.py):
+* positive    two gliders DERIVED from the Orbium parameters (asymmetric seed left to
+              settle; not hand-typed): 2 movers, both self-propelled in isolation
+* negative    a settled Orbium-parameter soup: many persistent STATIC blobs, no movers
+* deceptive   smoothed-noise control physics (fresh blob-like random field every step):
+              no persistent objects or movers; a decaying lopsided blob under a dying
+              rule (its centre drifts as it fades): not self-propelled
 """
 from __future__ import annotations
 
@@ -140,6 +148,37 @@ def run_probe_benchmark(log=print) -> dict:
     check("knockout deceptive, rate-based reading: no rate effect in Brian's Brain",
           bb.get("rate_verdict") != "depends",
           f"{bb.get('rate_verdict')}: drop {bb.get('drop_knockout')} vs controls {bb.get('drop_controls')}")
+
+    # 6. continuous physics: Lenia controls for the tolerant structure detector
+    from .observatory import continuous as C
+    from .physics import SmoothNoiseControl, parse_rule
+
+    def frames_of(physics, state, n=100):
+        w, fr = Universe(physics, state), []
+        for _ in range(n):
+            fr.append(w.state.copy())
+            w.step()
+        return fr
+
+    orb = parse_rule("LENIA/R13/T10/m0.150/s0.0150/b1")
+    gl = C.emergent_glider(orb)
+    two = np.maximum(np.roll(gl, (-32, -60), axis=(0, 1)), np.roll(gl, (32, -60), axis=(0, 1)))
+    a = C.analyse(frames_of(orb, two), orb)
+    check("Lenia positive: two emergent gliders -> 2 self-propelled", a["mover_shapes"] == 2 and a["self_propelled_shapes"] == 2,
+          f"movers {a['mover_shapes']:.0f}, self-propelled {a['self_propelled_shapes']:.0f}")
+    soup = Universe.from_spec(UniverseSpec(orb.to_dict(), 1, 128, 128, 0.3))
+    soup.step(400)
+    a = C.analyse(frames_of(orb, soup.state.copy()), orb)
+    check("Lenia negative: settled soup = static blobs, no movers", a["mover_shapes"] == 0 and a["still_structures"] >= 5,
+          f"persistent {a['vocabulary']:.0f}, still {a['still_structures']:.0f}, movers {a['mover_shapes']:.0f}")
+    nz = SmoothNoiseControl(4.0)
+    a = C.analyse(frames_of(nz, Universe.from_spec(UniverseSpec(nz.to_dict(), 1, 128, 128, 0.3)).state.copy()), nz)
+    check("Lenia deceptive: smoothed noise -> no persistent objects", a["vocabulary"] == 0 and a["mover_shapes"] == 0,
+          f"objects/frame {a['objects_per_frame']:.1f}, persistent {a['vocabulary']:.0f}, movers {a['mover_shapes']:.0f}")
+    die = parse_rule("LENIA/R13/T10/m0.200/s0.0150/b1")
+    a = C.analyse(frames_of(die, gl.copy()), die)
+    check("Lenia deceptive: decaying lopsided blob is not self-propelled", (a["self_propelled_shapes"] or 0) == 0,
+          f"self-propelled {a['self_propelled_shapes']:.0f}")
 
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")

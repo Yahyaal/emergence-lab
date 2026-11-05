@@ -94,7 +94,11 @@ class Observer:
         st = np.stack(frames)
         spacetime = M.compression_ratio(st, self.rng)
         local_periodic = M.local_periodicity(st)
-        structs = analyse(frames, physics)
+        if getattr(physics, "continuous", False):
+            from .continuous import analyse as analyse_continuous
+            structs = analyse_continuous(frames, physics)
+        else:
+            structs = analyse(frames, physics)
         rec = self.recur.result
         damage = damage or {}
 
