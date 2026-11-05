@@ -120,6 +120,7 @@ def summarize(store: Store, exp_id: int) -> dict[str, Any]:
         settled = [u["metrics"]["cycle_found"] or run_settled(u["metrics"], u["class"]) for u in us]
         verdicts = [u["aggregate"]["innovation_verdict"] for u in us]
         kos = [(u["aggregate"].get("knockout") or {}).get("verdict") for u in us]
+        kr = [(u["aggregate"].get("knockout") or {}).get("rate_verdict") for u in us]
         per[(rule, kind)] = {
             "unsettled": 1 - float(np.mean(settled)),
             "self_prop": float(np.mean([movers(u["metrics"]) for u in us])),
@@ -127,12 +128,14 @@ def summarize(store: Store, exp_id: int) -> dict[str, Any]:
             "inconclusive": float(np.mean([v.startswith("inconclusive") for v in verdicts])),
             "knockout_depends": sum(k == "depends" for k in kos),
             "knockout_tested": sum(k not in (None, "untestable") for k in kos),
+            "knockout_rate_depends": sum(k == "depends" for k in kr),
             "initial_density": float(np.mean([Universe.from_spec(UniverseSpec.from_dict(u["spec"])).state.mean()
                                               for u in us])),
         }
     rules, inits = cfg["rules"], cfg["inits"]
     table = {kind: {o: float(np.mean([per[(r, kind)][o] for r in rules])) for o in
-                    OUTCOMES + ["inconclusive", "knockout_depends", "knockout_tested", "initial_density"]}
+                    OUTCOMES + ["inconclusive", "knockout_depends", "knockout_tested", "knockout_rate_depends",
+                                "initial_density"]}
              for kind in inits}
     comparisons = {}
     for kind in inits:
@@ -156,7 +159,8 @@ def report(summary: dict, log=print) -> None:
     for kind in inits:
         t = summary["by_condition"][kind]
         log(f"{kind:<10} {t['initial_density']:>9.3f} " + " ".join(f"{t[o]:>12.3f}" for o in OUTCOMES)
-            + f" {t['inconclusive']:>12.3f} {t['knockout_depends']:>5.2f}/{t['knockout_tested']:.2f}")
+            + f" {t['inconclusive']:>12.3f} {t['knockout_depends']:>5.2f}/{t['knockout_tested']:.2f}"
+            + f"  rate-depends {t['knockout_rate_depends']:.2f}")
     log("\npaired vs uniform (same rule, same seeds); mean difference [95% CI], rules higher/lower, sign-test p:")
     for kind, outs in summary["vs_uniform"].items():
         for o, c in outs.items():

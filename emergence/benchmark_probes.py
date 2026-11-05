@@ -135,6 +135,11 @@ def run_probe_benchmark(log=print) -> dict:
                              300, 600, 50, rng)
     check("knockout deceptive: Brian's Brain is not a dependency", bb["verdict"] != "depends",
           f"{bb['verdict']}: lost {bb.get('lost_knockout')} vs controls {bb.get('lost_controls')}")
+    check("knockout positive, rate-based reading: novelty rate drops", pos["rate_verdict"] == "depends",
+          f"drop {pos.get('drop_knockout')} vs controls {pos.get('drop_controls')}")
+    check("knockout deceptive, rate-based reading: no rate effect in Brian's Brain",
+          bb.get("rate_verdict") != "depends",
+          f"{bb.get('rate_verdict')}: drop {bb.get('drop_knockout')} vs controls {bb.get('drop_controls')}")
 
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")

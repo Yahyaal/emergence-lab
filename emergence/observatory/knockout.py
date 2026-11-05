@@ -24,6 +24,19 @@ measure that baseline. Verdicts:
 * "depends"        dependency >= 0.3: later novelty specifically needs K
 * "independent"    otherwise
 
+A second, rate-based reading is reported alongside, because in chaotic universes the
+set comparison is hopeless: any deletion reshuffles WHICH rare shapes appear, so
+`lost` is high for knockout and controls alike (that's "inconclusive"). The rate-based
+question is whether deleting K reduces HOW MANY new types appear afterwards:
+
+  drop(world)      = 1 - (new types after t1 in world) / (new types after t1 in original)
+  rate_dependency  = drop(knockout) - mean drop(controls)
+  rate_verdict     = "depends" if rate_dependency >= 0.3 and the controls' mean drop < 0.3,
+                     "no rate effect" otherwise
+
+In a statistically stationary chaotic universe, random deletions leave the rate of
+novelty unchanged; deleting a genuine enabler lowers it.
+
 Thresholds are heuristics, validated against the controls in benchmark_probes.py.
 This tests whether K is *necessary* for later novelty, not *how* it causes it.
 """
@@ -86,15 +99,23 @@ def knockout_compare(physics, state: np.ndarray, target: np.ndarray, controls: l
     orig = run(None)
     later = orig - before
     if len(later) < min_later:
-        return {"verdict": "untestable", "later_novelties": len(later)}
+        return {"verdict": "untestable", "rate_verdict": "untestable", "later_novelties": len(later)}
     lost = lambda seen: len(later - seen) / len(later)  # noqa: E731
-    lost_k = lost(run(target))
-    lost_c = [lost(run(m)) for m in controls]
+    drop = lambda seen: 1 - len(seen - before) / len(later)  # noqa: E731
+    seen_k = run(target)
+    seen_c = [run(m) for m in controls]
+    lost_k, lost_c = lost(seen_k), [lost(x) for x in seen_c]
     mean_c = float(np.mean(lost_c)) if lost_c else 0.0
     dep = lost_k - mean_c
     verdict = ("inconclusive" if mean_c >= 0.5 else "depends" if dep >= 0.3 else "independent")
+    drop_k, drop_c = drop(seen_k), [drop(x) for x in seen_c]
+    mean_dc = float(np.mean(drop_c)) if drop_c else 0.0
+    rate_dep = drop_k - mean_dc
+    rate_verdict = "depends" if rate_dep >= 0.3 and mean_dc < 0.3 else "no rate effect"
     return {"verdict": verdict, "later_novelties": len(later), "lost_knockout": round(lost_k, 3),
             "lost_controls": [round(x, 3) for x in lost_c], "dependency": round(dep, 3),
+            "rate_verdict": rate_verdict, "drop_knockout": round(drop_k, 3),
+            "drop_controls": [round(x, 3) for x in drop_c], "rate_dependency": round(rate_dep, 3),
             "cells_removed": int(target.sum())}
 
 

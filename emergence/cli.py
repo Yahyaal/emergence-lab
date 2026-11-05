@@ -42,6 +42,7 @@ def main(argv: list[str] | None = None) -> int:
     cn.add_argument("--seeds", type=int, default=3)
     cn.add_argument("--size", type=int, default=96)
     cn.add_argument("--steps", type=int, default=2000)
+    cn.add_argument("--density", type=float, default=0.35, help="mean density for uniform/gradient")
     cn.add_argument("--seed", type=int, default=0, help="master seed (picks the per-rule seeds)")
     cn.add_argument("--name", default="conditions")
     cn.add_argument("--workers", type=int, default=0)
@@ -123,7 +124,7 @@ def main(argv: list[str] | None = None) -> int:
         from .conditions import report, run_conditions, summarize
         if a.cmd == "conditions":
             rules = [r.strip() for r in (a.rules.split(",") if a.rules else open(a.rules_file).read().split()) if r.strip()]
-            eid = run_conditions(store, rules, a.inits.split(","), a.seeds, a.size, a.steps, name=a.name,
+            eid = run_conditions(store, rules, a.inits.split(","), a.seeds, a.size, a.steps, density=a.density, name=a.name,
                                  master_seed=a.seed, workers=a.workers)
         else:
             eid = a.experiment
