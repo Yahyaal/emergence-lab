@@ -140,3 +140,30 @@ def test_random_baseline_never_breeds(tmp_path):
     store = Store(tmp_path / "r.db")
     eid = Explorer(store, cfg, log=lambda *_: None).run()
     assert all(u["parent_id"] is None for u in store.universes(eid, role="explore"))
+
+
+def test_replication_probe_controls():
+    from emergence.benchmark_probes import HIGHLIFE_REPLICATOR, rle
+    from emergence.observatory.replication import replication_test
+    rng = np.random.default_rng(0)
+    assert replication_test(OuterTotalistic.parse("B36/S23"), rle(HIGHLIFE_REPLICATOR), rng)["verdict"] == "self-replicator"
+    assert replication_test(OuterTotalistic.parse("B1357/S1357"), rle("obo$3o$bo!"), rng)["verdict"] == "rule-level duplication"
+    assert replication_test(LIFE, rle("bo$2bo$3o!"), rng)["verdict"] == "no replication"
+
+
+def test_innovation_probe_glider_gun_is_not_innovating():
+    from emergence.benchmark_probes import GOSPER_GUN, _placed, rle
+    from emergence.observatory.innovation import innovation_profile
+    inn = innovation_profile(_placed("B3/S23", rle(GOSPER_GUN), 300), steps=600, every=100)
+    assert inn["new_second_half"] == 0 and inn["shapes_total"] >= 1
+
+
+def test_followup_reports_evidence_level(tmp_path):
+    cfg = ExploreConfig(population=6, generations=1, steps=80, window=40, width=24, height=24, screen_seeds=2,
+                        followups=2, followup_seeds=1, extend_factor=2, seed=4, workers=1)
+    store = Store(tmp_path / "e.db")
+    eid = Explorer(store, cfg, log=lambda *_: None).run()
+    for d in store.discoveries(eid):
+        ev = d["evidence"]
+        assert 0 <= ev["evidence_level"] <= 3 and ev["innovation"] is not None and ev["replication"] is not None
+        assert "heredity/variation: not measured" in d["summary"]

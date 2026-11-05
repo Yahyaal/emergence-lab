@@ -41,6 +41,7 @@ def main(argv: list[str] | None = None) -> int:
     bm = sub.add_parser("benchmark", help="validate the observatory on controls and known rules")
     bm.add_argument("--seeds", type=int, default=3)
     bm.add_argument("--steps", type=int, default=500)
+    bm.add_argument("--probes", action="store_true", help="also run the hard controls for innovation/replication probes")
 
     sub.add_parser("list", help="list experiments")
 
@@ -78,7 +79,13 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "benchmark":
         from .benchmark import run_benchmark
         r = run_benchmark(a.seeds, a.steps)
-        return 0 if r["passed"] == r["total"] else 1
+        ok = r["passed"] == r["total"]
+        if a.probes:
+            from .benchmark_probes import run_probe_benchmark
+            print()
+            p = run_probe_benchmark()
+            ok = ok and p["passed"] == p["total"]
+        return 0 if ok else 1
     if a.cmd == "observe":
         rule = OuterTotalistic.parse(a.rule)
         t = time.time()

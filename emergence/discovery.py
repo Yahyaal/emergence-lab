@@ -36,7 +36,10 @@ import numpy as np
 from . import __version__
 from .engine import UniverseSpec
 from .lab import study
-from .physics import OuterTotalistic, physics_from_dict
+from .engine import Universe
+from .observatory.innovation import innovation_profile
+from .observatory.replication import scan_for_replicators
+from .physics import NoiseControl, OuterTotalistic, physics_from_dict
 from .storage import Store
 
 TRIVIAL = {"extinct", "saturated", "frozen"}
@@ -216,6 +219,42 @@ def _evaluate(job: tuple[dict, int, int]) -> dict[str, Any]:
             "final_hash": o.final_hash, "final_state": o.final_state}
 
 
+def _probe(job: tuple[dict, int]) -> dict[str, Any]:
+    """Passive re-observation of a universe from its spec (innovation over time),
+    followed by replication tests of its common shapes on isolated clones."""
+    spec_d, steps = job
+    u = Universe.from_spec(UniverseSpec.from_dict(spec_d))
+    inn = innovation_profile(u, steps=steps, every=max(25, steps // 32))
+    frames = []
+    for _ in range(30):
+        frames.append(u.state.copy())
+        u.step()
+    rng = np.random.default_rng([spec_d["seed"], 99])
+    rep = scan_for_replicators(u.physics, frames, rng, max_candidates=15)
+    return {"innovation": inn, "replication": rep}
+
+
+EVIDENCE_LEVELS = [
+    "none",
+    "persistent organization",       # 1: persistent shapes that reproduce across seeds
+    "self-propelled structures",     # 2: + shapes that travel on their own in isolation
+    "self-replication",              # 3: + a shape that copies itself in isolation (both nulls rejected)
+    "heredity and variation",        # 4: not measured yet
+    "open-ended evolution",          # 5: not measured yet
+]
+
+
+def evidence_level(robust: bool, agg: dict, probe: dict | None) -> int:
+    level = 0
+    if robust and agg["objectives"].get("vocabulary", 0) >= 4:
+        level = 1
+        if agg["objectives"].get("self_propelled", 0) >= 1:
+            level = 2
+    if probe and probe["replication"]["self_replicators"] >= 1:
+        level = 3  # replication is reported even if level 1-2 criteria fail
+    return level
+
+
 def environment_info() -> dict[str, str]:
     import scipy
     return {"emergence": __version__, "python": sys.version.split()[0], "numpy": np.__version__,
@@ -364,6 +403,16 @@ class Explorer:
             jobs.append((u["spec"], cfg.steps * cfg.extend_factor, cfg.window))  # same universe, observed longer
             meta.append((u, "extended"))
         results = self._map(pool, jobs)
+        # probes: innovation over time + replication scan, plus a noise-control run with
+        # identical probe settings to measure the innovation false-positive floor
+        probe_steps = cfg.steps * cfg.extend_factor
+        noise_spec = UniverseSpec(NoiseControl(0.3).to_dict(), cfg.seed, cfg.width, cfg.height, 0.3).to_dict()
+        probe_jobs = [(u["spec"], probe_steps) for u in candidates] + [(noise_spec, probe_steps)]
+        probe_res = list(pool.map(_probe, probe_jobs)) if pool is not None else [_probe(j) for j in probe_jobs]
+        self.noise_floor = probe_res[-1]["innovation"]["established_late"]
+        self.probes = {u["id"]: r for u, r in zip(candidates, probe_res)}
+        self.log(f"  probes: innovation over {probe_steps} steps + replication scan; noise-control innovation floor "
+                 f"= {self.noise_floor}")
         self.calib = calibrate(eligible or univ, self._screens(exp_id), cfg.seed)
         self.log(f"  calibration: same-rule seed spread p50={np.median(self.calib['within']) if self.calib['n_within'] else float('nan'):.2f}"
                  f", robust threshold (p{int(ROBUST_QUANTILE * 100)}) = {self.calib['threshold']:.2f}; "
@@ -411,8 +460,12 @@ class Explorer:
         kind = ("robust" if robust else "seed-sensitive") + ("" if ext is None else verdict)
         if u["id"] == most_novel_id:
             kind = "most-novel/" + kind
+        probe = getattr(self, "probes", {}).get(u["id"])
+        floor = getattr(self, "noise_floor", 0)
+        level = evidence_level(robust, agg, probe)
+        innovating = bool(probe) and probe["innovation"]["established_late"] > floor
         m = u["metrics"]
-        bits = [f"{u['rule']} looks {u['class']}"]
+        bits = [f"{u['rule']} looks {u['class']}", f"evidence level {level}/5 ({EVIDENCE_LEVELS[level]})"]
         if m.get("mover_shapes"):
             bits.append(f"{int(movers(m))} of {int(m['mover_shapes'])} candidate mover shape(s) self-propelled in isolation")
         if m.get("vocabulary"):
@@ -434,7 +487,19 @@ class Explorer:
                         + (f" (cycle of period {em['period']} from t={em['transient']})" if em["cycle_found"] else "")
                         + ("; period is a multiple of the world size and movers exist: likely movers circulating"
                            " on the finite torus" if loops else ""))
+        if probe:
+            inn, rp = probe["innovation"], probe["replication"]
+            bits.append(f"innovation: {inn['established_late']} new shape types established late "
+                        f"(noise floor {floor}) -> {'still innovating' if innovating else 'no evidence of ongoing innovation'}")
+            bits.append(f"replication: {rp['self_replicators']} self-replicator(s) among {rp['tested']} common shapes"
+                        + (f" ({rp['rule_level_duplication']} rule-level duplication, {rp['common_products']} common products rejected)"
+                           if rp["rule_level_duplication"] or rp["common_products"] else ""))
+        bits.append("heredity/variation: not measured")
         evidence = {
+            "evidence_level": level, "evidence_level_name": EVIDENCE_LEVELS[level],
+            "innovating": innovating, "innovation_noise_floor": floor,
+            "innovation": probe["innovation"] if probe else None,
+            "replication": probe["replication"] if probe else None,
             "pareto_rank": u["pareto_rank"], "novelty": u["novelty"], "priority": u["priority"],
             "niche": agg["niche"], "screen_runs": agg["runs"], "screen_classes": agg["classes"],
             "replicate_classes": [r["cls"] for r in replicas], "replicate_ids": [r["id"] for r in replicas],
