@@ -35,6 +35,21 @@ def main(argv: list[str] | None = None) -> int:
     ex.add_argument("--baseline-random", action="store_true",
                     help="control condition: every generation is fresh random rules (no selection)")
 
+    cn = sub.add_parser("conditions", help="initial-conditions study: same rules, different starting worlds")
+    cn.add_argument("--rules", help="comma-separated rules, e.g. B3/S23,B36/S23")
+    cn.add_argument("--rules-file", help="file with one rule per line")
+    cn.add_argument("--inits", default="uniform,gradient,patch,spots")
+    cn.add_argument("--seeds", type=int, default=3)
+    cn.add_argument("--size", type=int, default=96)
+    cn.add_argument("--steps", type=int, default=2000)
+    cn.add_argument("--seed", type=int, default=0, help="master seed (picks the per-rule seeds)")
+    cn.add_argument("--name", default="conditions")
+    cn.add_argument("--workers", type=int, default=0)
+    cn.add_argument("--json", help="write the summary here")
+    cs = sub.add_parser("conditions-report", help="re-print the summary of a conditions experiment")
+    cs.add_argument("experiment", type=int)
+    cs.add_argument("--json")
+
     cp = sub.add_parser("compare", help="compare experiments, e.g. engine vs random baseline")
     cp.add_argument("experiments", type=int, nargs="+")
 
@@ -104,6 +119,20 @@ def main(argv: list[str] | None = None) -> int:
         t = time.time()
         eid = Explorer(store, cfg).run()
         print(f"done: experiment #{eid} in {time.time() - t:.1f}s. View with: emergence --db {a.db} serve")
+    elif a.cmd in ("conditions", "conditions-report"):
+        from .conditions import report, run_conditions, summarize
+        if a.cmd == "conditions":
+            rules = [r.strip() for r in (a.rules.split(",") if a.rules else open(a.rules_file).read().split()) if r.strip()]
+            eid = run_conditions(store, rules, a.inits.split(","), a.seeds, a.size, a.steps, name=a.name,
+                                 master_seed=a.seed, workers=a.workers)
+        else:
+            eid = a.experiment
+        summ = summarize(store, eid)
+        report(summ)
+        if a.json:
+            with open(a.json, "w") as f:
+                json.dump(summ, f, indent=1)
+            print(f"wrote {a.json}")
     elif a.cmd == "compare":
         from .analysis import compare
         compare(store, a.experiments)
