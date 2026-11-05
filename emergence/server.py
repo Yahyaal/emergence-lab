@@ -21,7 +21,7 @@ import numpy as np
 from .discovery import OBJECTIVES
 from .engine import Universe, UniverseSpec
 from .observatory import CLASS_HELP, CLASSES, DESCRIPTOR_FIELDS
-from .physics import OuterTotalistic, physics_from_dict
+from .physics import parse_rule, physics_from_dict
 from .storage import Store
 
 WEB = Path(__file__).parent / "web"
@@ -137,7 +137,7 @@ def make_handler(store: Store, cache: FrameCache):
                         return self._json({"error": "no such universe"}, HTTPStatus.NOT_FOUND)
                     spec = UniverseSpec.from_dict(u["spec"])
                 else:
-                    rule = OuterTotalistic.parse(q["rule"])
+                    rule = parse_rule(q["rule"])
                     w, h = int(q.get("w", 64)), int(q.get("h", q.get("w", 64)))
                     if not (4 <= w <= MAX_SIDE and 4 <= h <= MAX_SIDE):
                         raise ValueError("size out of range")

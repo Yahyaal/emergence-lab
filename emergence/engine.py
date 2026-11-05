@@ -95,7 +95,10 @@ class Universe:
         physics = physics_from_dict(spec.physics)
         rng = np.random.default_rng(spec.seed)
         if spec.init is not None:
-            return cls(physics, initial_state(spec, rng))
+            state = initial_state(spec, rng)
+            if getattr(physics, "continuous", False):  # occupied cells get random values, like the soup
+                state = np.where(state > 0, np.rint(rng.random(state.shape) * 255), 0).astype(np.uint8)
+            return cls(physics, state)
         state = physics.random_state(rng, (spec.height, spec.width), spec.density)
         return cls(physics, state)
 

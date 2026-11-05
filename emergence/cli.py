@@ -9,7 +9,7 @@ import time
 from .discovery import ExploreConfig, Explorer, reproduce
 from .engine import UniverseSpec
 from .lab import study
-from .physics import OuterTotalistic
+from .physics import parse_rule
 from .storage import Store
 
 DEFAULT_DB = "lab.db"
@@ -32,6 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     ex.add_argument("--followups", type=int, default=d.followups, help="candidates to re-test for robustness")
     ex.add_argument("--screen-seeds", type=int, default=d.screen_seeds, help="seeds per rule during exploration")
     ex.add_argument("--extend", type=int, default=d.extend_factor, help="follow-up runs this many times longer")
+    ex.add_argument("--physics", default="outer_totalistic", help="physics family: outer_totalistic or lenia")
     ex.add_argument("--baseline-random", action="store_true",
                     help="control condition: every generation is fresh random rules (no selection)")
 
@@ -103,7 +104,7 @@ def main(argv: list[str] | None = None) -> int:
             ok = ok and p["passed"] == p["total"]
         return 0 if ok else 1
     if a.cmd == "observe":
-        rule = OuterTotalistic.parse(a.rule)
+        rule = parse_rule(a.rule)
         t = time.time()
         o = study(UniverseSpec(rule.to_dict(), a.seed, a.size, a.size, a.density), steps=a.steps)
         print(json.dumps({"rule": rule.label(), "class": o.cls, "final_hash": o.final_hash, "metrics": o.metrics},
@@ -116,7 +117,7 @@ def main(argv: list[str] | None = None) -> int:
         cfg = ExploreConfig(name=a.name, population=a.universes, generations=a.generations, steps=a.steps,
                             width=a.size, height=a.size, seed=a.seed, workers=a.workers, followups=a.followups,
                             screen_seeds=a.screen_seeds, extend_factor=a.extend,
-                            selection="random" if a.baseline_random else "engine")
+                            selection="random" if a.baseline_random else "engine", physics=a.physics)
         t = time.time()
         eid = Explorer(store, cfg).run()
         print(f"done: experiment #{eid} in {time.time() - t:.1f}s. View with: emergence --db {a.db} serve")

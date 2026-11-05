@@ -217,3 +217,27 @@ def test_knockout_controls():
     before = set(types_over(Universe(LIFE, g.copy()), 40, 20))
     assert knockout_compare(LIFE, g, glider, [far], before, 500, 25)["verdict"] == "depends"
     assert knockout_compare(LIFE, g, far, [far], before, 500, 25)["verdict"] == "independent"
+
+
+def test_lenia_physics_and_continuous_detector():
+    from emergence.observatory import continuous as C
+    from emergence.physics import Lenia, parse_rule, physics_from_dict
+    orb = parse_rule("LENIA/R13/T10/m0.150/s0.0150/b1")
+    assert isinstance(orb, Lenia) and physics_from_dict(orb.to_dict()).label() == orb.label()
+    rng = np.random.default_rng(0)
+    for _ in range(20):
+        p = Lenia.random(rng).mutate(rng)
+        assert parse_rule(p.label()).label() == p.label()
+    gl = C.emergent_glider(orb)
+    assert C.self_propelled(orb, gl, max(C.objects(gl), key=lambda o: o["mass"]))
+    # torus-aware labelling: an object split by the seam is one object
+    split = np.roll(gl, (0, 64 - 106), axis=(0, 1))
+    split = np.roll(split, (0, 64), axis=(0, 1))  # now straddles the seam
+    assert len(C.objects(gl)) == len(C.objects(split)) == 1
+
+
+def test_lenia_initial_conditions_have_values():
+    from emergence.physics import parse_rule
+    spec = UniverseSpec(parse_rule("LENIA/R13/T10/m0.150/s0.0150/b1").to_dict(), 2, 64, 64, 0.3, init={"kind": "patch"})
+    s = Universe.from_spec(spec).state
+    assert s.max() > 100 and s[:8].sum() == 0
