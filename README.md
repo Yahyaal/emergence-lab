@@ -10,6 +10,10 @@ Runs on a normal laptop: pure Python + NumPy/SciPy, no GPU, no cloud, no paid AP
 The default experiment (100 rules × 2 seeds × 5 generations on 96×96, plus
 follow-ups) takes a few minutes on 4 cores. `--size 64 --screen-seeds 1` is ~5× faster.
 
+**Research journal:** decisions, experiments, results, lessons and media are at
+<https://yahyaal.github.io/emergence-lab/> (source in [`docs/`](docs/)). New contributors and agents should start with
+[`docs/handoff.md`](docs/handoff.md).
+
 ## Quick start
 
 ```bash

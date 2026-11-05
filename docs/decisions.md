@@ -1,0 +1,30 @@
+---
+title: Decisions
+description: Architecture and methodology decisions, with the alternatives considered.
+---
+
+# Decisions
+
+Lightweight decision records. Status is *accepted*, *superseded* (with the replacement) or *proposed*.
+New decisions go at the bottom, with the next number.
+
+| ID | Decision | Why | Alternatives rejected | Status |
+|---|---|---|---|---|
+| D-001 | Python + NumPy/SciPy engine, standard-library HTTP server, vanilla-JS dashboard, no build step | Must run on a normal laptop with no GPU, cloud or paid APIs | GPU/JAX (not laptop-portable); web framework (more dependencies for little gain) | accepted |
+| D-002 | First physics: outer-totalistic 2D CA (Life-like B/S and Generations B/S/C) on a torus, behind a `Physics` interface | Huge, well-studied rule space with known landmarks (Life, HighLife, Seeds, Brian's Brain) to validate against | Starting with continuous CA (no landmarks to validate the observatory against yet) | accepted; second family proposed (D-018) |
+| D-003 | The engine never sees the observatory. Observers get read-only copies; interventions run only on forked clones | Complexity must come from the rules, not from us; tested by `test_observer_does_not_affect_universe` | Measuring inside the step loop | accepted |
+| D-004 | No single complexity score: Pareto ranking over independent objectives plus novelty search | A single score encodes a preconceived idea of "life" and is easily gamed | Weighted sum; compression score alone | accepted |
+| D-005 | Universes that are dead, frozen or locally periodic (≥ 95% of changing cells just oscillate) are recorded but not ranked or bred from | v0.1's top ranks were strobing rules and fields of independent oscillators | Ranking everything; a hard class filter | accepted |
+| D-006 | SQLite lab notebook, deterministic seeding from one master seed, `emergence reproduce` checks state hash and metrics | Scientific reproducibility | Files per run; non-deterministic multiprocessing | accepted |
+| D-007 | Candidate movers must travel alone in an isolated clone (named "self-propelled shapes" since v0.3) | Shape matching alone produces coincidences (1 candidate on pure noise); v0.1's #463 was a false positive | Trusting three-point sightings; full trajectory tracing (deferred) | accepted |
+| D-008 | Screen every rule on 2 seeds on 96×96 by default | 64×64 single-seed results were dominated by seed luck and torus wrap-around | 3+ seeds (cost) | accepted |
+| D-009 | MAP-Elites-style parent selection over niches (family × order × local periodicity × damage × self-propelled) with a within-niche tournament | v0.1 collapsed into one rule family. The first v0.2 axes put 90% of rules in one niche, and choosing only each niche's best rule left 4 parents | Single elite per niche; niche axes based on activity | accepted (axes revised once) |
+| D-010 | Robustness judged on the continuous behaviour descriptor, with a threshold *calibrated per experiment* (90th percentile of same-rule seed variation, ≈ 0.3) | Class labels are brittle at thresholds; the old fixed 0.5 accepted 29% of different-rule pairs | Class agreement; fixed threshold | accepted (v0.3) |
+| D-011 | Follow-up candidates get a longer run on the original seed (default 4×), with verdicts *persists / fades / loops* | Short horizons mislead: Life soups look "complex" at 500 steps and cycle later | Fixed long runs for everything (cost) | accepted |
+| D-012 | A validation benchmark with controls and deceptive controls is part of the product (`emergence benchmark --probes`) | Detectors must be shown to fail on things built to fool them | Only checking known rules | accepted |
+| D-013 | Any claim about the discovery engine needs a random-search baseline at equal compute, with counts after removing near-duplicates | The engine breeds from its own winners, which inflates raw counts by ~40% | Reporting the engine's numbers alone | accepted |
+| D-014 | Evidence ladder: 1 persistent organization, 2 self-propelled structures, 3 self-replication, 4 heredity and variation, 5 open-ended evolution. Levels are never assigned without a measurement | Prevents overstating discoveries; frames the research goal | Free-text labels | accepted; 4–5 not measured |
+| D-015 | Replication probe: the copy count must grow in an isolated clone, plus two null tests on random patterns (rule-level duplication; common product). Explosive patterns are untestable. Fredkin's rule is a *deceptive* control; HighLife's replicator is the positive | Seeds produced 6 false "replicators"; Fredkin copies everything | Fredkin as the positive control; copy count alone | accepted; rename positives to "candidate self-replicator" proposed (R-3) |
+| D-016 | Innovation probe: orientation-free persistent types; "established late" = new in Q3 and seen again in Q4; noise-control floor; no innovation after an exact cycle begins; flat turnover in chaos-like universes is inconclusive; "still innovating" requires an unsettled ending | Activity ≠ novelty (glider gun); sampling aliasing (period-840 cycle); chance turnover in correlated chaos | Counting all new shapes; i.i.d. noise as the only null | accepted; matched null open |
+| D-017 | The research journal lives in `docs/` on GitHub Pages (Jekyll, Markdown). Experiment databases are not committed; compact JSON exports and the exact command + commit are | Durable, reviewable record that agents can update; databases are large and reproducible | Wiki (not versioned with code); committing databases | accepted |
+| D-018 | Next phase in tracks: (A) innovation science (causal knockouts, same-rule nulls, sampling validation, more runs); (B) initial-conditions study under fixed rules; (C) a second physics family (Lenia) with its own structure detector | Current rule family shows no replication or ongoing innovation; R-3 review | Only more Life-like search; jumping straight to Lenia | proposed |

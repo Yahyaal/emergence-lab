@@ -1,0 +1,495 @@
+{
+ "label": "v0.2 eval, seed 2026",
+ "code_commit": "f394662",
+ "command": "emergence explore --name eval-v2 --generations 10 --steps 800 --seed 2026 --followups 10",
+ "experiments": [
+  {
+   "id": 1,
+   "name": "eval-v2",
+   "master_seed": 2026,
+   "status": "finished",
+   "config": {
+    "name": "eval-v2",
+    "population": 100,
+    "generations": 10,
+    "steps": 800,
+    "window": 100,
+    "width": 96,
+    "height": 96,
+    "density_min": 0.15,
+    "density_max": 0.5,
+    "screen_seeds": 2,
+    "immigrant_fraction": 0.2,
+    "novelty_k": 10,
+    "followups": 10,
+    "followup_seeds": 3,
+    "extend_factor": 4,
+    "seed": 2026,
+    "workers": 0
+   },
+   "environment": {
+    "emergence": "0.1.0",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v236-x86_64-with-glibc2.39"
+   },
+   "selection": "engine",
+   "final": {
+    "generation": 9,
+    "rules": 1000,
+    "niches": 33,
+    "self_propelled": 193,
+    "complex_all_seeds": 62,
+    "structured": 124
+   },
+   "curve": [
+    {
+     "generation": 0,
+     "rules": 100,
+     "niches": 7,
+     "self_propelled": 5,
+     "complex_all_seeds": 0,
+     "structured": 2
+    },
+    {
+     "generation": 1,
+     "rules": 200,
+     "niches": 15,
+     "self_propelled": 25,
+     "complex_all_seeds": 3,
+     "structured": 15
+    },
+    {
+     "generation": 2,
+     "rules": 300,
+     "niches": 20,
+     "self_propelled": 40,
+     "complex_all_seeds": 6,
+     "structured": 23
+    },
+    {
+     "generation": 3,
+     "rules": 400,
+     "niches": 24,
+     "self_propelled": 62,
+     "complex_all_seeds": 12,
+     "structured": 37
+    },
+    {
+     "generation": 4,
+     "rules": 500,
+     "niches": 24,
+     "self_propelled": 86,
+     "complex_all_seeds": 17,
+     "structured": 51
+    },
+    {
+     "generation": 5,
+     "rules": 600,
+     "niches": 28,
+     "self_propelled": 113,
+     "complex_all_seeds": 27,
+     "structured": 65
+    },
+    {
+     "generation": 6,
+     "rules": 700,
+     "niches": 29,
+     "self_propelled": 136,
+     "complex_all_seeds": 34,
+     "structured": 81
+    },
+    {
+     "generation": 7,
+     "rules": 800,
+     "niches": 30,
+     "self_propelled": 160,
+     "complex_all_seeds": 46,
+     "structured": 98
+    },
+    {
+     "generation": 8,
+     "rules": 900,
+     "niches": 31,
+     "self_propelled": 178,
+     "complex_all_seeds": 56,
+     "structured": 115
+    },
+    {
+     "generation": 9,
+     "rules": 1000,
+     "niches": 33,
+     "self_propelled": 193,
+     "complex_all_seeds": 62,
+     "structured": 124
+    }
+   ],
+   "discoveries": [
+    {
+     "universe_id": 1697,
+     "rule": "B1456/S5",
+     "class": "complex",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B1456/S5"
+      },
+      "seed": 3900296782190928607,
+      "width": 96,
+      "height": 96,
+      "density": 0.3923
+     },
+     "summary": "B1456/S5 looks complex; 65 persistent shapes; no recurrence within 800 steps; damage spread 0.00; descriptor spread across re-runs 0.20 (< 0.5); same class in 5/6 runs; run 3200 steps: becomes periodic (cycle from t=889)",
+     "evidence": {
+      "persists": false,
+      "descriptor_spread": 0.2019,
+      "niche": "2state|st1|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.947364706315669,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1029,
+     "rule": "B23/S01237/C6",
+     "class": "complex",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B23/S01237/C6"
+      },
+      "seed": 1964328182296721828,
+      "width": 96,
+      "height": 96,
+      "density": 0.4678
+     },
+     "summary": "B23/S01237/C6 looks complex; 0 of 2 candidate mover shape(s) verified in isolation; 51 persistent shapes; no recurrence within 800 steps; damage spread 0.00; descriptor spread across re-runs 0.44 (< 0.5); same class in 6/6 runs; run 3200 steps: still complex, activity trend 0.83",
+     "evidence": {
+      "persists": true,
+      "descriptor_spread": 0.4387,
+      "niche": "multi|st0|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.9336693626044295,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "complex"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1861,
+     "rule": "B15678/S0123467/C8",
+     "class": "complex",
+     "kind": "seed-sensitive/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B15678/S0123467/C8"
+      },
+      "seed": 4162905458575615612,
+      "width": 96,
+      "height": 96,
+      "density": 0.3806
+     },
+     "summary": "B15678/S0123467/C8 looks complex; 479 persistent shapes; no recurrence within 800 steps; damage spread 0.00; descriptor spread across re-runs 0.57 (>= 0.5); same class in 1/6 runs; run 3200 steps: still periodic, activity trend 1.00",
+     "evidence": {
+      "persists": true,
+      "descriptor_spread": 0.5748,
+      "niche": "multi|st2|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.9332769472010692,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1957,
+     "rule": "B2/S01257/C6",
+     "class": "complex",
+     "kind": "seed-sensitive/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2/S01257/C6"
+      },
+      "seed": 4013189917002120500,
+      "width": 96,
+      "height": 96,
+      "density": 0.4633
+     },
+     "summary": "B2/S01257/C6 looks complex; 0 of 12 candidate mover shape(s) verified in isolation; 266 persistent shapes; no recurrence within 800 steps; damage spread 0.00; descriptor spread across re-runs 1.05 (>= 0.5); same class in 2/6 runs; run 3200 steps: still periodic, activity trend 1.00",
+     "evidence": {
+      "persists": true,
+      "descriptor_spread": 1.0507,
+      "niche": "multi|st1|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.8446894314323723,
+      "replicate_classes": [
+       "complex",
+       "periodic",
+       "periodic",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1951,
+     "rule": "B2/S012/C6",
+     "class": "complex",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2/S012/C6"
+      },
+      "seed": 1594273298857918022,
+      "width": 96,
+      "height": 96,
+      "density": 0.3907
+     },
+     "summary": "B2/S012/C6 looks complex; 0 of 15 candidate mover shape(s) verified in isolation; 111 persistent shapes; no recurrence within 800 steps; damage spread 0.03; descriptor spread across re-runs 0.42 (< 0.5); same class in 6/6 runs; run 3200 steps: becomes periodic (cycle from t=1574)",
+     "evidence": {
+      "persists": false,
+      "descriptor_spread": 0.4202,
+      "niche": "multi|st1|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.8164469382860894,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1761,
+     "rule": "B1346/S7/C8",
+     "class": "active",
+     "kind": "seed-sensitive/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B1346/S7/C8"
+      },
+      "seed": 3385755300687484134,
+      "width": 96,
+      "height": 96,
+      "density": 0.2519
+     },
+     "summary": "B1346/S7/C8 looks active; no recurrence within 800 steps; damage spread 0.07; descriptor spread across re-runs 2.03 (>= 0.5); same class in 2/6 runs; run 3200 steps: still active, activity trend 0.99",
+     "evidence": {
+      "persists": true,
+      "descriptor_spread": 2.0289,
+      "niche": "multi|st0|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.753877397320702,
+      "replicate_classes": [
+       "extinct",
+       "extinct",
+       "extinct",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 863,
+     "rule": "B235/S04567/C8",
+     "class": "complex",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B235/S04567/C8"
+      },
+      "seed": 3793022869517111393,
+      "width": 96,
+      "height": 96,
+      "density": 0.3799
+     },
+     "summary": "B235/S04567/C8 looks complex; 38 of 45 candidate mover shape(s) verified in isolation; 45 persistent shapes; no recurrence within 800 steps; damage spread 0.01; descriptor spread across re-runs 0.83 (>= 0.5); same class in 6/6 runs; run 3200 steps: becomes periodic (cycle from t=3077)",
+     "evidence": {
+      "persists": false,
+      "descriptor_spread": 0.8329,
+      "niche": "multi|st0|lp0|dmg0|mov1",
+      "pareto_rank": 0,
+      "novelty": 0.698897654835738,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 663,
+     "rule": "B2/S34578/C4",
+     "class": "periodic",
+     "kind": "seed-sensitive/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B2/S34578/C4"
+      },
+      "seed": 1576742036857400134,
+      "width": 96,
+      "height": 96,
+      "density": 0.2435
+     },
+     "summary": "B2/S34578/C4 looks periodic; 8 of 8 candidate mover shape(s) verified in isolation; 14 persistent shapes; cycle period 96 after 389 steps; damage spread 0.02; descriptor spread across re-runs 1.12 (>= 0.5); same class in 2/6 runs; run 3200 steps: still periodic, activity trend 1.00",
+     "evidence": {
+      "persists": true,
+      "descriptor_spread": 1.1221,
+      "niche": "multi|st1|lp0|dmg0|mov1",
+      "pareto_rank": 0,
+      "novelty": 0.6451799613927767,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "periodic",
+       "complex"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 853,
+     "rule": "B278/S12478/C4",
+     "class": "chaotic",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B278/S12478/C4"
+      },
+      "seed": 1710998461582256933,
+      "width": 96,
+      "height": 96,
+      "density": 0.2467
+     },
+     "summary": "B278/S12478/C4 looks chaotic; 0 of 3 candidate mover shape(s) verified in isolation; 38 persistent shapes; no recurrence within 800 steps; damage spread 0.68; descriptor spread across re-runs 0.26 (< 0.5); same class in 5/6 runs; run 3200 steps: still active, activity trend 0.95",
+     "evidence": {
+      "persists": true,
+      "descriptor_spread": 0.2596,
+      "niche": "multi|st3|lp0|dmg2|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.5024661788668238,
+      "replicate_classes": [
+       "chaotic",
+       "chaotic",
+       "chaotic",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 661,
+     "rule": "B345/S56",
+     "class": "complex",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B345/S56"
+      },
+      "seed": 3447923430933907716,
+      "width": 96,
+      "height": 96,
+      "density": 0.2236
+     },
+     "summary": "B345/S56 looks complex; 0 of 15 candidate mover shape(s) verified in isolation; 57 persistent shapes; no recurrence within 800 steps; damage spread 0.22; descriptor spread across re-runs 0.35 (< 0.5); same class in 6/6 runs; run 3200 steps: still complex, activity trend 1.00",
+     "evidence": {
+      "persists": true,
+      "descriptor_spread": 0.3461,
+      "niche": "2state|st1|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.45254456782701225,
+      "replicate_classes": [
+       "complex",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "complex"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 211,
+     "rule": "B1578/S01346/C8",
+     "class": "active",
+     "kind": "most-novel/seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "outer_totalistic",
+       "rule": "B1578/S01346/C8"
+      },
+      "seed": 3192992926543228538,
+      "width": 96,
+      "height": 96,
+      "density": 0.2268
+     },
+     "summary": "B1578/S01346/C8 looks active; 54 persistent shapes; no recurrence within 800 steps; damage spread 0.07; descriptor spread across re-runs 0.89 (>= 0.5); same class in 3/6 runs; run 3200 steps: becomes periodic (cycle from t=1988)",
+     "evidence": {
+      "persists": false,
+      "descriptor_spread": 0.893,
+      "niche": "multi|st2|lp0|dmg0|mov0",
+      "pareto_rank": 2,
+      "novelty": 1.0997946751967727,
+      "replicate_classes": [
+       "active",
+       "periodic",
+       "active",
+       "periodic"
+      ],
+      "extended_class": "periodic"
+     },
+     "replication": null,
+     "innovation": null
+    }
+   ]
+  }
+ ]
+}

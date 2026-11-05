@@ -1,0 +1,11 @@
+title: Emergence Lab
+description: Research journal of an experiment asking whether complex, evolving structure can emerge from simple fixed rules.
+baseurl: "/emergence-lab"
+url: "https://yahyaal.github.io"
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+defaults:
+  - scope: {path: ""}
+    values: {layout: default}
