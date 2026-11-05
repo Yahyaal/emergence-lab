@@ -167,3 +167,14 @@ def test_followup_reports_evidence_level(tmp_path):
         ev = d["evidence"]
         assert 0 <= ev["evidence_level"] <= 3 and ev["innovation"] is not None and ev["replication"] is not None
         assert "heredity/variation: not measured" in d["summary"]
+
+
+def test_innovation_verdict_rules():
+    from emergence.discovery import innovation_verdict
+    probe = {"innovation": {"steps": 2000, "established_late": 6, "new_per_sample": [10] * 32}}
+    cyc = {"metrics": {"cycle_found": True, "transient": 900}}
+    assert innovation_verdict(probe, cyc, 0, 0.0)[0].startswith("none")          # aliasing in an exact cycle
+    assert innovation_verdict(probe, None, 0, 0.45)[0].startswith("inconclusive")  # flat turnover + chaos-like
+    dec = {"innovation": {"steps": 2000, "established_late": 6, "new_per_sample": [20] * 8 + [5] * 16 + [2] * 8}}
+    assert innovation_verdict(dec, None, 0, 0.45)[0] == "still innovating"
+    assert innovation_verdict(probe, None, 6, 0.0)[0].startswith("no evidence")   # at the noise floor

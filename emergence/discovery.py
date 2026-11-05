@@ -255,6 +255,31 @@ def evidence_level(robust: bool, agg: dict, probe: dict | None) -> int:
     return level
 
 
+def innovation_verdict(probe: dict | None, ext: dict | None, floor: int, damage_norm: float | None) -> tuple[str, int]:
+    """Interpret the innovation probe. Returns (verdict, effective established-late count).
+
+    * In an exact global cycle nothing new can appear after the cycle starts; types
+      "first seen" later are unsampled phases of a long cycle (sampling aliasing).
+    * A flat new-type rate in a chaos-like universe is what a stationary noisy process
+      gives by chance (it keeps drawing rare shapes from a fixed pool). Such cases are
+      reported as inconclusive, not as innovation (heuristic; see README).
+    """
+    if not probe:
+        return "not measured", 0
+    inn = probe["innovation"]
+    est = inn["established_late"]
+    if ext is not None and ext["metrics"]["cycle_found"] and ext["metrics"]["transient"] < inn["steps"] // 2:
+        return "none (in an exact cycle before the second half)", 0
+    if est <= floor:
+        return "no evidence of ongoing innovation", est
+    c = inn["new_per_sample"]
+    q = max(1, len(c) // 4)
+    first, last = sum(c[:q]), sum(c[-q:])
+    if (damage_norm or 0) >= 0.3 and last >= 0.5 * first:
+        return "inconclusive (steady type turnover in a chaos-like universe; consistent with chance)", est
+    return "still innovating", est
+
+
 def environment_info() -> dict[str, str]:
     import scipy
     return {"emergence": __version__, "python": sys.version.split()[0], "numpy": np.__version__,
@@ -463,7 +488,8 @@ class Explorer:
         probe = getattr(self, "probes", {}).get(u["id"])
         floor = getattr(self, "noise_floor", 0)
         level = evidence_level(robust, agg, probe)
-        innovating = bool(probe) and probe["innovation"]["established_late"] > floor
+        inn_verdict, inn_est = innovation_verdict(probe, ext, floor, u["metrics"].get("damage_norm"))
+        innovating = inn_verdict == "still innovating"
         m = u["metrics"]
         bits = [f"{u['rule']} looks {u['class']}", f"evidence level {level}/5 ({EVIDENCE_LEVELS[level]})"]
         if m.get("mover_shapes"):
@@ -489,15 +515,14 @@ class Explorer:
                            " on the finite torus" if loops else ""))
         if probe:
             inn, rp = probe["innovation"], probe["replication"]
-            bits.append(f"innovation: {inn['established_late']} new shape types established late "
-                        f"(noise floor {floor}) -> {'still innovating' if innovating else 'no evidence of ongoing innovation'}")
+            bits.append(f"innovation: {inn_est} new shape types established late (noise floor {floor}) -> {inn_verdict}")
             bits.append(f"replication: {rp['self_replicators']} self-replicator(s) among {rp['tested']} common shapes"
                         + (f" ({rp['rule_level_duplication']} rule-level duplication, {rp['common_products']} common products rejected)"
                            if rp["rule_level_duplication"] or rp["common_products"] else ""))
         bits.append("heredity/variation: not measured")
         evidence = {
             "evidence_level": level, "evidence_level_name": EVIDENCE_LEVELS[level],
-            "innovating": innovating, "innovation_noise_floor": floor,
+            "innovating": innovating, "innovation_verdict": inn_verdict, "innovation_noise_floor": floor,
             "innovation": probe["innovation"] if probe else None,
             "replication": probe["replication"] if probe else None,
             "pareto_rank": u["pareto_rank"], "novelty": u["novelty"], "priority": u["priority"],
