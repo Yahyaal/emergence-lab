@@ -148,7 +148,23 @@ def summarize(store: Store, exp_id: int) -> dict[str, Any]:
             lo, hi = _boot_ci(diffs, seed=len(comparisons))
             comparisons[kind][o] = {"mean_diff": float(np.mean(diffs)), "ci95": [lo, hi], "rules_higher": pos,
                                     "rules_lower": neg, "sign_test_p": p}
+    # population-level knockout test: real knockouts vs placebo knockouts (each control
+    # deletion treated as the target and compared with the other controls)
+    real, plac = [], []
+    for u in univ:
+        k = u["aggregate"].get("knockout") or {}
+        if k.get("verdict") in (None, "untestable") or "drop_controls" not in k:
+            continue
+        c = np.array(k["drop_controls"])
+        real.append(k["rate_dependency"])
+        plac += [float(c[i] - np.delete(c, i).mean()) for i in range(len(c)) if len(c) > 1]
+    placebo = None
+    if real and plac:
+        r, p_ = np.array(real), np.array(plac)
+        placebo = {"n_real": len(r), "n_placebo": len(p_), "p_real_gt_placebo": float((r[:, None] > p_[None, :]).mean()),
+                   "placebo_p95": float(np.percentile(p_, 95)), "real_above_placebo_p95": int((r > np.percentile(p_, 95)).sum())}
     return {"experiment": exp_id, "config": cfg, "by_condition": table, "vs_uniform": comparisons,
+            "knockout_placebo": placebo,
             "per_rule": {f"{r} | {k}": v for (r, k), v in per.items()}}
 
 
@@ -161,6 +177,11 @@ def report(summary: dict, log=print) -> None:
         log(f"{kind:<10} {t['initial_density']:>9.3f} " + " ".join(f"{t[o]:>12.3f}" for o in OUTCOMES)
             + f" {t['inconclusive']:>12.3f} {t['knockout_depends']:>5.2f}/{t['knockout_tested']:.2f}"
             + f"  rate-depends {t['knockout_rate_depends']:.2f}")
+    kp = summary.get("knockout_placebo")
+    if kp:
+        log(f"\nknockouts vs placebo: P(real > placebo) = {kp['p_real_gt_placebo']:.3f} (0.5 = no effect); "
+            f"{kp['real_above_placebo_p95']} of {kp['n_real']} real knockouts above the placebo 95th pct "
+            f"({0.05 * kp['n_real']:.1f} expected by chance)")
     log("\npaired vs uniform (same rule, same seeds); mean difference [95% CI], rules higher/lower, sign-test p:")
     for kind, outs in summary["vs_uniform"].items():
         for o, c in outs.items():

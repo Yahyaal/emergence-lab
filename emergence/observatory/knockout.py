@@ -31,8 +31,14 @@ question is whether deleting K reduces HOW MANY new types appear afterwards:
 
   drop(world)      = 1 - (new types after t1 in world) / (new types after t1 in original)
   rate_dependency  = drop(knockout) - mean drop(controls)
-  rate_verdict     = "depends" if rate_dependency >= 0.3 and the controls' mean drop < 0.3,
+  rate_verdict     = "depends" only if the knockout really lowers novelty (drop >= 0.3),
+                     by more than EVERY control deletion, and rate_dependency >= 0.5;
                      "no rate effect" otherwise
+
+The 0.5 cut is the 95th percentile of the PLACEBO distribution measured in E-10/E-11:
+each control deletion treated as if it were the target, compared with the other controls.
+A single test is weak evidence. The right population-level test compares real knockouts
+with placebos (conditions.summarize reports P(real > placebo); 0.5 = no effect).
 
 In a statistically stationary chaotic universe, random deletions leave the rate of
 novelty unchanged; deleting a genuine enabler lowers it.
@@ -111,7 +117,8 @@ def knockout_compare(physics, state: np.ndarray, target: np.ndarray, controls: l
     drop_k, drop_c = drop(seen_k), [drop(x) for x in seen_c]
     mean_dc = float(np.mean(drop_c)) if drop_c else 0.0
     rate_dep = drop_k - mean_dc
-    rate_verdict = "depends" if rate_dep >= 0.3 and mean_dc < 0.3 else "no rate effect"
+    rate_verdict = ("depends" if drop_k >= 0.3 and drop_k > max(drop_c, default=0.0) and rate_dep >= 0.5
+                    else "no rate effect")
     return {"verdict": verdict, "later_novelties": len(later), "lost_knockout": round(lost_k, 3),
             "lost_controls": [round(x, 3) for x in lost_c], "dependency": round(dep, 3),
             "rate_verdict": rate_verdict, "drop_knockout": round(drop_k, 3),
