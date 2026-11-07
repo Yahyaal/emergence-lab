@@ -45,6 +45,12 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **E-27/E-28:** no reproducer in 568 Lenia worlds (0/285 movers). The first detector version was fooled by blobs bursting into world-filling labyrinths; fixed (doubling rule, fixed reference parent) and confirmed on 350 held-out worlds.
 - **Next (Track D, research.md):** Flow-Lenia with parameter localization in fed worlds plus a heredity measure; a division objective; multi-channel Lenia.
 
+**Saturday afternoon, 7 Nov (J-033, J-034, fourth session):**
+- **Heredity test** (`observatory/heredity.py`, D-029): parents are moved alone into an empty world; heredity = correlation of parent trait with offspring trait, with a parent-permutation null. Controls on `GrayScottTracer` (carried / redrawn / position-set trait); probe section 10.
+- **`FlowLeniaPL`** (`physics/flow_lenia.py`): Flow-Lenia whose kernel weights travel with matter (stored as A·h_i), optional food layer, fast scatter-add reintegration. Equals FlowLenia with uniform weights.
+- **E-29:** 0 reproducers among 3000 random Lenia rules from a lone lump (1453 rules decided; 410 undecided because objects fill the test world). Route 2 (fission objective) looks unpromising in single-channel Lenia.
+- **E-30** (fed FlowLeniaPL, pre-registered): see the journal for its result.
+
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
 ## Run it
@@ -52,8 +58,8 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 61 tests, ~1 min
-emergence benchmark --probes             # 39 + 54 validation checks, ~5 min on 12 cores
+pytest                                   # 64 tests, ~3 min
+emergence benchmark --probes             # 39 + 62 validation checks, ~5 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -77,7 +83,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 | `emergence/benchmark.py`, `benchmark_probes.py` | validation suite |
 | `emergence/server.py`, `web/` | dashboard |
 | `docs/` | this journal (GitHub Pages, Jekyll). `_data/media.json` lists the clips; `data/experiments/` holds the exports |
-| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `make_report_figures.py`, `lenia_static_fields.py` (C-01/C-02 diagnostics behind D-022), `heldout_free_activity.py` (C-02), `verify_movers.py`, `detector_calibration.py` (E-25), `birth_scan.py` (E-27), experiment scripts |
+| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `make_report_figures.py`, `lenia_static_fields.py` (C-01/C-02 diagnostics behind D-022), `heldout_free_activity.py` (C-02), `verify_movers.py`, `detector_calibration.py` (E-25), `birth_scan.py` (E-27), `lump_scan.py` (E-29), `pl_scan.py` (E-30), experiment scripts |
 
 ## Conventions
 

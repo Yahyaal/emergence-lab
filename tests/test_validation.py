@@ -481,3 +481,43 @@ def test_births_vacuum_isolation_keeps_only_the_object():
     w = B.alone(gs, s, objs[0]["mask"], side=64, margin=2)
     assert w.shape == (2, 64, 64) and len(B.find(gs, w)) == 1
     assert np.allclose(w[0][B.field(gs, w) == 0], 1.0)  # vacuum is U = 1
+
+
+def test_gray_scott_tracer_keeps_chemistry_and_round_trips():
+    from emergence.physics import GrayScott, GrayScottTracer, parse_rule, physics_from_dict
+    gs, gt = GrayScott(), GrayScottTracer(mode="carried")
+    s2 = gs.seed_spot((64, 64))
+    s3 = np.concatenate([s2, s2[1:] * 0.3])
+    for _ in range(50):
+        s2, s3 = gs.step(s2), gt.step(s3)
+    assert np.array_equal(s2, s3[:2])  # the trait never changes U and V
+    w, wt = gt.trait(s3)
+    m = w > 0.05
+    assert abs(wt[m].sum() / w[m].sum() - 0.3) < 0.01  # a carried trait stays put
+    for mode in ("carried", "redrawn", "position"):
+        p = GrayScottTracer(mode=mode)
+        assert parse_rule(p.label()) == p and physics_from_dict(p.to_dict()) == p
+
+
+def test_heredity_transplant_separates_carried_from_position():
+    from emergence.observatory import heredity as H
+    from emergence.physics import GrayScottTracer
+
+    def world(mode):
+        ph = GrayScottTracer(mode=mode)
+        g = np.random.default_rng(1)
+        st = ph.vacuum((96, 96))
+        for j, (r, c) in enumerate([(10, 10), (10, 60), (60, 10), (60, 60), (35, 35), (80, 40)]):
+            v = 0.25 + 0.01 * g.random((12, 12))
+            st[0, r:r + 12, c:c + 12] = 0.5
+            st[1, r:r + 12, c:c + 12] = v
+            st[2, r:r + 12, c:c + 12] = v * (0.1 + 0.16 * j)
+        for _ in range(800):
+            st = ph.step(st)
+        return ph, st
+
+    rng = np.random.default_rng(0)
+    pos = H.test(*world("carried"), rng, max_parents=8, steps=1200, side=96)
+    neg = H.test(*world("position"), rng, max_parents=8, steps=1200, side=96)
+    assert pos["verdict"] == "heredity", pos.get("r")
+    assert neg["verdict"] in ("no heredity", "too few families"), neg.get("r")

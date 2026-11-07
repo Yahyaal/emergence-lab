@@ -620,7 +620,99 @@ def e24_patches() -> None:
     save_gif(frames, "e24-patches.gif", scale=2, ms=70)
 
 
-FIGS = {"e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def trait_rgb(weight: np.ndarray, trait: np.ndarray, wmax: float) -> np.ndarray:
+    """Colour by trait (hue, blue -> orange), brightness by matter."""
+    t = np.clip(np.where(weight > 1e-6, trait / np.maximum(weight, 1e-9), 0), 0, 1)
+    rgb = matplotlib.colormaps["coolwarm"](t)[..., :3]
+    b = np.clip(weight / wmax, 0, 1)[..., None]
+    return (rgb * b * 255).astype(np.uint8)
+
+
+def tracer_world(mode: str, steps: int, seed: int = 1, every: int = 0):
+    from emergence.physics import GrayScottTracer
+    ph = GrayScottTracer(mode=mode)
+    g = np.random.default_rng(seed)
+    st = ph.vacuum((128, 128))
+    for (r0, c0), p in zip(g.integers(0, 116, size=(6, 2)), [0.1 + 0.16 * j for j in range(6)]):
+        v = 0.25 + 0.01 * g.random((12, 12))
+        st[0, r0:r0 + 12, c0:c0 + 12], st[1, r0:r0 + 12, c0:c0 + 12] = 0.5, v
+        st[2, r0:r0 + 12, c0:c0 + 12] = v * p
+    frames = []
+    for t in range(steps + 1):
+        if every and t % every == 0:
+            frames.append(trait_rgb(*ph.trait(st), 0.4))
+        if t < steps:
+            st = ph.step(st)
+    return ph, st, frames
+
+
+def heredity_controls() -> None:
+    """J-033: the transplant heredity test on its three Gray-Scott tracer controls, and a clip of
+    the positive (spots coloured by their inherited trait)."""
+    from emergence.observatory import heredity as H
+    _, _, frames = tracer_world("carried", 2400, every=30)
+    ims = [Image.fromarray(f).resize((256, 256), Image.NEAREST).convert("P", palette=Image.ADAPTIVE, colors=128)
+           for f in frames]
+    ims[0].save(OUT / "heredity-carried.gif", save_all=True, append_images=ims[1:], duration=70, loop=0, optimize=True)
+    fig, axes = plt.subplots(1, 3, figsize=(10, 3.4), sharey=True)
+    titles = {"carried": "trait carried by the spot", "redrawn": "trait redrawn every step",
+              "position": "trait set by position"}
+    for ax, mode in zip(axes, ("carried", "redrawn", "position")):
+        ph, st, _ = tracer_world(mode, 1500)
+        r = H.test(ph, st, np.random.default_rng(0), max_parents=16)
+        for f in r["family_data"]:
+            if len(f["offspring"]) >= 2:
+                ax.scatter([f["parent"]] * len(f["offspring"]), f["offspring"], s=14, color=BLUE, alpha=0.6)
+        ax.plot([0, 1], [0, 1], color=GREY, lw=1, ls="--")
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.set_title(titles[mode], fontsize=11)
+        ax.text(0.04, 0.92, f"r = {r.get('r')}\n{r['verdict']}", fontsize=9, transform=ax.transAxes, va="top")
+        ax.set_xlabel("parent's trait (in its world)")
+    axes[0].set_ylabel("offspring's trait (after transplant)")
+    fig.savefig(OUT / "heredity-controls.png")
+    plt.close(fig)
+
+
+def e29_lump_scan() -> None:
+    """E-29: every rule drawn at random, a lone lump in vacuum, then the birth detector; outcome
+    per rule in (mu, sigma / mu), over both lumps (a decided test wins over an undecided one)."""
+    import re
+    d = json.load(open(DATA / "2026-11-07-e29-lump-scan.json"))
+    pts = {"extinct": [], "fills the world": [], "tested: no reproduction": [], "undecided: test world fills": [],
+           "reproducer": []}
+    for r in d["lenia"]:
+        m = re.search(r"/m([\d.]+)/s([\d.]+)/", r["rule"])
+        mu, sg = float(m.group(1)), float(m.group(2))
+        vs = [v for l in r["lumps"] for v in l["verdicts"]]
+        st = {l["settled"] for l in r["lumps"]}
+        if "reproducer" in vs:
+            k = "reproducer"
+        elif "no reproduction" in vs or "one generation" in vs:
+            k = "tested: no reproduction"
+        elif "explosive" in vs:
+            k = "undecided: test world fills"
+        elif st == {"extinct"}:
+            k = "extinct"
+        else:
+            k = "fills the world"
+        pts[k].append((mu, sg / mu))
+    fig, ax = plt.subplots(figsize=(7.2, 4.2))
+    style = {"extinct": (GREY, 6, 0.35), "fills the world": (ORANGE, 6, 0.35), "tested: no reproduction": (BLUE, 9, 0.6),
+             "undecided: test world fills": (RED, 12, 0.8), "reproducer": (GREEN, 80, 1.0)}
+    for k, xy in pts.items():
+        if xy:
+            c, sz, al = style[k]
+            ax.scatter(*zip(*xy), s=sz, color=c, alpha=al, label=f"{k} ({len(xy)})", marker="*" if k == "reproducer" else "o",
+                       edgecolors="none")
+    ax.set_xlabel("μ (growth centre)")
+    ax.set_ylabel("σ / μ (growth width, relative)")
+    ax.legend(frameon=False, fontsize=9, loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=2)
+    fig.savefig(OUT / "e29-lump-scan.png")
+    plt.close(fig)
+
+
+FIGS = {"e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 

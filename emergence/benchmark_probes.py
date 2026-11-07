@@ -33,6 +33,9 @@ Flow-Lenia (mass-conserving, float32 states, physics/flow_lenia.py, J-016, D-026
 * deceptive   pure diffusion (U = 0): spreads, but no movers; a rotated seed evolves into the
               rotated world (no fake motion from grid or Sobel anisotropy)
 * null        random rules picked the way the old objectives picked them: none complex without a mover
+* PL          FlowLeniaPL (localized kernel weights, J-033): equals FlowLenia when all weights are the
+              rule's; matter and weighted parameters conserved and mixed weights stay between the
+              species' values; a fed vacuum (food only) never changes
 * positive    NOT available: no self-propelled structure in a search of 80 float rules with
               3-10 kernels (and 88 earlier uint8 rules), J-016
 
@@ -72,6 +75,16 @@ Birth detector (observatory/births.py, two generations in isolation, J-032, D-02
               then stops: not a reproducer (passed the first version's "late > early" rule, J-032).
 * selection-aware null  `births.scan` (6 most common object types) on a Life soup and a settled
               Orbium soup: 0 reproducers.
+
+Heredity test (observatory/heredity.py, transplanted offspring vs parent, J-033):
+* positive    Gray-Scott spots carrying a tracer trait (GrayScottTracer "carried"), 6 founders with
+              traits 0.1-0.9: heredity
+* negative    the trait is redrawn as noise every step ("redrawn"): no heredity
+* deceptive   the trait is set by position ("position"): in the world, nearest neighbours have
+              similar traits (common environment), but transplanted offspring do not resemble their
+              parent: no heredity. Identical founders (all 0.5): no variation, not heredity.
+* selection-aware null  the parent-permutation null inside the test (parents are only kept if
+              they reproduced); checked here as the null's 95% quantile staying below the positive's r.
 """
 from __future__ import annotations
 
@@ -387,6 +400,33 @@ def run_probe_benchmark(log=print) -> dict:
     check("Flow-Lenia complex null: top picks by objects/activity are not complex without a mover", not bad,
           f"{len(picked)} picked of {len(runs)}: classes {sorted(cm[0] for cm in picked)}, "
           f"self-propelled {[int(cm[1]['self_propelled_shapes']) for cm in picked]}")
+    # Flow-Lenia with parameter localization (FlowLeniaPL, J-033, D-029)
+    from .physics import FlowLeniaPL
+    pl = FlowLeniaPL(fl_static.kernels + FlowLenia.random(np.random.default_rng(5)).kernels[:1], 13)
+    fl2 = FlowLenia(pl.kernels, 13)
+    a0 = FlowLenia.patch_state(np.random.default_rng(1), (96, 96)).astype(np.float64)
+    a, st = a0.astype(np.float32), pl.localize(a0)
+    for _ in range(300):
+        a, st = fl2.step(a), pl.step(st)
+    check("Flow-Lenia-PL equals Flow-Lenia when every cell has the rule's weights",
+          float(abs(st[0] - a).max()) < 1e-4, f"max |A_PL - A| after 300 steps {float(abs(st[0] - a).max()):.1e}")
+    hmix = np.stack([np.where(np.arange(96)[None, :] < 48, 0.5, 1.5) * k.h * np.ones((96, 96)) for k in pl.kernels])
+    st = pl.localize(a0, hmix)
+    q0 = st.astype(np.float64).sum((1, 2))
+    for _ in range(300):
+        st = pl.step(st)
+    w, m = pl.weights(st), st[0] > 0.05
+    inside = all(0.5 * k.h - 1e-4 <= w[i][m].min() and w[i][m].max() <= 1.5 * k.h + 1e-4 for i, k in enumerate(pl.kernels))
+    drift = float(abs(st.astype(np.float64).sum((1, 2)) / q0 - 1).max())
+    check("Flow-Lenia-PL: matter and weighted parameters conserved, mixed weights stay in range",
+          drift < 1e-5 and inside, f"worst relative drift {drift:.1e}; weights within the two species' values: {inside}")
+    fed = FlowLeniaPL(pl.kernels, 13, 0.05)
+    v = fed.vacuum((64, 64))
+    st = v
+    for _ in range(100):
+        st = fed.step(st)
+    check("Flow-Lenia-PL fed vacuum: a food-only world does not change and has no objects",
+          float(abs(st - v).max()) == 0 and not __import__('emergence.observatory.births', fromlist=['find']).find(fed, st), f"max change {float(abs(st - v).max())}")
 
     # 9. birth detector (observatory/births.py)
     from .observatory import births as BI
@@ -448,6 +488,53 @@ def run_probe_benchmark(log=print) -> dict:
     check("births selection-aware null: scans of a Life soup and a settled Orbium soup",
           all(p["reproducers"] == 0 for p in picked) and all(p["tested"] >= 3 for p in picked),
           f"candidates {[p['tested'] for p in picked]}, reproducers {[p['reproducers'] for p in picked]}")
+
+    # 10. heredity test (observatory/heredity.py)
+    from .observatory import heredity as HE
+    from .physics import GrayScottTracer
+
+    def tracer_world(mode, traits, steps=1500, seed=1):
+        ph = GrayScottTracer(mode=mode)
+        g = np.random.default_rng(seed)
+        st = ph.vacuum((128, 128))
+        for (r0, c0), p in zip(g.integers(0, 116, size=(len(traits), 2)), traits):
+            st[0, r0:r0 + 12, c0:c0 + 12] = 0.5
+            v = 0.25 + 0.01 * g.random((12, 12))
+            st[1, r0:r0 + 12, c0:c0 + 12] = v
+            st[2, r0:r0 + 12, c0:c0 + 12] = v * p
+        for _ in range(steps):
+            st = ph.step(st)
+        return ph, st
+
+    def neighbour_r(ph, st):
+        objs = BI.find(ph, st)
+        tr = np.array([HE.object_trait(ph, st, o["mask"]) for o in objs])
+        cen = np.array([np.argwhere(o["mask"]).mean(0) for o in objs])
+        d = np.hypot(*(np.minimum(abs(cen[:, None] - cen[None]), 128 - abs(cen[:, None] - cen[None]))).transpose(2, 0, 1))
+        np.fill_diagonal(d, np.inf)
+        return float(np.corrcoef(tr, tr[d.argmin(1)])[0, 1])
+
+    def hbrief(r):
+        return (f"{r['verdict']}; families {r.get('families')}, r {r.get('r')}, p {r.get('p')}, "
+                f"null r95 {r.get('null_r95')}, spread {r.get('parent_spread')}")
+
+    spread = [0.1 + 0.16 * j for j in range(6)]
+    hres = {}
+    for mode in ("carried", "redrawn", "position"):
+        ph, st = tracer_world(mode, spread)
+        hres[mode] = HE.test(ph, st, np.random.default_rng(0), max_parents=8)
+        if mode == "position":
+            nr = neighbour_r(ph, st)
+    check("heredity positive: carried tracer -> heredity", hres["carried"]["verdict"] == "heredity", hbrief(hres["carried"]))
+    check("heredity negative: trait redrawn every step -> no heredity", hres["redrawn"]["verdict"] == "no heredity",
+          hbrief(hres["redrawn"]))
+    check("heredity deceptive: trait set by position (neighbours alike in the world) -> no heredity",
+          hres["position"]["verdict"] == "no heredity" and nr > 0.5, hbrief(hres["position"]) + f"; in-world neighbour r {nr:.2f}")
+    same = HE.test(*tracer_world("carried", [0.5] * 6), np.random.default_rng(0), max_parents=8)
+    check("heredity deceptive: identical founders -> no variation", same["verdict"] == "no variation", hbrief(same))
+    check("heredity selection-aware null: permutation null below the positive",
+          hres["carried"].get("null_r95", 1) < hres["carried"].get("r", 0) and hres["redrawn"].get("p", 0) > 0.05,
+          f"positive r {hres['carried'].get('r')} vs null r95 {hres['carried'].get('null_r95')}; negative p {hres['redrawn'].get('p')}")
 
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")
