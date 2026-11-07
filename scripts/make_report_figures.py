@@ -165,6 +165,7 @@ def e12_engine_vs_random() -> None:
 
 
 E13_SEED = 2178225922393047501  # E-13 universes #104 (smooth:6, density 0.35) and #324 (smooth:3, 0.10)
+FUSION_SEED = 806560575985726156  # E-19 universe #204 (smooth:3, density 0.10)
 
 
 def emergence_clip() -> None:
@@ -469,7 +470,19 @@ def e20_collisions() -> None:
     save_gif(frames, "e20-fusion.gif", scale=2, ms=50)
 
 
-FIGS = {"e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e19_spontaneous_fusion() -> None:
+    """E-19 universe #204: two gliders emerge from a smooth start, then fuse (t ~ 530)."""
+    spec = UniverseSpec(parse_rule(ORBIUM).to_dict(), FUSION_SEED, 128, 128, 0.1, init={"kind": "smooth", "ell": 3.0})
+    u = Universe.from_spec(spec)
+    frames = []
+    for t in range(0, 801):
+        if t % 8 == 0:
+            frames.append(u.state.copy())
+        u.step()
+    save_gif(frames, "e19-spontaneous-fusion.gif", scale=2, ms=60)
+
+
+FIGS = {"e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
