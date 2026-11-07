@@ -11,6 +11,8 @@ Part 2  `--rules` random Lenia rules (Lenia.random, `--seed`), 96x96, 500 steps,
 
 Usage:
     python scripts/lenia_static_fields.py --out docs/data/experiments/2026-11-06-c01-lenia-static-fields.json
+    # held-out check of the 0.002 cut-off (R-4): new rules, part 2 only, optional start condition
+    python scripts/lenia_static_fields.py --seed 8 --rules 120 --init smooth:6 --skip-part1 --out ...
 """
 from __future__ import annotations
 
@@ -26,6 +28,7 @@ import emergence.lab as lab
 from emergence.discovery import OBJECTIVES, run_settled
 from emergence.engine import Universe, UniverseSpec
 from emergence.observatory import continuous as C
+from emergence.conditions import init_of
 from emergence.observatory.observer import classify
 from emergence.physics import Lenia, parse_rule
 
@@ -71,9 +74,9 @@ def part1() -> dict:
 
 
 def _observe(args):
-    rule, tol = args
+    rule, tol, init = args
     lab.VALUE_TOL = tol  # 0 = the pre-fix observer (exact comparisons)
-    spec = UniverseSpec(Lenia.parse(rule).to_dict(), 1, 96, 96, 0.35)
+    spec = UniverseSpec(Lenia.parse(rule).to_dict(), 1, 96, 96, 0.35, init=init_of(init))
     o = lab.study(spec, steps=500)
     m = dict(o.metrics)
     if tol == 0:
@@ -88,14 +91,14 @@ def _observe(args):
             "objectives": {k: round(fn(m), 5) for k, fn in OBJECTIVES.items()}}
 
 
-def part2(n: int, seed: int, workers: int) -> dict:
+def part2(n: int, seed: int, workers: int, init: str = "uniform") -> dict:
     rng = np.random.default_rng(seed)
     rules = [Lenia.random(rng).label() for _ in range(n)]
     with Pool(workers or None) as p:
-        old = p.map(_observe, [(r, 0) for r in rules])
-        new = p.map(_observe, [(r, C.VALUE_TOL) for r in rules])
+        old = p.map(_observe, [(r, 0, init) for r in rules])
+        new = p.map(_observe, [(r, C.VALUE_TOL, init) for r in rules])
     per = [{"rule": r, "old": o, "new": w} for r, o, w in zip(rules, old, new)]
-    return {"rules": n, "rule_seed": seed, "size": 96, "steps": 500, "universe_seed": 1,
+    return {"rules": n, "rule_seed": seed, "init": init, "size": 96, "steps": 500, "universe_seed": 1,
             "old_classes": dict(Counter(o["class"] for o in old)), "new_classes": dict(Counter(w["class"] for w in new)),
             "old_complex_without_self_propelled": sum(o["class"] == "complex" and not o["self_propelled"] for o in old),
             "new_quasi_static_not_extinct": sum(bool(w["quasi_static"]) and w["class"] != "extinct" for w in new),
@@ -110,11 +113,15 @@ def main() -> None:
     ap.add_argument("--rules", type=int, default=60)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--workers", type=int, default=0)
+    ap.add_argument("--init", default="uniform", help="start condition, e.g. smooth:6 (conditions syntax)")
+    ap.add_argument("--skip-part1", action="store_true")
     ap.add_argument("--out")
     a = ap.parse_args()
-    res = {"part1_noise_or_dynamics": part1(), "part2_random_rules": part2(a.rules, a.seed, a.workers)}
+    res = {"part2_random_rules": part2(a.rules, a.seed, a.workers, a.init)}
+    if not a.skip_part1:
+        res = {"part1_noise_or_dynamics": part1(), **res}
+        print(json.dumps(res["part1_noise_or_dynamics"], indent=1))
     p2 = res["part2_random_rules"]
-    print(json.dumps(res["part1_noise_or_dynamics"], indent=1))
     print("old classes", p2["old_classes"], "| new classes", p2["new_classes"])
     print("old complex without a self-propelled structure:", p2["old_complex_without_self_propelled"],
           "| new quasi-static (not extinct):", p2["new_quasi_static_not_extinct"], "| with self-propelled:", p2["with_self_propelled"])
