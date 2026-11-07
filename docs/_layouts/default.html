@@ -11,7 +11,7 @@
 <header class="site">
   <a class="brand" href="{{ '/' | relative_url }}">Emergence Lab</a>
   <nav>
-    {% assign nav = "index:Overview,journal:Journal,decisions:Decisions,experiments:Experiments,gallery:Gallery,research:Research,reviews:Reviews,handoff:Handoff" | split: "," %}
+    {% assign nav = "index:Overview,report:Report,journal:Journal,decisions:Decisions,experiments:Experiments,gallery:Gallery,research:Research,reviews:Reviews,handoff:Handoff" | split: "," %}
     {% for item in nav %}{% assign p = item | split: ":" %}{% assign here = false %}{% if p[0] == "index" %}{% assign href = "/" %}{% if page.url == "/" or page.url == "/index.html" %}{% assign here = true %}{% endif %}{% else %}{% assign href = "/" | append: p[0] | append: ".html" %}{% if page.url contains p[0] %}{% assign here = true %}{% endif %}{% endif %}
     <a href="{{ href | relative_url }}"{% if here %} class="here"{% endif %}>{{ p[1] }}</a>{% endfor %}
     <a href="https://github.com/Yahyaal/emergence-lab">Code</a>

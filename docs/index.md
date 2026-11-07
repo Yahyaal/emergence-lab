@@ -12,13 +12,15 @@ title: Overview
 
 This site is the project's **research journal**: what we did, why, what we found, what turned out to be wrong, and what comes next. It is written so that a person or an AI agent can pick up the work with no other context. Start at **[Handoff]({{ '/handoff.html' | relative_url }})** if you are continuing the work.
 
+<p><b>New: <a href="{{ '/report.html' | relative_url }}">overnight report of 7 November 2026</a></b>. Lenia gliders arise on their own, but only from smooth random starts (pre-registered, confirmed).</p>
+
 ## Where things stand
 
 <div class="cards">
-<div class="card"><div class="stat">v0.4</div><p>Current version: v0.3's validated discovery and probes, plus initial conditions and a causal knockout test. <a href="https://github.com/Yahyaal/emergence-lab/pull/1">PR #1</a> (v0.3) and <a href="https://github.com/Yahyaal/emergence-lab/pull/2">PR #2</a> (v0.4).</p></div>
-<div class="card"><div class="stat">2 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: self-propelled structures. No replication, heredity or ongoing innovation observed yet.</p></div>
+<div class="card"><div class="stat">v0.6</div><p>Current version: two physics families (Life-like rules and Lenia), validated discovery and probes, initial conditions, causal knockouts, and the Lenia start-condition experiments (E-12 to E-14).</p></div>
+<div class="card"><div class="stat">2 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: self-propelled structures, in Lenia arising spontaneously from smooth random starts (E-14). No replication, heredity or ongoing innovation observed yet.</p></div>
 <div class="card"><div class="stat">1.9–4.2×</div><p>How many more distinct interesting rules the discovery engine finds than random search, at equal compute (2 seeds per arm, so preliminary).</p></div>
-<div class="card"><div class="stat">59 / 59</div><p>Benchmark checks passing: 39 standard checks plus 20 hard and deceptive controls.</p></div>
+<div class="card"><div class="stat">71 / 71</div><p>Benchmark checks passing: 39 standard checks plus 32 hard and deceptive controls (probes, knockouts, Lenia).</p></div>
 </div>
 
 ## Hypotheses so far
