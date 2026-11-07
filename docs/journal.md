@@ -12,6 +12,52 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-034 · 2026-11-07 · E-29: in 3000 random Lenia rules, no lone lump becomes a reproducer
+
+**Question (pre-registered, `docs/data/e29-preregistration.md`; Track D route 2):** E-27/E-28 tested objects in worlds already selected for movers, a small corner of rule space. Before building a "fission objective" for the search, a direct test: give every rule drawn at random the same chance to reproduce. Does any Lenia rule turn a lone lump of matter into a reproducer?
+
+**Ran:** E-29, `scripts/lump_scan.py`, commit `6a6578a`, 72 min on 11 cores. 3000 rules from `Lenia.random` (μ 0.08–0.40, σ/μ 0.05–0.30, 1–3 rings), each with 2 smooth random lumps (radius 13 and 26) alone in a 128×128 vacuum for 300 steps (or up to the last checkpoint before the world filled). Then the unchanged birth detector (D-028) on the 2 most common object types. Pipeline positive: Gray-Scott lumps.
+
+**Found:**
+- **0 reproducers in 3000 rules** (5069 object tests), as predicted. Gray-Scott pipeline positive **10/10**. No "one generation" verdict either.
+- **Coverage is lower than planned, and this matters for the bound:**
+
+  | Rule outcome (both lumps) | Rules |
+  |---|---|
+  | at least one object fully tested: no reproduction | **1453** |
+  | only "explosive": the test world filled before the detector could decide | 410 |
+  | lumps filled the world with nothing testable | 228 |
+  | both lumps died | 909 |
+
+  The pre-registered bound (0.1% of the distribution) assumed every rule could be tested. Honestly stated: **0 of 1453 decided rules** (95% upper bound about 0.2% of decided rules); for about a fifth of rule space (638 rules, mostly μ > 0.25 with wide growth) the detector cannot decide, because any object grows into a world-filling front.
+- **The undecided cases do not look like division.** Of 1481 explosive tests, 1463 had fewer than 2 copies before the world filled. In the other 18, copies held at most 26% of the matter (75% is required), except one: a huge object (mass 2087, rule #1100, μ 0.396) which, run alone and inspected by eye, spreads into a front that freezes into a labyrinth.
+
+**Interpretation:** across the single-channel, single-kernel Lenia rule distribution we search, a lone lump either dies, settles into still objects or movers, or spreads as a front. None grows and divides like a Gray-Scott spot. Together with E-27/E-28 this makes route 2 (a fission objective for the search) unpromising in this family: there is no gradient of "almost reproducing" rules to climb (0 "one generation" verdicts). Evidence level stays at 2. Known blind spot: rules whose objects spread too fast for a 160×160 test world.
+
+**Lesson:** pre-register the coverage too, not only the count. A bound over "all rules" is only as good as the fraction the detector can actually decide.
+
+---
+
+## J-033 · 2026-11-07 · A heredity test that is not fooled by place, and Flow-Lenia with parameters that travel with matter
+
+**Question:** Track D (research.md) needs two things before any experiment on heredity: (1) a way to tell whether offspring resemble their own parent, and (2) a physics in which a creature can carry something heritable. Neither existed.
+
+**Built (D-029):**
+- **`observatory/heredity.py`, a transplant test.** Up to 16 parents (the most common mass class in a world) are each copied alone into the physics' vacuum and run 1500 steps. Their offspring are the objects within 2× of the parent's mass. Heredity = the correlation between the parent's trait, measured in its own world, and its offspring's mean trait, across at least 6 families: r ≥ 0.5 and a parent-permutation p < 0.01. The permutation keeps the selected parents (only those that reproduced) and shuffles who is whose parent, so it accounts for how candidates were chosen. Parents that all have the same trait give "no variation".
+- **Why a transplant:** offspring sit next to their parent, so anything set by place (a "common environment") makes parent and offspring alike without inheritance. Biologists separate the two by cross-fostering; moving each parent to the same empty world does the same.
+- **Controls, `GrayScottTracer`:** Gray-Scott dividing spots (the birth detector's positive) with a third channel, a trait that never changes the chemistry. *carried*: the trait moves with the spot's matter (positive). *redrawn*: replaced by deterministic noise every step (negative). *position*: set by the column (deceptive: in the world, each spot's nearest neighbour has a similar trait, r > 0.5).
+- **`FlowLeniaPL` (physics/flow_lenia.py):** Flow-Lenia with parameter localization (Plantec et al. 2023): each cell carries its own kernel weights h_i, stored as A·h_i and moved by the same reintegration step, so parameters mix in proportion to incoming mass and are conserved exactly. Optional uniform **food** below the object threshold, so a mass-conserving creature could grow. A scatter-add reintegration (≤ 9 target cells per source) is about 3× faster; plain FlowLenia keeps the old code and stays bit-identical.
+
+**Found (validation):**
+- Heredity: carried r = 1.0 (heredity); redrawn r ≈ −0.2 (no heredity); position r ≈ −0.3 (no heredity), although in-world neighbours are alike; identical founders → no variation. Probe section 10, 5 checks.
+- FlowLeniaPL equals FlowLenia when every cell has the rule's weights (max difference ~1e-6 after 300 steps, float32 rounding); matter and every weighted parameter are conserved (drift < 1e-5); mixed weights stay between the two species' values; a food-only world never changes. 3 probe checks, unit tests.
+
+**Not shown:** that anything in Flow-Lenia reproduces (E-30 asks), and nothing about selection or evolution: the tracer trait has no effect on survival by construction. Our mixing rule has not been checked against the paper's, so FlowLeniaPL results are not directly comparable with Plantec et al.
+
+**Lesson:** "offspring look like their parents" is the classic trap of shared environment; build the deceptive control (a trait set by place) before the measure, and the measure has to be an intervention.
+
+---
+
 ## J-032 · 2026-11-07 · A birth detector; none of our Lenia creatures reproduces (E-27, E-28)
 
 **Question:** the owner asked what could give reproduction and heredity. Nothing in the project could have confirmed a birth in Lenia: the replication probe matches exact discrete shapes and only tests clones we place. So: build a detector that works for both physics families, validate it, and ask whether the Lenia worlds we have contain reproducers.
