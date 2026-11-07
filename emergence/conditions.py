@@ -38,7 +38,7 @@ from .storage import Store
 DEFAULT_INITS = ["uniform", "gradient", "patch", "spots"]
 OUTCOMES = ["unsettled", "self_prop", "innovating"]
 NOT_APPLICABLE = "not applicable (continuous physics)"
-INIT_PARAM = {"smooth": "ell"}  # condition "kind:value" sets this init parameter
+INIT_PARAM = {"smooth": "ell", "patches": "n"}  # condition "kind:value" sets this init parameter
 
 
 def init_of(name: str) -> dict | None:

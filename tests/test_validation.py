@@ -353,3 +353,13 @@ def test_conditions_skip_exact_shape_probes_for_continuous_physics():
     spec = UniverseSpec(parse_rule(ORBIUM).to_dict(), 1, 48, 48, 0.35, init=init_of("smooth:6")).to_dict()
     res = _job((spec, 60, 30))
     assert res["extra"] == {"innovation": None, "innovation_verdict": NOT_APPLICABLE, "knockout": None}
+
+
+def test_chan_patches_init():
+    from emergence.physics import parse_rule
+    spec = UniverseSpec(parse_rule(ORBIUM).to_dict(), 4, 128, 128, 0.35, init={"kind": "patches", "n": 20})
+    s = Universe.from_spec(spec).state
+    assert np.array_equal(s, Universe.from_spec(spec).state)
+    assert 0 < (s > 0).mean() < 20 * 144 / s.size + 1e-9 and s.max() <= round(0.9 * 255)
+    d = Universe.from_spec(UniverseSpec(LIFE.to_dict(), 4, 128, 128, 0.35, init={"kind": "patches"})).state
+    assert set(np.unique(d)) <= {0, 1} and 0 < d.mean() < 0.5
