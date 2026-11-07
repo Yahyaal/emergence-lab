@@ -48,7 +48,14 @@ Labels and objectives tuned for 2-state rules called fields of static Lenia blob
 * quasi-static negative: a dynamic rule with nothing that travels (moving stripe texture)
               keeps its free activity and stays rankable.
 * slow positive  the "wanderer" (E-17/E-18), a slow turning mover emerging from a smooth start:
-              must stay self-propelled and complex (the detector misses ~8% of them, J-022).
+              must stay self-propelled and complex (the detector missed ~8% of them, J-022).
+* slow movers, extended isolation (SLOW_STEPS = 300, calibrated in E-25, J-030):
+              positive: a wanderer the 100-step isolation missed (E-18a #95) is found, and the
+              100-step setting still misses it. deceptive: static blobs of a settled soup fail
+              the 300-step isolation; a crooked fragment that passes isolation but splits later
+              (E-12 #2059) is still rejected by the in-world straightness rule.
+              selection-aware null: mover-free random rules in which the observer selects
+              in-world movers (E-17 random arm) gain no self-propelled structure.
 * near-fixed point  positive: jitter control (fixed field, +-1 level flicker) -> frozen.
               deceptive: the creeping soup is NOT a fixed point (its edges really move).
               negative: two gliders are not frozen.
@@ -272,6 +279,43 @@ def run_probe_benchmark(log=print) -> dict:
     check("Lenia slow positive: an emergent turning 'wanderer' is self-propelled and complex",
           o.cls == "complex" and (o.metrics["self_propelled_shapes"] or 0) >= 1,
           brief(o.cls, o.metrics))
+
+    # 7c. extended isolation for slow movers (SLOW_STEPS = 300, E-25, J-030). Worlds from E-18a, E-12, E-17.
+    w95 = UniverseSpec({"kind": "lenia", "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5"}, 47715909630089337,
+                       128, 128, 0.18, init={"kind": "smooth", "ell": 6.0})
+    o = study(w95, steps=2000)
+    saved, C.SLOW_STEPS = C.SLOW_STEPS, 100
+    try:
+        o100 = study(w95, steps=2000)
+    finally:
+        C.SLOW_STEPS = saved
+    check("Lenia slow positive 2: a wanderer the 100-step isolation misses (E-18a #95) is found with 300 steps",
+          o.cls == "complex" and (o.metrics["self_propelled_shapes"] or 0) >= 1
+          and not o100.metrics["self_propelled_shapes"], f"300 steps: {brief(o.cls, o.metrics)}; 100 steps: "
+          f"self-propelled {o100.metrics['self_propelled_shapes']:.0f}")
+    blobs = sorted(C.objects(soup.state), key=lambda b: -b["mass"])[:12]
+    passed = sum(C.self_propelled(orb, soup.state, b, slow_steps=C.SLOW_STEPS) for b in blobs)
+    check("Lenia slow deceptive: static blobs of a settled soup fail the 300-step isolation", passed == 0,
+          f"{passed} of {len(blobs)} blobs pass")
+    crooked = UniverseSpec({"kind": "lenia", "rule": "LENIA/R13/T10/m0.109/s0.0101/b0.5,0.25,1"}, 924037609305836849,
+                           192, 192, 0.3132)
+    o = study(crooked, steps=1000)
+    check("Lenia slow deceptive: a crooked drifting fragment (E-12 #2059; passes isolation, splits later) is not counted",
+          not o.metrics["self_propelled_shapes"] and o.cls != "complex", brief(o.cls, o.metrics))
+    # selection-aware null: mover-free random rules (E-17 random arm) in which the observer DOES select
+    # in-world movers (straight, >= 5 cells) that failed the 100-step isolation
+    null = [(1063, 1126583757680214181, "LENIA/R13/T10/m0.334/s0.0663/b1,0.75", 0.3674),
+            (1106, 4359418016614114976, "LENIA/R13/T10/m0.274/s0.0531/b1,0.5,0.25", 0.2057),
+            (1216, 4281028167100086452, "LENIA/R13/T10/m0.300/s0.0733/b1,0.25", 0.1896),
+            (1275, 1183500400978356013, "LENIA/R13/T10/m0.215/s0.0324/b1,0.5", 0.3968)]
+    found = {}
+    for uid, seed, rule, dens in null:
+        o = study(UniverseSpec({"kind": "lenia", "rule": rule}, seed, 96, 96, dens, init={"kind": "smooth", "ell": 6.0}),
+                  steps=500)
+        found[uid] = (o.metrics["mover_shapes"], o.metrics["self_propelled_shapes"])
+    check("Lenia slow null: selected movers in mover-free random rules stay unverified with 300 steps",
+          all(m >= 1 and not sp for m, sp in found.values()),
+          ", ".join(f"#{u}: movers {m:.0f}, self-propelled {sp:.0f}" for u, (m, sp) in found.items()))
 
     # 8. Flow-Lenia (mass-conserving continuous physics, float32 states, v0.7, J-016, D-026)
     from .physics import FlowLenia

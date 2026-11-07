@@ -482,7 +482,65 @@ def e19_spontaneous_fusion() -> None:
     save_gif(frames, "e19-spontaneous-fusion.gif", scale=2, ms=60)
 
 
-FIGS = {"e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+HELDOUT_MOVER = "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1"
+
+
+def heldout_mover() -> None:
+    """The mover rule found in the held-out cut-off check (J-028): its world from a smooth start
+    (96x96, seed 1, density 0.35), then one mover cut out and run alone with its trail."""
+    phys = parse_rule(HELDOUT_MOVER)
+    u = Universe.from_spec(UniverseSpec(phys.to_dict(), 1, 96, 96, 0.35, init={"kind": "smooth", "ell": 6.0}))
+    frames = []
+    for t in range(0, 501):
+        if t % 5 == 0:
+            frames.append(np.pad(u.state, 32))
+        if t < 500:
+            u.step()
+    o = max(C.objects(u.state), key=lambda x: x["mass"])
+    alone = C.isolate(u.state, o)
+    rr, cc = np.nonzero(alone)
+    sub = alone[rr.min():rr.max() + 1, cc.min():cc.max() + 1]
+    world = np.zeros((160, 160), np.uint8)
+    world[80 - sub.shape[0] // 2:80 - sub.shape[0] // 2 + sub.shape[0],
+          80 - sub.shape[1] // 2:80 - sub.shape[1] // 2 + sub.shape[1]] = sub
+    trail = np.zeros(world.shape)
+    for t in range(0, 1001):
+        if t % 5 == 0:
+            ob = max(C.objects(world), key=lambda x: x["mass"])
+            trail[int(ob["c"][0]) % 160, int(ob["c"][1]) % 160] = 255
+        if t % 10 == 0:
+            frames.append(np.maximum(world, (trail * 0.35).astype(np.uint8)))
+        world = phys.step(world)
+    save_gif(frames, "heldout-mover.gif", scale=2, ms=60)
+
+
+def heldout_cutoff() -> None:
+    """Free activity of non-extinct, mover-free random Lenia rules: the 60 rules that set the 0.002
+    quasi-static cut-off (C-01, rule seed 7) and 120 held-out rules (seed 8) from soups and smooth starts."""
+    def vals(path):
+        d = json.load(open(path))["part2_random_rules"]
+        return [max(r["new"]["free_activity"], 1e-5) for r in d["per_rule"]
+                if r["new"]["class"] not in ("extinct", "chaotic") and not r["new"]["self_propelled"]]
+    sets = [("C-01 (set the cut-off)\n60 rules, soup", vals(DATA / "2026-11-06-c01-lenia-static-fields.json"), GREY),
+            ("held out\n120 rules, soup", vals(DATA / "2026-11-07-c02-heldout-cutoff-uniform.json"), BLUE),
+            ("held out\n120 rules, smooth ℓ=6", vals(DATA / "2026-11-07-c02-heldout-cutoff-smooth6.json"), ORANGE)]
+    fig, ax = plt.subplots(figsize=(9, 3.6))
+    rng = np.random.default_rng(0)
+    for i, (name, v, col) in enumerate(sets):
+        ax.scatter(v, i + rng.uniform(-0.18, 0.18, len(v)), s=16, color=col, alpha=0.8)
+    ax.axvline(0.002, color=RED, lw=1.5)
+    ax.axvspan(0.0016, 0.0025, color=RED, alpha=0.08)
+    ax.text(0.00205, 2.45, "cut-off 0.002", color=RED, fontsize=9)
+    ax.set_xscale("log")
+    ax.set_yticks(range(len(sets)), [n for n, _, _ in sets])
+    ax.set_ylim(-0.5, 2.7)
+    ax.set_xlabel("free activity (fraction of cells changing per step outside still blobs; 1e-5 = none)")
+    ax.set_title("Quasi-static cut-off: no clean gap on new rules", fontsize=11)
+    fig.savefig(OUT / "heldout-cutoff.png")
+    plt.close(fig)
+
+
+FIGS = {"heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 

@@ -93,13 +93,14 @@ def summarise(worlds):
     for pool in POOLS:
         ws = [w for w in worlds if w["pool"] == pool]
         row = {"worlds": len(ws),  # V0 must reproduce the stored observer verdicts
-               "V0_agrees_with_stored": sum(bool(detect(w, *VARIANTS["V0"])) == bool(w["stored_self_propelled"]) for w in ws)}
+               "V0_agrees_with_stored": sum(bool(detect(w, *VARIANTS["V0"])) == bool(w.get("stored_self_propelled")) for w in ws)}
         base = {w["uid"] for w in ws if detect(w, *VARIANTS["V0"])}
         for v, (s, n) in VARIANTS.items():
             det = [(w, detect(w, s, n)) for w in ws]
             det = [(w, h) for w, h in det if h]
             fp = [w["uid"] for w, h in det if not any(c.get("truth", {}).get("ok") for c in h)]
             row[v] = {"detected": len(det), "confirmed": len(det) - len(fp), "false_positive_worlds": fp,
+                      "false_positives_among_new": [u for u in fp if u not in base],  # decision rule (amendment 1)
                       "new_vs_V0": len({w["uid"] for w, _ in det} - base),
                       "lost_vs_V0": len(base - {w["uid"] for w, _ in det})}
         res[pool] = row
@@ -111,7 +112,14 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--workers", type=int, default=0)
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--resummarise", help="recompute the summary of an earlier --out file")
     a = ap.parse_args()
+    if a.resummarise:
+        d = json.load(open(a.resummarise))
+        d["summary"] = summarise(d["worlds"])
+        print(json.dumps(d["summary"], indent=1))
+        json.dump(d, open(a.out, "w"))
+        return
     jobs = []
     for pool, (db, exps) in POOLS.items():
         s = Store(db)
