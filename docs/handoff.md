@@ -23,7 +23,13 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - `complex` now requires a self-propelled structure;
 - static blob fields are *quasi-static* and are not ranked.
 
-Across 60 random Lenia rules, none has a self-propelled structure yet. E-12 (Lenia discovery) and E-13 (Lenia initial conditions with `smooth` starts) must be re-run with the fixed code, after the owner approves the compute.
+**Overnight 6–7 Nov (J-013 to J-018; summary on the [Report]({{ '/report.html' | relative_url }}) page):**
+- **E-12:** Lenia discovery from soups found 0 self-propelled structures in 2085 universes.
+- **E-13a:** gliders can exist in only 8 of 99 single-ring rules, around Orbium.
+- **E-13/E-14:** in those rules, **smooth (correlated) random starts make gliders and soups with the same mass never do** (pre-registered and confirmed: 49/320 vs 0/320, p < 1e-6).
+- **E-15:** in big worlds a growing blob field usually wins, and gliders interact only destructively (no births).
+- **v0.7 adds Flow-Lenia** with float32 states (J-016). It still has no positive control: 0 movers in 400 universes (E-16).
+- **E-17**, a discovery search from smooth starts, ran last.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -32,7 +38,7 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 56 tests
+pytest                                   # 57 tests, ~1-3 min
 emergence benchmark --probes             # 39 + 37 validation checks, ~2 min on 12 cores
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -87,11 +93,17 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
-1. Re-run the Lenia experiments with the fixed label (E-12 discovery, E-13 smooth initial conditions); ask the owner before starting them. Then: Lenia reference patterns imported from published data (research.md); tolerant innovation and replication probes for continuous physics; creatures that rotate or pulse in place are not counted as `complex` yet.
-2. A density sweep for rules whose behaviour changed with density (E-09, E-10).
-3. Statistical power for H1 (10–30 runs per arm).
-4. Sampling validation of the innovation probe, and a same-rule null (Track A).
-5. Replication: more nulls, copy-origin tracing, multi-part candidates.
+1. Lenia beyond level 2. Next steps:
+   - a replication probe for continuous physics (the exact-shape probes do not apply);
+   - glider rates vs world size and run length, measured with the validated detector at checkpoints;
+   - Chan's patch protocol in larger worlds and longer runs.
+
+   Known gap: creatures that rotate or pulse in place are not counted as `complex` yet.
+2. Flow-Lenia needs a positive control before any experiment (J-016, J-018). Try multi-channel Flow-Lenia, or check our implementation against the paper's figures.
+3. A density sweep for rules whose behaviour changed with density (E-09, E-10).
+4. Statistical power for H1 (10–30 runs per arm).
+5. Sampling validation of the innovation probe, and a same-rule null (Track A).
+6. Replication: more nulls, copy-origin tracing, multi-part candidates.
 
 ## Owner preferences
 

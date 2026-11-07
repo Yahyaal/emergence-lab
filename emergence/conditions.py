@@ -111,6 +111,14 @@ def run_conditions(store: Store, rules: list[str], inits: list[str], seeds: int,
 
 
 # ------------------------------------------------------------------ analysis
+def _mass_per_cell(state: np.ndarray, continuous: bool) -> float:
+    """Discrete: occupied fraction. Continuous: mean value in physical units (uint8 levels
+    are divided by 255; float states, e.g. Flow-Lenia, already are physical)."""
+    if continuous and not np.issubdtype(state.dtype, np.floating):
+        return float(state.mean()) / 255.0
+    return float(state.mean())
+
+
 def _sign_test(diffs: list[float]) -> tuple[int, int, float]:
     pos, neg = sum(d > 0 for d in diffs), sum(d < 0 for d in diffs)
     n = pos + neg
@@ -153,8 +161,8 @@ def summarize(store: Store, exp_id: int) -> dict[str, Any]:
             "knockout_tested": sum(k not in (None, "untestable") for k in kos),
             "knockout_rate_depends": sum(k == "depends" for k in kr),
             # discrete: occupied fraction; continuous: mass per cell (mean value, 0..1)
-            "initial_density": float(np.mean([Universe.from_spec(UniverseSpec.from_dict(u["spec"])).state.mean()
-                                              for u in us])) / (255.0 if continuous else 1.0),
+            "initial_density": float(np.mean([_mass_per_cell(Universe.from_spec(UniverseSpec.from_dict(u["spec"])).state,
+                                                             continuous) for u in us])),
         }
     rules, inits = cfg["rules"], cfg["inits"]
     table = {kind: {o: float(np.mean([per[(r, kind)][o] for r in rules])) for o in
