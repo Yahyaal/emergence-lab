@@ -27,6 +27,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">0 / 400</div><p><b>Flow-Lenia</b>, a mass-conserving variant said to make movers easily, was built and validated, but produced <b>no movers</b> in 400 worlds (E-16).</p></div>
 <div class="card"><div class="stat">3 kinds</div><p>Morning: a rule drawn <b>at random</b> made a third kind of mover, a slow, perfectly straight <b>"ring glider"</b>. Confirmed: 31 of 80 smooth-start worlds, 0 of 80 soups (E-26).</p></div>
 <div class="card"><div class="stat">13 / 160</div><p>Morning: Chan's own start (sparse dense patches) <b>does</b> make gliders when the world is big enough: 0 of 40 at 128², 13 of 160 at 256². <b>Our prediction was wrong</b> (E-24).</p></div>
+<div class="card"><div class="stat">0 / 568</div><p>Saturday: a new <b>birth detector</b>, validated on known reproducers, found <b>no reproduction</b> in 568 Lenia worlds, none among 285 movers. Its first version was fooled by blobs bursting into labyrinths; fixed and confirmed on held-out worlds (E-27, E-28).</p></div>
 <div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
 </div>
 
@@ -222,13 +223,36 @@ To stop fields of motionless blobs from being ranked as interesting, the observe
 
 This does **not** create false creatures: a world is only called complex if something verifiably moves by itself. It means the search can still waste some effort on static fields. Recorded as an open problem (J-028), not yet fixed.
 
+## 9 · Saturday: can anything here reproduce?
+
+You asked what could give us **reproduction and heredity**. Before looking for it, we needed a way to recognise it: our old replication test only works for exact cell patterns, and Lenia creatures never repeat exactly.
+
+**The birth detector.** It cuts one object out, puts it alone in an empty world and runs it. A **reproducer** must make copies that keep multiplying (similar mass, most of the matter in the world), and then one of those copies, put alone in a fresh world, must do it again. We checked it on systems where the answer is known:
+
+<div class="cards two">
+<div class="card"><img src="{{ '/assets/report/e27-gray-scott.gif' | relative_url }}" alt="One round spot divides into two, then four, then more, filling an empty world"><p><b>A known reproducer.</b> In Gray-Scott reaction-diffusion (Pearson 1993), one spot grows and divides, and its daughters divide again. The detector says <b>reproducer</b>, as it does for HighLife's famous replicator. Note these copies are all identical: reproduction <i>without</i> heredity.</p></div>
+<div class="card"><img src="{{ '/assets/report/e27-labyrinth.gif' | relative_url }}" alt="A small Lenia blob alone in an empty world bursts into a labyrinth of stripes and blobs that fills the world"><p><b>Not a reproducer.</b> A Lenia blob placed alone bursts into a labyrinth that fills the world in ~800 steps, then stops changing. Its ~80 pieces have about the parent's mass, and the <b>first version of our detector counted them as copies</b>.</p></div>
+</div>
+
+<figure>
+<img src="{{ '/assets/report/e27-copy-counts.png' | relative_url }}" alt="Copies over time on a log scale: the Gray-Scott line climbs in steps 1, 2, 4, 8, 16; the Lenia line jumps to about 80 before step 1000 and then stays flat">
+<figcaption>The difference in one picture. Real division doubles again and again (blue; the dips are moments when every spot is mid-division). The labyrinth jumps once and stops (orange). The detector now requires copies to at least double after the first quarter, and every copy is compared with the original parent.</figcaption>
+</figure>
+
+**What we found (E-27, E-28, both pre-registered):**
+- **None of our creatures reproduces.** 0 of 285 movers (gliders, wanderers, ring gliders) in 218 worlds made even one generation of copies.
+- **The first detector was fooled**, as shown above, in 2 blob-field worlds. We looked at the cases (as pre-registered), fixed the rule, and made the labyrinth a permanent trap in the benchmark.
+- **The fixed detector, on 350 worlds it had never seen: 0 reproducers.** Its known positive (Gray-Scott) was found in 10 of 10 worlds both times.
+
+So in the Lenia rules we have explored, things either travel, sit still, or spread. Nothing grows and divides into copies of itself. The literature points to where to look next: Lenia with several channels (Chan 2020 reports self-replicating creatures there), and Flow-Lenia where each creature **carries its own rule parameters**, so offspring can inherit them and differ (Plantec et al. 2023). That second one is the most direct route to heredity, and it is planned below.
+
 ## Where this leaves the project
 
 | Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) |
 |---|---|---|
 | 1 · persistent organisation | yes | yes |
 | 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too |
-| 3 · self-replication | not observed | none: no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other |
+| 3 · self-replication | not observed | none: no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other. A validated birth detector finds no reproducer in 568 worlds (E-27, E-28) |
 | 4 · heredity and variation | not measured | not measured |
 | 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
 
@@ -241,8 +265,9 @@ This does **not** create false creatures: a world is only called complex if some
 2. ~~A better detector for slow, turning movers~~ done (E-25, D-027; ~95% detected). Remaining: wanderers that circle tightly. Also **fix the quasi-static margin** (C-02), e.g. a margin that scales with the kernel radius, with its own controls.
 3. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
 4. ~~Chan's patch protocol in larger worlds~~ done (E-24: 8% of 256² worlds). Next: separate world size from run length, and test the "isolated lump" mechanism directly.
-5. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
+5. ~~A replication detector for continuous physics~~ done (D-028, E-27/E-28: none found).
 6. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
+7. **Heredity (Track D):** Flow-Lenia where each cell carries its rule parameters, which travel with its matter and mix where flows meet; a birth test in worlds with free "food" matter (mass is conserved, so copies need material); and a heredity measure (do offspring resemble their own parent more than a random one?), each with its own controls. Also: a search objective that rewards division, and multi-channel Lenia.
 
 ## How the night went
 
@@ -271,8 +296,11 @@ This does **not** create false creatures: a world is only called complex if some
 | 06:41–08:16 | E-24: Chan's patches in big worlds make gliders (13/160) |
 | 06:46–08:13 | E-25: detector calibration on 3,789 worlds; 300-step isolation adopted (D-027) |
 | 08:22 | E-26: the "ring glider" confirmed, 31/80 smooth vs 0/80 soups |
+| 08:30–09:05 | You asked about reproduction and heredity: birth detector and Gray-Scott control built; E-27 pre-registered |
+| 09:06–09:47 | E-27: no mover reproduces; the first detector is fooled by labyrinth bursts; fixed, E-28 pre-registered |
+| 10:18 | E-28: 0 reproducers in 350 held-out worlds |
 
-Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 81 checks, all passing.
+Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 93 checks, all passing.
 
 ## Read more
 

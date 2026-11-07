@@ -40,6 +40,11 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **E-25 / D-027:** the mover detector's isolation run now extends to 300 steps for slow objects that keep their mass (`SLOW_STEPS`); +3 wanderer worlds, no new false positives in 3,789 replayed worlds; straightness stays 0.5. ≈ 95% of wanderers detected.
 - **E-26:** a third mover, the slow straight "ring glider" (`LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1`, mass ~178, 0.085 cells/step), found by a random rule draw; 31/80 smooth vs 0/80 soup worlds.
 
+**Saturday late morning, 7 Nov (J-032):**
+- **Birth detector** (`observatory/births.py`, D-028) for both families, validated on the HighLife replicator and Gray-Scott dividing spots (`physics/gray_scott.py`), with 12 new probe checks.
+- **E-27/E-28:** no reproducer in 568 Lenia worlds (0/285 movers). The first detector version was fooled by blobs bursting into world-filling labyrinths; fixed (doubling rule, fixed reference parent) and confirmed on 350 held-out worlds.
+- **Next (Track D, research.md):** Flow-Lenia with parameter localization in fed worlds plus a heredity measure; a division objective; multi-channel Lenia.
+
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
 ## Run it
@@ -47,8 +52,8 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 58 tests, ~1 min
-emergence benchmark --probes             # 39 + 42 validation checks, ~3 min on 12 cores
+pytest                                   # 61 tests, ~1 min
+emergence benchmark --probes             # 39 + 54 validation checks, ~5 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
