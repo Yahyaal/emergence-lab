@@ -1,0 +1,718 @@
+{
+ "settle": 300,
+ "hold": 400,
+ "seeds": [
+  {
+   "rad": 7,
+   "slope": 0.5,
+   "ecc": 0.6
+  },
+  {
+   "rad": 7,
+   "slope": 0.5,
+   "ecc": 0.85
+  },
+  {
+   "rad": 7,
+   "slope": 1.0,
+   "ecc": 0.6
+  },
+  {
+   "rad": 7,
+   "slope": 1.0,
+   "ecc": 0.85
+  },
+  {
+   "rad": 10,
+   "slope": 0.5,
+   "ecc": 0.6
+  },
+  {
+   "rad": 10,
+   "slope": 0.5,
+   "ecc": 0.85
+  },
+  {
+   "rad": 10,
+   "slope": 1.0,
+   "ecc": 0.6
+  },
+  {
+   "rad": 10,
+   "slope": 1.0,
+   "ecc": 0.85
+  },
+  {
+   "rad": 13,
+   "slope": 0.5,
+   "ecc": 0.6
+  },
+  {
+   "rad": 13,
+   "slope": 0.5,
+   "ecc": 0.85
+  },
+  {
+   "rad": 13,
+   "slope": 1.0,
+   "ecc": 0.6
+  },
+  {
+   "rad": 13,
+   "slope": 1.0,
+   "ecc": 0.85
+  }
+ ],
+ "grid": [
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0050/b1",
+   "mu": 0.1,
+   "sigma": 0.005,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0070/b1",
+   "mu": 0.1,
+   "sigma": 0.007,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0090/b1",
+   "mu": 0.1,
+   "sigma": 0.009,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0100/b1",
+   "mu": 0.1,
+   "sigma": 0.01,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0110/b1",
+   "mu": 0.1,
+   "sigma": 0.011,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0130/b1",
+   "mu": 0.1,
+   "sigma": 0.013,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0150/b1",
+   "mu": 0.1,
+   "sigma": 0.015,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0180/b1",
+   "mu": 0.1,
+   "sigma": 0.018,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.100/s0.0220/b1",
+   "mu": 0.1,
+   "sigma": 0.022,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0060/b1",
+   "mu": 0.12,
+   "sigma": 0.006,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0084/b1",
+   "mu": 0.12,
+   "sigma": 0.0084,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0108/b1",
+   "mu": 0.12,
+   "sigma": 0.0108,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0120/b1",
+   "mu": 0.12,
+   "sigma": 0.012,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0132/b1",
+   "mu": 0.12,
+   "sigma": 0.0132,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0156/b1",
+   "mu": 0.12,
+   "sigma": 0.0156,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0180/b1",
+   "mu": 0.12,
+   "sigma": 0.018,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0216/b1",
+   "mu": 0.12,
+   "sigma": 0.0216,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.120/s0.0264/b1",
+   "mu": 0.12,
+   "sigma": 0.0264,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0070/b1",
+   "mu": 0.14,
+   "sigma": 0.007,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0098/b1",
+   "mu": 0.14,
+   "sigma": 0.0098,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0126/b1",
+   "mu": 0.14,
+   "sigma": 0.0126,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "mu": 0.14,
+   "sigma": 0.014,
+   "viable": true,
+   "seed": {
+    "rad": 7,
+    "slope": 0.5,
+    "ecc": 0.85
+   },
+   "mass": 64.8,
+   "speed": 0.637
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "mu": 0.14,
+   "sigma": 0.0154,
+   "viable": true,
+   "seed": {
+    "rad": 10,
+    "slope": 1.0,
+    "ecc": 0.6
+   },
+   "mass": 70.1,
+   "speed": 0.618
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "mu": 0.14,
+   "sigma": 0.0182,
+   "viable": true,
+   "seed": {
+    "rad": 10,
+    "slope": 1.0,
+    "ecc": 0.6
+   },
+   "mass": 74.0,
+   "speed": 0.693
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0210/b1",
+   "mu": 0.14,
+   "sigma": 0.021,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0252/b1",
+   "mu": 0.14,
+   "sigma": 0.0252,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.140/s0.0308/b1",
+   "mu": 0.14,
+   "sigma": 0.0308,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0075/b1",
+   "mu": 0.15,
+   "sigma": 0.0075,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0105/b1",
+   "mu": 0.15,
+   "sigma": 0.0105,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0135/b1",
+   "mu": 0.15,
+   "sigma": 0.0135,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "mu": 0.15,
+   "sigma": 0.015,
+   "viable": true,
+   "seed": {
+    "rad": 10,
+    "slope": 1.0,
+    "ecc": 0.6
+   },
+   "mass": 69.5,
+   "speed": 0.541
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "mu": 0.15,
+   "sigma": 0.0165,
+   "viable": true,
+   "seed": {
+    "rad": 10,
+    "slope": 1.0,
+    "ecc": 0.6
+   },
+   "mass": 73.2,
+   "speed": 0.625
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "mu": 0.15,
+   "sigma": 0.0195,
+   "viable": true,
+   "seed": {
+    "rad": 10,
+    "slope": 1.0,
+    "ecc": 0.6
+   },
+   "mass": 75.6,
+   "speed": 0.648
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0225/b1",
+   "mu": 0.15,
+   "sigma": 0.0225,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0270/b1",
+   "mu": 0.15,
+   "sigma": 0.027,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.150/s0.0330/b1",
+   "mu": 0.15,
+   "sigma": 0.033,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0080/b1",
+   "mu": 0.16,
+   "sigma": 0.008,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0112/b1",
+   "mu": 0.16,
+   "sigma": 0.0112,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0144/b1",
+   "mu": 0.16,
+   "sigma": 0.0144,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "mu": 0.16,
+   "sigma": 0.016,
+   "viable": true,
+   "seed": {
+    "rad": 10,
+    "slope": 1.0,
+    "ecc": 0.6
+   },
+   "mass": 70.7,
+   "speed": 0.553
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "mu": 0.16,
+   "sigma": 0.0176,
+   "viable": true,
+   "seed": {
+    "rad": 10,
+    "slope": 1.0,
+    "ecc": 0.6
+   },
+   "mass": 76.6,
+   "speed": 0.615
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0208/b1",
+   "mu": 0.16,
+   "sigma": 0.0208,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0240/b1",
+   "mu": 0.16,
+   "sigma": 0.024,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0288/b1",
+   "mu": 0.16,
+   "sigma": 0.0288,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.160/s0.0352/b1",
+   "mu": 0.16,
+   "sigma": 0.0352,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0090/b1",
+   "mu": 0.18,
+   "sigma": 0.009,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0126/b1",
+   "mu": 0.18,
+   "sigma": 0.0126,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0162/b1",
+   "mu": 0.18,
+   "sigma": 0.0162,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0180/b1",
+   "mu": 0.18,
+   "sigma": 0.018,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0198/b1",
+   "mu": 0.18,
+   "sigma": 0.0198,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0234/b1",
+   "mu": 0.18,
+   "sigma": 0.0234,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0270/b1",
+   "mu": 0.18,
+   "sigma": 0.027,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0324/b1",
+   "mu": 0.18,
+   "sigma": 0.0324,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.180/s0.0396/b1",
+   "mu": 0.18,
+   "sigma": 0.0396,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0100/b1",
+   "mu": 0.2,
+   "sigma": 0.01,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0140/b1",
+   "mu": 0.2,
+   "sigma": 0.014,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0180/b1",
+   "mu": 0.2,
+   "sigma": 0.018,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0200/b1",
+   "mu": 0.2,
+   "sigma": 0.02,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0220/b1",
+   "mu": 0.2,
+   "sigma": 0.022,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0260/b1",
+   "mu": 0.2,
+   "sigma": 0.026,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0300/b1",
+   "mu": 0.2,
+   "sigma": 0.03,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0360/b1",
+   "mu": 0.2,
+   "sigma": 0.036,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.200/s0.0440/b1",
+   "mu": 0.2,
+   "sigma": 0.044,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0110/b1",
+   "mu": 0.22,
+   "sigma": 0.011,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0154/b1",
+   "mu": 0.22,
+   "sigma": 0.0154,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0198/b1",
+   "mu": 0.22,
+   "sigma": 0.0198,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0220/b1",
+   "mu": 0.22,
+   "sigma": 0.022,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0242/b1",
+   "mu": 0.22,
+   "sigma": 0.0242,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0286/b1",
+   "mu": 0.22,
+   "sigma": 0.0286,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0330/b1",
+   "mu": 0.22,
+   "sigma": 0.033,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0396/b1",
+   "mu": 0.22,
+   "sigma": 0.0396,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.220/s0.0484/b1",
+   "mu": 0.22,
+   "sigma": 0.0484,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0125/b1",
+   "mu": 0.25,
+   "sigma": 0.0125,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0175/b1",
+   "mu": 0.25,
+   "sigma": 0.0175,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0225/b1",
+   "mu": 0.25,
+   "sigma": 0.0225,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0250/b1",
+   "mu": 0.25,
+   "sigma": 0.025,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0275/b1",
+   "mu": 0.25,
+   "sigma": 0.0275,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0325/b1",
+   "mu": 0.25,
+   "sigma": 0.0325,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0375/b1",
+   "mu": 0.25,
+   "sigma": 0.0375,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0450/b1",
+   "mu": 0.25,
+   "sigma": 0.045,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.250/s0.0550/b1",
+   "mu": 0.25,
+   "sigma": 0.055,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0140/b1",
+   "mu": 0.28,
+   "sigma": 0.014,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0196/b1",
+   "mu": 0.28,
+   "sigma": 0.0196,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0252/b1",
+   "mu": 0.28,
+   "sigma": 0.0252,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0280/b1",
+   "mu": 0.28,
+   "sigma": 0.028,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0308/b1",
+   "mu": 0.28,
+   "sigma": 0.0308,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0364/b1",
+   "mu": 0.28,
+   "sigma": 0.0364,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0420/b1",
+   "mu": 0.28,
+   "sigma": 0.042,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0504/b1",
+   "mu": 0.28,
+   "sigma": 0.0504,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.280/s0.0616/b1",
+   "mu": 0.28,
+   "sigma": 0.0616,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0160/b1",
+   "mu": 0.32,
+   "sigma": 0.016,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0224/b1",
+   "mu": 0.32,
+   "sigma": 0.0224,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0288/b1",
+   "mu": 0.32,
+   "sigma": 0.0288,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0320/b1",
+   "mu": 0.32,
+   "sigma": 0.032,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0352/b1",
+   "mu": 0.32,
+   "sigma": 0.0352,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0416/b1",
+   "mu": 0.32,
+   "sigma": 0.0416,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0480/b1",
+   "mu": 0.32,
+   "sigma": 0.048,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0576/b1",
+   "mu": 0.32,
+   "sigma": 0.0576,
+   "viable": false
+  },
+  {
+   "rule": "LENIA/R13/T10/m0.320/s0.0704/b1",
+   "mu": 0.32,
+   "sigma": 0.0704,
+   "viable": false
+  }
+ ]
+}
