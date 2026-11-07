@@ -24,7 +24,7 @@ E-12); smooth starts with ell near the creature size (6-10, kernel radius 13) an
 sparser density produce more, because a glider needs an isolated, asymmetric lump of
 mass ~70 with space around it.
 
-## Amendment 1 (2026-11-07, ~00:45 CST; before any E-13 run)
+## Amendment 1 (2026-11-07, ~00:10 CST; before any E-13 run)
 
 A literature review (J-013) found that Chan (2019), who reports that gliders such as Orbium
 emerge "given enough time" from random starts, used a different start from ours: 15-40
