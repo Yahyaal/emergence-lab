@@ -124,9 +124,12 @@ def initial_state(spec: "UniverseSpec", rng: np.random.Generator) -> np.ndarray:
             dmap[dy * dy + dx * dx <= r * r] = local
     elif kind == "patches":
         dmap = np.where(patch_mask(spec, rng), float(init.get("local", 0.5)), 0.0)
-    elif kind == "smooth":
+    elif kind in ("smooth", "smooth_shuffled"):
         u = smooth_field((h, w), float(init.get("ell", 6.0)), rng)
-        return (u > np.quantile(u, 1.0 - spec.density)).astype(np.uint8)
+        state = (u > np.quantile(u, 1.0 - spec.density)).astype(np.uint8)
+        if kind == "smooth_shuffled":  # same occupied cells, randomly permuted
+            state = rng.permutation(state.ravel()).reshape(state.shape)
+        return state
     else:
         raise ValueError(f"unknown init kind {kind!r}; known: {sorted(INIT_KINDS)}")
     return (rng.random((h, w)) < dmap).astype(np.uint8)
