@@ -52,6 +52,9 @@ INIT_KINDS = {
     "smooth": "Gaussian-blurred white noise, filter width `ell` (6) cells; nothing planted. Discrete: the "
               "top `density` fraction of cells is occupied. Continuous: values chosen so the total mass "
               "(sum of values) equals the soup's expected mass, 0.5 * density * cells (D-023)",
+    "smooth_shuffled": "null for `smooth`: the same cell values as `smooth` (same `ell`, same seed), randomly "
+                       "permuted over the grid, so value distribution and total mass are identical but the "
+                       "spatial correlation is gone (review R-4)",
     "patches": "Chan's (2019) random start: `n` (15-40, random) square patches of side `side` (12 = 0.9 R for "
                "R = 13) at random places in vacuum. Continuous: every patch cell gets a value uniform in "
                "[0, 0.9]; discrete: patch cells occupied with probability `local` (0.5). Not mass-matched",
@@ -153,6 +156,9 @@ class Universe:
         if spec.init is not None:
             if spec.init.get("kind") == "smooth" and getattr(physics, "continuous", False):
                 return cls(physics, physics.from_levels(smooth_continuous(spec, rng)))
+            if spec.init.get("kind") == "smooth_shuffled" and getattr(physics, "continuous", False):
+                vals = smooth_continuous(spec, rng)
+                return cls(physics, physics.from_levels(rng.permutation(vals.ravel()).reshape(vals.shape)))
             if spec.init.get("kind") == "patches" and getattr(physics, "continuous", False):
                 mask = patch_mask(spec, rng)
                 vals = np.rint(rng.random(mask.shape) * 0.9 * 255)

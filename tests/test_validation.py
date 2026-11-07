@@ -424,3 +424,13 @@ def test_flow_lenia_static_blob_rule_is_not_complex():
     p = parse_rule(FLOW_STATIC)
     o = study_universe(Universe(p, FlowLenia.patch_state(np.random.default_rng(1), (96, 96))), 1, steps=300)
     assert o.cls != "complex" and o.metrics["self_propelled_shapes"] == 0 and o.metrics["quasi_static"]
+
+
+def test_smooth_shuffled_has_same_values_but_no_correlation():
+    from emergence.physics import parse_rule
+    orb = parse_rule(ORBIUM).to_dict()
+    sm = Universe.from_spec(UniverseSpec(orb, 9, 96, 96, 0.1, init={"kind": "smooth", "ell": 3})).state
+    sh = Universe.from_spec(UniverseSpec(orb, 9, 96, 96, 0.1, init={"kind": "smooth_shuffled", "ell": 3})).state
+    assert np.array_equal(np.sort(sm.ravel()), np.sort(sh.ravel())) and not np.array_equal(sm, sh)
+    corr = lambda a: np.corrcoef(a[:, :-1].ravel(), a[:, 1:].ravel())[0, 1]  # noqa: E731
+    assert corr(sm.astype(float)) > 0.5 and abs(corr(sh.astype(float))) < 0.05
