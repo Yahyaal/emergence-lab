@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-014 · 2026-11-07 · v0.7: Flow-Lenia physics (implementation and validation only, no experiments)
+
+**Question / why:** add a mass-conserving continuous family (Flow-Lenia, Plantec et al. 2022/2023, arXiv 2212.07906), where matter is moved along a flow instead of created and destroyed. (J-013 is used on the parallel `v0.6-lenia-experiments` branch.)
+
+**Built:**
+- **Physics** (`physics/flow_lenia.py`, reimplemented from the paper's equations; the reference code has no licence and was not used): single channel, torus, FFT ring kernels and Gaussian growth, flow F = (1 − α)∇U − α∇A with α = clip(A², 0, 1) (θ_A = 1, n = 2), unnormalised 3×3 Sobel gradients with wrap, reintegration tracking (dt = 0.2, s = 0.65, displacement clipped to dd − s = 4.35). Labels `FLENIA/R13/m…/s…/h…/r…/a…/b…/w…`, kernels joined by `+`; `random()` uses the paper's ranges with R fixed at 13 and 1–3 kernels of 3 rings; `mutate()` always changes the label. `FLENIA/R13/diffusion` is the U = 0 control.
+- **Storage (D-025):** uint8, A = state × 2/255, with largest-remainder rounding that keeps `sum(state)` exactly constant.
+- Discovery niche family `flow_lenia`, dashboard colour ramp, CLI help.
+
+**Found:**
+- **Mass:** stored mass is exact over 1000 steps (101 636 → 101 636 levels); the float core drifts by 7.8e-14 relative. Capped cells (value > 255) hand out ~2 levels per step of ~10⁵ in a rule that saturates.
+- **Rotation:** a rot90 seed evolves into the rot90 world (no cell differs by > 2 levels after 200 steps; centroid mismatch 0.00 cells), so the Sobel/grid and the rounding tie-break do not make fake motion.
+- **No positive control found.** 88 random rules from the paper's 40×40 uniform patch (128×128 torus, 450–600 steps): 52 checked with the full detector (16 from `random()`, 24 with 3 kernels, 12 with 10 kernels) gave **0 movers and 0 self-propelled structures**; 36 more (12 with 1 kernel, 24 with 10) tracked by largest-object drift in both uint8 and float showed no clean mover (net displacement ≪ path). Most collapse into one or a few static blobs; the rest fragment and wobble. This agrees with the paper: random search gives mostly static patterns, and directed motion with one channel needed long optimisation (multi-channel was much easier).
+- **Quantization friction (important):** flows below about half a level per cell per step are rounded away. Pure diffusion of the patch freezes in uint8 after < 50 steps (rms radius 16.6) but keeps spreading in float (22.2 at step 400). In the drift scan some rules wobble in float (path 23–42 cells) but are pinned in uint8 (1–6). Slow Flow-Lenia dynamics are therefore **not trustworthy** in the uint8 implementation.
+
+**Validation:** 5 new probe checks (37/37; standard 39/39): exact mass, negative (static blob rule → not complex, quasi-static), deceptive (diffusion → no movers; rotated seed moves rotated), selection-aware null (random rules picked by the old objectives → none complex without a mover). There is **no Flow-Lenia positive**; the detector's positive is still the Lenia gliders. The diffusion control is weak because friction freezes it. 4 new tests (55).
+
+**Caveats:** Sobel normalisation and displacement clipping are not stated in the paper (choices here: unnormalised, dd = 5). θ_A = 1 for one channel is our choice; the paper gives no value.
+
+**Lesson:** an exactly conserved quantized state can still be the wrong physics: rounding friction stops slow flows, so a float (b) state is needed before reading anything from slow Flow-Lenia dynamics.
 ## J-015 · 2026-11-07 · E-14 confirms: smooth starts make gliders, soups never do
 
 **Question (pre-registered before running, `docs/data/e14-preregistration.md`):** does E-13's exploratory finding hold with fresh seeds and a test that can reach significance?

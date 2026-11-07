@@ -62,7 +62,7 @@ function paint(ctx, data, w, hgt, n) {
 }
 const b64bytes = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
 const numStates = (rule) => {
-  if (/^LENIA\//i.test(rule || "")) return 256;
+  if (/^F?LENIA\//i.test(rule || "")) return 256;
   const m = /\/C(\d+)/i.exec(rule || ""); return m ? +m[1] : 2;
 };
 
