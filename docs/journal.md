@@ -12,6 +12,58 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-016 · 2026-11-07 · v0.7: Flow-Lenia physics with float32 states (implementation and validation only, no experiments)
+
+**Question / why:** add a mass-conserving continuous family, Flow-Lenia (Plantec et al. 2022/2023, arXiv 2212.07906): matter is moved along a flow instead of being created and destroyed. This is a second Lenia-like family next to the E-12/E-13 Lenia work (J-013, J-014).
+
+**Built:**
+- **Physics** (`physics/flow_lenia.py`), reimplemented from the paper's equations. The reference code has no licence and was not used.
+  - Single channel on a torus, FFT ring kernels, Gaussian growth.
+  - Flow F = (1 − α)∇U − α∇A, with α = clip(A², 0, 1) (θ_A = 1, n = 2). Gradients are unnormalised 3×3 Sobel filters with wrap.
+  - Reintegration tracking: dt = 0.2, s = 0.65, displacement clipped to dd − s = 4.35.
+- **Rules:** written `FLENIA/R13/m…/s…/h…/r…/a…/b…/w…`, kernels joined by `+`.
+  - `random()` uses the paper's ranges, with R fixed at 13 and 1–3 kernels of 3 rings each.
+  - `mutate()` always changes the label.
+  - `FLENIA/R13/diffusion` is the U = 0 control.
+- **Float states in the engine (D-026).** A physics may declare `dtype = np.float32`.
+  - **True float state:** the universe, forks, `state_hash` (tagged with the dtype) and storage (float32 blobs) all keep it.
+  - **uint8 view:** each physics has a `view` (A on [0, 2]), which the observer's frame measures, the damage probe, the dashboard and `make_media` use.
+  - **Structure census and exact recurrence** use the float state. Their thresholds are converted so they mean the same physical value as for uint8 Lenia.
+  - **uint8 physics are untouched:** their view is the state itself.
+- **Wiring:** discovery niche family `flow_lenia`, dashboard colour ramp, CLI help.
+
+**Why float, not uint8:** a first uint8 version used exact largest-remainder rounding, and its integer mass was exactly conserved. But it had **quantization friction**: flows under about half a level per step were rounded away. Pure diffusion of the paper's patch froze after < 50 steps (rms radius 16.6), while float kept spreading (22.2 at step 400). Some rules that wobbled in float were pinned in uint8. It was dropped.
+
+**Found:**
+- **Bit identity:** the text output of `emergence benchmark --probes` (39 standard checks plus all 32 earlier probe checks) is identical before and after the change, and all earlier tests pass.
+- **Mass:** conserved to float32 rounding. The worst relative drift within 1000 steps is 1.5e-8, with no trend (the float64 core drifts ~1e-13).
+- **Rotation:** a rot90 seed evolves into the rot90 world exactly (200 steps; centroid mismatch 0.00). The grid and the Sobel filters do not make fake motion.
+- **No positive control found.** 80 random float rules from the paper's 40×40 uniform patch (128×128 torus, 500 steps): 20 with 3 kernels, 20 with 5, 20 with 10, and 20 with 10 kernels and R random in [8, 25].
+  - **0 self-propelled structures.** Two tracks passed the mover test, but both are small fragments (mass ~10) that fail the isolation test.
+  - Most rules collapse into one blob or a few static blobs. The rest shed fragments or wobble.
+  - Four candidates with the largest drift were inspected over 800 steps: fragments settle or creep, and none travels alone.
+  - The 88 rules of the first, uint8 version (now dropped) gave none either.
+  - This agrees with the paper: random search gives mostly static patterns, and directed motion with one channel needed long optimisation; two channels made it much easier.
+  - **Two channels were not tried:** a 3D state would touch every observer path.
+
+**Validation:** 5 probe checks (37/37; standard 39/39):
+- mass conserved to float32 rounding;
+- negative: a static-blob rule → not complex, quasi-static;
+- deceptive: diffusion spreads (+9 cells rms in 400 steps) but has no movers;
+- deceptive: a rotated seed moves the same way, rotated;
+- selection-aware null: random rules picked by the old objectives → none complex without a mover.
+
+There is **no Flow-Lenia positive**; the detector's positive is still the Lenia gliders. 5 new tests (56 in total).
+
+**Caveats:**
+- The paper states neither the Sobel normalisation nor the displacement clipping; the choices here are unnormalised Sobel and dd = 5.
+- θ_A = 1 for one channel is our choice; the paper gives no value.
+- Frame measures (activity, entropy, compression, local periodicity) see the uint8 view, so changes under 2/255 × 2 ≈ 0.016 in A count as no change. That is why the diffusion control is labelled `periodic`.
+
+**Lesson:** a state that conserves mass exactly can still be the wrong physics. Rounding friction stopped slow flows, so the state had to be floating point.
+
+---
+
 ## J-015 · 2026-11-07 · E-14 confirms: smooth starts make gliders, soups never do
 
 **Question (pre-registered before running, `docs/data/e14-preregistration.md`):** does E-13's exploratory finding hold with fresh seeds and a test that can reach significance?

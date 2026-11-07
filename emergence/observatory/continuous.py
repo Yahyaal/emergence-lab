@@ -28,6 +28,11 @@ static blobs give 20. Two continuous-only keys:
                       thousands of steps (real slow relaxation, also present without
                       quantization); this measure excludes that and keeps everything else.
 
+Value scale: uint8 states are in levels (value = level / 255, e.g. Lenia); float states
+(e.g. Flow-Lenia) are in physical units. THRESHOLD and VALUE_TOL are written in 1/255
+levels and converted for float states (THRESHOLD = 0.102, VALUE_TOL = 0.0078), so both
+families use the same physical thresholds; uint8 results are unchanged.
+
 Objects are labelled on the torus (components touching across the seam are merged) and
 centroids use circular means, so wrapping objects are tracked correctly.
 Limitations: merging and splitting objects end tracks; a slow mover may not reach
@@ -47,6 +52,19 @@ VALUE_TOL = 2           # levels (of 255): smaller per-step changes are rounding
 STILL_MARGIN = 3        # cells around a still object whose activity is attributed to it
 MIN_STILL_FRAMES = 10   # a track this long that never leaves its place anchors free_activity
 _STRUCT = np.ones((3, 3), dtype=bool)
+
+
+def _unit(state: np.ndarray) -> float:
+    """Stored units per value 1: 255 for uint8 levels, 1 for float (physical) states."""
+    return 1.0 if np.issubdtype(state.dtype, np.floating) else 255.0
+
+
+def _thr(state: np.ndarray):
+    return THRESHOLD if _unit(state) == 255.0 else THRESHOLD / 255.0
+
+
+def _tol(state: np.ndarray):
+    return VALUE_TOL if _unit(state) == 255.0 else VALUE_TOL / 255.0
 
 
 def label_torus(mask: np.ndarray) -> tuple[np.ndarray, int]:
@@ -81,12 +99,12 @@ def label_torus(mask: np.ndarray) -> tuple[np.ndarray, int]:
 
 
 def objects(state: np.ndarray) -> list[dict]:
-    mask = state >= THRESHOLD
+    mask = state >= _thr(state)
     labels, n = label_torus(mask)
     if n == 0:
         return []
     idx = np.arange(1, n + 1)
-    v = state.astype(np.float64) / 255.0
+    v = state.astype(np.float64) / _unit(state)
     area = ndimage.sum(mask, labels, idx)
     mass = ndimage.sum(v, labels, idx)
     h, w = state.shape
@@ -162,13 +180,13 @@ def isolate(state: np.ndarray, obj: dict, margin: int = 4) -> np.ndarray:
     h, w = state.shape
     shift = (int(round(h / 2 - obj["c"][0])), int(round(w / 2 - obj["c"][1])))
     rolled = np.roll(state, shift, axis=(0, 1))
-    labels, n = ndimage.label(rolled >= THRESHOLD, structure=_STRUCT)
+    labels, n = ndimage.label(rolled >= _thr(state), structure=_STRUCT)
     if n == 0:
         return np.zeros_like(state)
-    cents = ndimage.center_of_mass(rolled >= THRESHOLD, labels, np.arange(1, n + 1))
+    cents = ndimage.center_of_mass(rolled >= _thr(state), labels, np.arange(1, n + 1))
     best = 1 + int(np.argmin([np.hypot(cy - h / 2, cx - w / 2) for cy, cx in cents]))
     halo = ndimage.binary_dilation(labels == best, structure=_STRUCT, iterations=margin)
-    return np.where(halo, rolled, 0).astype(np.uint8)
+    return np.where(halo, rolled, 0).astype(state.dtype)
 
 
 def self_propelled(physics, state: np.ndarray, obj: dict, steps: int = 100) -> bool:
@@ -180,7 +198,7 @@ def self_propelled(physics, state: np.ndarray, obj: dict, steps: int = 100) -> b
     r0, r1, c0, c1 = rows.min(), rows.max() + 1, cols.min(), cols.max() + 1
     pad = 2 * int(MIN_TRAVEL) + 3 * getattr(physics, "R", 13) + steps // 2
     side = int(max(64, max(r1 - r0, c1 - c0) + 2 * pad))
-    world = np.zeros((side, side), np.uint8)
+    world = np.zeros((side, side), state.dtype)
     oy, ox = (side - (r1 - r0)) // 2, (side - (c1 - c0)) // 2
     world[oy:oy + r1 - r0, ox:ox + c1 - c0] = alone[r0:r1, c0:c1]
     start = objects(world)
@@ -214,13 +232,14 @@ def free_activity(frames: list[np.ndarray], per: list[list[dict]], tracks: list[
     for tr in still:
         for t, j in (tr["first"], tr["last"]):
             if t not in labels:
-                labels[t] = label_torus(frames[t] >= THRESHOLD)[0]
+                labels[t] = label_torus(frames[t] >= _thr(frames[t]))[0]
             mask |= labels[t] == per[t][j]["label"]
     if mask.any():
         mask = ndimage.maximum_filter(mask, size=2 * margin + 1, mode="wrap")
     free = ~mask
-    st = np.stack(frames).astype(np.int16)
-    changed = np.abs(np.diff(st, axis=0)) > VALUE_TOL
+    st = np.stack(frames)
+    st = st.astype(np.float64) if np.issubdtype(st.dtype, np.floating) else st.astype(np.int16)
+    changed = np.abs(np.diff(st, axis=0)) > _tol(frames[0])
     return float((changed & free).sum()) / (changed.shape[0] * free.size)
 
 

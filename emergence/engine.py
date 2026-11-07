@@ -132,14 +132,18 @@ def initial_state(spec: "UniverseSpec", rng: np.random.Generator) -> np.ndarray:
 def state_hash(state: np.ndarray) -> str:
     h = hashlib.blake2b(digest_size=16)
     h.update(np.asarray(state.shape, dtype=np.int64).tobytes())
-    h.update(np.ascontiguousarray(state, dtype=np.uint8).tobytes())
+    if np.issubdtype(state.dtype, np.floating):  # float physics: dtype tag + exact bytes
+        h.update(b"float32")
+        h.update(np.ascontiguousarray(state, dtype=np.float32).tobytes())
+    else:  # integer states: unchanged since v0.1
+        h.update(np.ascontiguousarray(state, dtype=np.uint8).tobytes())
     return h.hexdigest()
 
 
 class Universe:
     def __init__(self, physics: Physics, state: np.ndarray, t: int = 0):
         self.physics = physics
-        self._state = np.ascontiguousarray(state, dtype=np.uint8)
+        self._state = np.ascontiguousarray(state, dtype=getattr(physics, "dtype", np.uint8))
         self.t = t
 
     @classmethod
@@ -148,15 +152,15 @@ class Universe:
         rng = np.random.default_rng(spec.seed)
         if spec.init is not None:
             if spec.init.get("kind") == "smooth" and getattr(physics, "continuous", False):
-                return cls(physics, smooth_continuous(spec, rng))
+                return cls(physics, physics.from_levels(smooth_continuous(spec, rng)))
             if spec.init.get("kind") == "patches" and getattr(physics, "continuous", False):
                 mask = patch_mask(spec, rng)
                 vals = np.rint(rng.random(mask.shape) * 0.9 * 255)
-                return cls(physics, np.where(mask, vals, 0).astype(np.uint8))
+                return cls(physics, physics.from_levels(np.where(mask, vals, 0).astype(np.uint8)))
             state = initial_state(spec, rng)
             if getattr(physics, "continuous", False):  # occupied cells get random values, like the soup
                 state = np.where(state > 0, np.rint(rng.random(state.shape) * 255), 0).astype(np.uint8)
-            return cls(physics, state)
+            return cls(physics, physics.from_levels(state))
         state = physics.random_state(rng, (spec.height, spec.width), spec.density)
         return cls(physics, state)
 

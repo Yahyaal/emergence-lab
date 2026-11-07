@@ -363,3 +363,64 @@ def test_chan_patches_init():
     assert 0 < (s > 0).mean() < 20 * 144 / s.size + 1e-9 and s.max() <= round(0.9 * 255)
     d = Universe.from_spec(UniverseSpec(LIFE.to_dict(), 4, 128, 128, 0.35, init={"kind": "patches"})).state
     assert set(np.unique(d)) <= {0, 1} and 0 < d.mean() < 0.5
+FLOW_STATIC = "FLENIA/R13/m0.326/s0.0041/h0.2/r0.89/a0.08,0.2,0.63/b0.1,0.15,0.18/w0.075,0.492,0.385"
+FLOW_WANDER = "FLENIA/R13/m0.082/s0.1634/h0.65/r0.36/a0.59,0.9,0.45/b0.2,0.36,0.04/w0.41,0.248,0.406"
+
+
+def test_flow_lenia_rule_labels_round_trip_and_mutation_changes_them():
+    from emergence.physics import FlowLenia, parse_rule, physics_from_dict
+    rng = np.random.default_rng(5)
+    for _ in range(30):
+        p = FlowLenia.random(rng)
+        assert parse_rule(p.label()).label() == p.label() and physics_from_dict(p.to_dict()) == p
+        assert p.continuous and 1 <= p.rule_features()["kernels"] <= 3
+        c = p.mutate(rng)
+        assert c.label() != p.label() and parse_rule(c.label()).label() == c.label()
+    single = parse_rule(FLOW_STATIC)
+    for _ in range(200):
+        assert single.mutate(rng).label() != single.label()
+    assert parse_rule("FLENIA/R13/diffusion").diffusion_only
+
+
+def test_flow_lenia_conserves_mass_in_float32():
+    from emergence.physics import FlowLenia, parse_rule
+    p = parse_rule(FLOW_WANDER)
+    s = FlowLenia.patch_state(np.random.default_rng(2), (64, 64), side=24)
+    m0, A = s.sum(dtype=np.float64), s.astype(np.float64)
+    for _ in range(1000):
+        s, A = p.step(s), p.step_float(A)
+    assert s.dtype == np.float32 and abs(s.sum(dtype=np.float64) - m0) / m0 < 1e-6  # float32 rounding
+    assert abs(A.sum() - m0) / m0 < 1e-10                                            # float64 core
+
+
+def test_float_states_through_engine_storage_and_observer():
+    from emergence.engine import state_hash
+    from emergence.physics import FlowLenia, parse_rule
+    from emergence.storage import pack_state, unpack_state
+    p = parse_rule(FLOW_WANDER)
+    u = Universe.from_spec(UniverseSpec(p.to_dict(), 3, 48, 48, 0.3))
+    assert u.state.dtype == np.float32 and 0 < u.state.max() <= 1 and u.fork().state.dtype == np.float32
+    back = unpack_state(pack_state(u.state), 48, 48)
+    assert back.dtype == np.float32 and np.array_equal(back, u.state)
+    assert state_hash(u.state) == state_hash(back) != state_hash(p.view(u.state))
+    assert unpack_state(pack_state(p.view(u.state)), 48, 48).dtype == np.uint8
+    o = study(UniverseSpec(p.to_dict(), 3, 48, 48, 0.3), steps=60)
+    assert o.final_state.dtype == np.float32 and o.metrics["continuous"]
+    assert isinstance(FlowLenia.patch_state(np.random.default_rng(0), (48, 48), 20)[0, 0], np.float32)
+
+
+def test_flow_lenia_rotated_seed_evolves_rotated():
+    from emergence.physics import FlowLenia, parse_rule
+    p = parse_rule(FLOW_WANDER)
+    s = FlowLenia.patch_state(np.random.default_rng(3), (64, 64), side=24)
+    a, b = s.copy(), np.rot90(s).copy()
+    for _ in range(100):
+        a, b = p.step(a), p.step(b)
+    assert (np.abs(np.rot90(a) - b) > 2 / 255).mean() < 0.01
+
+
+def test_flow_lenia_static_blob_rule_is_not_complex():
+    from emergence.physics import FlowLenia, parse_rule
+    p = parse_rule(FLOW_STATIC)
+    o = study_universe(Universe(p, FlowLenia.patch_state(np.random.default_rng(1), (96, 96))), 1, steps=300)
+    assert o.cls != "complex" and o.metrics["self_propelled_shapes"] == 0 and o.metrics["quasi_static"]

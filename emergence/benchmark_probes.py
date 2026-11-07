@@ -27,6 +27,15 @@ Continuous physics (Lenia), tolerant structure detector (observatory/continuous.
               no persistent objects or movers; a decaying lopsided blob under a dying
               rule (its centre drifts as it fades): not self-propelled
 
+Flow-Lenia (mass-conserving, float32 states, physics/flow_lenia.py, J-016, D-026):
+* mass        conserved to float32 rounding over 1000 steps
+* negative    a rule that collapses the 40x40 patch into one static blob: not self-propelled, not complex
+* deceptive   pure diffusion (U = 0): spreads, but no movers; a rotated seed evolves into the
+              rotated world (no fake motion from grid or Sobel anisotropy)
+* null        random rules picked the way the old objectives picked them: none complex without a mover
+* positive    NOT available: no self-propelled structure in a search of 80 float rules with
+              3-10 kernels (and 88 earlier uint8 rules), J-016
+
 Continuous class label and settledness (observer.classify, quasi_static, v0.5 fix, J-012).
 Labels and objectives tuned for 2-state rules called fields of static Lenia blobs "complex":
 * complex     positive: two emergent gliders through the full pipeline -> complex.
@@ -57,6 +66,12 @@ from .physics import NoiseControl, OuterTotalistic
 
 GOSPER_GUN = "24bo$22bobo$12b2o6b2o12b2o$11bo3bo4b2o12b2o$2o8bo5bo3b2o$2o8bo3bob2o4bobo$10bo5bo7bo$11bo3bo$12b2o!"
 HIGHLIFE_REPLICATOR = "2b3o$bo2bo$o3bo$o2bo$3o!"
+# Flow-Lenia controls (J-016): drawn by FlowLenia._random_kernel from default_rng(1001) and
+# default_rng(1007). STATIC collapses the paper's 40x40 patch into one static blob; WANDER
+# forms a few objects that wobble and reshape (no straight self-propelled track).
+FLOW_STATIC = "FLENIA/R13/m0.326/s0.0041/h0.2/r0.89/a0.08,0.2,0.63/b0.1,0.15,0.18/w0.075,0.492,0.385"
+FLOW_WANDER = "FLENIA/R13/m0.082/s0.1634/h0.65/r0.36/a0.59,0.9,0.45/b0.2,0.36,0.04/w0.41,0.248,0.406"
+VALUE_TOL_LEVELS = 2
 
 
 def rle(s: str) -> np.ndarray:
@@ -246,6 +261,64 @@ def run_probe_benchmark(log=print) -> dict:
           f"{len(picked)} picked of {len(alive)} alive: classes {sorted(cm[0] for cm in picked)}, "
           f"quasi-static {sum(cm[1]['quasi_static'] for cm in picked)}, "
           f"new vocabulary objective {[round(OBJECTIVES['vocabulary'](cm[1])) for cm in picked]}")
+
+    # 8. Flow-Lenia (mass-conserving continuous physics, float32 states, v0.7, J-016, D-026)
+    from .physics import FlowLenia
+    fl_static = parse_rule(FLOW_STATIC)
+    fl_wander = parse_rule(FLOW_WANDER)
+    side = (128, 128)
+    s = FlowLenia.patch_state(np.random.default_rng(7), side)
+    m0 = float(s.sum(dtype=np.float64))
+    worst_drift = 0.0
+    for _ in range(1000):
+        s = fl_wander.step(s)
+        worst_drift = max(worst_drift, abs(float(s.sum(dtype=np.float64)) - m0) / m0)
+    check("Flow-Lenia mass: conserved to float32 rounding over 1000 steps", worst_drift < 1e-6 and s.dtype == np.float32,
+          f"mass {m0:.3f} -> {float(s.sum(dtype=np.float64)):.3f}; worst relative drift {worst_drift:.1e}")
+    c, m = label(fl_static, FlowLenia.patch_state(np.random.default_rng(1), side), 400)
+    check("Flow-Lenia negative: static blob rule -> no self-propelled, not complex",
+          c != "complex" and m["self_propelled_shapes"] == 0 and m["still_structures"] >= 1, brief(c, m))
+    diff = FlowLenia.parse("FLENIA/R13/diffusion")
+    hot = FlowLenia.patch_state(np.random.default_rng(1), side) * 2  # A ~ U[0, 2]: alpha = 1 above 1
+    yy, xx = np.mgrid[0:side[0], 0:side[1]]
+    rms = lambda a: float(np.sqrt((a / a.sum() * ((yy - 63.5) ** 2 + (xx - 63.5) ** 2)).sum()))  # noqa: E731
+    u_d = Universe(diff, hot)
+    u_d.step(400)
+    grew = rms(u_d.state) - rms(hot)
+    c, m = label(diff, hot, 400)
+    check("Flow-Lenia deceptive: pure diffusion (U = 0) spreads, no movers, not complex",
+          grew > 1.0 and c != "complex" and m["mover_shapes"] == 0 and m["self_propelled_shapes"] == 0,
+          f"rms radius +{grew:.1f} cells in 400 steps; " + brief(c, m))
+    # a rotated seed must evolve into the rotated world: grid or Sobel anisotropy must not
+    # produce direction-dependent motion
+    s0 = FlowLenia.patch_state(np.random.default_rng(3), side)
+    a_, b_ = s0.copy(), np.rot90(s0).copy()
+    worst, dc = 0.0, 0.0
+    for _ in range(4):
+        for _ in range(50):
+            a_, b_ = fl_wander.step(a_), fl_wander.step(b_)
+        ra = np.rot90(a_)
+        worst = max(worst, float((np.abs(ra - b_) > VALUE_TOL_LEVELS / 255).mean()))
+        ca = max(C.objects(ra), key=lambda o: o["mass"])["c"]
+        cb = max(C.objects(b_), key=lambda o: o["mass"])["c"]
+        dc = max(dc, float(np.hypot(*C._torus_delta(ca, cb, side))))
+    check("Flow-Lenia deceptive: rotated seed moves the same way rotated", worst < 0.01 and dc < 1.0,
+          f"largest-object centroid mismatch {dc:.2f} cells, cells differing by > 2/255 {worst:.4f} (200 steps)")
+    # positive: none found. 80 random float rules (3, 5 and 10 kernels, paper's ranges and patch
+    # start) gave no self-propelled structure (J-016), so there is no Flow-Lenia positive; the detector's
+    # positive remains the Lenia gliders above. Selection-aware null: random rules picked by
+    # the old objectives (most persistent objects; most activity) are not complex without one.
+    rng = np.random.default_rng(77)
+    runs = []
+    for _ in range(8):
+        r = FlowLenia.random(rng)
+        runs.append(label(r, FlowLenia.patch_state(np.random.default_rng(1), (96, 96)), 300))
+    picked = {id(cm): cm for f in (old_vocab, old_activity)
+              for cm in sorted(runs, key=lambda cm: -f(cm[1]))[:3]}.values()
+    bad = [cm for cm in picked if cm[0] == "complex" and not cm[1]["self_propelled_shapes"]]
+    check("Flow-Lenia complex null: top picks by objects/activity are not complex without a mover", not bad,
+          f"{len(picked)} picked of {len(runs)}: classes {sorted(cm[0] for cm in picked)}, "
+          f"self-propelled {[int(cm[1]['self_propelled_shapes']) for cm in picked]}")
 
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")

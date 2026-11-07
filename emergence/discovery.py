@@ -167,6 +167,8 @@ def _bin(x: float, edges: tuple[float, ...]) -> int:
 def _family(rule: str) -> str:
     if rule.upper().startswith("LENIA/"):
         return "lenia"
+    if rule.upper().startswith("FLENIA/"):
+        return "flow_lenia"
     return "multi" if re.search(r"/C\d+", rule) else "2state"
 
 

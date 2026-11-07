@@ -1,10 +1,15 @@
 """Abstract interface every kind of "physics" must implement.
 
 The rest of the system (engine, observatory, discovery, dashboard) only talks to
-physics through this interface. A state is always a 2D ``numpy.uint8`` array of
-discrete cell states, where 0 means "vacuum". New physics (e.g. continuous
-automata, particle systems rasterised to a grid) can be added by subclassing
-``Physics`` and registering it with ``@register``.
+physics through this interface. A state is a 2D array of ``dtype`` (default
+``numpy.uint8``: discrete cell states, or continuous values in 1/255 levels), where 0
+means "vacuum". A physics may declare ``dtype = numpy.float32`` (values in physical
+units, e.g. Flow-Lenia); it then provides ``view`` (a uint8 image used for the
+observer's frame measures and the dashboard) and ``from_levels`` (maps the uint8
+initial-condition generators onto its state). Integer-state physics are untouched by
+this: their view is the state itself. New physics (e.g. continuous automata, particle
+systems rasterised to a grid) can be added by subclassing ``Physics`` and registering
+it with ``@register``.
 """
 from __future__ import annotations
 
@@ -34,6 +39,15 @@ class Physics(ABC):
 
     kind: str = "abstract"
     num_states: int = 2
+    dtype: type = np.uint8
+
+    def view(self, state: np.ndarray) -> np.ndarray:
+        """uint8 observation/display image of a state (identity for uint8 physics)."""
+        return state
+
+    def from_levels(self, levels: np.ndarray) -> np.ndarray:
+        """State from a uint8 initial condition in 0..255 levels (identity for uint8 physics)."""
+        return levels
 
     @abstractmethod
     def step(self, state: np.ndarray) -> np.ndarray:
