@@ -31,3 +31,12 @@ must be a superset of V0's (built in).
 
 **Also reported:** detection counts per pool and variant, extra cost (isolation steps), and
 how many detected worlds in each pool are new compared with V0.
+
+## Amendment 1 (2026-11-07 06:49 CST; before any E-25 result was read)
+
+The E-17 random-search pool contains a known false positive of the *current* detector (V0):
+universe 1236, a drifting chunk of blob field (rule m0.357, 2 rings) that passes the 100-step
+isolation test but falls apart within 1000 steps (J-019). The decision rule is restated so that it
+judges only what a variant changes: **false positives are counted among a variant's detections
+that V0 does not make** (new detections). V0's own false positives are reported separately, as a
+finding about the current detector.
