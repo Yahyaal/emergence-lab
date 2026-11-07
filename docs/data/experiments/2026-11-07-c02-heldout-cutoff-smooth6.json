@@ -1,0 +1,4557 @@
+{
+ "part2_random_rules": {
+  "rules": 120,
+  "rule_seed": 8,
+  "init": "smooth:6",
+  "size": 96,
+  "steps": 500,
+  "universe_seed": 1,
+  "old_classes": {
+   "complex": 77,
+   "extinct": 30,
+   "active": 13
+  },
+  "new_classes": {
+   "active": 89,
+   "extinct": 30,
+   "complex": 1
+  },
+  "old_complex_without_self_propelled": 76,
+  "new_quasi_static_not_extinct": 79,
+  "with_self_propelled": 1,
+  "free_activity_sorted_nonzero_unsettled_or_qs": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   2e-05,
+   3e-05,
+   5e-05,
+   5e-05,
+   6e-05,
+   0.0001,
+   0.00015,
+   0.00017,
+   0.00018,
+   0.00021,
+   0.00028,
+   0.00028,
+   0.0004,
+   0.00043,
+   0.00045,
+   0.00047,
+   0.0005,
+   0.00053,
+   0.00062,
+   0.00064,
+   0.00064,
+   0.00067,
+   0.00092,
+   0.00098,
+   0.00115,
+   0.00141,
+   0.00164,
+   0.00171,
+   0.00191,
+   0.00215,
+   0.0035,
+   0.00377,
+   0.00481,
+   0.00513,
+   0.00885,
+   0.02361,
+   0.02622,
+   0.03228,
+   0.0725,
+   0.17786
+  ],
+  "per_rule": [
+   {
+    "rule": "LENIA/R13/T10/m0.185/s0.0548/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01634,
+     "persistent": 53.0,
+     "still": 53.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01634,
+      "order": 0.38287,
+      "self_propelled": 0.0,
+      "vocabulary": 53.0,
+      "sustained": 461.84283
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.007,
+     "persistent": 53.0,
+     "still": 53.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.38287,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.332/s0.0889/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.00971,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00971,
+      "order": 0.53023,
+      "self_propelled": 0.0,
+      "vocabulary": 6.0,
+      "sustained": 396.37604
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00155,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.53023,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 234.8883
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.205/s0.0327/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02041,
+     "persistent": 21.0,
+     "still": 21.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02041,
+      "order": 0.37235,
+      "self_propelled": 0.0,
+      "vocabulary": 21.0,
+      "sustained": 440.60728
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00716,
+     "persistent": 21.0,
+     "still": 21.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.37235,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 378.00687
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.114/s0.0194/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01234,
+     "persistent": 58.0,
+     "still": 58.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01234,
+      "order": 0.30118,
+      "self_propelled": 0.0,
+      "vocabulary": 58.0,
+      "sustained": 429.87828
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00336,
+     "persistent": 58.0,
+     "still": 58.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.30118,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 385.99551
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.157/s0.0180/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02606,
+     "persistent": 26.0,
+     "still": 26.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02606,
+      "order": 0.26203,
+      "self_propelled": 0.0,
+      "vocabulary": 26.0,
+      "sustained": 419.25292
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.01262,
+     "persistent": 26.0,
+     "still": 26.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.26203,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 393.82239
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.142/s0.0360/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01451,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01451,
+      "order": 0.36083,
+      "self_propelled": 0.0,
+      "vocabulary": 57.0,
+      "sustained": 473.72335
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00575,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.36083,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 454.07027
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.215/s0.0245/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 90
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 90
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.273/s0.0579/b0.25,1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02271,
+     "persistent": 2.0,
+     "still": 1.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02271,
+      "order": 0.47106,
+      "self_propelled": 0.0,
+      "vocabulary": 2.0,
+      "sustained": 362.84505
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.00513,
+     "activity_late": 0.00868,
+     "persistent": 2.0,
+     "still": 1.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00339,
+      "order": 0.47106,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 280.84211
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.128/s0.0183/b0.5,1,0.25",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.03276,
+     "persistent": 46.0,
+     "still": 46.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.03276,
+      "order": 0.21016,
+      "self_propelled": 0.0,
+      "vocabulary": 46.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00171,
+     "activity_late": 0.02141,
+     "persistent": 46.0,
+     "still": 46.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00157,
+      "order": 0.21016,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.138/s0.0205/b0.5,1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0352,
+     "persistent": 32.0,
+     "still": 31.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0352,
+      "order": 0.25124,
+      "self_propelled": 0.0,
+      "vocabulary": 32.0,
+      "sustained": 401.93261
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00115,
+     "activity_late": 0.02013,
+     "persistent": 32.0,
+     "still": 31.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00104,
+      "order": 0.25124,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 351.78653
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.225/s0.0454/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02013,
+     "persistent": 20.0,
+     "still": 20.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02013,
+      "order": 0.39575,
+      "self_propelled": 0.0,
+      "vocabulary": 20.0,
+      "sustained": 484.2347
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00749,
+     "persistent": 20.0,
+     "still": 20.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.39575,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.123/s0.0163/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02203,
+     "persistent": 56.0,
+     "still": 56.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02203,
+      "order": 0.23356,
+      "self_propelled": 0.0,
+      "vocabulary": 56.0,
+      "sustained": 451.00173
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.01022,
+     "persistent": 56.0,
+     "still": 56.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.23356,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 420.38558
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.111/s0.0157/b0.5,1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.04059,
+     "persistent": 33.0,
+     "still": 29.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.04059,
+      "order": 0.19964,
+      "self_propelled": 0.0,
+      "vocabulary": 33.0,
+      "sustained": 450.61312
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.0035,
+     "activity_late": 0.02866,
+     "persistent": 33.0,
+     "still": 29.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00333,
+      "order": 0.19964,
+      "self_propelled": 0.0,
+      "vocabulary": 4.0,
+      "sustained": 441.10673
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.097/s0.0279/b0.25,0.75,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01649,
+     "persistent": 31.0,
+     "still": 31.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01649,
+      "order": 0.40568,
+      "self_propelled": 0.0,
+      "vocabulary": 31.0,
+      "sustained": 440.86583
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00427,
+     "persistent": 31.0,
+     "still": 31.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.40568,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 299.78652
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.118/s0.0170/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01973,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01973,
+      "order": 0.25232,
+      "self_propelled": 0.0,
+      "vocabulary": 57.0,
+      "sustained": 459.70677
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00911,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.25232,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 438.61665
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.319/s0.0408/b0.25,1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 158
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 158
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.224/s0.0397/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01816,
+     "persistent": 17.0,
+     "still": 17.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01816,
+      "order": 0.4301,
+      "self_propelled": 0.0,
+      "vocabulary": 17.0,
+      "sustained": 342.23549
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00621,
+     "persistent": 17.0,
+     "still": 17.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.4301,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 251.33901
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.261/s0.0590/b1,0.75,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01771,
+     "persistent": 50.0,
+     "still": 47.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01771,
+      "order": 0.24275,
+      "self_propelled": 0.0,
+      "vocabulary": 50.0,
+      "sustained": 382.98771
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00098,
+     "activity_late": 0.007,
+     "persistent": 50.0,
+     "still": 47.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0006,
+      "order": 0.24275,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 312.68794
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.276/s0.0454/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01545,
+     "persistent": 7.0,
+     "still": 7.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01545,
+      "order": 0.45918,
+      "self_propelled": 0.0,
+      "vocabulary": 7.0,
+      "sustained": 453.11605
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00531,
+     "persistent": 7.0,
+     "still": 7.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.45918,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 430.21621
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.123/s0.0141/b0.25,1,0.5",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.06654,
+     "persistent": 36.0,
+     "still": 36.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.06654,
+      "order": 0.1584,
+      "self_propelled": 0.0,
+      "vocabulary": 36.0,
+      "sustained": 493.70431
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00017,
+     "activity_late": 0.05137,
+     "persistent": 36.0,
+     "still": 36.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00016,
+      "order": 0.1584,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 486.69819
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.209/s0.0360/b0.25,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0738,
+     "persistent": 4.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0738,
+      "order": 0.26442,
+      "self_propelled": 0.0,
+      "vocabulary": 4.0,
+      "sustained": 459.03697
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.00481,
+     "activity_late": 0.04857,
+     "persistent": 4.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00453,
+      "order": 0.26442,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 434.45264
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.182/s0.0219/b0.5,1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.21363,
+     "persistent": 2.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.21363,
+      "order": 0.18444,
+      "self_propelled": 0.0,
+      "vocabulary": 2.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.0725,
+     "activity_late": 0.19451,
+     "persistent": 2.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.07225,
+      "order": 0.18444,
+      "self_propelled": 0.0,
+      "vocabulary": 2.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.272/s0.0585/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01194,
+     "persistent": 121.0,
+     "still": 119.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01194,
+      "order": 0.35333,
+      "self_propelled": 0.0,
+      "vocabulary": 121.0,
+      "sustained": 435.47621
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 3e-05,
+     "activity_late": 0.0028,
+     "persistent": 121.0,
+     "still": 119.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 2e-05,
+      "order": 0.35333,
+      "self_propelled": 0.0,
+      "vocabulary": 2.0,
+      "sustained": 429.45092
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.128/s0.0123/b1,0.5",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.05624,
+     "persistent": 11.0,
+     "still": 9.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.05624,
+      "order": 0.10472,
+      "self_propelled": 0.0,
+      "vocabulary": 11.0,
+      "sustained": 493.81646
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.02622,
+     "activity_late": 0.04314,
+     "persistent": 11.0,
+     "still": 9.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02547,
+      "order": 0.10472,
+      "self_propelled": 0.0,
+      "vocabulary": 2.0,
+      "sustained": 496.56551
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.233/s0.0680/b0.75,1,0.5",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01688,
+     "persistent": 60.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01688,
+      "order": 0.24426,
+      "self_propelled": 0.0,
+      "vocabulary": 60.0,
+      "sustained": 357.08385
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00047,
+     "activity_late": 0.00586,
+     "persistent": 60.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00028,
+      "order": 0.24426,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 279.59437
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.178/s0.0437/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01303,
+     "persistent": 58.0,
+     "still": 58.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01303,
+      "order": 0.3752,
+      "self_propelled": 0.0,
+      "vocabulary": 58.0,
+      "sustained": 441.42721
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00329,
+     "persistent": 58.0,
+     "still": 58.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.3752,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 369.72947
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0256,
+     "persistent": 2.0,
+     "still": 0.0,
+     "self_propelled": 2.0,
+     "objectives": {
+      "aperiodic_activity": 0.0256,
+      "order": 0.51859,
+      "self_propelled": 2.0,
+      "vocabulary": 2.0,
+      "sustained": 494.57114
+     }
+    },
+    "new": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.02361,
+     "activity_late": 0.02361,
+     "persistent": 2.0,
+     "still": 0.0,
+     "self_propelled": 2.0,
+     "objectives": {
+      "aperiodic_activity": 0.02356,
+      "order": 0.51859,
+      "self_propelled": 2.0,
+      "vocabulary": 2.0,
+      "sustained": 498.6938
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.219/s0.0597/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01717,
+     "persistent": 41.0,
+     "still": 41.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01717,
+      "order": 0.42082,
+      "self_propelled": 0.0,
+      "vocabulary": 41.0,
+      "sustained": 420.50587
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00413,
+     "persistent": 41.0,
+     "still": 41.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.42082,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 283.53204
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.145/s0.0232/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01965,
+     "persistent": 52.0,
+     "still": 52.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01965,
+      "order": 0.2999,
+      "self_propelled": 0.0,
+      "vocabulary": 52.0,
+      "sustained": 435.39312
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00582,
+     "persistent": 52.0,
+     "still": 52.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.2999,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 352.67798
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.383/s0.0795/b1,0.5",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01255,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01255,
+      "order": 0.35488,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 384.75354
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00433,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.35488,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 343.59945
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.289/s0.0357/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 44
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 44
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.346/s0.0577/b1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01655,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01655,
+      "order": 0.49102,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 348.4717
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00602,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.49102,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 251.58745
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.377/s0.0365/b0.25,1,0.75",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 14
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 14
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.308/s0.0917/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01008,
+     "persistent": 8.0,
+     "still": 8.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01008,
+      "order": 0.53837,
+      "self_propelled": 0.0,
+      "vocabulary": 8.0,
+      "sustained": 354.96562
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0028,
+     "persistent": 8.0,
+     "still": 8.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.53837,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 269.56067
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.109/s0.0208/b0.75,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0219,
+     "persistent": 42.0,
+     "still": 42.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0219,
+      "order": 0.29456,
+      "self_propelled": 0.0,
+      "vocabulary": 42.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00028,
+     "activity_late": 0.01002,
+     "persistent": 42.0,
+     "still": 42.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00022,
+      "order": 0.29456,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 461.65767
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.342/s0.0782/b1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0144,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0144,
+      "order": 0.48944,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 420.14944
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0051,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.48944,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 427.70098
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.339/s0.0686/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01107,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01107,
+      "order": 0.47718,
+      "self_propelled": 0.0,
+      "vocabulary": 6.0,
+      "sustained": 403.58301
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0034,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.47718,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 353.59241
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.300/s0.0340/b1,0.75",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.00351,
+     "persistent": 1.0,
+     "still": 1.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00351,
+      "order": 0.65857,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00222,
+     "persistent": 1.0,
+     "still": 1.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.65857,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.359/s0.0512/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 72
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 72
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.087/s0.0061/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 49
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 49
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.219/s0.0120/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 12
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 12
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.312/s0.0884/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0125,
+     "persistent": 57.0,
+     "still": 56.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0125,
+      "order": 0.32512,
+      "self_propelled": 0.0,
+      "vocabulary": 57.0,
+      "sustained": 390.6409
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00302,
+     "persistent": 57.0,
+     "still": 56.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.32512,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 293.44159
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.217/s0.0529/b1,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01563,
+     "persistent": 65.0,
+     "still": 62.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01563,
+      "order": 0.38164,
+      "self_propelled": 0.0,
+      "vocabulary": 65.0,
+      "sustained": 487.18556
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00045,
+     "activity_late": 0.00568,
+     "persistent": 65.0,
+     "still": 62.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00028,
+      "order": 0.38164,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 459.62787
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.089/s0.0087/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.03659,
+     "persistent": 46.0,
+     "still": 46.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.03659,
+      "order": 0.15857,
+      "self_propelled": 0.0,
+      "vocabulary": 46.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.02697,
+     "persistent": 46.0,
+     "still": 46.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.15857,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.384/s0.0557/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 39
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 39
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.197/s0.0418/b0.75,0.5,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02176,
+     "persistent": 29.0,
+     "still": 29.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02176,
+      "order": 0.40528,
+      "self_propelled": 0.0,
+      "vocabulary": 29.0,
+      "sustained": 418.90876
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00015,
+     "activity_late": 0.01045,
+     "persistent": 29.0,
+     "still": 29.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00011,
+      "order": 0.40528,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 382.29688
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.245/s0.0701/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01421,
+     "persistent": 32.0,
+     "still": 32.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01421,
+      "order": 0.40224,
+      "self_propelled": 0.0,
+      "vocabulary": 32.0,
+      "sustained": 449.84541
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00292,
+     "persistent": 32.0,
+     "still": 32.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.40224,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 354.7324
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.394/s0.0523/b0.75,0.5,1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 16
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 16
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.305/s0.0478/b0.75,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.04958,
+     "persistent": 18.0,
+     "still": 17.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.04958,
+      "order": 0.29336,
+      "self_propelled": 0.0,
+      "vocabulary": 18.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0005,
+     "activity_late": 0.03018,
+     "persistent": 18.0,
+     "still": 17.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00044,
+      "order": 0.29336,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.400/s0.0506/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 22
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 22
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.186/s0.0333/b0.25,0.75,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02684,
+     "persistent": 27.0,
+     "still": 27.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02684,
+      "order": 0.33295,
+      "self_propelled": 0.0,
+      "vocabulary": 27.0,
+      "sustained": 448.29086
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.01183,
+     "persistent": 27.0,
+     "still": 27.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.33295,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 387.42804
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.237/s0.0249/b1,1,0.25",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.04103,
+     "persistent": 70.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.04103,
+      "order": 0.15155,
+      "self_propelled": 0.0,
+      "vocabulary": 70.0,
+      "sustained": 459.64703
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00064,
+     "activity_late": 0.0268,
+     "persistent": 70.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00059,
+      "order": 0.15155,
+      "self_propelled": 0.0,
+      "vocabulary": 13.0,
+      "sustained": 457.94704
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.299/s0.0671/b1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0154,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0154,
+      "order": 0.4919,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 444.01701
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0067,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.4919,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 495.42389
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.110/s0.0077/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 31
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 31
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.123/s0.0122/b1,1,0.75",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.06246,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.06246,
+      "order": 0.06285,
+      "self_propelled": 0.0,
+      "vocabulary": 5.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.03228,
+     "activity_late": 0.05062,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.03156,
+      "order": 0.06285,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.366/s0.0995/b0.25,1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01224,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01224,
+      "order": 0.55112,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.00377,
+     "activity_late": 0.00377,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00199,
+      "order": 0.55112,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 494.87472
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.246/s0.0281/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 99
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 99
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.134/s0.0212/b1,1,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02206,
+     "persistent": 37.0,
+     "still": 36.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02206,
+      "order": 0.27004,
+      "self_propelled": 0.0,
+      "vocabulary": 37.0,
+      "sustained": 490.89856
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00067,
+     "activity_late": 0.01178,
+     "persistent": 37.0,
+     "still": 36.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00057,
+      "order": 0.27004,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 465.73169
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.243/s0.0431/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01556,
+     "persistent": 10.0,
+     "still": 10.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01556,
+      "order": 0.46512,
+      "self_propelled": 0.0,
+      "vocabulary": 10.0,
+      "sustained": 376.86646
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00395,
+     "persistent": 10.0,
+     "still": 10.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.46512,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 233.66286
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.266/s0.0686/b0.5,0.5,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01206,
+     "persistent": 24.0,
+     "still": 24.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01206,
+      "order": 0.49995,
+      "self_propelled": 0.0,
+      "vocabulary": 24.0,
+      "sustained": 357.63487
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00185,
+     "persistent": 24.0,
+     "still": 24.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.49995,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 210.65614
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.306/s0.0501/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0134,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0134,
+      "order": 0.4915,
+      "self_propelled": 0.0,
+      "vocabulary": 5.0,
+      "sustained": 344.05306
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00364,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.4915,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 240.75401
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.373/s0.0242/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 14
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 14
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.098/s0.0053/b1,1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 15
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 15
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.099/s0.0064/b0.75,1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 74
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 74
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.193/s0.0488/b0.25,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.03456,
+     "persistent": 21.0,
+     "still": 21.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.03456,
+      "order": 0.33791,
+      "self_propelled": 0.0,
+      "vocabulary": 21.0,
+      "sustained": 478.68567
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.01057,
+     "persistent": 21.0,
+     "still": 21.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.33791,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 410.05135
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.289/s0.0485/b1,0.5",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01822,
+     "persistent": 45.0,
+     "still": 42.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01822,
+      "order": 0.37303,
+      "self_propelled": 0.0,
+      "vocabulary": 45.0,
+      "sustained": 499.16751
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0004,
+     "activity_late": 0.00751,
+     "persistent": 45.0,
+     "still": 42.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00028,
+      "order": 0.37303,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 498.70354
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.310/s0.0185/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.164/s0.0347/b0.75,0.5,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01307,
+     "persistent": 28.0,
+     "still": 27.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01307,
+      "order": 0.4747,
+      "self_propelled": 0.0,
+      "vocabulary": 28.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00053,
+     "activity_late": 0.00654,
+     "persistent": 28.0,
+     "still": 27.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00042,
+      "order": 0.4747,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.319/s0.0747/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.00819,
+     "persistent": 7.0,
+     "still": 7.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00819,
+      "order": 0.55549,
+      "self_propelled": 0.0,
+      "vocabulary": 7.0,
+      "sustained": 332.34957
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00154,
+     "persistent": 7.0,
+     "still": 7.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.55549,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 240.66531
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.316/s0.0870/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01268,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01268,
+      "order": 0.50832,
+      "self_propelled": 0.0,
+      "vocabulary": 5.0,
+      "sustained": 392.79952
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00374,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.50832,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 338.87468
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.174/s0.0409/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01557,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01557,
+      "order": 0.39182,
+      "self_propelled": 0.0,
+      "vocabulary": 57.0,
+      "sustained": 423.03838
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00422,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.39182,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 330.13745
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.366/s0.0958/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.00985,
+     "persistent": 4.0,
+     "still": 4.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00985,
+      "order": 0.53699,
+      "self_propelled": 0.0,
+      "vocabulary": 4.0,
+      "sustained": 399.91189
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0017,
+     "persistent": 4.0,
+     "still": 4.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.53699,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 266.98532
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.336/s0.0661/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01184,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01184,
+      "order": 0.46994,
+      "self_propelled": 0.0,
+      "vocabulary": 5.0,
+      "sustained": 367.36686
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00341,
+     "persistent": 5.0,
+     "still": 5.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.46994,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 267.781
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.114/s0.0298/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01095,
+     "persistent": 56.0,
+     "still": 55.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01095,
+      "order": 0.43516,
+      "self_propelled": 0.0,
+      "vocabulary": 56.0,
+      "sustained": 480.56402
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00064,
+     "activity_late": 0.00368,
+     "persistent": 56.0,
+     "still": 55.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00033,
+      "order": 0.43516,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.084/s0.0086/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.03201,
+     "persistent": 49.0,
+     "still": 49.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.03201,
+      "order": 0.18407,
+      "self_propelled": 0.0,
+      "vocabulary": 49.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.02282,
+     "persistent": 49.0,
+     "still": 49.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.18407,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.152/s0.0099/b1,0.5,0.5",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 153
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 153
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.259/s0.0514/b1,0.25",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01922,
+     "persistent": 86.0,
+     "still": 83.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01922,
+      "order": 0.30238,
+      "self_propelled": 0.0,
+      "vocabulary": 86.0,
+      "sustained": 409.39768
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00021,
+     "activity_late": 0.00523,
+     "persistent": 86.0,
+     "still": 83.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00011,
+      "order": 0.30238,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 327.37529
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.189/s0.0302/b1,0.5",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01979,
+     "persistent": 48.0,
+     "still": 48.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01979,
+      "order": 0.20605,
+      "self_propelled": 0.0,
+      "vocabulary": 48.0,
+      "sustained": 440.92052
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00191,
+     "activity_late": 0.00547,
+     "persistent": 48.0,
+     "still": 48.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00106,
+      "order": 0.20605,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 308.98049
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.322/s0.0862/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.00929,
+     "persistent": 67.0,
+     "still": 66.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00929,
+      "order": 0.38482,
+      "self_propelled": 0.0,
+      "vocabulary": 67.0,
+      "sustained": 366.16464
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0001,
+     "activity_late": 0.0017,
+     "persistent": 67.0,
+     "still": 66.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 4e-05,
+      "order": 0.38482,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 320.84357
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.357/s0.0758/b1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01022,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01022,
+      "order": 0.48461,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 407.08729
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00284,
+     "persistent": 3.0,
+     "still": 3.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.48461,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 448.52437
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.187/s0.0187/b0.25,1,1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.27464,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.27464,
+      "order": 0.19384,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.17786,
+     "activity_late": 0.25446,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.17742,
+      "order": 0.19384,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.331/s0.0823/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01121,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01121,
+      "order": 0.50263,
+      "self_propelled": 0.0,
+      "vocabulary": 6.0,
+      "sustained": 358.69037
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00231,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.50263,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 244.20739
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.349/s0.0577/b0.25,1,0.25",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01228,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01228,
+      "order": 0.47729,
+      "self_propelled": 0.0,
+      "vocabulary": 6.0,
+      "sustained": 388.09246
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00496,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.47729,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 297.99165
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.399/s0.0543/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 24
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 24
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.251/s0.0217/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 41
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 41
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.348/s0.0440/b1,0.75",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 77
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 77
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.173/s0.0108/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.212/s0.0551/b1,0.25",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01396,
+     "persistent": 183.0,
+     "still": 183.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01396,
+      "order": 0.35121,
+      "self_propelled": 0.0,
+      "vocabulary": 183.0,
+      "sustained": 395.69363
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00317,
+     "persistent": 183.0,
+     "still": 183.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.35121,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 323.02937
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.204/s0.0367/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01764,
+     "persistent": 90.0,
+     "still": 90.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01764,
+      "order": 0.26153,
+      "self_propelled": 0.0,
+      "vocabulary": 90.0,
+      "sustained": 384.7647
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00043,
+     "activity_late": 0.00526,
+     "persistent": 90.0,
+     "still": 90.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00023,
+      "order": 0.26153,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 277.11119
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.342/s0.0408/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 49
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 49
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.196/s0.0131/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.319/s0.0482/b1",
+    "old": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02297,
+     "persistent": 3.0,
+     "still": 2.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02297,
+      "order": 0.4275,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 389.62712
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.00885,
+     "activity_late": 0.01105,
+     "persistent": 3.0,
+     "still": 2.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00641,
+      "order": 0.4275,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 323.53502
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.250/s0.0507/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01636,
+     "persistent": 16.0,
+     "still": 15.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01636,
+      "order": 0.44641,
+      "self_propelled": 0.0,
+      "vocabulary": 16.0,
+      "sustained": 320.71578
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00544,
+     "persistent": 16.0,
+     "still": 15.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.44641,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 210.07875
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.351/s0.0602/b0.25,0.5,1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 80
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 80
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.250/s0.0640/b1,0.25,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.00764,
+     "persistent": 25.0,
+     "still": 25.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00764,
+      "order": 0.53843,
+      "self_propelled": 0.0,
+      "vocabulary": 25.0,
+      "sustained": 474.65966
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 5e-05,
+     "activity_late": 0.00224,
+     "persistent": 25.0,
+     "still": 25.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 2e-05,
+      "order": 0.53843,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.297/s0.0591/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01183,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01183,
+      "order": 0.50509,
+      "self_propelled": 0.0,
+      "vocabulary": 6.0,
+      "sustained": 393.39827
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00341,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.50509,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 344.91451
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.186/s0.0264/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01913,
+     "persistent": 22.0,
+     "still": 22.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01913,
+      "order": 0.35922,
+      "self_propelled": 0.0,
+      "vocabulary": 22.0,
+      "sustained": 465.41163
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00465,
+     "persistent": 22.0,
+     "still": 22.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.35922,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 363.40512
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.330/s0.0222/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 14
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 14
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.147/s0.0317/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01798,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01798,
+      "order": 0.33762,
+      "self_propelled": 0.0,
+      "vocabulary": 57.0,
+      "sustained": 465.58409
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00692,
+     "persistent": 57.0,
+     "still": 57.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.33762,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 486.27212
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.273/s0.0426/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01343,
+     "persistent": 7.0,
+     "still": 7.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01343,
+      "order": 0.49013,
+      "self_propelled": 0.0,
+      "vocabulary": 7.0,
+      "sustained": 387.82353
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0032,
+     "persistent": 7.0,
+     "still": 7.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.49013,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 223.45903
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.339/s0.0834/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.00911,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00911,
+      "order": 0.54109,
+      "self_propelled": 0.0,
+      "vocabulary": 6.0,
+      "sustained": 356.4638
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00152,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.54109,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 168.31325
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.145/s0.0094/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.220/s0.0351/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01669,
+     "persistent": 12.0,
+     "still": 12.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01669,
+      "order": 0.43381,
+      "self_propelled": 0.0,
+      "vocabulary": 12.0,
+      "sustained": 478.68832
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00546,
+     "persistent": 12.0,
+     "still": 12.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.43381,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 461.22112
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.317/s0.0759/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01224,
+     "persistent": 60.0,
+     "still": 59.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01224,
+      "order": 0.34442,
+      "self_propelled": 0.0,
+      "vocabulary": 60.0,
+      "sustained": 434.63347
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 6e-05,
+     "activity_late": 0.00364,
+     "persistent": 60.0,
+     "still": 59.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 3e-05,
+      "order": 0.34442,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.216/s0.0225/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.02869,
+     "persistent": 48.0,
+     "still": 45.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.02869,
+      "order": 0.26201,
+      "self_propelled": 0.0,
+      "vocabulary": 48.0,
+      "sustained": 440.65791
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00164,
+     "activity_late": 0.01461,
+     "persistent": 48.0,
+     "still": 45.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00136,
+      "order": 0.26201,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 388.8921
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.332/s0.0302/b0.5,1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 34
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 34
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.165/s0.0284/b1,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01646,
+     "persistent": 59.0,
+     "still": 59.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01646,
+      "order": 0.28762,
+      "self_propelled": 0.0,
+      "vocabulary": 59.0,
+      "sustained": 364.13618
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00141,
+     "activity_late": 0.0062,
+     "persistent": 59.0,
+     "still": 59.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00093,
+      "order": 0.28762,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 268.49676
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.183/s0.0382/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01742,
+     "persistent": 52.0,
+     "still": 52.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01742,
+      "order": 0.36781,
+      "self_propelled": 0.0,
+      "vocabulary": 52.0,
+      "sustained": 446.88196
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00505,
+     "persistent": 52.0,
+     "still": 52.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.36781,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 382.22259
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.196/s0.0259/b1,0.5",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.03042,
+     "persistent": 55.0,
+     "still": 54.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.03042,
+      "order": 0.17279,
+      "self_propelled": 0.0,
+      "vocabulary": 55.0,
+      "sustained": 496.86315
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": false,
+     "quasi_static": false,
+     "free_activity": 0.00215,
+     "activity_late": 0.01404,
+     "persistent": 55.0,
+     "still": 54.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00166,
+      "order": 0.17279,
+      "self_propelled": 0.0,
+      "vocabulary": 1.0,
+      "sustained": 500.0
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.081/s0.0063/b1,0.25,0.25",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 15
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 15
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.171/s0.0286/b1,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01692,
+     "persistent": 54.0,
+     "still": 54.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01692,
+      "order": 0.31286,
+      "self_propelled": 0.0,
+      "vocabulary": 54.0,
+      "sustained": 417.6039
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00062,
+     "activity_late": 0.00595,
+     "persistent": 54.0,
+     "still": 54.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0004,
+      "order": 0.31286,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 328.4396
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.228/s0.0533/b1,0.5",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01602,
+     "persistent": 152.0,
+     "still": 152.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01602,
+      "order": 0.32089,
+      "self_propelled": 0.0,
+      "vocabulary": 152.0,
+      "sustained": 447.76753
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 5e-05,
+     "activity_late": 0.00326,
+     "persistent": 152.0,
+     "still": 152.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 2e-05,
+      "order": 0.32089,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 348.50591
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.337/s0.0219/b1,0.25,0.5",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 26
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 26
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.120/s0.0329/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01281,
+     "persistent": 58.0,
+     "still": 58.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01281,
+      "order": 0.43057,
+      "self_propelled": 0.0,
+      "vocabulary": 58.0,
+      "sustained": 381.38604
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00534,
+     "persistent": 58.0,
+     "still": 58.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.43057,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 340.72329
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.188/s0.0364/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01892,
+     "persistent": 85.0,
+     "still": 85.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01892,
+      "order": 0.26204,
+      "self_propelled": 0.0,
+      "vocabulary": 85.0,
+      "sustained": 460.76826
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00092,
+     "activity_late": 0.00783,
+     "persistent": 85.0,
+     "still": 85.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00062,
+      "order": 0.26204,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 441.39956
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.213/s0.0131/b1",
+    "old": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    },
+    "new": {
+     "class": "extinct",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.0,
+     "persistent": 0.0,
+     "still": 0.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 1.0,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 13
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.299/s0.0760/b1,0.75",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01167,
+     "persistent": 92.0,
+     "still": 89.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01167,
+      "order": 0.33261,
+      "self_propelled": 0.0,
+      "vocabulary": 92.0,
+      "sustained": 416.40208
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 2e-05,
+     "activity_late": 0.00291,
+     "persistent": 92.0,
+     "still": 89.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 1e-05,
+      "order": 0.33261,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 354.83444
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.326/s0.0666/b1,0.5",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01042,
+     "persistent": 31.0,
+     "still": 28.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01042,
+      "order": 0.40166,
+      "self_propelled": 0.0,
+      "vocabulary": 31.0,
+      "sustained": 402.32052
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00018,
+     "activity_late": 0.0022,
+     "persistent": 31.0,
+     "still": 28.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 8e-05,
+      "order": 0.40166,
+      "self_propelled": 0.0,
+      "vocabulary": 3.0,
+      "sustained": 251.48662
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.230/s0.0323/b1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01446,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01446,
+      "order": 0.45834,
+      "self_propelled": 0.0,
+      "vocabulary": 6.0,
+      "sustained": 405.51972
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.0,
+     "activity_late": 0.00456,
+     "persistent": 6.0,
+     "still": 6.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.0,
+      "order": 0.45834,
+      "self_propelled": 0.0,
+      "vocabulary": 0.0,
+      "sustained": 341.92133
+     }
+    }
+   },
+   {
+    "rule": "LENIA/R13/T10/m0.212/s0.0396/b1,1",
+    "old": {
+     "class": "complex",
+     "settled": false,
+     "quasi_static": null,
+     "free_activity": 0.0,
+     "activity_late": 0.01375,
+     "persistent": 69.0,
+     "still": 67.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.01375,
+      "order": 0.34213,
+      "self_propelled": 0.0,
+      "vocabulary": 69.0,
+      "sustained": 367.221
+     }
+    },
+    "new": {
+     "class": "active",
+     "settled": true,
+     "quasi_static": true,
+     "free_activity": 0.00028,
+     "activity_late": 0.00359,
+     "persistent": 69.0,
+     "still": 67.0,
+     "self_propelled": 0.0,
+     "objectives": {
+      "aperiodic_activity": 0.00014,
+      "order": 0.34213,
+      "self_propelled": 0.0,
+      "vocabulary": 2.0,
+      "sustained": 233.15003
+     }
+    }
+   }
+  ]
+ }
+}

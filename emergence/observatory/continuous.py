@@ -12,7 +12,8 @@ creature never repeats its cell values exactly. Here objects are tracked toleran
                 whose path is reasonably straight (net / path length >= 0.5)
 * self-propelled  the mover, copied alone (with its low-value halo) into an empty,
                 separate world, keeps its mass (within MASS_TOL) and travels >= MIN_TRAVEL
-                cells by itself. Same principle as the discrete test: shows it CAN move
+                cells by itself within 100 steps, or, if it keeps its mass but is slow, within
+                SLOW_STEPS (300) steps with mass checked every SLOW_EVERY steps (E-25). Same principle as the discrete test: shows it CAN move
                 alone, not trajectory identity.
 
 Returned keys mirror structures.analyse so the rest of the system works unchanged:
@@ -48,9 +49,12 @@ MIN_AREA, MAX_AREA = 12, 4000
 MAX_JUMP = 4.0          # cells per frame
 MASS_TOL = 1.4          # mass may change by up to this factor between linked frames
 MIN_TRAVEL = 5.0
+STRAIGHTNESS = 0.5      # a mover's net displacement / path length in the window
 VALUE_TOL = 2           # levels (of 255): smaller per-step changes are rounding-scale
 STILL_MARGIN = 3        # cells around a still object whose activity is attributed to it
 MIN_STILL_FRAMES = 10   # a track this long that never leaves its place anchors free_activity
+SLOW_STEPS = 300        # isolation runs up to this long for objects that keep their mass but are slow (E-25, J-030)
+SLOW_EVERY = 25         # checkpoint interval of the extended isolation run
 _STRUCT = np.ones((3, 3), dtype=bool)
 
 
@@ -188,8 +192,17 @@ def isolate(state: np.ndarray, obj: dict, margin: int = 4) -> np.ndarray:
     return np.where(halo, rolled, 0).astype(state.dtype)
 
 
-def self_propelled(physics, state: np.ndarray, obj: dict, steps: int = 100) -> bool:
-    """Does the object, alone in an empty world, keep its mass and travel by itself?"""
+def self_propelled(physics, state: np.ndarray, obj: dict, steps: int = 100, slow_steps: int | None = None) -> bool:
+    """Does the object, alone in an empty world, keep its mass and travel by itself?
+
+    The first `steps` steps are the original test. If the object keeps its mass but has not
+    travelled MIN_TRAVEL by then, and `slow_steps` (default SLOW_STEPS) is larger, the run
+    continues in the same world up to `slow_steps`, checked every SLOW_EVERY steps: the mass
+    must stay within MASS_TOL and the world hold at most two objects at every checkpoint, and
+    the net displacement (summed between checkpoints) must reach MIN_TRAVEL at one of them.
+    This only adds detections of slow or turning movers (J-022, E-25); the 100-step verdict
+    is unchanged."""
+    slow_steps = SLOW_STEPS if slow_steps is None else slow_steps
     alone = isolate(state, obj)
     rows, cols = np.nonzero(alone)
     if len(rows) == 0:
@@ -212,7 +225,28 @@ def self_propelled(physics, state: np.ndarray, obj: dict, steps: int = 100) -> b
     o1 = max(end, key=lambda o: o["mass"])
     ratio = o1["mass"] / o0["mass"]
     travel = float(np.hypot(*_torus_delta(o0["c"], o1["c"], world.shape)))
-    return 1 / MASS_TOL <= ratio <= MASS_TOL and travel >= MIN_TRAVEL and len(end) <= 2
+    kept = 1 / MASS_TOL <= ratio <= MASS_TOL and len(end) <= 2
+    if kept and travel >= MIN_TRAVEL:
+        return True
+    if not kept or slow_steps <= steps:
+        return False
+    net, c, t = np.asarray(_torus_delta(o0["c"], o1["c"], world.shape), float), o1["c"], steps
+    while t < slow_steps:
+        n = min(SLOW_EVERY, slow_steps - t)
+        for _ in range(n):
+            world = physics.step(world)
+        t += n
+        objs = objects(world)
+        if not objs or len(objs) > 2:
+            return False
+        o = max(objs, key=lambda o: o["mass"])
+        if not 1 / MASS_TOL <= o["mass"] / o0["mass"] <= MASS_TOL:
+            return False
+        net += _torus_delta(c, o["c"], world.shape)
+        c = o["c"]
+        if np.hypot(*net) >= MIN_TRAVEL:
+            return True
+    return False
 
 
 def free_activity(frames: list[np.ndarray], per: list[list[dict]], tracks: list[dict],
@@ -249,7 +283,7 @@ def analyse(frames: list[np.ndarray], physics=None, max_tests: int = 6) -> dict[
     tracks, per = track(frames)
     persistent = [tr for tr in tracks if tr["length"] >= 0.8 * W]
     movers = [tr for tr in persistent if np.hypot(*tr["disp"]) >= MIN_TRAVEL
-              and np.hypot(*tr["disp"]) >= 0.5 * max(tr["path"], 1e-9)]
+              and np.hypot(*tr["disp"]) >= STRAIGHTNESS * max(tr["path"], 1e-9)]
     still = [tr for tr in persistent if np.hypot(*tr["disp"]) < 1.0]
     verified = None
     if physics is not None:

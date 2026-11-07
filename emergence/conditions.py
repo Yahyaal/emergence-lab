@@ -171,7 +171,7 @@ def summarize(store: Store, exp_id: int) -> dict[str, Any]:
              for kind in inits}
     comparisons = {}
     for kind in inits:
-        if kind == "uniform":
+        if kind == "uniform" or "uniform" not in inits:  # paired comparisons need a uniform (soup) arm
             continue
         comparisons[kind] = {}
         for o in OUTCOMES:
