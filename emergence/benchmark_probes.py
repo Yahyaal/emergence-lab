@@ -59,6 +59,19 @@ Labels and objectives tuned for 2-state rules called fields of static Lenia blob
 * near-fixed point  positive: jitter control (fixed field, +-1 level flicker) -> frozen.
               deceptive: the creeping soup is NOT a fixed point (its edges really move).
               negative: two gliders are not frozen.
+
+Birth detector (observatory/births.py, two generations in isolation, J-032, D-028):
+* positive    HighLife replicator (discrete); Gray-Scott spots, F 0.0367 k 0.0649 (continuous,
+              physics/gray_scott.py): reproducer
+* negative    Life glider; Orbium glider; the HighLife replicator pattern under Life: no reproduction
+* deceptive   Fredkin B1357/S1357 copies anything: rule-level duplication. Seeds B2/S explodes into
+              debris: not a reproducer. Gray-Scott stripes (F 0.03 k 0.059) grow and break up: not a
+              reproducer. Gray-Scott worms (F 0.042 k 0.063) split once but the daughters do not:
+              one generation. Smoothed noise: not a reproducer. A Lenia blob (E-14 #239, mass 72) that
+              bursts into a world-filling labyrinth of ~80 similar-mass pieces within 1000 steps and
+              then stops: not a reproducer (passed the first version's "late > early" rule, J-032).
+* selection-aware null  `births.scan` (6 most common object types) on a Life soup and a settled
+              Orbium soup: 0 reproducers.
 """
 from __future__ import annotations
 
@@ -374,6 +387,67 @@ def run_probe_benchmark(log=print) -> dict:
     check("Flow-Lenia complex null: top picks by objects/activity are not complex without a mover", not bad,
           f"{len(picked)} picked of {len(runs)}: classes {sorted(cm[0] for cm in picked)}, "
           f"self-propelled {[int(cm[1]['self_propelled_shapes']) for cm in picked]}")
+
+    # 9. birth detector (observatory/births.py)
+    from .observatory import births as BI
+    from .physics import GrayScott
+
+    def birth(ph, st, rng_seed=0):
+        o = max(BI.find(ph, st), key=lambda o: o["mass"])
+        return BI.reproduction_test(ph, st, o, np.random.default_rng(rng_seed))
+
+    def bbrief(r):
+        g1 = r.get("gen1") or {}
+        return (f"{r['verdict']}; gen 1 copies {g1.get('early')} -> {g1.get('late')}, clean {g1.get('clean')}, "
+                f"gen 2 {(r.get('gen2') or {}).get('ok')}")
+
+    def placed(rule, pat, side=64):
+        g = np.zeros((side, side), np.uint8)
+        g[20:20 + pat.shape[0], 20:20 + pat.shape[1]] = pat
+        return parse_rule(rule), g
+
+    def gs_spot(F, k, t):
+        ph = GrayScott(F, k)
+        st = ph.seed_spot((128, 128))
+        for _ in range(t):
+            st = ph.step(st)
+        return ph, st
+
+    for name, args, want in [
+            ("births positive: HighLife replicator -> reproducer", placed("B36/S23", rle(HIGHLIFE_REPLICATOR)), "reproducer"),
+            ("births positive: Gray-Scott spot -> reproducer", gs_spot(0.0367, 0.0649, 1000), "reproducer"),
+            ("births negative: Life glider", placed("B3/S23", rle("bo$2bo$3o!")), "no reproduction"),
+            ("births negative: replicator pattern under Life", placed("B3/S23", rle(HIGHLIFE_REPLICATOR)), "no reproduction"),
+            ("births negative: Orbium glider", (orb, C.emergent_glider(orb)), "no reproduction"),
+            ("births deceptive: Fredkin copies anything -> rule-level", placed("B1357/S1357", rle("obo$3o$bo!")),
+             "rule-level duplication"),
+            ("births deceptive: Seeds debris", placed("B2/S", rle("obo$3o$bo!")), "not reproducer"),
+            ("births deceptive: Gray-Scott stripes grow and break up", gs_spot(0.03, 0.059, 300), "not reproducer"),
+            ("births deceptive: Gray-Scott worms split once -> one generation", gs_spot(0.042, 0.063, 300),
+             "one generation"),
+            ("births deceptive: smoothed noise", (SmoothNoiseControl(), SmoothNoiseControl().random_state(
+                np.random.default_rng(1), (96, 96), 0.3)), "not reproducer")]:
+        r = birth(*args)
+        ok = r["verdict"] != "reproducer" if want == "not reproducer" else r["verdict"] == want
+        check(name, ok, bbrief(r))
+    lab_spec = UniverseSpec({"kind": "lenia", "rule": "LENIA/R13/T10/m0.150/s0.0195/b1"}, 1497778031414372656,
+                            128, 128, 0.1, init={"kind": "smooth", "ell": 3.0})
+    lw = Universe.from_spec(lab_spec)
+    lw.step(1999)
+    lst = np.array(lw.state)
+    lo = min(BI.find(lw.physics, lst), key=lambda o: abs(o["mass"] - 71.83))
+    r = BI.reproduction_test(lw.physics, lst, lo, np.random.default_rng(0))
+    check("births deceptive: Lenia blob bursts into a labyrinth (E-14 #239)",
+          r["verdict"] != "reproducer" and (r.get("gen1") or {}).get("early", 0) >= 20, bbrief(r))
+    picked = []
+    for spec, steps in ((UniverseSpec(life.to_dict(), 1, 96, 96, 0.35), 600),
+                        (UniverseSpec(orb.to_dict(), 1, 128, 128, 0.35), 1000)):
+        u = Universe.from_spec(spec)
+        u.step(steps)
+        picked.append(BI.scan(u.physics, np.array(u.state), np.random.default_rng(0)))
+    check("births selection-aware null: scans of a Life soup and a settled Orbium soup",
+          all(p["reproducers"] == 0 for p in picked) and all(p["tested"] >= 3 for p in picked),
+          f"candidates {[p['tested'] for p in picked]}, reproducers {[p['reproducers'] for p in picked]}")
 
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")

@@ -60,6 +60,52 @@ def run_frames(physics, state, steps: int, every: int) -> list[np.ndarray]:
 
 
 # ------------------------------------------------------------------ figures
+def e27_births() -> None:
+    """Birth detector (J-032): a Gray-Scott spot dividing vs a Lenia blob bursting into a labyrinth,
+    and their copy counts over time (the doubling rule)."""
+    from emergence.engine import UniverseSpec
+    from emergence.observatory import births as B
+    from emergence.physics import GrayScott
+    gs = GrayScott()
+    st = gs.seed_spot((128, 128))
+    for _ in range(1000):
+        st = gs.step(st)
+    o = max(B.find(gs, st), key=lambda o: o["mass"])
+    w_gs = B.alone(gs, st, o["mask"], 160, 4)
+    spec = UniverseSpec({"kind": "lenia", "rule": "LENIA/R13/T10/m0.150/s0.0195/b1"}, 1497778031414372656,
+                        128, 128, 0.1, init={"kind": "smooth", "ell": 3.0})
+    u = Universe.from_spec(spec)
+    u.step(1999)
+    lst = np.array(u.state)
+    lo = min(B.find(u.physics, lst), key=lambda o: abs(o["mass"] - 71.83))
+    w_lab = B.alone(u.physics, lst, lo["mask"], 160, 4)
+    for ph, w, name, steps, every in ((gs, w_gs, "e27-gray-scott.gif", 4000, 40), (u.physics, w_lab, "e27-labyrinth.gif", 1500, 15)):
+        fr, cur = [], w
+        for t in range(steps + 1):
+            if t % every == 0:
+                fr.append(B.field(ph, cur))
+            if t < steps:
+                cur = ph.step(cur)
+        save_gif(fr, name, scale=2, ms=50)
+    s_gs, _, _ = B.copy_series(gs, w_gs, max(B.find(gs, w_gs), key=lambda o: o["mass"]), 4000, 50)
+    s_lab, _, _ = B.copy_series(u.physics, w_lab, max(B.find(u.physics, w_lab), key=lambda o: o["mass"]), 4000, 50)
+    fig, ax = plt.subplots(figsize=(7, 3.4))
+    t = np.arange(len(s_gs)) * 50
+    ax.plot(t, s_gs, color=BLUE, lw=2, label="Gray-Scott spot: keeps doubling (reproducer)")
+    ax.plot(np.arange(len(s_lab)) * 50, s_lab, color=ORANGE, lw=2, label="Lenia blob: bursts, then stops (not a reproducer)")
+    ax.axvspan(0, 1000, color=GREY, alpha=0.12)
+    ax.text(500, 120, "first quarter", ha="center", fontsize=9, color=GREY)
+    ax.set_yscale("symlog", linthresh=1)
+    ax.set_yticks([0, 1, 2, 4, 8, 16, 32, 64, 128])
+    ax.set_yticklabels(["0", "1", "2", "4", "8", "16", "32", "64", "128"])
+    ax.set_ylim(0, 200)
+    ax.set_xlabel("steps alone in an empty world")
+    ax.set_ylabel("copies (mass within 2x of parent)")
+    ax.legend(frameon=False, fontsize=9, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=1)
+    fig.savefig(OUT / "e27-copy-counts.png")
+    plt.close(fig)
+
+
 def static_vs_glider() -> None:
     """The J-012 bug in one picture: a static blob field (old label: complex) vs gliders."""
     orb = parse_rule(ORBIUM)
@@ -574,7 +620,7 @@ def e24_patches() -> None:
     save_gif(frames, "e24-patches.gif", scale=2, ms=70)
 
 
-FIGS = {"e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+FIGS = {"e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 

@@ -40,6 +40,11 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **E-25 / D-027:** the mover detector's isolation run now extends to 300 steps for slow objects that keep their mass (`SLOW_STEPS`); +3 wanderer worlds, no new false positives in 3,789 replayed worlds; straightness stays 0.5. ≈ 95% of wanderers detected.
 - **E-26:** a third mover, the slow straight "ring glider" (`LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1`, mass ~178, 0.085 cells/step), found by a random rule draw; 31/80 smooth vs 0/80 soup worlds.
 
+**Saturday late morning, 7 Nov (J-032):**
+- **Birth detector** (`observatory/births.py`, D-028) for both families, validated on the HighLife replicator and Gray-Scott dividing spots (`physics/gray_scott.py`), with 12 new probe checks.
+- **E-27/E-28:** no reproducer in 568 Lenia worlds (0/285 movers). The first detector version was fooled by blobs bursting into world-filling labyrinths; fixed (doubling rule, fixed reference parent) and confirmed on 350 held-out worlds.
+- **Next (Track D, research.md):** Flow-Lenia with parameter localization in fed worlds plus a heredity measure; a division objective; multi-channel Lenia.
+
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
 ## Run it
@@ -47,8 +52,8 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 58 tests, ~1 min
-emergence benchmark --probes             # 39 + 42 validation checks, ~3 min on 12 cores
+pytest                                   # 61 tests, ~1 min
+emergence benchmark --probes             # 39 + 54 validation checks, ~5 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -63,16 +68,16 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 | Path | What |
 |---|---|
-| `emergence/physics/` | `Physics` interface (`base.py`), Life-like/Generations (`totalistic.py`), Lenia (`lenia.py`), Flow-Lenia (`flow_lenia.py`, mass-conserving, float32 states via `Physics.dtype` and a uint8 `view` for display and frame measures, D-026), controls (`controls.py`: `NoiseControl`, `SmoothNoiseControl`, `JitterControl`). Add new physics here with `@register`; set `continuous = True` for continuous states |
+| `emergence/physics/` | `Physics` interface (`base.py`), Life-like/Generations (`totalistic.py`), Lenia (`lenia.py`), Flow-Lenia (`flow_lenia.py`, mass-conserving, float32 states via `Physics.dtype` and a uint8 `view` for display and frame measures, D-026), controls (`controls.py`: `NoiseControl`, `SmoothNoiseControl`, `JitterControl`), Gray-Scott (`gray_scott.py`, two-channel float32 state (2, h, w), a known reproducer used as a control; only the birth detector and plain runs support it). Add new physics here with `@register`; set `continuous = True` for continuous states |
 | `emergence/engine.py` | `UniverseSpec` (everything needed to reproduce a universe) and `Universe` (read-only state, `fork`) |
-| `emergence/observatory/` | measures, structure census and self-propulsion test, recurrence, damage spreading, local periodicity, `innovation.py`, `replication.py`, `shapes.py`; `continuous.py` (tolerant census, free activity, emergent glider); continuous label rules in `observer.classify` |
+| `emergence/observatory/` | measures, structure census and self-propulsion test, recurrence, damage spreading, local periodicity, `innovation.py`, `replication.py`, `shapes.py`; `births.py` (birth detector for both families: two generations in isolation, D-028); `continuous.py` (tolerant census, free activity, emergent glider); continuous label rules in `observer.classify` |
 | `emergence/lab.py` | the only place engine and observer meet (`study`, `study_universe`) |
 | `emergence/discovery.py` | objectives, calibration, niches, `Explorer`, follow-ups, verdicts (`innovation_verdict`, evidence levels), `reproduce` |
 | `emergence/analysis.py` | `compare` for baselines |
 | `emergence/benchmark.py`, `benchmark_probes.py` | validation suite |
 | `emergence/server.py`, `web/` | dashboard |
 | `docs/` | this journal (GitHub Pages, Jekyll). `_data/media.json` lists the clips; `data/experiments/` holds the exports |
-| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `make_report_figures.py`, `lenia_static_fields.py` (C-01/C-02 diagnostics behind D-022), `heldout_free_activity.py` (C-02), `verify_movers.py`, `detector_calibration.py` (E-25), experiment scripts |
+| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `make_report_figures.py`, `lenia_static_fields.py` (C-01/C-02 diagnostics behind D-022), `heldout_free_activity.py` (C-02), `verify_movers.py`, `detector_calibration.py` (E-25), `birth_scan.py` (E-27), experiment scripts |
 
 ## Conventions
 

@@ -12,6 +12,33 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-032 · 2026-11-07 · A birth detector; none of our Lenia creatures reproduces (E-27, E-28)
+
+**Question:** the owner asked what could give reproduction and heredity. Nothing in the project could have confirmed a birth in Lenia: the replication probe matches exact discrete shapes and only tests clones we place. So: build a detector that works for both physics families, validate it, and ask whether the Lenia worlds we have contain reproducers.
+
+**Built (D-028):**
+- `observatory/births.py`: an object is copied alone into the physics' vacuum and run. Copies are objects of the same shape (discrete) or within 2× of the parent's mass (continuous). A **reproducer** must pass two generations: its copies keep multiplying and hold ≥ 75% of the matter, and one copy, alone, does it again. A vacuum world must make none. Discrete scrambled patches that copy themselves give "rule-level duplication" (Fredkin).
+- `physics/gray_scott.py`: Gray-Scott reaction-diffusion (Pearson 1993), whose spots grow and divide: a known continuous reproducer, used only as a control. Its state has two channels.
+- Benchmark section 9 (12 checks, 54/54 in all): positives HighLife replicator and Gray-Scott spots; negatives Life glider, Orbium glider, the replicator pattern under Life; deceptive Fredkin (rule-level), Seeds debris, Gray-Scott stripes, Gray-Scott worms that split once ("one generation"), smoothed noise, and the Lenia labyrinth below; selection-aware null on a Life soup and a settled Orbium soup.
+
+**Ran:**
+- **E-27** (pre-registered, `docs/data/e27-preregistration.md`, one amendment before results: the planned Gray-Scott soup start died out, Pearson's square seeds used instead). 218 worlds with verified movers (E-14, E-18a, E-24, E-26) and 100 mover-free worlds; for each, the 6 most common object types plus every in-world mover. 4 h of CPU on 10 cores.
+- **E-28** (pre-registered, `docs/data/e28-preregistration.md`): the same on 350 held-out worlds: 150 more mover-free worlds from the same experiments, 100 from E-17/E-18b (random 3-ring rules from smooth starts, the wanderer ridge), 100 from E-19 (soups, shuffled starts). 4.4 h of CPU.
+
+**Found:**
+- **Movers do not reproduce.** 0 of 285 movers (gliders, wanderers, ring gliders) and 0 of 503 candidates in the mover worlds made even one generation of copies.
+- **E-27 broke the first version of the detector.** It reported 2 "reproducers" and 23 "one generation" candidates in blob-field worlds. Looking at them (`scripts/birth_inspect.py`, as pre-registered) showed no births: a single blob placed alone **bursts into a labyrinth that fills the world** within 500–1000 steps (~80 pieces of similar mass), then the count stops. Copy mass also drifted 377 → 278 → 169 over generations because each generation was matched to its own parent, and no third generation passed. The first version only asked for "more copies late than early".
+- **Fix (post hoc, then held out):** late copies must be ≥ 2× the early maximum, and generation 2 is matched to the original parent. Every earlier control keeps its verdict; the labyrinth became a deceptive control. Re-scanning E-27's 23 hit worlds: 0 reproducers.
+- **E-28 confirmed the fixed detector on held-out worlds: 0 of 350 with a reproducer** (95% upper bound 0.85% per world). Gray-Scott pipeline positive: 10/10 in both E-27 and E-28. In E-28, 61 candidates from wildly growing E-17 rules filled the test world ("explosive"), and 3 blob candidates (rules μ 0.121–0.150 with two rings) passed generation 1 only narrowly (34 → 73 copies) and failed generation 2: the second generation is doing real work, and the doubling rule alone would not be enough.
+
+**Interpretation:** in the Lenia rules we have explored, structure either travels (gliders, wanderers, ring gliders), sits still, or spreads as a front or labyrinth. Nothing grows and divides into copies of itself. Evidence level stays at 2. This fits the literature: replication in Lenia has been reported in richer variants (several channels and kernels, Chan 2020), and heritable variation needs something that carries the rule's parameters with the creature (Flow-Lenia with parameter localization, Plantec et al. 2023). Both are now planned as Track D in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}).
+
+**Limits:** isolation runs in vacuum, so mass-conserving physics (Flow-Lenia) cannot pass by construction (a fed-world variant is planned); candidates are the most common object types, so a rare reproducer among many blobs could be missed; 9 objects in E-28 were too large to test.
+
+**Lesson:** a detector's first real data set is its hardest control. "More copies later" is not reproduction; keep looking at what the detector counted.
+
+---
+
 ## J-031 · 2026-11-07 · E-26: a third kind of mover, a slow straight "ring glider", confirmed from smooth starts only
 
 **Question (pre-registered, `docs/data/e26-preregistration.md`):** the held-out check (J-028) turned up one random rule, μ 0.277, σ 0.0316, rings 1/0.5/1, that made movers from a smooth start. Is it a reliable source of movers, and does the smooth-start effect hold?

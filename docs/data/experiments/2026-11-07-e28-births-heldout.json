@@ -1,0 +1,7044 @@
+{
+ "experiment": "E-28",
+ "gray_scott_positive": [
+  {
+   "seed": 11,
+   "objects": 26,
+   "candidates": 3,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer"
+   ]
+  },
+  {
+   "seed": 12,
+   "objects": 23,
+   "candidates": 3,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer"
+   ]
+  },
+  {
+   "seed": 13,
+   "objects": 20,
+   "candidates": 3,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer"
+   ]
+  },
+  {
+   "seed": 14,
+   "objects": 17,
+   "candidates": 4,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer",
+    "no reproduction"
+   ]
+  },
+  {
+   "seed": 15,
+   "objects": 25,
+   "candidates": 4,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer",
+    "no reproduction"
+   ]
+  },
+  {
+   "seed": 16,
+   "objects": 23,
+   "candidates": 4,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer",
+    "no reproduction"
+   ]
+  },
+  {
+   "seed": 17,
+   "objects": 28,
+   "candidates": 3,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer"
+   ]
+  },
+  {
+   "seed": 18,
+   "objects": 21,
+   "candidates": 3,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer"
+   ]
+  },
+  {
+   "seed": 19,
+   "objects": 29,
+   "candidates": 3,
+   "reproducers": 3,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "reproducer"
+   ]
+  },
+  {
+   "seed": 20,
+   "objects": 15,
+   "candidates": 3,
+   "reproducers": 2,
+   "verdicts": [
+    "reproducer",
+    "reproducer",
+    "no reproduction"
+   ]
+  }
+ ],
+ "H1": [
+  {
+   "db": "runs/e14.db",
+   "uid": 24,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 48,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.1
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 67,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 72.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 78,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 61.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 83,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.4
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 96,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.8
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 97,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 114,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 75.0
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 116,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 79.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 122,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.4
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 161,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 170,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 175,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.8
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 176,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 188,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 66.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 204,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 210,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 215,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 220,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 250,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 258,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.9
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 262,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.0
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 269,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 274,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 306,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 66.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 311,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 66.8
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 329,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 64.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 344,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.9
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 347,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 353,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 356,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 359,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 364,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 71.4
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 368,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 73.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 372,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 71.7
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 375,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 60.4
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 379,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 67.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 381,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 75.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 396,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 63.9
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 401,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 58.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 402,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 74.9
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 408,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 57.0
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 410,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 74.7
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 422,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 58.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 424,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 61.3
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 426,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 68.8
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 429,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 79.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 475,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 511,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 65.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 546,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 67.0
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 551,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 69.6
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 554,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 79.4
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 555,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 68.1
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 556,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 63.0
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 577,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 60.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 584,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 593,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 617,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 72.4
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 625,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 62.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 628,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 629,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 72.2
+  },
+  {
+   "db": "runs/e14.db",
+   "uid": 638,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 71.3
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 13,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.7
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 21,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.7
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 23,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.4
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 31,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.1
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 35,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.9
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 38,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.4
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 39,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.9
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 123,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "smooth:10",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 138,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "smooth:10",
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 1,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 27.2
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 152,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "init": "smooth:10",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.7
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 14,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.2
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 28,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 50,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 10.9
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 56,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 16.3
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 63,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 85.7
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 96,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 100,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 105,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 107,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 108,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 115,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e26.db",
+   "uid": 128,
+   "rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 17.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 14,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 20.8
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 20,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 20.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 21,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 105.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 28,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 107.0
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 32,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 93.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 36,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 105.7
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 37,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 104.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 55,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 99.2
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 64,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 128.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 65,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 118.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 68,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 132.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 83,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 133.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 90,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 132.9
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 107,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 128.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 108,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 119.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 110,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 139.8
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 116,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 114.8
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 117,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 119.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 127,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 183.2
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 145,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 198.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 152,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 208.2
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 154,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 180.5
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 156,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 204.9
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 164,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 178.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 170,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 190.2
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 177,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 167.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 188,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 16.0
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 207,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 81.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 208,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 76.0
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 214,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 86.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 217,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 94.6
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 226,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 83.8
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 229,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 83.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 247,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 105.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 254,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 100.9
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 255,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 105.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 273,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 112.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 277,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 105.8
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 284,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 92.9
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 289,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 96.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 301,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 155.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 309,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 168.2
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 310,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 153.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 311,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 181.0
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 317,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 159.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 319,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 147.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 322,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 165.8
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 325,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 146.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 331,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 142.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 335,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 160.4
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 344,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 163.0
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 347,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 153.0
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 352,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 154.5
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 363,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 16.7
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 371,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 17.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 374,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "too large",
+    "too large",
+    "no reproduction",
+    "too large"
+   ],
+   "hits": [
+    {
+     "verdict": "too large"
+    },
+    {
+     "verdict": "too large"
+    },
+    {
+     "verdict": "too large"
+    }
+   ],
+   "seconds": 47.9
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 376,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.7
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 379,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 17.8
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 394,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "too large",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "too large"
+    }
+   ],
+   "seconds": 65.2
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 398,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "too large",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "too large"
+    }
+   ],
+   "seconds": 70.7
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 412,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "too large",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "too large"
+    }
+   ],
+   "seconds": 68.0
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 415,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "too large"
+   ],
+   "hits": [
+    {
+     "verdict": "too large"
+    }
+   ],
+   "seconds": 70.1
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 426,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.2
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 429,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "patches",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 15.6
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 445,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 49.3
+  },
+  {
+   "db": "runs/e24.db",
+   "uid": 458,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "patches:110",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "too large",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "too large"
+    }
+   ],
+   "seconds": 41.7
+  }
+ ],
+ "H2": [
+  {
+   "db": "runs/e17.db",
+   "uid": 43,
+   "rule": "LENIA/R13/T10/m0.094/s0.0253/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 3,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 38.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 81,
+   "rule": "LENIA/R13/T10/m0.216/s0.0525/b1,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 61.18,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 93.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 126,
+   "rule": "LENIA/R13/T10/m0.236/s0.0666/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 120.37,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 41.84,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 137.07,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 85.85,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 16.0
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 174,
+   "rule": "LENIA/R13/T10/m0.304/s0.0885/b1,0.25,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive",
+    "no reproduction",
+    "no reproduction",
+    "explosive",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 62.64,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 30.0,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 75.87,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 38.1
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 184,
+   "rule": "LENIA/R13/T10/m0.193/s0.0299/b1,0.5,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 60.2
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 218,
+   "rule": "LENIA/R13/T10/m0.259/s0.0172/b1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 220,
+   "rule": "LENIA/R13/T10/m0.126/s0.0228/b0.25,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 61.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 236,
+   "rule": "LENIA/R13/T10/m0.215/s0.0324/b1,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 49.9
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 341,
+   "rule": "LENIA/R13/T10/m0.295/s0.0387/b0.25,0.5,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 358,
+   "rule": "LENIA/R13/T10/m0.092/s0.0093/b1,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 11.2
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 370,
+   "rule": "LENIA/R13/T10/m0.324/s0.0473/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 377,
+   "rule": "LENIA/R13/T10/m0.356/s0.0504/b1,1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 12.0
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 415,
+   "rule": "LENIA/R13/T10/m0.205/s0.0534/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 52.47,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 65.4,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 105.5,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 17.2
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 432,
+   "rule": "LENIA/R13/T10/m0.354/s0.0934/b0.25,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 1.2
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 448,
+   "rule": "LENIA/R13/T10/m0.147/s0.0165/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 60.4
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 497,
+   "rule": "LENIA/R13/T10/m0.356/s0.0375/b1,1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 551,
+   "rule": "LENIA/R13/T10/m0.221/s0.0478/b0.25,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 136.76,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 186.14,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 282.11,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 430.55,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 488.44,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 12.9
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 558,
+   "rule": "LENIA/R13/T10/m0.355/s0.0510/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 563,
+   "rule": "LENIA/R13/T10/m0.115/s0.0141/b0.75,0.5,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 52.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 631,
+   "rule": "LENIA/R13/T10/m0.383/s0.0865/b1,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 672.12,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 473.84,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 288.84,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 2,
+      "late": 2,
+      "clean": 0.157
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 160.7,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 2,
+      "late": 1,
+      "clean": 0.031
+     }
+    }
+   ],
+   "seconds": 14.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 694,
+   "rule": "LENIA/R13/T10/m0.142/s0.0210/b1,0.25,0.25",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 704,
+   "rule": "LENIA/R13/T10/m0.156/s0.0165/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 59.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 709,
+   "rule": "LENIA/R13/T10/m0.124/s0.0141/b0.5,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 67.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 748,
+   "rule": "LENIA/R13/T10/m0.356/s0.0445/b1,1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.4
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 754,
+   "rule": "LENIA/R13/T10/m0.356/s0.0423/b1,1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.4
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 766,
+   "rule": "LENIA/R13/T10/m0.153/s0.0145/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 65.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 769,
+   "rule": "LENIA/R13/T10/m0.121/s0.0141/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "one generation",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "one generation",
+     "parent_mass": 71.06,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 34,
+      "late": 73,
+      "clean": 0.816
+     },
+     "gen2": {
+      "ok": false,
+      "full": false,
+      "early": 1,
+      "late": 0,
+      "clean": 0.0,
+      "series": [
+       1,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ]
+     },
+     "background_copies": 0,
+     "attractor": false
+    }
+   ],
+   "seconds": 100.0
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 789,
+   "rule": "LENIA/R13/T10/m0.382/s0.0943/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 3,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 906.38,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 2392.06,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 594.85,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 1.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 803,
+   "rule": "LENIA/R13/T10/m0.107/s0.0319/b1,1,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 40.0,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 19.97,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 12.44,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 48.24,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 17.1
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 816,
+   "rule": "LENIA/R13/T10/m0.304/s0.0554/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "explosive",
+    "explosive",
+    "no reproduction",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 470.74,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 218.67,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 325.33,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 32.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 824,
+   "rule": "LENIA/R13/T10/m0.113/s0.0161/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 3,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 40.0
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 827,
+   "rule": "LENIA/R13/T10/m0.150/s0.0237/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "one generation",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "one generation",
+     "parent_mass": 95.41,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 34,
+      "late": 72,
+      "clean": 0.823
+     },
+     "gen2": {
+      "ok": false,
+      "full": false,
+      "early": 49,
+      "late": 76,
+      "clean": 0.871,
+      "series": [
+       1,
+       0,
+       3,
+       15,
+       23,
+       24,
+       26,
+       27,
+       30,
+       30,
+       35,
+       35,
+       37,
+       38,
+       42,
+       44,
+       44,
+       44,
+       46,
+       47,
+       49,
+       48,
+       49,
+       52,
+       55,
+       52,
+       57,
+       57,
+       56,
+       57,
+       60,
+       62,
+       65,
+       62,
+       61,
+       58,
+       65,
+       66,
+       67,
+       69,
+       67,
+       65,
+       67,
+       68,
+       66,
+       68,
+       72,
+       69,
+       71,
+       69,
+       69,
+       68,
+       69,
+       72,
+       70,
+       72,
+       69,
+       70,
+       69,
+       70,
+       73,
+       72,
+       66,
+       70,
+       74,
+       70,
+       73,
+       69,
+       65,
+       66,
+       70,
+       68,
+       69,
+       64,
+       65,
+       72,
+       70,
+       71,
+       74,
+       71,
+       76
+      ]
+     },
+     "background_copies": 0,
+     "attractor": false
+    }
+   ],
+   "seconds": 125.0
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 866,
+   "rule": "LENIA/R13/T10/m0.338/s0.0539/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 3,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 746.97,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 14.9
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 867,
+   "rule": "LENIA/R13/T10/m0.136/s0.0217/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 36.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 872,
+   "rule": "LENIA/R13/T10/m0.132/s0.0379/b1,0.25,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 879,
+   "rule": "LENIA/R13/T10/m0.375/s0.0488/b1,1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 975,
+   "rule": "LENIA/R13/T10/m0.221/s0.0479/b0.25,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive",
+    "no reproduction",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 155.48,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 81.44,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 301.59,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 479.51,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 557.93,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 13.2
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1130,
+   "rule": "LENIA/R13/T10/m0.118/s0.0283/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 33.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1139,
+   "rule": "LENIA/R13/T10/m0.382/s0.0943/b0.25,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 1299.49,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 892.98,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 1.4
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1173,
+   "rule": "LENIA/R13/T10/m0.318/s0.0198/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1217,
+   "rule": "LENIA/R13/T10/m0.250/s0.0263/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1313,
+   "rule": "LENIA/R13/T10/m0.134/s0.0321/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 3,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 40.2
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1314,
+   "rule": "LENIA/R13/T10/m0.134/s0.0321/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 28.8
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1336,
+   "rule": "LENIA/R13/T10/m0.137/s0.0174/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 42.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1349,
+   "rule": "LENIA/R13/T10/m0.390/s0.0836/b1,0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 21.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1415,
+   "rule": "LENIA/R13/T10/m0.175/s0.0271/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1443,
+   "rule": "LENIA/R13/T10/m0.286/s0.0475/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 336.89,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 349.94,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 479.97,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 239.6,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 638.24,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1460,
+   "rule": "LENIA/R13/T10/m0.186/s0.0235/b1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 51.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1531,
+   "rule": "LENIA/R13/T10/m0.392/s0.1141/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 3,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 2605.96,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 847.11,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 115.15,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 1.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1573,
+   "rule": "LENIA/R13/T10/m0.088/s0.0155/b1,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.9
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1660,
+   "rule": "LENIA/R13/T10/m0.359/s0.0253/b0.75,1,0.25",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.4
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1662,
+   "rule": "LENIA/R13/T10/m0.190/s0.0108/b1,0.75,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1679,
+   "rule": "LENIA/R13/T10/m0.223/s0.0487/b0.25,0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 96.96,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 265.04,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 252.94,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 11.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1710,
+   "rule": "LENIA/R13/T10/m0.377/s0.0469/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1726,
+   "rule": "LENIA/R13/T10/m0.379/s0.1099/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 1.2
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1727,
+   "rule": "LENIA/R13/T10/m0.372/s0.0990/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 1664.64,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 570.13,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 1.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1744,
+   "rule": "LENIA/R13/T10/m0.345/s0.0702/b1,0.25",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "explosive",
+    "explosive",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 781.09,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 1,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 137.16,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 1,
+      "late": 2,
+      "clean": 0.061
+     }
+    }
+   ],
+   "seconds": 6.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1754,
+   "rule": "LENIA/R13/T10/m0.153/s0.0324/b0.25,1,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 44.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1782,
+   "rule": "LENIA/R13/T10/m0.197/s0.0428/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "explosive",
+    "explosive",
+    "explosive"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 56.47,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 66.55,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 90.78,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 16.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1783,
+   "rule": "LENIA/R13/T10/m0.351/s0.0603/b1,0.25,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 16.9
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1837,
+   "rule": "LENIA/R13/T10/m0.187/s0.0327/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "no reproduction",
+    "no reproduction",
+    "explosive",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 77.34,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 108.34,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 36.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1868,
+   "rule": "LENIA/R13/T10/m0.150/s0.0237/b0.75,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "one generation",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "one generation",
+     "parent_mass": 70.49,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 36,
+      "late": 84,
+      "clean": 0.866
+     },
+     "gen2": {
+      "ok": false,
+      "full": false,
+      "early": 1,
+      "late": 0,
+      "clean": 0.0,
+      "series": [
+       1,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ]
+     },
+     "background_copies": 0,
+     "attractor": false
+    }
+   ],
+   "seconds": 105.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1911,
+   "rule": "LENIA/R13/T10/m0.322/s0.0204/b0.5,0.25,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 0.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1923,
+   "rule": "LENIA/R13/T10/m0.291/s0.0722/b1,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "explosive",
+    "no reproduction",
+    "explosive",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 157.28,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "explosive",
+     "parent_mass": 98.36,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    }
+   ],
+   "seconds": 38.1
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1934,
+   "rule": "LENIA/R13/T10/m0.205/s0.0298/b1,0.25",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 76.3
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 1970,
+   "rule": "LENIA/R13/T10/m0.156/s0.0268/b1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 3,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 38.6
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 2055,
+   "rule": "LENIA/R13/T10/m0.127/s0.0121/b0.5,1,0.25",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 43.9
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 2056,
+   "rule": "LENIA/R13/T10/m0.367/s0.0735/b0.25,1",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 12.8
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 2077,
+   "rule": "LENIA/R13/T10/m0.104/s0.0074/b1,0.5,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 11.5
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 2078,
+   "rule": "LENIA/R13/T10/m0.104/s0.0074/b1,0.5,0.5",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 2,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 17.7
+  },
+  {
+   "db": "runs/e17.db",
+   "uid": 2084,
+   "rule": "LENIA/R13/T10/m0.364/s0.0696/b0.75,1,0.75",
+   "init": null,
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "explosive",
+    "no reproduction",
+    "no reproduction",
+    "too large",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [
+    {
+     "verdict": "explosive",
+     "parent_mass": 606.35,
+     "gen1": {
+      "ok": false,
+      "full": true,
+      "early": 0,
+      "late": 0,
+      "clean": 0.0
+     }
+    },
+    {
+     "verdict": "too large"
+    }
+   ],
+   "seconds": 51.1
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 181,
+   "rule": "LENIA/R13/T10/m0.200/s0.0150/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.0
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 191,
+   "rule": "LENIA/R13/T10/m0.200/s0.0184/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 52.8
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 197,
+   "rule": "LENIA/R13/T10/m0.200/s0.0220/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.4
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 206,
+   "rule": "LENIA/R13/T10/m0.200/s0.0220/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 46.4
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 214,
+   "rule": "LENIA/R13/T10/m0.200/s0.0260/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.1
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 268,
+   "rule": "LENIA/R13/T10/m0.215/s0.0198/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 1.0,
+   "candidates": 2,
+   "mover_candidates": 1,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 24.3
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 282,
+   "rule": "LENIA/R13/T10/m0.215/s0.0279/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 286,
+   "rule": "LENIA/R13/T10/m0.215/s0.0279/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.8
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 296,
+   "rule": "LENIA/R13/T10/m0.215/s0.0323/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.2
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 305,
+   "rule": "LENIA/R13/T10/m0.230/s0.0138/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 321,
+   "rule": "LENIA/R13/T10/m0.230/s0.0173/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 326,
+   "rule": "LENIA/R13/T10/m0.230/s0.0173/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.1
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 372,
+   "rule": "LENIA/R13/T10/m0.230/s0.0345/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 48.7
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 378,
+   "rule": "LENIA/R13/T10/m0.243/s0.0146/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 457,
+   "rule": "LENIA/R13/T10/m0.255/s0.0153/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.9
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 462,
+   "rule": "LENIA/R13/T10/m0.255/s0.0191/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 469,
+   "rule": "LENIA/R13/T10/m0.255/s0.0191/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 484,
+   "rule": "LENIA/R13/T10/m0.255/s0.0235/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 2.0,
+   "candidates": 3,
+   "mover_candidates": 2,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 33.9
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 496,
+   "rule": "LENIA/R13/T10/m0.255/s0.0281/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 55.3
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 499,
+   "rule": "LENIA/R13/T10/m0.255/s0.0331/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.9
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 500,
+   "rule": "LENIA/R13/T10/m0.255/s0.0331/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 528,
+   "rule": "LENIA/R13/T10/m0.270/s0.0162/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 546,
+   "rule": "LENIA/R13/T10/m0.270/s0.0248/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.7
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 561,
+   "rule": "LENIA/R13/T10/m0.270/s0.0297/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.4
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 569,
+   "rule": "LENIA/R13/T10/m0.270/s0.0351/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 587,
+   "rule": "LENIA/R13/T10/m0.270/s0.0405/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 44.4
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 609,
+   "rule": "LENIA/R13/T10/m0.285/s0.0214/b1,0.5,0.5",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.2
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 626,
+   "rule": "LENIA/R13/T10/m0.285/s0.0262/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 1,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 15.0
+  },
+  {
+   "db": "runs/e18.db",
+   "uid": 636,
+   "rule": "LENIA/R13/T10/m0.285/s0.0313/b1,0.5,0.5",
+   "init": "smooth:6",
+   "movers_in_world": 3.0,
+   "candidates": 4,
+   "mover_candidates": 3,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 29.0
+  }
+ ],
+ "H3": [
+  {
+   "db": "runs/e19.db",
+   "uid": 22,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 41,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 64,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.0
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 91,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 64.0
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 94,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 113,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 114,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 122,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 178,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 182,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 192,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 194,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.7
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 213,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.7
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 224,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 230,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 261,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 62.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 280,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 74.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 286,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 290,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 331,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 354,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 366,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 370,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 387,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 63.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 391,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 395,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 401,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 402,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 419,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 420,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.1
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 423,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.7
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 427,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 445,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 65.7
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 448,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 449,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:3",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 450,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:3",
+   "movers_in_world": 1.0,
+   "candidates": 2,
+   "mover_candidates": 1,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 26.1
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 503,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "smooth:6",
+   "movers_in_world": 1.0,
+   "candidates": 2,
+   "mover_candidates": 1,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 20.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 588,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 66.0
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 594,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 77.0
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 599,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 71.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 629,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 75.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 633,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 76.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 674,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 677,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 56.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 681,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.0
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 703,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 68.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 735,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 56.9
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 755,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 74.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 763,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 57.0
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 789,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 808,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 841,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 58.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 869,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 878,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 889,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 64.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 892,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 71.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 898,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 71.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 899,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 64.9
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 901,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 72.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 930,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 65.7
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 937,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 68.1
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 952,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "smooth_shuffled:6",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 67.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 965,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 970,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.9
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 976,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1005,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.8
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1014,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1051,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1054,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.7
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1059,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1060,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1076,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1095,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 5,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 59.9
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1098,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1105,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1115,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1117,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1119,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 3.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1151,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1164,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 69.6
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1165,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 70.9
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1168,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 67.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1176,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 66.8
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1191,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 0,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [],
+   "hits": [],
+   "seconds": 2.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1214,
+   "rule": "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 4,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 53.0
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1226,
+   "rule": "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 68.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1242,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 64.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1244,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 66.8
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1246,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 74.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1263,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 71.8
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1264,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 65.7
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1273,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 61.5
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1279,
+   "rule": "LENIA/R13/T10/m0.160/s0.0176/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 67.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1283,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 67.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1286,
+   "rule": "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 63.3
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1296,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 59.4
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1299,
+   "rule": "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 64.2
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1301,
+   "rule": "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 57.1
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1325,
+   "rule": "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 42.9
+  },
+  {
+   "db": "runs/e19.db",
+   "uid": 1354,
+   "rule": "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "init": "uniform",
+   "movers_in_world": 0,
+   "candidates": 6,
+   "mover_candidates": 0,
+   "reproducers": 0,
+   "verdicts": [
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction",
+    "no reproduction"
+   ],
+   "hits": [],
+   "seconds": 32.7
+  }
+ ]
+}
