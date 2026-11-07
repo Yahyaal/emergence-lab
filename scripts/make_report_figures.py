@@ -262,7 +262,57 @@ def e14_per_rule() -> None:
     plt.close(fig)
 
 
-FIGS = {"e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e15_fates() -> None:
+    d = json.load(open(DATA / "2026-11-07-e15-glider-population.json"))["runs"]
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(12, 3.9), gridspec_kw={"width_ratios": [1.5, 1]})
+    for r in d:
+        t = [s["t"] for s in r["series"]]
+        m = [max(s["mass"], 1) for s in r["series"]]
+        a1.plot(t, m, color=RED if m[-1] > 600 else (GREEN if m[-1] > 1 else GREY), lw=1, alpha=0.7)
+    a1.set_yscale("log")
+    a1.axhline(72, color=GREEN, ls=":", lw=1)
+    a1.text(5000, 80, "one glider", color=GREEN, ha="right", fontsize=9)
+    a1.set_xlabel("step")
+    a1.set_ylabel("total mass in the world (log)")
+    a1.set_title("Each line is one 384×384 world started smooth")
+    rules = sorted({r["rule"] for r in d})
+    fates = {"blob field takes over": RED, "only gliders left": GREEN, "everything dies": GREY}
+    counts = {f: [] for f in fates}
+    for rule in rules:
+        ends = [r["series"][-1]["mass"] for r in d if r["rule"] == rule]
+        counts["blob field takes over"].append(sum(e > 600 for e in ends))
+        counts["only gliders left"].append(sum(1 <= e <= 600 for e in ends))
+        counts["everything dies"].append(sum(e < 1 for e in ends))
+    left = np.zeros(len(rules))
+    labels = [f"μ {r.split('/')[3][1:]}" for r in rules]
+    for f, col in fates.items():
+        a2.barh(labels, counts[f], left=left, color=col, label=f)
+        left += counts[f]
+    a2.set_xlabel("worlds (of 10)")
+    a2.legend(frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=3)
+    a2.set_title("How the 30 big worlds ended")
+    fig.suptitle("E-15: in big worlds a growing blob field usually wins; gliders survive only where it never starts",
+                 y=1.03, fontsize=12, fontweight="bold")
+    fig.savefig(OUT / "e15-fates.png")
+    plt.close(fig)
+
+
+def e15_clips() -> None:
+    def frames(rule, seed, t0, t1, every, crop=None):
+        u = Universe.from_spec(UniverseSpec(parse_rule(rule).to_dict(), seed, 384, 384, 0.10,
+                                            init={"kind": "smooth", "ell": 3.0}))
+        u.step(t0)
+        out = []
+        for _ in range(t0, t1, every):
+            s = u.state
+            out.append(s[crop[0]:crop[1], crop[2]:crop[3]].copy() if crop else s[::2, ::2].copy())
+            u.step(every)
+        return out
+    save_gif(frames("LENIA/R13/T10/m0.150/s0.0150/b1", 15001, 1500, 1900, 4), "e15-collision.gif", scale=1, ms=50)
+    save_gif(frames("LENIA/R13/T10/m0.140/s0.0140/b1", 15000, 0, 1000, 10), "e15-field-takeover.gif", scale=2, ms=60)
+
+
+FIGS = {"e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
