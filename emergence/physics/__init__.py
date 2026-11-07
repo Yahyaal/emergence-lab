@@ -1,9 +1,9 @@
 from .base import REGISTRY, Physics, physics_from_dict, register
-from .controls import NoiseControl, SmoothNoiseControl
+from .controls import JitterControl, NoiseControl, SmoothNoiseControl
 from .lenia import Lenia
 from .totalistic import OuterTotalistic
 
-__all__ = ["REGISTRY", "Physics", "physics_from_dict", "register", "OuterTotalistic", "NoiseControl", "SmoothNoiseControl", "Lenia", "parse_rule"]
+__all__ = ["REGISTRY", "Physics", "physics_from_dict", "register", "OuterTotalistic", "NoiseControl", "SmoothNoiseControl", "JitterControl", "Lenia", "parse_rule"]
 
 
 def parse_rule(rule: str) -> Physics:

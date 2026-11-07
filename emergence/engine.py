@@ -40,14 +40,44 @@ class UniverseSpec:
 
 # Initial conditions: the same rule can be started from structurally different worlds.
 # Every generator puts only state-1 cells into vacuum, like the default soup; they differ
-# in WHERE matter is, not in what it is. `density` is the mean density for uniform and
-# gradient; patch and spots use their own local density and are otherwise vacuum.
+# in WHERE matter is, not in what it is. `density` is the mean density for uniform,
+# gradient and smooth; patch and spots use their own local density and are otherwise
+# vacuum. For continuous physics, occupied cells get random values like the soup, except
+# `smooth`, whose values are the smooth field itself, matched to the soup by total mass.
 INIT_KINDS = {
     "uniform": "random soup at `density` everywhere (explicit form of the default)",
     "gradient": "density rises linearly across x from 0 to 2*density (same mean as uniform)",
     "patch": "soup at local density `local` (0.5) in a centred square covering `area` (0.25) of the world; vacuum elsewhere",
     "spots": "`n` (8) round blobs of radius `r` (5) at local density `local` (0.6) in vacuum",
+    "smooth": "Gaussian-blurred white noise, filter width `ell` (6) cells; nothing planted. Discrete: the "
+              "top `density` fraction of cells is occupied. Continuous: values chosen so the total mass "
+              "(sum of values) equals the soup's expected mass, 0.5 * density * cells (D-023)",
 }
+
+
+def smooth_field(shape: tuple[int, int], ell: float, rng: np.random.Generator) -> np.ndarray:
+    """White noise blurred by a Gaussian of width `ell` on the torus, mapped to a uniform
+    marginal on [0, 1] (rank-preserving), so only the spatial correlation differs from i.i.d."""
+    from scipy import ndimage, special
+    z = ndimage.gaussian_filter(rng.standard_normal(shape), ell, mode="wrap")
+    return special.ndtr((z - z.mean()) / (z.std() + 1e-12))
+
+
+def smooth_continuous(spec: "UniverseSpec", rng: np.random.Generator) -> np.ndarray:
+    """Continuous-valued smooth start, matched to the soup by TOTAL MASS. The soup occupies a
+    `density` fraction of cells with uniform random values (mean 0.5), so its expected mass
+    per cell is m = 0.5 * density. u**k with u uniform has mean 1 / (k + 1), so k = 1/m - 1
+    gives mass m with smooth peaks and mostly-empty space. A few rescales of the rounded
+    field then match the sample's total to the target (within ~0.1%)."""
+    u = smooth_field((spec.height, spec.width), float((spec.init or {}).get("ell", 6.0)), rng)
+    m = 0.5 * spec.density
+    v = u ** (1.0 / m - 1.0)
+    target = m * v.size * 255
+    scale = target / (v.sum() * 255)
+    for _ in range(8):  # rounding to 256 levels drops many small values; correct for it
+        q = np.rint(np.clip(v * scale, 0.0, 1.0) * 255)
+        scale *= target / max(q.sum(), 1.0)
+    return np.rint(np.clip(v * scale, 0.0, 1.0) * 255).astype(np.uint8)
 
 
 def initial_state(spec: "UniverseSpec", rng: np.random.Generator) -> np.ndarray:
@@ -72,6 +102,9 @@ def initial_state(spec: "UniverseSpec", rng: np.random.Generator) -> np.ndarray:
             dy = np.minimum(np.abs(yy - cy), h - np.abs(yy - cy))  # torus distance
             dx = np.minimum(np.abs(xx - cx), w - np.abs(xx - cx))
             dmap[dy * dy + dx * dx <= r * r] = local
+    elif kind == "smooth":
+        u = smooth_field((h, w), float(init.get("ell", 6.0)), rng)
+        return (u > np.quantile(u, 1.0 - spec.density)).astype(np.uint8)
     else:
         raise ValueError(f"unknown init kind {kind!r}; known: {sorted(INIT_KINDS)}")
     return (rng.random((h, w)) < dmap).astype(np.uint8)
@@ -95,6 +128,8 @@ class Universe:
         physics = physics_from_dict(spec.physics)
         rng = np.random.default_rng(spec.seed)
         if spec.init is not None:
+            if spec.init.get("kind") == "smooth" and getattr(physics, "continuous", False):
+                return cls(physics, smooth_continuous(spec, rng))
             state = initial_state(spec, rng)
             if getattr(physics, "continuous", False):  # occupied cells get random values, like the soup
                 state = np.where(state > 0, np.rint(rng.random(state.shape) * 255), 0).astype(np.uint8)

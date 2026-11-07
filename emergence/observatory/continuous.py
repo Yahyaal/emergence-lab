@@ -17,7 +17,16 @@ creature never repeats its cell values exactly. Here objects are tracked toleran
 
 Returned keys mirror structures.analyse so the rest of the system works unchanged:
 still_structures, vocabulary (= persistent objects), mover_shapes, mover_events,
-mover_velocities, self_propelled_shapes, objects_per_frame.
+mover_velocities, self_propelled_shapes, objects_per_frame. Note that `vocabulary` counts
+persistent object INSTANCES, not shape types as in the discrete census: twenty identical
+static blobs give 20. Two continuous-only keys:
+
+* dynamic_structures  persistent objects that are not still (movers and reshaping objects)
+* free_activity       fraction of cells per step whose value changes by more than
+                      VALUE_TOL levels OUTSIDE still objects (each dilated by STILL_MARGIN
+                      cells). The edges of static blobs keep creeping and oscillating for
+                      thousands of steps (real slow relaxation, also present without
+                      quantization); this measure excludes that and keeps everything else.
 
 Objects are labelled on the torus (components touching across the seam are merged) and
 centroids use circular means, so wrapping objects are tracked correctly.
@@ -34,6 +43,9 @@ MIN_AREA, MAX_AREA = 12, 4000
 MAX_JUMP = 4.0          # cells per frame
 MASS_TOL = 1.4          # mass may change by up to this factor between linked frames
 MIN_TRAVEL = 5.0
+VALUE_TOL = 2           # levels (of 255): smaller per-step changes are rounding-scale
+STILL_MARGIN = 3        # cells around a still object whose activity is attributed to it
+MIN_STILL_FRAMES = 10   # a track this long that never leaves its place anchors free_activity
 _STRUCT = np.ones((3, 3), dtype=bool)
 
 
@@ -103,7 +115,8 @@ def _torus_delta(a, b, shape):
     return d
 
 
-def track(frames: list[np.ndarray]) -> list[dict]:
+def track(frames: list[np.ndarray]) -> tuple[list[dict], list[list[dict]]]:
+    """Link objects frame to frame. Returns (tracks, objects per frame)."""
     shape = frames[0].shape
     per = [objects(f) for f in frames]
     tracks: list[dict] = []
@@ -185,6 +198,32 @@ def self_propelled(physics, state: np.ndarray, obj: dict, steps: int = 100) -> b
     return 1 / MASS_TOL <= ratio <= MASS_TOL and travel >= MIN_TRAVEL and len(end) <= 2
 
 
+def free_activity(frames: list[np.ndarray], per: list[list[dict]], tracks: list[dict],
+                  margin: int = STILL_MARGIN) -> float:
+    """Mean fraction of cells per step that change by more than VALUE_TOL levels outside
+    objects that stay in place. An object stays in place if its track lasts at least
+    MIN_STILL_FRAMES frames with a net displacement under 1 cell; persistence is not
+    required, because pinching blobs change mass abruptly and break their tracks without
+    moving. Its cells at the start and end of the track, dilated by `margin` cells on the
+    torus, are excluded."""
+    still = [tr for tr in tracks if tr["length"] >= MIN_STILL_FRAMES and np.hypot(*tr["disp"]) < 1.0]
+    if len(frames) < 2:
+        return 0.0
+    mask = np.zeros(frames[0].shape, dtype=bool)
+    labels: dict[int, np.ndarray] = {}
+    for tr in still:
+        for t, j in (tr["first"], tr["last"]):
+            if t not in labels:
+                labels[t] = label_torus(frames[t] >= THRESHOLD)[0]
+            mask |= labels[t] == per[t][j]["label"]
+    if mask.any():
+        mask = ndimage.maximum_filter(mask, size=2 * margin + 1, mode="wrap")
+    free = ~mask
+    st = np.stack(frames).astype(np.int16)
+    changed = np.abs(np.diff(st, axis=0)) > VALUE_TOL
+    return float((changed & free).sum()) / (changed.shape[0] * free.size)
+
+
 def analyse(frames: list[np.ndarray], physics=None, max_tests: int = 6) -> dict[str, float]:
     W = len(frames)
     if W == 0:
@@ -210,13 +249,16 @@ def analyse(frames: list[np.ndarray], physics=None, max_tests: int = 6) -> dict[
         "mover_shapes": float(len(movers)),
         "mover_events": float(len(movers)),
         "mover_velocities": float(len(dirs)),
+        "dynamic_structures": float(len(persistent) - len(still)),
+        "free_activity": free_activity(frames, per, tracks),
     }
 
 
 def emergent_glider(physics, side: int = 128, settle: int = 300) -> np.ndarray:
     """A glider DERIVED from the physics (not hand-typed): an asymmetric seed (elliptical
     disc with a value gradient) left to settle in an empty world. For the Orbium
-    parameters it becomes a single object that keeps its mass and travels ~0.1 cell/step.
+    parameters it becomes a single object that keeps its mass (~70) and travels
+    ~0.53 cells/step (measured over steps 300-700).
     Used as the positive control; returns the settled world."""
     yy, xx = np.mgrid[0:side, 0:side]
     cy = cx = side // 2

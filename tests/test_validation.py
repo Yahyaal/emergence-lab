@@ -241,3 +241,115 @@ def test_lenia_initial_conditions_have_values():
     spec = UniverseSpec(parse_rule("LENIA/R13/T10/m0.150/s0.0150/b1").to_dict(), 2, 64, 64, 0.3, init={"kind": "patch"})
     s = Universe.from_spec(spec).state
     assert s.max() > 100 and s[:8].sum() == 0
+
+
+ORBIUM = "LENIA/R13/T10/m0.150/s0.0150/b1"
+
+
+def test_tolerant_measures_ignore_rounding_jitter_and_keep_exact_default():
+    from emergence.observatory import measures as M
+    rng = np.random.default_rng(0)
+    base = np.where(rng.random((32, 32)) < 0.3, 200, 0).astype(np.uint8)
+    jit = (base & 0xFE) | (rng.integers(0, 2, base.shape, dtype=np.uint8) * (base > 0))
+    assert M.activity(base, jit) > 0 and M.activity(base, jit, tol=2) == 0
+    big = base.copy()
+    big[0, 0] = 255 - big[0, 0]
+    assert M.activity(base, big, tol=2) == 1 / base.size
+    stack = np.stack([(base & 0xFE) | (rng.integers(0, 2, base.shape, dtype=np.uint8) * (base > 0))
+                      for _ in range(12)])
+    assert M.local_periodicity(stack)["local_periodic_frac"] < 0.5
+    assert M.local_periodicity(stack, tol=2)["active_cell_frac"] == 0.0
+
+
+def test_lenia_static_blob_field_is_not_complex_but_gliders_are():
+    """The v0.5 bug: a field of static blobs was labelled complex (J-012)."""
+    from emergence.discovery import OBJECTIVES, run_settled
+    from emergence.observatory import continuous as C
+    from emergence.physics import parse_rule
+    orb = parse_rule(ORBIUM)
+    soup = Universe.from_spec(UniverseSpec(orb.to_dict(), 1, 96, 96, 0.35))
+    soup.step(300)
+    o = study_universe(Universe(orb, soup.state.copy()), 1, steps=200)
+    m = o.metrics
+    assert m["vocabulary"] >= 4 and m["self_propelled_shapes"] == 0
+    assert o.cls != "complex" and m["quasi_static"] and run_settled(m, o.cls)
+    assert OBJECTIVES["vocabulary"](m) == m["dynamic_structures"] == 0
+    assert OBJECTIVES["aperiodic_activity"](m) < 0.002
+    gl = C.emergent_glider(orb)
+    two = np.maximum(np.roll(gl, (-32, -60), axis=(0, 1)), np.roll(gl, (32, -60), axis=(0, 1)))
+    g = study_universe(Universe(orb, two), 1, steps=200)
+    assert g.cls == "complex" and not g.metrics["quasi_static"] and g.metrics["self_propelled_shapes"] == 2
+
+
+def test_discrete_labels_and_objectives_ignore_continuous_keys():
+    from emergence.discovery import OBJECTIVES
+    o = study(UniverseSpec(LIFE.to_dict(), 1, 64, 64, 0.35), steps=200)
+    m = o.metrics
+    assert "continuous" not in m and "quasi_static" not in m
+    assert OBJECTIVES["vocabulary"](m) == m["vocabulary"]
+    assert OBJECTIVES["aperiodic_activity"](m) == m["activity_late"] * (1 - m["local_periodic_frac"])
+
+
+def test_jitter_control_is_a_near_fixed_point():
+    from emergence.physics import JitterControl
+    j = JitterControl()
+    o = study_universe(Universe(j, j.random_state(np.random.default_rng(3), (64, 64), 0.3)), 1, steps=120)
+    assert not o.metrics["cycle_found"] and o.cls == "frozen"
+
+
+def test_lenia_mutation_always_changes_the_rule():
+    from emergence.physics import Lenia
+    rng = np.random.default_rng(1)
+    single = Lenia.parse(ORBIUM)
+    for _ in range(300):
+        c = single.mutate(rng)
+        assert c.label() != single.label() and Lenia.parse(c.label()).label() == c.label()
+
+
+def test_emergent_glider_speed_matches_docstring():
+    from emergence.observatory import continuous as C
+    from emergence.physics import parse_rule
+    orb = parse_rule(ORBIUM)
+    w = C.emergent_glider(orb)
+    c = max(C.objects(w), key=lambda o: o["mass"])["c"]
+    path = np.zeros(2)
+    for _ in range(8):  # 25-step legs, so no leg wraps around the 128-cell torus
+        for _ in range(25):
+            w = orb.step(w)
+        c1 = max(C.objects(w), key=lambda o: o["mass"])["c"]
+        path += C._torus_delta(c, c1, w.shape)
+        c = c1
+    assert 0.45 <= np.hypot(*path) / 200 <= 0.6
+
+
+def test_smooth_init_matches_soup_mass_and_is_deterministic():
+    from scipy import ndimage
+    from emergence.physics import parse_rule
+    orb = parse_rule(ORBIUM).to_dict()
+    for d in (0.15, 0.35):
+        soup_mass = 0.5 * d * 96 * 96  # expected mass of the soup: density x mean value 0.5
+        for ell in (3, 10):
+            spec = UniverseSpec(orb, 5, 96, 96, d, init={"kind": "smooth", "ell": ell})
+            s = Universe.from_spec(spec).state
+            assert abs(s.sum() / 255 / soup_mass - 1) < 0.005
+            assert np.array_equal(s, Universe.from_spec(spec).state)
+            assert (s > 0).mean() > d  # matched by mass, not by occupied cells
+    # longer ell = smoother field: neighbouring cells more alike
+    rough, smooth = (Universe.from_spec(UniverseSpec(orb, 5, 96, 96, 0.35, init={"kind": "smooth", "ell": e})).state
+                     .astype(float) for e in (3, 10))
+    grad = lambda a: np.abs(np.diff(a, axis=1)).mean() / a.std()  # noqa: E731
+    assert grad(smooth) < grad(rough)
+    # discrete physics: occupied fraction = density, states 0/1
+    x = Universe.from_spec(UniverseSpec(LIFE.to_dict(), 5, 96, 96, 0.35, init={"kind": "smooth", "ell": 3})).state
+    assert set(np.unique(x)) == {0, 1} and abs(x.mean() - 0.35) < 0.001
+    assert ndimage.label(x)[1] < ndimage.label(np.random.default_rng(0).random((96, 96)) < 0.35)[1]
+
+
+def test_conditions_skip_exact_shape_probes_for_continuous_physics():
+    from emergence.conditions import NOT_APPLICABLE, _job, init_of
+    from emergence.physics import parse_rule
+    assert init_of("uniform") is None and init_of("patch") == {"kind": "patch"}
+    assert init_of("smooth:3") == {"kind": "smooth", "ell": 3.0}
+    spec = UniverseSpec(parse_rule(ORBIUM).to_dict(), 1, 48, 48, 0.35, init=init_of("smooth:6")).to_dict()
+    res = _job((spec, 60, 30))
+    assert res["extra"] == {"innovation": None, "innovation_verdict": NOT_APPLICABLE, "knockout": None}

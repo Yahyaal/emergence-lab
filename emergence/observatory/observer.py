@@ -33,9 +33,17 @@ CLASS_HELP = {
     "periodic": "whole universe repeats exactly, or every changing cell oscillates on its own",
     "drifting": "whole universe repeats up to a translation",
     "chaotic": "sustained activity, nearly incompressible (noise-like)",
-    "complex": "sustained (not fading), compressible activity with persistent or self-propelled structures",
-    "active": "still changing at the horizon, no clear signature (long transient?)",
+    "complex": "sustained (not fading), compressible activity with persistent or self-propelled structures "
+               "(continuous physics: self-propelled structures only)",
+    "active": "still changing at the horizon, no clear signature (long transient?); in continuous physics "
+              "this includes fields of static objects whose edges slowly relax",
 }
+
+# Continuous physics (e.g. Lenia): a universe with no moving structure and almost no
+# activity away from its still objects is quasi-static. Its objects never travel; only
+# their edges creep (measured in J-012). It is labelled "active" for humans but counts
+# as settled for ranking (see discovery.run_settled), like a frozen discrete universe.
+FREE_ACTIVITY_MIN = 0.002  # in the widest gap of 60 random rules (0.0018 static vs 0.0052 dynamic), J-012
 
 
 @dataclass
@@ -49,8 +57,12 @@ class Observation:
 
 
 class Observer:
-    def __init__(self, total_steps: int, window: int = 100, sample_every: int = 5, seed: int = 0):
+    def __init__(self, total_steps: int, window: int = 100, sample_every: int = 5, seed: int = 0,
+                 value_tol: int = 0):
         self.total_steps = total_steps
+        # 0 = exact comparisons (discrete physics); > 0 = changes of at most this many
+        # levels are ignored in activity and local periodicity (continuous physics)
+        self.value_tol = value_tol
         self.window = window
         self.sample_every = sample_every
         self.rng = np.random.default_rng(seed)  # only used for surrogates, never for the universe
@@ -64,7 +76,7 @@ class Observer:
     def observe(self, t: int, state: np.ndarray) -> None:
         state = np.array(state, copy=True)  # observer keeps its own copy
         if self.prev is not None:
-            self.activity.append(M.activity(self.prev, state))
+            self.activity.append(M.activity(self.prev, state, self.value_tol))
         self.recur.update(t, state)
         if t % self.sample_every == 0:
             self.ts["t"].append(t)
@@ -93,8 +105,9 @@ class Observer:
 
         st = np.stack(frames)
         spacetime = M.compression_ratio(st, self.rng)
-        local_periodic = M.local_periodicity(st)
-        if getattr(physics, "continuous", False):
+        local_periodic = M.local_periodicity(st, tol=self.value_tol)
+        continuous = getattr(physics, "continuous", False)
+        if continuous:
             from .continuous import analyse as analyse_continuous
             structs = analyse_continuous(frames, physics)
         else:
@@ -124,6 +137,14 @@ class Observer:
             "damage_norm": damage.get("damage_norm"),
             **structs,
         }
+        if continuous:
+            sp = m.get("self_propelled_shapes")
+            n_movers = m.get("mover_shapes", 0) if sp is None else sp
+            m["continuous"] = True
+            # share of cells whose value moved by more than the tolerance across the window
+            m["window_change_frac"] = float(
+                (np.abs(st[-1].astype(np.int16) - st[0].astype(np.int16)) > self.value_tol).mean())
+            m["quasi_static"] = bool(n_movers == 0 and m.get("free_activity", 0.0) < FREE_ACTIVITY_MIN)
         m["class"] = classify(m, final, num_states)
         return Observation(
             metrics=m,
@@ -148,14 +169,19 @@ def classify(m: dict[str, Any], final: np.ndarray, num_states: int) -> str:
         return "frozen" if m["period"] == 1 else "periodic"
     # Many independent oscillators: no global recurrence (periods don't align)
     # but every changing cell is individually periodic -> repetitive, not novel.
+    if m.get("continuous") and m["activity_late"] == 0 and m.get("window_change_frac", 1.0) == 0:
+        return "frozen"  # near-fixed point: no change above the value tolerance in the window
     if m["local_periodic_frac"] >= 0.95:
         return "periodic"
     if m["activity_late"] > 0.02 and m["spacetime_ratio"] > 0.85 and (m["damage_norm"] or 0) > 0.5:
         return "chaotic"
     movers = m.get("self_propelled_shapes")
     movers = m.get("mover_shapes", 0) if movers is None else movers
+    # Continuous physics: persistent objects are mostly static blobs (every blob of a
+    # settled Lenia soup persists), so only self-propelled structures count.
+    persistent_ok = not m.get("continuous") and m.get("vocabulary", 0) >= 4
     if (m["activity_late"] > 0.0005 and m["spacetime_ratio"] <= 0.85 and m.get("activity_trend", 1.0) >= 0.5
-            and (movers >= 1 or m.get("vocabulary", 0) >= 4)):
+            and (movers >= 1 or persistent_ok)):
         return "complex"
     return "active"
 

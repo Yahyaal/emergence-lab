@@ -74,8 +74,9 @@ def _pct(sorted_arr: np.ndarray, x: float) -> float | None:
 
 
 def run_settled(m: dict, cls: str) -> bool:
-    """Dead, frozen, or purely repetitive (every changing cell just oscillates in place)."""
-    return cls in TRIVIAL or m.get("local_periodic_frac", 0.0) >= 0.95
+    """Dead, frozen, or purely repetitive (every changing cell just oscillates in place),
+    or, for continuous physics, quasi-static (static objects whose edges slowly relax)."""
+    return cls in TRIVIAL or m.get("local_periodic_frac", 0.0) >= 0.95 or bool(m.get("quasi_static"))
 
 
 def movers(m: dict) -> float:
@@ -87,12 +88,16 @@ def movers(m: dict) -> float:
 
 
 OBJECTIVES: dict[str, Callable[[dict], float]] = {
-    # activity that is NOT explained by cells oscillating in place
-    "aperiodic_activity": lambda m: m["activity_late"] * (1.0 - m.get("local_periodic_frac", 0.0)),
+    # activity that is NOT explained by cells oscillating in place; for continuous physics,
+    # only activity away from still objects (their edges creep for thousands of steps)
+    "aperiodic_activity": lambda m: (m.get("free_activity", 0.0) if m.get("continuous") else m["activity_late"])
+    * (1.0 - m.get("local_periodic_frac", 0.0)),
     "order": lambda m: 1.0 - min(m["spacetime_ratio"], 1.0),
     # distinct shapes that travel on their own in an isolated clone
     "self_propelled": movers,
-    "vocabulary": lambda m: m.get("vocabulary", 0.0),
+    # distinct persistent shapes; for continuous physics the census counts instances, not
+    # types, so only persistent objects that are not still count (else static blobs win)
+    "vocabulary": lambda m: m.get("dynamic_structures", 0.0) if m.get("continuous") else m.get("vocabulary", 0.0),
     # a long transient before a cycle, or dynamics that are not fading at the horizon;
     # a universe that is merely dying slowly earns proportionally less
     "sustained": lambda m: (m["transient"] if m["cycle_found"]
@@ -511,7 +516,10 @@ class Explorer:
         bits = [f"{u['rule']} looks {u['class']}", f"evidence level {level}/5 ({EVIDENCE_LEVELS[level]})"]
         if m.get("mover_shapes"):
             bits.append(f"{int(movers(m))} of {int(m['mover_shapes'])} candidate mover shape(s) self-propelled in isolation")
-        if m.get("vocabulary"):
+        if m.get("vocabulary") and m.get("continuous"):
+            bits.append(f"{int(m['vocabulary'])} persistent objects ({int(m.get('still_structures', 0))} static)"
+                        + ("; quasi-static" if m.get("quasi_static") else ""))
+        elif m.get("vocabulary"):
             bits.append(f"{int(m['vocabulary'])} persistent shapes")
         if m["cycle_found"]:
             bits.append(f"cycle period {m['period']} after {m['transient']} steps")

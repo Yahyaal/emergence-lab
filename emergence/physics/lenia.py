@@ -52,7 +52,8 @@ class Lenia(Physics):
     def __init__(self, R: int = 13, T: int = 10, mu: float = 0.15, sigma: float = 0.015,
                  peaks: tuple[float, ...] | list[float] = (1.0,)):
         self.R, self.T = int(R), int(T)
-        self.mu, self.sigma = round(float(mu), 4), round(float(sigma), 5)
+        # rounded to the label's precision, so a rule and its stored label are the same rule
+        self.mu, self.sigma = round(float(mu), 3), round(float(sigma), 4)
         self.peaks = tuple(round(float(p), 3) for p in peaks)
         if not (2 <= self.R <= 40 and 1 <= self.T <= 100 and self.sigma > 0 and self.peaks):
             raise ValueError("invalid Lenia parameters")
@@ -112,19 +113,25 @@ class Lenia(Physics):
         return cls(13, 10, mu, sigma, peaks)
 
     def mutate(self, rng: np.random.Generator) -> "Lenia":
-        mu, sigma, peaks = self.mu, self.sigma, list(self.peaks)
-        r = rng.random()
-        if r < 0.4:
-            mu = float(np.clip(mu * rng.normal(1, 0.06), 0.03, 0.6))
-        elif r < 0.8:
-            sigma = float(np.clip(sigma * rng.normal(1, 0.12), 0.002, 0.2))
-        elif len(peaks) < 3 and rng.random() < 0.5:
-            peaks.append(float(rng.choice([0.25, 0.5, 0.75, 1.0])))
-        elif len(peaks) > 1:
-            peaks.pop(int(rng.integers(len(peaks))))
-            if max(peaks) < 1.0:
-                peaks[0] = 1.0
-        return Lenia(self.R, self.T, mu, sigma, peaks)
+        """One random change; always returns a different rule (label). Redraws when a
+        small change rounds back to the same label."""
+        for _ in range(100):
+            mu, sigma, peaks = self.mu, self.sigma, list(self.peaks)
+            r = rng.random()
+            if r < 0.4:
+                mu = float(np.clip(mu * rng.normal(1, 0.06), 0.03, 0.6))
+            elif r < 0.8:
+                sigma = float(np.clip(sigma * rng.normal(1, 0.12), 0.002, 0.2))
+            elif len(peaks) == 1 or (len(peaks) < 3 and rng.random() < 0.5):
+                peaks.append(float(rng.choice([0.25, 0.5, 0.75, 1.0])))
+            else:
+                peaks.pop(int(rng.integers(len(peaks))))
+                if max(peaks) < 1.0:
+                    peaks[0] = 1.0
+            child = Lenia(self.R, self.T, mu, sigma, peaks)
+            if child.label() != self.label():
+                return child
+        raise RuntimeError(f"could not mutate {self.label()}")
 
     def rule_features(self) -> dict[str, float]:
         return {"mu": self.mu, "sigma": self.sigma, "rings": float(len(self.peaks))}

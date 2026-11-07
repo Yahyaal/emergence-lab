@@ -35,7 +35,7 @@ Python 3.10+ is required.
 emergence explore --universes 100 --generations 10 --steps 800 --size 96 --seed 7 --name long-run
 emergence explore --screen-seeds 3 --extend 8   # stricter screening, much longer follow-up runs
 emergence benchmark --seeds 5                    # validation report: PASS/FAIL per check
-emergence benchmark --probes                     # + 14 hard/deceptive controls for the v0.3 probes
+emergence benchmark --probes                     # + 32 hard/deceptive controls (probes, knockouts, Lenia)
 emergence explore --baseline-random --seed 11    # control condition: random search, same budget
 emergence compare 1 2                            # engine vs baseline (counts per rule)
 emergence conditions --rules B3/S23,B36/S23      # same rules from different starting worlds (paired study)

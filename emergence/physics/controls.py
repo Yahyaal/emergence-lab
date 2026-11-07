@@ -91,3 +91,42 @@ class SmoothNoiseControl(Physics):
 
     def label(self) -> str:
         return f"SMOOTHNOISE/{self.scale:g}"
+
+
+@register
+class JitterControl(Physics):
+    """Deceptive control for continuous-state settledness tests: the field is fixed, but
+    every step each cell's lowest bit is redrawn at random (a +-1 level, rounding-scale
+    flicker that never accumulates). Exact comparisons see constant activity and no cycle;
+    a tolerant test must call it a fixed point. Deterministic (seeded from the state)."""
+
+    kind = "jitter_control"
+    num_states = 256
+    continuous = True
+
+    def step(self, state: np.ndarray) -> np.ndarray:
+        seed = int.from_bytes(hashlib.blake2b(state.tobytes(), digest_size=8).digest(), "little")
+        bits = np.random.default_rng(seed).integers(0, 2, state.shape, dtype=np.uint8)
+        return ((state & 0xFE) | bits) * (state > 1)  # vacuum stays vacuum
+
+    def random_state(self, rng, shape, density):
+        from scipy import ndimage
+        f = ndimage.gaussian_filter(rng.random(shape), 4.0, mode="wrap")
+        return np.where(f > np.quantile(f, 1 - density), 200, 0).astype(np.uint8)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"kind": self.kind, "rule": self.label()}
+
+    @classmethod
+    def from_dict(cls, d):
+        return cls()
+
+    @classmethod
+    def random(cls, rng):
+        return cls()
+
+    def mutate(self, rng):
+        return JitterControl()
+
+    def label(self) -> str:
+        return "JITTER"

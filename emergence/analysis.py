@@ -4,6 +4,10 @@ All counts are per *rule* (primary universe + its seed screens). Some measures
 are things the engine optimises (self-propelled shapes, niches); others are not
 optimised directly (class "complex" on every seed, structured activity), so a
 win on those is less circular.
+
+Labels, settledness and objectives are read from the stored experiment. Lenia
+experiments recorded before the v0.5 continuous fix (J-012) carry the inflated
+"complex" label (static blob fields) and must be re-run, not re-summarised.
 """
 from __future__ import annotations
 
