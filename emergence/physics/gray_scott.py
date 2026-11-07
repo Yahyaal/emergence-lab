@@ -105,3 +105,78 @@ class GrayScott(Physics):
             m = GrayScott(self.F + rng.normal(0, 0.002), self.k + rng.normal(0, 0.001))
             if m.label() != self.label():
                 return m
+
+
+_TLABEL = re.compile(r"^GST/F([\d.]+)/k([\d.]+)/(carried|redrawn|position)$", re.IGNORECASE)
+
+
+@register
+class GrayScottTracer(GrayScott):
+    """Gray-Scott spots that carry a trait p in [0, 1]: controls for the heredity test (J-033).
+
+    State (3, h, w) float32: U, V and Q = p V (the trait, weighted by V so mixing is exact).
+    The trait never changes the chemistry (U, V evolve exactly as in GrayScott). Modes:
+
+    * carried   p moves with V: Q' = Q + Dv lap(Q) + p U V^2 - (F + k) Q, where new V made
+                by the reaction takes the local p. Daughters inherit their parent's p (positive).
+    * redrawn   p is replaced every step by a hash of the local state (deterministic noise):
+                nothing is inherited (negative).
+    * position  p = column / width, recomputed every step: neighbours resemble each other
+                because they share a place, not a parent (deceptive "common environment").
+    """
+    kind = "gray_scott_tracer"
+
+    def __init__(self, F: float = 0.0367, k: float = 0.0649, mode: str = "carried"):
+        super().__init__(F, k)
+        if mode not in ("carried", "redrawn", "position"):
+            raise ValueError(f"unknown tracer mode {mode!r}")
+        self.mode = mode
+
+    def step(self, state: np.ndarray) -> np.ndarray:
+        u, v, q = state.astype(np.float64)
+        uvv = u * v * v
+        nu = u + DU * _lap(u) - uvv + self.F * (1 - u)
+        nv = v + DV * _lap(v) + uvv - (self.F + self.k) * v
+        if self.mode == "carried":
+            p = np.clip(q / np.maximum(v, 1e-9), 0, 1)
+            nq = q + DV * _lap(q) + p * uvv - (self.F + self.k) * q
+        elif self.mode == "redrawn":
+            nq = (np.sin(nu * 12989.8 + nv * 78233.0) * 43758.5453 % 1.0) * nv
+        else:
+            nq = (np.arange(v.shape[1]) / v.shape[1])[None, :] * nv
+        return np.stack([nu, nv, np.clip(nq, 0, nv)]).astype(np.float32)
+
+    def vacuum(self, shape: tuple[int, int]) -> np.ndarray:
+        return np.stack([np.ones(shape), np.zeros(shape), np.zeros(shape)]).astype(np.float32)
+
+    def from_levels(self, levels: np.ndarray, p: float | np.ndarray = 0.5) -> np.ndarray:
+        u, v = super().from_levels(levels)
+        return np.stack([u, v, v * p]).astype(np.float32)
+
+    def trait(self, state: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        """(weight, weighted trait): an object's trait is sum(Q) / sum(V) over its cells."""
+        return state[1].astype(np.float64), state[2].astype(np.float64)
+
+    def label(self) -> str:
+        return f"GST/F{self.F:.4f}/k{self.k:.4f}/{self.mode}"
+
+    @classmethod
+    def parse(cls, rule: str) -> "GrayScottTracer":
+        m = _TLABEL.match(rule.strip())
+        if not m:
+            raise ValueError(f"cannot parse rule {rule!r}; expected e.g. GST/F0.0367/k0.0649/carried")
+        return cls(float(m.group(1)), float(m.group(2)), m.group(3).lower())
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"kind": self.kind, "F": self.F, "k": self.k, "mode": self.mode}
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> "GrayScottTracer":
+        return cls(d["F"], d["k"], d.get("mode", "carried"))
+
+    @classmethod
+    def random(cls, rng: np.random.Generator) -> "GrayScottTracer":
+        return cls(mode=str(rng.choice(["carried", "redrawn", "position"])))
+
+    def mutate(self, rng: np.random.Generator) -> "GrayScottTracer":
+        return GrayScottTracer(self.F, self.k, next(m for m in ("carried", "redrawn", "position") if m != self.mode))

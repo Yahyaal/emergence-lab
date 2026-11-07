@@ -72,6 +72,16 @@ Birth detector (observatory/births.py, two generations in isolation, J-032, D-02
               then stops: not a reproducer (passed the first version's "late > early" rule, J-032).
 * selection-aware null  `births.scan` (6 most common object types) on a Life soup and a settled
               Orbium soup: 0 reproducers.
+
+Heredity test (observatory/heredity.py, transplanted offspring vs parent, J-033):
+* positive    Gray-Scott spots carrying a tracer trait (GrayScottTracer "carried"), 6 founders with
+              traits 0.1-0.9: heredity
+* negative    the trait is redrawn as noise every step ("redrawn"): no heredity
+* deceptive   the trait is set by position ("position"): in the world, nearest neighbours have
+              similar traits (common environment), but transplanted offspring do not resemble their
+              parent: no heredity. Identical founders (all 0.5): no variation, not heredity.
+* selection-aware null  the parent-permutation null inside the test (parents are only kept if
+              they reproduced); checked here as the null's 95% quantile staying below the positive's r.
 """
 from __future__ import annotations
 
@@ -448,6 +458,53 @@ def run_probe_benchmark(log=print) -> dict:
     check("births selection-aware null: scans of a Life soup and a settled Orbium soup",
           all(p["reproducers"] == 0 for p in picked) and all(p["tested"] >= 3 for p in picked),
           f"candidates {[p['tested'] for p in picked]}, reproducers {[p['reproducers'] for p in picked]}")
+
+    # 10. heredity test (observatory/heredity.py)
+    from .observatory import heredity as HE
+    from .physics import GrayScottTracer
+
+    def tracer_world(mode, traits, steps=1500, seed=1):
+        ph = GrayScottTracer(mode=mode)
+        g = np.random.default_rng(seed)
+        st = ph.vacuum((128, 128))
+        for (r0, c0), p in zip(g.integers(0, 116, size=(len(traits), 2)), traits):
+            st[0, r0:r0 + 12, c0:c0 + 12] = 0.5
+            v = 0.25 + 0.01 * g.random((12, 12))
+            st[1, r0:r0 + 12, c0:c0 + 12] = v
+            st[2, r0:r0 + 12, c0:c0 + 12] = v * p
+        for _ in range(steps):
+            st = ph.step(st)
+        return ph, st
+
+    def neighbour_r(ph, st):
+        objs = BI.find(ph, st)
+        tr = np.array([HE.object_trait(ph, st, o["mask"]) for o in objs])
+        cen = np.array([np.argwhere(o["mask"]).mean(0) for o in objs])
+        d = np.hypot(*(np.minimum(abs(cen[:, None] - cen[None]), 128 - abs(cen[:, None] - cen[None]))).transpose(2, 0, 1))
+        np.fill_diagonal(d, np.inf)
+        return float(np.corrcoef(tr, tr[d.argmin(1)])[0, 1])
+
+    def hbrief(r):
+        return (f"{r['verdict']}; families {r.get('families')}, r {r.get('r')}, p {r.get('p')}, "
+                f"null r95 {r.get('null_r95')}, spread {r.get('parent_spread')}")
+
+    spread = [0.1 + 0.16 * j for j in range(6)]
+    hres = {}
+    for mode in ("carried", "redrawn", "position"):
+        ph, st = tracer_world(mode, spread)
+        hres[mode] = HE.test(ph, st, np.random.default_rng(0), max_parents=8)
+        if mode == "position":
+            nr = neighbour_r(ph, st)
+    check("heredity positive: carried tracer -> heredity", hres["carried"]["verdict"] == "heredity", hbrief(hres["carried"]))
+    check("heredity negative: trait redrawn every step -> no heredity", hres["redrawn"]["verdict"] == "no heredity",
+          hbrief(hres["redrawn"]))
+    check("heredity deceptive: trait set by position (neighbours alike in the world) -> no heredity",
+          hres["position"]["verdict"] == "no heredity" and nr > 0.5, hbrief(hres["position"]) + f"; in-world neighbour r {nr:.2f}")
+    same = HE.test(*tracer_world("carried", [0.5] * 6), np.random.default_rng(0), max_parents=8)
+    check("heredity deceptive: identical founders -> no variation", same["verdict"] == "no variation", hbrief(same))
+    check("heredity selection-aware null: permutation null below the positive",
+          hres["carried"].get("null_r95", 1) < hres["carried"].get("r", 0) and hres["redrawn"].get("p", 0) > 0.05,
+          f"positive r {hres['carried'].get('r')} vs null r95 {hres['carried'].get('null_r95')}; negative p {hres['redrawn'].get('p')}")
 
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")
