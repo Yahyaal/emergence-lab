@@ -20,7 +20,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">8 / 99</div><p>Among simple <b>single-ring</b> rules, gliders <i>can</i> exist only in a <b>small island</b> around the known glider Orbium (E-13a). Richer rules hold others (section 6).</p></div>
 <div class="card"><div class="stat">49 vs 0</div><p>In that island, <b>smooth random starts produced gliders in 49 of 320 worlds, matched ordinary soups in 0 of 320</b>. Pre-registered, fresh seeds, p &lt; 10⁻⁶ (E-14). Scrambling the positions of the same values removes every glider: <b>it is the arrangement</b> (E-19).</p></div>
 <div class="card"><div class="stat">23 / 30</div><p>In <b>bigger worlds</b>, a growing field of static blobs usually takes over; gliders <b>collide and die</b>; we saw no new ones form (E-15).</p></div>
-<div class="card"><div class="stat">1 new mover</div><p>Searching again from smooth starts, the engine found a <b>new kind of creature</b>: a slow, turning "wanderer" in a different part of rule space. Random search found none (E-17).</p></div>
+<div class="card"><div class="stat">1 new mover</div><p>Searching again from smooth starts, the engine found a <b>different kind of mover</b>: a slow, turning "wanderer" in another part of rule space. Random search found none (E-17). Confirmed with fresh seeds: 36 of 40 worlds (E-18).</p></div>
 <div class="card"><div class="stat">0 / 400</div><p><b>Flow-Lenia</b>, a mass-conserving variant said to make movers easily, was built and validated, but produced <b>no movers</b> in 400 worlds (E-16).</p></div>
 <div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
 </div>
@@ -120,7 +120,7 @@ If gliders destroy each other in small worlds, what happens with more room? **E-
 <figcaption>Left: total matter in each world over time. Red worlds were taken over by a growing field of static blobs (Lenia does not conserve mass, so the field grows to fill the world). Green worlds end with one or two gliders: their matter falls in steps of about one glider (with small bumps during collisions). Right: the field won in 23 of 30 worlds.</figcaption>
 </figure>
 
-<div class="cards">
+<div class="cards two">
 <div class="card"><img src="{{ '/assets/report/e15-field-takeover.gif' | relative_url }}" alt="A blob field spreading over a large world"><p><b>The field wins.</b> One surviving patch of static blobs spreads over the whole world within ~600 steps.</p></div>
 <div class="card"><img src="{{ '/assets/report/e15-collision.gif' | relative_url }}" alt="Two gliders colliding in an empty world"><p><b>Gliders collide.</b> In the worlds the field never reached, gliders meet and merge or destroy each other. No collision ever made a new glider.</p></div>
 </div>
@@ -129,13 +129,13 @@ So a glider is a **fragile in-between state**: the world must collapse enough to
 
 *A note on our own mistake:* the script's quick glider counter (no isolation test) reported hundreds of "births". Looking at the frames showed they were moving edges inside blob fields and count flicker during collisions. Only the mass traces and the pictures are used above.
 
-## 6 · Searching again, from smooth starts: a new kind of mover
+## 6 · Searching again, from smooth starts: a different kind of mover
 
 E-12 searched rule space from soups, and E-14 showed that soups (almost) never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
 
-<div class="cards">
+<div class="cards two">
 <div class="card"><img src="{{ '/assets/report/e17-wanderer.gif' | relative_url }}" alt="A compact patterned creature moving in a loop, leaving a faint trail"><p><b>The "wanderer"</b> (rule μ 0.243, three kernel rings), found by the discovery engine. Cut out and run alone, it keeps its body (mass ~115) and moves along its path at about 0.07 cells per step, <b>turning as it goes</b> (net progress is only 0.02–0.05 cells per step) (faint trail). Found in 4 worlds, including runs with fresh seeds and a 2× larger world.</p></div>
-<div class="card"><p><b>Engine vs random search, from smooth starts:</b></p><p>Engine: <b>1 rule with a verified mover</b> (the wanderer). Random search: <b>0</b>. A second candidate, found by both, was a drifting chunk of blob field that fell apart when run alone.</p><p>The wanderer lives far from Orbium's island (3 rings, larger μ). It is slower and turns, unlike the straight-line gliders: a different kind of creature. The numbers are tiny (one seed per search), so this is a lead, not a statistical result.</p></div>
+<div class="card"><p><b>Engine vs random search, from smooth starts:</b></p><p>Engine: <b>1 rule with a verified mover</b> (the wanderer). Random search: <b>0</b>. A second candidate, found by both, was a drifting chunk of blob field that fell apart when run alone.</p><p>The wanderer lives far from Orbium's island (3 rings, larger μ). It is slower and turns, unlike the straight-line gliders: a different kind of mover from Orbium (new to this project; similar slow, turning Lenia species may already be known). The numbers are tiny (one seed per search), so this is a lead, not a statistical result.</p></div>
 </div>
 
 **Confirmed (E-18, pre-registered).** With 40 fresh seeds, the wanderer's rule produced a verified wanderer in **36 of 40 smooth-start worlds, and 0 of 40 soups** (p ≈ 10⁻¹⁸). Mapping the rules around it shows wanderers live on a **narrow diagonal ridge** of rule space, as Orbium's gliders live on their island:
@@ -177,6 +177,24 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 3. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
 4. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
 5. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
+
+## How the night went
+
+| Time (CST) | What |
+|---|---|
+| 23:50 | Label fix merged (PR #4); E-12 starts |
+| 00:20 | Glider-viability map (E-13a); literature review; E-13 pre-registered |
+| 00:30 | E-13: first spontaneous gliders, from smooth starts only |
+| 01:10 | E-14 confirms (pre-registered, fresh seeds); report page live (PR #5) |
+| 01:45 | Flow-Lenia merged after a float-precision rewrite (PR #6) |
+| 02:30 | E-15: big worlds are taken over by blob fields (PR #7) |
+| 03:00 | E-16: no Flow-Lenia movers; E-17: the wanderer (PR #8) |
+| 03:15 | E-18 (wanderer confirmation) and an independent review start; usage limit pauses work until 04:00 |
+| 04:30 | Review R-4: all six points accepted, corrections made; E-18 confirmed (PR #9) |
+| 05:00 | E-19: the shuffled control confirms spatial correlation; soups rarely make gliders (PR #10) |
+| 05:35 | Detector sensitivity for slow movers measured (≈ 92%) (PR #11) |
+
+Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 77 checks, all passing.
 
 ## Read more
 

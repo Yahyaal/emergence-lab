@@ -69,3 +69,6 @@ figcaption { font-size: 13px; color: var(--text-2); margin-top: 6px; }
 .chart .label { fill: var(--text); font-weight: 600; }
 .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-2); margin: 6px 0; }
 .legend i { display: inline-block; width: 18px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+
+.cards.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.cards.two img { display: block; margin: 0 auto 8px; }
