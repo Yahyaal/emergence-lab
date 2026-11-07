@@ -12,6 +12,39 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-015 · 2026-11-07 · E-14 confirms: smooth starts make gliders, soups never do
+
+**Question (pre-registered before running, `docs/data/e14-preregistration.md`):** does E-13's exploratory finding hold with fresh seeds and a test that can reach significance?
+
+**Ran:** E-14, the same 8 glider-viable rules × 20 new seeds (master seed 14), 128×128, 2000 steps (commit `3453e99`). Two pre-registered contrasts, each a one-sided Fisher exact test on universes at α = 0.025:
+- smooth ℓ = 3 vs soup at density 0.10 (same mass);
+- smooth ℓ = 6 vs soup at density 0.35 (same mass).
+
+**Found:**
+- **Both contrasts confirmed:**
+
+  | Density | Smooth start | Soup | Fisher p (one-sided) |
+  |---|---|---|---|
+  | 0.10 | smooth ℓ = 3: **28/160** universes | **0/160** | 1.0 × 10⁻⁹ |
+  | 0.35 | smooth ℓ = 6: **21/160** | **0/160** | 2.4 × 10⁻⁷ |
+
+- **Every glider is real:** all 49 were re-isolated and survived 1000 steps alone (validity check, pre-registered).
+- **6 of the 8 rules make gliders.** The best is μ 0.14, σ 0.014 at 8/20 in both arms (95% interval 22–61%). Two rules gave 0/40: σ/μ = 0.13 at μ 0.14, and Orbium's neighbour at σ 0.0195. Their seeded gliders exist (E-13a), but no smooth start found one.
+- **The lone-survivor pattern holds:** 47 of 49 glider runs end with exactly one persistent object, the glider; the other 2 end with two gliders.
+- **Soups are equally consistent:** at density 0.10 all 160 die; at 0.35 all 160 freeze into a static blob field.
+
+**Interpretation:**
+- **What this shows:** in the glider-viable Lenia rules, self-propelled structures do arise on their own from unplanted random starts (**evidence level 2, spontaneous**), but **only when the start is spatially correlated**. The amount of matter is held fixed, so it is the arrangement that matters.
+- **This differs from the Life-like result.** In J-009/E-10, arrangement did not matter once density was matched.
+- **Why, in mechanism terms:** a glider needs an isolated lump of about its own mass and size with empty space around it. Correlated noise produces such lumps; uncorrelated soup averages out to a uniform potential that either freezes or dies.
+- **What it does not show:** an ecology. The gliders mostly destroy each other until one is left (E-15 looks at this).
+
+**Changed:** nothing in the code; data in `docs/data/experiments/2026-11-07-e14*.json`.
+
+**Lesson:** an exploratory result, re-tested with fresh seeds and a test fixed in advance that can actually reach its threshold, is worth more than any number of post-hoc p-values.
+
+---
+
 ## J-014 · 2026-11-07 · E-13: gliders emerge spontaneously, but only from smooth starts
 
 **Question (pre-registered, `docs/data/e13-preregistration.md`):** in the 8 glider-viable rules of E-13a, does a glider arise by itself from a random start? Does the kind of start matter?
