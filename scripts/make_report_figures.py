@@ -143,8 +143,29 @@ def viability_map() -> None:
     plt.close(fig)
 
 
+def e12_engine_vs_random() -> None:
+    """E-12 numbers (from runs/e12.db, summarised in journal J-013; the export holds the curves)."""
+    cats = ["self-propelled\nrules", "'complex' on\nevery seed", "structured\n(raw)", "structured\n(near-duplicates\nremoved)",
+            "rules in the\nglider island", "behaviour\nniches"]
+    engine = [0, 0, 103, 58, 59, 11]
+    random = [0, 0, 27, 27, 9, 9]
+    x = np.arange(len(cats))
+    fig, ax = plt.subplots(figsize=(10, 3.8))
+    b1 = ax.bar(x - 0.2, engine, 0.4, color=BLUE, label="discovery engine")
+    b2 = ax.bar(x + 0.2, random, 0.4, color=ORANGE, label="random search (same compute)")
+    for bars in (b1, b2):
+        for b in bars:
+            ax.text(b.get_x() + b.get_width() / 2, b.get_height() + 1.5, f"{int(b.get_height())}", ha="center", fontsize=9)
+    ax.set_xticks(x, cats, fontsize=9)
+    ax.set_ylabel("count (of 500 rules per arm)")
+    ax.legend(frameon=False)
+    ax.set_title("E-12, Lenia: the engine finds more structure and the right region, but no rule makes gliders")
+    fig.savefig(OUT / "e12-engine-vs-random.png")
+    plt.close(fig)
+
+
 FIGS = {"static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
-        "viability_map": viability_map}
+        "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random}
 
 
 def main() -> None:

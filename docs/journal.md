@@ -12,6 +12,48 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-013 · 2026-11-07 · E-12: no Lenia rule makes gliders from a soup, though gliders can exist
+
+**Question:** with the corrected label (J-012), does the discovery engine find Lenia rules where self-propelled structures arise on their own, and does it beat random search?
+
+**Ran:**
+- **E-12:** engine vs random search, seed 11. 100 rules × 2 seeds × 5 generations per arm, 96×96, 500 steps, plus follow-ups; 12 + 14.5 min on 12 cores. Commit `feef3f1`.
+- **E-13a:** a glider-viability scan, 99 single-ring rules on a μ × σ/μ grid (`scripts/lenia_glider_scan.py`).
+
+**Found (E-12):**
+- **No movers at all.** **0 self-propelled structures in 2085 universes** (1045 engine, 1040 random), and 0 rules `complex`. 5 candidate movers all failed the isolation test. Two were inspected: a slowly drifting blob, and a piece of debris that needs its neighbours. Alone, both dissolve within 25–50 steps.
+- **The engine still finds more structure,** as it did for Life-like rules (J-004):
+  - "Structured" rules: 103 vs 27, or **58 vs 27 (2.1×) after removing near-duplicates** (μ and σ/μ to 0.01, same ring count).
+  - Behaviour niches: 11 vs 9.
+  - Quasi-static universes: 49% (engine) vs 81% (random).
+- **The structure the engine finds is not motion.** Its follow-up candidates reach evidence level 0–1. They are persistent textures, chaotic fields and slowly changing blob fields.
+
+**Found (E-13a): gliders can exist, but only in a small island.**
+- **8 of 99 single-ring rules** support a glider grown from one of 8 asymmetric seed shapes (μ 0.14–0.16, σ/μ 0.10–0.13; speeds 0.54–0.69 cells/step, mass 65–77). This is the region around Chan's Orbium.
+- **The engine found this island without being told:** 59 of its 500 rules fall inside it (7 single-ring), against 9 for random search (6.6×). Still, not one soup there produced a glider.
+- **So for these rules, emergence is the bottleneck, not search.** The physics allows gliders; random soups don't make them.
+
+**Literature (agent review; papers and code read where available, abstracts only where marked in [Research]({{ '/research.html' | relative_url }})):**
+- **Chan's starts were different from ours.** Chan (2019) says creatures such as Orbium emerge "given enough time" from random starts, but gives no rate. His starts were **15–40 dense patches of side 0.9 R in vacuum**, not full-grid soups.
+- **Nobody reports a rate.** No paper estimates how much of Lenia rule space supports movers, or how often they emerge. E-13a is a first number for single-ring rules.
+- **Flow-Lenia** (Plantec et al. 2023, 2025) claims movers are common and evolution happens inside the simulation, but reports no counts and no neutral model.
+
+**Changed:**
+- **E-13 pre-registered and committed** before running (`docs/data/e13-preregistration.md`).
+  - Panel: the 8 viable rules.
+  - Starts: soup, smooth starts with ℓ = 3, 6, 10 (mass-matched), spots, and Chan's patches (added by a dated amendment after the review, before any run).
+  - Densities: 0.35 and 0.10.
+- **New init kind `patches`** (Chan's protocol).
+- **Flow-Lenia implementation started** on its own branch (`v0.7-flow-lenia`).
+
+**Caveats:**
+- The E-13a viability test uses 8 hand-chosen seed shapes, so it can miss gliders that need other shapes. 8/99 is a lower bound for single-ring rules.
+- E-12 is one seed per arm. The engine-vs-random comparison is preliminary, as in J-004.
+
+**Lesson:** separate *can it exist* from *does it arise*. A search that finds the right region can still report zero if emergence, not viability, is the limit.
+
+---
+
 ## J-012 · 2026-11-06 · Static Lenia blob fields were labelled "complex"; fixed for continuous physics
 
 **Question / why:** a review found that the class label and the discovery objectives, tuned for 2-state rules, inflate Lenia results. `emergence observe "LENIA/R13/T10/m0.150/s0.0150/b1" --steps 1000 --size 128 --seed 1` returned **complex** for a field of 20 static blobs (0 movers, activity 0.041, local periodicity 0, no cycle). Three 2-state tests fire on continuous fields:

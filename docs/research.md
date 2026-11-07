@@ -119,6 +119,23 @@ Yes. Automated discovery in cellular automata is an active area, so the contribu
 - **Foundation-model-guided search for artificial life:** Kumar and colleagues.
 - **Open-endedness measures:** Bedau and Packard's evolutionary activity statistics; Channon.
 
+### Literature notes: Lenia and spontaneous movers (2026-11-07, J-013)
+
+A first focused review: papers and code read where available, abstracts only where marked in J-013. What it changed for us:
+- **Chan's random starts were not soups.** Chan (2019, *Complex Systems* 28(3); arXiv 1812.05433) writes that creatures such as Orbium emerge "given enough time" from random starts, but gives no rate. His code (`LeniaND.py`, MIT) seeds **15–40 dense square patches of side 0.9 R, values uniform in [0, 0.9], in vacuum**. Our E-12 soup filled the whole grid. Most of his 400+ species came from interactive evolution, not soups.
+- **Nobody has published a rate.** We found no estimate of what fraction of Lenia rule space supports movers, or how often they emerge. Chan's μ–σ maps are qualitative (a narrow "river" of creatures). Our E-13a scan gives a first number: 8 of 99 single-ring rules.
+- **Flow-Lenia** (Plantec et al., ALIFE 2023, arXiv 2212.07906; *Artificial Life* 31(2), 2025):
+  - **Mechanism:** mass conservation, via a flow along the affinity gradient and reintegration tracking.
+  - **Claims:** localized and moving patterns are "quite common" from a random central patch, and per-cell parameters (parameter localization) allow evolution inside the simulation.
+  - **Weak spots:** no counts of movers; the 2025 evolution analysis uses parameter-point "species", 5 seeds and no neutral (shadow) model. We treat these as hypotheses to test, not results to inherit.
+- **Other routes:**
+  - Asymptotic Lenia (Kawaguchi et al. 2021) and its "glider equation" (Kojima et al. 2025);
+  - Particle Lenia (Mordvintsev et al. 2022);
+  - diversity search (Reinke et al. ICLR 2020; Etcheverry et al. NeurIPS 2020; Faldor & Cully ALIFE 2024; Hamon et al. 2024);
+  - foundation-model search (Kumar et al. 2024).
+
+  None of these measures *spontaneous, within-run* emergence with nulls. That is the gap our validation-first approach can fill.
+
 **Our likely contribution:** a *validated* discovery methodology. Every detector is tested against deceptive controls, causal claims are tested by intervention on clones, and the search is compared with a baseline at equal compute. The results include negative findings. Most automated-discovery work reports what it found; much less reports how often it is fooled.
 
 **Needed before submission:**
