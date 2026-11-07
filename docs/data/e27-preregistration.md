@@ -40,3 +40,10 @@ positive. Any Lenia "reproducer" is inspected by eye and re-tested for a third g
 any claim; a claim would be evidence level 3 (reproduction), not heredity.
 
 **Not tested here:** heredity; mass-conserving physics (Flow-Lenia cannot pass a test in vacuum).
+
+**Amendment (before any pool A/B result):** a smoke test of the pipeline positive (seed 1) showed
+that the pre-registered Gray-Scott soup (`random_state`, 5% of cells) dies out: isolated cells
+diffuse away before a spot forms (0 objects at step 2000). The pipeline positive now uses
+Pearson's own kind of start: 4 perturbed 12x12 squares (U 0.5, V 0.25 + 1% noise) at random
+places, 2000 steps. Prediction unchanged (>= 8 of 10). One pool A world was also smoke-tested
+(E-14, 2 candidates, both "no reproduction"); it is included in the run as planned.
