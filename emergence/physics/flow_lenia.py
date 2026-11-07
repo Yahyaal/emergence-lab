@@ -269,3 +269,124 @@ class FlowLenia(Physics):
                 "mu": float(np.average([k.mu for k in self.kernels], weights=hs)),
                 "sigma": float(np.average([k.sigma for k in self.kernels], weights=hs)),
                 "radius": float(np.average([k.r for k in self.kernels], weights=hs))}
+
+
+def reintegrate_many(chans: np.ndarray, dy: np.ndarray, dx: np.ndarray, s: float = S_SPREAD) -> np.ndarray:
+    """`reintegrate` for several channels moved by the same flow, by scatter-add: a square of
+    side 2s < 2 overlaps at most 3 cells per axis, so each source sends to at most 9 cells.
+    Equal to `reintegrate` up to float summation order (used by FlowLeniaPL only, so plain
+    FlowLenia stays bit-identical)."""
+    C_, H, W = chans.shape
+    yy, xx = np.mgrid[0:H, 0:W]
+    out = np.zeros((C_, H * W))
+    norm = 1.0 / (4 * s * s)
+    parts = []
+    for t, n in ((yy + dy, H), (xx + dx, W)):
+        c0 = np.floor(t - s + 0.5)
+        parts.append([(((c0 + j) % n).astype(np.int64),
+                       np.clip(np.minimum(c0 + j + 0.5, t + s) - np.maximum(c0 + j - 0.5, t - s), 0.0, None))
+                      for j in range(3)])
+    flat = chans.reshape(C_, -1)
+    for iy, wy in parts[0]:
+        for ix, wx in parts[1]:
+            w = (wy * wx * norm).ravel()
+            idx = (iy * W + ix).ravel()
+            for c in range(C_):
+                out[c] += np.bincount(idx, weights=flat[c] * w, minlength=H * W)
+    return out.reshape(C_, H, W)
+
+
+@register
+class FlowLeniaPL(FlowLenia):
+    """Flow-Lenia with parameter localization (Plantec et al. 2023): every cell carries its
+    own kernel weights h_i, which move with its matter. Track D (research.md), J-033, D-029.
+
+    State (1 + K, h, w) float32 for K kernels: channel 0 is A, channel 1 + i is A h_i (weights
+    stored mass-weighted, so transport mixes them exactly in proportion to the incoming mass).
+    The affinity uses each cell's own weights, U = sum_i h_i(x) G_i(K_i * A), and every
+    channel is moved by the same reintegration step, so A and A h_i are both conserved.
+    Where A is (near) zero the rule's own weights are used. Mixing in proportion to the
+    incoming mass is our deterministic choice (D-029); we have not checked it against the
+    paper's own mixing rule, so results are not directly comparable with theirs.
+
+    `food` > 0 fills the vacuum with a thin uniform layer of matter carrying the rule's
+    weights (a fed world: mass-conserving creatures can only grow by taking it in). With
+    weights equal to the rule's everywhere this physics is exactly FlowLenia.
+
+    Trait (for the heredity test): the share of kernel 0 in a cell's weights, h_0 / sum h.
+    Rule label: FLENIA-PL/f<food>/<FlowLenia rule>.
+    """
+    kind = "flow_lenia_pl"
+
+    def __init__(self, kernels, R: int = 13, food: float = 0.0):
+        super().__init__(kernels, R)
+        self.food = round(float(food), 4)
+        if not 0 <= self.food < 0.1:
+            raise ValueError("food must be in [0, 0.1) (below the object threshold)")
+        self._h = np.array([k.h for k in self.kernels])
+
+    def localize(self, A: np.ndarray, h: np.ndarray | None = None) -> np.ndarray:
+        """A field plus weights (default: the rule's) -> the (1 + K, h, w) state."""
+        h = self._h if h is None else np.asarray(h, dtype=np.float64)
+        hw = h[:, None, None] if h.ndim == 1 else h
+        return np.concatenate([A[None], A[None] * hw * np.ones((1,) + A.shape)]).astype(np.float32)
+
+    def weights(self, state: np.ndarray) -> np.ndarray:
+        A = state[0].astype(np.float64)
+        return np.where(A > 1e-9, state[1:] / np.maximum(A, 1e-9), self._h[:, None, None])
+
+    def step(self, state: np.ndarray) -> np.ndarray:
+        st = state.astype(np.float64)
+        A, h = st[0], self.weights(st)
+        fa = np.fft.rfft2(A)
+        U = np.zeros_like(A)
+        for i, (k, kf) in enumerate(zip(self.kernels, self._kernels(A.shape))):
+            u = np.fft.irfft2(fa * kf, s=A.shape)
+            U += h[i] * (2.0 * np.exp(-((u - k.mu) ** 2) / (2 * k.sigma ** 2)) - 1.0)
+        gUy, gUx = sobel(U)
+        gAy, gAx = sobel(A)
+        alpha = np.clip((A / THETA_A) ** N_ALPHA, 0.0, 1.0)
+        lim = DD - S_SPREAD
+        dy = np.clip(DT * ((1 - alpha) * gUy - alpha * gAy), -lim, lim)
+        dx = np.clip(DT * ((1 - alpha) * gUx - alpha * gAx), -lim, lim)
+        return reintegrate_many(st, dy, dx).astype(np.float32)
+
+    def view(self, state: np.ndarray) -> np.ndarray:
+        return super().view(state[0])
+
+    def vacuum(self, shape: tuple[int, int]) -> np.ndarray:
+        return self.localize(np.full(shape, self.food))
+
+    def from_levels(self, levels: np.ndarray) -> np.ndarray:
+        return self.localize(np.maximum(super().from_levels(levels).astype(np.float64), self.food))
+
+    def random_state(self, rng: np.random.Generator, shape: tuple[int, int], density: float) -> np.ndarray:
+        return self.localize(np.maximum(super().random_state(rng, shape, density).astype(np.float64), self.food))
+
+    def trait(self, state: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        A = state[0].astype(np.float64)
+        tot = state[1:].astype(np.float64).sum(0)
+        return A, np.where(tot > 0, A * state[1] / np.maximum(tot, 1e-12), 0.0)
+
+    def label(self) -> str:
+        return f"FLENIA-PL/f{self.food:g}/" + super().label()
+
+    @classmethod
+    def parse(cls, rule: str) -> "FlowLeniaPL":
+        m = re.match(r"^FLENIA-PL/f([\d.]+)/(FLENIA/.+)$", rule.strip(), re.IGNORECASE)
+        if not m:
+            raise ValueError(f"cannot parse rule {rule!r}; expected FLENIA-PL/f0.02/FLENIA/R13/...")
+        base = FlowLenia.parse(m.group(2))
+        return cls(base.kernels, base.R, float(m.group(1)))
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> "FlowLeniaPL":
+        return cls.parse(d["rule"])
+
+    @classmethod
+    def random(cls, rng: np.random.Generator) -> "FlowLeniaPL":
+        return cls([cls._random_kernel(rng) for _ in range(int(rng.integers(2, 4)))], 13)
+
+    def mutate(self, rng: np.random.Generator) -> "FlowLeniaPL":
+        m = super().mutate(rng)
+        return FlowLeniaPL(m.kernels, m.R, self.food)

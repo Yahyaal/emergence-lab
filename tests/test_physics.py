@@ -78,3 +78,27 @@ def test_random_and_mutate_stay_valid():
         q = p.mutate(rng)
         assert 0 not in p.birth and 0 not in q.birth and p.birth and q.birth
         assert OuterTotalistic.parse(q.label()) == q
+
+
+def test_flow_lenia_pl_matches_flow_lenia_and_conserves_weights():
+    from emergence.physics import FlowLenia, FlowLeniaPL, parse_rule, physics_from_dict
+    from emergence.physics.flow_lenia import reintegrate, reintegrate_many
+    rng = np.random.default_rng(0)
+    A = rng.random((2, 32, 32))
+    dy, dx = rng.uniform(-4.3, 4.3, (2, 32, 32))
+    assert np.allclose(reintegrate_many(A, dy, dx), np.stack([reintegrate(c, dy, dx) for c in A]), atol=1e-12)
+    fl = FlowLenia.random(np.random.default_rng(5))
+    pl = FlowLeniaPL(fl.kernels, fl.R)
+    a0 = FlowLenia.patch_state(np.random.default_rng(1), (48, 48), side=20).astype(np.float64)
+    a, s = a0.astype(np.float32), pl.localize(a0)
+    for _ in range(50):
+        a, s = fl.step(a), pl.step(s)
+    assert abs(s[0] - a).max() < 1e-4
+    q0 = pl.localize(a0, pl._h * 1.3).astype(np.float64).sum((1, 2))
+    s = pl.localize(a0, pl._h * 1.3)
+    for _ in range(50):
+        s = pl.step(s)
+    assert np.allclose(s.astype(np.float64).sum((1, 2)), q0, rtol=1e-5)
+    fed = FlowLeniaPL(fl.kernels, fl.R, 0.05)
+    assert parse_rule(fed.label()) == fed and physics_from_dict(fed.to_dict()) == fed
+    assert np.array_equal(fed.step(fed.vacuum((32, 32))), fed.vacuum((32, 32)))

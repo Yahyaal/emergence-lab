@@ -1,11 +1,11 @@
 from .base import REGISTRY, Physics, physics_from_dict, register
 from .controls import JitterControl, NoiseControl, SmoothNoiseControl
-from .flow_lenia import FlowLenia
+from .flow_lenia import FlowLenia, FlowLeniaPL
 from .gray_scott import GrayScott, GrayScottTracer
 from .lenia import Lenia
 from .totalistic import OuterTotalistic
 
-__all__ = ["REGISTRY", "Physics", "physics_from_dict", "register", "OuterTotalistic", "NoiseControl", "SmoothNoiseControl", "JitterControl", "Lenia", "FlowLenia", "GrayScott", "GrayScottTracer", "parse_rule"]
+__all__ = ["REGISTRY", "Physics", "physics_from_dict", "register", "OuterTotalistic", "NoiseControl", "SmoothNoiseControl", "JitterControl", "Lenia", "FlowLenia", "FlowLeniaPL", "GrayScott", "GrayScottTracer", "parse_rule"]
 
 
 def parse_rule(rule: str) -> Physics:
@@ -15,6 +15,8 @@ def parse_rule(rule: str) -> Physics:
         return GrayScottTracer.parse(rule)
     if rule.strip().upper().startswith("GS/"):
         return GrayScott.parse(rule)
+    if rule.strip().upper().startswith("FLENIA-PL/"):
+        return FlowLeniaPL.parse(rule)
     if rule.strip().upper().startswith("FLENIA/"):
         return FlowLenia.parse(rule)
     if rule.strip().upper().startswith("LENIA/"):

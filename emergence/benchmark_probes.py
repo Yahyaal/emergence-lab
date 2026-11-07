@@ -33,6 +33,9 @@ Flow-Lenia (mass-conserving, float32 states, physics/flow_lenia.py, J-016, D-026
 * deceptive   pure diffusion (U = 0): spreads, but no movers; a rotated seed evolves into the
               rotated world (no fake motion from grid or Sobel anisotropy)
 * null        random rules picked the way the old objectives picked them: none complex without a mover
+* PL          FlowLeniaPL (localized kernel weights, J-033): equals FlowLenia when all weights are the
+              rule's; matter and weighted parameters conserved and mixed weights stay between the
+              species' values; a fed vacuum (food only) never changes
 * positive    NOT available: no self-propelled structure in a search of 80 float rules with
               3-10 kernels (and 88 earlier uint8 rules), J-016
 
@@ -397,6 +400,33 @@ def run_probe_benchmark(log=print) -> dict:
     check("Flow-Lenia complex null: top picks by objects/activity are not complex without a mover", not bad,
           f"{len(picked)} picked of {len(runs)}: classes {sorted(cm[0] for cm in picked)}, "
           f"self-propelled {[int(cm[1]['self_propelled_shapes']) for cm in picked]}")
+    # Flow-Lenia with parameter localization (FlowLeniaPL, J-033, D-029)
+    from .physics import FlowLeniaPL
+    pl = FlowLeniaPL(fl_static.kernels + FlowLenia.random(np.random.default_rng(5)).kernels[:1], 13)
+    fl2 = FlowLenia(pl.kernels, 13)
+    a0 = FlowLenia.patch_state(np.random.default_rng(1), (96, 96)).astype(np.float64)
+    a, st = a0.astype(np.float32), pl.localize(a0)
+    for _ in range(300):
+        a, st = fl2.step(a), pl.step(st)
+    check("Flow-Lenia-PL equals Flow-Lenia when every cell has the rule's weights",
+          float(abs(st[0] - a).max()) < 1e-4, f"max |A_PL - A| after 300 steps {float(abs(st[0] - a).max()):.1e}")
+    hmix = np.stack([np.where(np.arange(96)[None, :] < 48, 0.5, 1.5) * k.h * np.ones((96, 96)) for k in pl.kernels])
+    st = pl.localize(a0, hmix)
+    q0 = st.astype(np.float64).sum((1, 2))
+    for _ in range(300):
+        st = pl.step(st)
+    w, m = pl.weights(st), st[0] > 0.05
+    inside = all(0.5 * k.h - 1e-4 <= w[i][m].min() and w[i][m].max() <= 1.5 * k.h + 1e-4 for i, k in enumerate(pl.kernels))
+    drift = float(abs(st.astype(np.float64).sum((1, 2)) / q0 - 1).max())
+    check("Flow-Lenia-PL: matter and weighted parameters conserved, mixed weights stay in range",
+          drift < 1e-5 and inside, f"worst relative drift {drift:.1e}; weights within the two species' values: {inside}")
+    fed = FlowLeniaPL(pl.kernels, 13, 0.05)
+    v = fed.vacuum((64, 64))
+    st = v
+    for _ in range(100):
+        st = fed.step(st)
+    check("Flow-Lenia-PL fed vacuum: a food-only world does not change and has no objects",
+          float(abs(st - v).max()) == 0 and not __import__('emergence.observatory.births', fromlist=['find']).find(fed, st), f"max change {float(abs(st - v).max())}")
 
     # 9. birth detector (observatory/births.py)
     from .observatory import births as BI
