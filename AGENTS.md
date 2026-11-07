@@ -1,6 +1,8 @@
 # Agent instructions: Emergence Lab
 
-You are continuing a research project. Before changing anything, read:
+You are continuing a research project. **Goal:** find out whether complex, persistent and possibly evolving structure emerges spontaneously from simple fixed rules, and which rules or initial conditions make it likely. We don't simulate our universe or design life; complexity must come from each universe's own rules. Full goal, objectives and principles: `docs/research.md` ("Goal and objectives").
+
+Before changing anything, read:
 
 1. `docs/handoff.md`: state, how to run, repo map, conventions, pitfalls, open problems.
 2. The newest entries in `docs/journal.md`, plus `docs/decisions.md`.

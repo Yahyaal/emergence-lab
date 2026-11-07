@@ -12,6 +12,59 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-010 · 2026-11-05 · Knockout test: no evidence of cumulative innovation
+
+**Question:** do earlier innovations *enable* later ones (cumulative innovation, objective O5)?
+
+**Built:** `observatory/knockout.py` (D-020). When a new persistent type appears, three kinds of forked clone are run:
+- **unchanged;**
+- **knockout:** the new type deleted;
+- **controls:** the same number of cells deleted from *old* structures.
+
+The question is whether later novelty is lost more after the knockout than after the controls. Validated on:
+- **positive:** a glider hits a block and leaves debris. Deleting the glider, or the first debris, removes 75–100% of the later novelties, against 0% for the controls;
+- **negative:** deleting an uninvolved block;
+- **deceptive:** Brian's Brain (20/20 probe checks pass).
+
+**Ran:** E-09 to E-11 (92 knockouts across 22 rules × 4 initial conditions).
+
+**Found:**
+- **Set-based test, which asks whether the same new shapes appear:** 88 of 92 were *inconclusive*. Deleting old structure rewrote 50–90% of the future just as much as deleting the new type: any change spreads over 1000 steps. This happens even in rules whose 64-step damage measure is low, so the short damage measure underestimates sensitivity over long horizons.
+- **Count-based test, which asks whether fewer new shapes appear:** added because of the above. Its first version flagged 5 "dependencies", but a **placebo test** (each control deletion treated as the target) shows real knockouts are **indistinguishable from placebos**: P(real > placebo) = 0.491 (E-11) and 0.510 (E-10). Only 1 real knockout exceeded the placebo's 95th percentile per run, against 1.5–3.1 expected by chance.
+
+**Changed:** the count-based verdict now requires an actual drop, larger than every control's, of at least the placebo's 95th percentile (0.5). The study summary reports the population-level placebo test. Commits `b47ff1f`, `85c3c2e`, `1a48270`.
+
+**Conclusion:** among universes that look like they keep innovating, **no new structure is necessary for later novelty**. The apparent innovation behaves like chance turnover in a sensitive (chaos-like) system. This is O5 tested and not observed, at this scale.
+
+**Lessons:**
+- In sensitive systems, compare interventions with **placebo interventions**, not with zero.
+- A threshold chosen before seeing the null distribution will produce false positives.
+
+---
+
+## J-009 · 2026-11-05 · Initial conditions: the "environment" effect was a density effect
+
+**Question (H4, from review R-3):** does *where* matter starts change what a fixed rule produces?
+
+**Built:** initial-condition generators in `UniverseSpec.init`: uniform, gradient, central patch, spots (D-019). Old specs stay bit-identical (tested). `emergence conditions` runs a paired study: the same rules and seeds under each condition, with a sign test and a bootstrap CI, and outcomes fixed in advance.
+
+**Ran:**
+- **E-09:** 22 rules × 4 conditions × 3 seeds, 96×96, 2000 steps.
+- **E-10:** a density-matched control.
+- **E-11:** an exact rerun of E-09.
+
+**Found:**
+- **E-09:** starting from a central patch gave **+1.35 self-propelled shape types** (9 rules higher, 0 lower; p = 0.004, CI excludes 0). This was the only result that survived a Bonferroni correction across 9 tests. Conway's Life showed it most clearly (0 → 15 in one seed; see [Gallery]({{ '/gallery.html#life-central-patch' | relative_url }})).
+- **But the patch also starts with less matter** (density 0.125 vs 0.35). **E-10** compared the patch with a uniform soup at the *same* 0.125 density: **no difference** (−0.08, 5 higher / 4 lower, p = 1). The effect came from **less matter, not localized matter**: sparser worlds let gliders survive.
+- **Gradient:** slightly more universes still unsettled (+0.14, CI excludes 0, but sign test p = 0.125); weak, and not followed up yet.
+- **E-11 reproduced E-09 exactly** on every primary outcome.
+
+**Conclusion:** H4 as tested is not supported. Localizing matter (patch, spots) doesn't matter once density is matched. Density itself does.
+
+**Lesson:** any "environment" comparison must hold the amount of matter fixed (D-021). Without E-10 we would have reported a false environment effect.
+
+---
+
 ## J-008 · 2026-11-05 · Journal, docs and next-phase plan
 
 **What:** Created this site (`docs/`, served by GitHub Pages), the agent handoff (`AGENTS.md`, [Handoff]({{ '/handoff.html' | relative_url }})), the experiment data exports (`docs/data/experiments/`) and a reproducible media pipeline (`scripts/make_media.py`, `scripts/make_figures.py`).

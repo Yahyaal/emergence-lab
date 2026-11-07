@@ -13,6 +13,11 @@ Each case is built to fool a weaker test:
 * glider / block / blinker  must not replicate.
 * soups of Life, HighLife, Seeds  scanned for spontaneous replicators: expected none
                    (false-positive check on realistic shapes).
+* knockout, positive    a glider hits a block and leaves debris: deleting the glider,
+                   or the first debris, must remove the later novelties (depends).
+* knockout, negative    deleting a block the collision never touches: independent.
+* knockout, deceptive   Brian's Brain: ANY deletion rewrites the future (damage
+                   spreading); must not be reported as a dependency.
 """
 from __future__ import annotations
 
@@ -23,6 +28,7 @@ import numpy as np
 from .engine import Universe, UniverseSpec
 from .lab import study
 from .observatory.innovation import innovation_profile
+from .observatory.knockout import knockout_compare, knockout_experiment, types_over
 from .observatory.replication import replication_test, scan_for_replicators
 from .physics import NoiseControl, OuterTotalistic
 
@@ -103,6 +109,37 @@ def run_probe_benchmark(log=print) -> dict:
         check(f"soup scan {rule}: no spontaneous self-replicators", s["self_replicators"] == 0,
               f"tested {s['tested']} shapes: self-replicators {s['self_replicators']}, "
               f"rule-level {s['rule_level_duplication']}, common products {s['common_products']}, explosive {s['explosive']}")
+
+    # 5. knockout (causal dependency of later novelty on an earlier one)
+    g = np.zeros((90, 90), np.uint8)
+    g[5:8, 5:8] = rle("bo$2bo$3o!")   # glider heading for the block below
+    g[30:32, 26:28] = 1               # block in its path: the collision leaves new debris
+    g[75:77, 70:72] = 1               # two blocks the collision never reaches
+    g[70:72, 12:14] = 1
+    glider = np.zeros(g.shape, bool)
+    glider[5:8, 5:8] = g[5:8, 5:8] > 0
+    far1, far2 = np.zeros(g.shape, bool), np.zeros(g.shape, bool)
+    far1[75:77, 70:72] = True
+    far2[70:72, 12:14] = True
+    before = set(types_over(Universe(life, g.copy()), 40, 20))
+    pos = knockout_compare(life, g, glider, [far1, far2], before, 500, 25)
+    check("knockout positive: delete the glider -> later debris lost", pos["verdict"] == "depends",
+          f"lost {pos.get('lost_knockout')} vs controls {pos.get('lost_controls')}")
+    flow = knockout_experiment(Universe(life, g.copy()), 125, 400, 25, rng)
+    check("knockout positive, automatic flow: first debris enables later debris", flow["verdict"] == "depends",
+          f"t1={flow.get('t1')}: lost {flow.get('lost_knockout')} vs controls {flow.get('lost_controls')}")
+    neg = knockout_compare(life, g, far1, [far2], before, 500, 25)
+    check("knockout negative: delete an uninvolved block -> independent", neg["verdict"] == "independent",
+          f"lost {neg.get('lost_knockout')} vs controls {neg.get('lost_controls')}")
+    bb = knockout_experiment(Universe.from_spec(UniverseSpec(OuterTotalistic.parse("B2/S/C3").to_dict(), 1, 96, 96, 0.35)),
+                             300, 600, 50, rng)
+    check("knockout deceptive: Brian's Brain is not a dependency", bb["verdict"] != "depends",
+          f"{bb['verdict']}: lost {bb.get('lost_knockout')} vs controls {bb.get('lost_controls')}")
+    check("knockout positive, rate-based reading: novelty rate drops", pos["rate_verdict"] == "depends",
+          f"drop {pos.get('drop_knockout')} vs controls {pos.get('drop_controls')}")
+    check("knockout deceptive, rate-based reading: no rate effect in Brian's Brain",
+          bb.get("rate_verdict") != "depends",
+          f"{bb.get('rate_verdict')}: drop {bb.get('drop_knockout')} vs controls {bb.get('drop_controls')}")
 
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")

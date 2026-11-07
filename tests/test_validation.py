@@ -187,3 +187,33 @@ def test_innovation_that_ends_is_not_ongoing():
     oscillating = {"cls": "periodic", "metrics": {"cycle_found": False, "transient": None, "local_periodic_frac": 0.97}}
     assert innovation_verdict(dec, settled_late, 0, 0.0)[0].startswith("transient innovation that ended")
     assert innovation_verdict(dec, oscillating, 0, 0.0)[0].startswith("transient innovation that ended")
+
+
+def test_initial_conditions_are_backward_compatible_and_deterministic():
+    from emergence.engine import INIT_KINDS, state_hash
+    base = UniverseSpec(LIFE.to_dict(), 7, 48, 48, 0.35)
+    explicit = UniverseSpec(LIFE.to_dict(), 7, 48, 48, 0.35, init={"kind": "uniform"})
+    assert "init" not in base.to_dict()                       # old specs serialise unchanged
+    assert state_hash(Universe.from_spec(base).state) == state_hash(Universe.from_spec(explicit).state)
+    for kind in INIT_KINDS:
+        spec = UniverseSpec(LIFE.to_dict(), 3, 48, 48, 0.35, init={"kind": kind})
+        a, b = Universe.from_spec(spec).state, Universe.from_spec(UniverseSpec.from_dict(spec.to_dict())).state
+        assert np.array_equal(a, b) and a.any()
+    patch = Universe.from_spec(UniverseSpec(LIFE.to_dict(), 3, 48, 48, 0.35, init={"kind": "patch"})).state
+    assert patch[:6].sum() == 0 and patch[18:30, 18:30].sum() > 0  # matter only in the centre
+
+
+def test_knockout_controls():
+    from emergence.benchmark_probes import rle
+    from emergence.observatory.knockout import knockout_compare, types_over
+    g = np.zeros((90, 90), np.uint8)
+    g[5:8, 5:8] = rle("bo$2bo$3o!")
+    g[30:32, 26:28] = 1
+    g[75:77, 70:72] = 1
+    glider = np.zeros(g.shape, bool)
+    glider[5:8, 5:8] = g[5:8, 5:8] > 0
+    far = np.zeros(g.shape, bool)
+    far[75:77, 70:72] = True
+    before = set(types_over(Universe(LIFE, g.copy()), 40, 20))
+    assert knockout_compare(LIFE, g, glider, [far], before, 500, 25)["verdict"] == "depends"
+    assert knockout_compare(LIFE, g, far, [far], before, 500, 25)["verdict"] == "independent"
