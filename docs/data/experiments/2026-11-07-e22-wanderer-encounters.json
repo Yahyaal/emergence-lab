@@ -1,0 +1,2630 @@
+{
+ "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+ "side": 160,
+ "steps": 3000,
+ "runs": [
+  {
+   "trial": 0,
+   "sym": 6,
+   "d": 25,
+   "angle": 1.252,
+   "phase": 38,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.4
+   ]
+  },
+  {
+   "trial": 1,
+   "sym": 0,
+   "d": 25,
+   "angle": 2.886,
+   "phase": 26,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    105.2
+   ]
+  },
+  {
+   "trial": 2,
+   "sym": 1,
+   "d": 40,
+   "angle": 5.351,
+   "phase": 13,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 3,
+   "sym": 6,
+   "d": 20,
+   "angle": 3.489,
+   "phase": 2,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.6
+   ]
+  },
+  {
+   "trial": 4,
+   "sym": 1,
+   "d": 35,
+   "angle": 0.315,
+   "phase": 14,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    112.9,
+    113.2
+   ]
+  },
+  {
+   "trial": 5,
+   "sym": 3,
+   "d": 40,
+   "angle": 1.36,
+   "phase": 13,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.3
+   ]
+  },
+  {
+   "trial": 6,
+   "sym": 3,
+   "d": 35,
+   "angle": 2.645,
+   "phase": 26,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    110.5
+   ]
+  },
+  {
+   "trial": 7,
+   "sym": 0,
+   "d": 30,
+   "angle": 5.748,
+   "phase": 15,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    113.5
+   ]
+  },
+  {
+   "trial": 8,
+   "sym": 1,
+   "d": 25,
+   "angle": 1.177,
+   "phase": 15,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    111.5
+   ]
+  },
+  {
+   "trial": 9,
+   "sym": 0,
+   "d": 25,
+   "angle": 4.194,
+   "phase": 20,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    113.2
+   ]
+  },
+  {
+   "trial": 10,
+   "sym": 7,
+   "d": 30,
+   "angle": 5.33,
+   "phase": 13,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.5
+   ]
+  },
+  {
+   "trial": 11,
+   "sym": 4,
+   "d": 35,
+   "angle": 3.551,
+   "phase": 32,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 12,
+   "sym": 7,
+   "d": 30,
+   "angle": 2.592,
+   "phase": 25,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.7
+   ]
+  },
+  {
+   "trial": 13,
+   "sym": 0,
+   "d": 25,
+   "angle": 5.393,
+   "phase": 28,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.9
+   ]
+  },
+  {
+   "trial": 14,
+   "sym": 3,
+   "d": 35,
+   "angle": 2.636,
+   "phase": 11,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.5
+   ]
+  },
+  {
+   "trial": 15,
+   "sym": 0,
+   "d": 20,
+   "angle": 3.464,
+   "phase": 7,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.6
+   ]
+  },
+  {
+   "trial": 16,
+   "sym": 4,
+   "d": 35,
+   "angle": 0.166,
+   "phase": 17,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    147.1
+   ]
+  },
+  {
+   "trial": 17,
+   "sym": 7,
+   "d": 30,
+   "angle": 4.539,
+   "phase": 29,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    115.5
+   ]
+  },
+  {
+   "trial": 18,
+   "sym": 5,
+   "d": 40,
+   "angle": 3.901,
+   "phase": 31,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.0
+   ]
+  },
+  {
+   "trial": 19,
+   "sym": 3,
+   "d": 20,
+   "angle": 4.306,
+   "phase": 9,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.3
+   ]
+  },
+  {
+   "trial": 20,
+   "sym": 7,
+   "d": 35,
+   "angle": 5.986,
+   "phase": 14,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.1
+   ]
+  },
+  {
+   "trial": 21,
+   "sym": 7,
+   "d": 30,
+   "angle": 5.357,
+   "phase": 20,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    109.7
+   ]
+  },
+  {
+   "trial": 22,
+   "sym": 1,
+   "d": 40,
+   "angle": 2.618,
+   "phase": 24,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    116.5
+   ]
+  },
+  {
+   "trial": 23,
+   "sym": 4,
+   "d": 40,
+   "angle": 3.019,
+   "phase": 24,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    115.1
+   ]
+  },
+  {
+   "trial": 24,
+   "sym": 7,
+   "d": 30,
+   "angle": 1.392,
+   "phase": 0,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.9
+   ]
+  },
+  {
+   "trial": 25,
+   "sym": 1,
+   "d": 20,
+   "angle": 3.72,
+   "phase": 12,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    115.9
+   ]
+  },
+  {
+   "trial": 26,
+   "sym": 6,
+   "d": 35,
+   "angle": 5.148,
+   "phase": 24,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.1
+   ]
+  },
+  {
+   "trial": 27,
+   "sym": 2,
+   "d": 20,
+   "angle": 2.848,
+   "phase": 21,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.1
+   ]
+  },
+  {
+   "trial": 28,
+   "sym": 2,
+   "d": 20,
+   "angle": 6.168,
+   "phase": 4,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    113.3
+   ]
+  },
+  {
+   "trial": 29,
+   "sym": 2,
+   "d": 35,
+   "angle": 4.345,
+   "phase": 28,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.5
+   ]
+  },
+  {
+   "trial": 30,
+   "sym": 2,
+   "d": 35,
+   "angle": 5.236,
+   "phase": 3,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 31,
+   "sym": 7,
+   "d": 30,
+   "angle": 4.2,
+   "phase": 13,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.7
+   ]
+  },
+  {
+   "trial": 32,
+   "sym": 6,
+   "d": 25,
+   "angle": 1.872,
+   "phase": 29,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.2
+   ]
+  },
+  {
+   "trial": 33,
+   "sym": 6,
+   "d": 35,
+   "angle": 4.599,
+   "phase": 30,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    110.5
+   ]
+  },
+  {
+   "trial": 34,
+   "sym": 0,
+   "d": 20,
+   "angle": 6.077,
+   "phase": 1,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.5
+   ]
+  },
+  {
+   "trial": 35,
+   "sym": 5,
+   "d": 35,
+   "angle": 5.736,
+   "phase": 19,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.9
+   ]
+  },
+  {
+   "trial": 36,
+   "sym": 7,
+   "d": 20,
+   "angle": 1.893,
+   "phase": 5,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    109.9
+   ]
+  },
+  {
+   "trial": 37,
+   "sym": 1,
+   "d": 30,
+   "angle": 4.943,
+   "phase": 13,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    113.2
+   ]
+  },
+  {
+   "trial": 38,
+   "sym": 6,
+   "d": 20,
+   "angle": 4.784,
+   "phase": 1,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.5
+   ]
+  },
+  {
+   "trial": 39,
+   "sym": 4,
+   "d": 20,
+   "angle": 5.339,
+   "phase": 13,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.7
+   ]
+  },
+  {
+   "trial": 40,
+   "sym": 4,
+   "d": 20,
+   "angle": 1.53,
+   "phase": 23,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.3
+   ]
+  },
+  {
+   "trial": 41,
+   "sym": 4,
+   "d": 35,
+   "angle": 2.417,
+   "phase": 16,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    108.4
+   ]
+  },
+  {
+   "trial": 42,
+   "sym": 3,
+   "d": 40,
+   "angle": 3.45,
+   "phase": 6,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.3
+   ]
+  },
+  {
+   "trial": 43,
+   "sym": 5,
+   "d": 35,
+   "angle": 1.248,
+   "phase": 18,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.5
+   ]
+  },
+  {
+   "trial": 44,
+   "sym": 2,
+   "d": 20,
+   "angle": 4.747,
+   "phase": 40,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.4
+   ]
+  },
+  {
+   "trial": 45,
+   "sym": 5,
+   "d": 40,
+   "angle": 1.579,
+   "phase": 40,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.9
+   ]
+  },
+  {
+   "trial": 46,
+   "sym": 4,
+   "d": 25,
+   "angle": 2.358,
+   "phase": 7,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.3
+   ]
+  },
+  {
+   "trial": 47,
+   "sym": 4,
+   "d": 25,
+   "angle": 5.01,
+   "phase": 1,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    113.0
+   ]
+  },
+  {
+   "trial": 48,
+   "sym": 5,
+   "d": 35,
+   "angle": 0.591,
+   "phase": 21,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.5
+   ]
+  },
+  {
+   "trial": 49,
+   "sym": 5,
+   "d": 35,
+   "angle": 2.716,
+   "phase": 13,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    112.7,
+    113.2
+   ]
+  },
+  {
+   "trial": 50,
+   "sym": 2,
+   "d": 25,
+   "angle": 4.323,
+   "phase": 39,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.0
+   ]
+  },
+  {
+   "trial": 51,
+   "sym": 4,
+   "d": 40,
+   "angle": 0.94,
+   "phase": 0,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    113.2
+   ]
+  },
+  {
+   "trial": 52,
+   "sym": 4,
+   "d": 35,
+   "angle": 0.845,
+   "phase": 14,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    118.5,
+    118.7
+   ]
+  },
+  {
+   "trial": 53,
+   "sym": 3,
+   "d": 20,
+   "angle": 1.066,
+   "phase": 27,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.1
+   ]
+  },
+  {
+   "trial": 54,
+   "sym": 3,
+   "d": 30,
+   "angle": 2.64,
+   "phase": 4,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.1
+   ]
+  },
+  {
+   "trial": 55,
+   "sym": 1,
+   "d": 40,
+   "angle": 0.518,
+   "phase": 32,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.9
+   ]
+  },
+  {
+   "trial": 56,
+   "sym": 0,
+   "d": 40,
+   "angle": 2.048,
+   "phase": 39,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.8
+   ]
+  },
+  {
+   "trial": 57,
+   "sym": 2,
+   "d": 35,
+   "angle": 5.369,
+   "phase": 9,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 58,
+   "sym": 7,
+   "d": 40,
+   "angle": 1.184,
+   "phase": 36,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.6
+   ]
+  },
+  {
+   "trial": 59,
+   "sym": 5,
+   "d": 30,
+   "angle": 2.499,
+   "phase": 1,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 0.0,
+   "masses": [
+    204.7
+   ]
+  },
+  {
+   "trial": 60,
+   "sym": 2,
+   "d": 25,
+   "angle": 3.973,
+   "phase": 16,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.7
+   ]
+  },
+  {
+   "trial": 61,
+   "sym": 1,
+   "d": 35,
+   "angle": 6.04,
+   "phase": 25,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 62,
+   "sym": 2,
+   "d": 25,
+   "angle": 0.807,
+   "phase": 5,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    107.1,
+    118.5
+   ]
+  },
+  {
+   "trial": 63,
+   "sym": 6,
+   "d": 40,
+   "angle": 4.65,
+   "phase": 2,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.0
+   ]
+  },
+  {
+   "trial": 64,
+   "sym": 7,
+   "d": 40,
+   "angle": 0.848,
+   "phase": 3,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.2
+   ]
+  },
+  {
+   "trial": 65,
+   "sym": 4,
+   "d": 35,
+   "angle": 0.945,
+   "phase": 39,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.8
+   ]
+  },
+  {
+   "trial": 66,
+   "sym": 4,
+   "d": 40,
+   "angle": 4.222,
+   "phase": 27,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    116.3
+   ]
+  },
+  {
+   "trial": 67,
+   "sym": 0,
+   "d": 20,
+   "angle": 5.804,
+   "phase": 6,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.9
+   ]
+  },
+  {
+   "trial": 68,
+   "sym": 3,
+   "d": 20,
+   "angle": 2.237,
+   "phase": 32,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.8
+   ]
+  },
+  {
+   "trial": 69,
+   "sym": 0,
+   "d": 25,
+   "angle": 1.344,
+   "phase": 10,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 70,
+   "sym": 4,
+   "d": 35,
+   "angle": 0.507,
+   "phase": 15,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.8
+   ]
+  },
+  {
+   "trial": 71,
+   "sym": 0,
+   "d": 40,
+   "angle": 1.254,
+   "phase": 22,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    117.1
+   ]
+  },
+  {
+   "trial": 72,
+   "sym": 3,
+   "d": 30,
+   "angle": 0.333,
+   "phase": 15,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    110.8
+   ]
+  },
+  {
+   "trial": 73,
+   "sym": 1,
+   "d": 40,
+   "angle": 4.517,
+   "phase": 14,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    110.2
+   ]
+  },
+  {
+   "trial": 74,
+   "sym": 0,
+   "d": 40,
+   "angle": 1.189,
+   "phase": 32,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.9
+   ]
+  },
+  {
+   "trial": 75,
+   "sym": 4,
+   "d": 30,
+   "angle": 3.35,
+   "phase": 35,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    119.0
+   ]
+  },
+  {
+   "trial": 76,
+   "sym": 2,
+   "d": 35,
+   "angle": 5.349,
+   "phase": 6,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.7
+   ]
+  },
+  {
+   "trial": 77,
+   "sym": 2,
+   "d": 40,
+   "angle": 3.376,
+   "phase": 25,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    113.2
+   ]
+  },
+  {
+   "trial": 78,
+   "sym": 4,
+   "d": 25,
+   "angle": 4.548,
+   "phase": 27,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.7
+   ]
+  },
+  {
+   "trial": 79,
+   "sym": 6,
+   "d": 20,
+   "angle": 5.999,
+   "phase": 1,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.5
+   ]
+  },
+  {
+   "trial": 80,
+   "sym": 3,
+   "d": 20,
+   "angle": 2.536,
+   "phase": 24,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    114.7
+   ]
+  },
+  {
+   "trial": 81,
+   "sym": 0,
+   "d": 25,
+   "angle": 3.574,
+   "phase": 15,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.6
+   ]
+  },
+  {
+   "trial": 82,
+   "sym": 7,
+   "d": 30,
+   "angle": 2.225,
+   "phase": 37,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.0
+   ]
+  },
+  {
+   "trial": 83,
+   "sym": 4,
+   "d": 35,
+   "angle": 4.115,
+   "phase": 28,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    115.9,
+    116.2
+   ]
+  },
+  {
+   "trial": 84,
+   "sym": 0,
+   "d": 20,
+   "angle": 3.489,
+   "phase": 0,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.8
+   ]
+  },
+  {
+   "trial": 85,
+   "sym": 0,
+   "d": 30,
+   "angle": 0.269,
+   "phase": 26,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    117.0
+   ]
+  },
+  {
+   "trial": 86,
+   "sym": 5,
+   "d": 30,
+   "angle": 1.439,
+   "phase": 37,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.6
+   ]
+  },
+  {
+   "trial": 87,
+   "sym": 0,
+   "d": 35,
+   "angle": 1.923,
+   "phase": 19,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.9
+   ]
+  },
+  {
+   "trial": 88,
+   "sym": 6,
+   "d": 20,
+   "angle": 4.917,
+   "phase": 8,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    116.4
+   ]
+  },
+  {
+   "trial": 89,
+   "sym": 1,
+   "d": 40,
+   "angle": 2.62,
+   "phase": 27,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.5
+   ]
+  },
+  {
+   "trial": 90,
+   "sym": 2,
+   "d": 35,
+   "angle": 1.887,
+   "phase": 14,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.9
+   ]
+  },
+  {
+   "trial": 91,
+   "sym": 1,
+   "d": 40,
+   "angle": 4.242,
+   "phase": 14,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.4
+   ]
+  },
+  {
+   "trial": 92,
+   "sym": 2,
+   "d": 25,
+   "angle": 5.175,
+   "phase": 33,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.5
+   ]
+  },
+  {
+   "trial": 93,
+   "sym": 2,
+   "d": 30,
+   "angle": 3.616,
+   "phase": 7,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.8
+   ]
+  },
+  {
+   "trial": 94,
+   "sym": 1,
+   "d": 30,
+   "angle": 3.663,
+   "phase": 29,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.4
+   ]
+  },
+  {
+   "trial": 95,
+   "sym": 0,
+   "d": 30,
+   "angle": 3.73,
+   "phase": 21,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    117.9
+   ]
+  },
+  {
+   "trial": 96,
+   "sym": 4,
+   "d": 20,
+   "angle": 0.288,
+   "phase": 26,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.1
+   ]
+  },
+  {
+   "trial": 97,
+   "sym": 3,
+   "d": 40,
+   "angle": 0.2,
+   "phase": 25,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 0.0,
+   "masses": [
+    114.8
+   ]
+  },
+  {
+   "trial": 98,
+   "sym": 0,
+   "d": 35,
+   "angle": 2.081,
+   "phase": 28,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.8
+   ]
+  },
+  {
+   "trial": 99,
+   "sym": 2,
+   "d": 20,
+   "angle": 0.547,
+   "phase": 23,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.6
+   ]
+  },
+  {
+   "trial": 100,
+   "sym": 6,
+   "d": 40,
+   "angle": 5.684,
+   "phase": 22,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    117.1
+   ]
+  },
+  {
+   "trial": 101,
+   "sym": 0,
+   "d": 35,
+   "angle": 0.478,
+   "phase": 13,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    112.7,
+    113.2
+   ]
+  },
+  {
+   "trial": 102,
+   "sym": 7,
+   "d": 20,
+   "angle": 4.96,
+   "phase": 31,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.2
+   ]
+  },
+  {
+   "trial": 103,
+   "sym": 5,
+   "d": 25,
+   "angle": 0.022,
+   "phase": 9,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    112.8,
+    116.5
+   ]
+  },
+  {
+   "trial": 104,
+   "sym": 6,
+   "d": 35,
+   "angle": 2.904,
+   "phase": 3,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.2
+   ]
+  },
+  {
+   "trial": 105,
+   "sym": 5,
+   "d": 40,
+   "angle": 5.202,
+   "phase": 31,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.2
+   ]
+  },
+  {
+   "trial": 106,
+   "sym": 1,
+   "d": 30,
+   "angle": 3.76,
+   "phase": 23,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.7
+   ]
+  },
+  {
+   "trial": 107,
+   "sym": 7,
+   "d": 25,
+   "angle": 3.126,
+   "phase": 16,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.3
+   ]
+  },
+  {
+   "trial": 108,
+   "sym": 7,
+   "d": 25,
+   "angle": 4.111,
+   "phase": 27,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.0
+   ]
+  },
+  {
+   "trial": 109,
+   "sym": 4,
+   "d": 40,
+   "angle": 4.871,
+   "phase": 30,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.6
+   ]
+  },
+  {
+   "trial": 110,
+   "sym": 7,
+   "d": 20,
+   "angle": 5.456,
+   "phase": 11,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    115.6
+   ]
+  },
+  {
+   "trial": 111,
+   "sym": 6,
+   "d": 35,
+   "angle": 2.494,
+   "phase": 4,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.1,
+    114.5
+   ]
+  },
+  {
+   "trial": 112,
+   "sym": 6,
+   "d": 25,
+   "angle": 4.422,
+   "phase": 9,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 113,
+   "sym": 7,
+   "d": 40,
+   "angle": 2.129,
+   "phase": 16,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.0
+   ]
+  },
+  {
+   "trial": 114,
+   "sym": 7,
+   "d": 30,
+   "angle": 5.381,
+   "phase": 7,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.8
+   ]
+  },
+  {
+   "trial": 115,
+   "sym": 1,
+   "d": 20,
+   "angle": 1.93,
+   "phase": 29,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.3
+   ]
+  },
+  {
+   "trial": 116,
+   "sym": 1,
+   "d": 35,
+   "angle": 5.442,
+   "phase": 14,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    117.4
+   ]
+  },
+  {
+   "trial": 117,
+   "sym": 2,
+   "d": 25,
+   "angle": 3.931,
+   "phase": 35,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.6
+   ]
+  },
+  {
+   "trial": 118,
+   "sym": 6,
+   "d": 30,
+   "angle": 3.887,
+   "phase": 8,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.4
+   ]
+  },
+  {
+   "trial": 119,
+   "sym": 1,
+   "d": 40,
+   "angle": 3.94,
+   "phase": 7,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.7
+   ]
+  },
+  {
+   "trial": 120,
+   "sym": 2,
+   "d": 40,
+   "angle": 0.536,
+   "phase": 4,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    115.9
+   ]
+  },
+  {
+   "trial": 121,
+   "sym": 4,
+   "d": 25,
+   "angle": 4.282,
+   "phase": 38,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.6
+   ]
+  },
+  {
+   "trial": 122,
+   "sym": 4,
+   "d": 35,
+   "angle": 5.322,
+   "phase": 33,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    179.1
+   ]
+  },
+  {
+   "trial": 123,
+   "sym": 3,
+   "d": 30,
+   "angle": 5.616,
+   "phase": 22,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    95.1
+   ]
+  },
+  {
+   "trial": 124,
+   "sym": 6,
+   "d": 20,
+   "angle": 4.367,
+   "phase": 28,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.0
+   ]
+  },
+  {
+   "trial": 125,
+   "sym": 6,
+   "d": 20,
+   "angle": 3.382,
+   "phase": 34,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    111.1
+   ]
+  },
+  {
+   "trial": 126,
+   "sym": 4,
+   "d": 40,
+   "angle": 5.853,
+   "phase": 6,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 0.0,
+   "masses": [
+    156.4
+   ]
+  },
+  {
+   "trial": 127,
+   "sym": 0,
+   "d": 30,
+   "angle": 0.935,
+   "phase": 0,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    113.2
+   ]
+  },
+  {
+   "trial": 128,
+   "sym": 6,
+   "d": 35,
+   "angle": 1.028,
+   "phase": 38,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    104.9
+   ]
+  },
+  {
+   "trial": 129,
+   "sym": 0,
+   "d": 40,
+   "angle": 1.302,
+   "phase": 26,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    117.0
+   ]
+  },
+  {
+   "trial": 130,
+   "sym": 0,
+   "d": 25,
+   "angle": 4.301,
+   "phase": 5,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    106.1
+   ]
+  },
+  {
+   "trial": 131,
+   "sym": 4,
+   "d": 30,
+   "angle": 2.195,
+   "phase": 28,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.8
+   ]
+  },
+  {
+   "trial": 132,
+   "sym": 0,
+   "d": 35,
+   "angle": 4.044,
+   "phase": 11,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    113.6
+   ]
+  },
+  {
+   "trial": 133,
+   "sym": 0,
+   "d": 25,
+   "angle": 3.002,
+   "phase": 24,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    113.5
+   ]
+  },
+  {
+   "trial": 134,
+   "sym": 7,
+   "d": 30,
+   "angle": 2.735,
+   "phase": 27,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.0
+   ]
+  },
+  {
+   "trial": 135,
+   "sym": 7,
+   "d": 25,
+   "angle": 1.28,
+   "phase": 22,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.5
+   ]
+  },
+  {
+   "trial": 136,
+   "sym": 5,
+   "d": 40,
+   "angle": 0.254,
+   "phase": 34,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    103.8,
+    114.3
+   ]
+  },
+  {
+   "trial": 137,
+   "sym": 2,
+   "d": 25,
+   "angle": 4.219,
+   "phase": 32,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.1
+   ]
+  },
+  {
+   "trial": 138,
+   "sym": 5,
+   "d": 20,
+   "angle": 4.656,
+   "phase": 4,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.6
+   ]
+  },
+  {
+   "trial": 139,
+   "sym": 2,
+   "d": 40,
+   "angle": 2.469,
+   "phase": 24,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.4
+   ]
+  },
+  {
+   "trial": 140,
+   "sym": 5,
+   "d": 30,
+   "angle": 3.915,
+   "phase": 3,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.1
+   ]
+  },
+  {
+   "trial": 141,
+   "sym": 0,
+   "d": 30,
+   "angle": 1.74,
+   "phase": 30,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.6
+   ]
+  },
+  {
+   "trial": 142,
+   "sym": 4,
+   "d": 20,
+   "angle": 1.33,
+   "phase": 28,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.6
+   ]
+  },
+  {
+   "trial": 143,
+   "sym": 0,
+   "d": 20,
+   "angle": 4.567,
+   "phase": 4,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.6
+   ]
+  },
+  {
+   "trial": 144,
+   "sym": 5,
+   "d": 20,
+   "angle": 3.831,
+   "phase": 28,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.4
+   ]
+  },
+  {
+   "trial": 145,
+   "sym": 6,
+   "d": 30,
+   "angle": 2.318,
+   "phase": 1,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    109.6
+   ]
+  },
+  {
+   "trial": 146,
+   "sym": 0,
+   "d": 40,
+   "angle": 2.272,
+   "phase": 20,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    116.1
+   ]
+  },
+  {
+   "trial": 147,
+   "sym": 3,
+   "d": 20,
+   "angle": 4.637,
+   "phase": 14,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    113.6
+   ]
+  },
+  {
+   "trial": 148,
+   "sym": 2,
+   "d": 35,
+   "angle": 2.613,
+   "phase": 15,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.9
+   ]
+  },
+  {
+   "trial": 149,
+   "sym": 0,
+   "d": 35,
+   "angle": 1.344,
+   "phase": 35,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.3
+   ]
+  },
+  {
+   "trial": 150,
+   "sym": 2,
+   "d": 35,
+   "angle": 5.408,
+   "phase": 10,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.5
+   ]
+  },
+  {
+   "trial": 151,
+   "sym": 2,
+   "d": 20,
+   "angle": 2.539,
+   "phase": 5,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.1
+   ]
+  },
+  {
+   "trial": 152,
+   "sym": 4,
+   "d": 20,
+   "angle": 1.207,
+   "phase": 15,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.2
+   ]
+  },
+  {
+   "trial": 153,
+   "sym": 7,
+   "d": 20,
+   "angle": 1.288,
+   "phase": 34,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.1
+   ]
+  },
+  {
+   "trial": 154,
+   "sym": 0,
+   "d": 30,
+   "angle": 3.052,
+   "phase": 27,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.0
+   ]
+  },
+  {
+   "trial": 155,
+   "sym": 0,
+   "d": 30,
+   "angle": 0.977,
+   "phase": 40,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.1
+   ]
+  },
+  {
+   "trial": 156,
+   "sym": 0,
+   "d": 20,
+   "angle": 5.781,
+   "phase": 12,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.8
+   ]
+  },
+  {
+   "trial": 157,
+   "sym": 4,
+   "d": 40,
+   "angle": 0.208,
+   "phase": 40,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 0.0,
+   "masses": [
+    145.7
+   ]
+  },
+  {
+   "trial": 158,
+   "sym": 0,
+   "d": 25,
+   "angle": 4.336,
+   "phase": 37,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.4
+   ]
+  },
+  {
+   "trial": 159,
+   "sym": 3,
+   "d": 20,
+   "angle": 0.61,
+   "phase": 39,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    110.2
+   ]
+  },
+  {
+   "trial": 160,
+   "sym": 6,
+   "d": 35,
+   "angle": 3.298,
+   "phase": 28,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.8
+   ]
+  },
+  {
+   "trial": 161,
+   "sym": 1,
+   "d": 40,
+   "angle": 1.651,
+   "phase": 14,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.0
+   ]
+  },
+  {
+   "trial": 162,
+   "sym": 6,
+   "d": 40,
+   "angle": 2.179,
+   "phase": 9,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    111.6
+   ]
+  },
+  {
+   "trial": 163,
+   "sym": 5,
+   "d": 40,
+   "angle": 5.851,
+   "phase": 31,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.2
+   ]
+  },
+  {
+   "trial": 164,
+   "sym": 4,
+   "d": 25,
+   "angle": 2.41,
+   "phase": 5,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.8
+   ]
+  },
+  {
+   "trial": 165,
+   "sym": 7,
+   "d": 35,
+   "angle": 1.808,
+   "phase": 4,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    104.3
+   ]
+  },
+  {
+   "trial": 166,
+   "sym": 1,
+   "d": 40,
+   "angle": 1.634,
+   "phase": 40,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.4
+   ]
+  },
+  {
+   "trial": 167,
+   "sym": 3,
+   "d": 25,
+   "angle": 4.858,
+   "phase": 1,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    113.3
+   ]
+  },
+  {
+   "trial": 168,
+   "sym": 0,
+   "d": 25,
+   "angle": 2.641,
+   "phase": 1,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.0
+   ]
+  },
+  {
+   "trial": 169,
+   "sym": 0,
+   "d": 25,
+   "angle": 1.057,
+   "phase": 1,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.0
+   ]
+  },
+  {
+   "trial": 170,
+   "sym": 5,
+   "d": 25,
+   "angle": 1.546,
+   "phase": 5,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    111.6
+   ]
+  },
+  {
+   "trial": 171,
+   "sym": 2,
+   "d": 20,
+   "angle": 5.912,
+   "phase": 10,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.2
+   ]
+  },
+  {
+   "trial": 172,
+   "sym": 5,
+   "d": 25,
+   "angle": 3.897,
+   "phase": 38,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.4
+   ]
+  },
+  {
+   "trial": 173,
+   "sym": 4,
+   "d": 40,
+   "angle": 5.458,
+   "phase": 28,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    115.8
+   ]
+  },
+  {
+   "trial": 174,
+   "sym": 1,
+   "d": 35,
+   "angle": 1.842,
+   "phase": 8,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 175,
+   "sym": 3,
+   "d": 25,
+   "angle": 4.862,
+   "phase": 12,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    113.9
+   ]
+  },
+  {
+   "trial": 176,
+   "sym": 2,
+   "d": 25,
+   "angle": 2.962,
+   "phase": 34,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.6
+   ]
+  },
+  {
+   "trial": 177,
+   "sym": 6,
+   "d": 30,
+   "angle": 4.409,
+   "phase": 18,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.8
+   ]
+  },
+  {
+   "trial": 178,
+   "sym": 1,
+   "d": 35,
+   "angle": 1.8,
+   "phase": 26,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    105.5
+   ]
+  },
+  {
+   "trial": 179,
+   "sym": 3,
+   "d": 20,
+   "angle": 2.946,
+   "phase": 23,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    113.2
+   ]
+  },
+  {
+   "trial": 180,
+   "sym": 5,
+   "d": 35,
+   "angle": 4.29,
+   "phase": 26,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.7
+   ]
+  },
+  {
+   "trial": 181,
+   "sym": 1,
+   "d": 40,
+   "angle": 0.59,
+   "phase": 6,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.1
+   ]
+  },
+  {
+   "trial": 182,
+   "sym": 4,
+   "d": 25,
+   "angle": 0.097,
+   "phase": 29,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 183,
+   "sym": 4,
+   "d": 20,
+   "angle": 0.629,
+   "phase": 13,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.8
+   ]
+  },
+  {
+   "trial": 184,
+   "sym": 0,
+   "d": 40,
+   "angle": 0.419,
+   "phase": 33,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    114.8
+   ]
+  },
+  {
+   "trial": 185,
+   "sym": 5,
+   "d": 30,
+   "angle": 4.45,
+   "phase": 8,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 1.0,
+   "masses": [
+    111.6
+   ]
+  },
+  {
+   "trial": 186,
+   "sym": 0,
+   "d": 40,
+   "angle": 1.705,
+   "phase": 24,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    117.8
+   ]
+  },
+  {
+   "trial": 187,
+   "sym": 5,
+   "d": 40,
+   "angle": 4.648,
+   "phase": 19,
+   "self_propelled": 0.0,
+   "class": "extinct",
+   "persistent": 0.0,
+   "masses": []
+  },
+  {
+   "trial": 188,
+   "sym": 4,
+   "d": 20,
+   "angle": 0.038,
+   "phase": 18,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    114.7
+   ]
+  },
+  {
+   "trial": 189,
+   "sym": 4,
+   "d": 30,
+   "angle": 0.315,
+   "phase": 22,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    113.6
+   ]
+  },
+  {
+   "trial": 190,
+   "sym": 5,
+   "d": 30,
+   "angle": 3.401,
+   "phase": 0,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.1
+   ]
+  },
+  {
+   "trial": 191,
+   "sym": 0,
+   "d": 20,
+   "angle": 1.442,
+   "phase": 24,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    115.9
+   ]
+  },
+  {
+   "trial": 192,
+   "sym": 1,
+   "d": 40,
+   "angle": 3.626,
+   "phase": 36,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    118.1
+   ]
+  },
+  {
+   "trial": 193,
+   "sym": 3,
+   "d": 20,
+   "angle": 2.622,
+   "phase": 18,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    112.1
+   ]
+  },
+  {
+   "trial": 194,
+   "sym": 7,
+   "d": 30,
+   "angle": 4.273,
+   "phase": 21,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    116.8,
+    117.5
+   ]
+  },
+  {
+   "trial": 195,
+   "sym": 6,
+   "d": 35,
+   "angle": 5.385,
+   "phase": 18,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    116.0
+   ]
+  },
+  {
+   "trial": 196,
+   "sym": 5,
+   "d": 40,
+   "angle": 6.098,
+   "phase": 11,
+   "self_propelled": 2.0,
+   "class": "complex",
+   "persistent": 2.0,
+   "masses": [
+    113.2,
+    113.6
+   ]
+  },
+  {
+   "trial": 197,
+   "sym": 4,
+   "d": 35,
+   "angle": 0.608,
+   "phase": 24,
+   "self_propelled": 0.0,
+   "class": "active",
+   "persistent": 0.0,
+   "masses": [
+    116.3
+   ]
+  },
+  {
+   "trial": 198,
+   "sym": 1,
+   "d": 20,
+   "angle": 5.746,
+   "phase": 5,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    119.2
+   ]
+  },
+  {
+   "trial": 199,
+   "sym": 4,
+   "d": 30,
+   "angle": 4.214,
+   "phase": 31,
+   "self_propelled": 1.0,
+   "class": "complex",
+   "persistent": 1.0,
+   "masses": [
+    117.2
+   ]
+  }
+ ]
+}

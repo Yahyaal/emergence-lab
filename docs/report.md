@@ -162,6 +162,8 @@ E-12 searched rule space from soups, and E-14 showed that soups (almost) never m
 <figcaption>Left: the wanderer's rule almost always makes a wanderer from a smooth start, never from soup (our detector misses about 8% of wanderers because they turn, so these are slight undercounts, J-022). Right: across 42 neighbouring rules, wanderers arise only on a thin ridge (green). Soups made none anywhere (252 worlds). 190 of 192 wanderers survived 1000 steps alone.</figcaption>
 </figure>
 
+**When wanderers meet (E-22, pre-registered, 200 encounters):** usually **two become one**. In 71% of encounters a single ordinary wanderer is left, its mass back to normal; in 22% both survive; 5% destroy both. Unlike gliders, wanderers never formed a lasting double, and no encounter produced extra wanderers (J-026).
+
 **The lesson:** the starting world decides what a search can see. E-12's "zero" was a property of the soup, not of rule space.
 
 ## 7 · A second continuous physics: Flow-Lenia
@@ -181,7 +183,7 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 |---|---|---|
 | 1 · persistent organisation | yes | yes |
 | 2 · self-propelled structures | yes | **yes, arising spontaneously from smooth starts** (gliders; a turning "wanderer") |
-| 3 · self-replication | not observed | none: no births in big worlds (E-15) or in 500 controlled collisions (E-20); collisions can *fuse* two gliders into one larger mover |
+| 3 · self-replication | not observed | none: no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other |
 | 4 · heredity and variation | not measured | not measured |
 | 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
 
@@ -189,7 +191,7 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 
 ## What next
 
-1. **Interactions as a route to new structure:** gliders can fuse into double gliders (E-20). Do wanderers fuse, with each other or with gliders? Is there a chain (double → triple)? A knockout test on fusion events (J-010 style) would show whether later structures depend on earlier ones.
+1. **Interactions as a route to new structure:** gliders can fuse into double gliders (E-20); wanderers absorb each other (E-22). Is there a chain (double + glider → triple)? A knockout test on fusion events (J-010 style) would show whether later structures depend on earlier ones.
 2. **A better detector for slow, turning movers** (it misses ~8% of wanderers, J-022), with its own deceptive controls.
 3. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
 4. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
@@ -216,13 +218,14 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 | 04:45 | E-20: 500 controlled collisions; no births, but gliders can fuse |
 | 04:50 | Double gliders also found arising spontaneously, once via fusion of two spontaneous gliders (J-024) |
 | 05:05 | E-21: spontaneous double gliders are rare (~0.6% of worlds); a flawed check caught (J-025) |
+| 05:12 | E-22: wanderers absorb each other when they meet; no births (J-026) |
 
 Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 77 checks, all passing.
 
 ## Read more
 
-- Journal entries [J-012 to J-025]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
-- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md).
+- Journal entries [J-012 to J-026]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md), [E-22](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e22-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
 **Glossary.** *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).
