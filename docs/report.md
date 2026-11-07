@@ -17,9 +17,9 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="cards">
 <div class="card"><div class="stat">bug fixed</div><p>Our "complex" label had been calling <b>fields of motionless blobs</b> complex: 27 of 60 random Lenia rules. Fixed and re-validated before any new experiment (J-012).</p></div>
 <div class="card"><div class="stat">0 / 2085</div><p>Two full searches (the discovery engine and a random-search baseline, 1000 rules in all) found <b>no rule that makes gliders from ordinary random soup</b> (E-12).</p></div>
-<div class="card"><div class="stat">8 / 99</div><p>Gliders <i>can</i> exist in only a <b>small island of rule space</b> around the known glider Orbium (E-13a).</p></div>
+<div class="card"><div class="stat">8 / 99</div><p>Among simple <b>single-ring</b> rules, gliders <i>can</i> exist only in a <b>small island</b> around the known glider Orbium (E-13a). Richer rules hold others (section 6).</p></div>
 <div class="card"><div class="stat">49 vs 0</div><p>In that island, <b>smooth random starts produced gliders in 49 of 320 worlds, matched ordinary soups in 0 of 320</b>. Pre-registered, fresh seeds, p &lt; 10⁻⁶ (E-14).</p></div>
-<div class="card"><div class="stat">23 / 30</div><p>In <b>bigger worlds</b>, a growing field of static blobs usually takes over; gliders only <b>collide and die</b>, never multiply (E-15).</p></div>
+<div class="card"><div class="stat">23 / 30</div><p>In <b>bigger worlds</b>, a growing field of static blobs usually takes over; gliders <b>collide and die</b>; we saw no new ones form (E-15).</p></div>
 <div class="card"><div class="stat">1 new mover</div><p>Searching again from smooth starts, the engine found a <b>new kind of creature</b>: a slow, turning "wanderer" in a different part of rule space. Random search found none (E-17).</p></div>
 <div class="card"><div class="stat">0 / 400</div><p><b>Flow-Lenia</b>, a mass-conserving variant said to make movers easily, was built and validated, but produced <b>no movers</b> in 400 worlds (E-16).</p></div>
 <div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
@@ -68,7 +68,7 @@ Zero gliders could mean two different things: the rules can't support gliders, o
 
 <figure>
 <img src="{{ '/assets/report/viability-map.png' | relative_url }}" alt="Grid of rules; 8 green dots near Orbium">
-<figcaption>Only 8 of 99 rules support a glider (green), all in a small island around Chan's Orbium (red circle). The gliders move at 0.54–0.69 cells per step. The discovery engine had found this island: 59 of its 500 rules were in it.</figcaption>
+<figcaption>Only 8 of 99 single-ring rules support a glider (green), all in a small island around Chan's Orbium (red circle). The gliders move at 0.54–0.69 cells per step. The discovery engine had found this island: 59 of its 500 rules were in or near it (7 of them single-ring; not deduplicated).</figcaption>
 </figure>
 
 So in these 8 rules gliders **can** exist, yet E-12's soups never made one there. **The bottleneck is emergence, not the search.**
@@ -98,9 +98,9 @@ E-13's planned statistics could not confirm this: with only 8 rules, the planned
 <figcaption>E-14 (pre-registered, 640 new worlds): smooth starts made gliders in 28/160 and 21/160 worlds; ordinary soups with the same mass in 0/160 and 0/160 (p = 10⁻⁹ and 2·10⁻⁷). 6 of the 8 rules produced gliders. Bars show 95% intervals.</figcaption>
 </figure>
 
-**Every one of the 49 gliders was cut out and run alone for 1000 steps; all 49 kept going.** They are the same creatures we grew by hand in section 3 (for one rule: 0.637 cells/step by hand, 0.638 spontaneous).
+**Every one of the 51 gliders (in 49 worlds) was cut out and run alone for 1000 steps; all 51 kept going.** They are the same creatures we grew by hand in section 3 (for one rule: 0.637 cells/step by hand, 0.638 spontaneous).
 
-**Why smooth starts work.** A glider needs an isolated lump of about the right size and mass, with empty space around it. Smooth noise makes lumps; fine-grained noise averages out into an even film of matter that either freezes into blobs (dense) or dies (sparse). Here, unlike our Game-of-Life study (J-009), **how matter is arranged matters**, not only how much there is.
+**Why smooth starts work.** A glider needs an isolated lump of about the right size and mass, with empty space around it. Smooth noise makes lumps; fine-grained noise averages out into an even film of matter that either freezes into blobs (dense) or dies (sparse). Here, unlike our Game-of-Life study (J-009), the start matters at the same total amount of matter. *Caveat (from our reviewer, R-4):* a smooth start also has a different mix of cell values from a soup (more weakly-filled cells), so "arrangement" and "value mix" are not yet separated, and the lump mechanism is a hypothesis. **E-19** tests it with a shuffled control: exactly the smooth start's cell values, scattered at random.
 
 **What it is not.** The gliders mostly destroy each other: 47 of 49 glider worlds end with exactly one glider alone in an empty world. Spontaneous movement, yes; an ecology of interacting creatures, not yet.
 
@@ -110,7 +110,7 @@ If gliders destroy each other in small worlds, what happens with more room? **E-
 
 <figure>
 <img src="{{ '/assets/report/e15-fates.png' | relative_url }}" alt="Mass over time for 30 big worlds, and a bar chart of how they ended">
-<figcaption>Left: total matter in each world over time. Red worlds were taken over by a growing field of static blobs (Lenia does not conserve mass, so the field grows to fill the world). Green worlds end with one or two gliders: their matter only ever drops, one glider at a time. Right: the field won in 23 of 30 worlds.</figcaption>
+<figcaption>Left: total matter in each world over time. Red worlds were taken over by a growing field of static blobs (Lenia does not conserve mass, so the field grows to fill the world). Green worlds end with one or two gliders: their matter falls in steps of about one glider (with small bumps during collisions). Right: the field won in 23 of 30 worlds.</figcaption>
 </figure>
 
 <div class="cards">
@@ -118,7 +118,7 @@ If gliders destroy each other in small worlds, what happens with more room? **E-
 <div class="card"><img src="{{ '/assets/report/e15-collision.gif' | relative_url }}" alt="Two gliders colliding in an empty world"><p><b>Gliders collide.</b> In the worlds the field never reached, gliders meet and merge or destroy each other. No collision ever made a new glider.</p></div>
 </div>
 
-So a glider is a **fragile in-between state**: the world must collapse enough to leave isolated lumps, but not so much that nothing survives, and no blob field may survive anywhere. In bigger worlds that last condition fails more often. Gliders interact only destructively. **No births, no growing population**: the step from moving things to reproducing things is not happening here.
+So a glider is a **fragile in-between state**: the world must collapse enough to leave isolated lumps, but not so much that nothing survives, and no blob field may survive anywhere. In bigger worlds that last condition fails more often. In the collisions we looked at, gliders merged or destroyed each other. **We saw no births and no growing population**, though with only 6 glider-only worlds that is weak evidence, not proof.
 
 *A note on our own mistake:* the script's quick glider counter (no isolation test) reported hundreds of "births". Looking at the frames showed they were moving edges inside blob fields and count flicker during collisions. Only the mass traces and the pictures are used above.
 
@@ -127,9 +127,16 @@ So a glider is a **fragile in-between state**: the world must collapse enough to
 E-12 searched rule space from soups, and E-14 showed that soups never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
 
 <div class="cards">
-<div class="card"><img src="{{ '/assets/report/e17-wanderer.gif' | relative_url }}" alt="A compact patterned creature moving in a loop, leaving a faint trail"><p><b>The "wanderer"</b> (rule μ 0.243, three kernel rings), found by the discovery engine. Cut out and run alone, it keeps its body (mass ~115) and moves about 0.07 cells per step, <b>turning as it goes</b> (faint trail). Found in 4 worlds, including runs with fresh seeds and a 2× larger world.</p></div>
+<div class="card"><img src="{{ '/assets/report/e17-wanderer.gif' | relative_url }}" alt="A compact patterned creature moving in a loop, leaving a faint trail"><p><b>The "wanderer"</b> (rule μ 0.243, three kernel rings), found by the discovery engine. Cut out and run alone, it keeps its body (mass ~115) and moves along its path at about 0.07 cells per step, <b>turning as it goes</b> (net progress is only 0.02–0.05 cells per step) (faint trail). Found in 4 worlds, including runs with fresh seeds and a 2× larger world.</p></div>
 <div class="card"><p><b>Engine vs random search, from smooth starts:</b></p><p>Engine: <b>1 rule with a verified mover</b> (the wanderer). Random search: <b>0</b>. A second candidate, found by both, was a drifting chunk of blob field that fell apart when run alone.</p><p>The wanderer lives far from Orbium's island (3 rings, larger μ). It is slower and turns, unlike the straight-line gliders: a different kind of creature. The numbers are tiny (one seed per search), so this is a lead, not a statistical result.</p></div>
 </div>
+
+**Confirmed (E-18, pre-registered).** With 40 fresh seeds, the wanderer's rule produced a verified wanderer in **36 of 40 smooth-start worlds, and 0 of 40 soups** (p ≈ 10⁻¹⁸). Mapping the rules around it shows wanderers live on a **narrow diagonal ridge** of rule space, as Orbium's gliders live on their island:
+
+<figure>
+<img src="{{ '/assets/report/e18-wanderer.png' | relative_url }}" alt="Bar chart: wanderers in 36/40 smooth-start worlds and 0/40 soups; heat map of a narrow ridge of rules producing wanderers">
+<figcaption>Left: the wanderer's rule almost always makes a wanderer from a smooth start, never from soup. Right: across 42 neighbouring rules, wanderers arise only on a thin ridge (green). Soups made none anywhere (252 worlds). 190 of 192 wanderers survived 1000 steps alone.</figcaption>
+</figure>
 
 **The lesson:** the starting world decides what a search can see. E-12's "zero" was a property of the soup, not of rule space.
 
@@ -166,7 +173,7 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 
 ## Read more
 
-- Journal entries [J-012 to J-019]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Journal entries [J-012 to J-020]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
 - Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 

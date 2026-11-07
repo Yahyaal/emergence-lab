@@ -39,3 +39,20 @@ The project owner shared the work with ChatGPT for independent review three time
 | Introduce richer physics now (Lenia), as a second track | **Agreed** (D-018 Track C), with its own structure detector and published reference patterns as controls |
 | Study initial conditions and environments under fixed rules | **Agreed, and prioritised:** it is cheap and needs no new physics (Track B) |
 | Merge PR #1 as the baseline | **Agreed** |
+
+
+## R-4 · Independent review of the overnight Lenia work (J-012 to J-019) {#r-4}
+
+An independent agent with no part in the work reviewed the journal, data, code and report (2026-11-07, about 04:00). It recomputed statistics from the exports and ran two small nulls.
+
+| Point | Response |
+|---|---|
+| Smooth starts differ from soups in value distribution (more weakly filled cells), not only in spatial correlation; "arrangement matters" is confounded. The proper null is a shuffled smooth field | **Agreed.** Added init kind `smooth_shuffled`; E-19a (pre-registered) tests smooth vs shuffled. Report claim softened until then |
+| Soups die (density 0.10) or freeze (0.35) at every density tried, so "0/160" was close to guaranteed | **Agreed.** E-19b sweeps soup density 0.12–0.30 across the transition |
+| Rule-level evidence is weaker than universe-level p: 6 of 8 rules, rule-level sign test p = 0.031 | **Agreed.** Claims restated as "in these 8 rules" (J-015) |
+| Mover-verification code not committed; three JSONs not reproducible | **Agreed, most important.** `scripts/verify_movers.py` committed and used for E-18; E-13/E-14/E-17 to be regenerated with it |
+| Detector not validated for slow or turning movers; D-022's 0.002 cut-off was set after viewing data, with no held-out check | **Agreed.** Open: a slow/turning positive control (the wanderer is a natural one) and a held-out check of the cut-off |
+| E-15 "mass only drops" is contradicted by small rises; "never multiply" too strong | **Agreed.** Corrected to "no births seen, weak evidence" |
+| Numbers: 51 structures (not 49); 9/160 soups unsettled (not "all freeze"); 12 seed shapes (not 8); E-13 did find a σ 0.0195 glider; path vs net speed of the wanderer; `compare`'s self-propelled count definition | **All confirmed and corrected** |
+| "Small island of rule space" contradicted by the E-17 wanderer; island count not deduplicated | **Agreed.** Now "among single-ring rules"; non-deduplicated count labelled |
+| "New kind of creature" may already be in Chan's catalogue | **Agreed.** We claim only "new to this project" |

@@ -134,7 +134,7 @@ def viability_map() -> None:
     ax.set_ylabel("growth width σ / μ")
     sp = [r["speed"] for r in d if r["viable"]]
     ax.set_title(f"Where can a glider exist? {len(sp)} of {len(d)} single-ring rules (green)\n"
-                 f"speeds {min(sp):.2f}-{max(sp):.2f} cells/step; grey = no glider from 8 seed shapes",
+                 f"speeds {min(sp):.2f}-{max(sp):.2f} cells/step; grey = no glider from 12 seed shapes",
                  fontsize=11)
     ax.legend(loc="upper right", frameon=False)
     ax.set_xticks(mus[::2])
@@ -339,7 +339,41 @@ def e17_wanderer() -> None:
     save_gif(frames, "e17-wanderer.gif", scale=2, ms=60)
 
 
-FIGS = {"e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e18_wanderer() -> None:
+    d = json.load(open(DATA / "2026-11-07-e18-wanderer.json"))
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 4.4), gridspec_kw={"width_ratios": [1, 1.3], "wspace": 0.3})
+    names = [("uniform", "soup"), ("smooth:3", "smooth\nℓ=3"), ("smooth:6", "smooth\nℓ=6"), ("smooth:10", "smooth\nℓ=10")]
+    ks = [d["e18a"][k][0] / d["e18a"][k][1] for k, _ in names]
+    bars = a1.bar([n for _, n in names], ks, color=[GREY, ORANGE, BLUE, GREEN])
+    for b, (k, _) in zip(bars, names):
+        a1.text(b.get_x() + b.get_width() / 2, b.get_height() + 0.02, f"{d['e18a'][k][0]}/{d['e18a'][k][1]}",
+                ha="center", fontsize=9)
+    a1.set_ylim(0, 1.05)
+    a1.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    a1.set_ylabel("worlds with a verified wanderer")
+    a1.set_title("E-18a: the wanderer's rule\n(40 fresh seeds per start)", fontsize=11)
+    mus = sorted({r["mu"] for r in d["e18b_map"]})
+    rs = sorted({r["sigma_over_mu"] for r in d["e18b_map"]})
+    grid = np.zeros((len(mus), len(rs)))
+    for r in d["e18b_map"]:
+        grid[mus.index(r["mu"]), rs.index(r["sigma_over_mu"])] = r["smooth6_verified"] / r["n"]
+    im = a2.imshow(grid, origin="lower", cmap="Greens", vmin=0, vmax=1, aspect="auto")
+    a2.set_xticks(range(len(rs)), [f"{x:.3f}" for x in rs])
+    a2.set_yticks(range(len(mus)), [f"{x:.3f}" for x in mus])
+    a2.set_xlabel("growth width σ / μ")
+    a2.set_ylabel("growth centre μ")
+    for i in range(len(mus)):
+        for j in range(len(rs)):
+            if grid[i, j]:
+                a2.text(j, i, f"{grid[i, j]:.0%}", ha="center", va="center", fontsize=8,
+                        color="white" if grid[i, j] > 0.5 else "black")
+    a2.set_title("E-18b: where wanderers arise\n(3-ring rules, smooth ℓ=6 starts; soups: 0 everywhere)", fontsize=11)
+    fig.colorbar(im, ax=a2, fraction=0.04, format=matplotlib.ticker.PercentFormatter(1.0))
+    fig.savefig(OUT / "e18-wanderer.png")
+    plt.close(fig)
+
+
+FIGS = {"e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
