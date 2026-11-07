@@ -12,6 +12,31 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-018 · 2026-11-07 · E-16: no movers in Flow-Lenia from any start condition
+
+**Question (exploratory, plan in `docs/data/e16-plan.md`):** smooth starts unlocked gliders in Lenia (E-14). Do they also give Flow-Lenia its first self-propelled structure, which it needs as a positive control (J-016)?
+
+**Ran:** E-16, 100 random Flow-Lenia rules (the paper's ranges, R = 13; `rule-panel-e16.txt`) × 4 starts (soup, smooth ℓ = 3, smooth ℓ = 6, Chan-style patches), 1 seed, density 0.35, 128×128, 1000 steps. Commit `323bea1`; 15 min on 12 cores.
+
+**Found:**
+- **No movers: 0 self-propelled structures in 400 universes.** 5 candidate movers all failed the isolation test.
+- **Class mix** (summed over the 4 starts): about 40% `active`, 50% `periodic`, 9% `frozen`, a few `saturated`.
+- **The `periodic` share is probably inflated.** Flow-Lenia's frame measures use an 8-bit view, so changes below about 0.016 in A count as none (J-016). The structure census, which decides "self-propelled", uses the true float state and is not affected.
+- **The start condition made no visible difference:** unsettled fractions 0.19–0.23 for soup and smooth starts, 0.10 for patches.
+
+**Interpretation:** Plantec et al. report that moving patterns are "quite common" in random Flow-Lenia, but give no counts. We cannot reproduce that, from their own patch start or from any other. Three explanations remain open:
+1. Our implementation differs in details the paper does not specify (Sobel normalisation, displacement clipping, θ_A).
+2. Their "dynamic" patterns are mostly wobbling or rotating in place, which our detector correctly does not count as self-propelled.
+3. Single-channel movers are genuinely rare. The paper itself needed long optimisation for directed motion with one channel.
+
+Flow-Lenia still has no positive control, so no Flow-Lenia experiment is run beyond this search.
+
+**Also fixed:** the conditions summary divided float (physical) states by 255 when reporting the initial mass per cell (it showed 0.001 instead of 0.175).
+
+**Lesson:** a claim that something is "common", with no count, is a hypothesis to test, not a baseline to build on.
+
+---
+
 ## J-017 · 2026-11-07 · E-15: in big worlds the blob field usually wins, and gliders are never born
 
 **Question (descriptive):** E-13/E-14 gliders mostly destroy each other in 128×128 worlds. In 9× larger worlds, how do glider populations develop? Do collisions ever create new gliders?
