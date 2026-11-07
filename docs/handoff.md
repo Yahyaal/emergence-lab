@@ -38,7 +38,7 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 56 tests
+pytest                                   # 57 tests, ~1-3 min
 emergence benchmark --probes             # 39 + 37 validation checks, ~2 min on 12 cores
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
