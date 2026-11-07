@@ -164,8 +164,80 @@ def e12_engine_vs_random() -> None:
     plt.close(fig)
 
 
+E13_SEED = 2178225922393047501  # E-13 universes #104 (smooth:6, density 0.35) and #324 (smooth:3, 0.10)
+
+
+def emergence_clip() -> None:
+    """Same rule (Orbium), same seed, same total mass: soup vs smooth start (E-13 #104)."""
+    orb = parse_rule(ORBIUM).to_dict()
+    soup = Universe.from_spec(UniverseSpec(orb, E13_SEED, 128, 128, 0.35))
+    smooth = Universe.from_spec(UniverseSpec(orb, E13_SEED, 128, 128, 0.35, init={"kind": "smooth", "ell": 6.0}))
+    frames, stills = [], {}
+    for t in range(0, 2001):
+        if t % 20 == 0:
+            sep = np.full((128, 4), 90, np.uint8)
+            frames.append(np.concatenate([soup.state, sep, smooth.state], 1))
+        if t in (0, 100, 400, 2000):
+            stills[t] = (soup.state.copy(), smooth.state.copy())
+        soup.step()
+        smooth.step()
+    save_gif(frames, "emergence-soup-vs-smooth.gif", scale=2, ms=70)
+    fig, ax = plt.subplots(2, 4, figsize=(12, 6.4))
+    for j, t in enumerate(sorted(stills)):
+        for i, name in enumerate(("soup", "smooth start (ℓ = 6)")):
+            ax[i, j].imshow(stills[t][i], cmap="magma", vmin=0, vmax=255)
+            ax[i, j].set_xticks([])
+            ax[i, j].set_yticks([])
+            if i == 0:
+                ax[i, j].set_title(f"t = {t}")
+            if j == 0:
+                ax[i, j].set_ylabel(name, fontsize=11)
+    fig.suptitle("Orbium rule, same seed, same total mass: the soup freezes into blobs; "
+                 "the smooth start collapses to one glider", y=0.99)
+    fig.savefig(OUT / "emergence-soup-vs-smooth.png")
+    plt.close(fig)
+
+
+def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    p = k / n
+    d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return max(0.0, c - h), min(1.0, c + h)
+
+
+def e13_rates() -> None:
+    tab = json.load(open(DATA / "2026-11-07-e13-movers.json"))["table"]
+    conds = ["uniform", "smooth:3", "smooth:6", "smooth:10", "spots", "patches"]
+    names = {"uniform": "soup", "smooth:3": "smooth ℓ=3", "smooth:6": "smooth ℓ=6", "smooth:10": "smooth ℓ=10",
+             "spots": "spots", "patches": "Chan's patches"}
+    fig, ax = plt.subplots(figsize=(10, 3.8))
+    for k, (exp, lab, col) in enumerate(((1, "density 0.35", BLUE), (2, "density 0.10", ORANGE))):
+        xs, ys, lo, hi = [], [], [], []
+        for i, c in enumerate(conds):
+            key = f"{exp}|{c}"
+            if key not in tab:
+                continue
+            n, hits = tab[key]
+            a, b = wilson(hits, n)
+            xs.append(i + (k - 0.5) * 0.36)
+            ys.append(hits / n)
+            lo.append(hits / n - a)
+            hi.append(b - hits / n)
+            ax.text(xs[-1], b + 0.015, f"{hits}/{n}", ha="center", fontsize=8)
+        ax.bar(xs, ys, 0.34, color=col, label=lab, yerr=[lo, hi], capsize=3, ecolor="#444")
+    ax.set_xticks(range(len(conds)), [names[c] for c in conds])
+    ax.set_ylabel("universes with a glider")
+    ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    ax.legend(frameon=False)
+    ax.set_title("E-13: gliders emerged only from smooth starts (8 glider-viable rules × 5 seeds; 95% intervals)")
+    fig.savefig(OUT / "e13-glider-rates.png")
+    plt.close(fig)
+
+
 FIGS = {"static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
-        "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random}
+        "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
+        "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
 
 def main() -> None:
