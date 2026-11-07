@@ -12,6 +12,31 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-027 · 2026-11-07 · E-23: the combination chain stops at two
+
+**Question (pre-registered, `docs/data/e23-preregistration.md`):** can a double glider and a glider fuse into a stable triple?
+
+**Ran:** E-23, 312 collisions (Orbium rule; 8 glider orientations × 13 lateral offsets × 3 phases) between the E-20 double glider (mass 144, moving diagonally) and a single glider, on a 224×224 torus, 1500 steps (`scripts/chain_scan.py`, commit `913faa6`, 5 min).
+
+**Found:**
+
+| Outcome | Collisions |
+|---|---|
+| World filled by a blob field | 116 (37%) |
+| One single glider left | 106 (34%) |
+| Nothing left | 68 (22%) |
+| Two single gliders left | 22 (7%) |
+| **A triple** | **0** |
+| **The double glider surviving intact** | **0** |
+
+- **The double never survives a hit.** A double-glider collision is about 15× more likely than a glider–glider collision (2.4%, E-20) to set off a world-filling field.
+
+**Interpretation:** combination in these rules goes one step and stops. Two gliders can make a double; a double plus a glider never makes anything larger, and the double itself is fragile. That is a natural ceiling on cumulative structure here, at least for this route. It fits the overall picture: Lenia's glider-viable rules support spontaneous movers and one level of combination, but nothing that grows, reproduces or accumulates.
+
+**Lesson:** test the second step of a promising first step before calling it a mechanism.
+
+---
+
 ## J-026 · 2026-11-07 · E-22: when wanderers meet, two usually become one; no stable composite, no births
 
 **Question (pre-registered, `docs/data/e22-preregistration.md`):** gliders can fuse into a double glider (E-20). What happens when two wanderers meet?
