@@ -1,10 +1,11 @@
-"""E-27: scan stored worlds for reproducers with the birth detector (observatory/births.py).
+"""E-27 / E-28: scan stored worlds for reproducers with the birth detector (observatory/births.py).
 
 For each world: replay its spec to the final step, test the 6 most common object types
 (`births.scan`) plus every in-world mover track of the last 100 steps (verify_movers criteria).
 Also runs the pipeline positive: Gray-Scott random soups, scanned the same way.
 
 Usage: python scripts/birth_scan.py --out docs/data/experiments/2026-11-07-e27-births.json --workers 10
+       python scripts/birth_scan.py --pool heldout --out docs/data/experiments/2026-11-07-e28-births-heldout.json --workers 10
 """
 from __future__ import annotations
 
@@ -65,6 +66,37 @@ def scan_world(args):
             "seconds": round(time.time() - t0, 1)}
 
 
+def _sample(items, n, seed):
+    rng = np.random.default_rng(seed)
+    return [items[i] for i in sorted(rng.choice(len(items), size=min(n, len(items)), replace=False))]
+
+
+def _all(db, exps):
+    return [(db, u["id"]) for e in exps for u in Store(db).universes(e)]
+
+
+def heldout(a) -> None:
+    """E-28 (pre-registered, docs/data/e28-preregistration.md)."""
+    rest = []
+    for db, e in POOL_A:
+        rest += [(db, u["id"]) for u in Store(db).universes(e) if not (u["metrics"].get("self_propelled_shapes") or 0) > 0]
+    used = set(_sample(rest, a.n_blob, 27))  # E-27's pool B
+    pools = {"H1": _sample([x for x in rest if x not in used], 150, 28),
+             "H2": _sample(_all("runs/e17.db", (1, 2)) + _all("runs/e18.db", (2,)), 100, 28),
+             "H3": _sample(_all("runs/e19.db", range(1, 13)), 100, 28)}
+    out = {"experiment": "E-28"}
+    with Pool(a.workers or None) as p:
+        out["gray_scott_positive"] = p.map(gs_world, range(11, 21), chunksize=1)
+        print("Gray-Scott pipeline positive:", sum(g["reproducers"] > 0 for g in out["gray_scott_positive"]), "/ 10", flush=True)
+        for k, v in pools.items():
+            out[k] = p.map(scan_world, v, chunksize=1)
+            print(k, sum(r["reproducers"] > 0 for r in out[k]), "/", len(v), "worlds with a reproducer", flush=True)
+    from collections import Counter
+    for k in pools:
+        print(k, dict(Counter(v for r in out[k] for v in r["verdicts"])))
+    json.dump(out, open(a.out, "w"), indent=1)
+
+
 def gs_world(seed):
     # Pearson-style start (E-27 amendment): 4 perturbed 12x12 squares (U 0.5, V 0.25) at random places
     ph = GrayScott()
@@ -85,7 +117,10 @@ def main() -> None:
     ap.add_argument("--out", required=True)
     ap.add_argument("--workers", type=int, default=0)
     ap.add_argument("--n-blob", type=int, default=100)
+    ap.add_argument("--pool", choices=("e27", "heldout"), default="e27")
     a = ap.parse_args()
+    if a.pool == "heldout":
+        return heldout(a)
     pool_a, rest = [], []
     for db, e in POOL_A:
         for u in Store(db).universes(e):
