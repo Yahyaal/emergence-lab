@@ -109,16 +109,15 @@ def objects(state: np.ndarray) -> list[dict]:
     mass = ndimage.sum(v, labels, idx)
     h, w = state.shape
     yy, xx = np.mgrid[0:h, 0:w]
+    sums = []  # circular (torus) means, weighted by value: all labels in one pass per axis
+    for grid, size in ((yy, h), (xx, w)):
+        ang = 2 * np.pi * grid / size
+        sums.append((ndimage.sum(v * np.cos(ang), labels, idx), ndimage.sum(v * np.sin(ang), labels, idx), size))
     out = []
     for i in range(n):
         if not (MIN_AREA <= area[i] <= MAX_AREA):
             continue
-        c = []
-        for grid, size in ((yy, h), (xx, w)):  # circular (torus) mean, weighted by value
-            ang = 2 * np.pi * grid / size
-            cs = ndimage.sum(v * np.cos(ang), labels, idx[i])
-            sn = ndimage.sum(v * np.sin(ang), labels, idx[i])
-            c.append((np.arctan2(sn, cs) % (2 * np.pi)) * size / (2 * np.pi))
+        c = [(np.arctan2(sn[i], cs[i]) % (2 * np.pi)) * size / (2 * np.pi) for cs, sn, size in sums]
         out.append({"label": i + 1, "area": float(area[i]), "mass": float(mass[i]), "c": np.array(c)})
     return out
 

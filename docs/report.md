@@ -103,13 +103,31 @@ E-13's planned statistics could not confirm this: with only 8 rules, the planned
 
 ## 5 · Glider populations in bigger worlds
 
-<!-- E15 -->
-*(in progress)*
+If gliders destroy each other in small worlds, what happens with more room? **E-15** ran 30 worlds nine times larger (384×384) for 5000 steps.
+
+<figure>
+<img src="{{ '/assets/report/e15-fates.png' | relative_url }}" alt="Mass over time for 30 big worlds, and a bar chart of how they ended">
+<figcaption>Left: total matter in each world over time. Red worlds were taken over by a growing field of static blobs (Lenia does not conserve mass, so the field grows to fill the world). Green worlds end with one or two gliders: their matter only ever drops, one glider at a time. Right: the field won in 23 of 30 worlds.</figcaption>
+</figure>
+
+<div class="cards">
+<div class="card"><img src="{{ '/assets/report/e15-field-takeover.gif' | relative_url }}" alt="A blob field spreading over a large world"><p><b>The field wins.</b> One surviving patch of static blobs spreads over the whole world within ~600 steps.</p></div>
+<div class="card"><img src="{{ '/assets/report/e15-collision.gif' | relative_url }}" alt="Two gliders colliding in an empty world"><p><b>Gliders collide.</b> In the worlds the field never reached, gliders meet and merge or destroy each other. No collision ever made a new glider.</p></div>
+</div>
+
+So a glider is a **fragile in-between state**: the world must collapse enough to leave isolated lumps, but not so much that nothing survives, and no blob field may survive anywhere. In bigger worlds that last condition fails more often. Gliders interact only destructively. **No births, no growing population**: the step from moving things to reproducing things is not happening here.
+
+*A note on our own mistake:* the script's quick glider counter (no isolation test) reported hundreds of "births". Looking at the frames showed they were moving edges inside blob fields and count flicker during collisions. Only the mass traces and the pictures are used above.
 
 ## 6 · A second continuous physics: Flow-Lenia
 
-<!-- FLOW -->
-*(in progress)*
+Lenia's gliders survive only in a narrow band of rules, partly because nothing stops matter from appearing or vanishing. **Flow-Lenia** (Plantec et al. 2023) changes that: matter is never created or destroyed, it only *flows*. Its authors report that moving creatures are common in it and that creatures can even evolve inside the simulation, but they give no counts and no comparison with chance. So we treat these as claims to test, not results to inherit.
+
+Overnight a separate agent implemented Flow-Lenia from the paper's equations and put it through the project's validation (J-016):
+- **Mass is conserved** to the limit of float precision (worst drift 1.5 parts in 100 million over 1000 steps).
+- **Controls pass:** a static-blob rule is not called complex; pure diffusion spreads but produces no movers; a rotated starting world gives exactly the rotated result (so the grid itself does not create fake motion).
+- **A first version stored cells with 256 levels and was rejected:** rounding stopped slow flows dead (pure diffusion froze after 50 steps). The engine now supports floating-point cells; all earlier results are byte-for-byte unchanged.
+- **No mover found yet:** 168 random rules (80 of them in full float precision), started from the paper's own random patch, produced no structure that travels by itself. This agrees with the paper's remark that single-channel movement needed long optimisation, and it means Flow-Lenia does not yet have the positive control our rules require before running experiments on it.
 
 ## Where this leaves the project
 
@@ -125,14 +143,14 @@ E-13's planned statistics could not confirm this: with only 8 rules, the planned
 
 ## What next
 
-1. **Collisions as a source of novelty:** do glider collisions ever create anything new (a second glider, a different creature)? Section 5 is the first look.
-2. **Rate of emergence vs world size and run length**, and Chan's own patch protocol in larger worlds (it produced nothing in 2000 steps on 128×128).
+1. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
+2. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
 3. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
-4. **Flow-Lenia with float precision**, then the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
+4. **Flow-Lenia:** find a positive control (smooth starts, as in Lenia; several channels), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
 
 ## Read more
 
-- Journal entries [J-012 to J-015]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-024; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Journal entries [J-012 to J-017]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
 - Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
