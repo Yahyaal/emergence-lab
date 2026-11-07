@@ -22,14 +22,21 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 from emergence.engine import Universe, UniverseSpec
-from emergence.physics import OuterTotalistic
+from emergence.physics import parse_rule
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "assets" / "media"
 
 
 def palette(n: int) -> np.ndarray:
-    """Same colours as the dashboard: vacuum dark, alive light, dying states fade orange."""
+    """Same colours as the dashboard: vacuum dark, alive light, dying states fade orange;
+    continuous states (Lenia, n > 32) use a dark -> blue -> light ramp."""
+    if n > 32:
+        stops = np.array([[16, 17, 19], [28, 92, 171], [57, 135, 229], [242, 239, 230]], float)
+        x = np.linspace(0, len(stops) - 1, n)
+        k = np.minimum(len(stops) - 2, x.astype(int))
+        f = (x - k)[:, None]
+        return np.rint(stops[k] + (stops[k + 1] - stops[k]) * f).astype(np.uint8)
     pal = [(16, 17, 19), (242, 239, 230)]
     for s in range(2, max(n, 2)):
         f = (s - 2) / max(1, n - 3)
@@ -62,7 +69,7 @@ def make_universe(item: dict) -> Universe:
     if "gun" in item["id"]:
         r0, c0 = 8, 8
     g[r0:r0 + pat.shape[0], c0:c0 + pat.shape[1]] = pat
-    return Universe(OuterTotalistic.parse(item["rule"]), g)
+    return Universe(parse_rule(item["rule"]), g)
 
 
 def frames_of(item: dict) -> list[np.ndarray]:

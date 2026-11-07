@@ -47,3 +47,86 @@ class NoiseControl(Physics):
 
     def label(self) -> str:
         return f"NOISE/{self.density:g}"
+
+
+@register
+class SmoothNoiseControl(Physics):
+    """Deceptive control for continuous-state detectors: every step is a fresh, spatially
+    smoothed random field (blob-like, Lenia-sized correlations) with no dynamics at all.
+    Deterministic (seeded from the current state), so it is reproducible. Any persistent
+    object or mover reported here is a false positive of the tracker."""
+
+    kind = "smooth_noise_control"
+    num_states = 256
+    continuous = True
+
+    def __init__(self, scale: float = 4.0):
+        self.scale = float(scale)
+
+    def step(self, state: np.ndarray) -> np.ndarray:
+        from scipy import ndimage
+        seed = int.from_bytes(hashlib.blake2b(state.tobytes(), digest_size=8).digest(), "little")
+        f = ndimage.gaussian_filter(np.random.default_rng(seed).random(state.shape), self.scale, mode="wrap")
+        f = (f - f.mean()) / (f.std() + 1e-12)
+        # ~16% of cells above the 0.1 detection threshold, in blobs of ~`scale` cells:
+        # sparse, Lenia-sized "objects" that appear and vanish at random
+        return np.rint(np.clip(0.1 + 0.25 * (f - 1.0), 0, 1) * 255).astype(np.uint8)
+
+    def random_state(self, rng, shape, density):
+        return self.step((rng.random(shape) * 255).astype(np.uint8))
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"kind": self.kind, "rule": self.label(), "scale": self.scale}
+
+    @classmethod
+    def from_dict(cls, d):
+        return cls(d.get("scale", 4.0))
+
+    @classmethod
+    def random(cls, rng):
+        return cls(float(rng.uniform(2, 8)))
+
+    def mutate(self, rng):
+        return SmoothNoiseControl(float(np.clip(self.scale * rng.normal(1, 0.1), 1, 12)))
+
+    def label(self) -> str:
+        return f"SMOOTHNOISE/{self.scale:g}"
+
+
+@register
+class JitterControl(Physics):
+    """Deceptive control for continuous-state settledness tests: the field is fixed, but
+    every step each cell's lowest bit is redrawn at random (a +-1 level, rounding-scale
+    flicker that never accumulates). Exact comparisons see constant activity and no cycle;
+    a tolerant test must call it a fixed point. Deterministic (seeded from the state)."""
+
+    kind = "jitter_control"
+    num_states = 256
+    continuous = True
+
+    def step(self, state: np.ndarray) -> np.ndarray:
+        seed = int.from_bytes(hashlib.blake2b(state.tobytes(), digest_size=8).digest(), "little")
+        bits = np.random.default_rng(seed).integers(0, 2, state.shape, dtype=np.uint8)
+        return ((state & 0xFE) | bits) * (state > 1)  # vacuum stays vacuum
+
+    def random_state(self, rng, shape, density):
+        from scipy import ndimage
+        f = ndimage.gaussian_filter(rng.random(shape), 4.0, mode="wrap")
+        return np.where(f > np.quantile(f, 1 - density), 200, 0).astype(np.uint8)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"kind": self.kind, "rule": self.label()}
+
+    @classmethod
+    def from_dict(cls, d):
+        return cls()
+
+    @classmethod
+    def random(cls, rng):
+        return cls()
+
+    def mutate(self, rng):
+        return JitterControl()
+
+    def label(self) -> str:
+        return "JITTER"

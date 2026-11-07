@@ -32,7 +32,7 @@ Each objective is measurable, and progress is recorded on the [evidence ladder](
 | O3 | Find universes with persistent organisation and self-propelled structures (evidence levels 1–2) | reached |
 | O4 | Detect spontaneous self-replication (level 3), and then heredity and variation (level 4) | detector validated; none observed |
 | O5 | Detect cumulative, open-ended innovation, where new structures enable further new structures (level 5) | knockout test built and validated; not observed (J-010) |
-| O6 | Identify which properties of the rules *or the initial conditions* make complexity more likely (H4, H5) | first study done: matter density matters, its spatial arrangement didn't (J-009); rule properties and Lenia open |
+| O6 | Identify which properties of the rules *or the initial conditions* make complexity more likely (H4, H5) | first study done: matter density matters, its spatial arrangement didn't (J-009); rule properties open; Lenia physics and its label validated (J-012), experiments pending |
 | O7 | Make every result reproducible and verifiable | done: seeds, specs, commits, exports, `reproduce` |
 
 ### Requirements (set by the project owner at the start)

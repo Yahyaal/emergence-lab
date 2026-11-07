@@ -17,7 +17,11 @@ def density(state: np.ndarray) -> float:
     return float(np.count_nonzero(state)) / state.size
 
 
-def activity(prev: np.ndarray, cur: np.ndarray) -> float:
+def activity(prev: np.ndarray, cur: np.ndarray, tol: int = 0) -> float:
+    """Fraction of cells that changed. With `tol` > 0 (continuous physics), only changes
+    larger than `tol` levels count, so rounding-scale changes are ignored."""
+    if tol:
+        return float(np.count_nonzero(np.abs(prev.astype(np.int16) - cur.astype(np.int16)) > tol)) / cur.size
     return float(np.count_nonzero(prev != cur)) / cur.size
 
 
@@ -52,14 +56,26 @@ def pairwise_difference_baseline(state: np.ndarray, num_states: int) -> float:
     return float(1.0 - (p * p).sum())
 
 
-def local_periodicity(stack: np.ndarray, max_period: int = 32) -> dict[str, float]:
+def local_periodicity(stack: np.ndarray, max_period: int = 32, tol: int = 0) -> dict[str, float]:
     """Per-cell periodicity over a (T, H, W) window.
 
     A cell is *locally periodic* if its own time series repeats with some
     period p <= max_period throughout the window. Returned fraction is over
     cells that changed at all, so empty space doesn't count as "periodic".
+    With `tol` > 0 (continuous physics) values within `tol` levels count as equal.
     """
     T = stack.shape[0]
+    if tol:
+        stack = stack.astype(np.int16)
+        active = (np.abs(stack - stack[0]) > tol).any(axis=0)
+        n_active = int(active.sum())
+        if n_active == 0:
+            return {"active_cell_frac": 0.0, "local_periodic_frac": 1.0}
+        periodic = np.zeros(stack.shape[1:], dtype=bool)
+        for p in range(1, min(max_period, T // 3) + 1):
+            periodic |= (np.abs(stack[p:] - stack[:-p]) <= tol).all(axis=0)
+        return {"active_cell_frac": n_active / active.size,
+                "local_periodic_frac": float((periodic & active).sum()) / n_active}
     active = (stack != stack[0]).any(axis=0)
     n_active = int(active.sum())
     if n_active == 0:

@@ -12,6 +12,11 @@ Design (fixed before running, so the analysis can't be tuned to the results):
 * each condition is compared with "uniform" for the SAME rule (paired), using a
   two-sided sign test across rules and a bootstrap 95% CI of the mean difference.
 
+Condition names may carry one parameter after a colon: "smooth:3" is {"kind": "smooth",
+"ell": 3}. For continuous physics (Lenia) the innovation and knockout probes are skipped,
+as in discovery._probe: they match shapes exactly, and continuous creatures never repeat
+exactly, so they would report meaningless zeros. "innovating" is then not applicable (NaN).
+
 Results are stored as an experiment (role "condition") so the dashboard can replay them.
 """
 from __future__ import annotations
@@ -27,16 +32,33 @@ from .discovery import _evaluate, environment_info, innovation_verdict, movers, 
 from .engine import Universe, UniverseSpec
 from .observatory.innovation import innovation_profile
 from .observatory.knockout import knockout_experiment
-from .physics import OuterTotalistic
+from .physics import parse_rule, physics_from_dict
 from .storage import Store
 
 DEFAULT_INITS = ["uniform", "gradient", "patch", "spots"]
 OUTCOMES = ["unsettled", "self_prop", "innovating"]
+NOT_APPLICABLE = "not applicable (continuous physics)"
+INIT_PARAM = {"smooth": "ell"}  # condition "kind:value" sets this init parameter
+
+
+def init_of(name: str) -> dict | None:
+    """Condition name -> UniverseSpec.init: "uniform" -> None, "smooth:3" -> {"kind": "smooth", "ell": 3.0}."""
+    kind, _, arg = name.partition(":")
+    if kind == "uniform":
+        return None
+    if not arg:
+        return {"kind": kind}
+    if kind not in INIT_PARAM:
+        raise ValueError(f"condition {name!r}: {kind!r} takes no parameter")
+    return {"kind": kind, INIT_PARAM[kind]: float(arg)}
 
 
 def _job(job: tuple[dict, int, int]) -> dict[str, Any]:
     spec_d, steps, window = job
     res = _evaluate((spec_d, steps, window))
+    if getattr(physics_from_dict(spec_d["physics"]), "continuous", False):
+        res["extra"] = {"innovation": None, "innovation_verdict": NOT_APPLICABLE, "knockout": None}
+        return res
     every = max(25, steps // 32)
     inn = innovation_profile(Universe.from_spec(UniverseSpec.from_dict(spec_d)), steps=steps, every=every)
     as_ext = {"cls": res["cls"], "metrics": res["metrics"]}
@@ -63,12 +85,11 @@ def run_conditions(store: Store, rules: list[str], inits: list[str], seeds: int,
     rng = np.random.default_rng([master_seed, 777])
     jobs, meta = [], []
     for rule in rules:
-        phys = OuterTotalistic.parse(rule).to_dict()
+        phys = parse_rule(rule).to_dict()
         rule_seeds = [int(x) for x in rng.integers(0, 2**62, size=seeds)]  # same seeds across conditions (paired)
         for ii, kind in enumerate(inits):
             for s in rule_seeds:
-                spec = UniverseSpec(phys, s, size, size, density,
-                                    init=None if kind == "uniform" else {"kind": kind}).to_dict()
+                spec = UniverseSpec(phys, s, size, size, density, init=init_of(kind)).to_dict()
                 jobs.append((spec, steps, 100))
                 meta.append((rule, kind, ii))
     log(f"conditions experiment #{exp_id}: {len(rules)} rules x {len(inits)} conditions x {seeds} seeds "
@@ -121,16 +142,19 @@ def summarize(store: Store, exp_id: int) -> dict[str, Any]:
         verdicts = [u["aggregate"]["innovation_verdict"] for u in us]
         kos = [(u["aggregate"].get("knockout") or {}).get("verdict") for u in us]
         kr = [(u["aggregate"].get("knockout") or {}).get("rate_verdict") for u in us]
+        applicable = NOT_APPLICABLE not in verdicts
+        continuous = bool(us[0]["metrics"].get("continuous"))
         per[(rule, kind)] = {
             "unsettled": 1 - float(np.mean(settled)),
             "self_prop": float(np.mean([movers(u["metrics"]) for u in us])),
-            "innovating": float(np.mean([v == "still innovating" for v in verdicts])),
-            "inconclusive": float(np.mean([v.startswith("inconclusive") for v in verdicts])),
+            "innovating": float(np.mean([v == "still innovating" for v in verdicts])) if applicable else math.nan,
+            "inconclusive": float(np.mean([v.startswith("inconclusive") for v in verdicts])) if applicable else math.nan,
             "knockout_depends": sum(k == "depends" for k in kos),
             "knockout_tested": sum(k not in (None, "untestable") for k in kos),
             "knockout_rate_depends": sum(k == "depends" for k in kr),
+            # discrete: occupied fraction; continuous: mass per cell (mean value, 0..1)
             "initial_density": float(np.mean([Universe.from_spec(UniverseSpec.from_dict(u["spec"])).state.mean()
-                                              for u in us])),
+                                              for u in us])) / (255.0 if continuous else 1.0),
         }
     rules, inits = cfg["rules"], cfg["inits"]
     table = {kind: {o: float(np.mean([per[(r, kind)][o] for r in rules])) for o in
@@ -144,6 +168,9 @@ def summarize(store: Store, exp_id: int) -> dict[str, Any]:
         comparisons[kind] = {}
         for o in OUTCOMES:
             diffs = [per[(r, kind)][o] - per[(r, "uniform")][o] for r in rules]
+            if any(math.isnan(d) for d in diffs):
+                comparisons[kind][o] = {"not_applicable": True}
+                continue
             pos, neg, p = _sign_test(diffs)
             lo, hi = _boot_ci(diffs, seed=len(comparisons))
             comparisons[kind][o] = {"mean_diff": float(np.mean(diffs)), "ci95": [lo, hi], "rules_higher": pos,
@@ -185,5 +212,8 @@ def report(summary: dict, log=print) -> None:
     log("\npaired vs uniform (same rule, same seeds); mean difference [95% CI], rules higher/lower, sign-test p:")
     for kind, outs in summary["vs_uniform"].items():
         for o, c in outs.items():
+            if c.get("not_applicable"):
+                log(f"  {kind:<9} {o:<11} not applicable (continuous physics)")
+                continue
             log(f"  {kind:<9} {o:<11} {c['mean_diff']:+.3f} [{c['ci95'][0]:+.3f}, {c['ci95'][1]:+.3f}]  "
                 f"{c['rules_higher']}/{c['rules_lower']}  p={c['sign_test_p']:.3g}")

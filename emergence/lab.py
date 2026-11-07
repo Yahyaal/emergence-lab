@@ -7,6 +7,7 @@ import numpy as np
 
 from .engine import Universe, UniverseSpec, state_hash
 from .observatory import Observation, Observer
+from .observatory.continuous import VALUE_TOL
 from .observatory.probes import damage_spreading
 
 DAMAGE_STEPS = 64
@@ -21,7 +22,8 @@ def study_universe(u: Universe, seed: int, steps: int = 500, window: int = 100) 
     window = min(window, steps + 1)
     # the observer's own randomness (surrogates, probe locations) is derived from
     # the seed but kept in a separate stream from the universe's randomness
-    obs = Observer(total_steps=steps, window=window, seed=seed ^ 0x5EED)
+    tol = VALUE_TOL if getattr(u.physics, "continuous", False) else 0
+    obs = Observer(total_steps=steps, window=window, seed=seed ^ 0x5EED, value_tol=tol)
     probe_rng = np.random.default_rng([seed, 7])
     dmg_steps = min(DAMAGE_STEPS, steps, window - 1) if window > 1 else 0
     t_probe = steps - dmg_steps

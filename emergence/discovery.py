@@ -39,7 +39,7 @@ from .lab import study
 from .engine import Universe
 from .observatory.innovation import innovation_profile
 from .observatory.replication import scan_for_replicators
-from .physics import NoiseControl, OuterTotalistic, physics_from_dict
+from .physics import REGISTRY, NoiseControl, OuterTotalistic, physics_from_dict
 from .storage import Store
 
 TRIVIAL = {"extinct", "saturated", "frozen"}
@@ -74,8 +74,9 @@ def _pct(sorted_arr: np.ndarray, x: float) -> float | None:
 
 
 def run_settled(m: dict, cls: str) -> bool:
-    """Dead, frozen, or purely repetitive (every changing cell just oscillates in place)."""
-    return cls in TRIVIAL or m.get("local_periodic_frac", 0.0) >= 0.95
+    """Dead, frozen, or purely repetitive (every changing cell just oscillates in place),
+    or, for continuous physics, quasi-static (static objects whose edges slowly relax)."""
+    return cls in TRIVIAL or m.get("local_periodic_frac", 0.0) >= 0.95 or bool(m.get("quasi_static"))
 
 
 def movers(m: dict) -> float:
@@ -87,12 +88,16 @@ def movers(m: dict) -> float:
 
 
 OBJECTIVES: dict[str, Callable[[dict], float]] = {
-    # activity that is NOT explained by cells oscillating in place
-    "aperiodic_activity": lambda m: m["activity_late"] * (1.0 - m.get("local_periodic_frac", 0.0)),
+    # activity that is NOT explained by cells oscillating in place; for continuous physics,
+    # only activity away from still objects (their edges creep for thousands of steps)
+    "aperiodic_activity": lambda m: (m.get("free_activity", 0.0) if m.get("continuous") else m["activity_late"])
+    * (1.0 - m.get("local_periodic_frac", 0.0)),
     "order": lambda m: 1.0 - min(m["spacetime_ratio"], 1.0),
     # distinct shapes that travel on their own in an isolated clone
     "self_propelled": movers,
-    "vocabulary": lambda m: m.get("vocabulary", 0.0),
+    # distinct persistent shapes; for continuous physics the census counts instances, not
+    # types, so only persistent objects that are not still count (else static blobs win)
+    "vocabulary": lambda m: m.get("dynamic_structures", 0.0) if m.get("continuous") else m.get("vocabulary", 0.0),
     # a long transient before a cycle, or dynamics that are not fading at the horizon;
     # a universe that is merely dying slowly earns proportionally less
     "sustained": lambda m: (m["transient"] if m["cycle_found"]
@@ -120,6 +125,7 @@ class ExploreConfig:
     seed: int = 42
     workers: int = 0            # 0 = all cores
     selection: str = "engine"   # "engine" (Pareto + novelty + niches) or "random" (baseline: random rules only)
+    physics: str = "outer_totalistic"  # physics family to explore: any registered kind, e.g. "lenia"
 
 
 # ----------------------------------------------------------------- ranking
@@ -157,11 +163,17 @@ def _bin(x: float, edges: tuple[float, ...]) -> int:
     return int(np.searchsorted(edges, x, side="right"))
 
 
+def _family(rule: str) -> str:
+    if rule.upper().startswith("LENIA/"):
+        return "lenia"
+    return "multi" if re.search(r"/C\d+", rule) else "2state"
+
+
 def niche_of(rule: str, mean_metrics: dict) -> str:
     """Coarse behaviour cell. Axes chosen to separate *unsettled* universes, most of
     which are noise-like: finer order bins near 1, local periodicity, and damage
     spreading (ordered / intermediate / chaotic, cf. Langton's edge of chaos)."""
-    family = "multi" if re.search(r"/C\d+", rule) else "2state"
+    family = _family(rule)
     order = _bin(mean_metrics["spacetime_ratio"], (0.5, 0.8, 0.95))
     lp = _bin(mean_metrics["local_periodic_frac"], (0.3, 0.7))
     dmg = _bin(mean_metrics["damage_norm"], (0.2, 0.6))
@@ -224,6 +236,11 @@ def _probe(job: tuple[dict, int]) -> dict[str, Any]:
     followed by replication tests of its common shapes on isolated clones."""
     spec_d, steps = job
     u = Universe.from_spec(UniverseSpec.from_dict(spec_d))
+    if getattr(u.physics, "continuous", False):
+        # innovation, replication and knockout probes match shapes EXACTLY; continuous
+        # creatures never repeat exactly, so these probes would report meaningless zeros
+        return {"innovation": None, "replication": None,
+                "not_applicable": "exact-shape probes are not valid for continuous physics"}
     inn = innovation_profile(u, steps=steps, every=max(25, steps // 32))
     frames = []
     for _ in range(30):
@@ -250,7 +267,7 @@ def evidence_level(robust: bool, agg: dict, probe: dict | None) -> int:
         level = 1
         if agg["objectives"].get("self_propelled", 0) >= 1:
             level = 2
-    if probe and probe["replication"]["self_replicators"] >= 1:
+    if probe and probe.get("replication") and probe["replication"]["self_replicators"] >= 1:
         level = 3  # replication is reported even if level 1-2 criteria fail
     return level
 
@@ -264,7 +281,7 @@ def innovation_verdict(probe: dict | None, ext: dict | None, floor: int, damage_
       gives by chance (it keeps drawing rare shapes from a fixed pool). Such cases are
       reported as inconclusive, not as innovation (heuristic; see README).
     """
-    if not probe:
+    if not probe or probe.get("innovation") is None:
         return "not measured", 0
     inn = probe["innovation"]
     est = inn["established_late"]
@@ -382,7 +399,7 @@ class Explorer:
         while len(out) < cfg.population and attempts < cfg.population * 50:
             attempts += 1
             if len(out) < n_imm:
-                rule, parent = OuterTotalistic.random(rng), None
+                rule, parent = REGISTRY[cfg.physics].random(rng), None
             else:
                 group = members[niche_list[int(rng.integers(len(niche_list)))]]
                 a, b = (group[int(i)] for i in rng.integers(len(group), size=2))
@@ -439,7 +456,7 @@ class Explorer:
         noise_spec = UniverseSpec(NoiseControl(0.3).to_dict(), cfg.seed, cfg.width, cfg.height, 0.3).to_dict()
         probe_jobs = [(u["spec"], probe_steps) for u in candidates] + [(noise_spec, probe_steps)]
         probe_res = list(pool.map(_probe, probe_jobs)) if pool is not None else [_probe(j) for j in probe_jobs]
-        self.noise_floor = probe_res[-1]["innovation"]["established_late"]
+        self.noise_floor = (probe_res[-1].get("innovation") or {}).get("established_late", 0)
         self.probes = {u["id"]: r for u, r in zip(candidates, probe_res)}
         self.log(f"  probes: innovation over {probe_steps} steps + replication scan; noise-control innovation floor "
                  f"= {self.noise_floor}")
@@ -499,7 +516,10 @@ class Explorer:
         bits = [f"{u['rule']} looks {u['class']}", f"evidence level {level}/5 ({EVIDENCE_LEVELS[level]})"]
         if m.get("mover_shapes"):
             bits.append(f"{int(movers(m))} of {int(m['mover_shapes'])} candidate mover shape(s) self-propelled in isolation")
-        if m.get("vocabulary"):
+        if m.get("vocabulary") and m.get("continuous"):
+            bits.append(f"{int(m['vocabulary'])} persistent objects ({int(m.get('still_structures', 0))} static)"
+                        + ("; quasi-static" if m.get("quasi_static") else ""))
+        elif m.get("vocabulary"):
             bits.append(f"{int(m['vocabulary'])} persistent shapes")
         if m["cycle_found"]:
             bits.append(f"cycle period {m['period']} after {m['transient']} steps")
@@ -518,7 +538,9 @@ class Explorer:
                         + (f" (cycle of period {em['period']} from t={em['transient']})" if em["cycle_found"] else "")
                         + ("; period is a multiple of the world size and movers exist: likely movers circulating"
                            " on the finite torus" if loops else ""))
-        if probe:
+        if probe and probe.get("not_applicable"):
+            bits.append(f"innovation/replication/knockout probes: not applicable ({probe['not_applicable']})")
+        elif probe:
             inn, rp = probe["innovation"], probe["replication"]
             bits.append(f"innovation: {inn_est} new shape types established late (noise floor {floor}) -> {inn_verdict}")
             bits.append(f"replication: {rp['self_replicators']} self-replicator(s) among {rp['tested']} common shapes"
@@ -528,8 +550,8 @@ class Explorer:
         evidence = {
             "evidence_level": level, "evidence_level_name": EVIDENCE_LEVELS[level],
             "innovating": innovating, "innovation_verdict": inn_verdict, "innovation_noise_floor": floor,
-            "innovation": probe["innovation"] if probe else None,
-            "replication": probe["replication"] if probe else None,
+            "innovation": probe.get("innovation") if probe else None,
+            "replication": probe.get("replication") if probe else None,
             "pareto_rank": u["pareto_rank"], "novelty": u["novelty"], "priority": u["priority"],
             "niche": agg["niche"], "screen_runs": agg["runs"], "screen_classes": agg["classes"],
             "replicate_classes": [r["cls"] for r in replicas], "replicate_ids": [r["id"] for r in replicas],
