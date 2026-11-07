@@ -5,7 +5,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 
 # Overnight report · 7 November 2026
 
-<p class="lead">Can things that move by themselves arise on their own from simple rules? Overnight we tested this in <b>Lenia</b>, a continuous cousin of the Game of Life. For the first time in this project, they did: gliders formed spontaneously, but only when the random starting world was <i>smooth</i>. Starting from the usual fine-grained noise, they never formed.</p>
+<p class="lead">Can things that move by themselves arise on their own from simple rules? Overnight we tested this in <b>Lenia</b>, a continuous cousin of the Game of Life. For the first time in this project, they did: gliders formed spontaneously, mostly when the random starting world was <i>smooth</i>, with matter clumped in space. From the usual fine-grained noise they almost never formed: once in 1,120 worlds, right at the density where soups switch from dying to freezing.</p>
 
 <figure>
 <img src="{{ '/assets/report/emergence-soup-vs-smooth.gif' | relative_url }}" alt="Two Lenia worlds side by side. Left: fine random noise freezes into a maze of static blobs. Right: smooth random noise breaks into lumps, a few become gliders, and one glider survives.">
@@ -18,7 +18,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">bug fixed</div><p>Our "complex" label had been calling <b>fields of motionless blobs</b> complex: 27 of 60 random Lenia rules. Fixed and re-validated before any new experiment (J-012).</p></div>
 <div class="card"><div class="stat">0 / 2085</div><p>Two full searches (the discovery engine and a random-search baseline, 1000 rules in all) found <b>no rule that makes gliders from ordinary random soup</b> (E-12).</p></div>
 <div class="card"><div class="stat">8 / 99</div><p>Among simple <b>single-ring</b> rules, gliders <i>can</i> exist only in a <b>small island</b> around the known glider Orbium (E-13a). Richer rules hold others (section 6).</p></div>
-<div class="card"><div class="stat">49 vs 0</div><p>In that island, <b>smooth random starts produced gliders in 49 of 320 worlds, matched ordinary soups in 0 of 320</b>. Pre-registered, fresh seeds, p &lt; 10⁻⁶ (E-14).</p></div>
+<div class="card"><div class="stat">49 vs 0</div><p>In that island, <b>smooth random starts produced gliders in 49 of 320 worlds, matched ordinary soups in 0 of 320</b>. Pre-registered, fresh seeds, p &lt; 10⁻⁶ (E-14). Scrambling the positions of the same values removes every glider: <b>it is the arrangement</b> (E-19).</p></div>
 <div class="card"><div class="stat">23 / 30</div><p>In <b>bigger worlds</b>, a growing field of static blobs usually takes over; gliders <b>collide and die</b>; we saw no new ones form (E-15).</p></div>
 <div class="card"><div class="stat">1 new mover</div><p>Searching again from smooth starts, the engine found a <b>new kind of creature</b>: a slow, turning "wanderer" in a different part of rule space. Random search found none (E-17).</p></div>
 <div class="card"><div class="stat">0 / 400</div><p><b>Flow-Lenia</b>, a mass-conserving variant said to make movers easily, was built and validated, but produced <b>no movers</b> in 400 worlds (E-16).</p></div>
@@ -88,7 +88,7 @@ What we read in the literature (J-013): Lenia's creator reports that gliders eme
 
 <figure>
 <img src="{{ '/assets/report/e13-glider-rates.png' | relative_url }}" alt="Bar chart: only smooth starts produce gliders">
-<figcaption>E-13: gliders appeared only from smooth starts (18 of 240 worlds) and never from soup, spots or Chan's patches.</figcaption>
+<figcaption>E-13: gliders appeared only from smooth starts (18 of 240 worlds), not from soup, spots or Chan's patches.</figcaption>
 </figure>
 
 E-13's planned statistics could not confirm this: with only 8 rules, the planned test could never reach its significance threshold (a planning mistake, recorded). So we wrote a new plan with a test that can, and ran it with **fresh random seeds** (**E-14**):
@@ -100,7 +100,14 @@ E-13's planned statistics could not confirm this: with only 8 rules, the planned
 
 **Every one of the 51 gliders (in 49 worlds) was cut out and run alone for 1000 steps; all 51 kept going.** They are the same creatures we grew by hand in section 3 (for one rule: 0.637 cells/step by hand, 0.638 spontaneous).
 
-**Why smooth starts work.** A glider needs an isolated lump of about the right size and mass, with empty space around it. Smooth noise makes lumps; fine-grained noise averages out into an even film of matter that either freezes into blobs (dense) or dies (sparse). Here, unlike our Game-of-Life study (J-009), the start matters at the same total amount of matter. *Caveat (from our reviewer, R-4):* a smooth start also has a different mix of cell values from a soup (more weakly-filled cells), so "arrangement" and "value mix" are not yet separated, and the lump mechanism is a hypothesis. **E-19** tests it with a shuffled control: exactly the smooth start's cell values, scattered at random.
+**Is it really the arrangement?** Our independent reviewer (R-4) spotted a gap: a smooth start differs from a soup in its *mix of cell values* (more weakly-filled cells), not only in where matter sits. So we ran **E-19** (pre-registered): the same smooth starts, plus a **shuffled** version with exactly the same cell values scattered at random. We also swept soup density finely, because soups seemed to either die or freeze.
+
+<figure>
+<img src="{{ '/assets/report/e19-null-and-sweep.png' | relative_url }}" alt="Left: gliders only from smooth starts, none from shuffled or soup. Right: soups die below density 0.18 and freeze above 0.24; one glider world at 0.20">
+<figcaption>Left: scrambling the positions of exactly the same values removes every glider (0/160 at both densities; smooth: 37/160 and 11/160; p = 7·10⁻¹³ and 4·10⁻⁴). Right: soups die below density ~0.18 and freeze into blob fields above ~0.24. Right at the switch, one soup world in 40 did make a glider, so "never from soup" was too strong.</figcaption>
+</figure>
+
+So it is **the spatial arrangement**, not the value mix. Here, unlike our Game-of-Life study (J-009), arrangement matters at the same total amount of matter. A likely mechanism, still a hypothesis: a glider needs an isolated lump of about its own size with empty space around it. Smooth noise makes such lumps; fine-grained noise averages into an even film that dies or freezes, except, rarely, right at the switch between the two.
 
 **What it is not.** The gliders mostly destroy each other: 47 of 49 glider worlds end with exactly one glider alone in an empty world. Spontaneous movement, yes; an ecology of interacting creatures, not yet.
 
@@ -124,7 +131,7 @@ So a glider is a **fragile in-between state**: the world must collapse enough to
 
 ## 6 · Searching again, from smooth starts: a new kind of mover
 
-E-12 searched rule space from soups, and E-14 showed that soups never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
+E-12 searched rule space from soups, and E-14 showed that soups (almost) never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
 
 <div class="cards">
 <div class="card"><img src="{{ '/assets/report/e17-wanderer.gif' | relative_url }}" alt="A compact patterned creature moving in a loop, leaving a faint trail"><p><b>The "wanderer"</b> (rule μ 0.243, three kernel rings), found by the discovery engine. Cut out and run alone, it keeps its body (mass ~115) and moves along its path at about 0.07 cells per step, <b>turning as it goes</b> (net progress is only 0.02–0.05 cells per step) (faint trail). Found in 4 worlds, including runs with fresh seeds and a 2× larger world.</p></div>
@@ -173,8 +180,8 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 
 ## Read more
 
-- Journal entries [J-012 to J-020]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
-- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md).
+- Journal entries [J-012 to J-021]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
 **Glossary.** *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).
