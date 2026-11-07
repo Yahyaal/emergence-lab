@@ -373,7 +373,50 @@ def e18_wanderer() -> None:
     plt.close(fig)
 
 
-FIGS = {"e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e19_null_and_sweep() -> None:
+    d = json.load(open(DATA / "2026-11-07-e19-shuffled-null-and-soup-sweep.json"))
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 4.2), gridspec_kw={"wspace": 0.28})
+    arms = [("d0.1", "density 0.10", ["uniform", "smooth_shuffled:3", "smooth:3"]),
+            ("d0.35", "density 0.35", ["uniform", "smooth_shuffled:6", "smooth:6"])]
+    lab = {"uniform": "soup", "smooth_shuffled:3": "shuf-\nfled", "smooth_shuffled:6": "shuf-\nfled",
+           "smooth:3": "smooth\nℓ=3", "smooth:6": "smooth\nℓ=6"}
+    x = 0
+    ticks, names = [], []
+    for key, title, conds in arms:
+        c = d["e19a"][key]["counts"]
+        for k, col in zip(conds, (GREY, "#b07cc6", BLUE)):
+            h, n = c[k]
+            a1.bar(x, h / n, color=col)
+            a1.text(x, h / n + 0.008, f"{h}/{n}", ha="center", fontsize=8.5)
+            ticks.append(x)
+            names.append(lab[k])
+            x += 1
+        a1.text(x - 2, -0.2, title, ha="center", fontsize=10, fontweight="bold", transform=a1.get_xaxis_transform())
+        x += 0.8
+    a1.set_xticks(ticks, names, fontsize=9)
+    a1.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    a1.set_ylabel("worlds with a verified glider")
+    a1.set_title("E-19a: same values, scrambled positions → no gliders", fontsize=11)
+    sw = d["e19b_soup_sweep"]
+    dens = [s["density"] for s in sw]
+    ext = [s["classes"].get("extinct", 0) / s["n"] for s in sw]
+    act = [1 - e for e in ext]
+    a2.plot(dens, ext, "-o", color=GREY, label="dies")
+    a2.plot(dens, act, "-o", color=RED, label="survives (blob field)")
+    for s in sw:
+        if s["mover_worlds"]:
+            a2.annotate(f"{s['mover_worlds']} glider world\n(of {s['n']})", (s["density"], 0.5), xytext=(s["density"] + 0.03, 0.5),
+                        arrowprops={"arrowstyle": "->"}, fontsize=9, color=GREEN)
+    a2.set_xlabel("soup density")
+    a2.set_ylabel("fraction of worlds")
+    a2.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    a2.legend(frameon=False, loc="lower left")
+    a2.set_title("E-19b: soups die or freeze; one glider at the transition", fontsize=11)
+    fig.savefig(OUT / "e19-null-and-sweep.png")
+    plt.close(fig)
+
+
+FIGS = {"e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
