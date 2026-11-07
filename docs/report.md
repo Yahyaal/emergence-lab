@@ -5,6 +5,8 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 
 # Overnight report · 7 November 2026
 
+<p class="lead"><b>Updated Saturday morning</b> with a second session (section 8): a third kind of mover, Chan's patch start reproduced in bigger worlds, a better detector for slow movers, and a weakness found in one of our own thresholds.</p>
+
 <p class="lead">Can things that move by themselves arise on their own from simple rules? Overnight we tested this in <b>Lenia</b>, a continuous cousin of the Game of Life. For the first time in this project, they did: gliders formed spontaneously, mostly when the random starting world was <i>smooth</i>, with matter clumped in space. From the usual fine-grained noise they almost never formed: once in 1,120 worlds, right at the density where soups switch from dying to freezing.</p>
 
 <figure>
@@ -23,6 +25,8 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">1 new mover</div><p>Searching again from smooth starts, the engine found a <b>different kind of mover</b>: a slow, turning "wanderer" in another part of rule space. Random search found none (E-17). Confirmed with fresh seeds: 36 of 40 worlds (E-18).</p></div>
 <div class="card"><div class="stat">1 + 1 = 1</div><p>Gliders never multiplied in 500 controlled collisions, but two can <b>fuse into a stable double glider</b>, and this also happened <b>on its own</b> in a smooth-start world (E-20, J-024).</p></div>
 <div class="card"><div class="stat">0 / 400</div><p><b>Flow-Lenia</b>, a mass-conserving variant said to make movers easily, was built and validated, but produced <b>no movers</b> in 400 worlds (E-16).</p></div>
+<div class="card"><div class="stat">3 kinds</div><p>Morning: a rule drawn <b>at random</b> made a third kind of mover, a slow, perfectly straight <b>"ring glider"</b>. Confirmed: 31 of 80 smooth-start worlds, 0 of 80 soups (E-26).</p></div>
+<div class="card"><div class="stat">13 / 160</div><p>Morning: Chan's own start (sparse dense patches) <b>does</b> make gliders when the world is big enough: 0 of 40 at 128², 13 of 160 at 256². <b>Our prediction was wrong</b> (E-24).</p></div>
 <div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
 </div>
 
@@ -89,7 +93,7 @@ What we read in the literature (J-013): Lenia's creator reports that gliders eme
 
 <figure>
 <img src="{{ '/assets/report/e13-glider-rates.png' | relative_url }}" alt="Bar chart: only smooth starts produce gliders">
-<figcaption>E-13: gliders appeared only from smooth starts (18 of 240 worlds), not from soup, spots or Chan's patches.</figcaption>
+<figcaption>E-13: gliders appeared only from smooth starts (18 of 240 worlds), not from soup, spots or Chan's patches (on these small worlds; in 4× larger worlds Chan's patches do make gliders, section 8).</figcaption>
 </figure>
 
 E-13's planned statistics could not confirm this: with only 8 rules, the planned test could never reach its significance threshold (a planning mistake, recorded). So we wrote a new plan with a test that can, and ran it with **fresh random seeds** (**E-14**):
@@ -179,24 +183,64 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 - **No mover found yet:** 168 random rules (80 of them in full float precision), started from the paper's own random patch, produced no structure that travels by itself. This agrees with the paper's remark that single-channel movement needed long optimisation, and it means Flow-Lenia does not yet have the positive control our rules require before running experiments on it.
 - **Smooth starts don't help here (E-16):** 100 random rules × 4 kinds of start gave **0 movers in 400 worlds**. The authors' claim that moving patterns are "quite common" is not reproduced, either because of details the paper leaves unspecified, or because their "dynamic" patterns mostly wobble in place (J-018).
 
+## 8 · Saturday morning: three more answers and one weakness
+
+A second session picked up the open items from the night. Everything below was pre-registered except the held-out check, which was a planned diagnostic.
+
+### A third kind of mover, found by chance (C-02, E-26)
+
+<div class="cards two">
+<div class="card"><img src="{{ '/assets/report/heldout-mover.gif' | relative_url }}" alt="A small world where two ring-shaped creatures form from a smooth start; then one creature alone moving in a straight line with a faint trail"><p><b>The "ring glider"</b> (rule μ 0.277, three kernel rings). First its world, from a smooth start: two ring gliders form. Then one of them cut out and run alone for 1000 steps: it keeps its body (mass ~178) and travels in a <b>dead straight line</b> at ~0.085 cells per step.</p></div>
+<div class="card"><p><b>Confirmed (E-26, pre-registered, 160 worlds):</b></p><p>Smooth starts: <b>13 of 40</b> worlds (density 0.35) and <b>18 of 40</b> (density 0.18) grew a verified ring glider. Soups: <b>0 of 80</b>; every one died. p = 4 × 10⁻⁵ and 3 × 10⁻⁷. All 36 survived 1000 steps alone.</p><p>It is as slow as the wanderer but never turns, and 2.5× heavier than a glider. The rule was one of 120 drawn <b>at random</b> for an unrelated check, not found by the search: from smooth starts, mover rules are not vanishingly rare.</p></div>
+</div>
+
+### Chan's own start works, given room (E-24)
+
+Chan (2019), who discovered Orbium, says creatures emerge from random starts "given enough time". His start is 15–40 dense square patches in empty space. On our 128×128 worlds it had made nothing. In worlds 4× larger, run 1.5× longer, it made gliders in **13 of 160** worlds. We had predicted at most one or two, so the prediction was wrong.
+
+<div class="cards two">
+<div class="card"><img src="{{ '/assets/report/e24-patches.gif' | relative_url }}" alt="Scattered square patches of random values fade away in an empty world; one turns into a glider and travels"><p><b>Patches → one glider</b> (Orbium rule, 256×256, first 600 steps). Most patches fade within ~50 steps; one becomes a glider and travels on. With 110 patches (as crowded as Chan's count on a small world), the blob field won every time.</p></div>
+<div class="card"><img src="{{ '/assets/report/e24-patches.png' | relative_url }}" alt="Bar chart: worlds with a verified glider by start condition and world size"><p>Chan's start makes gliders in ~8% of big worlds, smooth starts in ~18%, the same rate as in small worlds. Both starts that work put matter in <b>isolated lumps with room around them</b>; fine-grained soups almost never do. All 51 movers survived 1000 steps alone.</p></div>
+</div>
+
+### A better detector for slow movers (E-25)
+
+The detector missed about 8% of wanderers (J-022). We tried two fixes on **3,789 stored worlds**, checking every detection against a ten-times-longer test (1000 steps alone):
+- **Letting a slow object run 300 steps alone instead of 100** found 3 more wanderer worlds (96 → 99 of 160). Every extra detection passed the long test, and no new false positive appeared in any of the 2,485 worlds with no known creature.
+- **Loosening the "fairly straight path" rule** found nothing more and let one fragment of junk through.
+
+The first fix is now part of the detector (D-027), with four new validation checks; the second was rejected. About 95% of wanderers are now detected.
+
+### A weakness in one of our own thresholds (C-02)
+
+To stop fields of motionless blobs from being ranked as interesting, the observer calls a world *quasi-static* when its activity outside still blobs is below 0.002 (the J-012 fix). That cut-off was set on 60 rules. On 120 **new** rules the values do not split cleanly at it:
+
+<figure>
+<img src="{{ '/assets/report/heldout-cutoff.png' | relative_url }}" alt="Dot plot of free activity for three sets of rules with a red cut-off line; many dots lie close to the line">
+<figcaption>Free activity of every mover-free random rule; the red line is the cut-off. On new rules many fall close to it. About one in six static-looking soup fields lands just above it, mostly because creeping blob edges reach past the 3-cell margin the measure leaves around each blob.</figcaption>
+</figure>
+
+This does **not** create false creatures: a world is only called complex if something verifiably moves by itself. It means the search can still waste some effort on static fields. Recorded as an open problem (J-028), not yet fixed.
+
 ## Where this leaves the project
 
 | Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) |
 |---|---|---|
 | 1 · persistent organisation | yes | yes |
-| 2 · self-propelled structures | yes | **yes, arising spontaneously from smooth starts** (gliders; a turning "wanderer") |
+| 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too |
 | 3 · self-replication | not observed | none: no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other |
 | 4 · heredity and variation | not measured | not measured |
 | 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
 
-**Mistakes we caught and recorded:** an over-inclusive mover check in a new script (J-025); the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
+**Mistakes we caught and recorded:** two wrong predictions about Chan's start and world size (J-029); a cut-off whose safety margin did not survive new rules (J-028); an over-inclusive mover check in a new script (J-025); the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
 
 ## What next
 
+1. **Map the ring glider's neighbourhood** in rule space, as E-18b did for the wanderer, and test whether patch starts work in the wanderer and ring-glider rules too.
 1. **Interactions as a route to new structure:** gliders can fuse into double gliders (E-20), but the chain stops there (E-23); wanderers absorb each other (E-22). Other rules or physics (multi-channel Lenia) may allow deeper combination. A knockout test on fusion events (J-010 style) would show whether later structures depend on earlier ones.
-2. **A better detector for slow, turning movers** (it misses ~8% of wanderers, J-022), with its own deceptive controls.
+2. ~~A better detector for slow, turning movers~~ done (E-25, D-027; ~95% detected). Remaining: wanderers that circle tightly. Also **fix the quasi-static margin** (C-02), e.g. a margin that scales with the kernel radius, with its own controls.
 3. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
-4. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
+4. ~~Chan's patch protocol in larger worlds~~ done (E-24: 8% of 256² worlds). Next: separate world size from run length, and test the "isolated lump" mechanism directly.
 5. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
 6. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
 
@@ -222,13 +266,18 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 | 05:05 | E-21: spontaneous double gliders are rare (~0.6% of worlds); a flawed check caught (J-025) |
 | 05:12 | E-22: wanderers absorb each other when they meet; no births (J-026) |
 | 05:18 | E-23: double glider + glider never makes a triple; the chain stops at two (J-027) |
+| 05:25–06:38 | First session ends; a scheduled task resumes the work |
+| 06:41 | Held-out check of the quasi-static cut-off (C-02): no clean gap; a random rule makes a new mover |
+| 06:41–08:16 | E-24: Chan's patches in big worlds make gliders (13/160) |
+| 06:46–08:13 | E-25: detector calibration on 3,789 worlds; 300-step isolation adopted (D-027) |
+| 08:22 | E-26: the "ring glider" confirmed, 31/80 smooth vs 0/80 soups |
 
-Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 77 checks, all passing.
+Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 81 checks, all passing.
 
 ## Read more
 
-- Journal entries [J-012 to J-027]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
-- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md), [E-22](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e22-preregistration.md), [E-23](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e23-preregistration.md).
+- Journal entries [J-012 to J-031]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-027; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md), [E-22](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e22-preregistration.md), [E-23](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e23-preregistration.md), [E-24](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e24-preregistration.md), [E-25](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e25-preregistration.md), [E-26](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e26-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
 **Glossary.** *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).

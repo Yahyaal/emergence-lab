@@ -1,0 +1,595 @@
+{
+"label": "E-26 the held-out mover rule, soup vs smooth (pre-registered)",
+"code_commit": "8217924",
+"command": "emergence --db runs/e26.db conditions --rules-file docs/data/rule-panel-e26.txt --inits uniform,smooth:6 --seeds 40 --size 128 --steps 2000 --density {0.35,0.18} --seed 26 --name e26-d{d}; python scripts/verify_movers.py runs/e26.db 1 2 --out runs/e26-verified.json",
+"experiments": [
+{
+"id": 1,
+"name": "e26-d0.35",
+"master_seed": 26,
+"status": "finished",
+"config": {
+"kind": "conditions",
+"rules": [
+"LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1"
+],
+"inits": [
+"uniform",
+"smooth:6"
+],
+"seeds": 40,
+"size": 128,
+"steps": 2000,
+"density": 0.35,
+"master_seed": 26
+},
+"environment": {
+"emergence": "0.2.0",
+"python": "3.12.3",
+"numpy": "2.5.4",
+"scipy": "1.18.1",
+"platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39"
+},
+"selection": "engine",
+"final": {},
+"curve": [],
+"discoveries": []
+},
+{
+"id": 2,
+"name": "e26-d0.18",
+"master_seed": 26,
+"status": "finished",
+"config": {
+"kind": "conditions",
+"rules": [
+"LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1"
+],
+"inits": [
+"uniform",
+"smooth:6"
+],
+"seeds": 40,
+"size": 128,
+"steps": 2000,
+"density": 0.18,
+"master_seed": 26
+},
+"environment": {
+"emergence": "0.2.0",
+"python": "3.12.3",
+"numpy": "2.5.4",
+"scipy": "1.18.1",
+"platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39"
+},
+"selection": "engine",
+"final": {},
+"curve": [],
+"discoveries": []
+}
+],
+"result": {
+"0.35": {
+"verified_worlds": {
+"uniform": 0,
+"smooth": 13
+},
+"worlds": {
+"uniform": 40,
+"smooth": 40
+},
+"fisher_one_sided_p": 3.8184186883349533e-05,
+"classes": {
+"uniform/extinct": 40,
+"smooth/active": 20,
+"smooth/complex": 13,
+"smooth/extinct": 6,
+"smooth/frozen": 1
+}
+},
+"0.18": {
+"verified_worlds": {
+"uniform": 0,
+"smooth": 18
+},
+"worlds": {
+"uniform": 40,
+"smooth": 40
+},
+"fisher_one_sided_p": 3.191884201094105e-07,
+"classes": {
+"uniform/extinct": 40,
+"smooth/extinct": 11,
+"smooth/complex": 18,
+"smooth/active": 10,
+"smooth/frozen": 1
+}
+},
+"movers": {
+"n": 36,
+"mass_min_med_max": [
+173.3,
+176.85000000000002,
+180.4
+],
+"speed_min_med_max": [
+0.075,
+0.0835,
+0.087
+],
+"net_over_path_median": 1.0,
+"failed_isolation_1000": 0
+}
+},
+"verification": [
+{
+"uid": 45,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 178.0,
+"survives_1000": true,
+"speed": 0.087,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 48,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 176.5,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 54,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 178.8,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 57,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 177.3,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 59,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 175.5,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+},
+{
+"mass": 177.3,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 65,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 176.9,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 68,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 175.5,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 0.99
+}
+]
+},
+{
+"uid": 70,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 179.2,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+},
+{
+"mass": 173.5,
+"survives_1000": true,
+"speed": 0.082,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 72,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 177.8,
+"survives_1000": true,
+"speed": 0.078,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 73,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 176.8,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 78,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 176.1,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 79,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 173.9,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 80,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 175.2,
+"survives_1000": true,
+"speed": 0.085,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 122,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 173.7,
+"survives_1000": true,
+"speed": 0.075,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 123,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 174.5,
+"survives_1000": true,
+"speed": 0.078,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+},
+{
+"mass": 177.0,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 127,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 175.9,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 130,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 179.0,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 133,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 177.9,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 134,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 179.1,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 0.99
+}
+]
+},
+{
+"uid": 136,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 176.8,
+"survives_1000": true,
+"speed": 0.085,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 137,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 178.5,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+},
+{
+"mass": 179.0,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 138,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 180.4,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 0.99
+}
+]
+},
+{
+"uid": 139,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 177.5,
+"survives_1000": true,
+"speed": 0.087,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+},
+{
+"mass": 175.0,
+"survives_1000": true,
+"speed": 0.085,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 140,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 173.3,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 146,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 175.9,
+"survives_1000": true,
+"speed": 0.087,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 147,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 177.9,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 148,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 177.6,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 152,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 176.8,
+"survives_1000": true,
+"speed": 0.087,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 155,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 174.6,
+"survives_1000": true,
+"speed": 0.087,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 156,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 177.0,
+"survives_1000": true,
+"speed": 0.083,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+},
+{
+"uid": 158,
+"rule": "LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1",
+"init": "smooth:6",
+"movers": [
+{
+"mass": 175.5,
+"survives_1000": true,
+"speed": 0.084,
+"net_over_path": 1.0,
+"direction_persistence": 1.0
+}
+]
+}
+]
+}

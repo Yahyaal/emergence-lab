@@ -34,6 +34,12 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **E-20:** 500 controlled collisions produced no births, but gliders can fuse into a stable double glider.
 - **Review and detector:** an independent review (R-4) led to corrections and new controls. The detector finds about 92% of slow turning movers (J-022).
 
+**Saturday morning, 7 Nov (J-028 to J-031, second session):**
+- **C-02:** the quasi-static cut-off (0.002) has no clean gap on 120 held-out rules; about 1 in 6 static-looking soup fields stays rankable (mostly blob edges creeping past the 3-cell margin). No false creatures; an open problem.
+- **E-24:** Chan's patch start makes gliders in 13/160 worlds of 256×256 (0/40 at 128×128); 110 patches never do. Smooth ℓ = 3 gives 18% at both sizes.
+- **E-25 / D-027:** the mover detector's isolation run now extends to 300 steps for slow objects that keep their mass (`SLOW_STEPS`); +3 wanderer worlds, no new false positives in 3,789 replayed worlds; straightness stays 0.5. ≈ 95% of wanderers detected.
+- **E-26:** a third mover, the slow straight "ring glider" (`LENIA/R13/T10/m0.277/s0.0316/b1,0.5,1`, mass ~178, 0.085 cells/step), found by a random rule draw; 31/80 smooth vs 0/80 soup worlds.
+
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
 ## Run it
@@ -42,7 +48,7 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
 pytest                                   # 58 tests, ~1 min
-emergence benchmark --probes             # 39 + 38 validation checks, ~3 min on 12 cores
+emergence benchmark --probes             # 39 + 42 validation checks, ~3 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -66,7 +72,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 | `emergence/benchmark.py`, `benchmark_probes.py` | validation suite |
 | `emergence/server.py`, `web/` | dashboard |
 | `docs/` | this journal (GitHub Pages, Jekyll). `_data/media.json` lists the clips; `data/experiments/` holds the exports |
-| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `lenia_static_fields.py` (C-01 diagnostic behind D-022) |
+| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `make_report_figures.py`, `lenia_static_fields.py` (C-01/C-02 diagnostics behind D-022), `heldout_free_activity.py` (C-02), `verify_movers.py`, `detector_calibration.py` (E-25), experiment scripts |
 
 ## Conventions
 
@@ -100,9 +106,10 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 1. Lenia beyond level 2 (see the report's "What next"). Next steps:
    - a replication probe for continuous physics (the exact-shape probes do not apply);
    - do fused double gliders (E-20) arise spontaneously in big smooth-start worlds?
-   - a detector change for turning movers (300-step isolation; relaxed straightness), with its own deceptive controls (J-022);
+   - map the ring glider's rule neighbourhood (E-26) and try patch starts in the wanderer and ring-glider rules;
+   - the quasi-static margin (C-02): blob edges creep past the 3-cell margin in some rules;
    - glider rates vs world size and run length, measured with the validated detector at checkpoints;
-   - Chan's patch protocol in larger worlds and longer runs.
+   - separate world size from run length for patch starts (E-24 changed both).
 
    Known gap: creatures that rotate or pulse in place are not counted as `complex` yet.
 2. Flow-Lenia needs a positive control before any experiment (J-016, J-018). Try multi-channel Flow-Lenia, or check our implementation against the paper's figures.

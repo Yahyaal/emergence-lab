@@ -540,7 +540,41 @@ def heldout_cutoff() -> None:
     plt.close(fig)
 
 
-FIGS = {"heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+E24_PATCH_SEED = 662005294854461657  # E-24 universe #183: Orbium rule, Chan's patches, 256x256
+
+
+def e24_patches() -> None:
+    """E-24: worlds with a verified glider by start condition and world size, and a clip of a glider
+    forming from Chan's patches in a 256x256 world."""
+    d = json.load(open(DATA / "2026-11-07-e24-chan-patches.json"))["verified_by_arm"]
+    bars = [("Chan patches\n128², 2000 steps\n(E-13)", 0, 40, GREY),
+            ("Chan patches\n256², 3000 steps", d["patches"]["verified_worlds"], d["patches"]["worlds"], BLUE),
+            ("110 patches\n256², 3000 steps", d["patches:110"]["verified_worlds"], d["patches:110"]["worlds"], GREY),
+            ("smooth ℓ=3\n128², 2000 steps\n(E-14)", 28, 160, ORANGE),
+            ("smooth ℓ=3\n256², 3000 steps", d["smooth"]["verified_worlds"], d["smooth"]["worlds"], ORANGE)]
+    fig, ax = plt.subplots(figsize=(9.5, 3.8))
+    for i, (name, k, n, col) in enumerate(bars):
+        lo, hi = wilson(k, n)
+        ax.bar(i, k / n, color=col, alpha=0.9 if "256" in name else 0.45)
+        ax.errorbar(i, k / n, yerr=[[k / n - lo], [hi - k / n]], color="black", capsize=4, lw=1)
+        ax.text(i, hi + 0.01, f"{k}/{n}", ha="center", fontsize=9)
+    ax.set_xticks(range(len(bars)), [b[0] for b in bars], fontsize=9)
+    ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    ax.set_ylabel("worlds with a verified glider")
+    ax.set_title("E-24: Chan's patch start makes gliders, given room and time", fontsize=11)
+    fig.savefig(OUT / "e24-patches.png")
+    plt.close(fig)
+    spec = UniverseSpec(parse_rule(ORBIUM).to_dict(), E24_PATCH_SEED, 256, 256, 0.1, init={"kind": "patches"})
+    u = Universe.from_spec(spec)
+    frames = []
+    for t in range(0, 601):
+        if t % 6 == 0:
+            frames.append(u.state.copy())
+        u.step()
+    save_gif(frames, "e24-patches.gif", scale=2, ms=70)
+
+
+FIGS = {"e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
