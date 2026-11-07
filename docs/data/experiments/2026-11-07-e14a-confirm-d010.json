@@ -1,0 +1,237 @@
+{
+ "experiment": 1,
+ "config": {
+  "kind": "conditions",
+  "rules": [
+   "LENIA/R13/T10/m0.140/s0.0140/b1",
+   "LENIA/R13/T10/m0.140/s0.0154/b1",
+   "LENIA/R13/T10/m0.140/s0.0182/b1",
+   "LENIA/R13/T10/m0.150/s0.0150/b1",
+   "LENIA/R13/T10/m0.150/s0.0165/b1",
+   "LENIA/R13/T10/m0.150/s0.0195/b1",
+   "LENIA/R13/T10/m0.160/s0.0160/b1",
+   "LENIA/R13/T10/m0.160/s0.0176/b1"
+  ],
+  "inits": [
+   "uniform",
+   "smooth:3"
+  ],
+  "seeds": 20,
+  "size": 128,
+  "steps": 2000,
+  "density": 0.1,
+  "master_seed": 14
+ },
+ "by_condition": {
+  "uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0.0,
+   "knockout_tested": 0.0,
+   "knockout_rate_depends": 0.0,
+   "initial_density": 0.05000340929218367
+  },
+  "smooth:3": {
+   "unsettled": 0.175,
+   "self_prop": 0.1875,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0.0,
+   "knockout_tested": 0.0,
+   "knockout_rate_depends": 0.0,
+   "initial_density": 0.04999998204848346
+  }
+ },
+ "vs_uniform": {
+  "smooth:3": {
+   "unsettled": {
+    "mean_diff": 0.175,
+    "ci95": [
+     0.0875,
+     0.2625
+    ],
+    "rules_higher": 6,
+    "rules_lower": 0,
+    "sign_test_p": 0.03125
+   },
+   "self_prop": {
+    "mean_diff": 0.1875,
+    "ci95": [
+     0.09375,
+     0.28140624999999914
+    ],
+    "rules_higher": 6,
+    "rules_lower": 0,
+    "sign_test_p": 0.03125
+   },
+   "innovating": {
+    "not_applicable": true
+   }
+  }
+ },
+ "knockout_placebo": null,
+ "per_rule": {
+  "LENIA/R13/T10/m0.140/s0.0140/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.05017612831265319
+  },
+  "LENIA/R13/T10/m0.140/s0.0140/b1 | smooth:3": {
+   "unsettled": 0.4,
+   "self_prop": 0.4,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.049999928193933826
+  },
+  "LENIA/R13/T10/m0.140/s0.0154/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.05036739573759191
+  },
+  "LENIA/R13/T10/m0.140/s0.0154/b1 | smooth:3": {
+   "unsettled": 0.25,
+   "self_prop": 0.35,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.04999998803232231
+  },
+  "LENIA/R13/T10/m0.140/s0.0182/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.05003286324295343
+  },
+  "LENIA/R13/T10/m0.140/s0.0182/b1 | smooth:3": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.05000010770909927
+  },
+  "LENIA/R13/T10/m0.150/s0.0150/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.0499310302734375
+  },
+  "LENIA/R13/T10/m0.150/s0.0150/b1 | smooth:3": {
+   "unsettled": 0.25,
+   "self_prop": 0.25,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.05
+  },
+  "LENIA/R13/T10/m0.150/s0.0165/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.04994852701822917
+  },
+  "LENIA/R13/T10/m0.150/s0.0165/b1 | smooth:3": {
+   "unsettled": 0.19999999999999996,
+   "self_prop": 0.2,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.05000004787071079
+  },
+  "LENIA/R13/T10/m0.150/s0.0195/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.04996351055070465
+  },
+  "LENIA/R13/T10/m0.150/s0.0195/b1 | smooth:3": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.05000004787071079
+  },
+  "LENIA/R13/T10/m0.160/s0.0160/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.04971696442248775
+  },
+  "LENIA/R13/T10/m0.160/s0.0160/b1 | smooth:3": {
+   "unsettled": 0.09999999999999998,
+   "self_prop": 0.1,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.049999868355545346
+  },
+  "LENIA/R13/T10/m0.160/s0.0176/b1 | uniform": {
+   "unsettled": 0.0,
+   "self_prop": 0.0,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.04989085477941176
+  },
+  "LENIA/R13/T10/m0.160/s0.0176/b1 | smooth:3": {
+   "unsettled": 0.19999999999999996,
+   "self_prop": 0.2,
+   "innovating": NaN,
+   "inconclusive": NaN,
+   "knockout_depends": 0,
+   "knockout_tested": 0,
+   "knockout_rate_depends": 0,
+   "initial_density": 0.049999868355545346
+  }
+ }
+}

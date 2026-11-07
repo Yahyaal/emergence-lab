@@ -6,6 +6,7 @@ import json
 import sys
 import time
 
+from .conditions import init_of
 from .discovery import ExploreConfig, Explorer, reproduce
 from .engine import UniverseSpec
 from .lab import study
@@ -33,6 +34,7 @@ def main(argv: list[str] | None = None) -> int:
     ex.add_argument("--screen-seeds", type=int, default=d.screen_seeds, help="seeds per rule during exploration")
     ex.add_argument("--extend", type=int, default=d.extend_factor, help="follow-up runs this many times longer")
     ex.add_argument("--physics", default="outer_totalistic", help="physics family: outer_totalistic or lenia")
+    ex.add_argument("--init", help="start condition for every universe, e.g. patches or smooth:6 (default: soup)")
     ex.add_argument("--baseline-random", action="store_true",
                     help="control condition: every generation is fresh random rules (no selection)")
 
@@ -117,7 +119,8 @@ def main(argv: list[str] | None = None) -> int:
         cfg = ExploreConfig(name=a.name, population=a.universes, generations=a.generations, steps=a.steps,
                             width=a.size, height=a.size, seed=a.seed, workers=a.workers, followups=a.followups,
                             screen_seeds=a.screen_seeds, extend_factor=a.extend,
-                            selection="random" if a.baseline_random else "engine", physics=a.physics)
+                            selection="random" if a.baseline_random else "engine", physics=a.physics,
+                            init=init_of(a.init) if a.init else None)
         t = time.time()
         eid = Explorer(store, cfg).run()
         print(f"done: experiment #{eid} in {time.time() - t:.1f}s. View with: emergence --db {a.db} serve")

@@ -12,6 +12,114 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-015 · 2026-11-07 · E-14 confirms: smooth starts make gliders, soups never do
+
+**Question (pre-registered before running, `docs/data/e14-preregistration.md`):** does E-13's exploratory finding hold with fresh seeds and a test that can reach significance?
+
+**Ran:** E-14, the same 8 glider-viable rules × 20 new seeds (master seed 14), 128×128, 2000 steps (commit `3453e99`). Two pre-registered contrasts, each a one-sided Fisher exact test on universes at α = 0.025:
+- smooth ℓ = 3 vs soup at density 0.10 (same mass);
+- smooth ℓ = 6 vs soup at density 0.35 (same mass).
+
+**Found:**
+- **Both contrasts confirmed:**
+
+  | Density | Smooth start | Soup | Fisher p (one-sided) |
+  |---|---|---|---|
+  | 0.10 | smooth ℓ = 3: **28/160** universes | **0/160** | 1.0 × 10⁻⁹ |
+  | 0.35 | smooth ℓ = 6: **21/160** | **0/160** | 2.4 × 10⁻⁷ |
+
+- **Every glider is real:** all 49 were re-isolated and survived 1000 steps alone (validity check, pre-registered).
+- **6 of the 8 rules make gliders.** The best is μ 0.14, σ 0.014 at 8/20 in both arms (95% interval 22–61%). Two rules gave 0/40: σ/μ = 0.13 at μ 0.14, and Orbium's neighbour at σ 0.0195. Their seeded gliders exist (E-13a), but no smooth start found one.
+- **The lone-survivor pattern holds:** 47 of 49 glider runs end with exactly one persistent object, the glider; the other 2 end with two gliders.
+- **Soups are equally consistent:** at density 0.10 all 160 die; at 0.35 all 160 freeze into a static blob field.
+
+**Interpretation:**
+- **What this shows:** in the glider-viable Lenia rules, self-propelled structures do arise on their own from unplanted random starts (**evidence level 2, spontaneous**), but **only when the start is spatially correlated**. The amount of matter is held fixed, so it is the arrangement that matters.
+- **This differs from the Life-like result.** In J-009/E-10, arrangement did not matter once density was matched.
+- **Why, in mechanism terms:** a glider needs an isolated lump of about its own mass and size with empty space around it. Correlated noise produces such lumps; uncorrelated soup averages out to a uniform potential that either freezes or dies.
+- **What it does not show:** an ecology. The gliders mostly destroy each other until one is left (E-15 looks at this).
+
+**Changed:** nothing in the code; data in `docs/data/experiments/2026-11-07-e14*.json`.
+
+**Lesson:** an exploratory result, re-tested with fresh seeds and a test fixed in advance that can actually reach its threshold, is worth more than any number of post-hoc p-values.
+
+---
+
+## J-014 · 2026-11-07 · E-13: gliders emerge spontaneously, but only from smooth starts
+
+**Question (pre-registered, `docs/data/e13-preregistration.md`):** in the 8 glider-viable rules of E-13a, does a glider arise by itself from a random start? Does the kind of start matter?
+
+**Ran:**
+- **Rules and seeds:** the 8 rules × 5 seeds, 128×128, 2000 steps (commit `df3a341`).
+- **Starts:** soup, smooth ℓ = 3 / 6 / 10 (mass-matched, D-023), spots, and Chan's patches.
+- **Densities:** 0.35 (E-13b, 240 universes, 9 min) and 0.10 (E-13c, 200 universes, 3 min).
+
+**Found:**
+- **Gliders emerged, from smooth starts only:** **18 of 240 smooth-start universes** grew a self-propelled structure, against **0 of 80** mass-matched soups. Spots gave 0 of 80 and Chan's patches 0 of 40.
+  - smooth ℓ = 3 at density 0.10: 8/40
+  - smooth ℓ = 6 at density 0.35: 6/40
+  - other smooth arms: 0–2/40
+- **All 18 are real gliders.** Each was re-isolated and survived **1000 steps alone** with mass 64–78, moving at 0.58–0.70 cells/step. They are the same creatures the E-13a scan grew from hand-made seeds; for μ 0.14, σ 0.014 the speed is 0.637 seeded and 0.638 spontaneous. This is the first spontaneous self-propelled structure in Lenia in this project (**evidence level 2**).
+- **How they arise: survival after collapse.**
+  - The soup becomes a static blob field at density 0.35 (all 40 runs) or dies at 0.10 (all 40).
+  - Smooth starts mostly die, but first form a few isolated lumps. Some of these become gliders, which then disappear (collisions, decay) until at most one is left. Every glider run ends with **exactly one object**, a lone glider in an empty world.
+  - Chan's patches did not produce gliders in 2000 steps on 128×128. Chan's claim ("given enough time") may need larger worlds or longer runs; we did not test that.
+- **Pre-registered statistics: not confirmed.**
+  - The planned test was a sign test across the 8 rules, at p < 0.05/20. The best contrast reached p = 0.0625 (smooth ℓ = 3 at 0.10: 5 rules higher, 0 lower). **With only 8 rules a sign test cannot go below p = 0.0078, so the design could never pass its own threshold.** That was a planning error.
+  - A universe-level Fisher test (18/240 vs 0/80, p = 0.0048) was **not** pre-registered and is exploratory.
+
+**Changed:**
+- **E-14 pre-registered** (`docs/data/e14-preregistration.md`) to confirm the effect with fresh seeds: 20 seeds × 8 rules, two universe-level Fisher tests at α = 0.025.
+- **E-15 (descriptive) queued:** glider populations in 9× larger worlds (`scripts/glider_population.py`).
+
+**Lessons:**
+- **Check that a pre-registered test can reach its threshold with the planned sample before running it.**
+- **Matter has to be arranged, not just present.** A glider needs an isolated lump of the right size with empty space around it. Smooth fields make such lumps; soups make either a frozen field or nothing.
+
+---
+
+## J-013 · 2026-11-07 · E-12: no Lenia rule makes gliders from a soup, though gliders can exist
+
+**Question:** with the corrected label (J-012), does the discovery engine find Lenia rules where self-propelled structures arise on their own, and does it beat random search?
+
+**Ran:**
+- **E-12:** engine vs random search, seed 11. 100 rules × 2 seeds × 5 generations per arm, 96×96, 500 steps, plus follow-ups; 12 + 14.5 min on 12 cores. Commit `feef3f1`.
+- **E-13a:** a glider-viability scan, 99 single-ring rules on a μ × σ/μ grid (`scripts/lenia_glider_scan.py`).
+
+**Found (E-12):**
+- **No movers at all.** **0 self-propelled structures in 2085 universes** (1045 engine, 1040 random), and 0 rules `complex`. 5 candidate movers all failed the isolation test. Two were inspected: a slowly drifting blob, and a piece of debris that needs its neighbours. Alone, both dissolve within 25–50 steps.
+- **The engine still finds more structure,** as it did for Life-like rules (J-004):
+  - "Structured" rules: 103 vs 27, or **58 vs 27 (2.1×) after removing near-duplicates** (μ and σ/μ to 0.01, same ring count).
+  - Behaviour niches: 11 vs 9.
+  - Quasi-static universes: 49% (engine) vs 81% (random).
+- **The structure the engine finds is not motion.** Its follow-up candidates reach evidence level 0–1. They are persistent textures, chaotic fields and slowly changing blob fields.
+
+**Found (E-13a): gliders can exist, but only in a small island.**
+- **8 of 99 single-ring rules** support a glider grown from one of 8 asymmetric seed shapes (μ 0.14–0.16, σ/μ 0.10–0.13; speeds 0.54–0.69 cells/step, mass 65–77). This is the region around Chan's Orbium.
+- **The engine found this island without being told:** 59 of its 500 rules fall inside it (7 single-ring), against 9 for random search (6.6×). Still, not one soup there produced a glider.
+- **So for these rules, emergence is the bottleneck, not search.** The physics allows gliders; random soups don't make them.
+
+**Literature (agent review; papers and code read where available, abstracts only where marked in [Research]({{ '/research.html' | relative_url }})):**
+- **Chan's starts were different from ours.** Chan (2019) says creatures such as Orbium emerge "given enough time" from random starts, but gives no rate. His starts were **15–40 dense patches of side 0.9 R in vacuum**, not full-grid soups.
+- **Nobody reports a rate.** No paper estimates how much of Lenia rule space supports movers, or how often they emerge. E-13a is a first number for single-ring rules.
+- **Flow-Lenia** (Plantec et al. 2023, 2025) claims movers are common and evolution happens inside the simulation, but reports no counts and no neutral model.
+
+**Changed:**
+- **E-13 pre-registered and committed** before running (`docs/data/e13-preregistration.md`).
+  - Panel: the 8 viable rules.
+  - Starts: soup, smooth starts with ℓ = 3, 6, 10 (mass-matched), spots, and Chan's patches (added by a dated amendment after the review, before any run).
+  - Densities: 0.35 and 0.10.
+- **New init kind `patches`** (Chan's protocol).
+- **Flow-Lenia implementation started** on its own branch (`v0.7-flow-lenia`).
+
+**Caveats:**
+- The E-13a viability test uses 8 hand-chosen seed shapes, so it can miss gliders that need other shapes. 8/99 is a lower bound for single-ring rules.
+- E-12 is one seed per arm. The engine-vs-random comparison is preliminary, as in J-004.
+
+**Lesson:** separate *can it exist* from *does it arise*. A search that finds the right region can still report zero if emergence, not viability, is the limit.
+
+---
+
 ## J-012 · 2026-11-06 · Static Lenia blob fields were labelled "complex"; fixed for continuous physics
 
 **Question / why:** a review found that the class label and the discovery objectives, tuned for 2-state rules, inflate Lenia results. `emergence observe "LENIA/R13/T10/m0.150/s0.0150/b1" --steps 1000 --size 128 --seed 1` returned **complex** for a field of 20 static blobs (0 movers, activity 0.041, local periodicity 0, no cycle). Three 2-state tests fire on continuous fields:
