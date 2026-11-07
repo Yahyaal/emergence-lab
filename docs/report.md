@@ -129,6 +129,13 @@ So a glider is a **fragile in-between state**: the world must collapse enough to
 
 *A note on our own mistake:* the script's quick glider counter (no isolation test) reported hundreds of "births". Looking at the frames showed they were moving edges inside blob fields and count flicker during collisions. Only the mass traces and the pictures are used above.
 
+**Controlled collisions (E-20, pre-registered).** To settle the "births" question we crashed gliders into each other on purpose: 500 collisions, head-on and at right angles, at many offsets and timings.
+
+<div class="cards two">
+<div class="card"><img src="{{ '/assets/report/e20-fusion.gif' | relative_url }}" alt="Two gliders meet at right angles and fuse into one double glider that moves diagonally"><p><b>Two become one.</b> In 7 right-angle collisions the gliders <b>fused into a stable double glider</b> (twice the mass, same speed) that kept going for 1000+ steps: a collision built a new, larger mover.</p></div>
+<div class="card"><img src="{{ '/assets/report/e20-collisions.png' | relative_url }}" alt="Outcomes of 500 collisions"><p><b>No births.</b> No collision ever produced extra gliders. Most destroy one or both gliders or let them pass; 6 set off a blob field that took over the whole world. Combination yes, reproduction no.</p></div>
+</div>
+
 ## 6 · Searching again, from smooth starts: a different kind of mover
 
 E-12 searched rule space from soups, and E-14 showed that soups (almost) never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
@@ -164,7 +171,7 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 |---|---|---|
 | 1 · persistent organisation | yes | yes |
 | 2 · self-propelled structures | yes | **yes, arising spontaneously from smooth starts** (gliders; a turning "wanderer") |
-| 3 · self-replication | not observed | no glider births seen in big worlds (E-15); no replication detector for continuous physics yet |
+| 3 · self-replication | not observed | none: no births in big worlds (E-15) or in 500 controlled collisions (E-20); collisions can *fuse* two gliders into one larger mover |
 | 4 · heredity and variation | not measured | not measured |
 | 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
 
@@ -182,24 +189,27 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 
 | Time (CST) | What |
 |---|---|
-| 23:50 | Label fix merged (PR #4); E-12 starts |
-| 00:20 | Glider-viability map (E-13a); literature review; E-13 pre-registered |
-| 00:30 | E-13: first spontaneous gliders, from smooth starts only |
-| 01:10 | E-14 confirms (pre-registered, fresh seeds); report page live (PR #5) |
+| 00:04 | Label fix merged (PR #4); E-12 (Lenia search, engine vs random) starts |
+| 00:10 | Glider-viability map (E-13a); literature review; E-13 pre-registered |
+| 00:33 | E-13: first spontaneous gliders, from smooth starts only |
+| 01:07 | E-14 confirms (pre-registered, fresh seeds) |
+| 01:32 | Report page live (PR #5) |
 | 01:45 | Flow-Lenia merged after a float-precision rewrite (PR #6) |
-| 02:30 | E-15: big worlds are taken over by blob fields (PR #7) |
-| 03:00 | E-16: no Flow-Lenia movers; E-17: the wanderer (PR #8) |
-| 03:15 | E-18 (wanderer confirmation) and an independent review start; usage limit pauses work until 04:00 |
-| 04:30 | Review R-4: all six points accepted, corrections made; E-18 confirmed (PR #9) |
-| 05:00 | E-19: the shuffled control confirms spatial correlation; soups rarely make gliders (PR #10) |
-| 05:35 | Detector sensitivity for slow movers measured (≈ 92%) (PR #11) |
+| 02:33 | E-15: big worlds are taken over by blob fields (PR #7) |
+| 02:47 | E-16: no Flow-Lenia movers |
+| 03:02 | E-17: the wanderer (PR #8); E-18 and an independent review start |
+| ~03:15–04:00 | Usage limit reached; work paused |
+| 04:07 | Review R-4: all points accepted and corrections made; E-18 confirms the wanderer (PR #9) |
+| 04:32 | E-19: the shuffled control confirms spatial correlation; soups rarely make gliders (PR #10) |
+| 04:39 | Detector sensitivity for slow movers measured, ≈ 92% (PR #11) |
+| 04:45 | E-20: 500 controlled collisions; no births, but gliders can fuse |
 
 Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 77 checks, all passing.
 
 ## Read more
 
-- Journal entries [J-012 to J-022]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
-- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md).
+- Journal entries [J-012 to J-023]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
 **Glossary.** *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).

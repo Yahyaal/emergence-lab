@@ -12,6 +12,32 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-023 · 2026-11-07 · E-20: glider collisions never make new gliders, but can fuse two into a stable double glider
+
+**Question (pre-registered, `docs/data/e20-preregistration.md`):** can glider collisions create new gliders ("births")? E-15 could not tell (review R-4).
+
+**Ran:** E-20, 500 controlled collisions on a 192×192 torus, 1000 steps after placement (`scripts/collision_scan.py`, commit `3cdd71d`, 4 min on 12 cores).
+- **Rules:** μ 0.15 (Orbium) and μ 0.14.
+- **Geometries:** head-on and perpendicular. The partner glider is oriented exactly, by flip or transpose.
+- **Variations:** lateral offset −24…24 cells and timing phase 0…20 steps.
+
+**Found:**
+- **No births.** No collision ended with ≥ 3 gliders that each survive 1000 steps alone, the pre-registered criterion.
+- **What collisions do:**
+  - **Head-on, μ 0.15:** 44% destroy both, 43% leave one, 13% leave both.
+  - **Head-on, μ 0.14:** gliders mostly pass through or survive (78%).
+  - **Perpendicular:** mostly one survivor.
+- **New: fusion into a double glider.** In **7 perpendicular collisions**, at near-central offsets (−2…+2 cells), the two gliders **fuse into one stable object**: two Orbium-like bodies bonded side by side, mass 131–140 (twice a glider), moving straight at 0.61–0.63 cells/step. It stays intact for ≥ 1000 more steps. A collision **created a new kind of mover**: combination, not reproduction. Similar composite Lenia creatures may be known; new to this project.
+- **Explosions.** **6 perpendicular collisions** seed a patch of blob field that grows to fill the world (mass ≈ 140 → 7,400–8,000) within about 1000 steps.
+  - This is a plausible origin of E-15's world-filling fields.
+  - Some fragments inside the field, cut out, survive alone (at most 2 per world), short of the birth criterion. In the world they are part of the field.
+
+**Interpretation:** interactions between gliders are mostly destructive, but not only. A collision can build a larger composite mover, or trigger a phase change of the whole world. Neither is reproduction (level 3). Fusion is a first sign of **structures combining into new structures**, which the project's cumulative-innovation question (O5) cares about. Whether fused gliders arise spontaneously in big smooth-start worlds is untested.
+
+**Lesson:** a controlled scan of 500 interactions answered in 4 minutes what 30 long, uncontrolled runs (E-15) could not.
+
+---
+
 ## J-022 · 2026-11-07 · How often does the detector miss a slow, turning mover? About 8%
 
 **Question (review R-4, point 4):** the mover detector was validated only on Orbium, a fast straight glider at about 0.6 cells/step. Does it miss slow, turning movers such as the wanderer? Does the quasi-static cut-off (D-022) hide them from the search?
