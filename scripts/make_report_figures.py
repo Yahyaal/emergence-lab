@@ -235,7 +235,34 @@ def e13_rates() -> None:
     plt.close(fig)
 
 
-FIGS = {"static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e14_per_rule() -> None:
+    d = json.load(open(DATA / "2026-11-07-e14-movers.json"))["per_rule"]
+    arms = [("1|smooth:3", "smooth ℓ=3, density 0.10", ORANGE), ("2|smooth:6", "smooth ℓ=6, density 0.35", BLUE)]
+    rules = [r["rule"] for r in d[arms[0][0]]]
+    short = [f"μ {r.split('/')[3][1:]}\nσ {r.split('/')[4][1:]}" for r in rules]
+    x = np.arange(len(rules))
+    fig, ax = plt.subplots(figsize=(10.5, 3.9))
+    for k, (key, lab, col) in enumerate(arms):
+        rows = d[key]
+        y = [r["gliders"] / r["n"] for r in rows]
+        lo = [yy - r["ci95"][0] for yy, r in zip(y, rows)]
+        hi = [r["ci95"][1] - yy for yy, r in zip(y, rows)]
+        ax.bar(x + (k - 0.5) * 0.38, y, 0.36, color=col, label=lab, yerr=[lo, hi], capsize=3, ecolor="#444")
+    ax.axhline(0, color="black", lw=0.8)
+    ax.text(len(rules) - 0.6, 0.66, "soup with the same mass: 0 of 160 at both densities", ha="right", fontsize=9.5,
+            color=RED, fontweight="bold")
+    ax.set_xticks(x, short, fontsize=9)
+    ax.set_xlabel("rule (growth centre μ, width σ)")
+    ax.set_ylabel("universes with a glider")
+    ax.set_ylim(0, 0.72)
+    ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    ax.legend(frameon=False, loc="upper left", bbox_to_anchor=(0.12, 0.98))
+    ax.set_title("E-14 (pre-registered, fresh seeds): gliders arise from smooth starts in 6 of 8 rules, never from soup")
+    fig.savefig(OUT / "e14-per-rule.png")
+    plt.close(fig)
+
+
+FIGS = {"e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
