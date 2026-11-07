@@ -32,7 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     ex.add_argument("--followups", type=int, default=d.followups, help="candidates to re-test for robustness")
     ex.add_argument("--screen-seeds", type=int, default=d.screen_seeds, help="seeds per rule during exploration")
     ex.add_argument("--extend", type=int, default=d.extend_factor, help="follow-up runs this many times longer")
-    ex.add_argument("--physics", default="outer_totalistic", help="physics family: outer_totalistic or lenia")
+    ex.add_argument("--physics", default="outer_totalistic", help="physics family: outer_totalistic, lenia or flow_lenia")
     ex.add_argument("--baseline-random", action="store_true",
                     help="control condition: every generation is fresh random rules (no selection)")
 

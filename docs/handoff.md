@@ -32,8 +32,8 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 51 tests, ~40 s
-emergence benchmark --probes             # 39 + 32 validation checks, ~2 min on 12 cores
+pytest                                   # 55 tests
+emergence benchmark --probes             # 39 + 37 validation checks, ~2 min on 12 cores
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
 emergence discoveries 1                  # findings with evidence
@@ -47,7 +47,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 | Path | What |
 |---|---|
-| `emergence/physics/` | `Physics` interface (`base.py`), Life-like/Generations (`totalistic.py`), Lenia (`lenia.py`), controls (`controls.py`: `NoiseControl`, `SmoothNoiseControl`, `JitterControl`). Add new physics here with `@register`; set `continuous = True` for continuous states |
+| `emergence/physics/` | `Physics` interface (`base.py`), Life-like/Generations (`totalistic.py`), Lenia (`lenia.py`), Flow-Lenia (`flow_lenia.py`, mass-conserving, uint8 with exact largest-remainder rounding, D-025), controls (`controls.py`: `NoiseControl`, `SmoothNoiseControl`, `JitterControl`). Add new physics here with `@register`; set `continuous = True` for continuous states |
 | `emergence/engine.py` | `UniverseSpec` (everything needed to reproduce a universe) and `Universe` (read-only state, `fork`) |
 | `emergence/observatory/` | measures, structure census and self-propulsion test, recurrence, damage spreading, local periodicity, `innovation.py`, `replication.py`, `shapes.py`; `continuous.py` (tolerant census, free activity, emergent glider); continuous label rules in `observer.classify` |
 | `emergence/lab.py` | the only place engine and observer meet (`study`, `study_universe`) |
