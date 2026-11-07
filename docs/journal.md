@@ -12,6 +12,31 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-026 · 2026-11-07 · E-22: when wanderers meet, two usually become one; no stable composite, no births
+
+**Question (pre-registered, `docs/data/e22-preregistration.md`):** gliders can fuse into a double glider (E-20). What happens when two wanderers meet?
+
+**Ran:** E-22, 200 encounters on a 160×160 torus, 3000 steps each, classified by the full observatory (`scripts/wanderer_encounters.py`, commit `76e0249`, 8.5 min).
+- **Pattern:** the wanderer of E-18a universe #81.
+- **Partner:** one of 8 exact symmetries, placed 20–40 cells away in a random direction, with a random phase.
+
+**Found:**
+
+| Outcome | Encounters |
+|---|---|
+| **One wanderer left** | **142 (71%)** |
+| Both survive | 43 (22%) |
+| Both destroyed | 10 (5%) |
+| A heavier "new object" at t = 3000 (mass 146–205) | 5 (2.5%) |
+| More than two movers (a birth) | **0** |
+
+- **The new objects are transient.** Followed for 2000 more steps, the two inspected (trials 16 and 59) **relax back to a normal wanderer** (mass 104–148), moving like one.
+- **Two wanderers usually become one ordinary wanderer:** absorption, with the mass regulated back. There is no lasting double wanderer.
+
+**Interpretation:** the two movers found tonight interact differently. Gliders can fuse into a stable, larger composite (E-20). Wanderers absorb each other into a single creature of the usual size. Neither multiplies: still no level-3 evidence. The wanderer's mass regulation is a property worth knowing for any future reproduction test, because a creature that grows and splits would need the opposite tendency.
+
+---
+
 ## J-025 · 2026-11-07 · E-21: spontaneous double gliders are rare, and an isolation test alone over-counts
 
 **Question (pre-registered, `docs/data/e21-preregistration.md`, with one amendment before running):** how often do double gliders arise from smooth starts, and by fusion or directly?
