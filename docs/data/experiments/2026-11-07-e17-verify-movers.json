@@ -1,0 +1,93 @@
+[
+ {
+  "uid": 196,
+  "rule": "LENIA/R13/T10/m0.357/s0.0456/b1,0.25",
+  "init": null,
+  "movers": [
+   {
+    "mass": 2274.8,
+    "survives_1000": false,
+    "speed": null,
+    "net_over_path": null,
+    "direction_persistence": null
+   }
+  ]
+ },
+ {
+  "uid": 950,
+  "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+  "init": null,
+  "movers": [
+   {
+    "mass": 115.1,
+    "survives_1000": true,
+    "speed": 0.09,
+    "net_over_path": 0.4,
+    "direction_persistence": 0.83
+   },
+   {
+    "mass": 117.0,
+    "survives_1000": true,
+    "speed": 0.086,
+    "net_over_path": 0.31,
+    "direction_persistence": 0.81
+   }
+  ]
+ },
+ {
+  "uid": 1012,
+  "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+  "init": null,
+  "movers": [
+   {
+    "mass": 116.2,
+    "survives_1000": true,
+    "speed": 0.087,
+    "net_over_path": 0.63,
+    "direction_persistence": 0.84
+   }
+  ]
+ },
+ {
+  "uid": 1013,
+  "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+  "init": null,
+  "movers": [
+   {
+    "mass": 112.0,
+    "survives_1000": true,
+    "speed": 0.087,
+    "net_over_path": 0.2,
+    "direction_persistence": 0.84
+   }
+  ]
+ },
+ {
+  "uid": 1014,
+  "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+  "init": null,
+  "movers": [
+   {
+    "mass": 111.2,
+    "survives_1000": true,
+    "speed": 0.065,
+    "net_over_path": 0.71,
+    "direction_persistence": 0.69
+   }
+  ]
+ },
+ {
+  "uid": 1236,
+  "rule": "LENIA/R13/T10/m0.357/s0.0456/b1,0.25",
+  "init": null,
+  "movers": [
+   {
+    "mass": 2274.8,
+    "survives_1000": false,
+    "speed": null,
+    "net_over_path": null,
+    "direction_persistence": null
+   }
+  ]
+ }
+]
