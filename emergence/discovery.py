@@ -126,6 +126,7 @@ class ExploreConfig:
     workers: int = 0            # 0 = all cores
     selection: str = "engine"   # "engine" (Pareto + novelty + niches) or "random" (baseline: random rules only)
     physics: str = "outer_totalistic"  # physics family to explore: any registered kind, e.g. "lenia"
+    init: dict | None = None    # initial condition for every universe (UniverseSpec.init); None = soup
 
 
 # ----------------------------------------------------------------- ranking
@@ -318,7 +319,7 @@ class Explorer:
         if density is None:
             density = round(float(rng.uniform(self.cfg.density_min, self.cfg.density_max)), 4)
         return UniverseSpec(physics=rule, seed=int(rng.integers(0, 2**62)), width=self.cfg.width,
-                            height=self.cfg.height, density=density).to_dict()
+                            height=self.cfg.height, density=density, init=self.cfg.init).to_dict()
 
     def _map(self, pool, jobs):
         if pool is None:
@@ -444,7 +445,8 @@ class Explorer:
                 jobs.append((self._spec(u["spec"]["physics"], rng, u["spec"]["density"]), cfg.steps, cfg.window))
                 meta.append((u, "seed"))
             big = UniverseSpec(physics=u["spec"]["physics"], seed=int(rng.integers(0, 2**62)),
-                               width=cfg.width * 2, height=cfg.height * 2, density=u["spec"]["density"]).to_dict()
+                               width=cfg.width * 2, height=cfg.height * 2, density=u["spec"]["density"],
+                               init=cfg.init).to_dict()
             jobs.append((big, cfg.steps * 2, cfg.window))
             meta.append((u, "large"))
             jobs.append((u["spec"], cfg.steps * cfg.extend_factor, cfg.window))  # same universe, observed longer
