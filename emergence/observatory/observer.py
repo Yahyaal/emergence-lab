@@ -58,8 +58,12 @@ class Observation:
 
 class Observer:
     def __init__(self, total_steps: int, window: int = 100, sample_every: int = 5, seed: int = 0,
-                 value_tol: int = 0):
+                 value_tol: int = 0, view=None):
         self.total_steps = total_steps
+        # float-state physics: frame measures (activity, entropy, compression, periodicity,
+        # labels) use the physics' uint8 view; the structure census and exact recurrence use
+        # the true state. For uint8 physics both are the same array.
+        self.view = view
         # 0 = exact comparisons (discrete physics); > 0 = changes of at most this many
         # levels are ignored in activity and local periodicity (continuous physics)
         self.value_tol = value_tol
@@ -69,15 +73,28 @@ class Observer:
         self.prev: np.ndarray | None = None
         self.activity: list[float] = []
         self.ts: dict[str, list[float]] = {"t": [], "density": [], "activity": [], "entropy": [], "spatial_ratio": []}
-        self.frames: deque[np.ndarray] = deque(maxlen=window)
+        self.frames: deque[np.ndarray] = deque(maxlen=window)       # views (uint8)
+        self._raw: deque[np.ndarray] | None = None                   # true float states, if any
+        self.raw_prev: np.ndarray | None = None
         self.recur = RecurrenceDetector()
         self.last_t = 0
 
+    @property
+    def raw_frames(self):
+        return self.frames if self._raw is None else self._raw
+
     def observe(self, t: int, state: np.ndarray) -> None:
         state = np.array(state, copy=True)  # observer keeps its own copy
+        raw = state
+        if state.dtype != np.uint8 and self.view is not None:
+            if self._raw is None:
+                self._raw = deque(maxlen=self.window)
+            self._raw.append(raw)
+            state = np.ascontiguousarray(self.view(raw), dtype=np.uint8)
+        self.raw_prev = raw
         if self.prev is not None:
             self.activity.append(M.activity(self.prev, state, self.value_tol))
-        self.recur.update(t, state)
+        self.recur.update(t, raw)  # exact recurrence of the true state
         if t % self.sample_every == 0:
             self.ts["t"].append(t)
             self.ts["density"].append(round(M.density(state), 5))
@@ -109,7 +126,7 @@ class Observer:
         continuous = getattr(physics, "continuous", False)
         if continuous:
             from .continuous import analyse as analyse_continuous
-            structs = analyse_continuous(frames, physics)
+            structs = analyse_continuous(list(self.raw_frames), physics)
         else:
             structs = analyse(frames, physics)
         rec = self.recur.result
@@ -152,7 +169,7 @@ class Observer:
             descriptor=descriptor(m),
             cls=m["class"],
             final_hash="",
-            final_state=final,
+            final_state=self.raw_prev if self.raw_prev is not None else final,
         )
 
 

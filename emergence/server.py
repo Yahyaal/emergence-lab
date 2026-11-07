@@ -44,10 +44,10 @@ class FrameCache:
         if u is None or u.t > start:
             u = Universe.from_spec(spec)
         u.step(start - u.t)
-        out = [np.array(u.state)]
+        out = [np.array(u.physics.view(u.state))]  # float physics: quantized for display only
         for _ in range(count - 1):
             u.step()
-            out.append(np.array(u.state))
+            out.append(np.array(u.physics.view(u.state)))
         with self.lock:
             self.items[key] = u
             while len(self.items) > self.size:
@@ -111,7 +111,10 @@ def make_handler(store: Store, cache: FrameCache):
                     return self._json({"error": "no such experiment"}, HTTPStatus.NOT_FOUND)
                 univ = store.universes(eid, with_state=True)
                 for u in univ:
-                    u["thumb"] = b64(u.pop("final_state"))
+                    fs = u.pop("final_state")
+                    if fs is not None and fs.dtype != np.uint8:  # float physics: display view
+                        fs = physics_from_dict(u["spec"]["physics"]).view(fs)
+                    u["thumb"] = b64(fs)
                 return self._json({"experiment": exp, "universes": univ, "discoveries": store.discoveries(eid)})
             if what == "universe":
                 u = store.universe(int(parts[1]))

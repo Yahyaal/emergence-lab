@@ -382,21 +382,31 @@ def test_flow_lenia_rule_labels_round_trip_and_mutation_changes_them():
     assert parse_rule("FLENIA/R13/diffusion").diffusion_only
 
 
-def test_flow_lenia_conserves_mass_exactly():
-    from emergence.physics import parse_rule
-    from emergence.physics.flow_lenia import FlowLenia, quantize_conserving
+def test_flow_lenia_conserves_mass_in_float32():
+    from emergence.physics import FlowLenia, parse_rule
     p = parse_rule(FLOW_WANDER)
     s = FlowLenia.patch_state(np.random.default_rng(2), (64, 64), side=24)
-    m0, A = int(s.sum()), s * (2.0 / 255)
-    a0 = A.sum()
+    m0, A = s.sum(dtype=np.float64), s.astype(np.float64)
     for _ in range(1000):
         s, A = p.step(s), p.step_float(A)
-    assert int(s.sum()) == m0 and s.dtype == np.uint8   # stored mass: exact
-    assert abs(A.sum() - a0) / a0 < 1e-10              # float core: rounding only
-    # rounding keeps the total even when cells overflow the uint8 cap
-    x = np.array([[300.4, 0.6], [0.5, 10.2]])
-    q = quantize_conserving(x, 312)
-    assert q.sum() == 312 and q.max() == 255
+    assert s.dtype == np.float32 and abs(s.sum(dtype=np.float64) - m0) / m0 < 1e-6  # float32 rounding
+    assert abs(A.sum() - m0) / m0 < 1e-10                                            # float64 core
+
+
+def test_float_states_through_engine_storage_and_observer():
+    from emergence.engine import state_hash
+    from emergence.physics import FlowLenia, parse_rule
+    from emergence.storage import pack_state, unpack_state
+    p = parse_rule(FLOW_WANDER)
+    u = Universe.from_spec(UniverseSpec(p.to_dict(), 3, 48, 48, 0.3))
+    assert u.state.dtype == np.float32 and 0 < u.state.max() <= 1 and u.fork().state.dtype == np.float32
+    back = unpack_state(pack_state(u.state), 48, 48)
+    assert back.dtype == np.float32 and np.array_equal(back, u.state)
+    assert state_hash(u.state) == state_hash(back) != state_hash(p.view(u.state))
+    assert unpack_state(pack_state(p.view(u.state)), 48, 48).dtype == np.uint8
+    o = study(UniverseSpec(p.to_dict(), 3, 48, 48, 0.3), steps=60)
+    assert o.final_state.dtype == np.float32 and o.metrics["continuous"]
+    assert isinstance(FlowLenia.patch_state(np.random.default_rng(0), (48, 48), 20)[0, 0], np.float32)
 
 
 def test_flow_lenia_rotated_seed_evolves_rotated():
@@ -406,7 +416,7 @@ def test_flow_lenia_rotated_seed_evolves_rotated():
     a, b = s.copy(), np.rot90(s).copy()
     for _ in range(100):
         a, b = p.step(a), p.step(b)
-    assert (np.abs(np.rot90(a).astype(int) - b.astype(int)) > 2).mean() < 0.01
+    assert (np.abs(np.rot90(a) - b) > 2 / 255).mean() < 0.01
 
 
 def test_flow_lenia_static_blob_rule_is_not_complex():
