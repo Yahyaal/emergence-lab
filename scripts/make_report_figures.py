@@ -416,7 +416,60 @@ def e19_null_and_sweep() -> None:
     plt.close(fig)
 
 
-FIGS = {"e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e20_collisions() -> None:
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import collision_scan as cs
+    d = json.load(open(DATA / "2026-11-07-e20-collisions.json"))
+    fused = {(f"LENIA/R13/T10/{f['rule']}/s0.0150/b1" if f["rule"] == "m0.150" else f"LENIA/R13/T10/{f['rule']}/s0.0140/b1",
+              f["offset"], f["phase"]) for f in d["fusions_followed_1000_more_steps"] if f["persists_1000"]}
+    cats = [("both destroyed", GREY), ("one survives", "#9fb3c8"), ("both survive / pass", BLUE),
+            ("fuse into a double glider", GREEN), ("explode into a blob field", RED)]
+    groups = []
+    for rule in cs.RULES:
+        for geo in ("head-on", "perpendicular"):
+            runs = [r for r in d["runs"] if r["rule"] == rule and r["geometry"] == geo]
+            c = dict.fromkeys([k for k, _ in cats], 0)
+            for r in runs:
+                if r["mass"] > 1000:
+                    c["explode into a blob field"] += 1
+                elif geo == "perpendicular" and (rule, r["offset"], r["phase"]) in fused:  # fusions: perpendicular only
+                    c["fuse into a double glider"] += 1
+                elif r["gliders"] == 0:
+                    c["both destroyed"] += 1
+                elif r["gliders"] == 1:
+                    c["one survives"] += 1
+                else:
+                    c["both survive / pass"] += 1
+            groups.append((f"μ {rule.split('/')[3][1:]}\n{geo}", c, len(runs)))
+    fig, ax = plt.subplots(figsize=(10, 3.6))
+    left = np.zeros(len(groups))
+    for k, col in cats:
+        vals = np.array([g[1][k] / g[2] for g in groups])
+        ax.barh([g[0] for g in groups], vals, left=left, color=col, label=k)
+        left += vals
+    ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    ax.set_xlabel("collisions (125 per row)")
+    ax.legend(ncol=3, frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.22))
+    ax.set_title("E-20: 500 controlled glider collisions. No births; some fuse into a stable double glider")
+    fig.savefig(OUT / "e20-collisions.png")
+    plt.close(fig)
+    # the fusion, as a clip (μ 0.150, offset -2, phase 0)
+    rule = cs.RULES[0]
+    phys = parse_rule(rule)
+    g = cs.glider(rule)
+    w = np.zeros((cs.SIDE, cs.SIDE), np.uint8)
+    cs.place(w, g, 96, 51)
+    cs.place(w, g.T, 51, 94)
+    frames = []
+    for t in range(0, 401):
+        if t % 4 == 0:
+            frames.append(w[16:176, 16:176].copy())
+        w = phys.step(w)
+    save_gif(frames, "e20-fusion.gif", scale=2, ms=50)
+
+
+FIGS = {"e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
