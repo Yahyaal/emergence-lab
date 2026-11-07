@@ -1,0 +1,954 @@
+{
+ "label": "e17-lenia-discovery-smooth",
+ "code_commit": "9ba8254",
+ "command": "emergence explore --physics lenia --init smooth:6 --name e17-{engine,random}-smooth6-s17 --seed 17 [--baseline-random]",
+ "experiments": [
+  {
+   "id": 1,
+   "name": "e17-engine-smooth6-s17",
+   "master_seed": 17,
+   "status": "finished",
+   "config": {
+    "name": "e17-engine-smooth6-s17",
+    "population": 100,
+    "generations": 5,
+    "steps": 500,
+    "window": 100,
+    "width": 96,
+    "height": 96,
+    "density_min": 0.15,
+    "density_max": 0.5,
+    "screen_seeds": 2,
+    "immigrant_fraction": 0.2,
+    "novelty_k": 10,
+    "followups": 8,
+    "followup_seeds": 3,
+    "extend_factor": 4,
+    "seed": 17,
+    "workers": 0,
+    "selection": "engine",
+    "physics": "lenia",
+    "init": {
+     "kind": "smooth",
+     "ell": 6.0
+    }
+   },
+   "environment": {
+    "emergence": "0.2.0",
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39"
+   },
+   "selection": "engine",
+   "final": {
+    "generation": 4,
+    "rules": 500,
+    "niches": 9,
+    "self_propelled": 1,
+    "complex_all_seeds": 0,
+    "structured": 103
+   },
+   "curve": [
+    {
+     "generation": 0,
+     "rules": 100,
+     "niches": 5,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 8
+    },
+    {
+     "generation": 1,
+     "rules": 200,
+     "niches": 8,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 25
+    },
+    {
+     "generation": 2,
+     "rules": 300,
+     "niches": 8,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 46
+    },
+    {
+     "generation": 3,
+     "rules": 400,
+     "niches": 8,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 79
+    },
+    {
+     "generation": 4,
+     "rules": 500,
+     "niches": 9,
+     "self_propelled": 1,
+     "complex_all_seeds": 0,
+     "structured": 103
+    }
+   ],
+   "discoveries": [
+    {
+     "universe_id": 297,
+     "rule": "LENIA/R13/T10/m0.355/s0.0546/b1,0.5",
+     "class": "active",
+     "kind": "most-novel/robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.355/s0.0546/b1,0.5"
+      },
+      "seed": 1647564414580928091,
+      "width": 96,
+      "height": 96,
+      "density": 0.1689,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.355/s0.0546/b1,0.5 looks active; evidence level 0/5 (none); no recurrence within 500 steps; damage spread 0.07; seed re-run spread 1.04 (<= calibrated 1.59; larger than 88% of same-rule seed pairs, 62% of different-rule pairs); same class in 6/6 runs; run 2000 steps: becomes active; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.0437,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.8770491803278688,
+      "spread_pct_between": 0.6235655737704918,
+      "niche": "lenia|st1|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.6887093368849284,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 983,
+     "rule": "LENIA/R13/T10/m0.183/s0.0177/b0.75,1",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.183/s0.0177/b0.75,1"
+      },
+      "seed": 3714866238015805091,
+      "width": 96,
+      "height": 96,
+      "density": 0.408,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.183/s0.0177/b0.75,1 looks active; evidence level 0/5 (none); 24 persistent objects (19 static); no recurrence within 500 steps; damage spread 0.17; seed re-run spread 1.06 (<= calibrated 1.59; larger than 88% of same-rule seed pairs, 63% of different-rule pairs); same class in 4/6 runs; run 2000 steps: still active, activity trend 1.05; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 1.0567,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.8770491803278688,
+      "spread_pct_between": 0.6331967213114754,
+      "niche": "lenia|st0|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.44257196179028063,
+      "replicate_classes": [
+       "active",
+       "active",
+       "extinct",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 949,
+     "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+     "class": "extinct",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5"
+      },
+      "seed": 3672661675557613590,
+      "width": 96,
+      "height": 96,
+      "density": 0.1774,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5 looks extinct; evidence level 0/5 (none); cycle period 1 after 32 steps; damage spread 0.00; seed re-run spread 1.88 (> calibrated 1.59; larger than 95% of same-rule seed pairs, 92% of different-rule pairs); same class in 1/6 runs; run 2000 steps: becomes extinct (cycle of period 1 from t=32); innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.8816,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.9467213114754098,
+      "spread_pct_between": 0.9211065573770492,
+      "niche": "lenia|st0|lp1|dmg0|mov1",
+      "pareto_rank": 0,
+      "novelty": 0.30416426189292584,
+      "replicate_classes": [
+       "active",
+       "complex",
+       "complex",
+       "complex"
+      ],
+      "extended_class": "extinct"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 695,
+     "rule": "LENIA/R13/T10/m0.327/s0.0474/b1,1,0.75",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.327/s0.0474/b1,1,0.75"
+      },
+      "seed": 3372690322106455194,
+      "width": 96,
+      "height": 96,
+      "density": 0.1527,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.327/s0.0474/b1,1,0.75 looks active; evidence level 0/5 (none); 1 persistent objects (0 static); no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.16 (<= calibrated 1.59; larger than 38% of same-rule seed pairs, 3% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 0.97; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.1645,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.38114754098360654,
+      "spread_pct_between": 0.02663934426229508,
+      "niche": "lenia|st0|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.22190466114438082,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 709,
+     "rule": "LENIA/R13/T10/m0.124/s0.0141/b0.5,1",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.124/s0.0141/b0.5,1"
+      },
+      "seed": 2790093313216650232,
+      "width": 96,
+      "height": 96,
+      "density": 0.487,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.124/s0.0141/b0.5,1 looks active; evidence level 1/5 (persistent organization); 8 persistent objects (2 static); no recurrence within 500 steps; damage spread 0.46; seed re-run spread 0.21 (<= calibrated 1.59; larger than 48% of same-rule seed pairs, 5% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 0.99; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 1,
+      "evidence_level_name": "persistent organization",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.2116,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.47950819672131145,
+      "spread_pct_between": 0.0471311475409836,
+      "niche": "lenia|st2|lp0|dmg1|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.17113354361493513,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 977,
+     "rule": "LENIA/R13/T10/m0.116/s0.0213/b0.5,1",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.116/s0.0213/b0.5,1"
+      },
+      "seed": 3858256153557846551,
+      "width": 96,
+      "height": 96,
+      "density": 0.4563,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.116/s0.0213/b0.5,1 looks active; evidence level 1/5 (persistent organization); 20 persistent objects (15 static); no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.16 (<= calibrated 1.59; larger than 37% of same-rule seed pairs, 2% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 1.03; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 1,
+      "evidence_level_name": "persistent organization",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.1567,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.3729508196721312,
+      "spread_pct_between": 0.0235655737704918,
+      "niche": "lenia|st2|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.14270521353459015,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 479,
+     "rule": "LENIA/R13/T10/m0.398/s0.0663/b1",
+     "class": "active",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.398/s0.0663/b1"
+      },
+      "seed": 3945179041875433834,
+      "width": 96,
+      "height": 96,
+      "density": 0.4971,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.398/s0.0663/b1 looks active; evidence level 0/5 (none); no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.78 (<= calibrated 1.59; larger than 86% of same-rule seed pairs, 39% of different-rule pairs); same class in 4/6 runs; run 2000 steps: becomes active; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.7776,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.8647540983606558,
+      "spread_pct_between": 0.3920081967213115,
+      "niche": "lenia|st0|lp2|dmg0|mov0",
+      "pareto_rank": 1,
+      "novelty": 0.23200787013000732,
+      "replicate_classes": [
+       "active",
+       "extinct",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 329,
+     "rule": "LENIA/R13/T10/m0.121/s0.0141/b0.75,0.5,1",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.121/s0.0141/b0.75,0.5,1"
+      },
+      "seed": 907434237880050625,
+      "width": 96,
+      "height": 96,
+      "density": 0.3341,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.121/s0.0141/b0.75,0.5,1 looks active; evidence level 1/5 (persistent organization); 24 persistent objects (13 static); no recurrence within 500 steps; damage spread 0.16; seed re-run spread 0.11 (<= calibrated 1.59; larger than 23% of same-rule seed pairs, 1% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 1.03; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 1,
+      "evidence_level_name": "persistent organization",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.113,
+      "robust_threshold": 1.5867,
+      "spread_pct_within": 0.2336065573770492,
+      "spread_pct_between": 0.010860655737704918,
+      "niche": "lenia|st1|lp0|dmg1|mov0",
+      "pareto_rank": 1,
+      "novelty": 0.11232582605220087,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": "e17-random-smooth6-s17",
+   "master_seed": 17,
+   "status": "finished",
+   "config": {
+    "name": "e17-random-smooth6-s17",
+    "population": 100,
+    "generations": 5,
+    "steps": 500,
+    "window": 100,
+    "width": 96,
+    "height": 96,
+    "density_min": 0.15,
+    "density_max": 0.5,
+    "screen_seeds": 2,
+    "immigrant_fraction": 0.2,
+    "novelty_k": 10,
+    "followups": 8,
+    "followup_seeds": 3,
+    "extend_factor": 4,
+    "seed": 17,
+    "workers": 0,
+    "selection": "random",
+    "physics": "lenia",
+    "init": {
+     "kind": "smooth",
+     "ell": 6.0
+    }
+   },
+   "environment": {
+    "emergence": "0.2.0",
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39"
+   },
+   "selection": "random",
+   "final": {
+    "generation": 4,
+    "rules": 500,
+    "niches": 8,
+    "self_propelled": 0,
+    "complex_all_seeds": 0,
+    "structured": 29
+   },
+   "curve": [
+    {
+     "generation": 0,
+     "rules": 100,
+     "niches": 5,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 8
+    },
+    {
+     "generation": 1,
+     "rules": 200,
+     "niches": 6,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 13
+    },
+    {
+     "generation": 2,
+     "rules": 300,
+     "niches": 7,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 20
+    },
+    {
+     "generation": 3,
+     "rules": 400,
+     "niches": 8,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 25
+    },
+    {
+     "generation": 4,
+     "rules": 500,
+     "niches": 8,
+     "self_propelled": 0,
+     "complex_all_seeds": 0,
+     "structured": 29
+    }
+   ],
+   "discoveries": [
+    {
+     "universe_id": 1051,
+     "rule": "LENIA/R13/T10/m0.356/s0.0488/b1,1,0.75",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.356/s0.0488/b1,1,0.75"
+      },
+      "seed": 3037705152080330825,
+      "width": 96,
+      "height": 96,
+      "density": 0.2329,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.356/s0.0488/b1,1,0.75 looks active; evidence level 0/5 (none); 1 persistent objects (0 static); no recurrence within 500 steps; damage spread 0.05; seed re-run spread 0.62 (<= calibrated 1.71; larger than 86% of same-rule seed pairs, 26% of different-rule pairs); same class in 5/6 runs; run 2000 steps: still active, activity trend 1.03; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.6227,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.8627450980392157,
+      "spread_pct_between": 0.2612745098039216,
+      "niche": "lenia|st0|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.6369974928388233,
+      "replicate_classes": [
+       "active",
+       "extinct",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1627,
+     "rule": "LENIA/R13/T10/m0.145/s0.0111/b0.75,1,0.5",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.145/s0.0111/b0.75,1,0.5"
+      },
+      "seed": 391089652400312237,
+      "width": 96,
+      "height": 96,
+      "density": 0.3368,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.145/s0.0111/b0.75,1,0.5 looks active; evidence level 0/5 (none); 1 persistent objects (0 static); no recurrence within 500 steps; damage spread 0.00; seed re-run spread 1.11 (<= calibrated 1.71; larger than 87% of same-rule seed pairs, 66% of different-rule pairs); same class in 5/6 runs; run 2000 steps: still active, activity trend 1.00; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 1.1133,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.8725490196078431,
+      "spread_pct_between": 0.6598039215686274,
+      "niche": "lenia|st1|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.6121385158187581,
+      "replicate_classes": [
+       "active",
+       "active",
+       "extinct",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1935,
+     "rule": "LENIA/R13/T10/m0.127/s0.0121/b0.5,1,0.25",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.127/s0.0121/b0.5,1,0.25"
+      },
+      "seed": 1931155323112944763,
+      "width": 96,
+      "height": 96,
+      "density": 0.1709,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.127/s0.0121/b0.5,1,0.25 looks active; evidence level 0/5 (none); 12 persistent objects (9 static); no recurrence within 500 steps; damage spread 0.26; seed re-run spread 0.34 (<= calibrated 1.71; larger than 59% of same-rule seed pairs, 7% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 0.93; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.3389,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.5882352941176471,
+      "spread_pct_between": 0.07401960784313726,
+      "niche": "lenia|st2|lp0|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.5544497770119017,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1271,
+     "rule": "LENIA/R13/T10/m0.367/s0.0735/b0.25,1",
+     "class": "active",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.367/s0.0735/b0.25,1"
+      },
+      "seed": 2817266640935355555,
+      "width": 96,
+      "height": 96,
+      "density": 0.1899,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.367/s0.0735/b0.25,1 looks active; evidence level 0/5 (none); 0 of 1 candidate mover shape(s) self-propelled in isolation; 4 persistent objects (0 static); no recurrence within 500 steps; damage spread 0.03; seed re-run spread 1.71 (<= calibrated 1.71; larger than 89% of same-rule seed pairs, 84% of different-rule pairs); same class in 4/6 runs; run 2000 steps: becomes active; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.7075,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.8921568627450981,
+      "spread_pct_between": 0.8392156862745098,
+      "niche": "lenia|st0|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.44927636758669875,
+      "replicate_classes": [
+       "active",
+       "extinct",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1719,
+     "rule": "LENIA/R13/T10/m0.156/s0.0181/b0.25,1",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.156/s0.0181/b0.25,1"
+      },
+      "seed": 4031699882358567919,
+      "width": 96,
+      "height": 96,
+      "density": 0.3944,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.156/s0.0181/b0.25,1 looks active; evidence level 0/5 (none); 1 persistent objects (0 static); no recurrence within 500 steps; damage spread 0.24; seed re-run spread 0.28 (<= calibrated 1.71; larger than 51% of same-rule seed pairs, 5% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still active, activity trend 0.97; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.2771,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.5098039215686274,
+      "spread_pct_between": 0.051470588235294115,
+      "niche": "lenia|st2|lp0|dmg1|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.40302307143133376,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1263,
+     "rule": "LENIA/R13/T10/m0.389/s0.0663/b1",
+     "class": "extinct",
+     "kind": "seed-sensitive/fades",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.389/s0.0663/b1"
+      },
+      "seed": 1088682346000323192,
+      "width": 96,
+      "height": 96,
+      "density": 0.3967,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.389/s0.0663/b1 looks extinct; evidence level 0/5 (none); cycle period 1 after 74 steps; damage spread 0.00; seed re-run spread 1.76 (> calibrated 1.71; larger than 90% of same-rule seed pairs, 84% of different-rule pairs); same class in 1/6 runs; run 2000 steps: becomes extinct (cycle of period 1 from t=74); innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 1.7591,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.9019607843137255,
+      "spread_pct_between": 0.8441176470588235,
+      "niche": "lenia|st0|lp2|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.3498123021313224,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "extinct"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1287,
+     "rule": "LENIA/R13/T10/m0.322/s0.0642/b0.25,1",
+     "class": "active",
+     "kind": "robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.322/s0.0642/b0.25,1"
+      },
+      "seed": 4183601015152010841,
+      "width": 96,
+      "height": 96,
+      "density": 0.3652,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.322/s0.0642/b0.25,1 looks active; evidence level 0/5 (none); 2 persistent objects (2 static); quasi-static; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.55 (<= calibrated 1.71; larger than 84% of same-rule seed pairs, 20% of different-rule pairs); same class in 6/6 runs; run 2000 steps: becomes active; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.5515,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.8431372549019608,
+      "spread_pct_between": 0.19950980392156864,
+      "niche": "lenia|st1|lp1|dmg0|mov0",
+      "pareto_rank": 0,
+      "novelty": 0.17711463282245596,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "active"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1789,
+     "rule": "LENIA/R13/T10/m0.104/s0.0074/b1,0.5,0.5",
+     "class": "active",
+     "kind": "robust/persists",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.104/s0.0074/b1,0.5,0.5"
+      },
+      "seed": 1434618822623167716,
+      "width": 96,
+      "height": 96,
+      "density": 0.3377,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.104/s0.0074/b1,0.5,0.5 looks active; evidence level 0/5 (none); no recurrence within 500 steps; damage spread 0.31; seed re-run spread 0.12 (<= calibrated 1.71; larger than 21% of same-rule seed pairs, 1% of different-rule pairs); same class in 6/6 runs; run 2000 steps: still chaotic, activity trend 1.00; innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": true,
+      "torus_loop": false,
+      "descriptor_spread": 0.1156,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.20588235294117646,
+      "spread_pct_between": 0.007352941176470588,
+      "niche": "lenia|st3|lp0|dmg1|mov0",
+      "pareto_rank": 1,
+      "novelty": 0.6088780838215624,
+      "replicate_classes": [
+       "active",
+       "active",
+       "active",
+       "active"
+      ],
+      "extended_class": "chaotic"
+     },
+     "replication": null,
+     "innovation": null
+    },
+    {
+     "universe_id": 1893,
+     "rule": "LENIA/R13/T10/m0.364/s0.0696/b0.75,1,0.75",
+     "class": "periodic",
+     "kind": "most-novel/robust/fades",
+     "spec": {
+      "physics": {
+       "kind": "lenia",
+       "rule": "LENIA/R13/T10/m0.364/s0.0696/b0.75,1,0.75"
+      },
+      "seed": 2491648435247180827,
+      "width": 96,
+      "height": 96,
+      "density": 0.1589,
+      "init": {
+       "kind": "smooth",
+       "ell": 6.0
+      }
+     },
+     "summary": "LENIA/R13/T10/m0.364/s0.0696/b0.75,1,0.75 looks periodic; evidence level 0/5 (none); 2 persistent objects (2 static); quasi-static; no recurrence within 500 steps; damage spread 0.00; seed re-run spread 0.40 (<= calibrated 1.71; larger than 74% of same-rule seed pairs, 11% of different-rule pairs); same class in 3/6 runs; run 2000 steps: becomes frozen (cycle of period 1 from t=567); innovation/replication/knockout probes: not applicable (exact-shape probes are not valid for continuous physics); heredity/variation: not measured",
+     "evidence": {
+      "evidence_level": 0,
+      "evidence_level_name": "none",
+      "innovation_verdict": "not measured",
+      "innovation_noise_floor": 0,
+      "persists": false,
+      "torus_loop": false,
+      "descriptor_spread": 0.4021,
+      "robust_threshold": 1.7083,
+      "spread_pct_within": 0.7352941176470589,
+      "spread_pct_between": 0.10980392156862745,
+      "niche": null,
+      "pareto_rank": null,
+      "novelty": 0.7410407543090887,
+      "replicate_classes": [
+       "periodic",
+       "periodic",
+       "frozen",
+       "active"
+      ],
+      "extended_class": "frozen"
+     },
+     "replication": null,
+     "innovation": null
+    }
+   ]
+  }
+ ]
+}

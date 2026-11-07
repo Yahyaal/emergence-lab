@@ -12,6 +12,31 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-019 · 2026-11-07 · E-17: searching from smooth starts finds a new mover, a slow "wanderer"
+
+**Question (pre-registered, `docs/data/e17-preregistration.md`):** E-12 searched from soups, which never make gliders (E-14). Searching from smooth starts instead, does the engine find mover rules, does it beat random search, and does it find any outside the Orbium island?
+
+**Ran:** E-17, identical to E-12 except `--init smooth:6`, seed 17. Engine 6 min, random 7 min (the faster census helped; E-12 took 12 + 14.5 min). Commit `9ba8254`.
+
+**Found:**
+- **Raw hits (any run with a self-propelled structure):** the engine has 5 universes in 2 rules, random search 1 universe in 1 rule. All lie **outside** the single-ring island of E-13a.
+- **Pre-registered verification (alone for 1000 steps):**
+  - **μ 0.357, σ 0.0456, 2 rings (both arms): fails.** Its "mover" is a field chunk of mass 2275 that falls apart. Not a creature.
+  - **μ 0.243, σ 0.0224, rings 1/0.5/0.5 (engine only): passes in all 5 objects, from 4 universes.** One is a screening run; three are follow-ups (new seeds and a 2× larger world), so it reproduces.
+- **Primary outcome:** **engine 1 verified mover rule, random 0.** Tiny numbers and one seed per arm, so no significance claim (as pre-registered).
+- **The new mover is a "wanderer", not a glider.**
+  - **Size and shape:** compact, mass about 115 (Orbium: 70), with an internal pattern that keeps changing.
+  - **Speed:** 0.07–0.08 cells/step, about 8× slower than Orbium.
+  - **Path:** it **turns as it goes**. Direction correlation between successive 50-step stretches is 0.65–0.79. Over 2000 steps alone, its net displacement is 0.08–0.55 of its path; one copy nearly circles.
+  - It moves by itself, so it passes the self-propulsion test, and it is clearly different from Orbium.
+- **Other outcomes:** 0 rules `complex` on every seed in either arm. "Structured" rules: 103 (engine) vs 29 (random).
+
+**Interpretation:** smooth starts make the search see movers it was blind to under soups, and the engine finds one random search did not. The evidence is thin, one rule and one seed per arm, but it is a reproducible, verified creature of a different kind, in a different part of rule space (3 rings, larger μ). It is still level 2 evidence. We do not know whether this creature is already documented in the Lenia literature; we claim only that it is new to this project.
+
+**Lesson:** the start condition decides what a search can see. E-12's "zero" was a property of the soup, not of rule space.
+
+---
+
 ## J-018 · 2026-11-07 · E-16: no movers in Flow-Lenia from any start condition
 
 **Question (exploratory, plan in `docs/data/e16-plan.md`):** smooth starts unlocked gliders in Lenia (E-14). Do they also give Flow-Lenia its first self-propelled structure, which it needs as a positive control (J-016)?

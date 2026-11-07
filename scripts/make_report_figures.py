@@ -312,7 +312,34 @@ def e15_clips() -> None:
     save_gif(frames("LENIA/R13/T10/m0.140/s0.0140/b1", 15000, 0, 1000, 10), "e15-field-takeover.gif", scale=2, ms=60)
 
 
-FIGS = {"e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+WANDERER = "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5"  # found by E-17's engine arm (universe #1014)
+
+
+def e17_wanderer() -> None:
+    """The E-17 wanderer, cut out of its world and run alone (it turns as it moves)."""
+    spec = json.load(open(DATA / "2026-11-07-e17-verified.json"))["wanderer_spec"]
+    u = Universe.from_spec(UniverseSpec.from_dict(spec))
+    phys = u.physics
+    u.step(500)
+    o = min(C.objects(u.state), key=lambda x: abs(x["mass"] - 115))
+    alone = C.isolate(u.state, o)
+    rr, cc = np.nonzero(alone)
+    sub = alone[rr.min():rr.max() + 1, cc.min():cc.max() + 1]
+    world = np.zeros((160, 160), np.uint8)
+    world[80 - sub.shape[0] // 2:80 - sub.shape[0] // 2 + sub.shape[0],
+          80 - sub.shape[1] // 2:80 - sub.shape[1] // 2 + sub.shape[1]] = sub
+    frames, trail = [], np.zeros(world.shape)
+    for t in range(0, 2001):
+        if t % 5 == 0:
+            ob = max(C.objects(world), key=lambda x: x["mass"])
+            trail[int(ob["c"][0]) % 160, int(ob["c"][1]) % 160] = 255
+        if t % 20 == 0:
+            frames.append(np.maximum(world, (trail * 0.35).astype(np.uint8)))
+        world = phys.step(world)
+    save_gif(frames, "e17-wanderer.gif", scale=2, ms=60)
+
+
+FIGS = {"e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 

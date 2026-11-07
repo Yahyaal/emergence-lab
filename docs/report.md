@@ -12,13 +12,16 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <figcaption>Same rule (Orbium), same random seed, same total amount of matter. <b>Left:</b> a fine-grained random start freezes into static blobs. <b>Right:</b> a smooth random start breaks into lumps, several become gliders, they collide and die off, and one survives and keeps travelling. 2000 steps.</figcaption>
 </figure>
 
-## In five points
+## In short
 
 <div class="cards">
 <div class="card"><div class="stat">bug fixed</div><p>Our "complex" label had been calling <b>fields of motionless blobs</b> complex: 27 of 60 random Lenia rules. Fixed and re-validated before any new experiment (J-012).</p></div>
 <div class="card"><div class="stat">0 / 2085</div><p>Two full searches (the discovery engine and a random-search baseline, 1000 rules in all) found <b>no rule that makes gliders from ordinary random soup</b> (E-12).</p></div>
 <div class="card"><div class="stat">8 / 99</div><p>Gliders <i>can</i> exist in only a <b>small island of rule space</b> around the known glider Orbium (E-13a).</p></div>
 <div class="card"><div class="stat">49 vs 0</div><p>In that island, <b>smooth random starts produced gliders in 49 of 320 worlds, matched ordinary soups in 0 of 320</b>. Pre-registered, fresh seeds, p &lt; 10⁻⁶ (E-14).</p></div>
+<div class="card"><div class="stat">23 / 30</div><p>In <b>bigger worlds</b>, a growing field of static blobs usually takes over; gliders only <b>collide and die</b>, never multiply (E-15).</p></div>
+<div class="card"><div class="stat">1 new mover</div><p>Searching again from smooth starts, the engine found a <b>new kind of creature</b>: a slow, turning "wanderer" in a different part of rule space. Random search found none (E-17).</p></div>
+<div class="card"><div class="stat">0 / 400</div><p><b>Flow-Lenia</b>, a mass-conserving variant said to make movers easily, was built and validated, but produced <b>no movers</b> in 400 worlds (E-16).</p></div>
 <div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
 </div>
 
@@ -119,7 +122,18 @@ So a glider is a **fragile in-between state**: the world must collapse enough to
 
 *A note on our own mistake:* the script's quick glider counter (no isolation test) reported hundreds of "births". Looking at the frames showed they were moving edges inside blob fields and count flicker during collisions. Only the mass traces and the pictures are used above.
 
-## 6 · A second continuous physics: Flow-Lenia
+## 6 · Searching again, from smooth starts: a new kind of mover
+
+E-12 searched rule space from soups, and E-14 showed that soups never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
+
+<div class="cards">
+<div class="card"><img src="{{ '/assets/report/e17-wanderer.gif' | relative_url }}" alt="A compact patterned creature moving in a loop, leaving a faint trail"><p><b>The "wanderer"</b> (rule μ 0.243, three kernel rings), found by the discovery engine. Cut out and run alone, it keeps its body (mass ~115) and moves about 0.07 cells per step, <b>turning as it goes</b> (faint trail). Found in 4 worlds, including runs with fresh seeds and a 2× larger world.</p></div>
+<div class="card"><p><b>Engine vs random search, from smooth starts:</b></p><p>Engine: <b>1 rule with a verified mover</b> (the wanderer). Random search: <b>0</b>. A second candidate, found by both, was a drifting chunk of blob field that fell apart when run alone.</p><p>The wanderer lives far from Orbium's island (3 rings, larger μ). It is slower and turns, unlike the straight-line gliders: a different kind of creature. The numbers are tiny (one seed per search), so this is a lead, not a statistical result.</p></div>
+</div>
+
+**The lesson:** the starting world decides what a search can see. E-12's "zero" was a property of the soup, not of rule space.
+
+## 7 · A second continuous physics: Flow-Lenia
 
 Lenia's gliders survive only in a narrow band of rules, partly because nothing stops matter from appearing or vanishing. **Flow-Lenia** (Plantec et al. 2023) changes that: matter is never created or destroyed, it only *flows*. Its authors report that moving creatures are common in it and that creatures can even evolve inside the simulation, but they give no counts and no comparison with chance. So we treat these as claims to test, not results to inherit.
 
@@ -135,24 +149,25 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 | Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) |
 |---|---|---|
 | 1 · persistent organisation | yes | yes |
-| 2 · self-propelled structures | yes | **yes, arising spontaneously from smooth starts** |
-| 3 · self-replication | not observed | not tested yet (needs a continuous replication detector) |
+| 2 · self-propelled structures | yes | **yes, arising spontaneously from smooth starts** (gliders; a turning "wanderer") |
+| 3 · self-replication | not observed | no glider births seen in big worlds (E-15); no replication detector for continuous physics yet |
 | 4 · heredity and variation | not measured | not measured |
 | 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
 
-**Mistakes we caught and recorded:** the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012).
+**Mistakes we caught and recorded:** the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
 
 ## What next
 
-1. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
-2. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
-3. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
-4. **Flow-Lenia:** find a positive control (smooth starts, as in Lenia; several channels), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
+1. **The wanderer:** confirm with more seeds; map its rule neighbourhood (as E-13a did for Orbium); check how it interacts with gliders and with other wanderers.
+2. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
+3. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
+4. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
+5. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
 
 ## Read more
 
-- Journal entries [J-012 to J-018]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
-- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md).
+- Journal entries [J-012 to J-019]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
 **Glossary.** *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).

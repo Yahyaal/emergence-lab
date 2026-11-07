@@ -1,0 +1,149 @@
+{
+ "verified": [
+  {
+   "arm": "engine",
+   "uid": 196,
+   "rule": "LENIA/R13/T10/m0.357/s0.0456/b1,0.25",
+   "mass": 2274.8,
+   "area": 2519.0,
+   "survives_1000": false,
+   "speed": null,
+   "density": 0.4451
+  },
+  {
+   "arm": "engine",
+   "uid": 950,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "mass": 115.1,
+   "area": 158.0,
+   "survives_1000": true,
+   "speed": 0.036,
+   "density": 0.1774
+  },
+  {
+   "arm": "engine",
+   "uid": 950,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "mass": 117.0,
+   "area": 155.0,
+   "survives_1000": true,
+   "speed": 0.026,
+   "density": 0.1774
+  },
+  {
+   "arm": "engine",
+   "uid": 1012,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "mass": 116.2,
+   "area": 138.0,
+   "survives_1000": true,
+   "speed": 0.055,
+   "density": 0.1774
+  },
+  {
+   "arm": "engine",
+   "uid": 1013,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "mass": 112.0,
+   "area": 146.0,
+   "survives_1000": true,
+   "speed": 0.017,
+   "density": 0.1774
+  },
+  {
+   "arm": "engine",
+   "uid": 1014,
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5",
+   "mass": 111.2,
+   "area": 142.0,
+   "survives_1000": true,
+   "speed": 0.046,
+   "density": 0.1774
+  },
+  {
+   "arm": "random",
+   "uid": 1236,
+   "rule": "LENIA/R13/T10/m0.357/s0.0456/b1,0.25",
+   "mass": 2274.8,
+   "area": 2519.0,
+   "survives_1000": false,
+   "speed": null,
+   "density": 0.4451
+  }
+ ],
+ "hits": {
+  "engine": {
+   "LENIA/R13/T10/m0.357/s0.0456/b1,0.25": [
+    196
+   ],
+   "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5": [
+    950,
+    1012,
+    1013,
+    1014
+   ]
+  },
+  "random": {
+   "LENIA/R13/T10/m0.357/s0.0456/b1,0.25": [
+    1236
+   ]
+  }
+ },
+ "wanderer_spec": {
+  "physics": {
+   "kind": "lenia",
+   "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5"
+  },
+  "seed": 2089770142771031372,
+  "width": 192,
+  "height": 192,
+  "density": 0.1774,
+  "init": {
+   "kind": "smooth",
+   "ell": 6.0
+  }
+ },
+ "wanderer_motion_2000_steps_alone": [
+  {
+   "uid": 950,
+   "net": 59.9,
+   "path": 181.6,
+   "speed": 0.084,
+   "direction_persistence": 0.72,
+   "mass": [
+    107,
+    120
+   ]
+  },
+  {
+   "uid": 1012,
+   "net": 13.3,
+   "path": 157.8,
+   "speed": 0.073,
+   "direction_persistence": 0.79,
+   "mass": [
+    104,
+    120
+   ]
+  },
+  {
+   "uid": 1014,
+   "net": 85.8,
+   "path": 155.2,
+   "speed": 0.072,
+   "direction_persistence": 0.65,
+   "mass": [
+    102,
+    120
+   ]
+  }
+ ],
+ "roles": {
+  "950": "screen",
+  "1012": "followup",
+  "1013": "followup",
+  "1014": "followup",
+  "196": "screen",
+  "1236": "screen"
+ }
+}
