@@ -21,6 +21,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">49 vs 0</div><p>In that island, <b>smooth random starts produced gliders in 49 of 320 worlds, matched ordinary soups in 0 of 320</b>. Pre-registered, fresh seeds, p &lt; 10⁻⁶ (E-14). Scrambling the positions of the same values removes every glider: <b>it is the arrangement</b> (E-19).</p></div>
 <div class="card"><div class="stat">23 / 30</div><p>In <b>bigger worlds</b>, a growing field of static blobs usually takes over; gliders <b>collide and die</b>; we saw no new ones form (E-15).</p></div>
 <div class="card"><div class="stat">1 new mover</div><p>Searching again from smooth starts, the engine found a <b>different kind of mover</b>: a slow, turning "wanderer" in another part of rule space. Random search found none (E-17). Confirmed with fresh seeds: 36 of 40 worlds (E-18).</p></div>
+<div class="card"><div class="stat">1 + 1 = 1</div><p>Gliders never multiplied in 500 controlled collisions, but two can <b>fuse into a stable double glider</b>, and this also happened <b>on its own</b> in a smooth-start world (E-20, J-024).</p></div>
 <div class="card"><div class="stat">0 / 400</div><p><b>Flow-Lenia</b>, a mass-conserving variant said to make movers easily, was built and validated, but produced <b>no movers</b> in 400 worlds (E-16).</p></div>
 <div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
 </div>
@@ -143,6 +144,8 @@ So a glider is a **fragile in-between state**: the world must collapse enough to
 <figcaption>E-19 world #204 (Orbium rule, smooth start): lumps → two gliders → one double glider (fusion at step ~530). Structure built on earlier structure, spontaneously, observed once.</figcaption>
 </figure>
 
+**How common is it? (E-21, pre-registered.)** Rare. In 320 fresh smooth-start worlds, one double glider formed (directly from the start, not by fusion), so spontaneous double gliders appear in about 0.6% of such worlds and the fusion route has been seen once. A mistake caught on the way: our new script's check ("cut it out, does it move?") also counted fragments of blob fields, so it first reported 116 glider worlds and 2 doubles. A mover has to be seen moving *in its own world* first, as our main detector requires (J-025).
+
 ## 6 · Searching again, from smooth starts: a different kind of mover
 
 E-12 searched rule space from soups, and E-14 showed that soups (almost) never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
@@ -182,7 +185,7 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 | 4 · heredity and variation | not measured | not measured |
 | 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
 
-**Mistakes we caught and recorded:** the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
+**Mistakes we caught and recorded:** an over-inclusive mover check in a new script (J-025); the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
 
 ## What next
 
@@ -210,13 +213,14 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 | 04:32 | E-19: the shuffled control confirms spatial correlation; soups rarely make gliders (PR #10) |
 | 04:39 | Detector sensitivity for slow movers measured, ≈ 92% (PR #11) |
 | 04:45 | E-20: 500 controlled collisions; no births, but gliders can fuse |
-| 05:00 | Double gliders also found arising spontaneously, once via fusion of two spontaneous gliders (J-024) |
+| 04:50 | Double gliders also found arising spontaneously, once via fusion of two spontaneous gliders (J-024) |
+| 05:05 | E-21: spontaneous double gliders are rare (~0.6% of worlds); a flawed check caught (J-025) |
 
 Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 77 checks, all passing.
 
 ## Read more
 
-- Journal entries [J-012 to J-024]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Journal entries [J-012 to J-025]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
 - Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
