@@ -47,6 +47,8 @@ Labels and objectives tuned for 2-state rules called fields of static Lenia blob
               self-propelled structure.
 * quasi-static negative: a dynamic rule with nothing that travels (moving stripe texture)
               keeps its free activity and stays rankable.
+* slow positive  the "wanderer" (E-17/E-18), a slow turning mover emerging from a smooth start:
+              must stay self-propelled and complex (the detector misses ~8% of them, J-022).
 * near-fixed point  positive: jitter control (fixed field, +-1 level flicker) -> frozen.
               deceptive: the creeping soup is NOT a fixed point (its edges really move).
               negative: two gliders are not frozen.
@@ -261,6 +263,15 @@ def run_probe_benchmark(log=print) -> dict:
           f"{len(picked)} picked of {len(alive)} alive: classes {sorted(cm[0] for cm in picked)}, "
           f"quasi-static {sum(cm[1]['quasi_static'] for cm in picked)}, "
           f"new vocabulary objective {[round(OBJECTIVES['vocabulary'](cm[1])) for cm in picked]}")
+
+    # 7b. slow, turning positive (review R-4, J-022): the E-17/E-18 "wanderer" (mass ~115,
+    # ~0.08 cells/step along a curving path) emerging from a smooth start (E-18a universe #81)
+    wspec = UniverseSpec({"kind": "lenia", "rule": "LENIA/R13/T10/m0.243/s0.0224/b1,0.5,0.5"}, 1909909783107617907,
+                         128, 128, 0.18, init={"kind": "smooth", "ell": 6.0})
+    o = study(wspec, steps=2000)
+    check("Lenia slow positive: an emergent turning 'wanderer' is self-propelled and complex",
+          o.cls == "complex" and (o.metrics["self_propelled_shapes"] or 0) >= 1,
+          brief(o.cls, o.metrics))
 
     # 8. Flow-Lenia (mass-conserving continuous physics, float32 states, v0.7, J-016, D-026)
     from .physics import FlowLenia

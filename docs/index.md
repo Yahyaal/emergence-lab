@@ -20,7 +20,7 @@ This site is the project's **research journal**: what we did, why, what we found
 <div class="card"><div class="stat">v0.6</div><p>Current version: two physics families (Life-like rules and Lenia), validated discovery and probes, initial conditions, causal knockouts, and the Lenia start-condition experiments (E-12 to E-14).</p></div>
 <div class="card"><div class="stat">2 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: self-propelled structures, in Lenia arising spontaneously from smooth random starts (E-14). No replication, heredity or ongoing innovation observed yet.</p></div>
 <div class="card"><div class="stat">1.9–4.2×</div><p>How many more distinct interesting rules the discovery engine finds than random search, at equal compute (2 seeds per arm, so preliminary).</p></div>
-<div class="card"><div class="stat">71 / 71</div><p>Benchmark checks passing: 39 standard checks plus 32 hard and deceptive controls (probes, knockouts, Lenia).</p></div>
+<div class="card"><div class="stat">77 / 77</div><p>Benchmark checks passing: 39 standard checks plus 38 hard and deceptive controls (probes, knockouts, Lenia, Flow-Lenia).</p></div>
 </div>
 
 ## Hypotheses so far
