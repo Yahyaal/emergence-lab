@@ -38,7 +38,7 @@ Before running anything new, we found that our automatic "complex" label had bee
 </figure>
 
 We checked whether the blob-edge activity was a rounding artefact (Lenia here stores 256 levels per cell). **It is not**: the same simulation in full floating-point precision does exactly the same thing. It is real, slow relaxation at the blob edges. The fix (for continuous physics only; the Game-of-Life results are byte-for-byte unchanged):
-- "complex" now requires something that **travels by itself** (verified by cutting it out and running it alone);
+- "complex" now requires something that **travels by itself**: seen moving in its own world, then verified by cutting it out and running it alone;
 - fields of still objects whose edges only creep are labelled **quasi-static** and are no longer rewarded by the search;
 - every change has a positive control, a negative control, a control built to fool it, and a test against the way the search picks candidates (8 new checks, all passing).
 
@@ -123,7 +123,7 @@ If gliders destroy each other in small worlds, what happens with more room? **E-
 
 <div class="cards two">
 <div class="card"><img src="{{ '/assets/report/e15-field-takeover.gif' | relative_url }}" alt="A blob field spreading over a large world"><p><b>The field wins.</b> One surviving patch of static blobs spreads over the whole world within ~600 steps.</p></div>
-<div class="card"><img src="{{ '/assets/report/e15-collision.gif' | relative_url }}" alt="Two gliders colliding in an empty world"><p><b>Gliders collide.</b> In the worlds the field never reached, gliders meet and merge or destroy each other. No collision ever made a new glider.</p></div>
+<div class="card"><img src="{{ '/assets/report/e15-collision.gif' | relative_url }}" alt="Two gliders colliding in an empty world"><p><b>Gliders collide.</b> In the worlds the field never reached, gliders meet and merge or destroy each other. We saw no collision make a new glider.</p></div>
 </div>
 
 So a glider is a **fragile in-between state**: the world must collapse enough to leave isolated lumps, but not so much that nothing survives, and no blob field may survive anywhere. In bigger worlds that last condition fails more often. In the collisions we looked at, gliders merged or destroyed each other. **We saw no births and no growing population**, though with only 6 glider-only worlds that is weak evidence, not proof.
@@ -151,7 +151,7 @@ So a glider is a **fragile in-between state**: the world must collapse enough to
 E-12 searched rule space from soups, and E-14 showed that soups (almost) never make gliders. So we repeated the search (**E-17**, pre-registered) with every world started smooth.
 
 <div class="cards two">
-<div class="card"><img src="{{ '/assets/report/e17-wanderer.gif' | relative_url }}" alt="A compact patterned creature moving in a loop, leaving a faint trail"><p><b>The "wanderer"</b> (rule μ 0.243, three kernel rings), found by the discovery engine. Cut out and run alone, it keeps its body (mass ~115) and moves along its path at about 0.07 cells per step, <b>turning as it goes</b> (net progress is only 0.02–0.05 cells per step) (faint trail). Found in 4 worlds, including runs with fresh seeds and a 2× larger world.</p></div>
+<div class="card"><img src="{{ '/assets/report/e17-wanderer.gif' | relative_url }}" alt="A compact patterned creature moving in a loop, leaving a faint trail"><p><b>The "wanderer"</b> (rule μ 0.243, three kernel rings), found by the discovery engine. Cut out and run alone, it keeps its body (mass ~115) and moves along its path at about 0.07 cells per step, <b>turning as it goes</b>, as its faint trail shows (net progress is only 0.02–0.05 cells per step). Found in 4 worlds, including runs with fresh seeds and a 2× larger world.</p></div>
 <div class="card"><p><b>Engine vs random search, from smooth starts:</b></p><p>Engine: <b>1 rule with a verified mover</b> (the wanderer). Random search: <b>0</b>. A second candidate, found by both, was a drifting chunk of blob field that fell apart when run alone.</p><p>The wanderer lives far from Orbium's island (3 rings, larger μ). It is slower and turns, unlike the straight-line gliders: a different kind of mover from Orbium (new to this project; similar slow, turning Lenia species may already be known). The numbers are tiny (one seed per search), so this is a lead, not a statistical result.</p></div>
 </div>
 
@@ -189,17 +189,18 @@ Overnight a separate agent implemented Flow-Lenia from the paper's equations and
 
 ## What next
 
-1. **The wanderer:** confirm with more seeds; map its rule neighbourhood (as E-13a did for Orbium); check how it interacts with gliders and with other wanderers.
-2. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
-3. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
-4. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
-5. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
+1. **Interactions as a route to new structure:** gliders can fuse into double gliders (E-20). Do wanderers fuse, with each other or with gliders? Is there a chain (double → triple)? A knockout test on fusion events (J-010 style) would show whether later structures depend on earlier ones.
+2. **A better detector for slow, turning movers** (it misses ~8% of wanderers, J-022), with its own deceptive controls.
+3. **Rates vs world size and run length**, measured with the validated detector at checkpoints (E-15 used a quick counter for its time series).
+4. **Chan's own patch protocol in larger worlds and longer runs** (it produced nothing in 2000 steps on 128×128).
+5. **A replication detector for continuous physics** (our exact-shape probes do not work for Lenia).
+6. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
 
 ## How the night went
 
 | Time (CST) | What |
 |---|---|
-| 00:04 | Label fix merged (PR #4); E-12 (Lenia search, engine vs random) starts |
+| 23:50–00:04 | Label fix merged (PR #4); E-12 (Lenia search, engine vs random) running |
 | 00:10 | Glider-viability map (E-13a); literature review; E-13 pre-registered |
 | 00:33 | E-13: first spontaneous gliders, from smooth starts only |
 | 01:07 | E-14 confirms (pre-registered, fresh seeds) |
@@ -220,8 +221,8 @@ Everything was done on branches, checked with `pytest` and the validation benchm
 
 ## Read more
 
-- Journal entries [J-012 to J-025]; independent review [R-4]({{ '/reviews.html#r-4' | relative_url }})({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
-- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md).
+- Journal entries [J-012 to J-025]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-026; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
 **Glossary.** *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).
