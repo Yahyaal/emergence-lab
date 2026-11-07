@@ -59,11 +59,15 @@ CREATE TABLE IF NOT EXISTS discoveries (
 
 
 def pack_state(state: np.ndarray) -> bytes:
-    return zlib.compress(np.ascontiguousarray(state, dtype=np.uint8).tobytes(), 9)
+    """uint8 states as raw bytes (unchanged); float states as float32 bytes (4 per cell)."""
+    dt = np.float32 if np.issubdtype(state.dtype, np.floating) else np.uint8
+    return zlib.compress(np.ascontiguousarray(state, dtype=dt).tobytes(), 9)
 
 
 def unpack_state(blob: bytes, height: int, width: int) -> np.ndarray:
-    return np.frombuffer(zlib.decompress(blob), dtype=np.uint8).reshape(height, width)
+    raw = zlib.decompress(blob)
+    dt = np.float32 if len(raw) == 4 * height * width else np.uint8  # the blob size tells the dtype
+    return np.frombuffer(raw, dtype=dt).reshape(height, width)
 
 
 class Store:

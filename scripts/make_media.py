@@ -74,11 +74,11 @@ def make_universe(item: dict) -> Universe:
 
 def frames_of(item: dict) -> list[np.ndarray]:
     u = make_universe(item)
-    out = [u.state.copy()]
+    out = [u.physics.view(u.state).copy()]  # float physics: quantized for display only
     for t in range(1, item["steps"] + 1):
         u.step()
         if t % item["stride"] == 0 or t == item["steps"]:
-            out.append(u.state.copy())
+            out.append(u.physics.view(u.state).copy())
     return out, u.physics.num_states
 
 

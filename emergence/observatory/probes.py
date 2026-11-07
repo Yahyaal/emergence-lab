@@ -23,16 +23,18 @@ def damage_spreading(physics: Physics, snapshot: np.ndarray, reference: list[np.
     if steps == 0:
         return {"damage": 0.0, "damage_norm": 0.0}
     curves = np.zeros((trials, steps))
+    view = physics.view  # identity for uint8 physics; float physics compare their uint8 views
+    ref_views = [view(r) for r in reference]
     for k in range(trials):
         twin_state = np.array(snapshot, copy=True)
         r, c = int(rng.integers(snapshot.shape[0])), int(rng.integers(snapshot.shape[1]))
-        twin_state[r, c] = 0 if twin_state[r, c] else 1
+        twin_state[r, c] = 0 if twin_state[r, c] else 1  # float physics: a unit of matter
         twin = Universe(physics, twin_state)
         for i in range(steps):
             twin.step()
-            curves[k, i] = np.count_nonzero(twin.state != reference[i]) / snapshot.size
+            curves[k, i] = np.count_nonzero(view(twin.state) != ref_views[i]) / snapshot.size
     final = float(curves[:, -max(1, steps // 8):].mean())
-    baseline = pairwise_difference_baseline(reference[-1], physics.num_states)
+    baseline = pairwise_difference_baseline(ref_views[-1], physics.num_states)
     return {
         "damage": final,
         "damage_norm": final / baseline if baseline > 0 else 0.0,

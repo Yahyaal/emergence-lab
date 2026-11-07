@@ -17,20 +17,13 @@ p + clip(dt F(p), -(dd - s), dd - s); each cell receives that mass times the ove
 area / (2s)^2. The overlaps of one square sum exactly to (2s)^2, so float mass is
 conserved to rounding precision.
 
-Storage (D-025): the rest of the system stores uint8 states and Physics.step is a pure
-function of that state, so the float state cannot live inside the physics. A is stored
-on a fixed scale, A = state * A_MAX / 255 with A_MAX = 2 (0.0078 per level; the paper's
-initial matter is uniform in [0, 1]; theta_A = 1 pushes matter above 1 back down).
-After each float step the field is rounded with a deterministic LARGEST-REMAINDER rule
-that keeps the integer total sum(state) exactly unchanged: floor every cell, then give
-one extra level to the cells with the largest fractional parts (ties broken by cell
-index) until the total matches. A cell that would exceed 255 is capped and its excess
-is handed out the same way, so the stored mass is conserved EXACTLY, at every step, as
-long as the world holds less than 255 levels per cell on average.
-Known cost (J-014): quantization friction. Flows that move less than about half a level
-per cell per step are rounded away, so slow dynamics stall (pure diffusion of the paper's
-patch stops after < 50 steps in uint8 but keeps spreading in float). `step_float` runs
-the same physics without rounding, for comparisons.
+Storage (D-026): float32 states in physical units (dtype = np.float32). Each step is
+computed in float64 and stored as float32, so mass is conserved to float32 rounding.
+An earlier uint8 version (largest-remainder rounding, exact integer mass) was dropped:
+rounding friction removed every flow below about half a level per step, so slow dynamics
+froze (pure diffusion of the paper's patch stopped spreading after < 50 steps).
+`view` quantizes A to uint8 on [0, DISPLAY_MAX] for the observer's frame measures and the
+dashboard only; the structure census uses the float state.
 
 Rule label (one or more kernels joined by '+'):
     FLENIA/R13/m0.150/s0.0150/h1/r1/a0.5/b1/w0.15
@@ -46,7 +39,7 @@ import numpy as np
 
 from .base import Physics, register
 
-A_MAX = 2.0           # value of state 255
+DISPLAY_MAX = 2.0     # A shown as level 255 in the uint8 view (display and frame measures only)
 THETA_A, N_ALPHA = 1.0, 2.0
 DT, S_SPREAD, DD = 0.2, 0.65, 5
 
@@ -127,36 +120,11 @@ def reintegrate(A: np.ndarray, dy: np.ndarray, dx: np.ndarray, s: float = S_SPRE
     return out * norm
 
 
-def quantize_conserving(A: np.ndarray, total: int) -> np.ndarray:
-    """Round A (in levels) to uint8 so that the integer sum is exactly `total`
-    (largest-remainder rounding, deterministic tie-break by cell index; capped at 255)."""
-    q = np.clip(np.floor(A), 0, 255)
-    frac = np.where(q < 255, A - q, -np.inf).ravel()  # capped cells take no extra level
-    deficit = int(total - q.sum())
-    flat = q.ravel()
-    while deficit > 0:
-        room = np.flatnonzero(flat < 255)
-        if len(room) == 0:
-            break
-        k = min(deficit, len(room))
-        # largest fractional parts first; stable sort keeps index order for ties
-        order = room[np.argsort(-frac[room], kind="stable")[:k]]
-        flat[order] += 1
-        frac[order] = -np.inf
-        deficit -= k
-    while deficit < 0:  # only possible through float error at the last level; remove smallest fractions
-        nz = np.flatnonzero(flat > 0)
-        k = min(-deficit, len(nz))
-        order = nz[np.argsort(A.ravel()[nz] - flat[nz], kind="stable")[:k]]
-        flat[order] -= 1
-        deficit += k
-    return flat.reshape(A.shape).astype(np.uint8)
-
-
 @register
 class FlowLenia(Physics):
     kind = "flow_lenia"
-    num_states = 256
+    num_states = 256      # of the uint8 view
+    dtype = np.float32
     continuous = True  # observatory: tolerant structure detector and continuous label rules
 
     def __init__(self, kernels: list[Kernel] | tuple[Kernel, ...], R: int = 13, diffusion_only: bool = False):
@@ -198,22 +166,29 @@ class FlowLenia(Physics):
         return reintegrate(A, np.clip(DT * Fy, -lim, lim), np.clip(DT * Fx, -lim, lim))
 
     def step(self, state: np.ndarray) -> np.ndarray:
-        A = state.astype(np.float64) * (A_MAX / 255.0)
-        A1 = self.step_float(A)
-        return quantize_conserving(A1 * (255.0 / A_MAX), int(state.sum(dtype=np.int64)))
+        return self.step_float(state.astype(np.float64)).astype(np.float32)
+
+    def view(self, state: np.ndarray) -> np.ndarray:
+        if state.dtype == np.uint8:
+            return state
+        return np.rint(np.clip(state / DISPLAY_MAX, 0.0, 1.0) * 255).astype(np.uint8)
+
+    def from_levels(self, levels: np.ndarray) -> np.ndarray:
+        """uint8 initial conditions (0..255) -> A in [0, 1], the paper's range of initial matter."""
+        return (levels.astype(np.float64) / 255.0).astype(np.float32)
 
     def random_state(self, rng: np.random.Generator, shape: tuple[int, int], density: float) -> np.ndarray:
-        """Soup: each cell is occupied with probability `density`, value uniform in [0, A_MAX]."""
+        """Soup: each cell is occupied with probability `density`, A uniform in [0, 1]."""
         occ = rng.random(shape) < density
-        return np.where(occ, np.rint(rng.random(shape) * 255), 0).astype(np.uint8)
+        return np.where(occ, rng.random(shape), 0.0).astype(np.float32)
 
     @staticmethod
     def patch_state(rng: np.random.Generator, shape: tuple[int, int], side: int = 40) -> np.ndarray:
         """The paper's initial condition: a central side x side patch of uniform random
-        matter A ~ U[0, 1] (levels 0..127 on the A_MAX = 2 scale); vacuum elsewhere."""
-        s = np.zeros(shape, np.uint8)
+        matter A ~ U[0, 1]; vacuum elsewhere."""
+        s = np.zeros(shape, np.float32)
         r0, c0 = (shape[0] - side) // 2, (shape[1] - side) // 2
-        s[r0:r0 + side, c0:c0 + side] = np.rint(rng.random((side, side)) * (255 / A_MAX))
+        s[r0:r0 + side, c0:c0 + side] = rng.random((side, side))
         return s
 
     # ------------------------------------------------------------- serialisation

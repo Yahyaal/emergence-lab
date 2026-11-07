@@ -23,7 +23,7 @@ def study_universe(u: Universe, seed: int, steps: int = 500, window: int = 100) 
     # the observer's own randomness (surrogates, probe locations) is derived from
     # the seed but kept in a separate stream from the universe's randomness
     tol = VALUE_TOL if getattr(u.physics, "continuous", False) else 0
-    obs = Observer(total_steps=steps, window=window, seed=seed ^ 0x5EED, value_tol=tol)
+    obs = Observer(total_steps=steps, window=window, seed=seed ^ 0x5EED, value_tol=tol, view=u.physics.view)
     probe_rng = np.random.default_rng([seed, 7])
     dmg_steps = min(DAMAGE_STEPS, steps, window - 1) if window > 1 else 0
     t_probe = steps - dmg_steps
@@ -36,7 +36,7 @@ def study_universe(u: Universe, seed: int, steps: int = 500, window: int = 100) 
         obs.observe(u.t, u.state)
         if u.t == t_probe:
             snapshot = np.array(u.state)
-    reference = list(obs.frames)[-dmg_steps:] if dmg_steps else []
+    reference = list(obs.raw_frames)[-dmg_steps:] if dmg_steps else []
     damage = damage_spreading(u.physics, snapshot, reference, probe_rng) if dmg_steps else None
     result = obs.finalize(damage, num_states=u.physics.num_states, physics=u.physics)
     result.final_hash = state_hash(u.state)

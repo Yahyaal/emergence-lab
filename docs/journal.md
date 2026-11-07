@@ -12,26 +12,55 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
-## J-014 · 2026-11-07 · v0.7: Flow-Lenia physics (implementation and validation only, no experiments)
+## J-016 · 2026-11-07 · v0.7: Flow-Lenia physics with float32 states (implementation and validation only, no experiments)
 
-**Question / why:** add a mass-conserving continuous family (Flow-Lenia, Plantec et al. 2022/2023, arXiv 2212.07906), where matter is moved along a flow instead of created and destroyed. (J-013 is used on the parallel `v0.6-lenia-experiments` branch.)
+**Question / why:** add a mass-conserving continuous family, Flow-Lenia (Plantec et al. 2022/2023, arXiv 2212.07906): matter is moved along a flow instead of being created and destroyed. This is a second Lenia-like family next to the E-12/E-13 Lenia work (J-013, J-014).
 
 **Built:**
-- **Physics** (`physics/flow_lenia.py`, reimplemented from the paper's equations; the reference code has no licence and was not used): single channel, torus, FFT ring kernels and Gaussian growth, flow F = (1 − α)∇U − α∇A with α = clip(A², 0, 1) (θ_A = 1, n = 2), unnormalised 3×3 Sobel gradients with wrap, reintegration tracking (dt = 0.2, s = 0.65, displacement clipped to dd − s = 4.35). Labels `FLENIA/R13/m…/s…/h…/r…/a…/b…/w…`, kernels joined by `+`; `random()` uses the paper's ranges with R fixed at 13 and 1–3 kernels of 3 rings; `mutate()` always changes the label. `FLENIA/R13/diffusion` is the U = 0 control.
-- **Storage (D-025):** uint8, A = state × 2/255, with largest-remainder rounding that keeps `sum(state)` exactly constant.
-- Discovery niche family `flow_lenia`, dashboard colour ramp, CLI help.
+- **Physics** (`physics/flow_lenia.py`), reimplemented from the paper's equations. The reference code has no licence and was not used.
+  - Single channel on a torus, FFT ring kernels, Gaussian growth.
+  - Flow F = (1 − α)∇U − α∇A, with α = clip(A², 0, 1) (θ_A = 1, n = 2). Gradients are unnormalised 3×3 Sobel filters with wrap.
+  - Reintegration tracking: dt = 0.2, s = 0.65, displacement clipped to dd − s = 4.35.
+- **Rules:** written `FLENIA/R13/m…/s…/h…/r…/a…/b…/w…`, kernels joined by `+`.
+  - `random()` uses the paper's ranges, with R fixed at 13 and 1–3 kernels of 3 rings each.
+  - `mutate()` always changes the label.
+  - `FLENIA/R13/diffusion` is the U = 0 control.
+- **Float states in the engine (D-026).** A physics may declare `dtype = np.float32`.
+  - **True float state:** the universe, forks, `state_hash` (tagged with the dtype) and storage (float32 blobs) all keep it.
+  - **uint8 view:** each physics has a `view` (A on [0, 2]), which the observer's frame measures, the damage probe, the dashboard and `make_media` use.
+  - **Structure census and exact recurrence** use the float state. Their thresholds are converted so they mean the same physical value as for uint8 Lenia.
+  - **uint8 physics are untouched:** their view is the state itself.
+- **Wiring:** discovery niche family `flow_lenia`, dashboard colour ramp, CLI help.
+
+**Why float, not uint8:** a first uint8 version used exact largest-remainder rounding, and its integer mass was exactly conserved. But it had **quantization friction**: flows under about half a level per step were rounded away. Pure diffusion of the paper's patch froze after < 50 steps (rms radius 16.6), while float kept spreading (22.2 at step 400). Some rules that wobbled in float were pinned in uint8. It was dropped.
 
 **Found:**
-- **Mass:** stored mass is exact over 1000 steps (101 636 → 101 636 levels); the float core drifts by 7.8e-14 relative. Capped cells (value > 255) hand out ~2 levels per step of ~10⁵ in a rule that saturates.
-- **Rotation:** a rot90 seed evolves into the rot90 world (no cell differs by > 2 levels after 200 steps; centroid mismatch 0.00 cells), so the Sobel/grid and the rounding tie-break do not make fake motion.
-- **No positive control found.** 88 random rules from the paper's 40×40 uniform patch (128×128 torus, 450–600 steps): 52 checked with the full detector (16 from `random()`, 24 with 3 kernels, 12 with 10 kernels) gave **0 movers and 0 self-propelled structures**; 36 more (12 with 1 kernel, 24 with 10) tracked by largest-object drift in both uint8 and float showed no clean mover (net displacement ≪ path). Most collapse into one or a few static blobs; the rest fragment and wobble. This agrees with the paper: random search gives mostly static patterns, and directed motion with one channel needed long optimisation (multi-channel was much easier).
-- **Quantization friction (important):** flows below about half a level per cell per step are rounded away. Pure diffusion of the patch freezes in uint8 after < 50 steps (rms radius 16.6) but keeps spreading in float (22.2 at step 400). In the drift scan some rules wobble in float (path 23–42 cells) but are pinned in uint8 (1–6). Slow Flow-Lenia dynamics are therefore **not trustworthy** in the uint8 implementation.
+- **Bit identity:** the text output of `emergence benchmark --probes` (39 standard checks plus all 32 earlier probe checks) is identical before and after the change, and all earlier tests pass.
+- **Mass:** conserved to float32 rounding. The worst relative drift within 1000 steps is 1.5e-8, with no trend (the float64 core drifts ~1e-13).
+- **Rotation:** a rot90 seed evolves into the rot90 world exactly (200 steps; centroid mismatch 0.00). The grid and the Sobel filters do not make fake motion.
+- **No positive control found.** 80 random float rules from the paper's 40×40 uniform patch (128×128 torus, 500 steps): 20 with 3 kernels, 20 with 5, 20 with 10, and 20 with 10 kernels and R random in [8, 25].
+  - **0 self-propelled structures.** Two tracks passed the mover test, but both are small fragments (mass ~10) that fail the isolation test.
+  - Most rules collapse into one blob or a few static blobs. The rest shed fragments or wobble.
+  - Four candidates with the largest drift were inspected over 800 steps: fragments settle or creep, and none travels alone.
+  - The 88 rules of the first, uint8 version (now dropped) gave none either.
+  - This agrees with the paper: random search gives mostly static patterns, and directed motion with one channel needed long optimisation; two channels made it much easier.
+  - **Two channels were not tried:** a 3D state would touch every observer path.
 
-**Validation:** 5 new probe checks (37/37; standard 39/39): exact mass, negative (static blob rule → not complex, quasi-static), deceptive (diffusion → no movers; rotated seed moves rotated), selection-aware null (random rules picked by the old objectives → none complex without a mover). There is **no Flow-Lenia positive**; the detector's positive is still the Lenia gliders. The diffusion control is weak because friction freezes it. 4 new tests (55).
+**Validation:** 5 probe checks (37/37; standard 39/39):
+- mass conserved to float32 rounding;
+- negative: a static-blob rule → not complex, quasi-static;
+- deceptive: diffusion spreads (+9 cells rms in 400 steps) but has no movers;
+- deceptive: a rotated seed moves the same way, rotated;
+- selection-aware null: random rules picked by the old objectives → none complex without a mover.
 
-**Caveats:** Sobel normalisation and displacement clipping are not stated in the paper (choices here: unnormalised, dd = 5). θ_A = 1 for one channel is our choice; the paper gives no value.
+There is **no Flow-Lenia positive**; the detector's positive is still the Lenia gliders. 5 new tests (56 in total).
 
-**Lesson:** an exactly conserved quantized state can still be the wrong physics: rounding friction stops slow flows, so a float (b) state is needed before reading anything from slow Flow-Lenia dynamics.
+**Caveats:**
+- The paper states neither the Sobel normalisation nor the displacement clipping; the choices here are unnormalised Sobel and dd = 5.
+- θ_A = 1 for one channel is our choice; the paper gives no value.
+- Frame measures (activity, entropy, compression, local periodicity) see the uint8 view, so changes under 2/255 × 2 ≈ 0.016 in A count as no change. That is why the diffusion control is labelled `periodic`.
+
+**Lesson:** a state that conserves mass exactly can still be the wrong physics. Rounding friction stopped slow flows, so the state had to be floating point.
 
 ---
 
