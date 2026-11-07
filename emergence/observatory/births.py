@@ -13,7 +13,9 @@ physics' vacuum) and run. At every checkpoint, objects are matched to the parent
 A copy count series is recorded. The object REPRODUCES (generation 1) if
 
 * the late copy count (max over the second half) is >= MIN_COPIES (discrete 3, continuous 4)
-  and larger than the max over the first quarter; for continuous physics 4 copies within a
+  and at least MIN_GROWTH (2) times the max over the first quarter: copies keep multiplying.
+  (Added after E-27, J-032: a Lenia blob that bursts into a world-filling labyrinth makes
+  ~80 similar-mass pieces within 500 steps and then stops; "late > early" let it through); for continuous physics 4 copies within a
   factor 2 need at least twice the parent's mass, so a parent that only breaks up into
   pieces (fragmentation without growth) cannot pass;
 * at that checkpoint the copies hold >= CLEAN_FRAC of all the matter in the world, so
@@ -22,7 +24,8 @@ A copy count series is recorded. The object REPRODUCES (generation 1) if
   create parent-like objects from vacuum, e.g. noise control physics).
 
 Generation 2: one copy at that checkpoint is isolated alone into a fresh world and tested
-the same way. A "reproducer" passes both generations: its copies make copies.
+the same way, with copies still matched to the ORIGINAL parent (so the type cannot drift
+by a factor 2 per generation; E-27 showed 377 -> 278 -> 169). A "reproducer" passes both generations: its copies make copies.
 
 Rule-level null (discrete only): random patterns of the parent's size and density, tested
 the same way. If they reproduce THEMSELVES (Fredkin's linear rule copies everything), the
@@ -53,6 +56,7 @@ from .structures import census
 COPY_TOL = 2.0
 MIN_COPIES = {False: 3, True: 4}  # by `continuous`
 CLEAN_FRAC = 0.75
+MIN_GROWTH = 2
 FILL_FRACTION = 0.3  # the test world counts as full beyond this occupied fraction
 DISCRETE = {"steps": 192, "every": 1, "side": 160}
 CONTINUOUS = {"steps": 4000, "every": 50, "side": 160}
@@ -121,6 +125,7 @@ def alone(physics, state: np.ndarray, mask: np.ndarray, side: int, margin: int =
 
 
 def _matcher(physics, world: np.ndarray, parent: dict):
+    # discrete: the parent's shape comes from parent["key"] if given, else from `world`
     """Function objs, field -> (copies, matter fraction in copies)."""
     cont = _continuous(physics)
     if cont:
@@ -129,7 +134,7 @@ def _matcher(physics, world: np.ndarray, parent: dict):
         def is_copy(o, f):
             return pm / COPY_TOL <= o["mass"] <= pm * COPY_TOL
     else:
-        key = _shape_key(field(physics, world), parent["mask"])
+        key = parent.get("key") or _shape_key(field(physics, world), parent["mask"])
 
         def is_copy(o, f):
             return o["mass"] == parent["mass"] and _shape_key(f, o["mask"]) == key
@@ -161,8 +166,9 @@ def copy_series(physics, world: np.ndarray, parent: dict, steps: int, every: int
     return series, snaps, full
 
 
-def generation(physics, world: np.ndarray, parent: dict, steps: int, every: int) -> dict:
-    series, snaps, full = copy_series(physics, world, parent, steps, every)
+def generation(physics, world: np.ndarray, parent: dict, steps: int, every: int, ref: dict | None = None) -> dict:
+    """One generation; copies are matched to `ref` (default: `parent`, the object in `world`)."""
+    series, snaps, full = copy_series(physics, world, ref or parent, steps, every)
     need = MIN_COPIES[_continuous(physics)]
     if len(series) < 4:
         return {"ok": False, "full": full, "early": 0, "late": 0, "clean": 0.0, "snap": None, "series": series}
@@ -171,7 +177,7 @@ def generation(physics, world: np.ndarray, parent: dict, steps: int, every: int)
     half = len(series) // 2
     i = half + int(np.argmax(series[half:]))
     late, clean = snaps[i][0], snaps[i][1]
-    ok = late >= need and late > early and clean >= CLEAN_FRAC
+    ok = late >= need and late >= MIN_GROWTH * max(early, 1) and clean >= CLEAN_FRAC
     return {"ok": bool(ok), "full": full, "early": int(early), "late": int(late), "clean": round(float(clean), 3),
             "snap": snaps[i] if ok else None, "series": series}
 
@@ -192,6 +198,8 @@ def reproduction_test(physics, state: np.ndarray, obj: dict, rng: np.random.Gene
     if not start:
         return {"verdict": "no reproduction", "gen1": None}
     parent = max(start, key=lambda o: o["mass"])
+    if not cont:
+        parent["key"] = _shape_key(field(physics, w0), parent["mask"])
     g1 = generation(physics, w0, parent, steps, every)
     out = {"parent_mass": round(parent["mass"], 2), "gen1": {k: v for k, v in g1.items() if k != "snap"}}
     if not g1["ok"]:
@@ -209,7 +217,7 @@ def reproduction_test(physics, state: np.ndarray, obj: dict, rng: np.random.Gene
     child = sorted(copies, key=lambda o: o["mass"])[len(copies) // 2]
     w2 = alone(physics, snap_world, child["mask"], side, margin)
     c2 = find(physics, w2)
-    g2 = generation(physics, w2, max(c2, key=lambda o: o["mass"]), steps, every) if c2 else {"ok": False}
+    g2 = generation(physics, w2, max(c2, key=lambda o: o["mass"]), steps, every, ref=parent) if c2 else {"ok": False}
     out["gen2"] = {k: v for k, v in g2.items() if k != "snap"}
     # rule-level null (discrete) / attractor check (continuous): scrambled patches
     f0 = field(physics, w0)

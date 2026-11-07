@@ -434,3 +434,50 @@ def test_smooth_shuffled_has_same_values_but_no_correlation():
     assert np.array_equal(np.sort(sm.ravel()), np.sort(sh.ravel())) and not np.array_equal(sm, sh)
     corr = lambda a: np.corrcoef(a[:, :-1].ravel(), a[:, 1:].ravel())[0, 1]  # noqa: E731
     assert corr(sm.astype(float)) > 0.5 and abs(corr(sh.astype(float))) < 0.05
+
+
+def test_births_highlife_replicator_reproduces_and_glider_does_not():
+    from emergence.benchmark_probes import HIGHLIFE_REPLICATOR, rle
+    from emergence.observatory import births as B
+    from emergence.physics import parse_rule
+
+    def verdict(rule, pat):
+        g = np.zeros((64, 64), np.uint8)
+        g[20:20 + pat.shape[0], 20:20 + pat.shape[1]] = pat
+        ph = parse_rule(rule)
+        o = max(B.find(ph, g), key=lambda o: o["mass"])
+        return B.reproduction_test(ph, g, o, np.random.default_rng(0))["verdict"]
+
+    assert verdict("B36/S23", rle(HIGHLIFE_REPLICATOR)) == "reproducer"
+    assert verdict("B3/S23", rle("bo$2bo$3o!")) == "no reproduction"
+    assert verdict("B1357/S1357", rle("obo$3o$bo!")) == "rule-level duplication"
+
+
+def test_gray_scott_spot_divides_and_round_trips():
+    from emergence.observatory import births as B
+    from emergence.physics import GrayScott, parse_rule, physics_from_dict
+
+    gs = parse_rule("GS/F0.0367/k0.0649")
+    assert physics_from_dict(gs.to_dict()) == gs and gs.label() == "GS/F0.0367/k0.0649"
+    s = gs.seed_spot((96, 96))
+    assert s.shape == (2, 96, 96) and s.dtype == np.float32
+    n0 = len(B.find(gs, s))
+    for _ in range(600):
+        s = gs.step(s)
+    assert n0 == 1 and len(B.find(gs, s)) >= 4  # one spot -> four within 600 steps
+    assert isinstance(gs.mutate(np.random.default_rng(0)), GrayScott)
+
+
+def test_births_vacuum_isolation_keeps_only_the_object():
+    from emergence.observatory import births as B
+    from emergence.physics import GrayScott
+
+    gs = GrayScott()
+    s = gs.vacuum((96, 96))
+    s[1, 10:20, 10:20] = 0.3
+    s[1, 60:70, 60:70] = 0.3  # a second object, must be left out
+    objs = B.find(gs, s)
+    assert len(objs) == 2
+    w = B.alone(gs, s, objs[0]["mask"], side=64, margin=2)
+    assert w.shape == (2, 64, 64) and len(B.find(gs, w)) == 1
+    assert np.allclose(w[0][B.field(gs, w) == 0], 1.0)  # vacuum is U = 1

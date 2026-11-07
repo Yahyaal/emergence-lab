@@ -107,6 +107,19 @@ Status after v0.4: the knockout test (Track A, step 3) and the initial-condition
 - Validate it against published reference patterns imported from the Lenia authors' data, not retyped from memory.
 - Compare families on the evidence ladder at equal compute, not on raw metric values.
 
+**Track D: reproduction and heredity** (added 2026-11-07, J-032; the owner asked what could give them)
+
+Status: a birth detector for both physics families is built and validated (`observatory/births.py`, D-028: two generations in isolation, positives HighLife replicator and Gray-Scott spots). E-27 tests it on the Lenia worlds we have. Routes, roughly by cost:
+1. **Known reproducers as controls** (done): HighLife's replicator (discrete) and Gray-Scott's dividing spots (Pearson 1993). Both copy identically: reproduction without heredity.
+2. **A fission objective for Lenia search:** reward a rising object count at constant mass per object, from smooth starts (D-025), then confirm with the birth detector.
+3. **Flow-Lenia with parameter localization** (Plantec et al. 2023), the main route to heredity. Each cell carries a parameter vector (e.g. mu, sigma and the kernel weights h) that moves with its matter in the same reintegration step; where flows meet, parameters mix in proportion to the incoming mass, with optional small mutation. The update rule stays fixed and local; what varies is where each "species" sits. Plan:
+   - **Physics:** `FlowLeniaPL`, state of shape (1 + P, h, w) float32 (mass plus P parameter channels, stored as mass-weighted sums so mixing is exact and mass-conserving); `view` = mass. The growth step uses each cell's own parameters.
+   - **Fed worlds:** in vacuum a mass-conserving creature cannot double, so the birth test runs in a world with a thin uniform layer of free matter ("food"), with a food-only world as the background null.
+   - **Lineage and heredity measure:** track objects with their mean parameter vector; at each split, record parent and child vectors. Heredity = parent-offspring regression slope of the parameters, against a null that pairs each child with a random parent of the same time window. Positive control: two hand-placed populations with different parameters (offspring must resemble their own parent). Negative: one population with mixing at every step (parameters blur to the mean; slope near 0).
+   - **First experiment:** random multi-species starts (several patches, each with random parameters) in fed worlds; outcome: worlds with a verified reproducer, and the heredity slope with its null.
+4. **Multi-channel Lenia** (Chan 2020 reports self-replicating creatures there): a larger physics change, after 3.
+5. **Program soups** (Agüera y Arcas et al. 2024: self-replicators emerge from random BFF programs) as a separate substrate, closest to "spontaneous emergence from fixed rules"; would be its own project.
+
 ## Could this be academic research?
 
 Yes. Automated discovery in cellular automata is an active area, so the contribution has to be clear. Related work to position against (to be checked in a proper literature review):
