@@ -13,11 +13,17 @@ Find out whether complex, persistent and possibly evolving structure emerges spo
 
 ## State in one paragraph
 
-Emergence Lab (v0.4, Python) runs many 2D cellular-automaton universes (Life-like B/S and Generations B/S/C rules on a torus). A passive observatory measures them, and a discovery engine searches rule space: Pareto ranking, novelty search, MAP-Elites niches and seed screening. Promising rules get follow-ups: new seeds, a larger world, a 4× longer run, an innovation-over-time probe, and a replication probe on isolated clones. Each discovery gets an evidence level (1–5). v0.4 added initial-condition generators (`UniverseSpec.init`), a paired conditions study (`emergence conditions`) and a causal knockout probe calibrated with placebo deletions. So far:
+Emergence Lab (v0.5, Python) runs many 2D cellular-automaton universes (Life-like B/S and Generations B/S/C rules on a torus). A passive observatory measures them, and a discovery engine searches rule space: Pareto ranking, novelty search, MAP-Elites niches and seed screening. Promising rules get follow-ups: new seeds, a larger world, a 4× longer run, an innovation-over-time probe, and a replication probe on isolated clones. Each discovery gets an evidence level (1–5). v0.4 added initial-condition generators (`UniverseSpec.init`), a paired conditions study (`emergence conditions`) and a causal knockout probe calibrated with placebo deletions. So far:
 - the engine beats random search (preliminary);
 - the best evidence reached is level 2 (self-propelled structures);
 - no replication or cumulative innovation has been observed: knockouts ≈ placebo;
 - starting from a patch only mattered through the amount of matter.
+
+v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256 levels, FFT), with a tolerant structure detector (`observatory/continuous.py`) and its own controls (J-011). The first Lenia exploration (E-12 run 1, cloud) was invalid and its data is lost: the class label and objectives, tuned for 2-state rules, called fields of static blobs "complex". v0.5 fixes this for continuous physics only (J-012, D-022):
+- `complex` now requires a self-propelled structure;
+- static blob fields are *quasi-static* and are not ranked.
+
+Across 60 random Lenia rules, none has a self-propelled structure yet. E-12 (Lenia discovery) and E-13 (Lenia initial conditions with `smooth` starts) must be re-run with the fixed code, after the owner approves the compute.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -26,28 +32,31 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # ~40 tests, ~30 s
-emergence benchmark --probes             # 39 + 14 validation checks, ~3 min
+pytest                                   # 51 tests, ~40 s
+emergence benchmark --probes             # 39 + 32 validation checks, ~2 min on 12 cores
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
 emergence discoveries 1                  # findings with evidence
 emergence compare 1 2                    # e.g. engine vs --baseline-random
+emergence observe "LENIA/R13/T10/m0.150/s0.0150/b1" --size 128 --steps 1000   # one Lenia universe
+emergence explore --physics lenia ...    # search Lenia rule space
+emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smooth:10
 ```
 
 ## Where things are
 
 | Path | What |
 |---|---|
-| `emergence/physics/` | `Physics` interface (`base.py`), Life-like/Generations (`totalistic.py`), `NoiseControl` (`controls.py`). Add new physics here with `@register` |
+| `emergence/physics/` | `Physics` interface (`base.py`), Life-like/Generations (`totalistic.py`), Lenia (`lenia.py`), controls (`controls.py`: `NoiseControl`, `SmoothNoiseControl`, `JitterControl`). Add new physics here with `@register`; set `continuous = True` for continuous states |
 | `emergence/engine.py` | `UniverseSpec` (everything needed to reproduce a universe) and `Universe` (read-only state, `fork`) |
-| `emergence/observatory/` | measures, structure census and self-propulsion test, recurrence, damage spreading, local periodicity, `innovation.py`, `replication.py`, `shapes.py` |
+| `emergence/observatory/` | measures, structure census and self-propulsion test, recurrence, damage spreading, local periodicity, `innovation.py`, `replication.py`, `shapes.py`; `continuous.py` (tolerant census, free activity, emergent glider); continuous label rules in `observer.classify` |
 | `emergence/lab.py` | the only place engine and observer meet (`study`, `study_universe`) |
 | `emergence/discovery.py` | objectives, calibration, niches, `Explorer`, follow-ups, verdicts (`innovation_verdict`, evidence levels), `reproduce` |
 | `emergence/analysis.py` | `compare` for baselines |
 | `emergence/benchmark.py`, `benchmark_probes.py` | validation suite |
 | `emergence/server.py`, `web/` | dashboard |
 | `docs/` | this journal (GitHub Pages, Jekyll). `_data/media.json` lists the clips; `data/experiments/` holds the exports |
-| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py` |
+| `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `lenia_static_fields.py` (C-01 diagnostic behind D-022) |
 
 ## Conventions
 
@@ -70,10 +79,15 @@ emergence compare 1 2                    # e.g. engine vs --baseline-random
 - Environment comparisons need matched density: a "patch" effect was really just less matter (E-10).
 - In sensitive universes compare interventions with *placebo* interventions: a fixed threshold produced 5 false "dependencies" (J-010).
 - The 64-step damage measure underestimates sensitivity over 1000-step horizons.
+- **Labels tuned for 2-state rules inflate continuous physics.** Every blob of a settled Lenia soup is a "persistent object", and its edges creep for thousands of steps; that is real dynamics (float64 does the same), not rounding. A detector or objective must be re-validated with the new family's own controls (J-012).
+- **Continuous censuses count instances, not types:** `vocabulary` = 20 can be 20 copies of one static blob.
+- **Measuring a glider's speed across more than half the torus wraps:** the Orbium glider runs at ~0.53 cells/step, but its 200-step displacement on a 128 torus reads ~0.11. Sum short legs.
+- **Empty space next to an Orbium-parameter soup does not stay empty:** the blob field grows into it, so a glider placed beside a soup is swallowed.
+- **Uncommitted cloud work is lost when the container goes away** (E-12 run 1, the `smooth` condition, gallery clips). Commit or export before ending a cloud session.
 
 ## Open problems, in priority order
 
-1. Lenia physics with its own structure detector, run through the same probes (Track C); now the most promising lever.
+1. Re-run the Lenia experiments with the fixed label (E-12 discovery, E-13 smooth initial conditions); ask the owner before starting them. Then: Lenia reference patterns imported from published data (research.md); tolerant innovation and replication probes for continuous physics; creatures that rotate or pulse in place are not counted as `complex` yet.
 2. A density sweep for rules whose behaviour changed with density (E-09, E-10).
 3. Statistical power for H1 (10–30 runs per arm).
 4. Sampling validation of the innovation probe, and a same-rule null (Track A).
