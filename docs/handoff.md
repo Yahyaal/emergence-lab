@@ -29,7 +29,10 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **E-13/E-14:** in those rules, **smooth (correlated) random starts make gliders and soups with the same mass never do** (pre-registered and confirmed: 49/320 vs 0/320, p < 1e-6).
 - **E-15:** in big worlds a growing blob field usually wins, and gliders interact only destructively (no births).
 - **v0.7 adds Flow-Lenia** with float32 states (J-016). It still has no positive control: 0 movers in 400 universes (E-16).
-- **E-17**, a discovery search from smooth starts, ran last.
+- **E-17/E-18:** a search from smooth starts found a slow, turning "wanderer" (3-ring rule). It was confirmed in 36/40 smooth-start worlds vs 0/40 soups, and lives on a narrow ridge of rule space.
+- **E-19:** a shuffled control confirmed that *spatial correlation* is the cause. Soups make gliders only rarely, at their die/freeze transition.
+- **E-20:** 500 controlled collisions produced no births, but gliders can fuse into a stable double glider.
+- **Review and detector:** an independent review (R-4) led to corrections and new controls. The detector finds about 92% of slow turning movers (J-022).
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -40,6 +43,7 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
 pytest                                   # 58 tests, ~1 min
 emergence benchmark --probes             # 39 + 38 validation checks, ~3 min on 12 cores
+python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
 emergence discoveries 1                  # findings with evidence
@@ -93,8 +97,10 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
-1. Lenia beyond level 2. Next steps:
+1. Lenia beyond level 2 (see the report's "What next"). Next steps:
    - a replication probe for continuous physics (the exact-shape probes do not apply);
+   - do fused double gliders (E-20) arise spontaneously in big smooth-start worlds?
+   - a detector change for turning movers (300-step isolation; relaxed straightness), with its own deceptive controls (J-022);
    - glider rates vs world size and run length, measured with the validated detector at checkpoints;
    - Chan's patch protocol in larger worlds and longer runs.
 
