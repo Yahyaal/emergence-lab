@@ -1,0 +1,491 @@
+{
+ "experiment": "E-55",
+ "controls": {
+  "handwritten_replicator": "forward",
+  "e42_emergent": [
+   "reverse",
+   "reverse",
+   "reverse",
+   "reverse",
+   "reverse",
+   "reverse",
+   "reverse",
+   "reverse",
+   "reverse"
+  ],
+  "random_1000": {
+   "none": 1000
+  },
+  "deceptive_constant_writer": "none",
+  "deceptive_palindrome_copier": "both",
+  "e42_trace": [
+   {
+    "index": 0,
+    "partner_writes": 2560,
+    "down": 2520,
+    "up": 0,
+    "heads": [
+     "h0"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 1,
+    "partner_writes": 2560,
+    "down": 2520,
+    "up": 0,
+    "heads": [
+     "h0"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 2,
+    "partner_writes": 2560,
+    "down": 2520,
+    "up": 0,
+    "heads": [
+     "h0"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 3,
+    "partner_writes": 2560,
+    "down": 2520,
+    "up": 0,
+    "heads": [
+     "h0"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 4,
+    "partner_writes": 1536,
+    "down": 1512,
+    "up": 0,
+    "heads": [
+     "h0"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 5,
+    "partner_writes": 1088,
+    "down": 1064,
+    "up": 0,
+    "heads": [
+     "h0"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 6,
+    "partner_writes": 1400,
+    "down": 1376,
+    "up": 0,
+    "heads": [
+     "h0"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 7,
+    "partner_writes": 2048,
+    "down": 2016,
+    "up": 0,
+    "heads": [
+     "h1"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   {
+    "index": 8,
+    "partner_writes": 1736,
+    "down": 1704,
+    "up": 0,
+    "heads": [
+     "h1"
+    ],
+    "head_wrapped_before_first_write": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  ]
+ },
+ "census": {
+  "main-k1": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "main-k2": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "main-k3": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "main-k4": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "main-k5": {
+   "standard": {
+    "forward": 0,
+    "reverse": 2,
+    "both": 0,
+    "screen": 2,
+    "examples_forward": [],
+    "examples_reverse": [
+     "[<,}]",
+     "[{.>]"
+    ],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 6,
+    "reverse": 0,
+    "both": 0,
+    "screen": 8,
+    "examples_forward": [
+     "[.>}]",
+     "[.}>]",
+     "[<{,]",
+     "[>}.]",
+     "[{<,]",
+     "[}>.]"
+    ],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "main-k6": {
+   "standard": {
+    "forward": 0,
+    "reverse": 53,
+    "both": 0,
+    "screen": 56,
+    "examples_forward": [],
+    "examples_reverse": [
+     "+[<,}]",
+     "+[{.>]",
+     ",[<,}]",
+     ",[{.>]",
+     "-[<,}]",
+     "-[{.>]",
+     ".[<,}]",
+     ".[{.>]",
+     "<[,<}]",
+     "<[.>{]",
+     "<[.{>]",
+     "<[<},]"
+    ],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 133,
+    "reverse": 0,
+    "both": 0,
+    "screen": 136,
+    "examples_forward": [
+     "+[,<{]",
+     "+[,{<]",
+     "+[.>}]",
+     "+[.}>]",
+     "+[<{,]",
+     "+[>}.]",
+     "+[{<,]",
+     "+[}>.]",
+     ",[,<{]",
+     ",[,{<]",
+     ",[.>}]",
+     ",[.}>]"
+    ],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "zero-k1": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "zero-k2": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "zero-k3": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "zero-k4": {
+   "standard": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 0,
+    "reverse": 0,
+    "both": 0,
+    "screen": 0,
+    "examples_forward": [],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  },
+  "zero-k5": {
+   "standard": {
+    "forward": 0,
+    "reverse": 2,
+    "both": 0,
+    "screen": 2,
+    "examples_forward": [],
+    "examples_reverse": [
+     "[<,}]",
+     "[{.>]"
+    ],
+    "examples_both": []
+   },
+   "counterfactual": {
+    "forward": 6,
+    "reverse": 0,
+    "both": 0,
+    "screen": 8,
+    "examples_forward": [
+     "[.>}]",
+     "[.}>]",
+     "[<{,]",
+     "[>}.]",
+     "[{<,]",
+     "[}>.]"
+    ],
+    "examples_reverse": [],
+    "examples_both": []
+   }
+  }
+ },
+ "totals_main": {
+  "standard": {
+   "forward": 0,
+   "reverse": 55,
+   "both": 0
+  },
+  "counterfactual": {
+   "forward": 139,
+   "reverse": 0,
+   "both": 0
+  }
+ },
+ "shortest_main": {
+  "standard": {
+   "forward": null,
+   "reverse": 5
+  },
+  "counterfactual": {
+   "forward": 5,
+   "reverse": null
+  }
+ },
+ "primary": {
+  "standard_reverse_dominates": true,
+  "counterfactual_forward_dominates": true,
+  "pass": true
+ },
+ "seconds": 20
+}

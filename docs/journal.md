@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-055 · 2026-11-08 · E-55: replicators copy backwards because the heads wrap around the tape
+
+**Question (pre-registered, `docs/data/e55-preregistration.md`):** all 9 replicators that emerged in our soups copy themselves backwards (J-046). Why? Hypothesis written before the census: both heads start at byte 0, so one `{` (or `<`) puts a head at byte 127, the partner's last byte, and a 5-instruction loop such as `[{.>]` then copies the program into its partner in reverse. A forward copy needs a head 64 cells ahead, which takes 64 moves or a counting loop (the hand-written replicator spends 27 bytes on it). So backward copiers are far easier to stumble on.
+
+**Ran:** E-55, `scripts/bff_kernels.py` (its own copy of the interpreter in `scripts/bff_kernels.c`, with head1's start as a parameter; the soup code is untouched), 2 workers, 21 s. Every kernel of 1–6 instructions (1,111,110) at the start of a 64-byte program padded with random non-instruction filler, run first in a pair with random partners; a copier must leave its partner equal to itself (forward) or to its reverse (≥ 60 of 64 bytes) and stay intact, with 4 of 4 partners. Two physics: the standard rule and a counterfactual in which head1 starts at byte 64. The pre-registration was written before the census but committed together with the results (same session, ~20 minutes).
+
+**Found:**
+- **Primary: standard rule: 55 reverse copiers, 0 forward; counterfactual: 139 forward, 0 reverse. Prediction met in both directions.** The shortest copiers have 5 instructions in both physics. Standard: `[{.>]` (head1 wraps to 127 and writes downwards) and `[<,}]` (head0 wraps to 127 and pulls bytes into the partner); the 6-instruction ones are these with one extra instruction. Counterfactual: `[.>}]`, `[.}>]`, `[>}.]`, `[}>.]`, `[<{,]`, `[{<,]`.
+- Filler that may contain zero bytes (k ≤ 5): the same kernels, same counts.
+- Controls: the hand-written replicator is classified forward; all 9 E-42 emergent replicators reverse; 1000 random programs none; a constant writer `[{.]` (fills its partner with one byte value, then overwrites itself) none; a palindromic copier "both" (not counted as either).
+- **Mechanism trace of the 9 emergent replicators (8 random partners each):** all their writes into the partner are made by a head moving **downwards** (17,752 consecutive downward steps, 0 upward), and in every run the writing head had wrapped below byte 0 before its first write. 7 of 9 write with head0 (`,`, the `[<,}]` kind); the 2 from soup 5006 at 32,000 write with head1 (`.`, the `[{.>]` kind). (Deviation: the pre-registration asked only whether **head1** wraps; after seeing that 7 replicators write with head0, the trace was extended to whichever head writes.)
+- Figure: `docs/assets/report/e55-copy-kernels.png`.
+
+**Interpretation:** the backward copying is explained by the rule, not by anything the soups learned: under the standard rule, every copier of up to 6 instructions is a backward copier, and moving one head's starting point is enough to flip that. The emergent replicators use exactly the two minimal backward mechanisms. This also explains why they are mirror replicators: a backward copy of a backward copier is its reverse, which must itself copy (both forms passed the heredity test, E-42). The census measures how easy the simplest copiers are to reach; it does not trace the soups' actual path to them. Held-out check pending: the orientation of E-54's verified replicators (pre-registered: all reverse).
+
+**Lesson:** a striking regularity in what emerges can be a plain property of the rule; a counterfactual rule that changes one detail is the cheapest way to tell.
+
+---
+
 ## J-054 · 2026-11-08 · E-50: bigger program soups jump sooner, roughly in proportion to their size; two "jumps" were brief spikes
 
 **Question (pre-registered, `docs/data/e50-preregistration.md`, commit `9b31f52`):** does the BFF state transition (the appearance of replicators) become more likely per round in bigger soups? Hypothesis: the origin is a rare event per program interaction, so the rate ∝ N^β with β ≈ 1.

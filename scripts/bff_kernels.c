@@ -1,0 +1,82 @@
+/* E-55 copy-kernel census (scripts/bff_kernels.py). Same interpreter as emergence/programs/bff.c, except
+   that head1 starts at `h1start` (0 = the standard rule; L = counterfactual). Kept separate on purpose so the
+   soup interpreter is untouched. */
+#include <stdint.h>
+#include <string.h>
+
+static long run(uint8_t *t, int n, long max_steps, int h1start) {
+    int ip = 0, h0 = 0, h1 = h1start % n;
+    long steps = 0;
+    while (ip >= 0 && ip < n && steps < max_steps) {
+        switch (t[ip]) {
+        case '<': h0 = (h0 + n - 1) % n; break;
+        case '>': h0 = (h0 + 1) % n; break;
+        case '{': h1 = (h1 + n - 1) % n; break;
+        case '}': h1 = (h1 + 1) % n; break;
+        case '-': t[h0]--; break;
+        case '+': t[h0]++; break;
+        case '.': t[h1] = t[h0]; break;
+        case ',': t[h0] = t[h1]; break;
+        case '[':
+            if (t[h0] == 0) {
+                int d = 1, j = ip + 1;
+                for (; j < n; j++) {
+                    if (t[j] == '[') d++;
+                    else if (t[j] == ']' && --d == 0) break;
+                }
+                if (j >= n) return steps + 1;
+                ip = j;
+            }
+            break;
+        case ']':
+            if (t[h0] != 0) {
+                int d = 1, j = ip - 1;
+                for (; j >= 0; j--) {
+                    if (t[j] == ']') d++;
+                    else if (t[j] == '[' && --d == 0) break;
+                }
+                if (j < 0) return steps + 1;
+                ip = j;
+            }
+            break;
+        default: break;
+        }
+        ip++;
+        steps++;
+    }
+    return steps;
+}
+
+static uint64_t sm(uint64_t *s) {
+    uint64_t z = (*s += 0x9E3779B97F4A7C15ull);
+    z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9ull;
+    z = (z ^ (z >> 27)) * 0x94D049BB133111EBull;
+    return z ^ (z >> 31);
+}
+
+/* out[i]: bit0 = forward copy with every partner, bit1 = reverse copy with every partner
+   (partner half matches the program, or its reverse, in >= thr bytes AND program half intact >= thr). */
+void classify(const uint8_t *progs, int nprog, int L, int h1start, int partners, uint64_t seed,
+              long max_steps, int thr, uint8_t *out) {
+    uint8_t tape[1024];
+    for (int i = 0; i < nprog; i++) {
+        const uint8_t *p = progs + (long)i * L;
+        uint64_t s = seed ^ (0xD1B54A32D192ED03ull * (uint64_t)(i + 1));
+        int fwd = 1, rev = 1;
+        for (int q = 0; q < partners && (fwd || rev); q++) {
+            memcpy(tape, p, L);
+            for (int j = 0; j < L; j++) tape[L + j] = (uint8_t)sm(&s);
+            run(tape, 2 * L, max_steps, h1start);
+            int intact = 0, f = 0, r = 0;
+            for (int j = 0; j < L; j++) {
+                intact += tape[j] == p[j];
+                f += tape[L + j] == p[j];
+                r += tape[L + j] == p[L - 1 - j];
+            }
+            if (intact < thr) { fwd = rev = 0; break; }
+            if (f < thr) fwd = 0;
+            if (r < thr) rev = 0;
+        }
+        out[i] = (uint8_t)(fwd | (rev << 1));
+    }
+}
