@@ -145,3 +145,55 @@ def non_copier() -> np.ndarray:
     x = B.REPLICATOR.copy()
     x[bytes(x).index(b"[.>}]") + 1] = 0x80
     return x
+
+
+# ---- invasion into a resident soup (E-52, J-052) ----------------------------------------------
+# K_INV copies of x replace random members of a resident background (4096 programs sampled from a
+# soup); the soup runs ROUNDS rounds without mutation. A control run starts from the same background
+# without the injection and uses the same random pairings (same Soup seed), so programs of x's family
+# that the residents make anyway are subtracted: excess e(t) = n_injected(t) - n_control(t).
+# Score s = ln((e(T) + 1) / (e(0) + 1)); 0 = x spreads like the residents it replaced.
+# In a soup of replicators every meeting is winner-take-all (whoever runs first overwrites the
+# other), so drift is strong: reps and K_INV are larger than for growth_rate.
+
+K_INV, N_INV, ROUNDS, REPS_INV = 64, 4096, 16, 16
+
+
+def invasion(x: np.ndarray, background_programs: np.ndarray, rng: np.random.Generator, alts: list | None = None,
+             k: int = K_INV, n: int = N_INV, rounds: int = ROUNDS, reps: int = REPS_INV, mode: str = "bff") -> dict:
+    x = np.asarray(x, np.uint8)
+    refs = [x] + [np.asarray(a, np.uint8) for a in (alts or [])]
+    bgp = np.asarray(background_programs, np.uint8)
+    s, ex = [], []
+    for _ in range(reps):
+        base = bgp[rng.choice(len(bgp), n, replace=len(bgp) < n)].copy()
+        inj = base.copy()
+        inj[rng.permutation(n)[:k]] = x
+        seed = int(rng.integers(2 ** 31))
+        A = B.Soup(n=n, length=len(x), mutation=0.0, mode=mode, seed=seed, programs=inj)
+        C = B.Soup(n=n, length=len(x), mutation=0.0, mode=mode, seed=seed, programs=base)
+        e0 = _members(A.programs, refs) - _members(C.programs, refs)
+        for _ in range(rounds):
+            A.epoch()
+            C.epoch()
+        eT = _members(A.programs, refs) - _members(C.programs, refs)
+        ex.append([e0, eT])
+        s.append(float(np.log((max(eT, 0) + 1) / (max(e0, 0) + 1))))
+    s_ = np.array(s)
+    return {"s": round(float(s_.mean()), 4), "se": round(float(s_.std(ddof=1) / np.sqrt(len(s_))), 4),
+            "ss": [round(v, 4) for v in s], "excess": ex}
+
+
+def resident_copiers(rng: np.random.Generator, n: int, q_odd: float) -> np.ndarray:
+    """Calibration background: n hand-written copiers with redrawn inert tails (each its own family);
+    a share q_odd end in an odd byte, the rest in an even one. Against them trapped(1) copies with
+    probability exactly 1 - q_odd and is otherwise identical to trapped(0)."""
+    out = np.empty((n, 64), np.uint8)
+    odd, even = INERT[INERT % 2 == 1], INERT[INERT % 2 == 0]
+    code = bytes(B.REPLICATOR).index(b"\x80")
+    for i in range(n):
+        y = B.REPLICATOR.copy()
+        y[code:] = rng.choice(INERT, 64 - code)
+        y[63] = rng.choice(odd if rng.random() < q_odd else even)
+        out[i] = y
+    return out

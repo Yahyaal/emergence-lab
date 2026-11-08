@@ -124,3 +124,27 @@ def run(check) -> None:
           for _ in range(8)]
     check("program fitness null: 8 repeat assays of the same program (random background) -> at most 2 'different' at p < 0.05",
           sum(p < 0.05 for p in ps) <= 2, f"p {[round(p, 3) for p in ps]}")
+
+    # invasion into a resident soup (program_fitness.invasion, E-52): calibration background of
+    # hand-written copiers with inert tails, a share q of which end in an odd byte
+    irng = np.random.default_rng(52)
+    kw = dict(n=1024, k=32, reps=8)
+    bg = F.resident_copiers(irng, 1024, 0.25)
+    i0, i1 = F.invasion(F.trapped(0), bg, irng, **kw), F.invasion(F.trapped(1), bg, irng, **kw)
+    ci = F.compare({"r": i0["s"], "rs": i0["ss"]}, {"r": i1["s"], "rs": i1["ss"]})
+    check("program invasion known effect: trap variant copying with p = 0.75 among resident copiers scores > 1 below the neutral copier (p < 0.01)",
+          i1["s"] - i0["s"] < -1.0 and ci["p"] < 0.01, f"s {i0['s']:.2f} vs {i1['s']:.2f}, p {ci['p']:.2g}")
+    bg0 = F.resident_copiers(irng, 1024, 0.0)
+    n0 = F.invasion(F.trapped(0), bg0, irng, **kw)
+    n1 = F.invasion(F.trapped(1), bg0, irng, **kw)
+    cn = F.compare({"r": n0["s"], "rs": n0["ss"]}, {"r": n1["s"], "rs": n1["ss"]})
+    check("program invasion null: two neutral invaders (trap never fires, q = 0) -> not different at p < 0.05",
+          cn["p"] >= 0.05, f"s {n0['s']:.2f} vs {n1['s']:.2f}, p {cn['p']:.2g}")
+    nc = F.invasion(F.non_copier(), bg0, irng, **kw)
+    check("program invasion negative: a non-copier among resident copiers is wiped out (s < -2)", nc["s"] < -2,
+          f"s {nc['s']:.2f}")
+    d0 = F.invasion(F.trapped(0), bg, irng, mode="copyall", **kw)
+    d1 = F.invasion(F.trapped(1), bg, irng, mode="copyall", **kw)
+    cd = F.compare({"r": d0["s"], "rs": d0["ss"]}, {"r": d1["s"], "rs": d1["ss"]})
+    check("program invasion deceptive: the same q = 0.25 pair under copyall (code never runs, the trap cannot act) -> not different",
+          cd["p"] >= 0.05, f"s {d0['s']:.2f} vs {d1['s']:.2f}, p {cd['p']:.2g}")
