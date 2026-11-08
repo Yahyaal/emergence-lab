@@ -12,6 +12,103 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-054 · 2026-11-08 · E-50: bigger program soups jump sooner, roughly in proportion to their size; two "jumps" were brief spikes
+
+**Question (pre-registered, `docs/data/e50-preregistration.md`, commit `9b31f52`):** does the BFF state transition (the appearance of replicators) become more likely per round in bigger soups? Hypothesis: the origin is a rare event per program interaction, so the rate ∝ N^β with β ≈ 1.
+
+**Ran:** E-50, `scripts/bff_sizes.py`, ~3 h on 10 workers. Soups of 2^13 (12 soups, up to 48,000 rounds), 2^15 (12, up to 32,000) and 2^16 programs (10, up to 24,000); a soup that crossed HOE ≥ 1.0 was scanned with the replicator detector 1,000 rounds later (or at its horizon) and stopped. The 2^14 arm is E-40/E-41 as run (2 of 12 by 48,000).
+
+**Found:**
+- **Primary: β = 1.02 (95% CI 0.11 to 2.02), one-sided p = 0.014. Prediction met:** the rate grows with soup size, about in proportion.
+- By arm (pre-registered criterion): 2^13: 2 of 12 (rounds 45,250 and 47,750); 2^14: 2 of 12; **2^15: 0 of 12** (≈ 2.8 expected under the fit; P(0) ≈ 6%); 2^16: **5 of 10** (11,750 to 21,750). Prediction "≥ 3 in the 2^15 and 2^16 arms" met (5), all in 2^16.
+- **The transition criterion was fooled 3 times.** In 2^13 soup 5110 and 2^16 soups 5305 and 5309, HOE jumped to 1.2–1.6 for one checkpoint and fell back below 0.2 within 1,000 rounds. The most common programs then were almost all zero bytes: a wave of programs that write zeros, which dies out. The detector found **no replicator** in any of them. So the secondary prediction "every transitioned soup contains a replicator" **failed** as stated. It holds for the 6 real jumps (HOE stays at 2.5–4; steps per pair rise to the 8,192 limit), and no untransitioned soup had a replicator. Soup 5308 had such a spike at 11,750 and then a real jump at 12,500.
+- **Post hoc, counting only jumps with a verified replicator** (spike soups censored where they were stopped): β = 0.93 (CI −0.17 to 2.15), p = 0.049. Same direction, weaker evidence.
+- Baseline HOE (median of the first 4 checkpoints) is 0.49–0.51 in all three new arms, so the 1.0 threshold means the same at every size.
+- Figure: `docs/assets/report/e50-soup-size.png`.
+
+**Interpretation:** bigger soups make replicators sooner, consistent with a constant chance per program interaction (β ≈ 1). This is why the paper's soups (2^17 programs) jump in a few thousand rounds and ours (2^14) took tens of thousands. The interval is wide (9 events) and the 2^15 arm's 0 of 12 is unexplained, beyond chance. HOE ≥ 1 at a single checkpoint is **not** a reliable sign of the transition: it must hold for several checkpoints, or be confirmed by the detector (D-045).
+
+**Lesson:** a one-checkpoint threshold on a noisy statistic invites false events. Pre-register a persistence requirement, and keep the detector scan as the ground truth.
+
+---
+
+## J-053 · 2026-11-08 · E-53: without relatives in the background, later code does not invade better; E-52 was most likely kinship
+
+**Question (pre-registered, `docs/data/e53-preregistration.md`, commit `ed8418b`):** E-52's advantage of later replicators appeared only in backgrounds where they alone had close relatives. In backgrounds where **neither** group has relatives, do later replicators still invade better?
+
+**Ran:** E-53, `scripts/bff_invasion.py --e53`, assay unchanged. The 33 early (T+2000) and late (T+12000) E-49 replicators of soups 901, 5006, 5010, each in its soup's snapshots at T+4000, T+9000 and a later time (T+20000; 5006: T+12500), 16 replicates, plus 3 resident nulls per background. Two crashes, both fixed without touching the assay: a negative time code in an RNG seed for the null jobs (the first run was lost after 104 of 126 assays; the rerun is deterministic and now cached per assay), then a lookup of T+6000 programs in the race-validity step. Fix commits `d1aa604`, `1ba29ab`.
+
+**Found:**
+- Every candidate's kin share in every background: **0** (as checked before the prereg).
+- **Primary: D = −0.34, permutation p = 0.88. Later code does not invade better.** Per cell (late − early): 901: −0.09, −0.16, −0.05; 5006: −0.06, −0.06, +0.10; 5010: +0.04, −0.09, +0.01 (backgrounds T+4000, T+9000, later).
+- Validity: in these kin-free backgrounds, invasion scores do not predict E-49 race outcomes at all (ρ = −0.02, 166 pairs). In E-52 (own-time backgrounds) they did slightly (0.209).
+- **Prediction met:** we leaned (60%) to "E-52 was a kinship artefact".
+
+**Interpretation:** E-52's "later code fits later soups" was most likely produced by relatives in the count, not by adaptation. Across the four measures now applied to the question (races E-48/E-49, growth rate E-51, invasion E-52/E-53), **later replicators are not reliably fitter than earlier ones.** Soup 5006 leans that way in races and growth rate, but not in kin-free invasion (+0.10 in the latest background only). The post-jump change in these soups looks mostly neutral. **Level 5 is not shown, and the evidence now weighs against a strong directional trend over 10,000 rounds.**
+
+**Lesson:** a pre-registered follow-up that removes a suspected confound is cheap and decisive. Report the first result as suggestive until it is done.
+
+---
+
+## J-052 · 2026-11-08 · E-52: later replicators invade the later soup better, but kinship is confounded with time
+
+**Question (pre-registered, `docs/data/e52-preregistration.md`, commit `ea948b1`):** growth into random code misses what decides races (J-051). Do later replicators spread better **inside the soups themselves**?
+
+**Did:** an invasion assay (`program_fitness.invasion`): 64 copies of a candidate replace random members of 4096 programs drawn from a soup snapshot. The soup runs 16 rounds with no mutation, beside a paired control (same background, same pairings, no injection). The score is s = ln((excess family members at the end + 1)/(at the start + 1)); 0 means the candidate spreads like the residents it replaced. Calibration on hand-written copiers whose last byte is odd with a chosen share q, invaded by the trap variant (copies with probability 1 − q): q = 0.1, 0.25, 0.5 gave s = −1.3, −2.9, −4.0, neutral invaders −0.27 to +0.34 (8 replicates). Four probes: known effect, neutral null, non-copier, copyall deceptive. The known-effect probe first used q = 0.25 at the probe's small size (1024 programs, 8 replicates): effect −1.8 but p = 0.039, failing its p < 0.01 bar. It now uses q = 0.5 (effect −2.8, p = 8e-4). The 4096-program assay used in the experiment is larger.
+
+**Ran:** E-52, `scripts/bff_invasion.py`, ~40 min on 2 workers. The 47 E-49 replicators, each in its own soup's snapshots at T+2000 and T+12000, plus 6 random residents per background (null), 16 replicates each.
+
+**Found:**
+- **Primary: D = 0.42, p = 0.045. Later code invades better (prediction "not significant" wrong).** But the whole effect is in the **late backgrounds** (Δ = +0.19, +0.22, +0.11 for 901, 5006, 5010); in the early ones Δ = −0.08, −0.01, 0.00.
+- **Validity: invasion predicts race outcomes slightly better than growth rate** (ρ = 0.209 vs 0.196, 347 pairs; prediction ρ > 0.196 met, narrowly).
+- Residents drawn at random score −1.2 to −3.6: most programs in a soup are poor copiers or none, and replicators of any time score near 0 or above. In soup 5006's late background every candidate does well (+0.6 to +1.0).
+- **Confound found after the run:** each candidate has close relatives (≥ 90% identical) **only in the background of its own time** (1–2% of the soup; none 2,000 rounds away). An injected copy overwritten by a relative still counts as a family member, so relatives can protect a candidate's score. In the late backgrounds only late candidates have relatives, so kinship and time are the same variable there. Within those cells, score correlates with kinship in 901 (ρ = 0.54) and 5010 (0.64) but not in 5006 (0.00). Against a pure kinship artefact: early candidates do **not** score better in the early backgrounds, where only they have relatives.
+
+**Interpretation:** suggestive, not established. The time-shift pattern (later code better in later soups, not in earlier ones) is what adaptation to a changing soup would look like, but the same pattern can come from kinship in the count. E-53 repeated the assay in backgrounds where neither group has relatives: **no advantage (J-053)**, so the E-52 effect was most likely kinship. **Level 5 not shown.**
+
+**Lesson:** when the background is drawn from the same population as one group of candidates, a family-based count favours that group. Check kinship before choosing backgrounds; a kin-free background (a different time) is the clean design.
+
+---
+
+## J-051 · 2026-11-08 · E-51: a sensitive growth-rate measure still finds no general fitness trend; soup 5006 again rises
+
+**Question (pre-registered, `docs/data/e51-preregistration.md`, commit `3ee9274`):** with a calibrated growth-rate measure (D-044, J-050) instead of races, are later verified replicators fitter than earlier ones of the same soup? And does the new measure agree with the races?
+
+**Ran:** E-51, `scripts/bff_fitness.py`, ~15 min on 2 workers (E-50 used the other cores). The 47 E-49 replicators (soups 901, 5006, 5010; 2,000, 6,000 and 12,000 rounds after each jump) and the hand-written one, 24 growth runs each in the random-code background and 8 in the halting background.
+
+**Found:**
+- **Primary: no trend. S = Σ Spearman ρ(time, r) = 0.14, permutation p = 0.38. Prediction (not significant) met.** Per soup: 901 ρ = −0.09, **5006 ρ = +0.64**, 5010 ρ = −0.41.
+- **Soup 5006 again goes up** (mean r 0.088 → 0.097 → 0.097, about +10%); permutation p = 0.005 for this soup alone. The prereg named 5006 as the soup most likely to rise but set no per-soup test, so this is a **post hoc** number. It is the fourth measure pointing the same way for this soup (E-46, E-48, E-49).
+- **Validity: growth rate predicts race outcomes only weakly.** Spearman ρ between Δr and the share of races won = 0.196 (347 pairs, one-sided p = 1e-4; pairs share programs, so p is optimistic). **Prediction (ρ > 0.2 and p < 0.01) narrowly not met** on ρ. r explains ~4% of the variation in race outcomes.
+- Programs differ: 49 of 240 cross-time pairs differ at p < 0.05 (20%), and 9 of 107 same-time pairs (8%, against 5% expected). So r varies between programs, and between time points more than within them, but in no consistent direction overall.
+- All 47 copy perfectly in the halting background (r 0.379–0.397, the ceiling). In random code their r is 0.076–0.108; the hand-written replicator's is 0.140.
+- Figures: `docs/assets/report/e51-growth-rates.png`, `docs/assets/report/d044-calibration.png`.
+
+**Interpretation:** emergent replicators differ in how well they spread into random code, and these differences shift over time, but in two of three soups not upward. Soup 5006 is the exception, and it is consistent across four different measures. Growth into random code is only a small part of what decides a race between two replicators: races are mostly decided by what happens when replicators meet each other (who overwrites whom), which this assay does not measure. **Level 5 is still not shown.** One soup's consistent upward trend is the best candidate for adaptive change so far.
+
+**Lesson:** a calibrated, precise measure of the *wrong component* of fitness does not settle the question. The next measure should put the candidates in the environment they actually live in: invasion from rare into a soup of replicators (resident background), with a neutral marker as control.
+
+---
+
+## J-050 · 2026-11-08 · A growth-rate fitness assay, calibrated on variants with known copying odds (D-044)
+
+**Why:** the race assays (D-042, D-043) start from 8 copies each and read end counts; drift limits them to large effects (E-43, E-49). We needed a measure whose precision and accuracy are known before it is used on emergent code.
+
+**Did:** `emergence/observatory/program_fitness.py` (D-044). r = slope of ln(copies) over the early rounds, from 16 copies among 4096 background programs, no mutation, until copies reach a quarter of the soup (at most 40 rounds); 24 replicate runs; comparisons by Mann–Whitney (one replicate whose copies are lost early skewed Welch's t in a first try). Two backgrounds:
+- **random code:** as in a soup before its jump. Random partners that run first damage a replicator most of the time (the hand-written one survives only ~35% of such meetings), so r there is ~0.14, not the 0.405 a naive calculation gives.
+- **halting:** each background program starts with an unmatched `]`, so it stops at once when it runs first. A plain inert background does not work: the instruction pointer runs on into the replicator's own code with the heads in the wrong place, and the replicator destroys itself (survival 6%). In the halting background a copy is never harmed, so r = ln(1 + p/2), where p is the chance of copying per meeting.
+- **Known-effect ladder:** `trapped(k)` is the hand-written replicator with a loop that subtracts 2^k from its partner's last byte until it reaches zero. If the byte is not a multiple of 2^k the loop never ends and the program runs out of steps before copying. So p is known exactly (≈ 2^-k).
+
+**Found (`docs/data/experiments/2026-11-08-d044-calibration.json`):**
+- Measured vs theory, 24 runs each: p = 1: 0.390 / 0.405; ½: 0.201 / 0.224; ¼: 0.116 / 0.117; ⅛: 0.060 / 0.061; 1⁄16: 0.031 / 0.030. A slight shortfall at high r (copies start meeting each other before the cap). SE ≈ 0.001–0.003.
+- **Sensitivity:** k = 3 vs k = 4 (difference 0.03) separated at p = 6e-7 with 8 runs each.
+- All 9 E-42 emergent replicators copy perfectly in the halting background (r 0.386–0.392, like the hand-written one). In random code they spread at 0.079–0.095, the hand-written one at 0.147.
+- Probes (benchmark section 13, 5 checks): ladder vs theory, k = 3 vs 4, non-copier r ≈ 0 (negative), copyall and noexec rules r ≈ 0 (deceptive: under copyall every program "copies" but counts only drift), 8 repeat assays of one program with ≤ 2 "different" (null). All pass. Test `test_growth_rate_assay`.
+
+**Lesson:** a measure for evolving code can be calibrated like a lab instrument, with built-in variants of known effect. The halting background is the calibration standard; the random background is closer to the soups' real environment but still not the same.
+
+---
+
 ## J-049 · 2026-11-08 · E-49: with verified replicators and fresh time points, later code is not reliably fitter
 
 **Question (pre-registered, `docs/data/e49-preregistration.md`, commit `da4000f`):** E-48 with its flaws fixed: are later replicators fitter than earlier ones of the same soup? Samples were filtered by the replicator test (D-040), taken at new time points (2,000, 6,000 and 12,000 rounds after the jump), and the same-round control used random orientation.

@@ -63,7 +63,12 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **E-47 (`scripts/bff_turnover.py`):** exact replays of soups 901/5006/5010 to 40,000 rounds (snapshots in `runs/e47/`, not committed; regenerate with `--replay`, ~1 h). No 90%-identity family holds more than a few % of the soup after the jump (0 replacements); the most common program drifts from the founder (identity 100% → 2–20%). #4 and #5/#6 were only ~1.6% each.
 - **E-48 (`scripts/bff_time_races.py`):** late (T+10000) vs early (T+1000) common programs: later ahead in 62/108 pairs (p = 0.07, not significant); soup 5006 28/36 (p = 6e-4); two late soup-901 programs are common non-copiers (lose every race). Sample only verified replicators next time.
 - **E-49 (`scripts/bff_time_races2.py`, confirmation of E-48 with verified replicators, new time points):** later ahead 24/44 programs (p = 0.33): **not confirmed**; mean 51.6% of races; control 50.3%. Most post-jump change looks neutral in races.
-- **Next (most promising):** a more sensitive fitness measure (growth rate from a few copies in a fixed background; validate on hand-written replicator variants), then redo the time comparison with more soups; why do all emergent replicators copy backwards? Earlier idea (superseded): track species over time in a running soup with frequent snapshots (replay soup 5006 from E-41 seeds; does each newcomer beat its predecessor? is change cumulative? needs a validated measure); why do all emergent replicators copy backwards; many more null pairs for the contest criterion; rates vs soup size.
+- **Sunday late morning – afternoon, 8 Nov (J-050 to J-054, eighth session):**
+  - **Fitness instruments (D-044, `observatory/program_fitness.py`):** `growth_rate` (early growth from 16 copies among 4096 programs; backgrounds "random" and "halting", where a background program stops at once so theory is exact: r = ln(1 + p/2)); `invasion` (64 copies into a sample of a real soup, paired no-injection control, score = log change of the excess family). Both calibrated on `trapped(k)`, the hand-written replicator that copies with known probability ≈ 2^-k, and `resident_copiers` (a background where the trap fires with a chosen probability). 9 probes (benchmark section 13).
+  - **E-51:** growth rate of the 47 E-49 replicators: no trend over time (p = 0.38); soup 5006 rises again (post hoc). Growth rate predicts races only weakly (ρ = 0.196).
+  - **E-52/E-53:** invasion into the soups themselves: later code ahead (p = 0.045) **only where it alone had close relatives** in the background; in kin-free backgrounds no advantage (p = 0.88). **Pitfall:** a family-based count favours candidates whose relatives are in the background; use backgrounds from other times (kin at 90% identity is gone within 2,000 rounds).
+  - **E-50 (`scripts/bff_sizes.py`):** transition rate ∝ soup size (β = 1.02, p = 0.014; 2^16: 5/10 within 24,000 rounds). 3 one-checkpoint HOE spikes (zero-writing waves, no replicator) were counted by the pre-registered criterion; D-045: require HOE ≥ 1 at 3 consecutive checkpoints plus a detector-confirmed replicator.
+- **Next (most promising):** many jumped soups at 2^16 (half jump within 24,000 rounds; ~1.5 h per soup per core), run long after the jump (50,000+ rounds) with snapshots; then test fitness change over long gaps with the kin-free invasion assay (E-53 design), and look for parasites (programs that are copied but do not copy). Why all emergent replicators copy backwards is still open.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -72,8 +77,8 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 72 tests, ~2 min
-emergence benchmark --probes             # 39 + 83 validation checks, ~5 min on 12 cores
+pytest                                   # 73 tests, ~4 min
+emergence benchmark --probes             # 39 + 92 validation checks, ~8 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -129,7 +134,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
-0. **Program soups (J-041–J-045):** heredity is shown (E-42) and one species out-competes others (E-45); next is change over time in a running soup (level 5 needs a validated measure of cumulative change); transition rate vs soup size (2^14 vs 2^15–2^17); what follows the transition.
+0. **Program soups (J-041–J-054):** heredity is shown (E-42); one species out-competes others (E-45/E-46); later code is not reliably fitter over 10,000 rounds by four measures (E-48–E-53); transition rate ∝ soup size (E-50). Next: many 2^16 soups run long after the jump, kin-free invasion over long gaps (level 5 needs this), parasites, backward copying.
 1. Lenia beyond level 2 (see the report's "What next"). Next steps:
    - a replication probe for continuous physics (the exact-shape probes do not apply);
    - do fused double gliders (E-20) arise spontaneously in big smooth-start worlds?

@@ -69,3 +69,16 @@ def test_family_contest():
     assert r["verdict"] == "a favoured"
     with pytest.raises(ValueError):
         PS.compete_families(x, x, np.random.default_rng(0), reps=1)
+
+
+def test_growth_rate_assay():
+    from emergence.observatory import program_fitness as F
+    rng = np.random.default_rng(0)
+    assert (F.trapped(0) == B.REPLICATOR).all()
+    assert abs(F.trap_p(1) - 0.5) < 0.05
+    full = F.growth_rate(F.trapped(0), rng, bg="halting", reps=3)
+    half = F.growth_rate(F.trapped(1), rng, bg="halting", reps=3)
+    assert abs(full["r"] - F.theory(1.0)) < 0.04 and abs(half["r"] - F.theory(F.trap_p(1))) < 0.04
+    assert F.growth_rate(F.non_copier(), rng, bg="halting", reps=2)["r"] < 0.01
+    ps = F.pair_stats(B.REPLICATOR, rng, bg="halting", partners=16)
+    assert ps["p"] == ps["s1"] == ps["s2"] == 1.0
