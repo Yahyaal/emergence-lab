@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-043 · 2026-11-08 · E-43: one-byte variants of emergent replicators look neutral in competition (selection not shown)
+
+**Question (pre-registered, `docs/data/e43-preregistration.md`):** natural selection needs variation (yes), heredity (yes, E-42) and differences in how well variants spread. Do the one-byte variants of E-42 differ from their parents in head-to-head competition?
+
+**Built (D-042):** `observatory/program_selection.py`: parent and variant, 8 copies each among 1024 random programs, 96 epochs, 8 replicate soups; "favoured" only if every informative replicate has the same sign and the mean log-ratio exceeds ln 2. Controls (benchmark section 12, passing): neutral tail variant of the hand-written replicator → no difference; variant that cannot copy → parent favoured; copyall → undecided.
+
+**Ran:** E-43, `scripts/bff_selection.py`, commit `841accf`, a few minutes on 11 workers. All 141 viable E-42 variants against their parents; 24 neutral pairs of the hand-written replicator as a null.
+
+**Found:**
+- **2 of 141 emergent pairs "parent favoured"** (1.4%), 0 "variant favoured", 139 "no difference". Neutral null: 0 of 24. Fisher one-sided p = 0.73. **Prediction (5–30% parent favoured) wrong; the primary test is not significant.**
+- The two deleterious variants: byte 23 of a soup-901 replicator, and byte 0 of a soup-5006 replicator (the one position whose mutation was only partly inherited in E-42).
+- Contests are winner-take-all: in most replicates one line ends near 0 and the other in the hundreds, in either direction. The assay can see a variant that loses consistently and by a lot; it cannot see small differences.
+
+**Interpretation:** one-byte changes that leave a replicator able to copy itself are, as far as this assay can tell, mostly neutral. Differential reproduction among variants, the third condition for natural selection, is **not shown**. This does not mean there is no selection: in E-41's soups, families do change over time and a few programs dominate. But a measurement that sees it needs more power (more replicates, longer or larger contests, or variants that differ by more than one byte, such as variants taken from different soups).
+
+**Lesson:** heredity was easy to show, fitness differences are not: neutrality is the default for small changes in a copier whose speed is set by its copy loop.
+
+---
+
 ## J-042 · 2026-11-08 · E-42: mutations in emergent program replicators are inherited (heritable variation, level 4)
 
 **Question (pre-registered, `docs/data/e42-preregistration.md`):** the self-replicating programs that emerged in E-41 come in variants. Is that variation heritable: when a replicator carries a mutation, do its copies carry it too, or do they revert to a fixed form (like Lenia's dividing spots, J-037) or lose it?

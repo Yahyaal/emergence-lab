@@ -57,7 +57,8 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **Program soups (BFF)** (`emergence/programs/bff.py`, C interpreter compiled on first use into `~/.cache/emergence-lab`; replicator detector `observatory/replicators.py`, D-040; probes in `benchmark_programs.py`). Run with `scripts/bff_soups.py`.
 - **E-40/E-41:** with 16384 programs, the transition is rare: 3 of 16 soups, at epochs 8750, 32000, 43250 (0 in the first 16000 epochs of 12 pre-registered soups). **Every transitioned soup contains verified replicators (several variants); no untransitioned soup does.** Level 3 from random code. Soups are deterministic given the seed (pilot replay exact).
 - **E-42 (D-041, `observatory/program_heredity.py`):** one-byte mutations of all 9 emergent replicators are inherited (9/9 "heredity"; 140 of 141 viable mutants carried). **Level 4 (heritable variation) for program replicators.**
-- **Next (most promising):** selection among variants (competition assays: two variants seeded together, which spreads?), change of the replicator family over time after a transition, rates vs soup size.
+- **E-43 (D-042, `observatory/program_selection.py`):** head-to-head contests of the 141 viable one-byte variants vs their parents: 2 parent favoured, 139 no difference (neutral null 0/24, p = 0.73). Selection not shown; the assay only sees large effects.
+- **Next (most promising):** contests between replicators from different soups (larger differences), more replicates; tracking the family over time in a running soup; rates vs soup size.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
