@@ -49,7 +49,7 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **Heredity test** (`observatory/heredity.py`, D-029): parents are moved alone into an empty world; heredity = correlation of parent trait with offspring trait, with a parent-permutation null. Controls on `GrayScottTracer` (carried / redrawn / position-set trait); probe section 10.
 - **`FlowLeniaPL`** (`physics/flow_lenia.py`): Flow-Lenia whose kernel weights travel with matter (stored as A·h_i), optional food layer, fast scatter-add reintegration. Equals FlowLenia with uniform weights.
 - **E-29:** 0 reproducers among 3000 random Lenia rules from a lone lump (1453 rules decided; 410 undecided because objects fill the test world). Route 2 (fission objective) looks unpromising in single-channel Lenia.
-- **E-30** (fed FlowLeniaPL, pre-registered): see the journal for its result.
+- **E-30** (fed FlowLeniaPL, J-035): 17/100 apparent reproducers were **food condensing** (uniform food is an unstable fixed point; only 32/100 rules have stable food at 0.05). New perturbed-vacuum null (D-030); rescored 0. Next fed scans: stable-food rules only, held out.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -59,7 +59,7 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
 pytest                                   # 64 tests, ~3 min
-emergence benchmark --probes             # 39 + 62 validation checks, ~5 min on 12 cores
+emergence benchmark --probes             # 39 + 63 validation checks, ~5 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -106,6 +106,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 - Environment comparisons need matched density: a "patch" effect was really just less matter (E-10).
 - In sensitive universes compare interventions with *placebo* interventions: a fixed threshold produced 5 false "dependencies" (J-010).
 - The 64-step damage measure underestimates sensitivity over 1000-step horizons.
+- **An exactly uniform vacuum can be an unstable fixed point** (fed Flow-Lenia, J-035): nulls must use a slightly perturbed vacuum.
 - **Labels tuned for 2-state rules inflate continuous physics.** Every blob of a settled Lenia soup is a "persistent object", and its edges creep for thousands of steps; that is real dynamics (float64 does the same), not rounding. A detector or objective must be re-validated with the new family's own controls (J-012).
 - **Continuous censuses count instances, not types:** `vocabulary` = 20 can be 20 copies of one static blob.
 - **Measuring a glider's speed across more than half the torus wraps:** the Orbium glider runs at ~0.53 cells/step, but its 200-step displacement on a 128 torus reads ~0.11. Sum short legs.

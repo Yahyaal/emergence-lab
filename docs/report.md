@@ -5,7 +5,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 
 # Overnight report · 7 November 2026
 
-<p class="lead"><b>Updated Saturday afternoon</b> (section 10): no reproduction in 3000 random Lenia rules, a validated test for heredity, and Flow-Lenia whose creatures carry their own rules. Earlier: a third kind of mover, Chan's start reproduced in bigger worlds, a better slow-mover detector (section 8), and a birth detector (section 9).</p>
+<p class="lead"><b>Updated Saturday evening</b> (section 10): no reproduction in 3000 random Lenia rules, a validated test for heredity, Flow-Lenia whose creatures carry their own rules, and a false alarm about reproduction in fed worlds, caught and fixed. Earlier: a third kind of mover, Chan's start reproduced in bigger worlds, a better slow-mover detector (section 8), and a birth detector (section 9).</p>
 
 <p class="lead">Can things that move by themselves arise on their own from simple rules? Overnight we tested this in <b>Lenia</b>, a continuous cousin of the Game of Life. For the first time in this project, they did: gliders formed spontaneously, mostly when the random starting world was <i>smooth</i>, with matter clumped in space. From the usual fine-grained noise they almost never formed: once in 1,120 worlds, right at the density where soups switch from dying to freezing.</p>
 
@@ -29,6 +29,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">13 / 160</div><p>Morning: Chan's own start (sparse dense patches) <b>does</b> make gliders when the world is big enough: 0 of 40 at 128², 13 of 160 at 256². <b>Our prediction was wrong</b> (E-24).</p></div>
 <div class="card"><div class="stat">0 / 568</div><p>Saturday: a new <b>birth detector</b>, validated on known reproducers, found <b>no reproduction</b> in 568 Lenia worlds, none among 285 movers. Its first version was fooled by blobs bursting into labyrinths; fixed and confirmed on held-out worlds (E-27, E-28).</p></div>
 <div class="card"><div class="stat">0 / 3000</div><p>Saturday afternoon: <b>every rule drawn at random</b> got a chance to reproduce from a lone lump. None did, and none even came close (E-29). A new <b>heredity test</b> passed its controls, ready for physics that can reproduce.</p></div>
+<div class="card"><div class="stat">17 → 0</div><p>Evening: in <b>fed Flow-Lenia</b>, the detector first found "reproducers" in 17 of 100 worlds. They were <b>food condensing</b>, which happens even with no creature present. Detector fixed (it now also checks a slightly disturbed empty world); <b>0 reproducers</b> (E-30).</p></div>
 <div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
 </div>
 
@@ -267,7 +268,18 @@ So in the Lenia rules we have explored, things either travel, sit still, or spre
 <div class="card"><img src="{{ '/assets/report/heredity-controls.png' | relative_url }}" alt="Three scatter plots of offspring trait vs parent trait: on the diagonal for carried traits, a flat cloud for redrawn traits, no relation for traits set by position"><p><b>The test sorts the three cases.</b> Left: the trait travels with the spot, so offspring match their parent (r = 1.0). Middle: the trait is noise (no heredity). Right: the trait is set by <i>where</i> a spot is, so neighbours in the world look alike, but once moved, offspring no longer match their parent: <b>no heredity</b>, correctly.</p></div>
 </div>
 
-**Flow-Lenia where creatures carry their own rules.** We built the variant from Plantec et al. (2023) in which every cell carries its own rule parameters, which travel with its matter and mix where flows meet, plus an optional thin layer of "food" (mass is conserved, so copies need material). With everyone's parameters equal it behaves exactly like ordinary Flow-Lenia. E-30, a first scan of fed worlds seeded with six "species", is running; its result will be added here.
+**Flow-Lenia where creatures carry their own rules.** We built the variant from Plantec et al. (2023) in which every cell carries its own rule parameters, which travel with its matter and mix where flows meet, plus an optional thin layer of "food" (mass is conserved, so copies need material). With everyone's parameters equal it behaves exactly like ordinary Flow-Lenia. Then we ran E-30: 100 random rules, worlds seeded with six "species", with and without food.
+
+**A false alarm, caught (E-30).** In fed worlds the detector reported **reproducers in 17 of 100**, and even heredity in one. We did not believe it, and looked:
+
+<figure>
+<img src="{{ '/assets/report/e30-condensation.gif' | relative_url }}" alt="Two panels. Left: a single small lump in a thin layer of food; droplets appear around it and spread until they fill the world. Right: the same food layer with faint noise and no lump; droplets appear everywhere and fill the world too.">
+<figcaption><b>Left:</b> one small lump in a fed world "reproduces" into a hundred droplets. <b>Right:</b> the same food with a faint ripple of noise and <b>no lump at all</b> does the same. The food itself is unstable: a perfectly even layer never changes, but any disturbance makes it condense. These are not offspring.</figcaption>
+</figure>
+
+- The detector's "empty world" control used a perfectly even food layer, which never changes. **It now also checks a slightly disturbed empty world** (D-030). Copies that appear there are not reproduction. The known reproducer, Gray-Scott, still passes.
+- **Rescored: 0 reproducers.** All 17 false hits came from rules whose food is unstable, and that turned out to be **68 of the 100 rules**. In the 32 rules with stable food, nothing reproduced.
+- **Lesson for what comes next:** feeding a world can make the food the most active thing in it. Future fed-world experiments will first check that their food is stable.
 
 ## Where this leaves the project
 
@@ -275,7 +287,7 @@ So in the Lenia rules we have explored, things either travel, sit still, or spre
 |---|---|---|
 | 1 · persistent organisation | yes | yes |
 | 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too |
-| 3 · self-replication | not observed | none in 3000 random rules from a lone lump (E-29); no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other. A validated birth detector finds no reproducer in 568 worlds (E-27, E-28) |
+| 3 · self-replication | not observed | none in 3000 random rules from a lone lump (E-29), none in fed Flow-Lenia (E-30, after removing a false alarm); no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other. A validated birth detector finds no reproducer in 568 worlds (E-27, E-28) |
 | 4 · heredity and variation | not measured | a validated heredity test exists (J-033); nothing to apply it to yet |
 | 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
 
@@ -290,7 +302,7 @@ So in the Lenia rules we have explored, things either travel, sit still, or spre
 4. ~~Chan's patch protocol in larger worlds~~ done (E-24: 8% of 256² worlds). Next: separate world size from run length, and test the "isolated lump" mechanism directly.
 5. ~~A replication detector for continuous physics~~ done (D-028, E-27/E-28: none found).
 6. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
-7. **Heredity (Track D):** ~~a heredity measure~~ and ~~Flow-Lenia with parameters that travel with matter, plus food~~ built and validated (J-033); E-30 gives the first scan. A search objective rewarding division looks unpromising in single-channel Lenia (E-29). Next: **multi-channel Lenia**, where self-replication has been reported.
+7. **Heredity (Track D):** ~~a heredity measure~~ and ~~Flow-Lenia with parameters that travel with matter, plus food~~ built and validated (J-033); E-30 found nothing once a false alarm from unstable food was removed (J-035). Next fed-world scan: only rules with stable food, held out, with the new null pre-registered. A search objective rewarding division looks unpromising in single-channel Lenia (E-29). Next: **multi-channel Lenia**, where self-replication has been reported.
 
 ## How the night went
 
@@ -325,12 +337,14 @@ So in the Lenia rules we have explored, things either travel, sit still, or spre
 | 12:38 | A scheduled session resumes; E-29 (3000 random rules) pre-registered and running |
 | 12:50–13:30 | Heredity test and its controls; Flow-Lenia with travelling parameters (J-033) |
 | 13:53 | E-29: 0 reproducers; E-30 (fed Flow-Lenia) starts |
+| 16:35 | E-30: 17 apparent reproducers; inspection shows food condensing |
+| 17:00–18:05 | Detector fixed (perturbed-vacuum null, D-030); rescore: 0 reproducers; only 32/100 rules have stable food |
 
-Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 101 checks, all passing.
+Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 102 checks, all passing.
 
 ## Read more
 
-- Journal entries [J-012 to J-034]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-029; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Journal entries [J-012 to J-035]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-030; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
 - Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md), [E-22](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e22-preregistration.md), [E-23](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e23-preregistration.md), [E-24](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e24-preregistration.md), [E-25](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e25-preregistration.md), [E-26](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e26-preregistration.md), [E-27](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e27-preregistration.md), [E-28](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e28-preregistration.md), [E-29](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e29-preregistration.md), [E-30](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e30-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 

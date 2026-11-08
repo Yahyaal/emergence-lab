@@ -12,6 +12,34 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-035 · 2026-11-07 · E-30: "reproducers" in fed Flow-Lenia were food condensing; the birth detector gets a perturbed-vacuum null
+
+**Question (pre-registered, `docs/data/e30-preregistration.md`; Track D route 3):** in Flow-Lenia with localized parameters (FlowLeniaPL, J-033), fed with a thin food layer and seeded with six "species", does anything reproduce? If so, is there heredity?
+
+**Ran:** E-30, `scripts/pl_scan.py`, commit `ef87a8a`, 2.7 h on 11 cores. 100 random rules × food {0, 0.05}, paired; 6 patches with their own kernel weights; 128×128, 1500 steps; birth detector on the 2 most common object types; heredity test where a reproducer was found. Pipeline positive (Gray-Scott tracer): reproducer and heredity in 4/4.
+
+**Found, as first scored:**
+- Unfed: 0/100 worlds with a reproducer (by construction); mass drift ≤ 4e-7.
+- **Fed: 17/100 worlds with a "reproducer"** (24 objects), 1 "one generation", and the heredity test said "heredity" in 1 world (r = 0.998, 14 families). **My prediction (0) was wrong on the numbers.**
+
+**Inspected (as pre-registered) and found to be artefacts:**
+- The "parents" were small (mass 2–40) next to creature-sized objects (120–600) that never passed. One of them, alone in a fed vacuum, became **99 objects spread over the whole world within 500 steps**.
+- **The food layer is an unstable fixed point.** A perfectly uniform layer never changes (so the background null, an exact fed vacuum, made 0 copies), but food with noise of 1e-4 and **no parent at all** condensed into 20–110 droplets in 15 of the 17 rules; with 2% relative noise, in all 17. The droplets have the parent's mass, so the copy count rises like real division (1, 5, 9, 17, 25 … 106).
+- The "heredity" verdict is meaningless here: the "offspring" are condensed food, not offspring.
+
+**Changed (D-030, post hoc):** the birth detector also runs a **perturbed vacuum** (float states: × (1 + N(0, 0.02)) + N(0, 1e-4)); copies there → "background", a no-spontaneous-generation rule. The heredity test returns "unstable vacuum" in the same case. Every earlier control keeps its verdict (Gray-Scott's vacuum stays empty under the noise); E-30 world #43 is a new deceptive probe.
+
+**Rescored (`scripts/e30_rescore.py`):**
+- **Food stability: only 32 of the 100 rules have a stable food layer at food 0.05.**
+- **All 17 hit worlds are on unstable food**; rescanned with the fixed detector: **0 reproducers** (24 background, 10 no reproduction).
+- On the 32 stable-food rules (valid under both detector versions): 0 reproducers, 1 "one generation", 59 no reproduction.
+
+**Interpretation:** no reproduction in fed Flow-Lenia with localized parameters, in 100 random rules. The real lesson is about the environment: "feeding" a mass-conserving world can make the food itself the most active thing in it. Any future fed-world experiment must first check that its food is stable (or explicitly study condensation). The fix is post hoc and needs held-out data: the next fed-world scan should use only rules whose food passes the stability check, with the new null pre-registered. Evidence level stays at 2.
+
+**Lesson:** a null built from a perfectly symmetric state can be blind to instability. "Nothing happens in an empty world" has to hold for a slightly disturbed empty world too.
+
+---
+
 ## J-034 · 2026-11-07 · E-29: in 3000 random Lenia rules, no lone lump becomes a reproducer
 
 **Question (pre-registered, `docs/data/e29-preregistration.md`; Track D route 2):** E-27/E-28 tested objects in worlds already selected for movers, a small corner of rule space. Before building a "fission objective" for the search, a direct test: give every rule drawn at random the same chance to reproduce. Does any Lenia rule turn a lone lump of matter into a reproducer?

@@ -73,6 +73,8 @@ Birth detector (observatory/births.py, two generations in isolation, J-032, D-02
               one generation. Smoothed noise: not a reproducer. A Lenia blob (E-14 #239, mass 72) that
               bursts into a world-filling labyrinth of ~80 similar-mass pieces within 1000 steps and
               then stops: not a reproducer (passed the first version's "late > early" rule, J-032).
+              A fed Flow-Lenia rule (E-30 #43) whose food layer condenses into droplets after any
+              disturbance: background (caught only by the perturbed-vacuum null, J-035).
 * selection-aware null  `births.scan` (6 most common object types) on a Life soup and a settled
               Orbium soup: 0 reproducers.
 
@@ -101,6 +103,11 @@ from .physics import NoiseControl, OuterTotalistic
 
 GOSPER_GUN = "24bo$22bobo$12b2o6b2o12b2o$11bo3bo4b2o12b2o$2o8bo5bo3b2o$2o8bo3bob2o4bobo$10bo5bo7bo$11bo3bo$12b2o!"
 HIGHLIFE_REPLICATOR = "2b3o$bo2bo$o3bo$o2bo$3o!"
+# E-30 world 43 (J-035): a fed FlowLeniaPL rule whose food layer condenses after any disturbance
+FED_UNSTABLE = ("FLENIA-PL/f0.05/FLENIA/R13/m0.491/s0.1695/h0.8/r0.22/a0.46,0.67,0.68/b0.41,0.94,0.51/w0.401,0.257,0.461"
+                "+m0.052/s0.1080/h0.39/r0.52/a0.85,0.73,0.2/b0.67,0.46,0.92/w0.292,0.196,0.188"
+                "+m0.377/s0.1946/h0.12/r0.44/a0,0.11,0.23/b0.59,0.75,0.89/w0.476,0.417,0.193")
+
 # Flow-Lenia controls (J-016): drawn by FlowLenia._random_kernel from default_rng(1001) and
 # default_rng(1007). STATIC collapses the paper's 40x40 patch into one static blob; WANDER
 # forms a few objects that wobble and reshape (no straight self-propelled track).
@@ -479,6 +486,17 @@ def run_probe_benchmark(log=print) -> dict:
     r = BI.reproduction_test(lw.physics, lst, lo, np.random.default_rng(0))
     check("births deceptive: Lenia blob bursts into a labyrinth (E-14 #239)",
           r["verdict"] != "reproducer" and (r.get("gen1") or {}).get("early", 0) >= 20, bbrief(r))
+    # fed Flow-Lenia whose food layer is an unstable fixed point (E-30 world 43, J-035): a small
+    # lump "reproduces" by making the food condense; the perturbed-vacuum null must catch it
+    from .physics import FlowLeniaPL
+    fed = parse_rule(FED_UNSTABLE)
+    yy, xx = np.mgrid[-80:80, -80:80]
+    lump = fed.food + 0.6 * np.exp(-(yy ** 2 + xx ** 2) / (2 * 2.0 ** 2))
+    fst = fed.localize(lump)
+    r = BI.reproduction_test(fed, fst, max(BI.find(fed, fst), key=lambda o: o["mass"]), np.random.default_rng(0))
+    check("births deceptive: fed Flow-Lenia, food condenses after any disturbance (E-30 #43) -> background",
+          r["verdict"] == "background" and r.get("perturbed_background_copies", 0) > 0 and (r.get("gen1") or {}).get("ok"),
+          bbrief(r) + f"; exact vacuum copies {r.get('background_copies')}, perturbed {r.get('perturbed_background_copies')}")
     picked = []
     for spec, steps in ((UniverseSpec(life.to_dict(), 1, 96, 96, 0.35), 600),
                         (UniverseSpec(orb.to_dict(), 1, 128, 128, 0.35), 1000)):

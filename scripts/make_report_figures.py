@@ -712,7 +712,25 @@ def e29_lump_scan() -> None:
     plt.close(fig)
 
 
-FIGS = {"e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e30_condensation() -> None:
+    """J-035: in a fed Flow-Lenia rule (E-30 #43) a small lump seems to reproduce, but the food layer
+    alone, faintly disturbed, condenses into the same droplets: left lump in food, right food + noise."""
+    from emergence.benchmark_probes import FED_UNSTABLE
+    from emergence.observatory import births as B
+    ph = parse_rule(FED_UNSTABLE)
+    yy, xx = np.mgrid[-64:64, -64:64]
+    a = ph.localize(ph.food + 0.6 * np.exp(-(yy ** 2 + xx ** 2) / 8.0))
+    b = B.perturbed_vacuum(ph, (128, 128), a)
+    frames = []
+    for t in range(3001):
+        if t % 30 == 0:
+            frames.append(np.concatenate([B.field(ph, a), np.full((128, 4), 255, np.uint8), B.field(ph, b)], 1))
+        if t < 3000:
+            a, b = ph.step(a), ph.step(b)
+    save_gif(frames, "e30-condensation.gif", scale=2, ms=60)
+
+
+FIGS = {"e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 

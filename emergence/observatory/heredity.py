@@ -20,6 +20,10 @@ position makes neighbours alike without inheritance). Selection-aware null: the 
 parents and offspring with parents shuffled (N_PERM permutations); this accounts for how
 parents were chosen (only those that reproduced are kept).
 
+A physics whose vacuum is unstable (faint noise in it makes objects of the parent's mass:
+births.perturbed_vacuum, J-035) gets "unstable vacuum": its "offspring" may be condensed
+background, not offspring.
+
 Verdicts: "heredity" (>= MIN_FAMILIES families, r >= MIN_R, permutation p < ALPHA),
 "no heredity", "no variation" (parent traits spread less than MIN_SPREAD: copies are
 identical, as in plain Gray-Scott), "too few families" (fewer than MIN_FAMILIES parents
@@ -72,6 +76,13 @@ def test(physics, state: np.ndarray, rng: np.random.Generator, max_parents: int 
     cand = max(groups.values(), key=len)
     if len(cand) > max_parents:
         cand = [cand[i] for i in sorted(rng.choice(len(cand), max_parents, replace=False))]
+    pv = B.perturbed_vacuum(physics, (side, side), state)
+    if pv is not None:
+        pm = float(np.median([o["mass"] for o in cand]))
+        for _ in range(steps):
+            pv = physics.step(pv)
+        if any(pm / B.COPY_TOL <= o["mass"] <= pm * B.COPY_TOL for o in B.find(physics, pv)):
+            return {"verdict": "unstable vacuum", "families": 0, "candidates": len(cand)}
     fams = [family(physics, state, o, steps, side) for o in cand]
     ok = [f for f in fams if len(f["offspring"]) >= 2]
     out = {"candidates": len(cand), "families": len(ok), "family_data": fams}
