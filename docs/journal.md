@@ -12,6 +12,45 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-051 · 2026-11-08 · E-51: a sensitive growth-rate measure still finds no general fitness trend; soup 5006 again rises
+
+**Question (pre-registered, `docs/data/e51-preregistration.md`, commit `3ee9274`):** with a calibrated growth-rate measure (D-044, J-050) instead of races, are later verified replicators fitter than earlier ones of the same soup? And does the new measure agree with the races?
+
+**Ran:** E-51, `scripts/bff_fitness.py`, ~15 min on 2 workers (E-50 used the other cores). The 47 E-49 replicators (soups 901, 5006, 5010; 2,000, 6,000 and 12,000 rounds after each jump) and the hand-written one, 24 growth runs each in the random-code background and 8 in the halting background.
+
+**Found:**
+- **Primary: no trend. S = Σ Spearman ρ(time, r) = 0.14, permutation p = 0.38. Prediction (not significant) met.** Per soup: 901 ρ = −0.09, **5006 ρ = +0.64**, 5010 ρ = −0.41.
+- **Soup 5006 again goes up** (mean r 0.088 → 0.097 → 0.097, about +10%); permutation p = 0.005 for this soup alone. The prereg named 5006 as the soup most likely to rise but set no per-soup test, so this is a **post hoc** number. It is the fourth measure pointing the same way for this soup (E-46, E-48, E-49).
+- **Validity: growth rate predicts race outcomes only weakly.** Spearman ρ between Δr and the share of races won = 0.196 (347 pairs, one-sided p = 1e-4; pairs share programs, so p is optimistic). **Prediction (ρ > 0.2 and p < 0.01) narrowly not met** on ρ. r explains ~4% of the variation in race outcomes.
+- Programs differ: 49 of 240 cross-time pairs differ at p < 0.05 (20%), and 9 of 107 same-time pairs (8%, against 5% expected). So r varies between programs, and between time points more than within them, but in no consistent direction overall.
+- All 47 copy perfectly in the halting background (r 0.379–0.397, the ceiling). In random code their r is 0.076–0.108; the hand-written replicator's is 0.140.
+- Figures: `docs/assets/report/e51-growth-rates.png`, `docs/assets/report/d044-calibration.png`.
+
+**Interpretation:** emergent replicators differ in how well they spread into random code, and these differences shift over time, but in two of three soups not upward. Soup 5006 is the exception, and it is consistent across four different measures. Growth into random code is only a small part of what decides a race between two replicators: races are mostly decided by what happens when replicators meet each other (who overwrites whom), which this assay does not measure. **Level 5 is still not shown.** One soup's consistent upward trend is the best candidate for adaptive change so far.
+
+**Lesson:** a calibrated, precise measure of the *wrong component* of fitness does not settle the question. The next measure should put the candidates in the environment they actually live in: invasion from rare into a soup of replicators (resident background), with a neutral marker as control.
+
+---
+
+## J-050 · 2026-11-08 · A growth-rate fitness assay, calibrated on variants with known copying odds (D-044)
+
+**Why:** the race assays (D-042, D-043) start from 8 copies each and read end counts; drift limits them to large effects (E-43, E-49). We needed a measure whose precision and accuracy are known before it is used on emergent code.
+
+**Did:** `emergence/observatory/program_fitness.py` (D-044). r = slope of ln(copies) over the early rounds, from 16 copies among 4096 background programs, no mutation, until copies reach a quarter of the soup (at most 40 rounds); 24 replicate runs; comparisons by Mann–Whitney (one replicate whose copies are lost early skewed Welch's t in a first try). Two backgrounds:
+- **random code:** as in a soup before its jump. Random partners that run first damage a replicator most of the time (the hand-written one survives only ~35% of such meetings), so r there is ~0.14, not the 0.405 a naive calculation gives.
+- **halting:** each background program starts with an unmatched `]`, so it stops at once when it runs first. A plain inert background does not work: the instruction pointer runs on into the replicator's own code with the heads in the wrong place, and the replicator destroys itself (survival 6%). In the halting background a copy is never harmed, so r = ln(1 + p/2), where p is the chance of copying per meeting.
+- **Known-effect ladder:** `trapped(k)` is the hand-written replicator with a loop that subtracts 2^k from its partner's last byte until it reaches zero. If the byte is not a multiple of 2^k the loop never ends and the program runs out of steps before copying. So p is known exactly (≈ 2^-k).
+
+**Found (`docs/data/experiments/2026-11-08-d044-calibration.json`):**
+- Measured vs theory, 24 runs each: p = 1: 0.390 / 0.405; ½: 0.201 / 0.224; ¼: 0.116 / 0.117; ⅛: 0.060 / 0.061; 1⁄16: 0.031 / 0.030. A slight shortfall at high r (copies start meeting each other before the cap). SE ≈ 0.001–0.003.
+- **Sensitivity:** k = 3 vs k = 4 (difference 0.03) separated at p = 6e-7 with 8 runs each.
+- All 9 E-42 emergent replicators copy perfectly in the halting background (r 0.386–0.392, like the hand-written one). In random code they spread at 0.079–0.095, the hand-written one at 0.147.
+- Probes (benchmark section 13, 5 checks): ladder vs theory, k = 3 vs 4, non-copier r ≈ 0 (negative), copyall and noexec rules r ≈ 0 (deceptive: under copyall every program "copies" but counts only drift), 8 repeat assays of one program with ≤ 2 "different" (null). All pass. Test `test_growth_rate_assay`.
+
+**Lesson:** a measure for evolving code can be calibrated like a lab instrument, with built-in variants of known effect. The halting background is the calibration standard; the random background is closer to the soups' real environment but still not the same.
+
+---
+
 ## J-049 · 2026-11-08 · E-49: with verified replicators and fresh time points, later code is not reliably fitter
 
 **Question (pre-registered, `docs/data/e49-preregistration.md`, commit `da4000f`):** E-48 with its flaws fixed: are later replicators fitter than earlier ones of the same soup? Samples were filtered by the replicator test (D-040), taken at new time points (2,000, 6,000 and 12,000 rounds after the jump), and the same-round control used random orientation.
