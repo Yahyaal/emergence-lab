@@ -54,3 +54,18 @@ def test_program_selection_controls():
     from emergence.programs import bff as B
     r = PS.compete(B.REPLICATOR, PS.mutant(B.REPLICATOR, 3, 0x80), 3, np.random.default_rng(2), reps=4)
     assert r["verdict"] == "parent favoured"
+
+
+def test_family_contest():
+    import numpy as np
+    import pytest
+    from emergence.observatory import program_selection as PS
+    from emergence.programs import bff as B
+    x = B.REPLICATOR
+    y = PS.retail(x, np.random.default_rng(1))
+    assert (x == y).mean() < 0.9 and not set(y[27:].tolist()) & set(b"<>{}+-.,[]\x00")
+    assert PS.sign_p(8, 8) == 2 / 256 and PS.sign_p(4, 8) == 1.0
+    r = PS.compete_families(x, PS.mutant(y, 3, 0x80), np.random.default_rng(2), reps=8)
+    assert r["verdict"] == "a favoured"
+    with pytest.raises(ValueError):
+        PS.compete_families(x, x, np.random.default_rng(0), reps=1)

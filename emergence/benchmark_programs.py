@@ -84,3 +84,17 @@ def run(check) -> None:
              PS.mutant(x, 40, 7), 40, "copyall", lambda v: v in ("undecided", "no difference"))):
         r = PS.compete(x, m, pos, np.random.default_rng(2), mode=mode)
         check(name, ok(r["verdict"]), f"{r['verdict']}; mean s {r['mean_s']}, informative {r['informative']}")
+
+    # contests between unrelated replicator families (program_selection.compete_families, E-44, D-043)
+    y = PS.retail(x, np.random.default_rng(1))
+    yb = PS.mutant(y, 3, 0x80)
+    for name, b, mode, ok in (
+            ("family contest negative: hand-written replicator vs the same copier with a redrawn inert tail -> no difference",
+             y, "bff", lambda v: v == "no difference"),
+            ("family contest positive: vs a redrawn-tail copy with a broken loop -> a favoured",
+             yb, "bff", lambda v: v == "a favoured"),
+            ("family contest deceptive: neutral families under the copyall rule -> not a favoured verdict",
+             y, "copyall", lambda v: v in ("undecided", "no difference"))):
+        r = PS.compete_families(x, b, np.random.default_rng(2), mode=mode)
+        check(name, ok(r["verdict"]), f"{r['verdict']}; mean s {r['mean_s']}, informative {r['informative']}, "
+              f"b wins {r['b_wins']}/{r['sign_n']}, p {r['p']}")
