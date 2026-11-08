@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-054 · 2026-11-08 · E-50: bigger program soups jump sooner, roughly in proportion to their size; two "jumps" were brief spikes
+
+**Question (pre-registered, `docs/data/e50-preregistration.md`, commit `9b31f52`):** does the BFF state transition (the appearance of replicators) become more likely per round in bigger soups? Hypothesis: the origin is a rare event per program interaction, so the rate ∝ N^β with β ≈ 1.
+
+**Ran:** E-50, `scripts/bff_sizes.py`, ~3 h on 10 workers. Soups of 2^13 (12 soups, up to 48,000 rounds), 2^15 (12, up to 32,000) and 2^16 programs (10, up to 24,000); a soup that crossed HOE ≥ 1.0 was scanned with the replicator detector 1,000 rounds later (or at its horizon) and stopped. The 2^14 arm is E-40/E-41 as run (2 of 12 by 48,000).
+
+**Found:**
+- **Primary: β = 1.02 (95% CI 0.11 to 2.02), one-sided p = 0.014. Prediction met:** the rate grows with soup size, about in proportion.
+- By arm (pre-registered criterion): 2^13: 2 of 12 (rounds 45,250 and 47,750); 2^14: 2 of 12; **2^15: 0 of 12** (≈ 2.8 expected under the fit; P(0) ≈ 6%); 2^16: **5 of 10** (11,750 to 21,750). Prediction "≥ 3 in the 2^15 and 2^16 arms" met (5), all in 2^16.
+- **The transition criterion was fooled 3 times.** In 2^13 soup 5110 and 2^16 soups 5305 and 5309, HOE jumped to 1.2–1.6 for one checkpoint and fell back below 0.2 within 1,000 rounds. The most common programs then were almost all zero bytes: a wave of programs that write zeros, which dies out. The detector found **no replicator** in any of them. So the secondary prediction "every transitioned soup contains a replicator" **failed** as stated. It holds for the 6 real jumps (HOE stays at 2.5–4; steps per pair rise to the 8,192 limit), and no untransitioned soup had a replicator. Soup 5308 had such a spike at 11,750 and then a real jump at 12,500.
+- **Post hoc, counting only jumps with a verified replicator** (spike soups censored where they were stopped): β = 0.93 (CI −0.17 to 2.15), p = 0.049. Same direction, weaker evidence.
+- Baseline HOE (median of the first 4 checkpoints) is 0.49–0.51 in all three new arms, so the 1.0 threshold means the same at every size.
+- Figure: `docs/assets/report/e50-soup-size.png`.
+
+**Interpretation:** bigger soups make replicators sooner, consistent with a constant chance per program interaction (β ≈ 1). This is why the paper's soups (2^17 programs) jump in a few thousand rounds and ours (2^14) took tens of thousands. The interval is wide (9 events) and the 2^15 arm's 0 of 12 is unexplained, beyond chance. HOE ≥ 1 at a single checkpoint is **not** a reliable sign of the transition: it must hold for several checkpoints, or be confirmed by the detector (D-045).
+
+**Lesson:** a one-checkpoint threshold on a noisy statistic invites false events. Pre-register a persistence requirement, and keep the detector scan as the ground truth.
+
+---
+
 ## J-053 · 2026-11-08 · E-53: without relatives in the background, later code does not invade better; E-52 was most likely kinship
 
 **Question (pre-registered, `docs/data/e53-preregistration.md`, commit `ed8418b`):** E-52's advantage of later replicators appeared only in backgrounds where they alone had close relatives. In backgrounds where **neither** group has relatives, do later replicators still invade better?
