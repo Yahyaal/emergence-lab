@@ -33,13 +33,16 @@ def brief(scan: dict) -> dict:
                         for r in scan["results"]]}
 
 
-def job(spec: tuple[str, int, int]) -> dict:
-    mode, seed, epochs = spec
+def job(spec: tuple) -> dict:
+    """spec = (mode, seed, epochs[, initial programs .npy]): a soup from random programs, or
+    continued from a saved snapshot with a fresh random stream (E-41)."""
+    mode, seed, epochs = spec[:3]
+    init = np.load(spec[3]) if len(spec) > 3 else None
     out_path = RUN / f"{mode}-{seed}.json"
     if out_path.exists():
         return json.loads(out_path.read_text())
     t0 = time.time()
-    soup = B.Soup(n=N, mode=mode, seed=seed)
+    soup = B.Soup(n=N, mode=mode, seed=seed, programs=init)
     series, first, scans = [], None, {}
     scan_at = None
     for e in range(1, epochs + 1):
@@ -73,9 +76,14 @@ def main() -> None:
     ap.add_argument("--workers", type=int, default=11)
     ap.add_argument("--out", required=True)
     ap.add_argument("--pilot", action="store_true", help="tiny run to check the script (not the experiment)")
+    ap.add_argument("--e41", action="store_true", help="E-41: pilot-901 replay + E-40 soups continued 32000 epochs")
     a = ap.parse_args()
     global RUN, N, EPOCHS, CTRL_EPOCHS
-    if a.pilot:
+    if a.e41:
+        RUN = Path("runs/e41")
+        specs = [("bff", 901, EPOCHS)] + [("bff", 5000 + s - 4000, 32000, f"runs/e40/bff-{s}-16000.npy")
+                                          for s in range(4000, 4012)]
+    elif a.pilot:
         RUN, N, EPOCHS, CTRL_EPOCHS = Path("runs/e40-pilot"), 2048, 500, 250
         specs = [("bff", 1, EPOCHS), ("noexec", 2, CTRL_EPOCHS), ("copyall", 3, CTRL_EPOCHS)]
     else:
@@ -85,13 +93,13 @@ def main() -> None:
     with Pool(a.workers) as pool:
         results = pool.map(job, specs, chunksize=1)
     summary = {}
-    for mode in ("bff", "noexec", "copyall"):
+    for mode in sorted({r["mode"] for r in results}):
         rs = [r for r in results if r["mode"] == mode]
         summary[mode] = {"soups": len(rs), "transitioned": sum(r["transitioned"] for r in rs),
                          "replicator_at_end": sum(r["replicator_at_end"] for r in rs),
                          "replicator_in_untransitioned": sum(r["replicator_at_end"] and not r["transitioned"]
                                                              for r in rs)}
-    Path(a.out).write_text(json.dumps({"experiment": "E-40", "summary": summary, "soups": results}, indent=1))
+    Path(a.out).write_text(json.dumps({"experiment": "E-41" if a.e41 else "E-40", "summary": summary, "soups": results}, indent=1))
     print(json.dumps(summary), flush=True)
     print("=== E40 DONE", flush=True)
 
