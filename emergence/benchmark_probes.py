@@ -580,6 +580,10 @@ def run_probe_benchmark(log=print) -> dict:
     check("multi-channel Lenia births deceptive: vacuum grows matter by itself -> explosive or background",
           r["verdict"] in ("explosive", "background"), bbrief(r) + f"; vacuum copies {r.get('background_copies')}")
 
+    # 12. program soups (BFF) and the replicator detector (J-040)
+    from . import benchmark_programs
+    benchmark_programs.run(check)
+
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")
     return {"passed": passed, "total": len(checks), "checks": checks, "noise_innovation_floor": noise["established_late"]}
