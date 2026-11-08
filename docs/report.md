@@ -464,12 +464,12 @@ A completely different kind of universe. Instead of a field of matter, a **soup 
 | 03:20 | E-41: run 3× longer, 2 of the 12 soups transition, both full of verified replicators |
 | 03:40–04:10 | Heredity test for programs (D-041) and its controls; E-42: mutations inherited in 9 of 9 replicators |
 | 04:30 | E-43: head-to-head races between variants: mostly neutral; selection not shown |
-| 04:40–04:55 | E-44: races between replicators from different soups: no clear winners; a mirror replicator found (the hand-written copier seemed to win: mostly a counting error, see E-46) |
-| 04:58 | E-45 (pre-registered): the 5006 species wins 70% of races against another soup's replicators; one neutral control misbehaves |
-| 05:02 | All 9 emergent replicators turn out to copy backwards: earlier counts were unfair; E-46 pre-registered to redo them |
-| 05:08 | E-46: with fair counting the advantage holds (70%), and the winner beats an earlier family of its own soup; controls fine |
-| 05:15–05:45 | E-47: exact replays of the three soups to 40,000 rounds; no species dominates (0 replacements, prediction wrong); the most common code drifts far from the founder |
-| 05:50–06:20 | E-48: later vs earlier code: fitter in soup 5006, not overall (p = 0.07); two non-copying programs spoil soup 901's sample |
+| 04:40–04:48 | E-44: races between replicators from different soups: no clear winners; a mirror replicator found (the hand-written copier seemed to win: mostly a counting error, see E-46) |
+| 04:48–04:52 | E-45 (pre-registered): the 5006 species wins 70% of races against another soup's replicators; one neutral control misbehaves |
+| 04:53 | All 9 emergent replicators turn out to copy backwards: earlier counts were unfair; E-46 pre-registered to redo them |
+| 04:55–05:12 | E-46: with fair counting the advantage holds (70%), and the winner beats an earlier family of its own soup; controls fine |
+| 05:13–05:48 | E-47: exact replays of the three soups to 40,000 rounds; no species dominates (0 replacements, prediction wrong); the most common code drifts far from the founder |
+| 05:49–05:57 | E-48: later vs earlier code: fitter in soup 5006, not overall (p = 0.07); two non-copying programs spoil soup 901's sample |
 
 Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 122 checks, all passing.
 
