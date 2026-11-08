@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-052 · 2026-11-08 · E-52: later replicators invade the later soup better, but kinship is confounded with time
+
+**Question (pre-registered, `docs/data/e52-preregistration.md`, commit `ea948b1`):** growth into random code misses what decides races (J-051). Do later replicators spread better **inside the soups themselves**?
+
+**Did:** an invasion assay (`program_fitness.invasion`): 64 copies of a candidate replace random members of 4096 programs drawn from a soup snapshot. The soup runs 16 rounds with no mutation, beside a paired control (same background, same pairings, no injection). The score is s = ln((excess family members at the end + 1)/(at the start + 1)); 0 means the candidate spreads like the residents it replaced. Calibration on hand-written copiers whose last byte is odd with a chosen share q, invaded by the trap variant (copies with probability 1 − q): q = 0.1, 0.25, 0.5 gave s = −1.3, −2.9, −4.0, neutral invaders −0.27 to +0.34 (8 replicates). Four probes: known effect, neutral null, non-copier, copyall deceptive. The known-effect probe first used q = 0.25 at the probe's small size (1024 programs, 8 replicates): effect −1.8 but p = 0.039, failing its p < 0.01 bar. It now uses q = 0.5 (effect −2.8, p = 8e-4). The 4096-program assay used in the experiment is larger.
+
+**Ran:** E-52, `scripts/bff_invasion.py`, ~40 min on 2 workers. The 47 E-49 replicators, each in its own soup's snapshots at T+2000 and T+12000, plus 6 random residents per background (null), 16 replicates each.
+
+**Found:**
+- **Primary: D = 0.42, p = 0.045. Later code invades better (prediction "not significant" wrong).** But the whole effect is in the **late backgrounds** (Δ = +0.19, +0.22, +0.11 for 901, 5006, 5010); in the early ones Δ = −0.08, −0.01, 0.00.
+- **Validity: invasion predicts race outcomes slightly better than growth rate** (ρ = 0.209 vs 0.196, 347 pairs; prediction ρ > 0.196 met, narrowly).
+- Residents drawn at random score −1.2 to −3.6: most programs in a soup are poor copiers or none, and replicators of any time score near 0 or above. In soup 5006's late background every candidate does well (+0.6 to +1.0).
+- **Confound found after the run:** each candidate has close relatives (≥ 90% identical) **only in the background of its own time** (1–2% of the soup; none 2,000 rounds away). An injected copy overwritten by a relative still counts as a family member, so relatives can protect a candidate's score. In the late backgrounds only late candidates have relatives, so kinship and time are the same variable there. Within those cells, score correlates with kinship in 901 (ρ = 0.54) and 5010 (0.64) but not in 5006 (0.00). Against a pure kinship artefact: early candidates do **not** score better in the early backgrounds, where only they have relatives.
+
+**Interpretation:** suggestive, not established. The time-shift pattern (later code better in later soups, not in earlier ones) is what adaptation to a changing soup would look like, but the same pattern can come from kinship in the count. E-53 (pre-registered, running) repeats the assay in backgrounds where neither group has relatives. **Level 5 not shown.**
+
+**Lesson:** when the background is drawn from the same population as one group of candidates, a family-based count favours that group. Check kinship before choosing backgrounds; a kin-free background (a different time) is the clean design.
+
+---
+
 ## J-051 · 2026-11-08 · E-51: a sensitive growth-rate measure still finds no general fitness trend; soup 5006 again rises
 
 **Question (pre-registered, `docs/data/e51-preregistration.md`, commit `3ee9274`):** with a calibrated growth-rate measure (D-044, J-050) instead of races, are later verified replicators fitter than earlier ones of the same soup? And does the new measure agree with the races?
