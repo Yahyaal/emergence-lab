@@ -41,9 +41,15 @@ def kin(x: np.ndarray, P: np.ndarray) -> float:
 def job(arg):
     kind, seed, t, idx, h, b = arg
     x = np.frombuffer(bytes.fromhex(h), np.uint8).copy()
+    cache = Path(f"runs/e{EXP}") / f"{kind}-{seed}-{t}-{idx}-{b}.json"
+    if cache.exists():
+        return json.loads(cache.read_text())
     P = bg(seed, b)
-    r = F.invasion(x, P, np.random.default_rng([EXP, seed, t, idx, b % 100000, kind == "null"]), alts=[x[::-1]])
-    return {"kind": kind, "seed": seed, "time": t, "index": idx, "background": b, "program": h, "kin": kin(x, P)} | r
+    r = F.invasion(x, P, np.random.default_rng([EXP, seed, t % 100000, idx, b % 100000, kind == "null"]), alts=[x[::-1]])
+    out = {"kind": kind, "seed": seed, "time": t, "index": idx, "background": b, "program": h, "kin": kin(x, P)} | r
+    cache.parent.mkdir(exist_ok=True)
+    cache.write_text(json.dumps(out))
+    return out
 
 
 def main() -> None:
