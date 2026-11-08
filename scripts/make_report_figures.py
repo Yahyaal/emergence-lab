@@ -792,7 +792,36 @@ def e40_bff() -> None:
     plt.close(fig)
 
 
-FIGS = {"e40_bff": e40_bff, "e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e41_soup() -> None:
+    """J-041: the BFF soup of pilot seed 901 (deterministic replay) as pixels: 192 programs (rows,
+    sorted so that equal programs sit together) x 64 bytes; instruction bytes in colour, other
+    bytes grey. Epochs 0, 8500 (just before the transition) and 9750 (after)."""
+    from emergence.programs import bff as B
+    cols = {ord(c): v for c, v in zip("<>{}-+.,[]", ["#2f6db5", "#2f6db5", "#3a9a5b", "#3a9a5b", "#c8453c", "#c8453c",
+                                                      "#e08a1e", "#e08a1e", "#f2f2f2", "#f2f2f2"])}
+    lut = np.full((256, 3), 40, np.uint8)
+    for k, v in cols.items():
+        lut[k] = [int(v[i:i + 2], 16) for i in (1, 3, 5)]
+    soup, shots = B.Soup(n=16384, seed=901), {}
+    for e in range(9751):
+        if e in (0, 8500, 9750):
+            idx = np.random.default_rng(1).choice(soup.n, 192, replace=False)
+            shots[e] = sorted(map(bytes, soup.programs[idx]))  # a list: numpy bytes arrays drop trailing zeros
+        if e < 9750:
+            soup.epoch()
+    fig, axes = plt.subplots(1, 3, figsize=(10, 5.4))
+    for ax, (e, progs) in zip(axes, shots.items()):
+        ax.imshow(lut[np.frombuffer(b"".join(progs), np.uint8).reshape(-1, 64)], interpolation="nearest", aspect="auto")
+        ax.set_title({0: "epoch 0: random bytes", 8500: "epoch 8500: before", 9750: "epoch 9750: after"}[e])
+        ax.set_xticks([]); ax.set_yticks([])
+    fig.suptitle("192 programs drawn from the soup (rows, sorted), 64 bytes each", fontsize=10)
+    fig.text(0.5, 0.02, "blue < >  move head 0 · green { }  move head 1 · red - +  change a byte · orange . ,  copy between heads"
+             " · white [ ]  loop · dark grey: data", ha="center", fontsize=8.5)
+    fig.savefig(OUT / "e41-bff-soup.png")
+    plt.close(fig)
+
+
+FIGS = {"e41_soup": e41_soup, "e40_bff": e40_bff, "e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
