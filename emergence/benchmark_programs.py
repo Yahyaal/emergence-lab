@@ -53,3 +53,21 @@ def run(check) -> None:
         found.append(RP.scan(s.programs, np.random.default_rng(2), max_candidates=3, mode=mode)["replicators"])
     check("replicators selection-aware null: scans of a noexec soup and an early BFF soup", sum(found) == 0,
           f"replicators found {found}")
+
+    # heredity of program replicators (observatory/program_heredity.py, J-042, D-041)
+    from .observatory import program_heredity as PH
+
+    def hbrief(r):
+        return f"{r['verdict']}; viable {r.get('viable')}, inherited {r.get('inherited')}, sign p {r.get('p')}"
+
+    for name, x, mode, want in (
+            ("program heredity positive: hand-written replicator, mutations in its copied tail -> heredity",
+             B.REPLICATOR, "bff", "heredity"),
+            ("program heredity negative: the replicator where nothing runs (noexec) -> no variation",
+             B.REPLICATOR, "noexec", "no variation"),
+            ("program heredity deceptive: the rule copies everything (copyall) -> no variation",
+             B.REPLICATOR, "copyall", "no variation"),
+            ("program heredity selection-aware null: a random program, scored only on viable mutants -> no variation",
+             np.random.default_rng(5).integers(0, 256, 64, dtype=np.uint8), "bff", "no variation")):
+        r = PH.heredity_test(x, np.random.default_rng(3), mode=mode)
+        check(name, r["verdict"] == want, hbrief(r))

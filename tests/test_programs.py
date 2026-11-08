@@ -37,3 +37,12 @@ def test_replicator_detector_controls():
     assert RP.replication_test(B.REPLICATOR, np.random.default_rng(1))["verdict"] == "replicator"
     assert RP.replication_test(np.zeros(64, np.uint8), np.random.default_rng(1))["verdict"] == "no replication"
     assert RP.replication_test(B.REPLICATOR, np.random.default_rng(1), mode="noexec")["verdict"] == "no replication"
+
+
+def test_program_heredity_controls():
+    import numpy as np
+    from emergence.observatory import program_heredity as PH
+    from emergence.programs import bff as B
+    assert PH.heredity_test(B.REPLICATOR, np.random.default_rng(3), mutants=8)["inherited"] >= 4
+    assert PH.heredity_test(B.REPLICATOR, np.random.default_rng(3), mode="noexec", mutants=4)["verdict"] == "no variation"
+    assert PH.sign_p(6, 6) == 1 / 64
