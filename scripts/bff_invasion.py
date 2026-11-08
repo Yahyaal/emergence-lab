@@ -1,6 +1,9 @@
 """E-52: invasion of E-49 replicators into their own soup at two times (docs/data/e52-preregistration.md).
+E-53 (--e53): the same early (T+2000) and late (T+12000) candidates in kin-free backgrounds at T+4000,
+T+9000 and a later time (T+20000; soup 5006: T+12500, its last snapshot) (docs/data/e53-preregistration.md).
 
     python scripts/bff_invasion.py --workers 2 --out docs/data/experiments/2026-11-08-e52-invasion.json
+    python scripts/bff_invasion.py --e53 --workers 2 --out docs/data/experiments/2026-11-08-e53-invasion-kinfree.json
 """
 from __future__ import annotations
 
@@ -19,26 +22,40 @@ from bff_fitness import E49, samples  # noqa: E402
 from emergence.observatory import program_fitness as F  # noqa: E402
 
 T0 = {901: 8750, 5006: 27500, 5010: 16750}
-BGS, NULLS, NPERM = (2000, 12000), 6, 10000
+BGS, NULLS, NPERM, EXP = (2000, 12000), 6, 10000, 52
+
+
+FUTURE = {901: 20000, 5006: 12500, 5010: 20000}
 
 
 def bg(seed: int, dt: int) -> np.ndarray:
+    if dt == -1:  # E-53 "future" background
+        dt = FUTURE[seed]
     return np.load(f"runs/e47/{seed}-{T0[seed] + dt}.npy")
+
+
+def kin(x: np.ndarray, P: np.ndarray) -> float:
+    return float((((P == x).mean(1) >= 0.9) | ((P == x[::-1]).mean(1) >= 0.9)).mean())
 
 
 def job(arg):
     kind, seed, t, idx, h, b = arg
     x = np.frombuffer(bytes.fromhex(h), np.uint8).copy()
-    r = F.invasion(x, bg(seed, b), np.random.default_rng([52, seed, t, idx, b, kind == "null"]), alts=[x[::-1]])
-    return {"kind": kind, "seed": seed, "time": t, "index": idx, "background": b, "program": h} | r
+    P = bg(seed, b)
+    r = F.invasion(x, P, np.random.default_rng([EXP, seed, t, idx, b % 100000, kind == "null"]), alts=[x[::-1]])
+    return {"kind": kind, "seed": seed, "time": t, "index": idx, "background": b, "program": h, "kin": kin(x, P)} | r
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--e53", action="store_true")
     a = ap.parse_args()
-    smp = samples()
+    global BGS, NULLS, EXP
+    if a.e53:
+        BGS, NULLS, EXP = (4000, 9000, -1), 3, 53
+    smp = {k: v for k, v in samples().items() if not a.e53 or k[1] in (2000, 12000)}
     jobs = [("cand", s, t, i, h, b) for (s, t, i), h in sorted(smp.items()) for b in BGS]
     nrng = np.random.default_rng(5200)
     for s in T0:
@@ -84,13 +101,14 @@ def main() -> None:
                     table[f"{s}/bg{b}/cand{t}"] = {"n": len(vals), "mean_s": round(float(np.mean(vals)), 3)}
             nv = [r["s"] for r in res if r["kind"] == "null" and r["seed"] == s and r["background"] == b]
             table[f"{s}/bg{b}/null"] = {"n": len(nv), "mean_s": round(float(np.mean(nv)), 3)}
-    summary = {"primary": {"D": round(float(D), 3), "p": p,
+    kins = [r["kin"] for r in C]
+    summary = {"max_candidate_kin": max(kins), "primary": {"D": round(float(D), 3), "p": p,
                            "delta": {f"{s}/bg{b}": round(float(l.mean() - e.mean()), 3) for (s, b), (e, l) in cells.items()}},
                "validity": {"races": len(races), "rho": round(float(v.statistic), 3), "p": float(v.pvalue)},
                "table": table}
-    json.dump({"experiment": "E-52", "summary": summary, "results": res}, open(a.out, "w"), indent=1)
+    json.dump({"experiment": "E-53" if a.e53 else "E-52", "summary": summary, "results": res}, open(a.out, "w"), indent=1)
     print(json.dumps(summary, indent=1))
-    print("=== E52 DONE", flush=True)
+    print("=== E52/E53 DONE", flush=True)
 
 
 if __name__ == "__main__":

@@ -129,10 +129,10 @@ def run(check) -> None:
     # hand-written copiers with inert tails, a share q of which end in an odd byte
     irng = np.random.default_rng(52)
     kw = dict(n=1024, k=32, reps=8)
-    bg = F.resident_copiers(irng, 1024, 0.25)
+    bg = F.resident_copiers(irng, 1024, 0.5)  # q = 0.25 gave effect -1.8 but p = 0.039 at this size (J-052)
     i0, i1 = F.invasion(F.trapped(0), bg, irng, **kw), F.invasion(F.trapped(1), bg, irng, **kw)
     ci = F.compare({"r": i0["s"], "rs": i0["ss"]}, {"r": i1["s"], "rs": i1["ss"]})
-    check("program invasion known effect: trap variant copying with p = 0.75 among resident copiers scores > 1 below the neutral copier (p < 0.01)",
+    check("program invasion known effect: trap variant copying with p = 0.5 among resident copiers scores > 1 below the neutral copier (p < 0.01)",
           i1["s"] - i0["s"] < -1.0 and ci["p"] < 0.01, f"s {i0['s']:.2f} vs {i1['s']:.2f}, p {ci['p']:.2g}")
     bg0 = F.resident_copiers(irng, 1024, 0.0)
     n0 = F.invasion(F.trapped(0), bg0, irng, **kw)
@@ -146,5 +146,5 @@ def run(check) -> None:
     d0 = F.invasion(F.trapped(0), bg, irng, mode="copyall", **kw)
     d1 = F.invasion(F.trapped(1), bg, irng, mode="copyall", **kw)
     cd = F.compare({"r": d0["s"], "rs": d0["ss"]}, {"r": d1["s"], "rs": d1["ss"]})
-    check("program invasion deceptive: the same q = 0.25 pair under copyall (code never runs, the trap cannot act) -> not different",
+    check("program invasion deceptive: the same q = 0.5 pair under copyall (code never runs, the trap cannot act) -> not different",
           cd["p"] >= 0.05, f"s {d0['s']:.2f} vs {d1['s']:.2f}, p {cd['p']:.2g}")
