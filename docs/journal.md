@@ -12,6 +12,28 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-040 · 2026-11-08 · Program soups (BFF): a replicator detector, and no transition in 12 soups (E-40)
+
+**Question (Track D route 5; pre-registered, `docs/data/e40-preregistration.md`):** Agüera y Arcas et al. (2024) report that soups of random 64-byte programs in a minimal language (BFF), paired at random and run on a shared tape, undergo a "state transition" in which self-replicating programs appear and take over, with no fitness function. Lenia has given us movers but, until E-32, no reproducers. Does self-replication emerge from random code in our implementation, and does a detector built to our standards confirm it?
+
+**Built (interactive session, commit `4d79737`; D-040):** `emergence/programs/bff.py` (soup, C interpreter via ctypes, a pure-Python reference that the C code must equal on 300 random tapes; modes `noexec` and `copyall` as controls) and `observatory/replicators.py` (growth test of 8 copies among 1024 random programs, two generations, random-program null). Probes (benchmark section 12), all passing: a hand-written 64-byte self-replicator → replicator (8 → 70 copies, generation 2: 838); random program and an all-zeros program → no replication; the replicator under `copyall` and `noexec` → no replication; scans of the most common programs of a noexec soup and an early BFF soup → 0 replicators (selection-aware null).
+
+**Pilot (interactive session, not in the sample):** 4 soups, 16000 epochs. Seed 901 (16384 programs) jumped at epoch ~8750 from a high-order entropy (HOE) of 0.3 to 2.2–3.5 and stayed there; seeds 900, 902, 903 did not.
+
+**Ran:** E-40, `scripts/bff_soups.py`, commit `4d2761e`, 53 min per soup on 11 workers. 12 BFF soups of 16384 programs (seeds 4000–4011), 16000 epochs; controls 4000 epochs: 2 `noexec`, 2 `copyall`. Detector on each soup's 4 most common programs at the end (and 1000 epochs after any transition).
+
+**Found:**
+- **0 of 12 BFF soups transitioned** (max HOE 0.54–0.64, all in the first 2000 epochs; final 0.29–0.38). **My prediction (2 to 6) was wrong**, and the pilot's 1 in 4 was the lucky draw. With the pilot: 1 of 16 soups (95% interval 0.2%–30%).
+- Detector at the end: every candidate "no replication" (the most common program occurs once or twice: the soup is still diverse).
+- Something does change before any transition: the share of instruction bytes rises from 3.9% (random) to ~15% in every BFF soup and stays there, while `noexec` stays at 3.9%. Programs that contain instructions survive interactions better than others. This is selection on the bytes, but not replication.
+- Controls: `noexec` HOE 0 (nothing changes); `copyall` HOE 7.0 within 250 epochs (copying alone makes the soup repetitive) yet its common programs are "no replication" (one "one generation" verdict). **HOE alone would have called `copyall` a transition**; the detector does not.
+
+**Interpretation:** not reached; the question stays open. Our soups are 8× smaller than the paper's (2^14 vs 2^17 programs); if a replicator has to arise by chance in some pair, its chance per epoch scales with the number of pairs, so a smaller soup should transition later. E-41 (pre-registered, running) replays the pilot that transitioned, which is deterministic, to test the detector on a real transition, and continues the 12 soups to 48000 epochs.
+
+**Lesson:** one pilot in four is not a rate. Pre-registered predictions built on a single success should be wide, or the pilot should be bigger.
+
+---
+
 ## J-037 · 2026-11-08 · E-32: one random multi-channel Lenia rule makes dividing spots (first Lenia reproducer; prediction wrong)
 
 **Question (pre-registered, `docs/data/e32-preregistration.md`; Track D):** E-29 found no reproducer among 3000 random single-channel Lenia rules. Chan (2020) reports self-replication once Lenia has several channels and kernels. Repeating E-29 unchanged on random `MultiLenia` rules (D-031), does a lone lump ever become a reproducer?

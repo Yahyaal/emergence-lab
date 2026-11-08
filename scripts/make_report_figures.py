@@ -757,7 +757,42 @@ def e32_divider() -> None:
     save_png(colour(np.concatenate([x for f in early for x in (f, sep)][:-1], 1)), "e32-divider-strip.png", scale=3)
 
 
-FIGS = {"e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e40_bff() -> None:
+    """J-040: high-order entropy of BFF program soups over time (E-40, the 4 pilots, controls)."""
+    d = json.loads((DATA / "2026-11-08-e40-bff-soups.json").read_text())
+    pilots = {}
+    for line in (DATA / "2026-11-07-bff-pilots.jsonl").read_text().splitlines():
+        r = json.loads(line)
+        pilots.setdefault((r["n"], r["seed"]), []).append((r["epoch"], r["hoe"]))
+    fig, ax = plt.subplots(figsize=(8, 4.2))
+    first = True
+    for r in d["soups"]:
+        if r["mode"] != "bff":
+            continue
+        ax.plot([x["epoch"] for x in r["series"]], [x["hoe"] for x in r["series"]], color=GREY, lw=1, alpha=0.8,
+                label="E-40: 12 soups, none transitions" if first else None)
+        first = False
+    for (n, seed), pts in sorted(pilots.items()):
+        e, h = zip(*pts)
+        hit = max(h) >= 1.0
+        ax.plot(e, h, color=RED if hit else BLUE, lw=2 if hit else 1, alpha=1 if hit else 0.6,
+                label=f"pilot seed {seed}: transition" if hit else None)
+    for mode, col in (("copyall", ORANGE), ("noexec", GREEN)):
+        r = next(x for x in d["soups"] if x["mode"] == mode)
+        ax.plot([x["epoch"] for x in r["series"]], [x["hoe"] for x in r["series"]], color=col, lw=2,
+                label={"copyall": "control: copying rule (no programs run)", "noexec": "control: nothing runs"}[mode])
+    ax.axhline(1.0, color="k", lw=0.8, ls=":")
+    ax.text(16200, 1.05, "transition threshold", fontsize=9, va="bottom", ha="right")
+    ax.set_xlabel("epoch (each program meets one random partner per epoch)")
+    ax.set_ylabel("high-order entropy (bits/byte)")
+    ax.set_title("Program soups: one transition in 16 BFF soups")
+    ax.set_ylim(-0.2, 7.5)
+    ax.legend(fontsize=8.5, loc="upper right", frameon=False)
+    fig.savefig(OUT / "e40-bff-entropy.png")
+    plt.close(fig)
+
+
+FIGS = {"e40_bff": e40_bff, "e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
