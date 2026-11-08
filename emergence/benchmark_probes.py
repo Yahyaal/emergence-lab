@@ -554,6 +554,32 @@ def run_probe_benchmark(log=print) -> dict:
           hres["carried"].get("null_r95", 1) < hres["carried"].get("r", 0) and hres["redrawn"].get("p", 0) > 0.05,
           f"positive r {hres['carried'].get('r')} vs null r95 {hres['carried'].get('null_r95')}; negative p {hres['redrawn'].get('p')}")
 
+    # 11. multi-channel Lenia (physics/multi_lenia.py): one channel and one kernel is Lenia
+    from .physics import MKernel, MultiLenia
+    ml = MultiLenia(1, [MKernel(0, 0, 1, orb.mu, orb.sigma, 1, orb.peaks)])
+    mst = ml.from_levels(C.emergent_glider(orb))
+    m0, c0, path = float(mst.sum()), max(C.objects(ml.view(mst)), key=lambda o: o["mass"])["c"], np.zeros(2)
+    for _ in range(8):
+        for _ in range(25):
+            mst = ml.step(mst)
+        o1 = max(C.objects(ml.view(mst)), key=lambda o: o["mass"])
+        path += C._torus_delta(c0, o1["c"], mst.shape[1:])
+        c0 = o1["c"]
+    speed = float(np.hypot(*path) / 200)
+    check("multi-channel Lenia positive: one channel = Lenia, the Orbium glider glides",
+          0.45 <= speed <= 0.6 and abs(mst.sum() / m0 - 1) < 0.05 and len(C.objects(ml.view(mst))) == 1,
+          f"speed {speed:.3f} cells/step, mass ratio {mst.sum() / m0:.3f}")
+    r = birth(ml, ml.from_levels(C.emergent_glider(orb)))
+    check("multi-channel Lenia births negative: Orbium glider -> no reproduction", r["verdict"] == "no reproduction", bbrief(r))
+    # deceptive: G(0) > 0 in both channels, so the empty world fills by itself
+    grow = MultiLenia(2, [MKernel(0, 0, 1, 0.05, 0.05, 1, (1,)), MKernel(1, 1, 1, 0.05, 0.05, 1, (1,)),
+                          MKernel(0, 1, 0.6, 0.2, 0.03, 0.5, (1,))])
+    gst = grow.vacuum((64, 64))
+    gst[:, 28:36, 28:36] = 0.5
+    r = BI.reproduction_test(grow, gst, max(BI.find(grow, gst), key=lambda o: o["mass"]), np.random.default_rng(0))
+    check("multi-channel Lenia births deceptive: vacuum grows matter by itself -> explosive or background",
+          r["verdict"] in ("explosive", "background"), bbrief(r) + f"; vacuum copies {r.get('background_copies')}")
+
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")
     return {"passed": passed, "total": len(checks), "checks": checks, "noise_innovation_floor": noise["established_late"]}
