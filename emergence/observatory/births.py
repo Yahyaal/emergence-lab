@@ -22,6 +22,13 @@ A copy count series is recorded. The object REPRODUCES (generation 1) if
   copies are not just a common shape among debris (explosive rules, noise);
 * an empty world run the same way makes no copies (background null: the physics does not
   create parent-like objects from vacuum, e.g. noise control physics).
+* the same empty world with faint noise (float states only: each value times 1 + N(0, REL_NOISE),
+  plus N(0, NOISE), clipped at 0) makes no copies either: a vacuum can be an UNSTABLE fixed point. Added after E-30 (J-035):
+  in fed Flow-Lenia worlds a perfectly uniform food layer never changes, but the slightest
+  disturbance (a parent, or noise of 1e-4) makes it condense into dozens of parent-sized
+  droplets, which the exact-vacuum null could not see. Additive noise of 1e-4 alone missed
+  2 of 17 such rules within 4000 steps; 2% relative noise caught all 17, and Gray-Scott's
+  vacuum stays empty under it.
 
 Generation 2: one copy at that checkpoint is isolated alone into a fresh world and tested
 the same way, with copies still matched to the ORIGINAL parent (so the type cannot drift
@@ -36,7 +43,7 @@ attractor, not a copy of a particular parent.
 
 Verdicts: "reproducer", "rule-level duplication", "one generation" (gen 1 passes, the copy
 does not reproduce), "explosive" (the world fills before the test can decide), "background"
-(vacuum makes copies), "no reproduction".
+(vacuum, or vacuum with faint noise, makes copies), "no reproduction".
 
 What this does NOT show: heredity. Copies are matched to the parent by construction; a
 measure of whether offspring differ like their parents is a separate step (needs a
@@ -57,6 +64,7 @@ COPY_TOL = 2.0
 MIN_COPIES = {False: 3, True: 4}  # by `continuous`
 CLEAN_FRAC = 0.75
 MIN_GROWTH = 2
+REL_NOISE, NOISE = 0.02, 1e-4  # perturbed-vacuum null (float states): relative, and absolute in physical units
 FILL_FRACTION = 0.3  # the test world counts as full beyond this occupied fraction
 DISCRETE = {"steps": 192, "every": 1, "side": 160}
 CONTINUOUS = {"steps": 4000, "every": 50, "side": 160}
@@ -75,6 +83,16 @@ def vacuum(physics, shape: tuple[int, int], like: np.ndarray) -> np.ndarray:
     if hasattr(physics, "vacuum"):
         return physics.vacuum(shape)
     return np.zeros(shape, like.dtype)
+
+
+def perturbed_vacuum(physics, shape: tuple[int, int], like: np.ndarray, seed: int = 0) -> np.ndarray | None:
+    """The vacuum plus faint noise, or None for integer states (no level below 1 to perturb with)."""
+    vac = vacuum(physics, shape, like)
+    if not np.issubdtype(vac.dtype, np.floating):
+        return None
+    g = np.random.default_rng(seed)
+    v = vac.astype(np.float64)
+    return np.clip(v * (1 + g.normal(0, REL_NOISE, v.shape)) + g.normal(0, NOISE, v.shape), 0, None).astype(vac.dtype)
 
 
 def find(physics, state: np.ndarray) -> list[dict]:
@@ -209,7 +227,11 @@ def reproduction_test(physics, state: np.ndarray, obj: dict, rng: np.random.Gene
     vac = vacuum(physics, (side, side), state)
     bg, _, _ = copy_series(physics, vac, parent, steps, every)
     out["background_copies"] = int(max(bg) if bg else 0)
-    if out["background_copies"]:
+    pv = perturbed_vacuum(physics, (side, side), state)
+    if pv is not None and not out["background_copies"]:
+        pbg, _, _ = copy_series(physics, pv, parent, steps, every)
+        out["perturbed_background_copies"] = int(max(pbg) if pbg else 0)
+    if out["background_copies"] or out.get("perturbed_background_copies"):
         out["verdict"] = "background"
         return out
     # generation 2: a copy, alone

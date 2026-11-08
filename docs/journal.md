@@ -12,6 +12,276 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-049 · 2026-11-08 · E-49: with verified replicators and fresh time points, later code is not reliably fitter
+
+**Question (pre-registered, `docs/data/e49-preregistration.md`, commit `da4000f`):** E-48 with its flaws fixed: are later replicators fitter than earlier ones of the same soup? Samples were filtered by the replicator test (D-040), taken at new time points (2,000, 6,000 and 12,000 rounds after the jump), and the same-round control used random orientation.
+
+**Ran:** E-49, `scripts/bff_time_races2.py`, ~35 min on 11 workers. 47 verified replicators (6 per time point, fewer in 3 cases: 5010 at +6000 had only 2 in 40 candidates), 240 cross-time and 107 same-round pairs, 32 races each.
+
+**Found:**
+- **Primary (program level): later replicator ahead in 24 of 44 cases (55%, p = 0.33). Prediction (≥ 60%, p < 0.01) not met.** Pair level: 129 of 240 (p = 0.14); mean share of races won by the later replicator 0.516.
+- Same-round control: 49 of 107 ahead, mean share 0.503: the control is clean.
+- Soup 5006 again leans later (53 of 84 pairs, p = 0.011, mean 0.548), as predicted; 5010 0.527; 901 0.482.
+- By gap: 2,000 → 12,000 is the clearest (60 of 90 pairs, p = 0.001, mean 0.545), larger than 2,000 → 6,000 (0.523), as predicted; but 6,000 → 12,000 goes the other way (0.469). Pairs share programs, so pair-level p-values overstate the evidence.
+- Figure: `docs/assets/report/e49-time-races.png`.
+
+**Interpretation:** later code is at most **slightly** fitter than earlier code, and not reliably so: the confirmatory test fails. The soups change a lot (J-047) but, measured in races among random programs, most of the change looks neutral. The one consistent signal is soup 5006 (E-46, E-48, E-49 all in the same direction), plus a small advantage over the longest gap. **Adaptive, cumulative change is not shown.**
+
+**Lesson:** fitness differences among emergent replicators are small relative to race noise. Power, not cleverness, is the bottleneck: the next test needs a more sensitive fitness measure (e.g. growth rate from a small seed in a fixed background), validated on the hand-written replicator's known variants first.
+
+---
+
+## J-048 · 2026-11-08 · E-48: is later code fitter than earlier code? In one soup yes, overall not shown
+
+**Question (pre-registered, `docs/data/e48-preregistration.md`, commit `5695abf`):** the soups drift far from their founders (J-047). If the drift is adaptive, programs from later rounds should out-race programs from earlier rounds of the same soup.
+
+**Ran:** E-48, `scripts/bff_time_races.py`, ~25 min on 11 workers. From the E-47 replays, the 6 most common distinct families at 1,000 and at 10,000 rounds after each soup's jump; every late program raced every early one (108 pairs), plus same-round pairs as the drift control (90 pairs), 32 races per pair, both orientations counted.
+
+**Found:**
+- **Primary: later program ahead in 62 of 108 pairs (57%, sign test p = 0.07). Prediction (≥ 60%, p < 0.01) not met.**
+- The soups differ. **Soup 5006: later ahead in 28 of 36 pairs (p = 0.0006; 58% of races).** Soup 5010: 22 of 36 (p = 0.12). Soup 901: 12 of 36, later code *behind* (35% of races).
+- Soup 901's result is driven by two of its six late programs that **lost every race against every opponent**: common programs that apparently do not copy themselves in a fresh soup. Excluding them (post hoc): 901 is 12 of 24 (neutral) and the total is 62 of 96 (p = 0.003). Our sample rule ("most common programs") did not require copying; it should have.
+- Same-round pairs: the program that was more common in the soup won 52 of 81 decided pairs (p = 0.014, post hoc), and more so the bigger the gap in abundance; without the two non-copiers 44 of 73 (p = 0.10). Not robust.
+- Figure: `docs/assets/report/e48-time-races.png`.
+
+**Interpretation:** in soup 5006, code from 10,000 rounds after the jump out-races code from 1,000 rounds after: there, the drift includes **adaptive change**, consistent with E-46 (a later 5006 family beat an earlier one). Across the three soups the pre-registered test does not reach significance, partly because the sample mixed in programs that are common but cannot copy. Level 5 (open-ended evolution) is not reached.
+
+**Lesson:** "most common" is not "replicator": a sample for fitness races should be filtered by the replicator test first (pre-registered), and the drift control should use random orientation, not abundance order.
+
+---
+
+## J-047 · 2026-11-08 · E-47: after the jump, no species dominates; the soup is a drifting cloud of variants
+
+**Question (pre-registered, `docs/data/e47-preregistration.md`, commit `f47ba3b`):** is species turnover in running soups driven by selection, i.e. does each new dominant species beat the one it displaced in a race?
+
+**Ran:** E-47, `scripts/bff_turnover.py`. Exact replays of soups 901, 5006 and 5010 to 40,000 rounds (every E-41 checkpoint reproduced bit for bit: 9750/16000, 28250/32000, 17000/32000), snapshots every 250 rounds from 1000 rounds before each transition (271 snapshots), ~55 min on 3 cores. Then the pre-registered dominant-species sequence and races.
+
+**Found:**
+- **Primary outcome not testable: 0 replacements in 3 soups** under the pre-registered rule (prediction ≥ 4: wrong). Also 0 with 2% and 1% thresholds (exploratory).
+- Why: **no 90%-identity family dominates after the transition.** The most common program's family holds a median of 2.2–2.4% of the soup (max 6% in 5006, 12% in 5010, one 30% spike in 901), and consecutive snapshots 250 rounds apart have their most common program in the same family only 5–23% of the time. The soup is a large, shifting cloud of related variants, not a succession of species.
+- **The most common program drifts away from the founder:** byte identity to the first dominant program (best orientation) falls from 100% to about 15–20% in soup 901 over ~20,000 rounds and to ~10% in 5006 over 12,000 rounds; in 5010 it falls to a few % within 5,000 rounds. Random programs share ~0.4%. Figure: `docs/assets/report/e47-turnover.png`.
+- This corrects J-046's wording: #4 and #5/#6 were never dominant; each was one of the most common exact programs, holding ~1.6% of the soup (257 and 269 programs of 16,384).
+
+**Interpretation:** the soups keep changing after the jump, steadily and far: within tens of thousands of rounds the code that is most common shares little with the code that started the takeover. Whether that change is adaptive or neutral drift cannot be told from this measurement: copying with errors drifts on its own. The E-46 result (a newcomer family out-races an older family of the same soup) is one data point in favour of selection; a test needs a null for drift (e.g. race programs sampled at times t and t + Δ against each other, compared with races between programs sampled at the same time).
+
+**Lesson:** "dominant species" was the wrong picture for these soups: the pre-registration assumed a structure the data does not have. Measure the population structure (family sizes, turnover) before defining events on it.
+
+---
+
+· 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
+
+**What we noticed after E-45:** soup 5006's earlier replicator #4 also sat beside its own reverse in the E-41 snapshot (129 copies and 128 reverse copies). We then seeded each of the 9 emergent replicators alone (4 soups each): **every one produces its exact byte-reverse in about equal numbers.** All the replicators that emerged in our soups copy themselves backwards; only the hand-written one copies forwards. So E-44 counted every emergent species by half (one form), and E-45 counted the 5006@32k species (#5/#6) by both forms but its opponents by one. Both biases could have created the reported advantages.
+
+**Question (pre-registered, `docs/data/e46-preregistration.md`, commit `c4b0925`):** with both forms counted for every species, do the E-45 advantage and E-44's hand-written advantage survive? We predicted they would not.
+
+**Ran:** E-46, `scripts/bff_species_contests.py`, ~15 min on 11 workers. 8 emergent species (all 28 pairs), the hand-written replicator vs each, and 24 neutral pairs (hand-written vs redrawn tail), 64 races each, seed 46.
+
+**Found:**
+- **Prediction 1 wrong: the 5006@32k species still wins 176 of 252 races against soup 901's species (69.8%, p = 10⁻¹⁰),** the same share as E-45. In winner-take-all races the factor-2 undercount rarely flips a race. It is ahead of all 7 other emergent species (56–79% of races), "favoured" against 3. **It beats #4, a family that was common earlier in its own soup and had disappeared by round 32000, in 46 of 64 races (72%, favoured).** (J-047: neither family ever held more than ~2% of the soup; "replaced" overstates it.)
+- Prediction 2 wrong in part: the hand-written replicator's advantage shrinks from 77% of races (E-44, biased) to **56% (286/510, p = 0.003)**: most of E-44's advantage was the counting bias; a small one remains.
+- **Neutral controls behave this time: 0 of 24 favoured, pooled 50.9%.** Over E-44 to E-46, 2 of 70 null pair runs got a favoured verdict (~3%).
+- Emergent pairs favoured: 3 of 28 vs 0 of 24 nulls (Fisher p = 0.15, prediction 3 met); all 3 involve the 5006@32k species. Other species are indistinguishable from one another. Cross-epoch pairs in soups 901 and 5010: no difference.
+- Figure: `docs/assets/report/e46-species-contests.png`. Snapshots of soup 5006 (E-41): at epoch 28250, 257 programs belong to #4's species and none to #5's; at 32000, 0 and 269.
+
+**Interpretation:** E-45's conclusion survives a fair measurement: one emergent species is reproducibly fitter than the others in a common environment, and it also beats a family that was common earlier in its own soup. That is what selection driving a change would look like, in **one** soup and one pair (and J-047 shows neither family was ever dominant); we have not shown that the change *was* caused by the advantage, nor that changes accumulate. The striking structural fact is that all 9 emergent replicators are mirror replicators: in our soups, self-copying arose in the reversed form every time (3 soups).
+
+**Lesson:** check what a "family" is in *every* competitor before comparing families. Our first correction (E-45 counted one species fairly) was itself unfair to the opponents.
+
+---
+
+· 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
+
+**Question (pre-registered, `docs/data/e45-preregistration.md`, after a post-hoc pattern in E-44):** does the mirror replicator species of soup 5006 (J-044) out-compete the replicators of soup 901 when both of its forms are counted?
+
+**Ran:** E-45, `scripts/bff_mirror_contests.py`, commit `d2d04a5`, ~3 min on 11 workers. `compete_families` with species counting (`a_alt`, D-043): 8 copies of #5 seeded, family = programs ≥ 90% identical to #5 or #6; 64 replicate races per pair, fresh seed 45.
+
+**Found:**
+- **Primary: the mirror species won 173 of 249 informative races against the four soup-901 replicators (69.5%, binomial p = 4·10⁻¹⁰); "a favoured" in 3 of 4 pairs, the fourth in the same direction (66%, p = 0.015).** Prediction (≥ 0.6, ≥ 2 of 4 favoured, none reversed) met.
+- Secondary: against #4 (its predecessor in soup 5006), #7 and #8 (soup 5010) it won 126 of 187 (67%, p = 10⁻⁶; one pair favoured). Against the hand-written replicator: a tie (50%).
+- **Null prediction failed:** one of the 4 designed-null pairs (hand-written replicator vs a copy with a redrawn inert tail) was also "a favoured" (68%, p = 0.005). The null pairs pooled: 56.9%. Mirror vs null pooled: Fisher p = 0.002. We checked one explanation (tail bytes near 0 that random code can zero, cutting the copy short) and it does not fit: every redrawn tail has such bytes. Across E-44 and E-45, 2 of 46 null pair runs got a favoured verdict, more than the nominal ~1%.
+- Figure: `docs/assets/report/e45-mirror-contests.png`.
+
+**Interpretation:** a reproducible fitness difference between emergent replicator species from different soups: the mirror species spreads faster than the others in a common environment, by a margin found in a fresh, pre-registered test. With heredity (E-42), this gives the three ingredients of natural selection among emergent replicators **in this assay** (variation, heredity, differential reproduction). The effect is moderate (about 2 wins for every loss) and of the same size as one supposedly neutral control, so the verdict for any single pair is weak; the pooled comparison is what carries the claim. Still not level 5: nothing here shows selection *producing* cumulative change in a running soup.
+
+**Correction (J-046):** every emergent replicator turned out to be a mirror replicator, so E-45 undercounted the *opponents* by half. E-46 repeated the test with fair counting: the advantage holds (176/252). The null failure did not recur (0 of 24).
+
+**Lesson:** "designed neutral" controls are not automatically neutral in a soup where random code edits every tape; the false-positive rate of the contest criterion should be measured with many more null pairs before single-pair verdicts are trusted.
+
+---
+
+## J-044 · 2026-11-08 · E-44: unrelated emergent replicators look equally fit; a designed copier beats them all; a mirror replicator
+
+**Question (pre-registered, `docs/data/e44-preregistration.md`):** one-byte variants looked neutral (E-43). Do replicators from *different* soups (65–100% of bytes different) differ in competition? Does the later replicator of a soup beat the earlier one?
+
+**Built (D-043):** `program_selection.compete_families`: two replicators from different families, 8 copies each among 1024 random programs, 96 epochs; families by ≥ 90% byte identity; 16 replicate races; favoured if ≥ 8 informative races, two-sided sign test p < 0.01 and mean |log-ratio| > ln 2. Controls (benchmark section 12): hand-written replicator vs the same copier with a redrawn inert tail → no difference; vs a redrawn-tail copy with a broken loop → a favoured; copyall → undecided.
+
+**Ran:** E-44, `scripts/bff_contests.py`, commit `9b6209a`, ~4 min on 11 workers. All 36 pairs of the 9 emergent replicators, the hand-written one vs each, 12 designed-null and 9 emergent-null pairs; everything twice (batches A and B, independent soups).
+
+**Found:**
+- **Primary: 0 of 36 emergent pairs favoured** (batch A; batch B: 1 of 36); nulls 1 of 21; Fisher p = 1. **Prediction (≥ 30%) wrong.** Batch A and B effect sizes barely agree across pairs (Spearman 0.22, p = 0.19). Cross-epoch pairs: 0 of 7 decided either way.
+- **The hand-written replicator beats the emergent ones:** it won 222 of 287 informative races (p = 3·10⁻²¹; "a favoured" in 1 + 4 of 9 pairs). **Corrected in J-046:** most of this was a counting bias (each emergent species was counted by one of its two forms); with fair counting, 56% (E-46).
+- **A mirror replicator.** Replicators #5 and #6 (soup 5006, epoch 32000) are **exact byte-reversals of each other**. Run first in a pair, #5 stays intact and writes its own reverse into its partner (32 of 32 random partners); the reverse does the same. Seeded alone, #5 gives equal numbers of #5 and #6 (8 of 8 soups). The species alternates between two forms each generation, like a strand and its complement. (In E-42, each form passed the heredity test; by the mechanism, a mutation at byte p of #5 should reappear at byte 63 − p of #6 and back at p a generation later; not measured separately.) Figure: `docs/assets/report/e44-mirror-replicator.png`. Two soup-901 replicators (#0, #1) are 66% reverse-identical, so reverse copying may be common. **(J-046: in fact all 9 emergent replicators are mirror replicators.)**
+- Post hoc, from the contest matrix (`docs/assets/report/e44-bff-contests.png`): the mirror pair, although each form counted only half of its species, ended more common than the four soup-901 replicators in 162 of 250 races (p = 3·10⁻⁶). Tested in E-45.
+
+**Interpretation:** at the resolution of 16-race contests, unrelated emergent replicators are about equally fit, while a hand-written copier is clearly fitter: fitness differences exist in this physics but the soups' replicators sit at similar levels. Selection among them is not shown by E-44's pre-registered test.
+
+**Lesson:** measure what a family *is* before counting it: a species with two forms is undercounted by half when only one form is the reference. `compete_families` now accepts alternative forms.
+
+---
+
+## J-043 · 2026-11-08 · E-43: one-byte variants of emergent replicators look neutral in competition (selection not shown)
+
+**Question (pre-registered, `docs/data/e43-preregistration.md`):** natural selection needs variation (yes), heredity (yes, E-42) and differences in how well variants spread. Do the one-byte variants of E-42 differ from their parents in head-to-head competition?
+
+**Built (D-042):** `observatory/program_selection.py`: parent and variant, 8 copies each among 1024 random programs, 96 epochs, 8 replicate soups; "favoured" only if every informative replicate has the same sign and the mean log-ratio exceeds ln 2. Controls (benchmark section 12, passing): neutral tail variant of the hand-written replicator → no difference; variant that cannot copy → parent favoured; copyall → undecided.
+
+**Ran:** E-43, `scripts/bff_selection.py`, commit `841accf`, a few minutes on 11 workers. All 141 viable E-42 variants against their parents; 24 neutral pairs of the hand-written replicator as a null.
+
+**Found:**
+- **2 of 141 emergent pairs "parent favoured"** (1.4%), 0 "variant favoured", 139 "no difference". Neutral null: 0 of 24. Fisher one-sided p = 0.73. **Prediction (5–30% parent favoured) wrong; the primary test is not significant.**
+- The two deleterious variants: byte 23 of a soup-901 replicator, and byte 0 of a soup-5006 replicator (the one position whose mutation was only partly inherited in E-42).
+- Contests are winner-take-all: in most replicates one line ends near 0 and the other in the hundreds, in either direction. The assay can see a variant that loses consistently and by a lot; it cannot see small differences.
+
+**Interpretation:** one-byte changes that leave a replicator able to copy itself are, as far as this assay can tell, mostly neutral. Differential reproduction among variants, the third condition for natural selection, is **not shown**. This does not mean there is no selection: in E-41's soups, families do change over time and a few programs dominate. But a measurement that sees it needs more power (more replicates, longer or larger contests, or variants that differ by more than one byte, such as variants taken from different soups).
+
+**Lesson:** heredity was easy to show, fitness differences are not: neutrality is the default for small changes in a copier whose speed is set by its copy loop.
+
+---
+
+## J-042 · 2026-11-08 · E-42: mutations in emergent program replicators are inherited (heritable variation, level 4)
+
+**Question (pre-registered, `docs/data/e42-preregistration.md`):** the self-replicating programs that emerged in E-41 come in variants. Is that variation heritable: when a replicator carries a mutation, do its copies carry it too, or do they revert to a fixed form (like Lenia's dividing spots, J-037) or lose it?
+
+**Built (D-041):** `observatory/program_heredity.py`. Each single-byte mutant of a replicator is seeded alone (8 copies) in a fresh soup of 1024 random programs and run 96 epochs without background mutation; among the family (≥ 90% identical to the parent), f_mut = share carrying the mutant byte; f_base = the same share when the unmutated parent is seeded. Controls (benchmark section 12, passing): hand-written replicator → heredity (12/12 viable mutants inherited); the same under `noexec` and `copyall` → no variation; a random program → no variation.
+
+**Ran:** E-42, `scripts/bff_heredity.py`, commit `7aa4749`, a few minutes on 9 workers. The 9 distinct programs judged "replicator" in E-41 (soups 901, 5006, 5010), 24 mutants each.
+
+**Found:**
+- **"heredity" for 9 of 9** (prediction: at least 7). Sign tests p ≤ 1.2·10⁻⁴.
+- Viable mutants: 13–20 of 24 (54–83%; predicted 30–70%: mutations break copying less often than expected). Of 141 viable mutants, **140 were carried by ≥ 60% of the family**, and 131 by 100%. The one exception: a mutation at byte 0 of a soup-5006 replicator, carried by 26% of copies (the first byte is apparently not always copied).
+- **f_base = 0 in every case**: the mutant byte never appears at that position without the mutation.
+- Families grew to 64–512 copies depending on the mutant: mutants differ in how fast they spread (not yet analysed as fitness).
+- Figure: `docs/assets/report/e42-bff-heredity.png` (which byte positions tolerate mutation, per replicator).
+
+**Evidence level 4 (heritable variation)** for program replicators that arose spontaneously from random code: variants exist, they reproduce, and their differences are passed on to descendants in a fresh soup. Not level 5: we have not shown selection among variants, cumulative change, or open-endedness.
+
+**Caveats:** single-byte mutations only; 96 epochs is a few generations; the replicators were taken from soups selected for having transitioned; mutants were tested alone, not in competition. The hand-written positive is a linear copier; emergent replicators behaved the same under the test, which suggests they also copy whole tapes.
+
+**Lesson:** heritable variation was not the hard part in program soups: once self-copiers exist, they copy mutations along with everything else. The hard part was getting self-copiers at all (3 of 16 soups).
+
+---
+
+## J-041 · 2026-11-08 · E-41: self-replicating programs emerge from random code; every transition is confirmed by the detector
+
+**Question (pre-registered after E-40, `docs/data/e41-preregistration.md`):** E-40 never reached a transition, so its detector question stayed open. (A) Does the pilot soup that transitioned (seed 901) replay exactly, and does the detector find replicators in it? (B) Do E-40's 12 soups transition if run 3× longer, and is every transition confirmed by the detector, with none outside?
+
+**Ran:** E-41, `scripts/bff_soups.py --e41`, commit `1c335d4`, 32 min (A) and 20–40 min per soup (B) on 11 workers. (A) seed 901 from scratch, 16000 epochs. (B) E-40's 12 final snapshots continued for 32000 epochs (48000 in all) with fresh random streams (seeds 5000–5011). Detector (unchanged, D-040) on the 4 most common programs 1000 epochs after a transition and at the end.
+
+**Found:**
+- **(A) Exact replay:** the HOE series equals the pilot log at every checkpoint; transition at epoch 8750. Detector at 9750: **2 replicators + 2 "one generation"**; at 16000: **2 replicators**, 1 one generation, 1 no replication. Random programs never multiplied (0 of 3 per candidate). The common programs are variants of one family sharing a core (`[[]},.<;45=%` appears in five of the six most common at epoch 9750). Prediction met.
+- **(B) 2 of 12 soups transitioned** (seed 5010 at total epoch 32000, seed 5006 at 43250; 95% interval 2%–48% per soup within 48000 epochs). Prediction (2–6) met, at its low end. Both contain verified replicators at both scans (5006 at the end: 97 copies each of two replicator programs, 8 → 512 copies in the growth test and 512 again in generation 2).
+- **Selection-aware null:** 0 replicators in the 22 end scans of soups that did not transition (E-40: 12, E-41: 10). Every soup above the HOE threshold contains a replicator; none below does.
+- Pooled with E-40 and the pilots: **3 transitions in 16 soups of 16384 programs**, all of them at epoch ≥ 8750; none in the first 16000 epochs of the 12 pre-registered soups.
+- Many top programs get "one generation": their copies multiply once, but the chosen copy does not. Likely partial or damaged copies (BFF replicators are known to copy imperfectly and to be parasitized); not investigated.
+
+**Evidence level 3**, now in a second universe and in a stronger form than Lenia's dividing spots: replicators arise **from random code with no fitness function**, are confirmed by intervention (two generations among random programs), and come as **several distinct variants**. Heredity (level 4) is now testable here: do mutant replicators pass on their mutations? That needs a measurement with its own controls; none has been run.
+
+**Lesson:** the transition is a rare event per soup and per epoch at this size; whether it happened at all in a given run is not a property of the rule. Rates need many soups and long runs; the detector, not the entropy curve, decides what was found.
+
+---
+
+## J-040 · 2026-11-08 · Program soups (BFF): a replicator detector, and no transition in 12 soups (E-40)
+
+**Question (Track D route 5; pre-registered, `docs/data/e40-preregistration.md`):** Agüera y Arcas et al. (2024) report that soups of random 64-byte programs in a minimal language (BFF), paired at random and run on a shared tape, undergo a "state transition" in which self-replicating programs appear and take over, with no fitness function. Lenia has given us movers but, until E-32, no reproducers. Does self-replication emerge from random code in our implementation, and does a detector built to our standards confirm it?
+
+**Built (interactive session, commit `4d79737`; D-040):** `emergence/programs/bff.py` (soup, C interpreter via ctypes, a pure-Python reference that the C code must equal on 300 random tapes; modes `noexec` and `copyall` as controls) and `observatory/replicators.py` (growth test of 8 copies among 1024 random programs, two generations, random-program null). Probes (benchmark section 12), all passing: a hand-written 64-byte self-replicator → replicator (8 → 70 copies, generation 2: 838); random program and an all-zeros program → no replication; the replicator under `copyall` and `noexec` → no replication; scans of the most common programs of a noexec soup and an early BFF soup → 0 replicators (selection-aware null).
+
+**Pilot (interactive session, not in the sample):** 4 soups, 16000 epochs. Seed 901 (16384 programs) jumped at epoch ~8750 from a high-order entropy (HOE) of 0.3 to 2.2–3.5 and stayed there; seeds 900, 902, 903 did not.
+
+**Ran:** E-40, `scripts/bff_soups.py`, commit `4d2761e`, 53 min per soup on 11 workers. 12 BFF soups of 16384 programs (seeds 4000–4011), 16000 epochs; controls 4000 epochs: 2 `noexec`, 2 `copyall`. Detector on each soup's 4 most common programs at the end (and 1000 epochs after any transition).
+
+**Found:**
+- **0 of 12 BFF soups transitioned** (max HOE 0.54–0.64, all in the first 2000 epochs; final 0.29–0.38). **My prediction (2 to 6) was wrong**, and the pilot's 1 in 4 was the lucky draw. With the pilot: 1 of 16 soups (95% interval 0.2%–30%).
+- Detector at the end: every candidate "no replication" (the most common program occurs once or twice: the soup is still diverse).
+- Something does change before any transition: the share of instruction bytes rises from 3.9% (random) to ~15% in every BFF soup and stays there, while `noexec` stays at 3.9%. Programs that contain instructions survive interactions better than others. This is selection on the bytes, but not replication.
+- Controls: `noexec` HOE 0 (nothing changes); `copyall` HOE 7.0 within 250 epochs (copying alone makes the soup repetitive) yet its common programs are "no replication" (one "one generation" verdict). **HOE alone would have called `copyall` a transition**; the detector does not.
+
+**Interpretation:** not reached; the question stays open. Our soups are 8× smaller than the paper's (2^14 vs 2^17 programs); if a replicator has to arise by chance in some pair, its chance per epoch scales with the number of pairs, so a smaller soup should transition later. E-41 (pre-registered, running) replays the pilot that transitioned, which is deterministic, to test the detector on a real transition, and continues the 12 soups to 48000 epochs.
+
+**Lesson:** one pilot in four is not a rate. Pre-registered predictions built on a single success should be wide, or the pilot should be bigger.
+
+---
+
+## J-037 · 2026-11-08 · E-32: one random multi-channel Lenia rule makes dividing spots (first Lenia reproducer; prediction wrong)
+
+**Question (pre-registered, `docs/data/e32-preregistration.md`; Track D):** E-29 found no reproducer among 3000 random single-channel Lenia rules. Chan (2020) reports self-replication once Lenia has several channels and kernels. Repeating E-29 unchanged on random `MultiLenia` rules (D-031), does a lone lump ever become a reproducer?
+
+**Ran:** E-32, `scripts/mlenia_lump_scan.py`, commit `7aedcaf`, 4.4 h on 8 workers. 1000 rules (seed 32; 521 with 2 channels, 479 with 3), 2 lumps each (radius 13, 26), 128×128 vacuum, 300 settling steps, birth detector (D-028 + D-030) on the 2 most common object types. Gray-Scott pipeline positive 4/4.
+
+**Found:**
+- **1 reproducer rule in 1000** (#970, 2 channels, 4 kernels): both tested object types passed two generations, with 0 copies from the empty and the perturbed vacuum. **My prediction (0) was wrong.**
+- Rule outcomes: 450 decided (at least one object fully tested; 449 without a reproducer), 143 explosive only, 27 filled, 380 extinct. 5 further "one generation" verdicts (E-29: none).
+- Compared with single-channel Lenia (E-29, 0 of 1453 decided rules): 1 of 450, 95% interval 0.006%–1.2%; Fisher one-sided p = 0.24. **The difference in rate is not significant**; what is new is that a reproducer exists at all in our Lenia family.
+
+**Inspected (as pre-registered):**
+- **By eye** (`docs/assets/report/e32-divider-strip.png`, `e32-divider.gif`): a small spot alone in an empty world stretches, splits in two within ~150 steps, and the halves split again; after ~2000 steps about 100 spots tile the 160×160 world and the total mass saturates (52 → 4200). It looks like Gray-Scott's "mitosis" spots, not like E-30's condensation: matter grows only next to existing spots, in a front, never from the empty background.
+- **Re-run from 3 new lumps** (fresh random streams): a reproducer in **3 of 3**, 0 background copies each time.
+- **The scrambled-patch check reports `attractor = True`**: scrambled lumps of the same values also become dividing spots. As for Gray-Scott, the spot is the rule's attractor, so offspring cannot inherit anything from a particular parent. Heredity is impossible here by construction, and the heredity test was not run.
+- **What the second channel does (post hoc, scratch test):** channel 1 dies out (mass 0 after settling), so everything happens in channel 0. But the kernel from the empty channel 1 into channel 0 still counts in channel 0's averaged growth, as a constant negative term (growth of 0 is −1), i.e. a **uniform decay**. Removing channel 1 (the same two self-kernels of channel 0 in a one-channel rule) or keeping only either self-kernel: **no reproduction** (6/6 lumps, many static objects). The division needs two kernels *plus* that decay.
+
+**Evidence level:** level 3 (self-replication verified by intervention, two generations, three fresh starts) for one rule, in the weakest form: a single attractor type with no possible heredity, as Gray-Scott. Not a creature with a lineage.
+
+**Interpretation:** dividing spots, the classic reaction-diffusion reproducer, can arise in Lenia from a random rule, but rarely (~0.2% of decided rules), and they are copies of an attractor, not of a parent. For heredity, the next physics needs room for several distinct reproducing types (Track D).
+
+**Lesson:** an "extra channel" can matter without holding any matter: in averaged-growth Lenia an empty channel's kernel is a decay term. Check what a component actually does before crediting it.
+
+---
+
+## J-036 · 2026-11-08 · E-31: held-out fed Flow-Lenia on stable food: no reproduction, and the new null holds
+
+**Question (pre-registered, `docs/data/e31-preregistration.md`):** E-30's fed-world "reproducers" were the food condensing (J-035). The perturbed-vacuum null (D-030) was added after those results, and fed worlds only mean something if the food itself is stable. On new rules (seed 31), screened for stable food first, does anything reproduce?
+
+**Ran:** E-31, `scripts/pl_heldout.py`, commit `8d30db2`, 4.8 h on 11 cores (sharing the machine with E-32). 200 rules screened at food 0.05 and at 0.08 (perturbed food alone, 160×160, 4000 steps); the first 50 stable rules at each level (47 at 0.08) run in the E-30 world (6 patches with their own kernel weights, 128×128, 1500 steps), birth detector with D-030, heredity test on any reproducer.
+
+**Found:**
+- **0 reproducers in 97 stable-food worlds** (50 at food 0.05, 47 at 0.08), 183 objects tested, every verdict "no reproduction". No "background" and no "one generation" verdict. Prediction (0) correct; one-sided 95% upper bound ≈ 6% per food level.
+- **Stable food is the minority:** 72/200 rules (36%) at 0.05 (E-30: 32/100), **47/200 (24%) at 0.08**: more food, less stability, as predicted.
+- Pipeline positive (GrayScottTracer, carried trait): reproducer and heredity 4/4 (r = 1.0, p = 0.0005).
+
+**Interpretation:** the held-out test of D-030 passed: with the food screened, the detector no longer reports condensation, and its positive still passes. Fed Flow-Lenia with localized parameters, in our random rule distribution and with this start, does not reproduce (level 3 not reached). The localized-parameter route (Track D route 3) has nothing to evolve yet.
+
+**Lesson:** a null added after the fact needs a held-out run where it cannot be tuned. This one passed it.
+
+---
+
+## J-035 · 2026-11-07 · E-30: "reproducers" in fed Flow-Lenia were food condensing; the birth detector gets a perturbed-vacuum null
+
+**Question (pre-registered, `docs/data/e30-preregistration.md`; Track D route 3):** in Flow-Lenia with localized parameters (FlowLeniaPL, J-033), fed with a thin food layer and seeded with six "species", does anything reproduce? If so, is there heredity?
+
+**Ran:** E-30, `scripts/pl_scan.py`, commit `ef87a8a`, 2.7 h on 11 cores. 100 random rules × food {0, 0.05}, paired; 6 patches with their own kernel weights; 128×128, 1500 steps; birth detector on the 2 most common object types; heredity test where a reproducer was found. Pipeline positive (Gray-Scott tracer): reproducer and heredity in 4/4.
+
+**Found, as first scored:**
+- Unfed: 0/100 worlds with a reproducer (by construction); mass drift ≤ 4e-7.
+- **Fed: 17/100 worlds with a "reproducer"** (24 objects), 1 "one generation", and the heredity test said "heredity" in 1 world (r = 0.998, 14 families). **My prediction (0) was wrong on the numbers.**
+
+**Inspected (as pre-registered) and found to be artefacts:**
+- The "parents" were small (mass 2–40) next to creature-sized objects (120–600) that never passed. One of them, alone in a fed vacuum, became **99 objects spread over the whole world within 500 steps**.
+- **The food layer is an unstable fixed point.** A perfectly uniform layer never changes (so the background null, an exact fed vacuum, made 0 copies), but food with noise of 1e-4 and **no parent at all** condensed into 20–110 droplets in 15 of the 17 rules; with 2% relative noise, in all 17. The droplets have the parent's mass, so the copy count rises like real division (1, 5, 9, 17, 25 … 106).
+- The "heredity" verdict is meaningless here: the "offspring" are condensed food, not offspring.
+
+**Changed (D-030, post hoc):** the birth detector also runs a **perturbed vacuum** (float states: × (1 + N(0, 0.02)) + N(0, 1e-4)); copies there → "background", a no-spontaneous-generation rule. The heredity test returns "unstable vacuum" in the same case. Every earlier control keeps its verdict (Gray-Scott's vacuum stays empty under the noise); E-30 world #43 is a new deceptive probe.
+
+**Rescored (`scripts/e30_rescore.py`):**
+- **Food stability: only 32 of the 100 rules have a stable food layer at food 0.05.**
+- **All 17 hit worlds are on unstable food**; rescanned with the fixed detector: **0 reproducers** (24 background, 10 no reproduction).
+- On the 32 stable-food rules (valid under both detector versions): 0 reproducers, 1 "one generation", 59 no reproduction.
+
+**Interpretation:** no reproduction in fed Flow-Lenia with localized parameters, in 100 random rules. The real lesson is about the environment: "feeding" a mass-conserving world can make the food itself the most active thing in it. Any future fed-world experiment must first check that its food is stable (or explicitly study condensation). The fix is post hoc and needs held-out data: the next fed-world scan should use only rules whose food passes the stability check, with the new null pre-registered. Evidence level stays at 2.
+
+**Lesson:** a null built from a perfectly symmetric state can be blind to instability. "Nothing happens in an empty world" has to hold for a slightly disturbed empty world too.
+
+---
+
 ## J-034 · 2026-11-07 · E-29: in 3000 random Lenia rules, no lone lump becomes a reproducer
 
 **Question (pre-registered, `docs/data/e29-preregistration.md`; Track D route 2):** E-27/E-28 tested objects in worlds already selected for movers, a small corner of rule space. Before building a "fission objective" for the search, a direct test: give every rule drawn at random the same chance to reproduce. Does any Lenia rule turn a lone lump of matter into a reproducer?

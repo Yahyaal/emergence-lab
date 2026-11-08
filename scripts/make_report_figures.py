@@ -712,7 +712,147 @@ def e29_lump_scan() -> None:
     plt.close(fig)
 
 
-FIGS = {"e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e30_condensation() -> None:
+    """J-035: in a fed Flow-Lenia rule (E-30 #43) a small lump seems to reproduce, but the food layer
+    alone, faintly disturbed, condenses into the same droplets: left lump in food, right food + noise."""
+    from emergence.benchmark_probes import FED_UNSTABLE
+    from emergence.observatory import births as B
+    ph = parse_rule(FED_UNSTABLE)
+    yy, xx = np.mgrid[-64:64, -64:64]
+    a = ph.localize(ph.food + 0.6 * np.exp(-(yy ** 2 + xx ** 2) / 8.0))
+    b = B.perturbed_vacuum(ph, (128, 128), a)
+    frames = []
+    for t in range(3001):
+        if t % 30 == 0:
+            frames.append(np.concatenate([B.field(ph, a), np.full((128, 4), 255, np.uint8), B.field(ph, b)], 1))
+        if t < 3000:
+            a, b = ph.step(a), ph.step(b)
+    save_gif(frames, "e30-condensation.gif", scale=2, ms=60)
+
+
+def e32_divider() -> None:
+    """J-037: the one E-32 rule (#970, two channels) whose small objects divide. The rule is rebuilt
+    from the scan's own random stream; its first object after settling is put alone in a 160x160
+    vacuum (as the birth detector does) and filmed for 2000 steps; plus a strip of the first
+    divisions (0-400 steps)."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import lump_scan as L  # noqa: E402
+    import mlenia_lump_scan as M  # noqa: E402
+    from emergence.observatory import births as B
+    from emergence.physics import MultiLenia
+    rng = np.random.default_rng([32, 970])
+    ph = MultiLenia.random(rng)
+    s, _, _ = L.settle(ph, M.mlump(ph, rng, 13))
+    w = B.alone(ph, s, B.find(ph, s)[0]["mask"], 160)
+    frames, early = [], []
+    for t in range(2001):
+        if t % 20 == 0:
+            frames.append(B.field(ph, w))
+        if t <= 400 and t % 50 == 0:
+            early.append(B.field(ph, w)[45:115, 45:115])
+        if t < 2000:
+            w = ph.step(w)
+    save_gif(frames, "e32-divider.gif", scale=2, ms=70)
+    sep = np.full((70, 3), 90, np.uint8)
+    save_png(colour(np.concatenate([x for f in early for x in (f, sep)][:-1], 1)), "e32-divider-strip.png", scale=3)
+
+
+def e40_bff() -> None:
+    """J-040/J-041: high-order entropy of BFF program soups over time: E-40's 12 soups (0-16000)
+    continued by E-41 (16000-48000), the 4 pilots, and the controls."""
+    d = json.loads((DATA / "2026-11-08-e40-bff-soups.json").read_text())
+    d41 = {r["seed"]: r for r in json.loads((DATA / "2026-11-08-e41-bff-longer.json").read_text())["soups"]}
+    pilots = {}
+    for line in (DATA / "2026-11-07-bff-pilots.jsonl").read_text().splitlines():
+        r = json.loads(line)
+        pilots.setdefault((r["n"], r["seed"]), []).append((r["epoch"], r["hoe"]))
+    fig, ax = plt.subplots(figsize=(9, 4.4))
+    lab = {False: "pre-registered soups (E-40, continued in E-41)", True: "pre-registered soup: transition"}
+    for r in d["soups"]:
+        if r["mode"] != "bff":
+            continue
+        cont = d41[5000 + r["seed"] - 4000]
+        e = [x["epoch"] for x in r["series"]] + [16000 + x["epoch"] for x in cont["series"]]
+        h = [x["hoe"] for x in r["series"]] + [x["hoe"] for x in cont["series"]]
+        hit = cont["transitioned"]
+        ax.plot(e, h, color=RED if hit else GREY, lw=2 if hit else 1, alpha=1 if hit else 0.7, label=lab.pop(hit, None))
+    for (n, seed), pts in sorted(pilots.items()):
+        e, h = zip(*pts)
+        hit = max(h) >= 1.0
+        ax.plot(e, h, color="#7b3fa0" if hit else BLUE, lw=2 if hit else 1, alpha=1 if hit else 0.6,
+                label=f"pilot seed {seed}: transition" if hit else None)
+    for mode, col in (("copyall", ORANGE), ("noexec", GREEN)):
+        r = next(x for x in d["soups"] if x["mode"] == mode)
+        ax.plot([x["epoch"] for x in r["series"]], [x["hoe"] for x in r["series"]], color=col, lw=2,
+                label={"copyall": "control: copying rule (no programs run)", "noexec": "control: nothing runs"}[mode])
+    ax.axhline(1.0, color="k", lw=0.8, ls=":")
+    ax.axvline(16000, color="k", lw=0.6, ls="--")
+    ax.text(16300, 6.6, "E-40 ends; E-41\ncontinues the soups", fontsize=8.5, va="top")
+    ax.text(47800, 1.05, "transition threshold", fontsize=9, va="bottom", ha="right")
+    ax.set_xlabel("epoch (each program meets one random partner per epoch)")
+    ax.set_ylabel("high-order entropy (bits/byte)")
+    ax.set_title("Program soups: 3 transitions in 16 BFF soups")
+    ax.set_ylim(-0.2, 7.5)
+    ax.legend(fontsize=8.5, loc="upper right", frameon=False)
+    fig.savefig(OUT / "e40-bff-entropy.png")
+    plt.close(fig)
+
+
+def e41_soup() -> None:
+    """J-041: the BFF soup of pilot seed 901 (deterministic replay) as pixels: 192 programs (rows,
+    sorted so that equal programs sit together) x 64 bytes; instruction bytes in colour, other
+    bytes grey. Epochs 0, 8500 (just before the transition) and 9750 (after)."""
+    from emergence.programs import bff as B
+    cols = {ord(c): v for c, v in zip("<>{}-+.,[]", ["#2f6db5", "#2f6db5", "#3a9a5b", "#3a9a5b", "#c8453c", "#c8453c",
+                                                      "#e08a1e", "#e08a1e", "#f2f2f2", "#f2f2f2"])}
+    lut = np.full((256, 3), 40, np.uint8)
+    for k, v in cols.items():
+        lut[k] = [int(v[i:i + 2], 16) for i in (1, 3, 5)]
+    soup, shots = B.Soup(n=16384, seed=901), {}
+    for e in range(9751):
+        if e in (0, 8500, 9750):
+            idx = np.random.default_rng(1).choice(soup.n, 192, replace=False)
+            shots[e] = sorted(map(bytes, soup.programs[idx]))  # a list: numpy bytes arrays drop trailing zeros
+        if e < 9750:
+            soup.epoch()
+    fig, axes = plt.subplots(1, 3, figsize=(10, 5.4))
+    for ax, (e, progs) in zip(axes, shots.items()):
+        ax.imshow(lut[np.frombuffer(b"".join(progs), np.uint8).reshape(-1, 64)], interpolation="nearest", aspect="auto")
+        ax.set_title({0: "epoch 0: random bytes", 8500: "epoch 8500: before", 9750: "epoch 9750: after"}[e])
+        ax.set_xticks([]); ax.set_yticks([])
+    fig.suptitle("192 programs drawn from the soup (rows, sorted), 64 bytes each", fontsize=10)
+    fig.text(0.5, 0.02, "blue < >  move head 0 · green { }  move head 1 · red - +  change a byte · orange . ,  copy between heads"
+             " · white [ ]  loop · dark grey: data", ha="center", fontsize=8.5)
+    fig.savefig(OUT / "e41-bff-soup.png")
+    plt.close(fig)
+
+
+def e42_heredity() -> None:
+    """J-042: single-byte mutants of 9 emergent BFF replicators. Each cell is one mutant at that
+    byte position: green = copies carry the mutation, red = viable but not carried, grey = the
+    mutation stops replication."""
+    d = json.loads((DATA / "2026-11-08-e42-bff-heredity.json").read_text())
+    fig, ax = plt.subplots(figsize=(9, 3.6))
+    for i, r in enumerate(d["results"]):
+        for m in r["mutants"]:
+            c = GREEN if m["inherited"] else (RED if m["viable"] else "#c9ccd1")
+            ax.add_patch(plt.Rectangle((m["pos"], i - 0.4), 1, 0.8, color=c, lw=0))
+    ax.set_xlim(0, 64)
+    ax.set_ylim(-0.6, len(d["results"]) - 0.4)
+    ax.set_yticks(range(len(d["results"])))
+    ax.set_yticklabels([f"soup {r['soup']}, epoch {r['epoch']}" for r in d["results"]], fontsize=8)
+    ax.invert_yaxis()
+    ax.set_xlabel("byte position of the mutation (programs are 64 bytes)")
+    ax.set_title("Mutations in emergent replicators are inherited")
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color=GREEN, label="copies carry the mutation"), Patch(color=RED, label="still copies, mutation lost"),
+                       Patch(color="#c9ccd1", label="mutation stops copying")], fontsize=8.5, frameon=False,
+              loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=3)
+    fig.savefig(OUT / "e42-bff-heredity.png")
+    plt.close(fig)
+
+
+FIGS = {"e42_heredity": e42_heredity, "e41_soup": e41_soup, "e40_bff": e40_bff, "e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 

@@ -1,0 +1,2081 @@
+{
+ "experiment": "E-42",
+ "summary": {
+  "candidates": 9,
+  "verdicts": {
+   "heredity": 9
+  }
+ },
+ "results": [
+  {
+   "program": "717183855b323967253d35343b3c062c7d5d5b5b943c712f39ba943b5be25b695d5d3c5be25b70945b3c5b71ab945b5b5d7d2c063c3b34353d256b39325b2171",
+   "soup": 901,
+   "epoch": 9750,
+   "count": 48,
+   "mutants": [
+    {
+     "pos": 5,
+     "val": 248,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 0,
+     "val": 165,
+     "copies": 212,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 50,
+     "val": 221,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 42,
+     "val": 94,
+     "copies": 68,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 5,
+     "val": 98,
+     "copies": 212,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 12,
+     "val": 177,
+     "copies": 159,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 25,
+     "val": 244,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 43,
+     "val": 250,
+     "copies": 186,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 48,
+     "val": 134,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 22,
+     "val": 156,
+     "copies": 141,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 4,
+     "val": 161,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 21,
+     "val": 160,
+     "copies": 153,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 10,
+     "val": 182,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 0,
+     "val": 202,
+     "copies": 145,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 59,
+     "val": 125,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 28,
+     "val": 197,
+     "copies": 127,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 26,
+     "val": 85,
+     "copies": 208,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 26,
+     "val": 141,
+     "copies": 187,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 5,
+     "val": 194,
+     "copies": 156,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 1,
+     "val": 122,
+     "copies": 127,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 49,
+     "val": 71,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 60,
+     "val": 90,
+     "copies": 149,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 27,
+     "val": 76,
+     "copies": 90,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 44,
+     "val": 175,
+     "copies": 104,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    }
+   ],
+   "viable": 16,
+   "inherited": 16,
+   "sign_k": 16,
+   "sign_n": 16,
+   "p": 2e-05,
+   "verdict": "heredity"
+  },
+  {
+   "program": "08a75b32399b253d35343b3c062c7d5d5b5be33c71603c5b943b5be2ff3c5d4b325be2c63b945b6011713c945b5b5d7d2c063ce05835612520a7585b850da571",
+   "soup": 901,
+   "epoch": 9750,
+   "count": 44,
+   "mutants": [
+    {
+     "pos": 32,
+     "val": 217,
+     "copies": 182,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 38,
+     "val": 16,
+     "copies": 100,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 27,
+     "val": 216,
+     "copies": 141,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 1,
+     "val": 187,
+     "copies": 97,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 30,
+     "val": 39,
+     "copies": 175,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 35,
+     "val": 145,
+     "copies": 154,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 47,
+     "val": 34,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 1,
+     "val": 213,
+     "copies": 175,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 56,
+     "val": 108,
+     "copies": 313,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 31,
+     "val": 130,
+     "copies": 24,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 31,
+     "val": 118,
+     "copies": 167,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 11,
+     "val": 167,
+     "copies": 8,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 28,
+     "val": 50,
+     "copies": 226,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 13,
+     "val": 65,
+     "copies": 8,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 35,
+     "val": 204,
+     "copies": 214,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 19,
+     "val": 233,
+     "copies": 158,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 18,
+     "val": 58,
+     "copies": 145,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 23,
+     "val": 217,
+     "copies": 232,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 54,
+     "val": 5,
+     "copies": 159,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 53,
+     "val": 38,
+     "copies": 191,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 25,
+     "val": 0,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 51,
+     "val": 226,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 35,
+     "val": 18,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 29,
+     "val": 26,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    }
+   ],
+   "viable": 16,
+   "inherited": 16,
+   "sign_k": 16,
+   "sign_n": 16,
+   "p": 2e-05,
+   "verdict": "heredity"
+  },
+  {
+   "program": "acac5b50732501e116c0fc3c022c7d5d2b15bc67a6a72c1f943baa70ae3c9d10e128fec140be57120c77b7fd985b5d7d2c2a3c3b63273aa5d3f9825b71717077",
+   "soup": 901,
+   "epoch": 16000,
+   "count": 67,
+   "mutants": [
+    {
+     "pos": 42,
+     "val": 215,
+     "copies": 184,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 60,
+     "val": 30,
+     "copies": 166,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 60,
+     "val": 23,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 29,
+     "val": 253,
+     "copies": 80,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 1,
+     "val": 189,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 46,
+     "val": 240,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 25,
+     "val": 227,
+     "copies": 129,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 9,
+     "val": 234,
+     "copies": 131,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 25,
+     "val": 60,
+     "copies": 116,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 27,
+     "val": 41,
+     "copies": 239,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 35,
+     "val": 62,
+     "copies": 217,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 22,
+     "val": 136,
+     "copies": 124,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 48,
+     "val": 55,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 47,
+     "val": 151,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 46,
+     "val": 111,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 25,
+     "val": 104,
+     "copies": 61,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 21,
+     "val": 84,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 43,
+     "val": 90,
+     "copies": 204,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 31,
+     "val": 71,
+     "copies": 59,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 53,
+     "val": 62,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 61,
+     "val": 53,
+     "copies": 99,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 21,
+     "val": 10,
+     "copies": 61,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 32,
+     "val": 77,
+     "copies": 226,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 7,
+     "val": 124,
+     "copies": 165,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    }
+   ],
+   "viable": 13,
+   "inherited": 13,
+   "sign_k": 13,
+   "sign_n": 13,
+   "p": 0.00012,
+   "verdict": "heredity"
+  },
+  {
+   "program": "77d45b950a9d603d42fa943ca52c7d5d16ccc93c715af87f8ad65e71df3c18c47b71fd911b6825ecbbdc6b2969525d7d452c3c1111cb3d66eae35b5b9c3f3f3f",
+   "soup": 901,
+   "epoch": 16000,
+   "count": 61,
+   "mutants": [
+    {
+     "pos": 59,
+     "val": 238,
+     "copies": 64,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 12,
+     "val": 193,
+     "copies": 136,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 12,
+     "val": 176,
+     "copies": 244,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 56,
+     "val": 5,
+     "copies": 191,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 6,
+     "val": 248,
+     "copies": 172,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 7,
+     "val": 253,
+     "copies": 138,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 36,
+     "val": 50,
+     "copies": 161,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 2,
+     "val": 196,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 31,
+     "val": 167,
+     "copies": 40,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 27,
+     "val": 224,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 15,
+     "val": 9,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 46,
+     "val": 216,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 53,
+     "val": 201,
+     "copies": 47,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 51,
+     "val": 20,
+     "copies": 57,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 55,
+     "val": 56,
+     "copies": 179,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 36,
+     "val": 33,
+     "copies": 89,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 7,
+     "val": 252,
+     "copies": 169,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 47,
+     "val": 48,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 47,
+     "val": 190,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 63,
+     "val": 187,
+     "copies": 308,
+     "viable": true,
+     "f_mut": 0.948,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 47,
+     "val": 45,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 19,
+     "val": 244,
+     "copies": 126,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 5,
+     "val": 45,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 31,
+     "val": 99,
+     "copies": 209,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    }
+   ],
+   "viable": 13,
+   "inherited": 13,
+   "sign_k": 13,
+   "sign_n": 13,
+   "p": 0.00012,
+   "verdict": "heredity"
+  },
+  {
+   "program": "bb15ff525bdc33a8bf3c28c2369ddefc10fed92c50a67d08310e3bfa5d39b42e2eb4995dfa3b0eec087d34502c6065349ede9d36c2283cbfa891dc5b5ad53aff",
+   "soup": 5006,
+   "epoch": 28250,
+   "count": 54,
+   "mutants": [
+    {
+     "pos": 32,
+     "val": 21,
+     "copies": 62,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 37,
+     "val": 135,
+     "copies": 293,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 27,
+     "val": 160,
+     "copies": 183,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 8,
+     "val": 59,
+     "copies": 35,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 43,
+     "val": 39,
+     "copies": 126,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 46,
+     "val": 17,
+     "copies": 129,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 16,
+     "val": 76,
+     "copies": 90,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 59,
+     "val": 122,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 5,
+     "val": 159,
+     "copies": 76,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 16,
+     "val": 49,
+     "copies": 176,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 54,
+     "val": 115,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 13,
+     "val": 76,
+     "copies": 80,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 8,
+     "val": 175,
+     "copies": 151,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 3,
+     "val": 187,
+     "copies": 96,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 9,
+     "val": 141,
+     "copies": 8,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 59,
+     "val": 132,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 52,
+     "val": 156,
+     "copies": 269,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 38,
+     "val": 163,
+     "copies": 195,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 49,
+     "val": 178,
+     "copies": 120,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 39,
+     "val": 40,
+     "copies": 166,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 34,
+     "val": 59,
+     "copies": 130,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 58,
+     "val": 130,
+     "copies": 1,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 61,
+     "val": 39,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 15,
+     "val": 11,
+     "copies": 91,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    }
+   ],
+   "viable": 16,
+   "inherited": 16,
+   "sign_k": 16,
+   "sign_n": 16,
+   "p": 2e-05,
+   "verdict": "heredity"
+  },
+  {
+   "program": "5a255b525bc733a8d63c28bd36b1deb42d864f2cf7347d0831465e47cefa3909824abd5df45ecd3f087d34f22cc4fe459e90b7369ab03cbfb433c763338f5bd5",
+   "soup": 5006,
+   "epoch": 32000,
+   "count": 97,
+   "mutants": [
+    {
+     "pos": 6,
+     "val": 241,
+     "copies": 500,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 54,
+     "val": 230,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 0,
+     "val": 157,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 0.26,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 13,
+     "val": 165,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 20,
+     "val": 46,
+     "copies": 146,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 32,
+     "val": 39,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 45,
+     "val": 198,
+     "copies": 510,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 48,
+     "val": 244,
+     "copies": 452,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 26,
+     "val": 235,
+     "copies": 470,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 46,
+     "val": 31,
+     "copies": 488,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 4,
+     "val": 40,
+     "copies": 406,
+     "viable": true,
+     "f_mut": 0.998,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 52,
+     "val": 201,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 5,
+     "val": 170,
+     "copies": 501,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 45,
+     "val": 115,
+     "copies": 497,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 5,
+     "val": 117,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 35,
+     "val": 7,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 51,
+     "val": 46,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 7,
+     "val": 97,
+     "copies": 501,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 11,
+     "val": 114,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 61,
+     "val": 43,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 26,
+     "val": 89,
+     "copies": 430,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 39,
+     "val": 158,
+     "copies": 511,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 8,
+     "val": 222,
+     "copies": 496,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 53,
+     "val": 22,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    }
+   ],
+   "viable": 20,
+   "inherited": 19,
+   "sign_k": 20,
+   "sign_n": 20,
+   "p": 0.0,
+   "verdict": "heredity"
+  },
+  {
+   "program": "d55b8f3363c733b4bf3cb09a36b7909e45fec42cf2347d083fcd5ef45dbd4a820939face475e4631087d34f72c4f862db4deb136bd283cd6a833c75b525b255a",
+   "soup": 5006,
+   "epoch": 32000,
+   "count": 97,
+   "mutants": [
+    {
+     "pos": 8,
+     "val": 34,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 4,
+     "val": 48,
+     "copies": 507,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 49,
+     "val": 70,
+     "copies": 466,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 31,
+     "val": 116,
+     "copies": 482,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 57,
+     "val": 85,
+     "copies": 511,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 17,
+     "val": 102,
+     "copies": 509,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 32,
+     "val": 48,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 58,
+     "val": 45,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 28,
+     "val": 121,
+     "copies": 4,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 20,
+     "val": 171,
+     "copies": 494,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 11,
+     "val": 160,
+     "copies": 491,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 51,
+     "val": 52,
+     "copies": 508,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 18,
+     "val": 141,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 4,
+     "val": 172,
+     "copies": 495,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 34,
+     "val": 185,
+     "copies": 433,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 60,
+     "val": 187,
+     "copies": 463,
+     "viable": true,
+     "f_mut": 0.609,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 40,
+     "val": 205,
+     "copies": 22,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 44,
+     "val": 232,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 47,
+     "val": 125,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 9,
+     "val": 162,
+     "copies": 6,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 18,
+     "val": 240,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 54,
+     "val": 34,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 6,
+     "val": 206,
+     "copies": 512,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 50,
+     "val": 207,
+     "copies": 241,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    }
+   ],
+   "viable": 17,
+   "inherited": 17,
+   "sign_k": 17,
+   "sign_n": 17,
+   "p": 1e-05,
+   "verdict": "heredity"
+  },
+  {
+   "program": "385b4a3b4052303a763d12075bd6b10d5b501e5b44f4d8973a7b5ae93bfd472e1f673e1f5d44445d1f3e1fe82e47fd3be95a7bd3b5acd89c5b1e8d5b5bb17cc4",
+   "soup": 5010,
+   "epoch": 17000,
+   "count": 67,
+   "mutants": [
+    {
+     "pos": 2,
+     "val": 167,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 31,
+     "val": 13,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 22,
+     "val": 175,
+     "copies": 33,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 62,
+     "val": 28,
+     "copies": 177,
+     "viable": true,
+     "f_mut": 0.989,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 45,
+     "val": 129,
+     "copies": 110,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 13,
+     "val": 120,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 41,
+     "val": 243,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 17,
+     "val": 200,
+     "copies": 125,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 37,
+     "val": 70,
+     "copies": 189,
+     "viable": true,
+     "f_mut": 0.974,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 55,
+     "val": 216,
+     "copies": 119,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 19,
+     "val": 132,
+     "copies": 120,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 13,
+     "val": 68,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 0,
+     "val": 207,
+     "copies": 113,
+     "viable": true,
+     "f_mut": 0.796,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 61,
+     "val": 55,
+     "copies": 97,
+     "viable": true,
+     "f_mut": 0.969,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 42,
+     "val": 36,
+     "copies": 105,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 28,
+     "val": 88,
+     "copies": 195,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 2,
+     "val": 73,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 10,
+     "val": 230,
+     "copies": 173,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 24,
+     "val": 144,
+     "copies": 21,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 23,
+     "val": 1,
+     "copies": 134,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 25,
+     "val": 120,
+     "copies": 7,
+     "viable": false,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 13,
+     "val": 130,
+     "copies": 79,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 57,
+     "val": 35,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 39,
+     "val": 248,
+     "copies": 211,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    }
+   ],
+   "viable": 14,
+   "inherited": 14,
+   "sign_k": 14,
+   "sign_n": 14,
+   "p": 6e-05,
+   "verdict": "heredity"
+  },
+  {
+   "program": "26abe45ba76bab164e4c2fb17ba8e6a516e92eca873e965dc8a9d63e99fc2e0f1c7f5fea7b1e87fa74b5fca5dd5b9f91d0b5ae96abb1f6888ec5fe9e818cf283",
+   "soup": 5010,
+   "epoch": 32000,
+   "count": 63,
+   "mutants": [
+    {
+     "pos": 50,
+     "val": 119,
+     "copies": 195,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 16,
+     "val": 148,
+     "copies": 220,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 21,
+     "val": 12,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 43,
+     "val": 139,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 38,
+     "val": 206,
+     "copies": 203,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 7,
+     "val": 85,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 17,
+     "val": 4,
+     "copies": 226,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 9,
+     "val": 253,
+     "copies": 256,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 33,
+     "val": 160,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 26,
+     "val": 255,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 39,
+     "val": 148,
+     "copies": 193,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 31,
+     "val": 175,
+     "copies": 133,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 36,
+     "val": 169,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 47,
+     "val": 228,
+     "copies": 271,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 1,
+     "val": 211,
+     "copies": 168,
+     "viable": true,
+     "f_mut": 0.988,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 27,
+     "val": 126,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    },
+    {
+     "pos": 42,
+     "val": 73,
+     "copies": 314,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 58,
+     "val": 27,
+     "copies": 268,
+     "viable": true,
+     "f_mut": 0.996,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 5,
+     "val": 11,
+     "copies": 243,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 35,
+     "val": 239,
+     "copies": 276,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 44,
+     "val": 211,
+     "copies": 285,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 47,
+     "val": 144,
+     "copies": 135,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 53,
+     "val": 81,
+     "copies": 238,
+     "viable": true,
+     "f_mut": 1.0,
+     "f_base": 0.0,
+     "inherited": true
+    },
+    {
+     "pos": 51,
+     "val": 231,
+     "copies": 0,
+     "viable": false,
+     "f_mut": 0.0,
+     "f_base": 0.0,
+     "inherited": false
+    }
+   ],
+   "viable": 16,
+   "inherited": 16,
+   "sign_k": 16,
+   "sign_n": 16,
+   "p": 2e-05,
+   "verdict": "heredity"
+  }
+ ]
+}

@@ -1,0 +1,5303 @@
+{
+ "experiment": "E-30",
+ "seed": 30,
+ "rules": 100,
+ "foods": [
+  0.0,
+  0.05
+ ],
+ "side": 128,
+ "steps": 1500,
+ "pipeline_positive": [
+  {
+   "seed": 0,
+   "objects": 28,
+   "occupied": 0.1658,
+   "masses": [
+    61.1,
+    59.2,
+    49.2,
+    48.0,
+    47.8,
+    47.8,
+    47.7,
+    45.8
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 41.05,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 47.82,
+     "background_copies": 0,
+     "attractor": false,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 16,
+    "parent_spread": 0.8,
+    "r": 1.0,
+    "slope": 1.0,
+    "p": 0.0005,
+    "null_r95": 0.439,
+    "verdict": "heredity"
+   }
+  },
+  {
+   "seed": 1,
+   "objects": 25,
+   "occupied": 0.1486,
+   "masses": [
+    59.3,
+    52.7,
+    50.0,
+    48.0,
+    47.5,
+    44.3,
+    42.6,
+    39.9
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 39.42,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 52.71,
+     "background_copies": 0,
+     "attractor": false,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 16,
+    "parent_spread": 0.8,
+    "r": 1.0,
+    "slope": 1.0,
+    "p": 0.0005,
+    "null_r95": 0.418,
+    "verdict": "heredity"
+   }
+  },
+  {
+   "seed": 2,
+   "objects": 25,
+   "occupied": 0.1393,
+   "masses": [
+    55.6,
+    50.9,
+    42.7,
+    41.6,
+    40.4,
+    40.2,
+    39.4,
+    38.6
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 37.62,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 31.9,
+     "background_copies": 0,
+     "attractor": false,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 14,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 15,
+    "parent_spread": 0.8,
+    "r": 1.0,
+    "slope": 1.0,
+    "p": 0.0005,
+    "null_r95": 0.436,
+    "verdict": "heredity"
+   }
+  },
+  {
+   "seed": 3,
+   "objects": 25,
+   "occupied": 0.1525,
+   "masses": [
+    57.4,
+    48.0,
+    47.8,
+    47.7,
+    47.6,
+    47.5,
+    46.7,
+    46.5
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 42.32,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 46.66,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 16,
+    "parent_spread": 0.8,
+    "r": 1.0,
+    "slope": 1.0,
+    "p": 0.0005,
+    "null_r95": 0.445,
+    "verdict": "heredity"
+   }
+  }
+ ],
+ "worlds": [
+  {
+   "i": 0,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.243/s0.0194/h0.6/r0.83/a0.87,0.33,0.11/b0.4,0.59,0.25/w0.326,0.452,0.202+m0.266/s0.1537/h0.61/r0.79/a0.51,0.88,0.16/b0.6,0.1,0.97/w0.223,0.07,0.452",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.0792,
+   "masses": [
+    295.4,
+    102.4,
+    39.4,
+    16.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 371.1
+  },
+  {
+   "i": 0,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.243/s0.0194/h0.6/r0.83/a0.87,0.33,0.11/b0.4,0.59,0.25/w0.326,0.452,0.202+m0.266/s0.1537/h0.61/r0.79/a0.51,0.88,0.16/b0.6,0.1,0.97/w0.223,0.07,0.452",
+   "mass_drift": -2.384185791015625e-07,
+   "objects": 16,
+   "occupied": 0.1575,
+   "masses": [
+    381.8,
+    129.0,
+    40.9,
+    26.8,
+    23.4,
+    22.2,
+    22.1,
+    19.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 353.6
+  },
+  {
+   "i": 1,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.133/s0.1008/h0.92/r0.8/a0.77,0.68,0.79/b0.16,0.46,0.65/w0.353,0.127,0.14+m0.322/s0.0318/h0.25/r0.53/a0.8,0.1,0.32/b0.47,0.5,0.07/w0.43,0.138,0.017+m0.320/s0.0257/h0.36/r0.34/a0.77,0.45,0.81/b0.85,0.09,0.33/w0.451,0.315,0.459",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 13,
+   "occupied": 0.0994,
+   "masses": [
+    65.6,
+    53.3,
+    47.8,
+    46.7,
+    39.0,
+    34.1,
+    31.9,
+    31.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 417.4
+  },
+  {
+   "i": 1,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.133/s0.1008/h0.92/r0.8/a0.77,0.68,0.79/b0.16,0.46,0.65/w0.353,0.127,0.14+m0.322/s0.0318/h0.25/r0.53/a0.8,0.1,0.32/b0.47,0.5,0.07/w0.43,0.138,0.017+m0.320/s0.0257/h0.36/r0.34/a0.77,0.45,0.81/b0.85,0.09,0.33/w0.451,0.315,0.459",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 24,
+   "occupied": 0.1689,
+   "masses": [
+    47.1,
+    40.5,
+    37.9,
+    37.8,
+    37.5,
+    37.5,
+    36.6,
+    36.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "reproducer"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 31.13,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 9,
+      "late": 19,
+      "clean": 0.948
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 14,
+    "families": 14,
+    "parent_spread": 0.1521,
+    "r": 0.998,
+    "slope": 0.088,
+    "p": 0.0005,
+    "null_r95": 0.479,
+    "verdict": "heredity"
+   },
+   "seconds": 1888.3
+  },
+  {
+   "i": 2,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.160/s0.0955/h0.1/r0.24/a0.09,0.88,0.83/b0.1,0.45,0.79/w0.304,0.499,0.179+m0.411/s0.0274/h0.57/r0.43/a0.39,0.25,0.2/b0.36,0.46,0.86/w0.337,0.055,0.033+m0.423/s0.0129/h0.72/r0.8/a0.09,0.72,0.83/b0.77,0,0.01/w0.17,0.304,0.03",
+   "mass_drift": 0.0,
+   "objects": 11,
+   "occupied": 0.105,
+   "masses": [
+    149.8,
+    128.8,
+    84.7,
+    59.9,
+    7.3,
+    6.4,
+    5.5,
+    4.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 420.1
+  },
+  {
+   "i": 2,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.160/s0.0955/h0.1/r0.24/a0.09,0.88,0.83/b0.1,0.45,0.79/w0.304,0.499,0.179+m0.411/s0.0274/h0.57/r0.43/a0.39,0.25,0.2/b0.36,0.46,0.86/w0.337,0.055,0.033+m0.423/s0.0129/h0.72/r0.8/a0.09,0.72,0.83/b0.77,0,0.01/w0.17,0.304,0.03",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 17,
+   "occupied": 0.1451,
+   "masses": [
+    360.9,
+    133.8,
+    70.7,
+    7.9,
+    5.0,
+    4.4,
+    3.8,
+    3.7
+   ],
+   "verdicts": [
+    "reproducer",
+    "no reproduction"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 1.53,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 8,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 5,
+    "families": 0,
+    "verdict": "too few families"
+   },
+   "seconds": 1538.5
+  },
+  {
+   "i": 3,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.455/s0.1143/h0.85/r0.55/a0.76,0.95,0.4/b0.12,0.75,0.42/w0.095,0.099,0.314+m0.280/s0.0218/h0.15/r0.3/a0.09,0.74,0.36/b0.2,0.56,0.86/w0.186,0.41,0.232",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.0961,
+   "masses": [
+    155.0,
+    99.7,
+    98.2,
+    96.3,
+    93.9,
+    21.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 367.3
+  },
+  {
+   "i": 3,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.455/s0.1143/h0.85/r0.55/a0.76,0.95,0.4/b0.12,0.75,0.42/w0.095,0.099,0.314+m0.280/s0.0218/h0.15/r0.3/a0.09,0.74,0.36/b0.2,0.56,0.86/w0.186,0.41,0.232",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 9,
+   "occupied": 0.1357,
+   "masses": [
+    184.0,
+    135.9,
+    134.9,
+    131.9,
+    131.3,
+    34.5,
+    13.8,
+    11.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 374.1
+  },
+  {
+   "i": 4,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.268/s0.0246/h0.31/r0.79/a0.59,0.32,0.01/b0.49,0.43,0.38/w0.416,0.188,0.41+m0.404/s0.0938/h0.09/r0.35/a0.47,0.08,0.5/b0.77,0.33,0.26/w0.257,0.378,0.458",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 5,
+   "occupied": 0.0963,
+   "masses": [
+    180.3,
+    134.6,
+    99.1,
+    55.4,
+    24.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 370.3
+  },
+  {
+   "i": 4,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.268/s0.0246/h0.31/r0.79/a0.59,0.32,0.01/b0.49,0.43,0.38/w0.416,0.188,0.41+m0.404/s0.0938/h0.09/r0.35/a0.47,0.08,0.5/b0.77,0.33,0.26/w0.257,0.378,0.458",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.1427,
+   "masses": [
+    228.5,
+    161.9,
+    128.4,
+    94.1,
+    59.3,
+    22.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 368.9
+  },
+  {
+   "i": 5,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.100/s0.1828/h0.43/r0.43/a0.41,0.85,0.5/b0.65,0.31,0.4/w0.173,0.142,0.282+m0.306/s0.0472/h0.47/r0.5/a0.91,0.84,0.56/b0.41,0.69,0.85/w0.29,0.023,0.041",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.0732,
+   "masses": [
+    93.5,
+    72.4,
+    69.7,
+    61.7,
+    9.1,
+    8.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 370.8
+  },
+  {
+   "i": 5,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.100/s0.1828/h0.43/r0.43/a0.41,0.85,0.5/b0.65,0.31,0.4/w0.173,0.142,0.282+m0.306/s0.0472/h0.47/r0.5/a0.91,0.84,0.56/b0.41,0.69,0.85/w0.29,0.023,0.041",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.1553,
+   "masses": [
+    221.8,
+    219.7,
+    89.8,
+    86.5,
+    25.2,
+    16.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 344.6
+  },
+  {
+   "i": 6,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.462/s0.0043/h0.22/r0.74/a0.05,0.83,0.02/b0.28,0.95,0.32/w0.422,0.077,0.131+m0.191/s0.0829/h0.43/r0.35/a0.58,0.99,0.44/b0.77,0.89,0.94/w0.176,0.293,0.043+m0.405/s0.1405/h0.02/r0.8/a0.21,0.44,0.06/b0.24,0.19,0.15/w0.172,0.231,0.061",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.1767,
+   "masses": [
+    358.9,
+    125.7,
+    45.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 450.8
+  },
+  {
+   "i": 6,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.462/s0.0043/h0.22/r0.74/a0.05,0.83,0.02/b0.28,0.95,0.32/w0.422,0.077,0.131+m0.191/s0.0829/h0.43/r0.35/a0.58,0.99,0.44/b0.77,0.89,0.94/w0.176,0.293,0.043+m0.405/s0.1405/h0.02/r0.8/a0.21,0.44,0.06/b0.24,0.19,0.15/w0.172,0.231,0.061",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 28,
+   "occupied": 0.2731,
+   "masses": [
+    464.1,
+    235.7,
+    9.1,
+    7.9,
+    7.4,
+    7.0,
+    6.5,
+    6.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 445.8
+  },
+  {
+   "i": 7,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.270/s0.1304/h0.52/r0.45/a0.58,0.28,0.1/b0.21,0.82,0.33/w0.072,0.492,0.396+m0.282/s0.0995/h0.99/r0.28/a0.59,0.02,0.67/b0.37,0.93,0.27/w0.257,0.273,0.479+m0.410/s0.1519/h0.61/r0.86/a0.77,0.7,0.64/b0.45,0.94,0.37/w0.465,0.28,0.191",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.1182,
+   "masses": [
+    278.4,
+    94.5,
+    94.2,
+    67.0,
+    11.8,
+    11.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 444.7
+  },
+  {
+   "i": 7,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.270/s0.1304/h0.52/r0.45/a0.58,0.28,0.1/b0.21,0.82,0.33/w0.072,0.492,0.396+m0.282/s0.0995/h0.99/r0.28/a0.59,0.02,0.67/b0.37,0.93,0.27/w0.257,0.273,0.479+m0.410/s0.1519/h0.61/r0.86/a0.77,0.7,0.64/b0.45,0.94,0.37/w0.465,0.28,0.191",
+   "mass_drift": 0.0,
+   "objects": 36,
+   "occupied": 0.1891,
+   "masses": [
+    346.3,
+    125.1,
+    123.2,
+    118.8,
+    6.8,
+    6.2,
+    5.6,
+    5.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 440.2
+  },
+  {
+   "i": 8,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.093/s0.0752/h0.88/r0.8/a0.22,0.83,0.11/b0.12,0.56,0.7/w0.295,0.395,0.268+m0.204/s0.0672/h0.12/r0.27/a0.14,0.11,0.17/b0.64,0.22,0.18/w0.174,0.471,0.074+m0.407/s0.1174/h0.71/r0.24/a0.17,0.78,0.29/b0.79,0.45,0.48/w0.141,0.496,0.123",
+   "mass_drift": 0.0,
+   "objects": 32,
+   "occupied": 0.1097,
+   "masses": [
+    26.9,
+    21.9,
+    20.9,
+    19.7,
+    19.6,
+    19.5,
+    19.3,
+    19.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 446.6
+  },
+  {
+   "i": 8,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.093/s0.0752/h0.88/r0.8/a0.22,0.83,0.11/b0.12,0.56,0.7/w0.295,0.395,0.268+m0.204/s0.0672/h0.12/r0.27/a0.14,0.11,0.17/b0.64,0.22,0.18/w0.174,0.471,0.074+m0.407/s0.1174/h0.71/r0.24/a0.17,0.78,0.29/b0.79,0.45,0.48/w0.141,0.496,0.123",
+   "mass_drift": 0.0,
+   "objects": 58,
+   "occupied": 0.1782,
+   "masses": [
+    85.3,
+    61.6,
+    55.7,
+    55.4,
+    33.9,
+    21.4,
+    20.8,
+    20.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 444.4
+  },
+  {
+   "i": 9,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.282/s0.0098/h0.18/r0.8/a0.49,0.31,0.46/b0.1,0.38,0.09/w0.301,0.228,0.083+m0.423/s0.0603/h0.76/r0.9/a0.05,0.52,0.79/b0.81,0.72,0.58/w0.276,0.04,0.08+m0.413/s0.0329/h0.77/r0.91/a0.23,0.2,0.11/b0.01,0.16,0.26/w0.22,0.173,0.011",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.0886,
+   "masses": [
+    137.3,
+    98.3,
+    96.4,
+    95.9,
+    92.6,
+    8.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 449.5
+  },
+  {
+   "i": 9,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.282/s0.0098/h0.18/r0.8/a0.49,0.31,0.46/b0.1,0.38,0.09/w0.301,0.228,0.083+m0.423/s0.0603/h0.76/r0.9/a0.05,0.52,0.79/b0.81,0.72,0.58/w0.276,0.04,0.08+m0.413/s0.0329/h0.77/r0.91/a0.23,0.2,0.11/b0.01,0.16,0.26/w0.22,0.173,0.011",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.1187,
+   "masses": [
+    163.4,
+    130.4,
+    129.4,
+    128.9,
+    111.1,
+    21.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 449.4
+  },
+  {
+   "i": 10,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.087/s0.1075/h0.15/r0.61/a0.55,0.02,0.56/b0.55,0.44,0.71/w0.445,0.329,0.194+m0.497/s0.1388/h0.79/r0.89/a0.18,0.47,0.22/b0.34,0.29,0.13/w0.188,0.366,0.357",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.0825,
+   "masses": [
+    220.2,
+    96.3,
+    96.0,
+    94.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 358.5
+  },
+  {
+   "i": 10,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.087/s0.1075/h0.15/r0.61/a0.55,0.02,0.56/b0.55,0.44,0.71/w0.445,0.329,0.194+m0.497/s0.1388/h0.79/r0.89/a0.18,0.47,0.22/b0.34,0.29,0.13/w0.188,0.366,0.357",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.1094,
+   "masses": [
+    275.4,
+    139.3,
+    132.8,
+    116.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 360.0
+  },
+  {
+   "i": 11,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.458/s0.0694/h0.09/r1/a0.33,0.33,0.76/b0.43,0.52,0.82/w0.479,0.143,0.018+m0.460/s0.1380/h0.64/r0.81/a0.45,0.03,0.48/b0.44,0.64,0.1/w0.408,0.211,0.141",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.0867,
+   "masses": [
+    142.0,
+    99.5,
+    99.5,
+    98.5,
+    96.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 356.9
+  },
+  {
+   "i": 11,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.458/s0.0694/h0.09/r1/a0.33,0.33,0.76/b0.43,0.52,0.82/w0.479,0.143,0.018+m0.460/s0.1380/h0.64/r0.81/a0.45,0.03,0.48/b0.44,0.64,0.1/w0.408,0.211,0.141",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.1298,
+   "masses": [
+    194.9,
+    150.0,
+    144.3,
+    143.0,
+    141.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 394.5
+  },
+  {
+   "i": 12,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.266/s0.1875/h0.14/r0.37/a0.11,0.06,0.86/b0.66,0.22,0.61/w0.445,0.118,0.124+m0.428/s0.1529/h0.91/r0.73/a0.52,0.08,0.03/b0.83,0.33,0.74/w0.46,0.425,0.033",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.1069,
+   "masses": [
+    222.9,
+    99.9,
+    97.3,
+    96.8,
+    42.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 396.4
+  },
+  {
+   "i": 12,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.266/s0.1875/h0.14/r0.37/a0.11,0.06,0.86/b0.66,0.22,0.61/w0.445,0.118,0.124+m0.428/s0.1529/h0.91/r0.73/a0.52,0.08,0.03/b0.83,0.33,0.74/w0.46,0.425,0.033",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 13,
+   "occupied": 0.1853,
+   "masses": [
+    317.7,
+    138.8,
+    134.1,
+    126.6,
+    22.0,
+    19.2,
+    19.1,
+    18.6
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 19.16,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 27,
+      "clean": 0.875
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 15.78,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 31,
+      "clean": 0.926
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 7,
+    "families": 7,
+    "parent_spread": 0.0,
+    "verdict": "no variation"
+   },
+   "seconds": 2097.9
+  },
+  {
+   "i": 13,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.419/s0.1940/h0.2/r0.77/a0.38,0.09,0.68/b0.43,0.31,0.24/w0.229,0.48,0.257+m0.471/s0.0479/h0.67/r0.69/a0.95,0.66,0.79/b0.3,0.62,0.84/w0.011,0.357,0.143+m0.185/s0.0230/h0.21/r0.23/a0.18,0.94,0.41/b0.12,0.43,0.25/w0.206,0.243,0.401",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.1062,
+   "masses": [
+    303.9,
+    105.0,
+    97.4,
+    9.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 414.8
+  },
+  {
+   "i": 13,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.419/s0.1940/h0.2/r0.77/a0.38,0.09,0.68/b0.43,0.31,0.24/w0.229,0.48,0.257+m0.471/s0.0479/h0.67/r0.69/a0.95,0.66,0.79/b0.3,0.62,0.84/w0.011,0.357,0.143+m0.185/s0.0230/h0.21/r0.23/a0.18,0.94,0.41/b0.12,0.43,0.25/w0.206,0.243,0.401",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 2,
+   "occupied": 0.1355,
+   "masses": [
+    550.3,
+    150.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 446.5
+  },
+  {
+   "i": 14,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.484/s0.1167/h0.82/r0.83/a0.31,0.04,0.73/b0.5,0.72,0.42/w0.013,0.106,0.177+m0.407/s0.0210/h0.25/r0.22/a0.51,0.71,0.82/b0.34,0.86,0.9/w0.283,0.019,0.377",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.0913,
+   "masses": [
+    102.3,
+    100.3,
+    97.2,
+    95.6,
+    95.1,
+    90.9
+   ],
+   "verdicts": [
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 223.0
+  },
+  {
+   "i": 14,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.484/s0.1167/h0.82/r0.83/a0.31,0.04,0.73/b0.5,0.72,0.42/w0.013,0.106,0.177+m0.407/s0.0210/h0.25/r0.22/a0.51,0.71,0.82/b0.34,0.86,0.9/w0.283,0.019,0.377",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 5,
+   "occupied": 0.1347,
+   "masses": [
+    273.8,
+    147.1,
+    133.1,
+    132.1,
+    122.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 336.7
+  },
+  {
+   "i": 15,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.297/s0.0853/h0.42/r0.96/a0.5,0.84,0.91/b0.31,0.72,0.03/w0.453,0.187,0.394+m0.108/s0.0806/h0.15/r0.9/a0.73,0.47,0.45/b0.07,0.98,0.18/w0.268,0.239,0.364",
+   "mass_drift": 0.0,
+   "objects": 2,
+   "occupied": 0.1234,
+   "masses": [
+    444.3,
+    92.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 365.6
+  },
+  {
+   "i": 15,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.297/s0.0853/h0.42/r0.96/a0.5,0.84,0.91/b0.31,0.72,0.03/w0.453,0.187,0.394+m0.108/s0.0806/h0.15/r0.9/a0.73,0.47,0.45/b0.07,0.98,0.18/w0.268,0.239,0.364",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.1712,
+   "masses": [
+    585.1,
+    134.3,
+    6.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 317.3
+  },
+  {
+   "i": 16,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.206/s0.0490/h0.4/r0.73/a0,0.53,0.95/b0.34,0.49,0.62/w0.19,0.437,0.222+m0.217/s0.1597/h0.29/r0.66/a0.88,0.37,0.1/b0.5,0.89,0.91/w0.429,0.041,0.157",
+   "mass_drift": 0.0,
+   "objects": 1,
+   "occupied": 0.1368,
+   "masses": [
+    519.1
+   ],
+   "verdicts": [
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 181.0
+  },
+  {
+   "i": 16,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.206/s0.0490/h0.4/r0.73/a0,0.53,0.95/b0.34,0.49,0.62/w0.19,0.437,0.222+m0.217/s0.1597/h0.29/r0.66/a0.88,0.37,0.1/b0.5,0.89,0.91/w0.429,0.041,0.157",
+   "mass_drift": 0.0,
+   "objects": 9,
+   "occupied": 0.231,
+   "masses": [
+    594.0,
+    125.4,
+    21.3,
+    20.5,
+    18.8,
+    18.0,
+    17.9,
+    13.8
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 21.27,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 28,
+      "clean": 0.921
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 13.76,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 26,
+      "clean": 0.926
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 5,
+    "families": 5,
+    "verdict": "too few families"
+   },
+   "seconds": 2025.4
+  },
+  {
+   "i": 17,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.110/s0.0582/h0.37/r0.69/a0.04,0.28,0/b0.24,0.33,0.03/w0.275,0.344,0.19+m0.496/s0.0849/h0.65/r0.78/a0.92,0.26,0.59/b0.95,0.43,0.16/w0.199,0.342,0.373",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.0768,
+   "masses": [
+    94.3,
+    56.8,
+    36.3,
+    34.0,
+    4.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 360.0
+  },
+  {
+   "i": 17,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.110/s0.0582/h0.37/r0.69/a0.04,0.28,0/b0.24,0.33,0.03/w0.275,0.344,0.19+m0.496/s0.0849/h0.65/r0.78/a0.92,0.26,0.59/b0.95,0.43,0.16/w0.199,0.342,0.373",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 10,
+   "occupied": 0.0724,
+   "masses": [
+    103.2,
+    22.7,
+    16.0,
+    14.6,
+    14.5,
+    13.2,
+    13.0,
+    5.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 318.6
+  },
+  {
+   "i": 18,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.441/s0.0647/h0.48/r0.9/a0.41,0.99,0.85/b0.71,0.28,0.07/w0.143,0.316,0.112+m0.216/s0.1445/h0.5/r0.56/a0.51,0.36,0.7/b0.93,0.14,0.43/w0.045,0.263,0.381+m0.360/s0.1648/h0.18/r0.3/a0.95,0.8,0.29/b0.11,0.64,0.64/w0.029,0.386,0.346",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.1426,
+   "masses": [
+    192.0,
+    98.7,
+    97.3,
+    94.6,
+    75.1,
+    21.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 408.7
+  },
+  {
+   "i": 18,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.441/s0.0647/h0.48/r0.9/a0.41,0.99,0.85/b0.71,0.28,0.07/w0.143,0.316,0.112+m0.216/s0.1445/h0.5/r0.56/a0.51,0.36,0.7/b0.93,0.14,0.43/w0.045,0.263,0.381+m0.360/s0.1648/h0.18/r0.3/a0.95,0.8,0.29/b0.11,0.64,0.64/w0.029,0.386,0.346",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 20,
+   "occupied": 0.2274,
+   "masses": [
+    200.1,
+    122.6,
+    121.6,
+    119.0,
+    89.4,
+    61.3,
+    33.6,
+    16.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 370.6
+  },
+  {
+   "i": 19,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.300/s0.0631/h0.69/r0.73/a0.48,0.59,0.59/b0.78,0.42,0.12/w0.107,0.439,0.313+m0.462/s0.0254/h0.08/r0.49/a0.87,0.95,0.41/b0.41,0.45,0.53/w0.243,0.267,0.416+m0.090/s0.0153/h0.45/r0.83/a0.02,0.14,0.63/b0.99,0.23,0.66/w0.463,0.175,0.125",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.1064,
+   "masses": [
+    148.3,
+    96.2,
+    94.2,
+    91.8,
+    90.7,
+    32.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 408.1
+  },
+  {
+   "i": 19,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.300/s0.0631/h0.69/r0.73/a0.48,0.59,0.59/b0.78,0.42,0.12/w0.107,0.439,0.313+m0.462/s0.0254/h0.08/r0.49/a0.87,0.95,0.41/b0.41,0.45,0.53/w0.243,0.267,0.416+m0.090/s0.0153/h0.45/r0.83/a0.02,0.14,0.63/b0.99,0.23,0.66/w0.463,0.175,0.125",
+   "mass_drift": 0.0,
+   "objects": 30,
+   "occupied": 0.1976,
+   "masses": [
+    160.6,
+    101.0,
+    99.3,
+    99.1,
+    97.6,
+    33.3,
+    27.1,
+    20.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 401.6
+  },
+  {
+   "i": 20,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.436/s0.1785/h0.62/r0.32/a0.42,0.18,0.4/b0.15,0.38,0.46/w0.407,0.298,0.47+m0.455/s0.1118/h0.23/r0.71/a0.13,0.3,0.28/b0.01,0.76,0.21/w0.324,0.34,0.161+m0.380/s0.0823/h0.15/r0.61/a0.58,0.13,0.34/b0.27,0.73,0.47/w0.319,0.03,0.144",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.1221,
+   "masses": [
+    101.9,
+    101.0,
+    98.2,
+    98.0,
+    97.7,
+    94.4
+   ],
+   "verdicts": [
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 206.1
+  },
+  {
+   "i": 20,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.436/s0.1785/h0.62/r0.32/a0.42,0.18,0.4/b0.15,0.38,0.46/w0.407,0.298,0.47+m0.455/s0.1118/h0.23/r0.71/a0.13,0.3,0.28/b0.01,0.76,0.21/w0.324,0.34,0.161+m0.380/s0.0823/h0.15/r0.61/a0.58,0.13,0.34/b0.27,0.73,0.47/w0.319,0.03,0.144",
+   "mass_drift": 2.384185791015625e-07,
+   "objects": 31,
+   "occupied": 0.1929,
+   "masses": [
+    249.0,
+    125.0,
+    121.4,
+    118.8,
+    117.3,
+    10.3,
+    9.7,
+    9.3
+   ],
+   "verdicts": [
+    "reproducer",
+    "no reproduction"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 7.69,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 71,
+      "clean": 0.959
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 16,
+    "parent_spread": 0.0,
+    "verdict": "no variation"
+   },
+   "seconds": 1915.8
+  },
+  {
+   "i": 21,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.092/s0.1711/h0.98/r0.34/a0.33,0.76,0.94/b0.42,0.89,0.89/w0.114,0.05,0.354+m0.416/s0.0990/h0.26/r0.74/a0.97,0.59,0.26/b0.27,0.79,0.09/w0.019,0.148,0.21",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 32,
+   "occupied": 0.0381,
+   "masses": [
+    4.1,
+    3.9,
+    3.9,
+    3.8,
+    3.7,
+    3.5,
+    3.5,
+    3.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 323.0
+  },
+  {
+   "i": 21,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.092/s0.1711/h0.98/r0.34/a0.33,0.76,0.94/b0.42,0.89,0.89/w0.114,0.05,0.354+m0.416/s0.0990/h0.26/r0.74/a0.97,0.59,0.26/b0.27,0.79,0.09/w0.019,0.148,0.21",
+   "mass_drift": 0.0,
+   "objects": 84,
+   "occupied": 0.133,
+   "masses": [
+    20.8,
+    15.3,
+    15.2,
+    15.1,
+    14.5,
+    9.9,
+    8.3,
+    6.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 358.0
+  },
+  {
+   "i": 22,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.401/s0.0349/h0.75/r0.48/a0.47,0.68,0.56/b0.29,0.6,0.29/w0.103,0.45,0.23+m0.190/s0.0579/h0.19/r0.29/a0.38,0.72,0.57/b0.31,0.22,0.04/w0.454,0.243,0.176+m0.119/s0.0077/h0.73/r0.95/a0.75,0.8,0.43/b0.72,0.11,0.08/w0.131,0.467,0.458",
+   "mass_drift": 0.0,
+   "objects": 7,
+   "occupied": 0.1049,
+   "masses": [
+    175.1,
+    163.3,
+    94.2,
+    44.3,
+    23.9,
+    23.1,
+    22.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 382.8
+  },
+  {
+   "i": 22,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.401/s0.0349/h0.75/r0.48/a0.47,0.68,0.56/b0.29,0.6,0.29/w0.103,0.45,0.23+m0.190/s0.0579/h0.19/r0.29/a0.38,0.72,0.57/b0.31,0.22,0.04/w0.454,0.243,0.176+m0.119/s0.0077/h0.73/r0.95/a0.75,0.8,0.43/b0.72,0.11,0.08/w0.131,0.467,0.458",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 13,
+   "occupied": 0.1421,
+   "masses": [
+    217.0,
+    160.6,
+    104.2,
+    78.5,
+    64.6,
+    62.2,
+    29.8,
+    8.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 420.8
+  },
+  {
+   "i": 23,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.379/s0.1315/h0.92/r0.53/a0.9,0.55,0.12/b0.45,0.96,0.54/w0.338,0.022,0.47+m0.116/s0.0314/h0.75/r0.82/a0.16,0.63,0.96/b0.26,0.26,0.46/w0.334,0.083,0.287+m0.437/s0.0519/h0.18/r0.54/a0.11,0.05,0.07/b0.32,0.98,0.71/w0.313,0.283,0.018",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.0938,
+   "masses": [
+    254.0,
+    85.1,
+    82.3,
+    25.1,
+    12.1,
+    10.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 380.4
+  },
+  {
+   "i": 23,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.379/s0.1315/h0.92/r0.53/a0.9,0.55,0.12/b0.45,0.96,0.54/w0.338,0.022,0.47+m0.116/s0.0314/h0.75/r0.82/a0.16,0.63,0.96/b0.26,0.26,0.46/w0.334,0.083,0.287+m0.437/s0.0519/h0.18/r0.54/a0.11,0.05,0.07/b0.32,0.98,0.71/w0.313,0.283,0.018",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 15,
+   "occupied": 0.1622,
+   "masses": [
+    292.4,
+    109.0,
+    92.3,
+    60.2,
+    51.1,
+    29.4,
+    27.6,
+    26.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 409.9
+  },
+  {
+   "i": 24,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.107/s0.0767/h0.92/r0.96/a0.08,0.58,0.87/b0.85,0.55,0.26/w0.461,0.05,0.389+m0.389/s0.1203/h0.45/r0.96/a0.74,0.45,0.66/b0.39,0.62,0.68/w0.081,0.347,0.206+m0.361/s0.0175/h0.33/r0.72/a0.51,0.29,0.18/b0.34,0.16,0.35/w0.434,0.349,0.121",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 12,
+   "occupied": 0.1321,
+   "masses": [
+    79.7,
+    79.0,
+    51.4,
+    37.8,
+    17.4,
+    15.5,
+    15.3,
+    15.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 382.6
+  },
+  {
+   "i": 24,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.107/s0.0767/h0.92/r0.96/a0.08,0.58,0.87/b0.85,0.55,0.26/w0.461,0.05,0.389+m0.389/s0.1203/h0.45/r0.96/a0.74,0.45,0.66/b0.39,0.62,0.68/w0.081,0.347,0.206+m0.361/s0.0175/h0.33/r0.72/a0.51,0.29,0.18/b0.34,0.16,0.35/w0.434,0.349,0.121",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 38,
+   "occupied": 0.1806,
+   "masses": [
+    39.4,
+    32.9,
+    21.2,
+    19.8,
+    18.6,
+    17.5,
+    17.2,
+    17.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 385.7
+  },
+  {
+   "i": 25,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.303/s0.1408/h0.6/r0.82/a0.01,0.9,0.28/b0.33,0.28,0.3/w0.263,0.037,0.034+m0.431/s0.1170/h0.23/r0.65/a0.13,0.49,0.07/b0.8,0.75,0.2/w0.137,0.225,0.48",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.1309,
+   "masses": [
+    284.8,
+    98.9,
+    96.7,
+    93.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 331.2
+  },
+  {
+   "i": 25,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.303/s0.1408/h0.6/r0.82/a0.01,0.9,0.28/b0.33,0.28,0.3/w0.263,0.037,0.034+m0.431/s0.1170/h0.23/r0.65/a0.13,0.49,0.07/b0.8,0.75,0.2/w0.137,0.225,0.48",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 11,
+   "occupied": 0.2048,
+   "masses": [
+    361.7,
+    145.3,
+    139.3,
+    135.0,
+    22.2,
+    20.8,
+    20.8,
+    20.8
+   ],
+   "verdicts": [
+    "reproducer",
+    "no reproduction"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 22.19,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 8,
+      "late": 24,
+      "clean": 0.926
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 6,
+    "families": 6,
+    "parent_spread": 0.0,
+    "verdict": "no variation"
+   },
+   "seconds": 1318.5
+  },
+  {
+   "i": 26,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.455/s0.0686/h0.56/r0.39/a0.33,0.99,0.08/b0.64,0.83,0.33/w0.034,0.372,0.042+m0.155/s0.1772/h0.97/r0.37/a0.64,0.32,0.63/b0.97,0.63,0.27/w0.309,0.438,0.285",
+   "mass_drift": 0.0,
+   "objects": 10,
+   "occupied": 0.1229,
+   "masses": [
+    180.8,
+    21.4,
+    19.2,
+    19.0,
+    13.0,
+    12.4,
+    11.4,
+    7.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 327.4
+  },
+  {
+   "i": 26,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.455/s0.0686/h0.56/r0.39/a0.33,0.99,0.08/b0.64,0.83,0.33/w0.034,0.372,0.042+m0.155/s0.1772/h0.97/r0.37/a0.64,0.32,0.63/b0.97,0.63,0.27/w0.309,0.438,0.285",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 27,
+   "occupied": 0.2073,
+   "masses": [
+    226.3,
+    63.5,
+    17.8,
+    17.5,
+    17.5,
+    15.1,
+    13.9,
+    12.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 343.1
+  },
+  {
+   "i": 27,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.373/s0.0343/h0.37/r0.56/a0.98,0.73,0.12/b0.21,0.96,0.67/w0.152,0.128,0.429+m0.266/s0.1254/h0.52/r0.67/a0.82,0.55,0.44/b0.71,0.2,0.82/w0.487,0.199,0.42",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.1061,
+   "masses": [
+    166.2,
+    161.1,
+    99.1,
+    93.8,
+    34.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 368.4
+  },
+  {
+   "i": 27,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.373/s0.0343/h0.37/r0.56/a0.98,0.73,0.12/b0.21,0.96,0.67/w0.152,0.128,0.429+m0.266/s0.1254/h0.52/r0.67/a0.82,0.55,0.44/b0.71,0.2,0.82/w0.487,0.199,0.42",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 14,
+   "occupied": 0.188,
+   "masses": [
+    449.4,
+    122.2,
+    118.4,
+    29.2,
+    22.7,
+    20.5,
+    20.3,
+    17.8
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 14.66,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 6,
+      "late": 27,
+      "clean": 0.943
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 20.29,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 7,
+      "late": 27,
+      "clean": 0.984
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 5,
+    "families": 5,
+    "verdict": "too few families"
+   },
+   "seconds": 1982.9
+  },
+  {
+   "i": 28,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.258/s0.1658/h0.29/r0.84/a0.82,0.21,0.64/b0.55,0.81,0.76/w0.122,0.367,0.281+m0.094/s0.0850/h0.66/r0.91/a0.37,0.73,0.56/b0.25,0.05,0.09/w0.381,0.157,0.254",
+   "mass_drift": 0.0,
+   "objects": 21,
+   "occupied": 0.1111,
+   "masses": [
+    28.5,
+    20.3,
+    17.5,
+    16.0,
+    15.7,
+    15.4,
+    14.1,
+    13.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 337.4
+  },
+  {
+   "i": 28,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.258/s0.1658/h0.29/r0.84/a0.82,0.21,0.64/b0.55,0.81,0.76/w0.122,0.367,0.281+m0.094/s0.0850/h0.66/r0.91/a0.37,0.73,0.56/b0.25,0.05,0.09/w0.381,0.157,0.254",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 40,
+   "occupied": 0.1484,
+   "masses": [
+    20.6,
+    17.1,
+    16.9,
+    16.6,
+    16.3,
+    15.9,
+    15.8,
+    15.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 332.2
+  },
+  {
+   "i": 29,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.362/s0.0399/h0.44/r0.79/a0.67,0.14,0.07/b0.6,0.76,0.04/w0.391,0.324,0.123+m0.166/s0.1865/h0.88/r0.96/a0.29,0.23,0.58/b0.12,0.05,0.08/w0.455,0.314,0.272+m0.378/s0.0974/h0.71/r0.64/a0.64,0.15,0.85/b0.75,0.8,0.31/w0.372,0.167,0.367",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.0932,
+   "masses": [
+    164.0,
+    96.9,
+    95.9,
+    93.6,
+    93.2,
+    12.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 385.1
+  },
+  {
+   "i": 29,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.362/s0.0399/h0.44/r0.79/a0.67,0.14,0.07/b0.6,0.76,0.04/w0.391,0.324,0.123+m0.166/s0.1865/h0.88/r0.96/a0.29,0.23,0.58/b0.12,0.05,0.08/w0.455,0.314,0.272+m0.378/s0.0974/h0.71/r0.64/a0.64,0.15,0.85/b0.75,0.8,0.31/w0.372,0.167,0.367",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 10,
+   "occupied": 0.1501,
+   "masses": [
+    189.4,
+    136.9,
+    134.1,
+    125.5,
+    123.3,
+    45.1,
+    41.9,
+    36.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 390.9
+  },
+  {
+   "i": 30,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.279/s0.1804/h0.24/r0.57/a0.85,0.34,0.22/b0.62,0.08,0.33/w0.476,0.357,0.473+m0.345/s0.1750/h0.53/r0.43/a0.35,0.25,0.39/b0.29,0.1,0.83/w0.207,0.332,0.443",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.1696,
+   "masses": [
+    203.0,
+    202.1,
+    96.6,
+    96.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 331.0
+  },
+  {
+   "i": 30,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.279/s0.1804/h0.24/r0.57/a0.85,0.34,0.22/b0.62,0.08,0.33/w0.476,0.357,0.473+m0.345/s0.1750/h0.53/r0.43/a0.35,0.25,0.39/b0.29,0.1,0.83/w0.207,0.332,0.443",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 29,
+   "occupied": 0.2606,
+   "masses": [
+    244.2,
+    238.4,
+    121.4,
+    120.9,
+    13.7,
+    10.6,
+    10.4,
+    9.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 348.6
+  },
+  {
+   "i": 31,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.468/s0.1044/h0.59/r0.37/a0.49,0.92,0.8/b0.24,0.39,0.61/w0.453,0.101,0.035+m0.119/s0.0162/h0.83/r0.43/a0.35,0.4,0.66/b0.53,0.07,0.08/w0.26,0.399,0.398",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.0906,
+   "masses": [
+    168.4,
+    139.0,
+    98.2,
+    95.4,
+    3.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 330.3
+  },
+  {
+   "i": 31,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.468/s0.1044/h0.59/r0.37/a0.49,0.92,0.8/b0.24,0.39,0.61/w0.453,0.101,0.035+m0.119/s0.0162/h0.83/r0.43/a0.35,0.4,0.66/b0.53,0.07,0.08/w0.26,0.399,0.398",
+   "mass_drift": 0.0,
+   "objects": 50,
+   "occupied": 0.1721,
+   "masses": [
+    170.3,
+    141.4,
+    104.3,
+    95.4,
+    16.9,
+    14.0,
+    13.9,
+    11.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 341.3
+  },
+  {
+   "i": 32,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.243/s0.1314/h0.1/r0.71/a0.9,0.38,0.42/b0.51,0.8,0.02/w0.317,0.273,0.132+m0.130/s0.1017/h0.1/r0.7/a0.48,0.88,0.01/b0.74,0.01,0.86/w0.403,0.415,0.286",
+   "mass_drift": 3.5762786865234375e-07,
+   "objects": 4,
+   "occupied": 0.1326,
+   "masses": [
+    131.2,
+    68.0,
+    39.3,
+    3.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 329.7
+  },
+  {
+   "i": 32,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.243/s0.1314/h0.1/r0.71/a0.9,0.38,0.42/b0.51,0.8,0.02/w0.317,0.273,0.132+m0.130/s0.1017/h0.1/r0.7/a0.48,0.88,0.01/b0.74,0.01,0.86/w0.403,0.415,0.286",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.2014,
+   "masses": [
+    154.6,
+    125.2,
+    64.7,
+    7.1,
+    3.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 332.0
+  },
+  {
+   "i": 33,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.204/s0.1904/h0.44/r0.75/a0.42,0.33,0.38/b0.39,0.97,0.85/w0.275,0.223,0.337+m0.180/s0.1939/h0.87/r0.75/a0.97,0.54,0.84/b0.8,0.93,0.96/w0.027,0.094,0.399",
+   "mass_drift": 0.0,
+   "objects": 9,
+   "occupied": 0.1572,
+   "masses": [
+    159.2,
+    76.2,
+    73.5,
+    72.9,
+    15.5,
+    15.3,
+    8.6,
+    7.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 326.9
+  },
+  {
+   "i": 33,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.204/s0.1904/h0.44/r0.75/a0.42,0.33,0.38/b0.39,0.97,0.85/w0.275,0.223,0.337+m0.180/s0.1939/h0.87/r0.75/a0.97,0.54,0.84/b0.8,0.93,0.96/w0.027,0.094,0.399",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 10,
+   "occupied": 0.2733,
+   "masses": [
+    353.7,
+    108.9,
+    107.3,
+    40.1,
+    24.8,
+    23.5,
+    21.8,
+    17.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 330.2
+  },
+  {
+   "i": 34,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.484/s0.1335/h0.18/r0.3/a0.89,0.85,0.16/b0.35,0.25,0.43/w0.089,0.27,0.281+m0.342/s0.1299/h0.66/r0.72/a0.35,0.19,0.6/b0.83,0.36,0.46/w0.435,0.481,0.271",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.1131,
+   "masses": [
+    279.3,
+    193.2,
+    95.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 327.9
+  },
+  {
+   "i": 34,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.484/s0.1335/h0.18/r0.3/a0.89,0.85,0.16/b0.35,0.25,0.43/w0.089,0.27,0.281+m0.342/s0.1299/h0.66/r0.72/a0.35,0.19,0.6/b0.83,0.36,0.46/w0.435,0.481,0.271",
+   "mass_drift": 0.0,
+   "objects": 12,
+   "occupied": 0.1813,
+   "masses": [
+    358.5,
+    220.7,
+    132.9,
+    40.2,
+    23.4,
+    20.5,
+    20.3,
+    20.2
+   ],
+   "verdicts": [
+    "reproducer",
+    "no reproduction"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 16.59,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 19,
+      "clean": 0.899
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 5,
+    "families": 0,
+    "verdict": "too few families"
+   },
+   "seconds": 1254.7
+  },
+  {
+   "i": 35,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.355/s0.1133/h0.84/r0.84/a0.04,0.78,0.05/b0.04,0.13,0.41/w0.371,0.39,0.421+m0.343/s0.0772/h0.4/r0.52/a0.06,0.24,0.21/b0.32,0.61,0.93/w0.138,0.144,0.446",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 3,
+   "occupied": 0.1129,
+   "masses": [
+    282.7,
+    98.0,
+    96.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 325.8
+  },
+  {
+   "i": 35,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.355/s0.1133/h0.84/r0.84/a0.04,0.78,0.05/b0.04,0.13,0.41/w0.371,0.39,0.421+m0.343/s0.0772/h0.4/r0.52/a0.06,0.24,0.21/b0.32,0.61,0.93/w0.138,0.144,0.446",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.1783,
+   "masses": [
+    387.7,
+    166.2,
+    165.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 324.6
+  },
+  {
+   "i": 36,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.256/s0.1430/h0.7/r0.55/a0.57,0.44,0.41/b0.65,0.67,0.37/w0.177,0.184,0.028+m0.490/s0.1501/h0.2/r0.56/a0.96,0.69,0.01/b0.55,0.89,0.1/w0.369,0.095,0.325+m0.323/s0.0280/h0.18/r0.74/a0.86,0.74,0.62/b0.97,0.67,0.72/w0.265,0.235,0.098",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.1279,
+   "masses": [
+    384.5,
+    163.3,
+    25.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 381.1
+  },
+  {
+   "i": 36,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.256/s0.1430/h0.7/r0.55/a0.57,0.44,0.41/b0.65,0.67,0.37/w0.177,0.184,0.028+m0.490/s0.1501/h0.2/r0.56/a0.96,0.69,0.01/b0.55,0.89,0.1/w0.369,0.095,0.325+m0.323/s0.0280/h0.18/r0.74/a0.86,0.74,0.62/b0.97,0.67,0.72/w0.265,0.235,0.098",
+   "mass_drift": 0.0,
+   "objects": 27,
+   "occupied": 0.2104,
+   "masses": [
+    339.6,
+    122.7,
+    101.1,
+    95.4,
+    40.0,
+    16.1,
+    14.7,
+    11.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 383.2
+  },
+  {
+   "i": 37,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.498/s0.1198/h0.51/r0.6/a0.93,0.58,0.5/b0.89,0.02,0.98/w0.497,0.325,0.175+m0.458/s0.1749/h0.72/r0.21/a0.18,0.29,0.91/b0.24,0.43,0.04/w0.32,0.053,0.24+m0.172/s0.0061/h0.88/r0.78/a0.11,0.09,0.03/b0.44,0.1,0.07/w0.343,0.252,0.166",
+   "mass_drift": 0.0,
+   "objects": 2,
+   "occupied": 0.0892,
+   "masses": [
+    380.6,
+    99.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 386.5
+  },
+  {
+   "i": 37,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.498/s0.1198/h0.51/r0.6/a0.93,0.58,0.5/b0.89,0.02,0.98/w0.497,0.325,0.175+m0.458/s0.1749/h0.72/r0.21/a0.18,0.29,0.91/b0.24,0.43,0.04/w0.32,0.053,0.24+m0.172/s0.0061/h0.88/r0.78/a0.11,0.09,0.03/b0.44,0.1,0.07/w0.343,0.252,0.166",
+   "mass_drift": 0.0,
+   "objects": 2,
+   "occupied": 0.1332,
+   "masses": [
+    429.7,
+    129.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 384.2
+  },
+  {
+   "i": 38,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.196/s0.1645/h0.19/r0.61/a0.61,0.86,0.82/b0.84,0.94,0.34/w0.329,0.377,0.394+m0.412/s0.0652/h0.64/r0.62/a0.22,0.1,0.46/b0.03,0.84,0.38/w0.494,0.197,0.194+m0.177/s0.1358/h0.69/r0.92/a0.57,0.69,0.85/b0.98,0.27,0.16/w0.013,0.066,0.116",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.1064,
+   "masses": [
+    103.0,
+    98.3,
+    98.1,
+    97.4,
+    96.5,
+    95.3
+   ],
+   "verdicts": [
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 214.7
+  },
+  {
+   "i": 38,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.196/s0.1645/h0.19/r0.61/a0.61,0.86,0.82/b0.84,0.94,0.34/w0.329,0.377,0.394+m0.412/s0.0652/h0.64/r0.62/a0.22,0.1,0.46/b0.03,0.84,0.38/w0.494,0.197,0.194+m0.177/s0.1358/h0.69/r0.92/a0.57,0.69,0.85/b0.98,0.27,0.16/w0.013,0.066,0.116",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 9,
+   "occupied": 0.1732,
+   "masses": [
+    157.7,
+    141.3,
+    136.4,
+    135.2,
+    132.3,
+    132.1,
+    50.5,
+    31.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 390.8
+  },
+  {
+   "i": 39,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.359/s0.0643/h0.76/r0.43/a0.37,0.95,0.29/b0.71,0.57,0.69/w0.356,0.276,0.285+m0.166/s0.1772/h0.55/r0.53/a0.25,0.38,0.36/b0.11,0.41,0.39/w0.485,0.232,0.264+m0.082/s0.0407/h0.01/r0.75/a0.93,0.42,0.34/b0.44,0.34,1/w0.313,0.431,0.49",
+   "mass_drift": 0.0,
+   "objects": 8,
+   "occupied": 0.0992,
+   "masses": [
+    133.2,
+    92.0,
+    74.0,
+    72.5,
+    72.5,
+    23.5,
+    22.3,
+    22.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 391.4
+  },
+  {
+   "i": 39,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.359/s0.0643/h0.76/r0.43/a0.37,0.95,0.29/b0.71,0.57,0.69/w0.356,0.276,0.285+m0.166/s0.1772/h0.55/r0.53/a0.25,0.38,0.36/b0.11,0.41,0.39/w0.485,0.232,0.264+m0.082/s0.0407/h0.01/r0.75/a0.93,0.42,0.34/b0.44,0.34,1/w0.313,0.431,0.49",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 31,
+   "occupied": 0.1769,
+   "masses": [
+    149.9,
+    119.5,
+    87.7,
+    86.6,
+    82.4,
+    36.6,
+    30.4,
+    29.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 390.0
+  },
+  {
+   "i": 40,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.292/s0.0771/h0.21/r0.99/a0.98,0.28,0.27/b0.22,0.88,0.3/w0.295,0.235,0.167+m0.055/s0.0874/h0.84/r0.9/a0.18,0.62,0.02/b0.23,0.31,0.52/w0.341,0.054,0.485+m0.196/s0.1557/h0.63/r0.79/a0.94,0.63,0.74/b0.89,0.32,0.17/w0.013,0.096,0.328",
+   "mass_drift": 0.0,
+   "objects": 0,
+   "occupied": 0.0007,
+   "masses": [],
+   "verdicts": [],
+   "reproducers": 0,
+   "seconds": 40.4
+  },
+  {
+   "i": 40,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.292/s0.0771/h0.21/r0.99/a0.98,0.28,0.27/b0.22,0.88,0.3/w0.295,0.235,0.167+m0.055/s0.0874/h0.84/r0.9/a0.18,0.62,0.02/b0.23,0.31,0.52/w0.341,0.054,0.485+m0.196/s0.1557/h0.63/r0.79/a0.94,0.63,0.74/b0.89,0.32,0.17/w0.013,0.096,0.328",
+   "mass_drift": 0.0,
+   "objects": 0,
+   "occupied": 0.0,
+   "masses": [],
+   "verdicts": [],
+   "reproducers": 0,
+   "seconds": 41.0
+  },
+  {
+   "i": 41,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.387/s0.1771/h0.88/r0.53/a0.29,0.13,0.73/b0.12,0.85,0.51/w0.078,0.159,0.115+m0.273/s0.1366/h0.96/r0.68/a0.03,0.72,0.43/b0.83,0.83,0.07/w0.262,0.359,0.125",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.1185,
+   "masses": [
+    295.2,
+    102.0,
+    100.9,
+    44.0,
+    31.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 332.3
+  },
+  {
+   "i": 41,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.387/s0.1771/h0.88/r0.53/a0.29,0.13,0.73/b0.12,0.85,0.51/w0.078,0.159,0.115+m0.273/s0.1366/h0.96/r0.68/a0.03,0.72,0.43/b0.83,0.83,0.07/w0.262,0.359,0.125",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 16,
+   "occupied": 0.1932,
+   "masses": [
+    427.7,
+    127.2,
+    126.8,
+    92.3,
+    16.4,
+    14.9,
+    13.4,
+    12.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 331.6
+  },
+  {
+   "i": 42,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.069/s0.1636/h0.36/r0.21/a0.26,0.28,0.02/b0.6,0.83,0.38/w0.353,0.374,0.186+m0.272/s0.0416/h0.49/r0.76/a0.19,0.56,0.14/b0.17,0.67,0.41/w0.22,0.297,0.352",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.0481,
+   "masses": [
+    80.9,
+    64.4,
+    32.8,
+    6.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 332.0
+  },
+  {
+   "i": 42,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.069/s0.1636/h0.36/r0.21/a0.26,0.28,0.02/b0.6,0.83,0.38/w0.353,0.374,0.186+m0.272/s0.0416/h0.49/r0.76/a0.19,0.56,0.14/b0.17,0.67,0.41/w0.22,0.297,0.352",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 6,
+   "occupied": 0.1705,
+   "masses": [
+    234.1,
+    110.9,
+    92.9,
+    80.4,
+    12.1,
+    4.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 338.2
+  },
+  {
+   "i": 43,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.491/s0.1695/h0.8/r0.22/a0.46,0.67,0.68/b0.41,0.94,0.51/w0.401,0.257,0.461+m0.052/s0.1080/h0.39/r0.52/a0.85,0.73,0.2/b0.67,0.46,0.92/w0.292,0.196,0.188+m0.377/s0.1946/h0.12/r0.44/a0,0.11,0.23/b0.59,0.75,0.89/w0.476,0.417,0.193",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.107,
+   "masses": [
+    234.8,
+    104.5,
+    99.6,
+    98.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 389.0
+  },
+  {
+   "i": 43,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.491/s0.1695/h0.8/r0.22/a0.46,0.67,0.68/b0.41,0.94,0.51/w0.401,0.257,0.461+m0.052/s0.1080/h0.39/r0.52/a0.85,0.73,0.2/b0.67,0.46,0.92/w0.292,0.196,0.188+m0.377/s0.1946/h0.12/r0.44/a0,0.11,0.23/b0.59,0.75,0.89/w0.476,0.417,0.193",
+   "mass_drift": 0.0,
+   "objects": 63,
+   "occupied": 0.1773,
+   "masses": [
+    242.2,
+    107.9,
+    104.4,
+    102.6,
+    7.4,
+    7.2,
+    7.1,
+    6.9
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 5.73,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 9,
+      "late": 103,
+      "clean": 1.0
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 5.39,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 10,
+      "late": 104,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 16,
+    "parent_spread": 0.0005,
+    "verdict": "no variation"
+   },
+   "seconds": 3054.4
+  },
+  {
+   "i": 44,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.178/s0.0430/h0.36/r0.84/a0.49,0.59,0.71/b0.07,0.33,0.22/w0.438,0.076,0.444+m0.350/s0.0434/h0.79/r0.47/a0.11,0.57,0.77/b0.39,0.08,0.2/w0.292,0.323,0.126+m0.298/s0.1745/h0.32/r0.22/a0.42,0.63,0.37/b0.79,0.48,0.13/w0.022,0.319,0.037",
+   "mass_drift": 0.0,
+   "objects": 8,
+   "occupied": 0.1082,
+   "masses": [
+    172.5,
+    93.6,
+    78.3,
+    78.1,
+    74.7,
+    17.9,
+    17.7,
+    17.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 390.6
+  },
+  {
+   "i": 44,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.178/s0.0430/h0.36/r0.84/a0.49,0.59,0.71/b0.07,0.33,0.22/w0.438,0.076,0.444+m0.350/s0.0434/h0.79/r0.47/a0.11,0.57,0.77/b0.39,0.08,0.2/w0.292,0.323,0.126+m0.298/s0.1745/h0.32/r0.22/a0.42,0.63,0.37/b0.79,0.48,0.13/w0.022,0.319,0.037",
+   "mass_drift": 0.0,
+   "objects": 50,
+   "occupied": 0.1882,
+   "masses": [
+    211.7,
+    122.0,
+    96.2,
+    95.0,
+    92.0,
+    34.8,
+    32.5,
+    29.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 408.8
+  },
+  {
+   "i": 45,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.156/s0.0218/h0.4/r0.49/a0.21,0.06,0.98/b0.42,0.92,0.1/w0.481,0.2,0.432+m0.057/s0.1246/h0.96/r0.45/a0.03,0.12,0.82/b0.23,0.83,0.98/w0.39,0.301,0.256+m0.155/s0.0806/h0.03/r0.2/a0.71,0.94,0.03/b0.83,0.37,0.43/w0.053,0.34,0.137",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 22,
+   "occupied": 0.1561,
+   "masses": [
+    131.3,
+    66.2,
+    65.6,
+    47.4,
+    44.3,
+    20.0,
+    15.5,
+    15.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 390.5
+  },
+  {
+   "i": 45,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.156/s0.0218/h0.4/r0.49/a0.21,0.06,0.98/b0.42,0.92,0.1/w0.481,0.2,0.432+m0.057/s0.1246/h0.96/r0.45/a0.03,0.12,0.82/b0.23,0.83,0.98/w0.39,0.301,0.256+m0.155/s0.0806/h0.03/r0.2/a0.71,0.94,0.03/b0.83,0.37,0.43/w0.053,0.34,0.137",
+   "mass_drift": 0.0,
+   "objects": 55,
+   "occupied": 0.2298,
+   "masses": [
+    167.0,
+    41.2,
+    38.5,
+    33.3,
+    30.5,
+    24.2,
+    23.9,
+    23.6
+   ],
+   "verdicts": [
+    "one generation",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "one generation",
+     "parent_mass": 4.7,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 3,
+      "late": 6,
+      "clean": 1.0
+     }
+    }
+   ],
+   "seconds": 1328.6
+  },
+  {
+   "i": 46,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.158/s0.0599/h0.99/r0.83/a0.33,0.17,0.56/b0.32,0.19,0.08/w0.284,0.023,0.177+m0.110/s0.1153/h0.62/r0.68/a0.72,0.6,0.3/b0.08,0.22,0.19/w0.382,0.381,0.131+m0.077/s0.0442/h0.59/r0.31/a0.18,0.69,0.04/b0.7,0.19,0.94/w0.329,0.289,0.124",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.0179,
+   "masses": [
+    6.9,
+    5.3,
+    5.0,
+    1.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 386.8
+  },
+  {
+   "i": 46,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.158/s0.0599/h0.99/r0.83/a0.33,0.17,0.56/b0.32,0.19,0.08/w0.284,0.023,0.177+m0.110/s0.1153/h0.62/r0.68/a0.72,0.6,0.3/b0.08,0.22,0.19/w0.382,0.381,0.131+m0.077/s0.0442/h0.59/r0.31/a0.18,0.69,0.04/b0.7,0.19,0.94/w0.329,0.289,0.124",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.0159,
+   "masses": [
+    15.0,
+    2.8,
+    1.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 383.5
+  },
+  {
+   "i": 47,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.088/s0.0762/h0.85/r0.34/a0.45,1,0.66/b0.32,0.86,0.31/w0.02,0.17,0.46+m0.318/s0.1574/h0.27/r0.39/a0.69,0.11,0.69/b0.77,0.96,0.92/w0.394,0.39,0.015",
+   "mass_drift": 0.0,
+   "objects": 65,
+   "occupied": 0.1296,
+   "masses": [
+    21.2,
+    15.0,
+    14.6,
+    13.6,
+    12.7,
+    12.3,
+    12.0,
+    11.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 325.0
+  },
+  {
+   "i": 47,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.088/s0.0762/h0.85/r0.34/a0.45,1,0.66/b0.32,0.86,0.31/w0.02,0.17,0.46+m0.318/s0.1574/h0.27/r0.39/a0.69,0.11,0.69/b0.77,0.96,0.92/w0.394,0.39,0.015",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 115,
+   "occupied": 0.2179,
+   "masses": [
+    23.4,
+    19.9,
+    19.5,
+    16.6,
+    16.1,
+    16.0,
+    14.4,
+    12.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 341.5
+  },
+  {
+   "i": 48,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.164/s0.0848/h0.17/r0.64/a0.21,0.06,0.54/b0.62,0.62,0.5/w0.347,0.045,0.379+m0.146/s0.0339/h0.76/r0.75/a0.67,0.06,0.54/b0.7,0.56,0.77/w0.128,0.183,0.162",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 6,
+   "occupied": 0.1168,
+   "masses": [
+    342.7,
+    86.0,
+    12.1,
+    9.6,
+    4.5,
+    4.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 332.0
+  },
+  {
+   "i": 48,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.164/s0.0848/h0.17/r0.64/a0.21,0.06,0.54/b0.62,0.62,0.5/w0.347,0.045,0.379+m0.146/s0.0339/h0.76/r0.75/a0.67,0.06,0.54/b0.7,0.56,0.77/w0.128,0.183,0.162",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.2036,
+   "masses": [
+    666.0,
+    38.3,
+    26.2,
+    17.1,
+    17.0,
+    14.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 336.3
+  },
+  {
+   "i": 49,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.278/s0.1800/h0.4/r0.22/a0.99,0.66,0.32/b0.32,0.49,0.05/w0.222,0.077,0.196+m0.156/s0.1169/h0.88/r0.53/a0.83,0.63,0.11/b0.87,0.19,0.06/w0.222,0.425,0.198+m0.280/s0.1483/h0.53/r0.27/a0.45,0.26,0.33/b0.08,0.22,0.64/w0.36,0.261,0.397",
+   "mass_drift": 0.0,
+   "objects": 7,
+   "occupied": 0.1331,
+   "masses": [
+    188.8,
+    86.6,
+    71.5,
+    69.3,
+    32.1,
+    22.3,
+    22.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 386.5
+  },
+  {
+   "i": 49,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.278/s0.1800/h0.4/r0.22/a0.99,0.66,0.32/b0.32,0.49,0.05/w0.222,0.077,0.196+m0.156/s0.1169/h0.88/r0.53/a0.83,0.63,0.11/b0.87,0.19,0.06/w0.222,0.425,0.198+m0.280/s0.1483/h0.53/r0.27/a0.45,0.26,0.33/b0.08,0.22,0.64/w0.36,0.261,0.397",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 24,
+   "occupied": 0.224,
+   "masses": [
+    147.8,
+    146.2,
+    128.2,
+    117.6,
+    115.0,
+    48.6,
+    10.2,
+    8.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 405.3
+  },
+  {
+   "i": 50,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.316/s0.1721/h0.84/r0.73/a0.17,0.59,0.25/b0.39,0.81,0.04/w0.325,0.022,0.434+m0.232/s0.0139/h0.48/r0.49/a0.76,0.87,0.91/b0.68,0.29,0.37/w0.386,0.388,0.17+m0.092/s0.0246/h0.64/r0.23/a0.25,0.76,0.05/b0.14,0.53,0.16/w0.367,0.294,0.421",
+   "mass_drift": 0.0,
+   "objects": 10,
+   "occupied": 0.1161,
+   "masses": [
+    119.0,
+    40.9,
+    39.9,
+    36.4,
+    29.6,
+    21.9,
+    21.2,
+    12.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 417.5
+  },
+  {
+   "i": 50,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.316/s0.1721/h0.84/r0.73/a0.17,0.59,0.25/b0.39,0.81,0.04/w0.325,0.022,0.434+m0.232/s0.0139/h0.48/r0.49/a0.76,0.87,0.91/b0.68,0.29,0.37/w0.386,0.388,0.17+m0.092/s0.0246/h0.64/r0.23/a0.25,0.76,0.05/b0.14,0.53,0.16/w0.367,0.294,0.421",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.1942,
+   "masses": [
+    293.3,
+    140.2,
+    36.8,
+    26.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 410.0
+  },
+  {
+   "i": 51,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.433/s0.1868/h0.32/r0.49/a0.19,0.57,0.81/b0.09,0.04,0.56/w0.069,0.155,0.097+m0.219/s0.0803/h0.39/r0.58/a0.81,0.73,0.65/b0.7,0.17,0.17/w0.153,0.467,0.167+m0.140/s0.0697/h0.89/r0.83/a0.9,0.18,0.75/b0.08,0.07,0.53/w0.229,0.046,0.172",
+   "mass_drift": 0.0,
+   "objects": 15,
+   "occupied": 0.1234,
+   "masses": [
+    65.7,
+    39.7,
+    39.4,
+    38.7,
+    37.0,
+    35.4,
+    35.0,
+    34.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 440.8
+  },
+  {
+   "i": 51,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.433/s0.1868/h0.32/r0.49/a0.19,0.57,0.81/b0.09,0.04,0.56/w0.069,0.155,0.097+m0.219/s0.0803/h0.39/r0.58/a0.81,0.73,0.65/b0.7,0.17,0.17/w0.153,0.467,0.167+m0.140/s0.0697/h0.89/r0.83/a0.9,0.18,0.75/b0.08,0.07,0.53/w0.229,0.046,0.172",
+   "mass_drift": 0.0,
+   "objects": 29,
+   "occupied": 0.1939,
+   "masses": [
+    40.2,
+    38.2,
+    37.6,
+    35.8,
+    35.5,
+    34.9,
+    33.8,
+    32.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 408.8
+  },
+  {
+   "i": 52,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.243/s0.1363/h0.28/r0.28/a0.44,0.88,0.79/b0.61,0.88,0.41/w0.459,0.024,0.467+m0.491/s0.0515/h0.03/r0.95/a0.52,0.59,0.07/b0.11,0.18,0.9/w0.136,0.345,0.062",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.1933,
+   "masses": [
+    261.7,
+    127.8,
+    97.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 359.9
+  },
+  {
+   "i": 52,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.243/s0.1363/h0.28/r0.28/a0.44,0.88,0.79/b0.61,0.88,0.41/w0.459,0.024,0.467+m0.491/s0.0515/h0.03/r0.95/a0.52,0.59,0.07/b0.11,0.18,0.9/w0.136,0.345,0.062",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 44,
+   "occupied": 0.3102,
+   "masses": [
+    483.8,
+    130.1,
+    6.5,
+    6.0,
+    5.9,
+    5.8,
+    5.8,
+    5.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 377.6
+  },
+  {
+   "i": 53,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.225/s0.1154/h0.57/r0.95/a0.77,0.13,0.86/b0.54,0.77,0.99/w0.43,0.478,0.284+m0.455/s0.1813/h0.26/r0.45/a0.04,0.86,0.17/b0.83,0.44,0.73/w0.059,0.201,0.105",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.1205,
+   "masses": [
+    186.6,
+    177.1,
+    98.8,
+    91.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 365.2
+  },
+  {
+   "i": 53,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.225/s0.1154/h0.57/r0.95/a0.77,0.13,0.86/b0.54,0.77,0.99/w0.43,0.478,0.284+m0.455/s0.1813/h0.26/r0.45/a0.04,0.86,0.17/b0.83,0.44,0.73/w0.059,0.201,0.105",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 8,
+   "occupied": 0.1974,
+   "masses": [
+    247.2,
+    231.9,
+    146.8,
+    132.7,
+    40.2,
+    37.7,
+    30.8,
+    30.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 376.3
+  },
+  {
+   "i": 54,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.175/s0.0027/h0.65/r0.38/a0.52,0.81,0.35/b0.13,0.6,0.4/w0.047,0.145,0.244+m0.473/s0.0097/h0.58/r0.46/a0.54,0.96,0.96/b0.67,0.95,0.77/w0.01,0.303,0.427+m0.125/s0.0501/h0.17/r0.65/a1,0.42,0.28/b0.29,0.73,0.11/w0.2,0.482,0.171",
+   "mass_drift": 0.0,
+   "objects": 56,
+   "occupied": 0.1145,
+   "masses": [
+    17.4,
+    15.4,
+    15.0,
+    14.1,
+    13.9,
+    13.4,
+    11.3,
+    9.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 435.6
+  },
+  {
+   "i": 54,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.175/s0.0027/h0.65/r0.38/a0.52,0.81,0.35/b0.13,0.6,0.4/w0.047,0.145,0.244+m0.473/s0.0097/h0.58/r0.46/a0.54,0.96,0.96/b0.67,0.95,0.77/w0.01,0.303,0.427+m0.125/s0.0501/h0.17/r0.65/a1,0.42,0.28/b0.29,0.73,0.11/w0.2,0.482,0.171",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 82,
+   "occupied": 0.1868,
+   "masses": [
+    20.2,
+    19.4,
+    15.2,
+    14.9,
+    14.6,
+    14.4,
+    13.7,
+    12.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "reproducer"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 8.11,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 13,
+      "late": 43,
+      "clean": 0.789
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 15,
+    "parent_spread": 0.0757,
+    "r": 0.517,
+    "slope": 0.035,
+    "p": 0.02149,
+    "null_r95": 0.44,
+    "verdict": "no heredity"
+   },
+   "seconds": 2225.7
+  },
+  {
+   "i": 55,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.298/s0.1382/h0.32/r0.91/a0.67,0.7,0.42/b0.25,0.39,0.52/w0.484,0.253,0.333+m0.307/s0.0495/h0.84/r0.37/a0.31,0.17,0.75/b0.52,0.1,0.6/w0.29,0.04,0.065",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.1018,
+   "masses": [
+    192.7,
+    128.9,
+    96.7,
+    93.6,
+    32.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 364.6
+  },
+  {
+   "i": 55,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.298/s0.1382/h0.32/r0.91/a0.67,0.7,0.42/b0.25,0.39,0.52/w0.484,0.253,0.333+m0.307/s0.0495/h0.84/r0.37/a0.31,0.17,0.75/b0.52,0.1,0.6/w0.29,0.04,0.065",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.1517,
+   "masses": [
+    289.3,
+    235.1,
+    143.5,
+    142.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 365.7
+  },
+  {
+   "i": 56,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.486/s0.1358/h0.77/r0.59/a0.78,0.7,0.67/b0.21,0.1,0.68/w0.189,0.422,0.402+m0.153/s0.1693/h0.22/r0.42/a0.84,0.45,0.59/b0,0.18,0.95/w0.158,0.34,0.407+m0.337/s0.1070/h0.26/r0.39/a0.85,0.1,0.26/b0.5,0.1,0.06/w0.438,0.058,0.299",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.1207,
+   "masses": [
+    197.7,
+    101.8,
+    100.4,
+    98.5,
+    96.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 458.2
+  },
+  {
+   "i": 56,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.486/s0.1358/h0.77/r0.59/a0.78,0.7,0.67/b0.21,0.1,0.68/w0.189,0.422,0.402+m0.153/s0.1693/h0.22/r0.42/a0.84,0.45,0.59/b0,0.18,0.95/w0.158,0.34,0.407+m0.337/s0.1070/h0.26/r0.39/a0.85,0.1,0.26/b0.5,0.1,0.06/w0.438,0.058,0.299",
+   "mass_drift": 0.0,
+   "objects": 21,
+   "occupied": 0.1976,
+   "masses": [
+    244.3,
+    129.3,
+    126.3,
+    124.8,
+    118.6,
+    14.6,
+    13.9,
+    13.6
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 10.44,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 44,
+      "clean": 0.952
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 11.31,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 42,
+      "clean": 0.938
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 8,
+    "families": 8,
+    "parent_spread": 0.0,
+    "verdict": "no variation"
+   },
+   "seconds": 2789.7
+  },
+  {
+   "i": 57,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.097/s0.1262/h0.2/r0.4/a0.43,0.76,0.94/b0.73,0.58,0.15/w0.194,0.165,0.374+m0.375/s0.0379/h0.55/r0.7/a0.24,0.74,0.88/b0.06,0.46,0.78/w0.116,0.289,0.255+m0.120/s0.1171/h0.56/r0.88/a0.2,0.24,0.12/b0.97,0.16,0.93/w0.239,0.14,0.285",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.0334,
+   "masses": [
+    45.2,
+    12.1,
+    8.0,
+    6.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 435.6
+  },
+  {
+   "i": 57,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.097/s0.1262/h0.2/r0.4/a0.43,0.76,0.94/b0.73,0.58,0.15/w0.194,0.165,0.374+m0.375/s0.0379/h0.55/r0.7/a0.24,0.74,0.88/b0.06,0.46,0.78/w0.116,0.289,0.255+m0.120/s0.1171/h0.56/r0.88/a0.2,0.24,0.12/b0.97,0.16,0.93/w0.239,0.14,0.285",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 26,
+   "occupied": 0.0428,
+   "masses": [
+    10.0,
+    7.1,
+    5.3,
+    4.7,
+    3.3,
+    3.0,
+    3.0,
+    2.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 436.0
+  },
+  {
+   "i": 58,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.280/s0.1458/h0.7/r0.59/a0.32,0.53,0.99/b0.45,0.14,0.7/w0.259,0.49,0.081+m0.424/s0.0790/h0.8/r0.96/a0.9,0.42,0.32/b1,0.89,0.54/w0.114,0.332,0.148+m0.214/s0.1269/h0.46/r0.43/a0.01,0.45,0.65/b0.99,0.43,0.98/w0.204,0.312,0.497",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.1208,
+   "masses": [
+    114.7,
+    106.6,
+    94.1,
+    79.1,
+    71.5,
+    65.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 435.1
+  },
+  {
+   "i": 58,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.280/s0.1458/h0.7/r0.59/a0.32,0.53,0.99/b0.45,0.14,0.7/w0.259,0.49,0.081+m0.424/s0.0790/h0.8/r0.96/a0.9,0.42,0.32/b1,0.89,0.54/w0.114,0.332,0.148+m0.214/s0.1269/h0.46/r0.43/a0.01,0.45,0.65/b0.99,0.43,0.98/w0.204,0.312,0.497",
+   "mass_drift": 0.0,
+   "objects": 22,
+   "occupied": 0.2101,
+   "masses": [
+    260.1,
+    127.9,
+    109.6,
+    108.8,
+    79.7,
+    18.7,
+    17.3,
+    16.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 462.1
+  },
+  {
+   "i": 59,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.442/s0.0389/h0.27/r0.62/a0.88,0.04,0.53/b0.05,0.92,0.57/w0.147,0.322,0.143+m0.394/s0.1730/h0.74/r0.93/a0.85,0.39,0.05/b0.65,0.3,0.79/w0.059,0.103,0.399+m0.089/s0.0813/h0.09/r0.94/a0.04,0.14,0.42/b0.64,0.28,0.35/w0.258,0.246,0.082",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.1141,
+   "masses": [
+    196.9,
+    102.2,
+    101.4,
+    98.0,
+    97.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 443.5
+  },
+  {
+   "i": 59,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.442/s0.0389/h0.27/r0.62/a0.88,0.04,0.53/b0.05,0.92,0.57/w0.147,0.322,0.143+m0.394/s0.1730/h0.74/r0.93/a0.85,0.39,0.05/b0.65,0.3,0.79/w0.059,0.103,0.399+m0.089/s0.0813/h0.09/r0.94/a0.04,0.14,0.42/b0.64,0.28,0.35/w0.258,0.246,0.082",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 7,
+   "occupied": 0.1833,
+   "masses": [
+    267.1,
+    248.2,
+    144.7,
+    131.5,
+    53.8,
+    29.2,
+    26.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "reproducer"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 29.23,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 13,
+      "clean": 0.885
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 2,
+    "families": 0,
+    "verdict": "too few families"
+   },
+   "seconds": 1522.8
+  },
+  {
+   "i": 60,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.084/s0.1845/h0.8/r0.61/a0.29,0.09,0.43/b0.84,0.45,0.79/w0.457,0.357,0.078+m0.088/s0.1789/h0.63/r0.62/a0.46,0.23,0.21/b0.3,0.44,0.02/w0.418,0.31,0.39+m0.316/s0.1491/h0.39/r0.62/a0.4,0.59,0.59/b0.55,0.01,0.55/w0.46,0.419,0.294",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.0109,
+   "masses": [
+    11.0,
+    7.3,
+    2.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 479.9
+  },
+  {
+   "i": 60,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.084/s0.1845/h0.8/r0.61/a0.29,0.09,0.43/b0.84,0.45,0.79/w0.457,0.357,0.078+m0.088/s0.1789/h0.63/r0.62/a0.46,0.23,0.21/b0.3,0.44,0.02/w0.418,0.31,0.39+m0.316/s0.1491/h0.39/r0.62/a0.4,0.59,0.59/b0.55,0.01,0.55/w0.46,0.419,0.294",
+   "mass_drift": 0.0,
+   "objects": 1,
+   "occupied": 0.0019,
+   "masses": [
+    3.0
+   ],
+   "verdicts": [
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 251.6
+  },
+  {
+   "i": 61,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.448/s0.1519/h0.79/r0.94/a0.81,0.83,0.17/b0.64,0.41,0.22/w0.218,0.387,0.468+m0.175/s0.1347/h0.5/r0.61/a0.73,0.87,0.6/b0.65,0.78,0.59/w0.335,0.097,0.455+m0.359/s0.1990/h0.53/r0.24/a0.96,0.79,0.97/b0.78,0.35,0.36/w0.025,0.429,0.016",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.1284,
+   "masses": [
+    294.0,
+    100.2,
+    96.7,
+    77.9,
+    16.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 448.8
+  },
+  {
+   "i": 61,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.448/s0.1519/h0.79/r0.94/a0.81,0.83,0.17/b0.64,0.41,0.22/w0.218,0.387,0.468+m0.175/s0.1347/h0.5/r0.61/a0.73,0.87,0.6/b0.65,0.78,0.59/w0.335,0.097,0.455+m0.359/s0.1990/h0.53/r0.24/a0.96,0.79,0.97/b0.78,0.35,0.36/w0.025,0.429,0.016",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 18,
+   "occupied": 0.2045,
+   "masses": [
+    371.0,
+    130.6,
+    125.7,
+    124.9,
+    18.6,
+    18.0,
+    16.2,
+    13.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 453.0
+  },
+  {
+   "i": 62,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.069/s0.1862/h0.04/r0.99/a0.17,0.39,0.73/b0.87,0.09,0.84/w0.162,0.197,0.027+m0.452/s0.1021/h0.95/r0.22/a0.86,0.99,0.73/b0.26,0.69,0.32/w0.456,0.146,0.398+m0.431/s0.0772/h0.75/r0.89/a0.03,0.09,0.39/b0.12,0.78,0.12/w0.335,0.293,0.086",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.0913,
+   "masses": [
+    335.5,
+    101.3,
+    90.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 451.8
+  },
+  {
+   "i": 62,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.069/s0.1862/h0.04/r0.99/a0.17,0.39,0.73/b0.87,0.09,0.84/w0.162,0.197,0.027+m0.452/s0.1021/h0.95/r0.22/a0.86,0.99,0.73/b0.26,0.69,0.32/w0.456,0.146,0.398+m0.431/s0.0772/h0.75/r0.89/a0.03,0.09,0.39/b0.12,0.78,0.12/w0.335,0.293,0.086",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.1159,
+   "masses": [
+    398.1,
+    145.1,
+    128.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 449.7
+  },
+  {
+   "i": 63,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.454/s0.0676/h0.42/r0.78/a0.02,0.01,0.57/b0.67,0.31,0.57/w0.335,0.328,0.367+m0.162/s0.1100/h0.49/r0.36/a0.37,0.21,0.1/b0.58,0.67,0.77/w0.366,0.463,0.157",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.1232,
+   "masses": [
+    76.1,
+    75.0,
+    66.2,
+    13.3,
+    10.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 388.5
+  },
+  {
+   "i": 63,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.454/s0.0676/h0.42/r0.78/a0.02,0.01,0.57/b0.67,0.31,0.57/w0.335,0.328,0.367+m0.162/s0.1100/h0.49/r0.36/a0.37,0.21,0.1/b0.58,0.67,0.77/w0.366,0.463,0.157",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 36,
+   "occupied": 0.2534,
+   "masses": [
+    192.4,
+    143.3,
+    43.0,
+    13.1,
+    8.0,
+    5.1,
+    5.0,
+    4.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 402.5
+  },
+  {
+   "i": 64,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.301/s0.1207/h0.43/r0.29/a0.56,0.18,0.41/b0.46,0.45,0.34/w0.118,0.079,0.22+m0.288/s0.0447/h0.06/r0.55/a0.39,0.65,0.48/b0.86,0.31,0.79/w0.421,0.433,0.029+m0.480/s0.1269/h0.96/r0.72/a0.62,0.42,0.13/b0.76,0.84,0.04/w0.364,0.467,0.211",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.101,
+   "masses": [
+    200.9,
+    116.2,
+    94.9,
+    94.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 477.9
+  },
+  {
+   "i": 64,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.301/s0.1207/h0.43/r0.29/a0.56,0.18,0.41/b0.46,0.45,0.34/w0.118,0.079,0.22+m0.288/s0.0447/h0.06/r0.55/a0.39,0.65,0.48/b0.86,0.31,0.79/w0.421,0.433,0.029+m0.480/s0.1269/h0.96/r0.72/a0.62,0.42,0.13/b0.76,0.84,0.04/w0.364,0.467,0.211",
+   "mass_drift": 0.0,
+   "objects": 55,
+   "occupied": 0.1837,
+   "masses": [
+    232.5,
+    138.4,
+    120.9,
+    116.6,
+    6.5,
+    6.1,
+    5.6,
+    5.6
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 5.14,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 45,
+      "late": 116,
+      "clean": 0.983
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 3.28,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 42,
+      "late": 121,
+      "clean": 0.961
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 16,
+    "families": 16,
+    "parent_spread": 0.0003,
+    "verdict": "no variation"
+   },
+   "seconds": 3158.3
+  },
+  {
+   "i": 65,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.409/s0.0207/h0.46/r0.77/a0.99,0.5,0.67/b0.55,0.14,0.44/w0.475,0.172,0.498+m0.128/s0.0112/h0.74/r0.86/a0.63,0.78,0.73/b0.47,0.37,0.29/w0.224,0.146,0.075",
+   "mass_drift": 0.0,
+   "objects": 21,
+   "occupied": 0.1241,
+   "masses": [
+    171.0,
+    71.1,
+    69.8,
+    40.4,
+    27.8,
+    25.7,
+    22.2,
+    21.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 385.8
+  },
+  {
+   "i": 65,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.409/s0.0207/h0.46/r0.77/a0.99,0.5,0.67/b0.55,0.14,0.44/w0.475,0.172,0.498+m0.128/s0.0112/h0.74/r0.86/a0.63,0.78,0.73/b0.47,0.37,0.29/w0.224,0.146,0.075",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 19,
+   "occupied": 0.1898,
+   "masses": [
+    262.2,
+    150.1,
+    91.2,
+    56.4,
+    51.3,
+    36.0,
+    31.1,
+    25.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 383.0
+  },
+  {
+   "i": 66,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.464/s0.1576/h0.51/r0.78/a0.34,0.45,0.23/b0.18,0.25,0.2/w0.418,0.23,0.18+m0.324/s0.1110/h0.34/r0.72/a0.33,0.68,0.45/b0.66,0.94,0.24/w0.391,0.094,0.236",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 5,
+   "occupied": 0.0914,
+   "masses": [
+    170.5,
+    104.1,
+    99.0,
+    93.9,
+    26.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 380.8
+  },
+  {
+   "i": 66,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.464/s0.1576/h0.51/r0.78/a0.34,0.45,0.23/b0.18,0.25,0.2/w0.418,0.23,0.18+m0.324/s0.1110/h0.34/r0.72/a0.33,0.68,0.45/b0.66,0.94,0.24/w0.391,0.094,0.236",
+   "mass_drift": 0.0,
+   "objects": 8,
+   "occupied": 0.1383,
+   "masses": [
+    203.3,
+    142.1,
+    139.0,
+    132.0,
+    57.2,
+    16.8,
+    15.8,
+    2.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 382.9
+  },
+  {
+   "i": 67,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.477/s0.1886/h0.23/r0.57/a0.48,0.6,0.55/b0.64,0.07,0.4/w0.101,0.106,0.047+m0.089/s0.1025/h0.13/r0.83/a0.74,0.44,0.49/b0.28,0.77,0.2/w0.486,0.256,0.429",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.0627,
+   "masses": [
+    94.6,
+    89.9,
+    84.8,
+    3.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 384.1
+  },
+  {
+   "i": 67,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.477/s0.1886/h0.23/r0.57/a0.48,0.6,0.55/b0.64,0.07,0.4/w0.101,0.106,0.047+m0.089/s0.1025/h0.13/r0.83/a0.74,0.44,0.49/b0.28,0.77,0.2/w0.486,0.256,0.429",
+   "mass_drift": 0.0,
+   "objects": 22,
+   "occupied": 0.1536,
+   "masses": [
+    114.3,
+    103.9,
+    96.9,
+    20.9,
+    19.1,
+    19.0,
+    17.8,
+    16.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 373.2
+  },
+  {
+   "i": 68,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.078/s0.1659/h0.72/r0.23/a0.39,0.81,0.56/b0.04,0.38,0.09/w0.187,0.288,0.066+m0.317/s0.0835/h0.13/r0.46/a0.91,0.24,0/b0.12,0.01,0.41/w0.066,0.129,0.116",
+   "mass_drift": 0.0,
+   "objects": 1,
+   "occupied": 0.0418,
+   "masses": [
+    4.2
+   ],
+   "verdicts": [
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 214.9
+  },
+  {
+   "i": 68,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.078/s0.1659/h0.72/r0.23/a0.39,0.81,0.56/b0.04,0.38,0.09/w0.187,0.288,0.066+m0.317/s0.0835/h0.13/r0.46/a0.91,0.24,0/b0.12,0.01,0.41/w0.066,0.129,0.116",
+   "mass_drift": 0.0,
+   "objects": 7,
+   "occupied": 0.1019,
+   "masses": [
+    3.8,
+    2.3,
+    2.3,
+    2.2,
+    2.1,
+    1.9,
+    1.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 367.2
+  },
+  {
+   "i": 69,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.180/s0.0490/h0.52/r0.81/a0.92,0.04,0.94/b0.14,0.83,0.81/w0.221,0.13,0.408+m0.439/s0.0480/h0.85/r0.3/a0.75,0.28,0/b0.08,0.33,0.09/w0.173,0.315,0.196+m0.247/s0.1422/h0.14/r0.69/a0.63,0.91,0.54/b0.95,0.33,0.55/w0.431,0.063,0.235",
+   "mass_drift": 0.0,
+   "objects": 7,
+   "occupied": 0.0882,
+   "masses": [
+    127.5,
+    122.0,
+    92.2,
+    56.1,
+    35.6,
+    34.9,
+    17.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 426.4
+  },
+  {
+   "i": 69,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.180/s0.0490/h0.52/r0.81/a0.92,0.04,0.94/b0.14,0.83,0.81/w0.221,0.13,0.408+m0.439/s0.0480/h0.85/r0.3/a0.75,0.28,0/b0.08,0.33,0.09/w0.173,0.315,0.196+m0.247/s0.1422/h0.14/r0.69/a0.63,0.91,0.54/b0.95,0.33,0.55/w0.431,0.063,0.235",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 13,
+   "occupied": 0.1458,
+   "masses": [
+    141.3,
+    133.9,
+    83.3,
+    79.5,
+    67.9,
+    53.8,
+    42.7,
+    39.4
+   ],
+   "verdicts": [
+    "reproducer",
+    "no reproduction"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 39.42,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 4,
+    "families": 4,
+    "verdict": "too few families"
+   },
+   "seconds": 1612.8
+  },
+  {
+   "i": 70,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.476/s0.1327/h0.89/r0.25/a0.98,0.41,0.35/b0.35,0.71,0.82/w0.398,0.26,0.406+m0.486/s0.1277/h0.68/r0.42/a0.35,0.76,0.61/b0.18,0.43,0.49/w0.083,0.316,0.417+m0.460/s0.0149/h0.13/r0.78/a0.93,0.07,0.09/b0.04,0.15,0.16/w0.224,0.165,0.278",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.1058,
+   "masses": [
+    284.9,
+    99.1,
+    98.8,
+    97.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 430.5
+  },
+  {
+   "i": 70,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.476/s0.1327/h0.89/r0.25/a0.98,0.41,0.35/b0.35,0.71,0.82/w0.398,0.26,0.406+m0.486/s0.1277/h0.68/r0.42/a0.35,0.76,0.61/b0.18,0.43,0.49/w0.083,0.316,0.417+m0.460/s0.0149/h0.13/r0.78/a0.93,0.07,0.09/b0.04,0.15,0.16/w0.224,0.165,0.278",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.1401,
+   "masses": [
+    353.6,
+    141.0,
+    139.2,
+    135.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 455.0
+  },
+  {
+   "i": 71,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.315/s0.1208/h0.86/r0.33/a0.95,0.71,0.26/b0.56,0.44,0.68/w0.132,0.474,0.289+m0.113/s0.0453/h0.83/r0.53/a0.71,0.88,0.48/b0.67,0.57,0.88/w0.123,0.288,0.482+m0.419/s0.1821/h0.47/r0.78/a0.2,0.73,0.31/b0.32,0.91,0.03/w0.027,0.481,0.149",
+   "mass_drift": 0.0,
+   "objects": 36,
+   "occupied": 0.1046,
+   "masses": [
+    93.0,
+    88.9,
+    12.3,
+    11.5,
+    10.3,
+    10.3,
+    10.3,
+    10.1
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 430.9
+  },
+  {
+   "i": 71,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.315/s0.1208/h0.86/r0.33/a0.95,0.71,0.26/b0.56,0.44,0.68/w0.132,0.474,0.289+m0.113/s0.0453/h0.83/r0.53/a0.71,0.88,0.48/b0.67,0.57,0.88/w0.123,0.288,0.482+m0.419/s0.1821/h0.47/r0.78/a0.2,0.73,0.31/b0.32,0.91,0.03/w0.027,0.481,0.149",
+   "mass_drift": 0.0,
+   "objects": 80,
+   "occupied": 0.1745,
+   "masses": [
+    96.1,
+    80.8,
+    12.2,
+    11.9,
+    11.4,
+    11.3,
+    10.8,
+    10.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 451.0
+  },
+  {
+   "i": 72,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.425/s0.1938/h0.03/r0.94/a0.14,0.3,0.03/b0.98,0.16,0.53/w0.229,0.265,0.196+m0.165/s0.1240/h0.38/r0.59/a0.15,0.01,0.39/b0.68,0.39,0.21/w0.077,0.155,0.155",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.2721,
+   "masses": [
+    351.9,
+    103.6,
+    21.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 375.5
+  },
+  {
+   "i": 72,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.425/s0.1938/h0.03/r0.94/a0.14,0.3,0.03/b0.98,0.16,0.53/w0.229,0.265,0.196+m0.165/s0.1240/h0.38/r0.59/a0.15,0.01,0.39/b0.68,0.39,0.21/w0.077,0.155,0.155",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 33,
+   "occupied": 0.4292,
+   "masses": [
+    8.2,
+    8.1,
+    6.5,
+    5.8,
+    5.7,
+    5.6,
+    5.5,
+    4.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 391.9
+  },
+  {
+   "i": 73,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.057/s0.1209/h0.45/r0.65/a0.19,0.48,0.67/b0.9,0.36,0.37/w0.25,0.282,0.252+m0.293/s0.1463/h0.99/r0.85/a0.05,0.19,0.41/b0.03,0.88,0.91/w0.449,0.146,0.335+m0.407/s0.1473/h0.19/r0.36/a0.84,0.26,0.5/b0.69,0.15,0.62/w0.486,0.289,0.035",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.1133,
+   "masses": [
+    258.2,
+    161.9,
+    33.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 445.5
+  },
+  {
+   "i": 73,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.057/s0.1209/h0.45/r0.65/a0.19,0.48,0.67/b0.9,0.36,0.37/w0.25,0.282,0.252+m0.293/s0.1463/h0.99/r0.85/a0.05,0.19,0.41/b0.03,0.88,0.91/w0.449,0.146,0.335+m0.407/s0.1473/h0.19/r0.36/a0.84,0.26,0.5/b0.69,0.15,0.62/w0.486,0.289,0.035",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 17,
+   "occupied": 0.1909,
+   "masses": [
+    228.6,
+    180.5,
+    94.5,
+    63.0,
+    25.5,
+    20.8,
+    20.6,
+    20.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 443.0
+  },
+  {
+   "i": 74,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.283/s0.0286/h0.79/r1/a0.56,0.23,0.65/b0.94,0.99,0.95/w0.073,0.473,0.106+m0.446/s0.1966/h0.97/r0.51/a0.97,0.44,0.36/b0.84,0.07,0.12/w0.301,0.228,0.359+m0.417/s0.0730/h0.96/r0.32/a0.92,0.51,0.96/b0.3,0.78,0.31/w0.485,0.428,0.105",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.0763,
+   "masses": [
+    361.3,
+    85.3,
+    10.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 474.2
+  },
+  {
+   "i": 74,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.283/s0.0286/h0.79/r1/a0.56,0.23,0.65/b0.94,0.99,0.95/w0.073,0.473,0.106+m0.446/s0.1966/h0.97/r0.51/a0.97,0.44,0.36/b0.84,0.07,0.12/w0.301,0.228,0.359+m0.417/s0.0730/h0.96/r0.32/a0.92,0.51,0.96/b0.3,0.78,0.31/w0.485,0.428,0.105",
+   "mass_drift": 0.0,
+   "objects": 15,
+   "occupied": 0.1395,
+   "masses": [
+    590.3,
+    18.5,
+    17.9,
+    17.9,
+    17.2,
+    16.8,
+    16.8,
+    16.7
+   ],
+   "verdicts": [
+    "reproducer",
+    "reproducer"
+   ],
+   "reproducers": 2,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 16.82,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 7,
+      "late": 38,
+      "clean": 0.999
+     }
+    },
+    {
+     "verdict": "reproducer",
+     "parent_mass": 14.59,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 5,
+      "late": 37,
+      "clean": 0.951
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 9,
+    "families": 9,
+    "parent_spread": 0.0,
+    "verdict": "no variation"
+   },
+   "seconds": 2694.1
+  },
+  {
+   "i": 75,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.252/s0.1248/h0.12/r0.58/a0.15,0.43,0.76/b0.7,0.39,0.87/w0.397,0.213,0.258+m0.386/s0.0325/h0.16/r0.6/a0.61,0.28,0.34/b0.31,0.9,0.93/w0.18,0.164,0.483",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.1199,
+   "masses": [
+    238.0,
+    85.6,
+    72.0,
+    69.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 386.7
+  },
+  {
+   "i": 75,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.252/s0.1248/h0.12/r0.58/a0.15,0.43,0.76/b0.7,0.39,0.87/w0.397,0.213,0.258+m0.386/s0.0325/h0.16/r0.6/a0.61,0.28,0.34/b0.31,0.9,0.93/w0.18,0.164,0.483",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 6,
+   "occupied": 0.1761,
+   "masses": [
+    312.0,
+    136.5,
+    113.2,
+    87.0,
+    20.0,
+    13.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 387.0
+  },
+  {
+   "i": 76,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.059/s0.0081/h0.55/r0.37/a0.78,0.5,0.55/b0.52,0.39,0.07/w0.145,0.034,0.052+m0.095/s0.0416/h0.5/r0.5/a0.42,0.7,0.14/b0.48,0.62,0.8/w0.441,0.48,0.082",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 79,
+   "occupied": 0.1175,
+   "masses": [
+    6.4,
+    5.8,
+    5.8,
+    5.8,
+    5.4,
+    5.4,
+    5.4,
+    5.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 387.6
+  },
+  {
+   "i": 76,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.059/s0.0081/h0.55/r0.37/a0.78,0.5,0.55/b0.52,0.39,0.07/w0.145,0.034,0.052+m0.095/s0.0416/h0.5/r0.5/a0.42,0.7,0.14/b0.48,0.62,0.8/w0.441,0.48,0.082",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 146,
+   "occupied": 0.1918,
+   "masses": [
+    10.2,
+    6.9,
+    6.8,
+    6.6,
+    6.6,
+    6.3,
+    6.2,
+    6.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 388.7
+  },
+  {
+   "i": 77,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.142/s0.0960/h0.92/r0.98/a0.78,0.3,0.6/b0.23,0.67,0.78/w0.335,0.046,0.302+m0.480/s0.0301/h0.34/r0.21/a0.06,0.65,0.92/b0.51,0.08,0.41/w0.073,0.197,0.03+m0.094/s0.1455/h0.09/r0.52/a0.07,0.25,0.45/b0.25,0.6,0.16/w0.313,0.234,0.075",
+   "mass_drift": 0.0,
+   "objects": 16,
+   "occupied": 0.1331,
+   "masses": [
+    70.7,
+    70.6,
+    65.1,
+    25.2,
+    21.7,
+    14.2,
+    13.8,
+    13.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 448.3
+  },
+  {
+   "i": 77,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.142/s0.0960/h0.92/r0.98/a0.78,0.3,0.6/b0.23,0.67,0.78/w0.335,0.046,0.302+m0.480/s0.0301/h0.34/r0.21/a0.06,0.65,0.92/b0.51,0.08,0.41/w0.073,0.197,0.03+m0.094/s0.1455/h0.09/r0.52/a0.07,0.25,0.45/b0.25,0.6,0.16/w0.313,0.234,0.075",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 10,
+   "occupied": 0.2294,
+   "masses": [
+    343.0,
+    42.7,
+    29.6,
+    23.6,
+    22.2,
+    16.4,
+    14.5,
+    8.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 446.3
+  },
+  {
+   "i": 78,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.290/s0.0309/h0.12/r0.64/a0.29,0.2,0.26/b0.11,0.64,0.76/w0.035,0.019,0.023+m0.481/s0.0724/h0.12/r0.99/a0.8,0.94,0.43/b0.36,0.61,0.88/w0.414,0.053,0.358+m0.462/s0.1297/h0.78/r0.65/a0.78,0.46,0.25/b0.42,0.78,0.86/w0.39,0.265,0.142",
+   "mass_drift": 0.0,
+   "objects": 5,
+   "occupied": 0.0959,
+   "masses": [
+    191.2,
+    99.1,
+    95.9,
+    95.2,
+    90.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 474.2
+  },
+  {
+   "i": 78,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.290/s0.0309/h0.12/r0.64/a0.29,0.2,0.26/b0.11,0.64,0.76/w0.035,0.019,0.023+m0.481/s0.0724/h0.12/r0.99/a0.8,0.94,0.43/b0.36,0.61,0.88/w0.414,0.053,0.358+m0.462/s0.1297/h0.78/r0.65/a0.78,0.46,0.25/b0.42,0.78,0.86/w0.39,0.265,0.142",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.1388,
+   "masses": [
+    234.0,
+    138.6,
+    138.3,
+    133.3,
+    123.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 452.0
+  },
+  {
+   "i": 79,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.174/s0.1194/h0.62/r0.72/a0.89,0.12,0.84/b0.67,0.03,0.76/w0.255,0.158,0.045+m0.073/s0.0552/h0.58/r0.43/a0.64,0.98,0.41/b0.18,0.7,0.68/w0.183,0.137,0.28",
+   "mass_drift": 0.0,
+   "objects": 84,
+   "occupied": 0.1072,
+   "masses": [
+    17.3,
+    15.1,
+    12.7,
+    11.8,
+    11.4,
+    10.4,
+    10.0,
+    9.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 384.6
+  },
+  {
+   "i": 79,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.174/s0.1194/h0.62/r0.72/a0.89,0.12,0.84/b0.67,0.03,0.76/w0.255,0.158,0.045+m0.073/s0.0552/h0.58/r0.43/a0.64,0.98,0.41/b0.18,0.7,0.68/w0.183,0.137,0.28",
+   "mass_drift": 0.0,
+   "objects": 181,
+   "occupied": 0.1857,
+   "masses": [
+    7.9,
+    6.1,
+    5.5,
+    5.4,
+    5.0,
+    4.9,
+    4.8,
+    4.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 394.5
+  },
+  {
+   "i": 80,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.368/s0.1895/h0.52/r0.53/a0.57,0.24,0.51/b0.51,0.92,0.16/w0.387,0.282,0.225+m0.385/s0.0253/h0.15/r0.32/a0.82,0.91,0.58/b0.41,0.53,0.06/w0.029,0.374,0.419+m0.172/s0.1369/h0.42/r0.27/a0.86,0.2,0.85/b0.08,0.28,0.57/w0.365,0.28,0.491",
+   "mass_drift": 0.0,
+   "objects": 4,
+   "occupied": 0.1429,
+   "masses": [
+    182.4,
+    171.5,
+    92.6,
+    85.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 445.9
+  },
+  {
+   "i": 80,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.368/s0.1895/h0.52/r0.53/a0.57,0.24,0.51/b0.51,0.92,0.16/w0.387,0.282,0.225+m0.385/s0.0253/h0.15/r0.32/a0.82,0.91,0.58/b0.41,0.53,0.06/w0.029,0.374,0.419+m0.172/s0.1369/h0.42/r0.27/a0.86,0.2,0.85/b0.08,0.28,0.57/w0.365,0.28,0.491",
+   "mass_drift": 0.0,
+   "objects": 35,
+   "occupied": 0.2393,
+   "masses": [
+    320.7,
+    238.6,
+    110.6,
+    12.0,
+    11.3,
+    10.7,
+    7.7,
+    7.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 450.8
+  },
+  {
+   "i": 81,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.148/s0.1942/h0.58/r0.57/a0.62,0.73,0.23/b0.39,0.79,0.75/w0.449,0.234,0.447+m0.298/s0.1066/h0.51/r0.42/a0.43,1,0.07/b0.23,0.66,0.62/w0.402,0.018,0.365+m0.058/s0.1683/h0.79/r0.47/a0.45,0.5,0.81/b0.26,0.07,0.19/w0.124,0.046,0.473",
+   "mass_drift": 0.0,
+   "objects": 66,
+   "occupied": 0.1267,
+   "masses": [
+    12.1,
+    11.8,
+    11.7,
+    11.3,
+    11.1,
+    11.1,
+    10.3,
+    10.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 449.1
+  },
+  {
+   "i": 81,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.148/s0.1942/h0.58/r0.57/a0.62,0.73,0.23/b0.39,0.79,0.75/w0.449,0.234,0.447+m0.298/s0.1066/h0.51/r0.42/a0.43,1,0.07/b0.23,0.66,0.62/w0.402,0.018,0.365+m0.058/s0.1683/h0.79/r0.47/a0.45,0.5,0.81/b0.26,0.07,0.19/w0.124,0.046,0.473",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 105,
+   "occupied": 0.201,
+   "masses": [
+    26.1,
+    13.2,
+    13.0,
+    12.4,
+    12.4,
+    11.8,
+    11.8,
+    11.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 450.2
+  },
+  {
+   "i": 82,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.167/s0.1249/h0.11/r0.77/a0.14,0.47,0.97/b0.31,0.7,0.02/w0.091,0.431,0.469+m0.221/s0.0348/h0.3/r0.67/a0.74,0.77,0.12/b0.7,0.34,0.87/w0.473,0.195,0.414+m0.473/s0.0141/h0.04/r0.57/a0.69,0.51,0.22/b0.07,0.94,0.67/w0.133,0.484,0.478",
+   "mass_drift": 0.0,
+   "objects": 7,
+   "occupied": 0.1323,
+   "masses": [
+    272.6,
+    82.9,
+    82.6,
+    78.2,
+    11.2,
+    10.9,
+    8.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 448.5
+  },
+  {
+   "i": 82,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.167/s0.1249/h0.11/r0.77/a0.14,0.47,0.97/b0.31,0.7,0.02/w0.091,0.431,0.469+m0.221/s0.0348/h0.3/r0.67/a0.74,0.77,0.12/b0.7,0.34,0.87/w0.473,0.195,0.414+m0.473/s0.0141/h0.04/r0.57/a0.69,0.51,0.22/b0.07,0.94,0.67/w0.133,0.484,0.478",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.2131,
+   "masses": [
+    544.9,
+    119.7,
+    119.0,
+    35.5,
+    34.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 447.5
+  },
+  {
+   "i": 83,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.111/s0.0925/h0.67/r0.93/a0.91,0.73,0.98/b0.69,0.67,0.64/w0.178,0.463,0.366+m0.371/s0.0397/h0.3/r0.34/a0.26,0.55,0.8/b0.25,0.84,0.43/w0.221,0.273,0.226+m0.093/s0.1931/h0.34/r0.49/a0.55,0.03,0.95/b0.97,0.95,0.96/w0.353,0.413,0.486",
+   "mass_drift": 0.0,
+   "objects": 17,
+   "occupied": 0.101,
+   "masses": [
+    43.2,
+    39.8,
+    34.9,
+    28.2,
+    22.6,
+    12.0,
+    11.8,
+    11.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 474.3
+  },
+  {
+   "i": 83,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.111/s0.0925/h0.67/r0.93/a0.91,0.73,0.98/b0.69,0.67,0.64/w0.178,0.463,0.366+m0.371/s0.0397/h0.3/r0.34/a0.26,0.55,0.8/b0.25,0.84,0.43/w0.221,0.273,0.226+m0.093/s0.1931/h0.34/r0.49/a0.55,0.03,0.95/b0.97,0.95,0.96/w0.353,0.413,0.486",
+   "mass_drift": 0.0,
+   "objects": 21,
+   "occupied": 0.1187,
+   "masses": [
+    66.3,
+    52.0,
+    38.8,
+    30.1,
+    22.8,
+    19.2,
+    16.5,
+    15.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 449.2
+  },
+  {
+   "i": 84,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.273/s0.0534/h0.27/r0.27/a0.6,0.83,0.11/b0.81,0.01,0.89/w0.038,0.399,0.416+m0.223/s0.0387/h0.7/r0.85/a0.51,0.47,0.31/b0.06,0.12,0.69/w0.483,0.169,0.401+m0.424/s0.0694/h0.94/r0.94/a0.96,0.71,0.54/b0.21,0.18,0.49/w0.24,0.269,0.256",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 8,
+   "occupied": 0.1026,
+   "masses": [
+    152.1,
+    104.4,
+    78.5,
+    77.6,
+    72.5,
+    23.3,
+    18.2,
+    17.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 441.5
+  },
+  {
+   "i": 84,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.273/s0.0534/h0.27/r0.27/a0.6,0.83,0.11/b0.81,0.01,0.89/w0.038,0.399,0.416+m0.223/s0.0387/h0.7/r0.85/a0.51,0.47,0.31/b0.06,0.12,0.69/w0.483,0.169,0.401+m0.424/s0.0694/h0.94/r0.94/a0.96,0.71,0.54/b0.21,0.18,0.49/w0.24,0.269,0.256",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 8,
+   "occupied": 0.1818,
+   "masses": [
+    190.6,
+    164.6,
+    140.1,
+    130.6,
+    111.7,
+    40.5,
+    26.3,
+    23.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 440.6
+  },
+  {
+   "i": 85,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.057/s0.1818/h0.15/r0.54/a0.15,0.14,0.18/b0.17,0.93,0.27/w0.078,0.238,0.482+m0.146/s0.0944/h0.44/r0.34/a0.66,0.43,0.01/b0.23,0.1,0.92/w0.169,0.469,0.147",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.0467,
+   "masses": [
+    49.7,
+    23.2,
+    15.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 379.1
+  },
+  {
+   "i": 85,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.057/s0.1818/h0.15/r0.54/a0.15,0.14,0.18/b0.17,0.93,0.27/w0.078,0.238,0.482+m0.146/s0.0944/h0.44/r0.34/a0.66,0.43,0.01/b0.23,0.1,0.92/w0.169,0.469,0.147",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 16,
+   "occupied": 0.0875,
+   "masses": [
+    88.9,
+    17.6,
+    13.4,
+    9.0,
+    8.9,
+    6.3,
+    4.1,
+    3.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 385.1
+  },
+  {
+   "i": 86,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.415/s0.0061/h0.06/r0.27/a0.4,0.7,0.71/b0.39,0.14,0.88/w0.219,0.302,0.09+m0.216/s0.1113/h0.15/r0.26/a0.49,0.04,0.18/b0.86,0.81,0.87/w0.293,0.175,0.232",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.2513,
+   "masses": [
+    275.0,
+    99.0,
+    95.2,
+    81.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 377.6
+  },
+  {
+   "i": 86,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.415/s0.0061/h0.06/r0.27/a0.4,0.7,0.71/b0.39,0.14,0.88/w0.219,0.302,0.09+m0.216/s0.1113/h0.15/r0.26/a0.49,0.04,0.18/b0.86,0.81,0.87/w0.293,0.175,0.232",
+   "mass_drift": 4.76837158203125e-07,
+   "objects": 26,
+   "occupied": 0.3951,
+   "masses": [
+    386.7,
+    255.9,
+    138.0,
+    5.3,
+    4.9,
+    4.8,
+    4.8,
+    4.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "reproducer"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 4.75,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 86,
+      "clean": 0.954
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 12,
+    "families": 12,
+    "parent_spread": 0.0077,
+    "verdict": "no variation"
+   },
+   "seconds": 1429.7
+  },
+  {
+   "i": 87,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.359/s0.1959/h0.04/r0.23/a0.38,0.87,0.53/b0.24,0.26,0.92/w0.367,0.065,0.273+m0.462/s0.0197/h0.45/r0.2/a0.88,0.03,0.38/b0.89,0.22,0.9/w0.262,0.139,0.491+m0.466/s0.1153/h0.31/r0.51/a0.08,0.75,0.98/b0.78,0.64,0.38/w0.45,0.423,0.245",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.1078,
+   "masses": [
+    224.5,
+    105.2,
+    100.5,
+    99.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 424.4
+  },
+  {
+   "i": 87,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.359/s0.1959/h0.04/r0.23/a0.38,0.87,0.53/b0.24,0.26,0.92/w0.367,0.065,0.273+m0.462/s0.0197/h0.45/r0.2/a0.88,0.03,0.38/b0.89,0.22,0.9/w0.262,0.139,0.491+m0.466/s0.1153/h0.31/r0.51/a0.08,0.75,0.98/b0.78,0.64,0.38/w0.45,0.423,0.245",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 4,
+   "occupied": 0.1407,
+   "masses": [
+    272.9,
+    147.9,
+    141.4,
+    131.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 450.1
+  },
+  {
+   "i": 88,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.444/s0.1843/h0.29/r0.51/a0.44,0.57,0.05/b0.85,0.1,0.28/w0.285,0.232,0.058+m0.199/s0.0030/h0.41/r0.24/a0.84,0.09,0.91/b0.92,0.45,0.99/w0.438,0.028,0.039+m0.210/s0.1404/h0.39/r0.49/a0.53,0.07,0.76/b0.28,0.5,0.48/w0.489,0.487,0.43",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 2,
+   "occupied": 0.1536,
+   "masses": [
+    338.5,
+    87.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 432.1
+  },
+  {
+   "i": 88,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.444/s0.1843/h0.29/r0.51/a0.44,0.57,0.05/b0.85,0.1,0.28/w0.285,0.232,0.058+m0.199/s0.0030/h0.41/r0.24/a0.84,0.09,0.91/b0.92,0.45,0.99/w0.438,0.028,0.039+m0.210/s0.1404/h0.39/r0.49/a0.53,0.07,0.76/b0.28,0.5,0.48/w0.489,0.487,0.43",
+   "mass_drift": 0.0,
+   "objects": 23,
+   "occupied": 0.266,
+   "masses": [
+    447.7,
+    116.6,
+    14.0,
+    13.2,
+    12.7,
+    12.1,
+    11.0,
+    10.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 426.6
+  },
+  {
+   "i": 89,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.135/s0.0101/h0.73/r0.79/a0.2,0.58,0.08/b0.52,0.35,0.04/w0.358,0.147,0.33+m0.090/s0.0206/h0.46/r0.68/a0.18,0.65,0.53/b0.61,0.83,0.22/w0.256,0.489,0.389",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 33,
+   "occupied": 0.1182,
+   "masses": [
+    120.9,
+    76.4,
+    25.2,
+    24.3,
+    23.0,
+    21.5,
+    19.8,
+    12.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 362.8
+  },
+  {
+   "i": 89,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.135/s0.0101/h0.73/r0.79/a0.2,0.58,0.08/b0.52,0.35,0.04/w0.358,0.147,0.33+m0.090/s0.0206/h0.46/r0.68/a0.18,0.65,0.53/b0.61,0.83,0.22/w0.256,0.489,0.389",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 72,
+   "occupied": 0.1763,
+   "masses": [
+    206.4,
+    54.5,
+    16.9,
+    14.0,
+    11.7,
+    11.4,
+    11.1,
+    10.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 362.7
+  },
+  {
+   "i": 90,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.102/s0.0524/h0.06/r0.97/a0.35,0.99,0.97/b0.7,0.02,0.28/w0.245,0.042,0.087+m0.078/s0.1282/h0.02/r0.46/a0.56,0.81,0.81/b0.41,0.89,0.74/w0.305,0.303,0.284",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 0,
+   "occupied": 0.0,
+   "masses": [],
+   "verdicts": [],
+   "reproducers": 0,
+   "seconds": 38.8
+  },
+  {
+   "i": 90,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.102/s0.0524/h0.06/r0.97/a0.35,0.99,0.97/b0.7,0.02,0.28/w0.245,0.042,0.087+m0.078/s0.1282/h0.02/r0.46/a0.56,0.81,0.81/b0.41,0.89,0.74/w0.305,0.303,0.284",
+   "mass_drift": 2.384185791015625e-07,
+   "objects": 0,
+   "occupied": 0.0,
+   "masses": [],
+   "verdicts": [],
+   "reproducers": 0,
+   "seconds": 38.9
+  },
+  {
+   "i": 91,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.301/s0.1083/h0.56/r0.64/a0.04,0.68,0.9/b0.86,0.8,0.8/w0.018,0.026,0.392+m0.391/s0.1672/h0.2/r1/a0.35,0.42,0.1/b0.74,0.4,0.47/w0.409,0.137,0.475+m0.479/s0.1798/h0.25/r0.62/a0.22,0,0.68/b0.5,0.39,0.32/w0.467,0.192,0.418",
+   "mass_drift": 0.0,
+   "objects": 6,
+   "occupied": 0.1069,
+   "masses": [
+    164.8,
+    97.9,
+    95.0,
+    93.6,
+    92.6,
+    15.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 438.8
+  },
+  {
+   "i": 91,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.301/s0.1083/h0.56/r0.64/a0.04,0.68,0.9/b0.86,0.8,0.8/w0.018,0.026,0.392+m0.391/s0.1672/h0.2/r1/a0.35,0.42,0.1/b0.74,0.4,0.47/w0.409,0.137,0.475+m0.479/s0.1798/h0.25/r0.62/a0.22,0,0.68/b0.5,0.39,0.32/w0.467,0.192,0.418",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 9,
+   "occupied": 0.1772,
+   "masses": [
+    271.4,
+    137.6,
+    137.2,
+    135.3,
+    93.5,
+    35.6,
+    28.0,
+    27.5
+   ],
+   "verdicts": [
+    "reproducer",
+    "no reproduction"
+   ],
+   "reproducers": 1,
+   "hits": [
+    {
+     "verdict": "reproducer",
+     "parent_mass": 27.97,
+     "background_copies": 0,
+     "attractor": true,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 25,
+      "clean": 1.0
+     }
+    }
+   ],
+   "heredity": {
+    "candidates": 3,
+    "families": 3,
+    "verdict": "too few families"
+   },
+   "seconds": 1152.8
+  },
+  {
+   "i": 92,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.366/s0.0999/h0.95/r0.46/a0.47,0.49,0.73/b0.41,0.01,0.28/w0.192,0.415,0.058+m0.277/s0.0440/h0.3/r0.74/a0.13,0.66,0.64/b0.03,0.69,0.14/w0.327,0.494,0.229+m0.493/s0.0057/h0.17/r0.92/a0.38,0.23,0.05/b0.3,0.16,0.09/w0.293,0.035,0.479",
+   "mass_drift": 0.0,
+   "objects": 3,
+   "occupied": 0.1027,
+   "masses": [
+    403.1,
+    83.1,
+    19.6
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 435.7
+  },
+  {
+   "i": 92,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.366/s0.0999/h0.95/r0.46/a0.47,0.49,0.73/b0.41,0.01,0.28/w0.192,0.415,0.058+m0.277/s0.0440/h0.3/r0.74/a0.13,0.66,0.64/b0.03,0.69,0.14/w0.327,0.494,0.229+m0.493/s0.0057/h0.17/r0.92/a0.38,0.23,0.05/b0.3,0.16,0.09/w0.293,0.035,0.479",
+   "mass_drift": -5.960464477539063e-08,
+   "objects": 2,
+   "occupied": 0.1441,
+   "masses": [
+    516.2,
+    153.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 441.1
+  },
+  {
+   "i": 93,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.188/s0.1141/h0.72/r0.82/a0.2,0.52,0.22/b0.06,0.93,0.82/w0.087,0.101,0.24+m0.429/s0.1075/h0.56/r0.81/a0.6,0.32,0.98/b0.42,0.16,0.65/w0.027,0.305,0.21+m0.315/s0.1812/h0.9/r0.61/a0.18,0.45,0.49/b0.42,0.83,0.12/w0.036,0.497,0.386",
+   "mass_drift": 0.0,
+   "objects": 1,
+   "occupied": 0.1094,
+   "masses": [
+    572.5
+   ],
+   "verdicts": [
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 249.9
+  },
+  {
+   "i": 93,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.188/s0.1141/h0.72/r0.82/a0.2,0.52,0.22/b0.06,0.93,0.82/w0.087,0.101,0.24+m0.429/s0.1075/h0.56/r0.81/a0.6,0.32,0.98/b0.42,0.16,0.65/w0.027,0.305,0.21+m0.315/s0.1812/h0.9/r0.61/a0.18,0.45,0.49/b0.42,0.83,0.12/w0.036,0.497,0.386",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 17,
+   "occupied": 0.1853,
+   "masses": [
+    688.3,
+    21.1,
+    18.4,
+    17.7,
+    15.0,
+    14.5,
+    14.4,
+    13.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 432.7
+  },
+  {
+   "i": 94,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.255/s0.0524/h0.51/r0.37/a0.02,0.92,0.52/b0.22,0.4,0.76/w0.402,0.404,0.499+m0.184/s0.1662/h0.94/r0.69/a0.5,0.69,0.66/b0.84,0.6,0.86/w0.396,0.029,0.086",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 8,
+   "occupied": 0.1343,
+   "masses": [
+    178.5,
+    93.7,
+    81.3,
+    78.2,
+    72.3,
+    17.2,
+    16.2,
+    14.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 373.4
+  },
+  {
+   "i": 94,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.255/s0.0524/h0.51/r0.37/a0.02,0.92,0.52/b0.22,0.4,0.76/w0.402,0.404,0.499+m0.184/s0.1662/h0.94/r0.69/a0.5,0.69,0.66/b0.84,0.6,0.86/w0.396,0.029,0.086",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 16,
+   "occupied": 0.2092,
+   "masses": [
+    230.6,
+    131.7,
+    103.5,
+    95.0,
+    91.1,
+    38.8,
+    34.3,
+    31.4
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 372.7
+  },
+  {
+   "i": 95,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.081/s0.0178/h0.52/r0.58/a0.91,0.62,0.96/b0.27,0.17,0.48/w0.075,0.435,0.233+m0.184/s0.0865/h0.16/r0.75/a0.87,0.66,0.66/b0.1,0.17,0.57/w0.156,0.349,0.202",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 60,
+   "occupied": 0.1469,
+   "masses": [
+    22.0,
+    20.1,
+    19.8,
+    18.1,
+    14.7,
+    14.2,
+    13.5,
+    12.9
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 373.5
+  },
+  {
+   "i": 95,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.081/s0.0178/h0.52/r0.58/a0.91,0.62,0.96/b0.27,0.17,0.48/w0.075,0.435,0.233+m0.184/s0.0865/h0.16/r0.75/a0.87,0.66,0.66/b0.1,0.17,0.57/w0.156,0.349,0.202",
+   "mass_drift": 2.384185791015625e-07,
+   "objects": 82,
+   "occupied": 0.2241,
+   "masses": [
+    52.5,
+    39.7,
+    29.9,
+    26.5,
+    24.6,
+    23.4,
+    23.1,
+    20.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 397.2
+  },
+  {
+   "i": 96,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.360/s0.0515/h0.69/r0.75/a0.12,0.28,0.36/b0.67,0.74,0.21/w0.191,0.165,0.483+m0.229/s0.1141/h0.53/r0.81/a0.77,0.83,0.66/b0.56,0.36,0.47/w0.499,0.238,0.175+m0.120/s0.1607/h0.02/r0.23/a0.16,0.59,0.17/b0.06,0.99,0.4/w0.38,0.305,0.239",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 5,
+   "occupied": 0.0989,
+   "masses": [
+    166.0,
+    98.4,
+    97.6,
+    74.8,
+    70.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 438.8
+  },
+  {
+   "i": 96,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.360/s0.0515/h0.69/r0.75/a0.12,0.28,0.36/b0.67,0.74,0.21/w0.191,0.165,0.483+m0.229/s0.1141/h0.53/r0.81/a0.77,0.83,0.66/b0.56,0.36,0.47/w0.499,0.238,0.175+m0.120/s0.1607/h0.02/r0.23/a0.16,0.59,0.17/b0.06,0.99,0.4/w0.38,0.305,0.239",
+   "mass_drift": 0.0,
+   "objects": 9,
+   "occupied": 0.1641,
+   "masses": [
+    393.4,
+    147.0,
+    144.6,
+    40.1,
+    31.4,
+    25.8,
+    22.9,
+    22.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 423.8
+  },
+  {
+   "i": 97,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.497/s0.0201/h0.78/r0.61/a0.9,0.81,0.63/b0.03,0.54,0.27/w0.212,0.071,0.445+m0.245/s0.1422/h0.55/r0.79/a0.13,0.03,0.37/b0.16,0.62,0.64/w0.025,0.462,0.013+m0.223/s0.0515/h0.3/r0.51/a0.5,0.5,0.38/b0.93,0.08,0.51/w0.243,0.138,0.335",
+   "mass_drift": -1.1920928955078125e-07,
+   "objects": 3,
+   "occupied": 0.1398,
+   "masses": [
+    509.6,
+    38.4,
+    10.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 408.8
+  },
+  {
+   "i": 97,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.497/s0.0201/h0.78/r0.61/a0.9,0.81,0.63/b0.03,0.54,0.27/w0.212,0.071,0.445+m0.245/s0.1422/h0.55/r0.79/a0.13,0.03,0.37/b0.16,0.62,0.64/w0.025,0.462,0.013+m0.223/s0.0515/h0.3/r0.51/a0.5,0.5,0.38/b0.93,0.08,0.51/w0.243,0.138,0.335",
+   "mass_drift": 0.0,
+   "objects": 14,
+   "occupied": 0.2224,
+   "masses": [
+    662.5,
+    43.3,
+    29.2,
+    21.9,
+    18.8,
+    17.8,
+    16.3,
+    16.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 402.6
+  },
+  {
+   "i": 98,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.106/s0.0410/h0.61/r0.89/a0.77,0.21,0.46/b0.73,0.6,0.07/w0.321,0.464,0.469+m0.358/s0.0932/h0.23/r0.72/a0.41,0.3,0.36/b0.1,0.5,0.2/w0.133,0.254,0.194+m0.320/s0.0557/h0.25/r0.39/a0.55,0.41,0.38/b0.31,0.21,0.59/w0.347,0.17,0.236",
+   "mass_drift": 0.0,
+   "objects": 26,
+   "occupied": 0.1065,
+   "masses": [
+    33.2,
+    26.1,
+    23.5,
+    22.9,
+    22.0,
+    21.9,
+    21.8,
+    21.5
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 391.9
+  },
+  {
+   "i": 98,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.106/s0.0410/h0.61/r0.89/a0.77,0.21,0.46/b0.73,0.6,0.07/w0.321,0.464,0.469+m0.358/s0.0932/h0.23/r0.72/a0.41,0.3,0.36/b0.1,0.5,0.2/w0.133,0.254,0.194+m0.320/s0.0557/h0.25/r0.39/a0.55,0.41,0.38/b0.31,0.21,0.59/w0.347,0.17,0.236",
+   "mass_drift": 1.1920928955078125e-07,
+   "objects": 26,
+   "occupied": 0.1909,
+   "masses": [
+    134.3,
+    123.4,
+    82.8,
+    48.0,
+    29.6,
+    25.5,
+    23.6,
+    23.2
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 386.7
+  },
+  {
+   "i": 99,
+   "food": 0.0,
+   "rule": "FLENIA-PL/f0/FLENIA/R13/m0.158/s0.1683/h0.19/r0.46/a0.71,0.81,0.59/b0.37,0.33,0.92/w0.101,0.046,0.416+m0.449/s0.1567/h0.1/r0.56/a0.5,0.95,0.82/b0.35,0.72,0.67/w0.069,0.495,0.056",
+   "mass_drift": 0.0,
+   "objects": 2,
+   "occupied": 0.1932,
+   "masses": [
+    242.1,
+    99.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 319.5
+  },
+  {
+   "i": 99,
+   "food": 0.05,
+   "rule": "FLENIA-PL/f0.05/FLENIA/R13/m0.158/s0.1683/h0.19/r0.46/a0.71,0.81,0.59/b0.37,0.33,0.92/w0.101,0.046,0.416+m0.449/s0.1567/h0.1/r0.56/a0.5,0.95,0.82/b0.35,0.72,0.67/w0.069,0.495,0.056",
+   "mass_drift": 0.0,
+   "objects": 2,
+   "occupied": 0.334,
+   "masses": [
+    402.1,
+    197.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [],
+   "seconds": 250.6
+  }
+ ],
+ "summary": {
+  "0.0": {
+   "worlds": 100,
+   "with_reproducer": 0,
+   "verdicts": {
+    "no reproduction": 190
+   },
+   "heredity": {},
+   "max_mass_drift": 3.5762786865234375e-07
+  },
+  "0.05": {
+   "worlds": 100,
+   "with_reproducer": 17,
+   "verdicts": {
+    "no reproduction": 170,
+    "reproducer": 24,
+    "one generation": 1
+   },
+   "heredity": {
+    "heredity": 1,
+    "too few families": 7,
+    "no variation": 8,
+    "no heredity": 1
+   },
+   "max_mass_drift": null
+  }
+ },
+ "seconds": 9693
+}

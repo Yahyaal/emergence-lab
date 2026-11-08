@@ -5,7 +5,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 
 # Overnight report · 7 November 2026
 
-<p class="lead"><b>Updated Saturday afternoon</b> (section 10): no reproduction in 3000 random Lenia rules, a validated test for heredity, and Flow-Lenia whose creatures carry their own rules. Earlier: a third kind of mover, Chan's start reproduced in bigger worlds, a better slow-mover detector (section 8), and a birth detector (section 9).</p>
+<p class="lead"><b>Updated Sunday early morning.</b> Section 12: <b>self-copying programs emerged from random code</b> in a soup of tiny programs (3 of 16 soups, each confirmed by our detector), and <b>their mutations are inherited</b>: the project's first evidence of heritable variation (level 4). Section 11: <b>the first reproducer in Lenia</b>, dividing spots in one random multi-channel rule, and a clean held-out test of the fed-world fix. Section 10: no reproduction in 3000 random Lenia rules, a validated test for heredity, Flow-Lenia whose creatures carry their own rules, and a false alarm about reproduction in fed worlds, caught and fixed. Earlier: a third kind of mover, Chan's start reproduced in bigger worlds, a better slow-mover detector (section 8), and a birth detector (section 9).</p>
 
 <p class="lead">Can things that move by themselves arise on their own from simple rules? Overnight we tested this in <b>Lenia</b>, a continuous cousin of the Game of Life. For the first time in this project, they did: gliders formed spontaneously, mostly when the random starting world was <i>smooth</i>, with matter clumped in space. From the usual fine-grained noise they almost never formed: once in 1,120 worlds, right at the density where soups switch from dying to freezing.</p>
 
@@ -29,7 +29,14 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">13 / 160</div><p>Morning: Chan's own start (sparse dense patches) <b>does</b> make gliders when the world is big enough: 0 of 40 at 128², 13 of 160 at 256². <b>Our prediction was wrong</b> (E-24).</p></div>
 <div class="card"><div class="stat">0 / 568</div><p>Saturday: a new <b>birth detector</b>, validated on known reproducers, found <b>no reproduction</b> in 568 Lenia worlds, none among 285 movers. Its first version was fooled by blobs bursting into labyrinths; fixed and confirmed on held-out worlds (E-27, E-28).</p></div>
 <div class="card"><div class="stat">0 / 3000</div><p>Saturday afternoon: <b>every rule drawn at random</b> got a chance to reproduce from a lone lump. None did, and none even came close (E-29). A new <b>heredity test</b> passed its controls, ready for physics that can reproduce.</p></div>
-<div class="card"><div class="stat">level 2</div><p>Highest evidence level reached in Lenia: <b>spontaneous self-propelled structures</b>. No reproduction, heredity or evolution yet.</p></div>
+<div class="card"><div class="stat">17 → 0</div><p>Evening: in <b>fed Flow-Lenia</b>, the detector first found "reproducers" in 17 of 100 worlds. They were <b>food condensing</b>, which happens even with no creature present. Detector fixed (it now also checks a slightly disturbed empty world); <b>0 reproducers</b> (E-30).</p></div>
+<div class="card"><div class="stat">0 / 97</div><p>Saturday night: the fed-world fix, tested on <b>400 new rules</b>: no false alarm, no reproducer, positive control still passes (E-31).</p></div>
+<div class="card"><div class="stat">1 / 1000</div><p>Saturday night: one random <b>multi-channel</b> Lenia rule makes <b>spots that divide</b> until they tile the world. Verified over two generations and three fresh starts. <b>Our prediction (0) was wrong</b>. But every spot is the same type, so nothing can be inherited (E-32).</p></div>
+<div class="card"><div class="stat">3 / 16</div><p>Sunday: in a <b>soup of random programs</b>, self-copying programs appeared on their own and took over, in <b>3 soups of 16</b>, all after thousands of rounds. In every soup that made the jump, the detector confirms <b>real replicators, in several variants</b>; in none of the others (E-40, E-41).</p></div>
+<div class="card"><div class="stat">9 / 9</div><p>Sunday: every emergent replicator we tested <b>passes its mutations on</b> to its descendants (E-42). <b>Heritable variation, level 4</b>, a first for the project. In head-to-head races the variants look <b>neutral</b> (E-43).</p></div>
+<div class="card"><div class="stat">7 : 3</div><p>Sunday morning: every replicator that emerged copies itself <b>backwards</b>, alternating between a program and its mirror image (E-44, E-46). Raced against each other, most are <b>equally fit</b>, but one species <b>wins about 7 races in 10</b> against another soup's replicators, and it beats a family that was common <b>earlier</b> in its own soup. Pre-registered, checked with fair counting and 24 neutral controls (E-45, E-46). The third ingredient of natural selection, <b>differences in success</b>, in one clear case.</p></div>
+<div class="card"><div class="stat">100% → 10%</div><p>After the jump no single species takes over: a soup becomes a shifting cloud of variants whose most common code keeps <b>drifting away from the founder</b> (E-47). Is the later code fitter? In a first test, in one soup; in a cleaner, pre-registered confirmation, <b>not reliably</b>: later replicators win 51.6% of races (E-48, E-49). <b>Most of the change looks neutral</b>; cumulative evolution is not shown.</p></div>
+<div class="card"><div class="stat">level 3</div><p>Highest evidence level reached in Lenia: <b>self-replication</b>, in its weakest form (one type, no heredity). Self-propelled structures (level 2) arise spontaneously. No heredity or evolution yet.</p></div>
 </div>
 
 ---
@@ -267,17 +274,147 @@ So in the Lenia rules we have explored, things either travel, sit still, or spre
 <div class="card"><img src="{{ '/assets/report/heredity-controls.png' | relative_url }}" alt="Three scatter plots of offspring trait vs parent trait: on the diagonal for carried traits, a flat cloud for redrawn traits, no relation for traits set by position"><p><b>The test sorts the three cases.</b> Left: the trait travels with the spot, so offspring match their parent (r = 1.0). Middle: the trait is noise (no heredity). Right: the trait is set by <i>where</i> a spot is, so neighbours in the world look alike, but once moved, offspring no longer match their parent: <b>no heredity</b>, correctly.</p></div>
 </div>
 
-**Flow-Lenia where creatures carry their own rules.** We built the variant from Plantec et al. (2023) in which every cell carries its own rule parameters, which travel with its matter and mix where flows meet, plus an optional thin layer of "food" (mass is conserved, so copies need material). With everyone's parameters equal it behaves exactly like ordinary Flow-Lenia. E-30, a first scan of fed worlds seeded with six "species", is running; its result will be added here.
+**Flow-Lenia where creatures carry their own rules.** We built the variant from Plantec et al. (2023) in which every cell carries its own rule parameters, which travel with its matter and mix where flows meet, plus an optional thin layer of "food" (mass is conserved, so copies need material). With everyone's parameters equal it behaves exactly like ordinary Flow-Lenia. Then we ran E-30: 100 random rules, worlds seeded with six "species", with and without food.
+
+**A false alarm, caught (E-30).** In fed worlds the detector reported **reproducers in 17 of 100**, and even heredity in one. We did not believe it, and looked:
+
+<figure>
+<img src="{{ '/assets/report/e30-condensation.gif' | relative_url }}" alt="Two panels. Left: a single small lump in a thin layer of food; droplets appear around it and spread until they fill the world. Right: the same food layer with faint noise and no lump; droplets appear everywhere and fill the world too.">
+<figcaption><b>Left:</b> one small lump in a fed world "reproduces" into a hundred droplets. <b>Right:</b> the same food with a faint ripple of noise and <b>no lump at all</b> does the same. The food itself is unstable: a perfectly even layer never changes, but any disturbance makes it condense. These are not offspring.</figcaption>
+</figure>
+
+- The detector's "empty world" control used a perfectly even food layer, which never changes. **It now also checks a slightly disturbed empty world** (D-030). Copies that appear there are not reproduction. The known reproducer, Gray-Scott, still passes.
+- **Rescored: 0 reproducers.** All 17 false hits came from rules whose food is unstable, and that turned out to be **68 of the 100 rules**. In the 32 rules with stable food, nothing reproduced.
+- **Lesson for what comes next:** feeding a world can make the food the most active thing in it. Future fed-world experiments will first check that their food is stable.
+
+## 11 · Saturday night: the first reproducer in Lenia, and a clean negative
+
+**A held-out check of the fix (E-31, pre-registered).** The fed-world false alarm (section 10) was fixed *after* we had seen the data, so we tested the fix on 400 new rules. First, each rule's food layer was checked on its own: only **36%** of rules have stable food at the usual amount, and **24%** with 60% more food. Then 97 worlds with stable food, six "species" each: **0 reproducers**, and no false alarm. The known reproducer (Gray-Scott spots carrying a trait) still passed, with heredity, 4 times out of 4.
+
+**Several channels (E-32, pre-registered).** Chan reports self-replicating creatures in Lenia with several channels (several interacting fields). We repeated the 3000-rule lone-lump test on 1000 random rules with 2 or 3 channels. We predicted 0 reproducers. **We were wrong: one rule reproduces.**
+
+<figure>
+<img src="{{ '/assets/report/e32-divider-strip.png' | relative_url }}" alt="Nine frames: a small spot stretches, splits into two, and each half splits again into smaller spots">
+<figcaption>Rule #970, one small spot alone in an empty world, every 50 steps. It stretches, <b>splits in two</b>, and the halves split again.</figcaption>
+</figure>
+
+<div class="cards two">
+<div class="card"><img src="{{ '/assets/report/e32-divider.gif' | relative_url }}" alt="A single spot divides repeatedly until about a hundred spots tile the world"><p><b>From one spot to a hundred.</b> 2000 steps. The spots divide until they tile the world, then stop. New matter only appears next to existing spots; the empty world, even slightly disturbed, stays empty.</p></div>
+<div class="card"><p><b>What we checked before believing it:</b></p><ul><li>both object types in the world passed <b>two generations</b> (copies of copies);</li><li>three <b>new</b> random starts: reproducer 3 times out of 3;</li><li>the empty and the disturbed empty world make <b>no copies</b> (the test that caught the food condensing);</li><li><b>but</b> scrambled lumps also turn into the same spots: the spot is the rule's single stable form, as in Gray-Scott. Offspring are copies of <i>the rule's</i> spot, not of their own parent, so <b>there is nothing to inherit</b>.</li></ul></div>
+</div>
+
+- **How rare:** 1 rule out of 450 we could decide on (about 0.2%). Single-channel Lenia had 0 of 1453; the difference is not statistically significant (p = 0.24).
+- **A twist:** the rule's second channel dies out, so all the matter is in one channel. Yet the second channel still matters: in our version of multi-channel Lenia an empty channel still "votes" on growth, and its vote is always "shrink", acting as a uniform decay. Without it (same two kernels, one channel) the spots do not divide.
+- **Evidence level 3, in its weakest form:** reproduction is real and verified, but heredity is impossible because there is only one type. It is the textbook reaction-diffusion reproducer, now found in Lenia by a random draw.
+
+## 12 · Sunday early: self-copying programs, from random code
+
+A completely different kind of universe. Instead of a field of matter, a **soup of 16,384 tiny programs**, each 64 random bytes, written in a ten-instruction language (BFF, from Agüera y Arcas et al., 2024). Every round, programs are paired at random, each pair is glued into one tape and run, so a program can read and **overwrite its partner**, and then the two are split again. A few bytes are randomly changed each round. Nothing rewards copying. The paper reports that self-copying programs nevertheless appear and take over. We built this, plus a **replicator detector** held to the same standard as the Lenia birth detector: copies of a candidate are put among random programs and must **multiply for two generations**, while random programs must not (D-040). The detector passed all its controls, including a hand-written self-copier and a deceptive "copying rule" in which every program is copied whether it does anything or not.
+
+<figure>
+<img src="{{ '/assets/report/e40-bff-entropy.png' | relative_url }}" alt="Line chart of soup repetitiveness over 48000 epochs: most grey lines stay flat near 0.3; one red line jumps to about 3 at epoch 8750; an orange control line sits near 7; a green control line at 0">
+<figcaption>How repetitive each soup is (its "high-order entropy": near 0 for random bytes, high when the soup is full of repeated code). <b>Three soups in 16 made the jump</b>: a pilot run (purple) and, when run three times longer, two of our 12 pre-registered soups (red). The orange control shows why the entropy alone is not proof: a rule that blindly copies programs makes the soup very repetitive with <b>no replicator in it</b>.</figcaption>
+</figure>
+
+- **E-40 (pre-registered): 0 of 12 soups made the jump in 16,000 rounds.** We had predicted 2 to 6, based on 1 jump in 4 pilot runs. **Wrong again**: one success in four was luck. Our soups are 8 times smaller than the paper's, which probably makes the jump rarer.
+- Something does happen in every soup before any jump: the share of bytes that are instructions rises from 3.9% to about 15%, and stays there. Code that does something survives encounters better than inert bytes. That is selection, but not yet copying.
+
+**The soup that jumped, examined (E-41).** The simulation is exactly repeatable, so we replayed the pilot soup that jumped: the jump came back **at the same round, 8,750, bit for bit**. Then we ran the detector on it, 1,000 rounds later.
+
+<figure>
+<img src="{{ '/assets/report/e41-bff-soup.png' | relative_url }}" alt="Three panels of coloured pixel rows. Left: random speckle. Middle: more coloured instruction bytes but still varied rows. Right: most rows share the same instructions at the same positions, forming vertical stripes">
+<figcaption>Pilot soup seed 901, replayed. Programs as rows of coloured bytes (colour = instruction type, dark = data). <b>Left:</b> the random start. <b>Middle:</b> just before the jump, richer in instructions but still all different. <b>Right:</b> 1,000 rounds after the jump, most programs carry the same code at the same positions (the vertical stripes): one family of self-copying programs and its variants has spread through the soup.</figcaption>
+</figure>
+
+- **The detector confirms emergent self-replicators.** Of the 4 most common programs, **2 are replicators** (8 copies became 116 and 71 among 1024 random programs, and their copies multiplied again), and the other 2 multiplied for one generation. Random programs never multiply under the same test.
+- They are **variants of one family**: the common programs differ in a few bytes around a shared core. Different replicators, mutation, competition: that is the raw material for heredity and evolution (levels 4 and 5), which in Lenia we never had.
+- **How often? (E-41, pre-registered).** We ran the 12 soups of E-40 three times longer (48,000 rounds). **Two of them made the jump** (at rounds 32,000 and 43,250; red in the chart above), as predicted (2 to 6). Both contain replicators confirmed by the detector. In the 10 soups that did not jump, the detector found **no** replicator. In all, 3 transitions in 16 soups, and every one of them produced real self-copying programs.
+- **Evidence level 3, from random code, with no fitness function**, in a second universe and in a stronger form than Lenia's dividing spots: here there are many competing variants, not one fixed type.
+
+**Do the variants pass on their differences? (E-42, pre-registered).** We took the 9 distinct replicators the detector had confirmed, and made 24 one-byte mutants of each. Each mutant was put alone, as 8 copies, in a fresh soup of random programs. Then we checked whether its descendants carry the mutation, and, as a control, how often that byte shows up there when the unmutated replicator is used instead.
+
+<figure>
+<img src="{{ '/assets/report/e42-bff-heredity.png' | relative_url }}" alt="Grid of nine rows (replicators) by 64 byte positions; most mutated positions are green (inherited), some grey (the mutation stops copying), one red">
+<figcaption>Each coloured cell is one mutant. <b>Green:</b> the mutant still copies itself and its descendants carry the mutation. <b>Grey:</b> the mutation breaks copying (those bytes are the replicator's working code). <b>Red:</b> copies, but the mutation is lost (once in 141).</figcaption>
+</figure>
+
+- **All 9 replicators show heredity** (we predicted at least 7). 54–83% of mutants still copy themselves, and in 140 of those 141 the mutation is carried by the descendants, almost always by every one of them. Without the mutation, that byte never appears there.
+- The test passed its controls first: a hand-written copier shows heredity; the same program in a world where nothing runs, or where the rule copies everything blindly, shows none.
+- **Evidence level 4: heritable variation**, in replicators that arose by themselves from random code. This is the first time the project reaches level 4. What it is not yet: **evolution** (level 5) needs variants that compete and change over time; see the next test.
+
+**Do some variants win? (E-43, pre-registered).** Evolution by natural selection also needs variants that spread better than others. We put each of the 141 working mutants in a head-to-head race against its parent (equal numbers at the start, 8 repeat races each). **Only 2 of 141 lost consistently, and none won**: no more than chance allows (a neutral control gave 0 of 24). We had predicted 5–30% losers. The races are winner-take-all, so the test only sees large differences. As far as it can tell, a one-byte change that leaves a replicator working is **neutral**. The third ingredient of natural selection, differences in success, is **not shown** by this test.
+
+**Replicators from different soups (E-44, pre-registered).** Replicators from different soups share almost none of their bytes, so if some copy better than others, races between them should show it. We raced all 36 pairs of the 9 emergent replicators, 16 races per pair, everything done twice on fresh soups, and also raced each against our hand-written copier.
+
+<figure>
+<img src="{{ '/assets/report/e44-bff-contests.png' | relative_url }}" alt="Left: a 10 by 10 colour matrix of race results, mostly pale, with the bottom row (hand-written) blue and two columns (soup 5006 at 32k) reddish. Right: scatter of batch A against batch B results, points spread with little correlation">
+<figcaption><b>Left:</b> how often the row replicator ends more common than the column one (log-ratio; blue = row wins). Most cells are pale: no consistent winner. The <b>hand-written copier (bottom row) beats every emergent replicator</b>. <b>Right:</b> the same race run twice on fresh soups gives weakly related results (Spearman 0.22): most differences between emergent replicators are noise.</figcaption>
+</figure>
+
+- **No pair of emergent replicators had a clear winner: 0 of 36** (we predicted at least 30%). Race results barely repeat between the two batches. At this resolution, replicators that arose separately are **about equally fit**.
+- Our hand-written copier seemed to win most races against the emergent ones (222 of 287), but that was mostly a **counting mistake**, explained just below: with fair counting it wins only 56% (E-46).
+- **A surprise: a mirror replicator.** Two of the replicators from soup 5006 are **exact reverses of each other**, byte for byte. When one runs, it leaves itself intact and writes its own reverse into its partner; the reverse does the same. Seed one form alone and the soup fills with both, in equal numbers. The species alternates between two forms every generation, a little like a DNA strand and its complement. We then checked the others: **all 9 emergent replicators do this.** In our soups, self-copying arose in the backwards form every time; only our hand-written copier copies forwards. That also means we had been counting each emergent species by half of its members.
+
+<figure>
+<img src="{{ '/assets/report/e44-mirror-replicator.png' | relative_url }}" alt="Five rows of coloured bytes: the replicator, a random partner, the partner after one interaction, the replicator read backwards, and replicator 6; the last three rows are identical">
+<figcaption>The mirror replicator. After one interaction the random partner (row 2) has become the replicator <b>read backwards</b> (rows 3 and 4), which is exactly the other replicator the detector had found in that soup (row 5). Letters are instructions.</figcaption>
+</figure>
+
+**Does one species win? (E-45, E-46, pre-registered).** The race matrix above hinted that the species from soup 5006 at round 32,000 beats soup 901's replicators. We tested that on fresh soups with 64 races per pair (E-45). Then, having found that every emergent replicator has two forms, we **redid everything with both forms counted for every species**, raced all 28 pairs of the 8 emergent species, and added 24 neutral controls (E-46). We predicted that the advantage would turn out to be a counting artefact.
+
+<figure>
+<img src="{{ '/assets/report/e46-species-contests.png' | relative_url }}" alt="Left: a 9 by 9 matrix of race win shares, mostly pale near 0.5, with the 5006 at 32k row dark blue (0.56 to 0.79). Right: histogram of neutral controls centred on 0.5, emergent pairs mostly between 0.5 and 0.6, and red lines for the 5006 species between 0.56 and 0.79">
+<figcaption><b>Left:</b> share of 64 races won by the row species, with both forms of every species counted. Most cells are near 0.5. The row of the species from soup 5006 at round 32,000 is blue across. <b>Right:</b> the 24 neutral controls (our copier against itself with a different inert tail, grey) sit around 0.5; that species (red lines) is ahead of all 7 other emergent species.</figcaption>
+</figure>
+
+- **Our prediction was wrong: the advantage is real.** With fair counting, the 5006 species wins **176 of 252 races against soup 901's species (70%; p = 10⁻¹⁰)**, the same as before. It is ahead of all 7 other emergent species (56–79% of races).
+- **It beats an earlier family from its own soup.** In soup 5006, replicator #4 was one of the most common programs at round 28,250 and had disappeared by round 32,000, when this one was among the most common. In a race between the two, the later one wins **46 of 64** (72%). (Neither ever held more than ~2% of the soup; see E-47 below.)
+- The neutral controls behave: **0 of 24** show a winner (pooled 50.9%). In E-45, one of 4 had; across all three experiments, 2 of 70 control pairs (~3%), so single-pair verdicts deserve some caution. The other emergent species are indistinguishable from each other.
+- **What this means:** among replicators that arose by themselves from random code, we now have **variation, heredity (E-42) and differences in success (E-45, E-46)**, the three ingredients of natural selection, measured in controlled races, plus **one case** where a later family beats an earlier one from the same soup. We have **not** shown that selection keeps changing a soup over time, or that changes accumulate (cumulative evolution, level 5). That is the next question.
+
+**What happens after the jump? (E-47, pre-registered).** We replayed the three soups that jumped, exactly (every earlier checkpoint came back bit for bit), to 40,000 rounds, saving the whole soup every 250 rounds. The plan was to list the dominant species one after another and race each newcomer against the one it displaced. **That plan failed: there is no dominant species to list.**
+
+<figure>
+<img src="{{ '/assets/report/e47-turnover.png' | relative_url }}" alt="Left: three jagged lines mostly between 1 and 5 percent, with a few spikes, below and around a dashed 5 percent line. Right: three lines falling from 100 percent to below 20 percent over thousands of rounds">
+<figcaption><b>Left:</b> the share of the soup belonging to the family of the most common program, after the jump. It is usually about 2%: no family takes over. <b>Right:</b> how much the most common program still shares with the first one that took over (best of forward and backward reading). It falls steadily: after 10,000–20,000 rounds, the most common code shares only 2–20% of its bytes with the founder.</figcaption>
+</figure>
+
+- **No family dominates:** the most common program's family usually holds about 2% of the soup, and the most common program is a different family from one snapshot to the next most of the time. After the jump, a soup is a large, shifting **cloud of related variants**, not a series of species. Our prediction (at least 4 replacements) was wrong: we found 0, so the planned race test could not run.
+- **The soups keep changing, far:** the most common code drifts steadily away from the code that started the takeover.
+- **What this means:** the soups keep changing, steadily and a lot. We **cannot tell yet whether that change is adaptive or neutral drift**: copying with errors drifts on its own. Telling them apart needs a test with a drift control (for example: do programs from later rounds beat programs from earlier rounds more often than programs from the same round beat each other?). That is the next experiment.
+
+**Is the later code fitter? (E-48, pre-registered).** From the same replays we took the 6 most common programs 1,000 rounds after each soup's jump and 6 from 10,000 rounds after, and raced every late program against every early one (32 races per pair). As a control for drift, we also raced programs from the same round against each other.
+
+<figure>
+<img src="{{ '/assets/report/e48-time-races.png' | relative_url }}" alt="Left: dot plot per soup; in soup 5006 most blue dots (late vs early) sit above 0.5, in 5010 they straddle 0.5, in 901 the mean is 0.35 with a group of dots at 0. Right: bars rising from 0.55 to 0.64 with the abundance-rank gap">
+<figcaption><b>Left:</b> each blue dot is one late-vs-early pair: the share of races the late program won. Grey: two programs from the same round. Black bars are means. In soup 5006, later code wins most pairs. In soup 901, two late programs lost every race (the dots at 0): they are common in the soup but do not copy themselves in a fresh one. <b>Right (post hoc):</b> between programs of the same round, the more common one tends to win; this is weaker once the two non-copiers are removed.</figcaption>
+</figure>
+
+- **Overall, our prediction was not met:** the later program was ahead in 62 of 108 pairs (57%), not enough to rule out chance (p = 0.07).
+- **In soup 5006, later code is clearly fitter:** ahead in 28 of 36 pairs (p = 0.0006). That fits E-46, where a later family of the same soup beat an earlier one. Soup 5010 leans the same way (22 of 36); soup 901 does not.
+- **A flaw in our own design:** we sampled "the most common programs" without checking that they copy themselves. Two of soup 901's late programs do not, and lose every race. Without them, later code is ahead in 62 of 96 pairs (p = 0.003), but that is decided after looking, so it only motivates a new pre-registered test.
+- **What this means so far:** in at least one soup, later code seemed fitter. We then tested that properly.
+
+**The proper test (E-49, pre-registered).** We fixed both flaws: only programs that pass the replicator test, new time points (2,000, 6,000 and 12,000 rounds after the jump, programs never used before), and a same-round control with random order.
+
+<figure>
+<img src="{{ '/assets/report/e49-time-races.png' | relative_url }}" alt="Two bar charts around 0.5: by soup, 901 at 0.48, 5006 at 0.55, 5010 at 0.53, control 0.50; by gap, 2000 to 6000 at 0.52, 6000 to 12000 at 0.47, 2000 to 12000 at 0.55, control 0.50">
+<figcaption>Average share of races won by the later replicator. Grey: two replicators from the same round (the control), exactly at 0.5. The differences are small: a few percentage points either way.</figcaption>
+</figure>
+
+- **Not confirmed:** later replicators were ahead in 24 of 44 cases (p = 0.33). On average they won **51.6%** of races: at most a slight edge.
+- The control is clean (50.3%). Soup 5006 again leans towards later code (55%), and the longest gap (2,000 → 12,000 rounds) shows the clearest edge (54.5%); but from 6,000 to 12,000 rounds, later code did slightly *worse*.
+- **What this means:** the soups change a lot, but in our races **most of that change looks neutral**. Adaptive, cumulative evolution after the jump is **not shown**. The differences in fitness are small compared with the noise of a race, so the next step is a more sensitive fitness measure, not more of the same.
 
 ## Where this leaves the project
 
-| Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) |
-|---|---|---|
-| 1 · persistent organisation | yes | yes |
-| 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too |
-| 3 · self-replication | not observed | none in 3000 random rules from a lone lump (E-29); no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other. A validated birth detector finds no reproducer in 568 worlds (E-27, E-28) |
-| 4 · heredity and variation | not measured | a validated heredity test exists (J-033); nothing to apply it to yet |
-| 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested |
+| Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) | Program soups (BFF) |
+|---|---|---|---|
+| 1 · persistent organisation | yes | yes | after a transition: one family of code persists for thousands of rounds |
+| 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too | not applicable (no space) |
+| 3 · self-replication | not observed | **yes, in one multi-channel rule (E-32): dividing spots of a single type**, like Gray-Scott; none in 3000 random single-channel rules from a lone lump (E-29), none in fed Flow-Lenia (E-30, after removing a false alarm; E-31 held out); no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other. A validated birth detector finds no reproducer in 568 worlds (E-27, E-28) | **yes, emergent from random code** in 3 of 16 soups, every one verified by the replicator detector; none in soups without a transition (E-40, E-41) |
+| 4 · heredity and variation | not measured | a validated heredity test exists (J-033); the only Lenia reproducer has one attractor type, so nothing can be inherited | **yes: in 9 of 9 emergent replicators, one-byte mutations are carried by their descendants** (E-42); one emergent species out-competes the others in controlled races (E-45, E-46) |
+| 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested | **not shown**: after the jump the code keeps changing far from its founder, but later replicators are not reliably fitter than earlier ones (E-47–E-49) |
 
 **Mistakes we caught and recorded:** two wrong predictions about Chan's start and world size (J-029); a cut-off whose safety margin did not survive new rules (J-028); an over-inclusive mover check in a new script (J-025); the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
 
@@ -290,7 +427,9 @@ So in the Lenia rules we have explored, things either travel, sit still, or spre
 4. ~~Chan's patch protocol in larger worlds~~ done (E-24: 8% of 256² worlds). Next: separate world size from run length, and test the "isolated lump" mechanism directly.
 5. ~~A replication detector for continuous physics~~ done (D-028, E-27/E-28: none found).
 6. **Flow-Lenia:** find a positive control (several channels; check our implementation against the paper's figures), then run the same validated pipeline: does mass conservation make movers and evolution more common, as its authors claim?
-7. **Heredity (Track D):** ~~a heredity measure~~ and ~~Flow-Lenia with parameters that travel with matter, plus food~~ built and validated (J-033); E-30 gives the first scan. A search objective rewarding division looks unpromising in single-channel Lenia (E-29). Next: **multi-channel Lenia**, where self-replication has been reported.
+7. **Heredity (Track D):** ~~a heredity measure~~, ~~Flow-Lenia with travelling parameters and food~~ (J-033, E-30, E-31: no reproducers), ~~multi-channel Lenia~~ (E-32: one rule of dividing spots, a single type). Next: search multi-channel rule space *around* the dividing rule for rules with **several** distinct reproducing types (the minimum for heredity), and test what the empty-channel decay term does across rules. 
+
+8. **Program soups, the most promising lead (section 12):** self-copying programs now appear on their own. Next: (a) ~~a heredity test for programs~~ done (E-42: heredity in 9/9); ~~one-byte variants in competition~~ (E-43: mostly neutral); ~~contests between soups~~ (E-44, E-46: mostly equal; one species wins, E-45/E-46); ~~track species over time~~ (E-47: no species dominates; the soups drift far from their founders); ~~is the drift adaptive?~~ (E-48, E-49: at most slightly; not confirmed); next, a **more sensitive fitness measure** (e.g. growth rate from a few copies in a fixed background, validated on known variants of the hand-written replicator), then repeat the time comparison with **more soups** (new transitions; bigger soups jump sooner?). Also: why do all emergent replicators copy backwards? (b) **rates vs soup size**, to check that bigger soups jump sooner, as the paper's size suggests; (c) what happens **after** the jump: do variants compete, do parasites appear, does the family change over time?
 
 ## How the night went
 
@@ -325,13 +464,31 @@ So in the Lenia rules we have explored, things either travel, sit still, or spre
 | 12:38 | A scheduled session resumes; E-29 (3000 random rules) pre-registered and running |
 | 12:50–13:30 | Heredity test and its controls; Flow-Lenia with travelling parameters (J-033) |
 | 13:53 | E-29: 0 reproducers; E-30 (fed Flow-Lenia) starts |
+| 16:35 | E-30: 17 apparent reproducers; inspection shows food condensing |
+| 17:00–18:05 | Detector fixed (perturbed-vacuum null, D-030); rescore: 0 reproducers; only 32/100 rules have stable food |
+| 20:55 | Multi-channel Lenia built (D-031); E-31 (held-out fed worlds) and E-32 (1000 multi-channel rules) start |
+| 21:20 | Program soups (BFF) built in a parallel session: interpreter, replicator detector and its controls |
+| 00:45 | E-40 (do self-copying programs emerge?) pre-registered and running |
+| 01:10–01:45 | E-31: 0 reproducers on stable food. E-32: one rule makes dividing spots; checked by eye, from 3 new starts, and by reduction |
+| 01:55 | E-40: 0 of 12 program soups transition; E-41 (replay of the pilot that did, longer runs) starts |
+| 02:30 | The replayed pilot transitions at the same round; the detector confirms emergent replicators |
+| 03:20 | E-41: run 3× longer, 2 of the 12 soups transition, both full of verified replicators |
+| 03:40–04:10 | Heredity test for programs (D-041) and its controls; E-42: mutations inherited in 9 of 9 replicators |
+| 04:30 | E-43: head-to-head races between variants: mostly neutral; selection not shown |
+| 04:40–04:48 | E-44: races between replicators from different soups: no clear winners; a mirror replicator found (the hand-written copier seemed to win: mostly a counting error, see E-46) |
+| 04:48–04:52 | E-45 (pre-registered): the 5006 species wins 70% of races against another soup's replicators; one neutral control misbehaves |
+| 04:53 | All 9 emergent replicators turn out to copy backwards: earlier counts were unfair; E-46 pre-registered to redo them |
+| 04:55–05:12 | E-46: with fair counting the advantage holds (70%), and the winner beats an earlier family of its own soup; controls fine |
+| 05:13–05:48 | E-47: exact replays of the three soups to 40,000 rounds; no species dominates (0 replacements, prediction wrong); the most common code drifts far from the founder |
+| 05:49–05:57 | E-48: later vs earlier code: fitter in soup 5006, not overall (p = 0.07); two non-copying programs spoil soup 901's sample |
+| 05:59–06:13 | E-49 (pre-registered confirmation, verified replicators, new time points): later code not reliably fitter (51.6% of races) |
 
-Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 101 checks, all passing.
+Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 122 checks, all passing.
 
 ## Read more
 
-- Journal entries [J-012 to J-034]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-029; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
-- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md), [E-22](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e22-preregistration.md), [E-23](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e23-preregistration.md), [E-24](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e24-preregistration.md), [E-25](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e25-preregistration.md), [E-26](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e26-preregistration.md), [E-27](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e27-preregistration.md), [E-28](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e28-preregistration.md), [E-29](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e29-preregistration.md), [E-30](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e30-preregistration.md).
+- Journal entries [J-012 to J-043]({{ '/journal.html' | relative_url }}) (full numbers, caveats, commits); independent review [R-4]({{ '/reviews.html#r-4' | relative_url }}); [Decisions]({{ '/decisions.html' | relative_url }}) D-022 to D-031, D-040 to D-042; [Experiments]({{ '/experiments.html' | relative_url }}) with exact commands and data.
+- Pre-registrations: [E-13](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e13-preregistration.md), [E-14](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e14-preregistration.md), [E-17](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e17-preregistration.md), [E-18](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e18-preregistration.md), [E-19](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e19-preregistration.md), [E-20](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e20-preregistration.md), [E-21](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e21-preregistration.md), [E-22](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e22-preregistration.md), [E-23](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e23-preregistration.md), [E-24](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e24-preregistration.md), [E-25](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e25-preregistration.md), [E-26](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e26-preregistration.md), [E-27](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e27-preregistration.md), [E-28](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e28-preregistration.md), [E-29](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e29-preregistration.md), [E-30](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e30-preregistration.md), [E-31](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e31-preregistration.md), [E-32](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e32-preregistration.md), [E-40](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e40-preregistration.md), [E-41](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e41-preregistration.md), [E-42](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e42-preregistration.md), [E-43](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e43-preregistration.md), [E-44](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e44-preregistration.md), [E-45](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e45-preregistration.md), [E-46](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e46-preregistration.md), [E-47](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e47-preregistration.md), [E-48](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e48-preregistration.md), [E-49](https://github.com/Yahyaal/emergence-lab/blob/main/docs/data/e49-preregistration.md).
 - Every figure is regenerated by `python scripts/make_report_figures.py`.
 
-**Glossary.** *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).
+**Glossary.** *BFF*: a minimal programming language in which a program can read and write its own and its partner's bytes; *replicator*: a program whose copies multiply among random programs for two generations. *Lenia*: a cellular automaton with continuous cell values and smooth, ring-shaped neighbourhoods (Chan 2019). *Glider*: a pattern that keeps its shape and travels. *Soup*: a random start where each cell is independently filled. *Smooth start*: random noise blurred over ℓ cells. *Pre-registered*: the test and its threshold were written down and committed before the data existed. *Evidence level*: the project's ladder from persistent organisation (1) to open-ended evolution (5).

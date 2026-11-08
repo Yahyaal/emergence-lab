@@ -49,7 +49,21 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **Heredity test** (`observatory/heredity.py`, D-029): parents are moved alone into an empty world; heredity = correlation of parent trait with offspring trait, with a parent-permutation null. Controls on `GrayScottTracer` (carried / redrawn / position-set trait); probe section 10.
 - **`FlowLeniaPL`** (`physics/flow_lenia.py`): Flow-Lenia whose kernel weights travel with matter (stored as A·h_i), optional food layer, fast scatter-add reintegration. Equals FlowLenia with uniform weights.
 - **E-29:** 0 reproducers among 3000 random Lenia rules from a lone lump (1453 rules decided; 410 undecided because objects fill the test world). Route 2 (fission objective) looks unpromising in single-channel Lenia.
-- **E-30** (fed FlowLeniaPL, pre-registered): see the journal for its result.
+- **E-30** (fed FlowLeniaPL, J-035): 17/100 apparent reproducers were **food condensing** (uniform food is an unstable fixed point; only 32/100 rules have stable food at 0.05). New perturbed-vacuum null (D-030); rescored 0. Next fed scans: stable-food rules only, held out.
+
+**Saturday night – Sunday early, 7–8 Nov (J-036, J-037, J-040, J-041; sixth session + an interactive session):**
+- **E-31:** held-out fed FlowLeniaPL on stable-food rules: 0 reproducers in 97 worlds; the D-030 null holds. Fed Flow-Lenia route closed for now.
+- **`MultiLenia`** (`physics/multi_lenia.py`, D-031). **E-32:** one random 2-channel rule (#970) makes **dividing spots** (level 3, single attractor type, like Gray-Scott; no heredity possible). Its empty channel acts as a decay term (`scripts/e32_inspect.py`).
+- **Program soups (BFF)** (`emergence/programs/bff.py`, C interpreter compiled on first use into `~/.cache/emergence-lab`; replicator detector `observatory/replicators.py`, D-040; probes in `benchmark_programs.py`). Run with `scripts/bff_soups.py`.
+- **E-40/E-41:** with 16384 programs, the transition is rare: 3 of 16 soups, at epochs 8750, 32000, 43250 (0 in the first 16000 epochs of 12 pre-registered soups). **Every transitioned soup contains verified replicators (several variants); no untransitioned soup does.** Level 3 from random code. Soups are deterministic given the seed (pilot replay exact).
+- **E-42 (D-041, `observatory/program_heredity.py`):** one-byte mutations of all 9 emergent replicators are inherited (9/9 "heredity"; 140 of 141 viable mutants carried). **Level 4 (heritable variation) for program replicators.**
+- **E-43 (D-042, `observatory/program_selection.py`):** head-to-head contests of the 141 viable one-byte variants vs their parents: 2 parent favoured, 139 no difference (neutral null 0/24, p = 0.73). Selection not shown; the assay only sees large effects.
+- **E-44 (D-043, `program_selection.compete_families`, `scripts/bff_contests.py`, `scripts/e44_analysis.py`):** races between replicators from different soups: 0 of 36 pairs with a clear winner (nulls 1/21); the hand-written replicator beats every emergent one (222/287 races). Replicators #5 and #6 of soup 5006 are **exact byte-reverses** of each other: a **mirror replicator** (each writes its reverse into its partner). Count both forms as one species (`a_alt`/`b_alt`).
+- **E-45/E-46 (`scripts/bff_mirror_contests.py`, `scripts/bff_species_contests.py`):** **every emergent replicator is a mirror replicator** (makes its reverse in equal numbers), so always count a species with `a_alt`/`b_alt` = its reverse. With fair counting (E-46), the 5006@32k species wins 176/252 races vs soup 901 (p = 1e-10), is ahead of all 7 other emergent species, and beats #4, an earlier common family of soup 5006 (46/64; both only ~1.6% of the soup, E-47). Hand-written advantage only 56%. Nulls: 0/24 favoured in E-46, 2/70 over E-44–E-46.
+- **E-47 (`scripts/bff_turnover.py`):** exact replays of soups 901/5006/5010 to 40,000 rounds (snapshots in `runs/e47/`, not committed; regenerate with `--replay`, ~1 h). No 90%-identity family holds more than a few % of the soup after the jump (0 replacements); the most common program drifts from the founder (identity 100% → 2–20%). #4 and #5/#6 were only ~1.6% each.
+- **E-48 (`scripts/bff_time_races.py`):** late (T+10000) vs early (T+1000) common programs: later ahead in 62/108 pairs (p = 0.07, not significant); soup 5006 28/36 (p = 6e-4); two late soup-901 programs are common non-copiers (lose every race). Sample only verified replicators next time.
+- **E-49 (`scripts/bff_time_races2.py`, confirmation of E-48 with verified replicators, new time points):** later ahead 24/44 programs (p = 0.33): **not confirmed**; mean 51.6% of races; control 50.3%. Most post-jump change looks neutral in races.
+- **Next (most promising):** a more sensitive fitness measure (growth rate from a few copies in a fixed background; validate on hand-written replicator variants), then redo the time comparison with more soups; why do all emergent replicators copy backwards? Earlier idea (superseded): track species over time in a running soup with frequent snapshots (replay soup 5006 from E-41 seeds; does each newcomer beat its predecessor? is change cumulative? needs a validated measure); why do all emergent replicators copy backwards; many more null pairs for the contest criterion; rates vs soup size.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -58,8 +72,8 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 64 tests, ~3 min
-emergence benchmark --probes             # 39 + 62 validation checks, ~5 min on 12 cores
+pytest                                   # 72 tests, ~2 min
+emergence benchmark --probes             # 39 + 83 validation checks, ~5 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -106,6 +120,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 - Environment comparisons need matched density: a "patch" effect was really just less matter (E-10).
 - In sensitive universes compare interventions with *placebo* interventions: a fixed threshold produced 5 false "dependencies" (J-010).
 - The 64-step damage measure underestimates sensitivity over 1000-step horizons.
+- **An exactly uniform vacuum can be an unstable fixed point** (fed Flow-Lenia, J-035): nulls must use a slightly perturbed vacuum.
 - **Labels tuned for 2-state rules inflate continuous physics.** Every blob of a settled Lenia soup is a "persistent object", and its edges creep for thousands of steps; that is real dynamics (float64 does the same), not rounding. A detector or objective must be re-validated with the new family's own controls (J-012).
 - **Continuous censuses count instances, not types:** `vocabulary` = 20 can be 20 copies of one static blob.
 - **Measuring a glider's speed across more than half the torus wraps:** the Orbium glider runs at ~0.53 cells/step, but its 200-step displacement on a 128 torus reads ~0.11. Sum short legs.
@@ -114,6 +129,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
+0. **Program soups (J-041–J-045):** heredity is shown (E-42) and one species out-competes others (E-45); next is change over time in a running soup (level 5 needs a validated measure of cumulative change); transition rate vs soup size (2^14 vs 2^15–2^17); what follows the transition.
 1. Lenia beyond level 2 (see the report's "What next"). Next steps:
    - a replication probe for continuous physics (the exact-shape probes do not apply);
    - do fused double gliders (E-20) arise spontaneously in big smooth-start worlds?

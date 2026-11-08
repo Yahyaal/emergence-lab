@@ -102,3 +102,27 @@ def test_flow_lenia_pl_matches_flow_lenia_and_conserves_weights():
     fed = FlowLeniaPL(fl.kernels, fl.R, 0.05)
     assert parse_rule(fed.label()) == fed and physics_from_dict(fed.to_dict()) == fed
     assert np.array_equal(fed.step(fed.vacuum((32, 32))), fed.vacuum((32, 32)))
+
+
+def test_multi_lenia_one_channel_is_lenia_and_rules_roundtrip():
+    from emergence.physics import Lenia, MKernel, MultiLenia, parse_rule, physics_from_dict
+    orb = Lenia.parse("LENIA/R13/T10/m0.150/s0.0150/b1")
+    ml = MultiLenia(1, [MKernel(0, 0, 1, orb.mu, orb.sigma, 1, orb.peaks)])
+    a = np.random.default_rng(0).random((48, 48))
+    lenia_float = np.clip(a + (2 * np.exp(-((np.fft.irfft2(np.fft.rfft2(a) * orb._kernel(a.shape), s=a.shape)
+                                              - orb.mu) ** 2) / (2 * orb.sigma ** 2)) - 1) / orb.T, 0, 1)
+    assert abs(ml.step(a[None].astype(np.float32))[0] - lenia_float).max() < 1e-6
+    rng = np.random.default_rng(3)
+    for _ in range(50):
+        p = MultiLenia.random(rng)
+        q = p.mutate(rng)
+        assert q.label() != p.label()
+        assert parse_rule(p.label()) == p and physics_from_dict(q.to_dict()) == q
+        assert {k.tgt for k in p.kernels} == set(range(p.C))
+    s = p.random_state(rng, (32, 32), 0.3)
+    s2 = p.step(s)
+    assert s2.shape == s.shape and s2.dtype == np.float32 and 0 <= s2.min() and s2.max() <= 1
+    assert np.array_equal(p.step(s), s2)
+    assert not np.array_equal(s, s2)
+    with pytest.raises(ValueError):
+        MultiLenia(2, [MKernel(0, 0, 1, 0.15, 0.015, 1, (1,))])  # channel 1 has no kernel
