@@ -36,6 +36,7 @@ description: Overnight research report, 7 November 2026. Lenia, spontaneous glid
 <div class="card"><div class="stat">9 / 9</div><p>Sunday: every emergent replicator we tested <b>passes its mutations on</b> to its descendants (E-42). <b>Heritable variation, level 4</b>, a first for the project. In head-to-head races the variants look <b>neutral</b> (E-43).</p></div>
 <div class="card"><div class="stat">7 : 3</div><p>Sunday morning: every replicator that emerged copies itself <b>backwards</b>, alternating between a program and its mirror image (E-44, E-46). Raced against each other, most are <b>equally fit</b>, but one species <b>wins about 7 races in 10</b> against another soup's replicators, and it beats a family that was common <b>earlier</b> in its own soup. Pre-registered, checked with fair counting and 24 neutral controls (E-45, E-46). The third ingredient of natural selection, <b>differences in success</b>, in one clear case.</p></div>
 <div class="card"><div class="stat">100% → 10%</div><p>After the jump no single species takes over: a soup becomes a shifting cloud of variants whose most common code keeps <b>drifting away from the founder</b> (E-47). Is the later code fitter? In a first test, in one soup; in a cleaner, pre-registered confirmation, <b>not reliably</b>: later replicators win 51.6% of races (E-48, E-49). <b>Most of the change looks neutral</b>; cumulative evolution is not shown.</p></div>
+<div class="card"><div class="stat">4 measures</div><p>Sunday late morning: two new <b>fitness instruments</b>, calibrated on variants whose copying odds we built in. With races, growth rate, and invasion into the soups themselves, <b>later replicators are not reliably fitter</b>. One apparent success (E-52) turned out to be <b>relatives in the count</b>; removing them removed the effect (E-53).</p></div>
 <div class="card"><div class="stat">level 3</div><p>Highest evidence level reached in Lenia: <b>self-replication</b>, in its weakest form (one type, no heredity). Self-propelled structures (level 2) arise spontaneously. No heredity or evolution yet.</p></div>
 </div>
 
@@ -406,6 +407,47 @@ A completely different kind of universe. Instead of a field of matter, a **soup 
 - The control is clean (50.3%). Soup 5006 again leans towards later code (55%), and the longest gap (2,000 → 12,000 rounds) shows the clearest edge (54.5%); but from 6,000 to 12,000 rounds, later code did slightly *worse*.
 - **What this means:** the soups change a lot, but in our races **most of that change looks neutral**. Adaptive, cumulative evolution after the jump is **not shown**. The differences in fitness are small compared with the noise of a race, so the next step is a more sensitive fitness measure, not more of the same.
 
+## 13 · Sunday late morning: measuring fitness like a lab instrument
+
+Races between two replicators (section 12) are noisy: each starts from 8 copies, and luck decides a lot. To ask "is later code fitter?" properly we needed a measure whose accuracy is known **before** it is used on emergent code.
+
+**A calibrated growth rate (D-044, J-050).** We put 16 copies of a program among 4,096 others and measure how fast its copies multiply in the first rounds (the growth rate r, per round). To check the instrument, we built variants of the hand-written replicator whose copying odds we **set ourselves**: a small "trap" makes the copy fail unless a byte of the partner is a multiple of 2, 4, 8 or 16. In a background of programs that never run (so a copy is never damaged), theory then says exactly what r should be.
+
+<figure>
+<img src="{{ '/assets/report/d044-calibration.png' | relative_url }}" alt="Left: five blue dots lying on a grey theory curve that rises from 0 to 0.4 as the copying probability goes from 0 to 1. Right: horizontal bars; all ten replicators reach about 0.39 in the harmless background; in random code the hand-written one reaches 0.15 and the nine emergent ones 0.08 to 0.095">
+<figcaption><b>Left:</b> measured growth rate of the five variants with known copying odds (dots) against theory (line): they agree within 0.02. <b>Right:</b> in a harmless background every replicator, hand-written or emergent, copies perfectly (grey, the ceiling). In random code (blue, orange), which damages a replicator when it runs second, the emergent replicators spread at about 60% of the hand-written one's rate.</figcaption>
+</figure>
+
+- **The instrument works:** measured and predicted rates agree for all five known variants, and two variants whose rates differ by 0.03 are told apart with 8 runs each (p < 0.001). Controls (a program that cannot copy, a rule where nothing runs, a rule that copies everything blindly, and repeated measurements of one program) all behave.
+- **Every emergent replicator copies perfectly** when nothing disturbs it. What differs is how well it survives among random code.
+
+**Is later code fitter? (E-51, pre-registered).** We measured r for all 47 replicators of E-49 (three soups, 2,000, 6,000 and 12,000 rounds after the jump).
+
+<figure>
+<img src="{{ '/assets/report/e51-growth-rates.png' | relative_url }}" alt="Left: dots by soup and time; in soup 5006 the means rise from 0.088 to 0.097; in 901 they stay at 0.083-0.085; in 5010 they rise then fall. Right: a cloud of points with a weak upward tilt">
+<figcaption><b>Left:</b> growth rate of each replicator, by soup and time after the jump (black bars: means). Only soup 5006 rises. <b>Right:</b> the difference in growth rate between two replicators predicts which wins their races only weakly.</figcaption>
+</figure>
+
+- **No general trend (p = 0.38), as we predicted.** Soups 901 and 5010 do not rise; **soup 5006 does, by about 10%** (p = 0.005 for that soup alone, but decided after looking). It is the **fourth different measure** in which soup 5006's later code comes out ahead (E-46, E-48, E-49, E-51).
+- **The growth rate explains only ~4% of who wins a race** (correlation 0.196; we predicted above 0.2). Races are decided mainly when replicators meet *each other*, which a growth rate into random code does not see.
+- **What this means:** the instrument is precise, but it measures the wrong part of fitness for this question. The next measure puts each program back into the soup it actually lives in.
+
+**Fitness in the soup itself (E-52, pre-registered).** We built a second instrument. It drops 64 copies of a program into a sample of a real soup and runs it beside an identical copy of that soup without them (same random pairings), then reads how much the program's family grew compared with the residents it replaced. It is calibrated the same way: a variant that copies 90%, 75% or 50% of the time loses clearly to a normal copier, and two equal programs score the same. We put every replicator into its own soup at an early time (2,000 rounds after the jump) and at a late time (12,000 rounds).
+
+- **Later replicators did better, but only in the later soup** (all three soups; p = 0.045). In the earlier soup there was no difference. This is what adaptation to a changing soup would look like: later code fits the later soup.
+- **But we then found a flaw in our own design.** A program's close relatives (≥ 90% identical) exist only in the soup of its own time; 2,000 rounds later none are left. When a relative overwrites one of the injected copies, it still counts as the same family, so relatives can protect a program's score. In the late soup only the late programs have relatives, so "later" and "has relatives here" are the same thing.
+- **So the result is suggestive, not established.** We are re-running it (E-53, pre-registered) in soups from other times, where neither group has relatives.
+
+**The re-run (E-53, pre-registered).** Same programs, same instrument, in each soup's snapshots 4,000 and 9,000 rounds after the jump and later still, where none of the programs has any relative.
+
+<figure>
+<img src="{{ '/assets/report/e52-e53-invasion.png' | relative_url }}" alt="Bar chart. Left of a dashed line: in the early soups the bars are near zero; in the late soups all three bars are positive, 0.11 to 0.22. Right of the line, three groups of blue bars scattered around zero, mostly slightly negative">
+<figcaption>How much better later replicators invade than earlier ones (one bar per soup). <b>Left (E-52):</b> in their own soups, later code is ahead only in the late soup, where only it has relatives. <b>Right (E-53):</b> in soups where neither has relatives, there is no advantage.</figcaption>
+</figure>
+
+- **No advantage: later code does not invade better** (p = 0.88; 8 of 9 comparisons within ±0.1, most slightly negative). We had leaned towards this outcome.
+- **What this means:** the E-52 effect was most likely produced by relatives in the count, not by adaptation. With four different measures (races, growth into random code, invasion with and without relatives), **later replicators are not reliably fitter than earlier ones.** After the jump, these soups change a lot, mostly by neutral drift. Cumulative evolution (level 5) is **not shown**, and over 10,000 rounds the evidence now weighs against a strong trend.
+
 ## Where this leaves the project
 
 | Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) | Program soups (BFF) |
@@ -414,7 +456,7 @@ A completely different kind of universe. Instead of a field of matter, a **soup 
 | 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too | not applicable (no space) |
 | 3 · self-replication | not observed | **yes, in one multi-channel rule (E-32): dividing spots of a single type**, like Gray-Scott; none in 3000 random single-channel rules from a lone lump (E-29), none in fed Flow-Lenia (E-30, after removing a false alarm; E-31 held out); no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other. A validated birth detector finds no reproducer in 568 worlds (E-27, E-28) | **yes, emergent from random code** in 3 of 16 soups, every one verified by the replicator detector; none in soups without a transition (E-40, E-41) |
 | 4 · heredity and variation | not measured | a validated heredity test exists (J-033); the only Lenia reproducer has one attractor type, so nothing can be inherited | **yes: in 9 of 9 emergent replicators, one-byte mutations are carried by their descendants** (E-42); one emergent species out-competes the others in controlled races (E-45, E-46) |
-| 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested | **not shown**: after the jump the code keeps changing far from its founder, but later replicators are not reliably fitter than earlier ones (E-47–E-49) |
+| 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested | **not shown**: after the jump the code keeps changing far from its founder, but later replicators are not reliably fitter than earlier ones, by races (E-48, E-49), a calibrated growth rate (E-51) or invasion of kin-free soups (E-53); an apparent advantage in their own soups was kinship (E-52) |
 
 **Mistakes we caught and recorded:** two wrong predictions about Chan's start and world size (J-029); a cut-off whose safety margin did not survive new rules (J-028); an over-inclusive mover check in a new script (J-025); the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
 
@@ -482,6 +524,11 @@ A completely different kind of universe. Instead of a field of matter, a **soup 
 | 05:13–05:48 | E-47: exact replays of the three soups to 40,000 rounds; no species dominates (0 replacements, prediction wrong); the most common code drifts far from the founder |
 | 05:49–05:57 | E-48: later vs earlier code: fitter in soup 5006, not overall (p = 0.07); two non-copying programs spoil soup 901's sample |
 | 05:59–06:13 | E-49 (pre-registered confirmation, verified replicators, new time points): later code not reliably fitter (51.6% of races) |
+| 06:15–10:37 | Session ends; you reviewed the open pull requests |
+| 10:37 | A scheduled session resumes; E-50 (does soup size change how often the jump happens?) pre-registered and running |
+| 10:45–11:04 | A calibrated growth-rate instrument (D-044): variants with built-in copying odds match theory; E-51: no general fitness trend, soup 5006 rises again |
+| 11:16–11:47 | An invasion instrument, calibrated the same way; E-52: later code invades later soups better (p = 0.045)… then a kinship confound is found |
+| 11:48–12:36 | E-53 (pre-registered, kin-free soups): no advantage, so E-52 was most likely kinship (one run lost to a seed bug and re-run) |
 
 Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 122 checks, all passing.
 
