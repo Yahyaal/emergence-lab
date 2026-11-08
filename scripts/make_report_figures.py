@@ -758,34 +758,40 @@ def e32_divider() -> None:
 
 
 def e40_bff() -> None:
-    """J-040: high-order entropy of BFF program soups over time (E-40, the 4 pilots, controls)."""
+    """J-040/J-041: high-order entropy of BFF program soups over time: E-40's 12 soups (0-16000)
+    continued by E-41 (16000-48000), the 4 pilots, and the controls."""
     d = json.loads((DATA / "2026-11-08-e40-bff-soups.json").read_text())
+    d41 = {r["seed"]: r for r in json.loads((DATA / "2026-11-08-e41-bff-longer.json").read_text())["soups"]}
     pilots = {}
     for line in (DATA / "2026-11-07-bff-pilots.jsonl").read_text().splitlines():
         r = json.loads(line)
         pilots.setdefault((r["n"], r["seed"]), []).append((r["epoch"], r["hoe"]))
-    fig, ax = plt.subplots(figsize=(8, 4.2))
-    first = True
+    fig, ax = plt.subplots(figsize=(9, 4.4))
+    lab = {False: "pre-registered soups (E-40, continued in E-41)", True: "pre-registered soup: transition"}
     for r in d["soups"]:
         if r["mode"] != "bff":
             continue
-        ax.plot([x["epoch"] for x in r["series"]], [x["hoe"] for x in r["series"]], color=GREY, lw=1, alpha=0.8,
-                label="E-40: 12 soups, none transitions" if first else None)
-        first = False
+        cont = d41[5000 + r["seed"] - 4000]
+        e = [x["epoch"] for x in r["series"]] + [16000 + x["epoch"] for x in cont["series"]]
+        h = [x["hoe"] for x in r["series"]] + [x["hoe"] for x in cont["series"]]
+        hit = cont["transitioned"]
+        ax.plot(e, h, color=RED if hit else GREY, lw=2 if hit else 1, alpha=1 if hit else 0.7, label=lab.pop(hit, None))
     for (n, seed), pts in sorted(pilots.items()):
         e, h = zip(*pts)
         hit = max(h) >= 1.0
-        ax.plot(e, h, color=RED if hit else BLUE, lw=2 if hit else 1, alpha=1 if hit else 0.6,
+        ax.plot(e, h, color="#7b3fa0" if hit else BLUE, lw=2 if hit else 1, alpha=1 if hit else 0.6,
                 label=f"pilot seed {seed}: transition" if hit else None)
     for mode, col in (("copyall", ORANGE), ("noexec", GREEN)):
         r = next(x for x in d["soups"] if x["mode"] == mode)
         ax.plot([x["epoch"] for x in r["series"]], [x["hoe"] for x in r["series"]], color=col, lw=2,
                 label={"copyall": "control: copying rule (no programs run)", "noexec": "control: nothing runs"}[mode])
     ax.axhline(1.0, color="k", lw=0.8, ls=":")
-    ax.text(16200, 1.05, "transition threshold", fontsize=9, va="bottom", ha="right")
+    ax.axvline(16000, color="k", lw=0.6, ls="--")
+    ax.text(16300, 6.6, "E-40 ends; E-41\ncontinues the soups", fontsize=8.5, va="top")
+    ax.text(47800, 1.05, "transition threshold", fontsize=9, va="bottom", ha="right")
     ax.set_xlabel("epoch (each program meets one random partner per epoch)")
     ax.set_ylabel("high-order entropy (bits/byte)")
-    ax.set_title("Program soups: one transition in 16 BFF soups")
+    ax.set_title("Program soups: 3 transitions in 16 BFF soups")
     ax.set_ylim(-0.2, 7.5)
     ax.legend(fontsize=8.5, loc="upper right", frameon=False)
     fig.savefig(OUT / "e40-bff-entropy.png")

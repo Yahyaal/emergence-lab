@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-041 · 2026-11-08 · E-41: self-replicating programs emerge from random code; every transition is confirmed by the detector
+
+**Question (pre-registered after E-40, `docs/data/e41-preregistration.md`):** E-40 never reached a transition, so its detector question stayed open. (A) Does the pilot soup that transitioned (seed 901) replay exactly, and does the detector find replicators in it? (B) Do E-40's 12 soups transition if run 3× longer, and is every transition confirmed by the detector, with none outside?
+
+**Ran:** E-41, `scripts/bff_soups.py --e41`, commit `1c335d4`, 32 min (A) and 20–40 min per soup (B) on 11 workers. (A) seed 901 from scratch, 16000 epochs. (B) E-40's 12 final snapshots continued for 32000 epochs (48000 in all) with fresh random streams (seeds 5000–5011). Detector (unchanged, D-040) on the 4 most common programs 1000 epochs after a transition and at the end.
+
+**Found:**
+- **(A) Exact replay:** the HOE series equals the pilot log at every checkpoint; transition at epoch 8750. Detector at 9750: **2 replicators + 2 "one generation"**; at 16000: **2 replicators**, 1 one generation, 1 no replication. Random programs never multiplied (0 of 3 per candidate). The common programs are variants of one family sharing a core (`[[]},.<;45=%` appears in five of the six most common at epoch 9750). Prediction met.
+- **(B) 2 of 12 soups transitioned** (seed 5010 at total epoch 32000, seed 5006 at 43250; 95% interval 2%–48% per soup within 48000 epochs). Prediction (2–6) met, at its low end. Both contain verified replicators at both scans (5006 at the end: 97 copies each of two replicator programs, 8 → 512 copies in the growth test and 512 again in generation 2).
+- **Selection-aware null:** 0 replicators in the 22 end scans of soups that did not transition (E-40: 12, E-41: 10). Every soup above the HOE threshold contains a replicator; none below does.
+- Pooled with E-40 and the pilots: **3 transitions in 16 soups of 16384 programs**, all of them at epoch ≥ 8750; none in the first 16000 epochs of the 12 pre-registered soups.
+- Many top programs get "one generation": their copies multiply once, but the chosen copy does not. Likely partial or damaged copies (BFF replicators are known to copy imperfectly and to be parasitized); not investigated.
+
+**Evidence level 3**, now in a second universe and in a stronger form than Lenia's dividing spots: replicators arise **from random code with no fitness function**, are confirmed by intervention (two generations among random programs), and come as **several distinct variants**. Heredity (level 4) is now testable here: do mutant replicators pass on their mutations? That needs a measurement with its own controls; none has been run.
+
+**Lesson:** the transition is a rare event per soup and per epoch at this size; whether it happened at all in a given run is not a property of the rule. Rates need many soups and long runs; the detector, not the entropy curve, decides what was found.
+
+---
+
 ## J-040 · 2026-11-08 · Program soups (BFF): a replicator detector, and no transition in 12 soups (E-40)
 
 **Question (Track D route 5; pre-registered, `docs/data/e40-preregistration.md`):** Agüera y Arcas et al. (2024) report that soups of random 64-byte programs in a minimal language (BFF), paired at random and run on a shared tape, undergo a "state transition" in which self-replicating programs appear and take over, with no fitness function. Lenia has given us movers but, until E-32, no reproducers. Does self-replication emerge from random code in our implementation, and does a detector built to our standards confirm it?
