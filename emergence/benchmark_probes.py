@@ -536,6 +536,10 @@ def run_probe_benchmark(log=print) -> dict:
           hres["carried"].get("null_r95", 1) < hres["carried"].get("r", 0) and hres["redrawn"].get("p", 0) > 0.05,
           f"positive r {hres['carried'].get('r')} vs null r95 {hres['carried'].get('null_r95')}; negative p {hres['redrawn'].get('p')}")
 
+    # program soups (BFF) and the replicator detector (J-040)
+    from . import benchmark_programs
+    benchmark_programs.run(check)
+
     passed = sum(c["ok"] for c in checks)
     log(f"\n{passed}/{len(checks)} probe checks passed")
     return {"passed": passed, "total": len(checks), "checks": checks, "noise_innovation_floor": noise["established_late"]}

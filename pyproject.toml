@@ -20,4 +20,4 @@ emergence = "emergence.cli:main"
 include = ["emergence*"]
 
 [tool.setuptools.package-data]
-emergence = ["web/*"]
+emergence = ["web/*", "programs/*.c"]
