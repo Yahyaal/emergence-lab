@@ -56,7 +56,8 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **`MultiLenia`** (`physics/multi_lenia.py`, D-031). **E-32:** one random 2-channel rule (#970) makes **dividing spots** (level 3, single attractor type, like Gray-Scott; no heredity possible). Its empty channel acts as a decay term (`scripts/e32_inspect.py`).
 - **Program soups (BFF)** (`emergence/programs/bff.py`, C interpreter compiled on first use into `~/.cache/emergence-lab`; replicator detector `observatory/replicators.py`, D-040; probes in `benchmark_programs.py`). Run with `scripts/bff_soups.py`.
 - **E-40/E-41:** with 16384 programs, the transition is rare: 3 of 16 soups, at epochs 8750, 32000, 43250 (0 in the first 16000 epochs of 12 pre-registered soups). **Every transitioned soup contains verified replicators (several variants); no untransitioned soup does.** Level 3 from random code. Soups are deterministic given the seed (pilot replay exact).
-- **Next (most promising):** a heredity test for program replicators (do mutants pass on their mutations? with controls); rates vs soup size; post-transition dynamics (competition, parasites).
+- **E-42 (D-041, `observatory/program_heredity.py`):** one-byte mutations of all 9 emergent replicators are inherited (9/9 "heredity"; 140 of 141 viable mutants carried). **Level 4 (heritable variation) for program replicators.**
+- **Next (most promising):** selection among variants (competition assays: two variants seeded together, which spreads?), change of the replicator family over time after a transition, rates vs soup size.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -122,7 +123,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
-0. **Program soups (J-041):** heredity test for BFF replicators (mutant transmission, with neutral-byte and damaged-copier controls); transition rate vs soup size (2^14 vs 2^15–2^17); what follows the transition.
+0. **Program soups (J-041, J-042):** heredity is shown (E-42); next is selection among variants and change over time (level 5 needs a validated measure of cumulative change); transition rate vs soup size (2^14 vs 2^15–2^17); what follows the transition.
 1. Lenia beyond level 2 (see the report's "What next"). Next steps:
    - a replication probe for continuous physics (the exact-shape probes do not apply);
    - do fused double gliders (E-20) arise spontaneously in big smooth-start worlds?

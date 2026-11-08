@@ -827,7 +827,32 @@ def e41_soup() -> None:
     plt.close(fig)
 
 
-FIGS = {"e41_soup": e41_soup, "e40_bff": e40_bff, "e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e42_heredity() -> None:
+    """J-042: single-byte mutants of 9 emergent BFF replicators. Each cell is one mutant at that
+    byte position: green = copies carry the mutation, red = viable but not carried, grey = the
+    mutation stops replication."""
+    d = json.loads((DATA / "2026-11-08-e42-bff-heredity.json").read_text())
+    fig, ax = plt.subplots(figsize=(9, 3.6))
+    for i, r in enumerate(d["results"]):
+        for m in r["mutants"]:
+            c = GREEN if m["inherited"] else (RED if m["viable"] else "#c9ccd1")
+            ax.add_patch(plt.Rectangle((m["pos"], i - 0.4), 1, 0.8, color=c, lw=0))
+    ax.set_xlim(0, 64)
+    ax.set_ylim(-0.6, len(d["results"]) - 0.4)
+    ax.set_yticks(range(len(d["results"])))
+    ax.set_yticklabels([f"soup {r['soup']}, epoch {r['epoch']}" for r in d["results"]], fontsize=8)
+    ax.invert_yaxis()
+    ax.set_xlabel("byte position of the mutation (programs are 64 bytes)")
+    ax.set_title("Mutations in emergent replicators are inherited")
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color=GREEN, label="copies carry the mutation"), Patch(color=RED, label="still copies, mutation lost"),
+                       Patch(color="#c9ccd1", label="mutation stops copying")], fontsize=8.5, frameon=False,
+              loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=3)
+    fig.savefig(OUT / "e42-bff-heredity.png")
+    plt.close(fig)
+
+
+FIGS = {"e42_heredity": e42_heredity, "e41_soup": e41_soup, "e40_bff": e40_bff, "e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
