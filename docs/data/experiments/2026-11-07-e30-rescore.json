@@ -1,0 +1,2192 @@
+{
+ "experiment": "E-30 rescore",
+ "stability": [
+  {
+   "i": 0,
+   "counts": [
+    0,
+    18,
+    27,
+    27,
+    27,
+    27,
+    27,
+    27,
+    27
+   ],
+   "stable": false
+  },
+  {
+   "i": 1,
+   "counts": [
+    0,
+    79,
+    27,
+    20,
+    20,
+    20,
+    19,
+    19,
+    19
+   ],
+   "stable": false
+  },
+  {
+   "i": 2,
+   "counts": [
+    0,
+    0,
+    2,
+    29,
+    34,
+    32,
+    35,
+    36,
+    34
+   ],
+   "stable": false
+  },
+  {
+   "i": 3,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 4,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 5,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 6,
+   "counts": [
+    0,
+    99,
+    98,
+    98,
+    98,
+    98,
+    97,
+    97,
+    97
+   ],
+   "stable": false
+  },
+  {
+   "i": 7,
+   "counts": [
+    0,
+    90,
+    90,
+    90,
+    92,
+    91,
+    90,
+    90,
+    90
+   ],
+   "stable": false
+  },
+  {
+   "i": 8,
+   "counts": [
+    0,
+    63,
+    61,
+    61,
+    61,
+    61,
+    61,
+    61,
+    61
+   ],
+   "stable": false
+  },
+  {
+   "i": 9,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 10,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 11,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 12,
+   "counts": [
+    0,
+    0,
+    19,
+    30,
+    29,
+    29,
+    29,
+    28,
+    28
+   ],
+   "stable": false
+  },
+  {
+   "i": 13,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 14,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 15,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    11,
+    16,
+    14
+   ],
+   "stable": false
+  },
+  {
+   "i": 16,
+   "counts": [
+    0,
+    0,
+    4,
+    26,
+    26,
+    25,
+    25,
+    25,
+    25
+   ],
+   "stable": false
+  },
+  {
+   "i": 17,
+   "counts": [
+    0,
+    56,
+    48,
+    42,
+    38,
+    36,
+    35,
+    35,
+    33
+   ],
+   "stable": false
+  },
+  {
+   "i": 18,
+   "counts": [
+    0,
+    59,
+    58,
+    57,
+    57,
+    57,
+    56,
+    56,
+    56
+   ],
+   "stable": false
+  },
+  {
+   "i": 19,
+   "counts": [
+    0,
+    29,
+    29,
+    28,
+    26,
+    26,
+    24,
+    25,
+    25
+   ],
+   "stable": false
+  },
+  {
+   "i": 20,
+   "counts": [
+    0,
+    4,
+    56,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62
+   ],
+   "stable": false
+  },
+  {
+   "i": 21,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 22,
+   "counts": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    1,
+    1,
+    2,
+    3
+   ],
+   "stable": false
+  },
+  {
+   "i": 23,
+   "counts": [
+    0,
+    25,
+    25,
+    25,
+    25,
+    25,
+    25,
+    26,
+    25
+   ],
+   "stable": false
+  },
+  {
+   "i": 24,
+   "counts": [
+    0,
+    22,
+    22,
+    21,
+    21,
+    20,
+    19,
+    17,
+    15
+   ],
+   "stable": false
+  },
+  {
+   "i": 25,
+   "counts": [
+    0,
+    0,
+    23,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24
+   ],
+   "stable": false
+  },
+  {
+   "i": 26,
+   "counts": [
+    0,
+    97,
+    87,
+    85,
+    84,
+    83,
+    82,
+    81,
+    80
+   ],
+   "stable": false
+  },
+  {
+   "i": 27,
+   "counts": [
+    0,
+    0,
+    27,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28
+   ],
+   "stable": false
+  },
+  {
+   "i": 28,
+   "counts": [
+    0,
+    27,
+    21,
+    21,
+    21,
+    18,
+    18,
+    18,
+    18
+   ],
+   "stable": false
+  },
+  {
+   "i": 29,
+   "counts": [
+    0,
+    1,
+    24,
+    22,
+    22,
+    22,
+    22,
+    22,
+    22
+   ],
+   "stable": false
+  },
+  {
+   "i": 30,
+   "counts": [
+    0,
+    66,
+    64,
+    63,
+    63,
+    63,
+    63,
+    62,
+    62
+   ],
+   "stable": false
+  },
+  {
+   "i": 31,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 32,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4,
+    17
+   ],
+   "stable": false
+  },
+  {
+   "i": 33,
+   "counts": [
+    0,
+    31,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28
+   ],
+   "stable": false
+  },
+  {
+   "i": 34,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    11,
+    19,
+    19,
+    19,
+    19
+   ],
+   "stable": false
+  },
+  {
+   "i": 35,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 36,
+   "counts": [
+    0,
+    67,
+    65,
+    65,
+    64,
+    63,
+    63,
+    62,
+    62
+   ],
+   "stable": false
+  },
+  {
+   "i": 37,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 38,
+   "counts": [
+    0,
+    5,
+    18,
+    18,
+    18,
+    18,
+    18,
+    18,
+    18
+   ],
+   "stable": false
+  },
+  {
+   "i": 39,
+   "counts": [
+    0,
+    70,
+    64,
+    62,
+    61,
+    61,
+    60,
+    59,
+    58
+   ],
+   "stable": false
+  },
+  {
+   "i": 40,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 41,
+   "counts": [
+    0,
+    52,
+    52,
+    52,
+    52,
+    52,
+    52,
+    52,
+    52
+   ],
+   "stable": false
+  },
+  {
+   "i": 42,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 43,
+   "counts": [
+    0,
+    2,
+    82,
+    83,
+    83,
+    83,
+    83,
+    83,
+    83
+   ],
+   "stable": false
+  },
+  {
+   "i": 44,
+   "counts": [
+    0,
+    126,
+    103,
+    81,
+    66,
+    59,
+    57,
+    55,
+    53
+   ],
+   "stable": false
+  },
+  {
+   "i": 45,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 46,
+   "counts": [
+    0,
+    38,
+    31,
+    33,
+    32,
+    29,
+    32,
+    27,
+    27
+   ],
+   "stable": false
+  },
+  {
+   "i": 47,
+   "counts": [
+    0,
+    135,
+    135,
+    129,
+    118,
+    119,
+    119,
+    112,
+    118
+   ],
+   "stable": false
+  },
+  {
+   "i": 48,
+   "counts": [
+    0,
+    35,
+    35,
+    35,
+    35,
+    35,
+    35,
+    35,
+    35
+   ],
+   "stable": false
+  },
+  {
+   "i": 49,
+   "counts": [
+    0,
+    79,
+    79,
+    78,
+    77,
+    77,
+    77,
+    76,
+    76
+   ],
+   "stable": false
+  },
+  {
+   "i": 50,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 51,
+   "counts": [
+    0,
+    23,
+    23,
+    23,
+    23,
+    23,
+    23,
+    23,
+    22
+   ],
+   "stable": false
+  },
+  {
+   "i": 52,
+   "counts": [
+    0,
+    82,
+    95,
+    95,
+    94,
+    93,
+    93,
+    92,
+    92
+   ],
+   "stable": false
+  },
+  {
+   "i": 53,
+   "counts": [
+    0,
+    0,
+    18,
+    18,
+    18,
+    18,
+    18,
+    18,
+    18
+   ],
+   "stable": false
+  },
+  {
+   "i": 54,
+   "counts": [
+    0,
+    14,
+    35,
+    36,
+    36,
+    37,
+    40,
+    40,
+    42
+   ],
+   "stable": false
+  },
+  {
+   "i": 55,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 56,
+   "counts": [
+    0,
+    0,
+    37,
+    40,
+    39,
+    39,
+    39,
+    39,
+    39
+   ],
+   "stable": false
+  },
+  {
+   "i": 57,
+   "counts": [
+    0,
+    54,
+    48,
+    37,
+    35,
+    32,
+    30,
+    30,
+    29
+   ],
+   "stable": false
+  },
+  {
+   "i": 58,
+   "counts": [
+    0,
+    63,
+    63,
+    62,
+    61,
+    61,
+    61,
+    61,
+    61
+   ],
+   "stable": false
+  },
+  {
+   "i": 59,
+   "counts": [
+    0,
+    0,
+    4,
+    20,
+    19,
+    18,
+    18,
+    18,
+    18
+   ],
+   "stable": false
+  },
+  {
+   "i": 60,
+   "counts": [
+    0,
+    29,
+    18,
+    13,
+    9,
+    9,
+    9,
+    8,
+    8
+   ],
+   "stable": false
+  },
+  {
+   "i": 61,
+   "counts": [
+    0,
+    53,
+    47,
+    44,
+    44,
+    43,
+    43,
+    43,
+    43
+   ],
+   "stable": false
+  },
+  {
+   "i": 62,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 63,
+   "counts": [
+    0,
+    141,
+    138,
+    138,
+    136,
+    137,
+    135,
+    132,
+    132
+   ],
+   "stable": false
+  },
+  {
+   "i": 64,
+   "counts": [
+    0,
+    119,
+    120,
+    120,
+    118,
+    118,
+    118,
+    118,
+    118
+   ],
+   "stable": false
+  },
+  {
+   "i": 65,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 66,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 67,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 68,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 69,
+   "counts": [
+    0,
+    0,
+    5,
+    22,
+    21,
+    18,
+    18,
+    18,
+    18
+   ],
+   "stable": false
+  },
+  {
+   "i": 70,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 71,
+   "counts": [
+    0,
+    70,
+    70,
+    69,
+    69,
+    69,
+    69,
+    69,
+    68
+   ],
+   "stable": false
+  },
+  {
+   "i": 72,
+   "counts": [
+    0,
+    132,
+    115,
+    108,
+    99,
+    92,
+    90,
+    83,
+    81
+   ],
+   "stable": false
+  },
+  {
+   "i": 73,
+   "counts": [
+    0,
+    40,
+    39,
+    38,
+    38,
+    38,
+    38,
+    38,
+    38
+   ],
+   "stable": false
+  },
+  {
+   "i": 74,
+   "counts": [
+    0,
+    20,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "stable": false
+  },
+  {
+   "i": 75,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 76,
+   "counts": [
+    0,
+    50,
+    61,
+    61,
+    79,
+    68,
+    85,
+    93,
+    71
+   ],
+   "stable": false
+  },
+  {
+   "i": 77,
+   "counts": [
+    0,
+    19,
+    18,
+    17,
+    17,
+    17,
+    17,
+    17,
+    17
+   ],
+   "stable": false
+  },
+  {
+   "i": 78,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 79,
+   "counts": [
+    0,
+    142,
+    140,
+    145,
+    135,
+    131,
+    132,
+    139,
+    136
+   ],
+   "stable": false
+  },
+  {
+   "i": 80,
+   "counts": [
+    0,
+    106,
+    100,
+    94,
+    92,
+    87,
+    85,
+    81,
+    81
+   ],
+   "stable": false
+  },
+  {
+   "i": 81,
+   "counts": [
+    0,
+    69,
+    70,
+    70,
+    70,
+    70,
+    69,
+    70,
+    70
+   ],
+   "stable": false
+  },
+  {
+   "i": 82,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 83,
+   "counts": [
+    0,
+    0,
+    17,
+    14,
+    12,
+    16,
+    12,
+    12,
+    12
+   ],
+   "stable": false
+  },
+  {
+   "i": 84,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 85,
+   "counts": [
+    0,
+    140,
+    138,
+    137,
+    135,
+    135,
+    135,
+    135,
+    135
+   ],
+   "stable": false
+  },
+  {
+   "i": 86,
+   "counts": [
+    0,
+    0,
+    2,
+    80,
+    84,
+    84,
+    84,
+    84,
+    83
+   ],
+   "stable": false
+  },
+  {
+   "i": 87,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 88,
+   "counts": [
+    0,
+    56,
+    55,
+    55,
+    55,
+    53,
+    53,
+    52,
+    52
+   ],
+   "stable": false
+  },
+  {
+   "i": 89,
+   "counts": [
+    0,
+    68,
+    56,
+    53,
+    52,
+    48,
+    45,
+    40,
+    36
+   ],
+   "stable": false
+  },
+  {
+   "i": 90,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 91,
+   "counts": [
+    0,
+    0,
+    12,
+    23,
+    23,
+    23,
+    23,
+    23,
+    23
+   ],
+   "stable": false
+  },
+  {
+   "i": 92,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 93,
+   "counts": [
+    0,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48
+   ],
+   "stable": false
+  },
+  {
+   "i": 94,
+   "counts": [
+    0,
+    37,
+    37,
+    37,
+    37,
+    37,
+    37,
+    37,
+    37
+   ],
+   "stable": false
+  },
+  {
+   "i": 95,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  },
+  {
+   "i": 96,
+   "counts": [
+    0,
+    0,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20
+   ],
+   "stable": false
+  },
+  {
+   "i": 97,
+   "counts": [
+    0,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40
+   ],
+   "stable": false
+  },
+  {
+   "i": 98,
+   "counts": [
+    0,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28
+   ],
+   "stable": false
+  },
+  {
+   "i": 99,
+   "counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": true
+  }
+ ],
+ "rescan": [
+  {
+   "i": 1,
+   "objects": 24,
+   "occupied": 0.1689,
+   "masses": [
+    47.1,
+    40.5,
+    37.9,
+    37.8,
+    37.5,
+    37.5,
+    36.6,
+    36.3
+   ],
+   "verdicts": [
+    "no reproduction",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 31.13,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 9,
+      "late": 19,
+      "clean": 0.948
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "objects": 17,
+   "occupied": 0.1451,
+   "masses": [
+    360.9,
+    133.8,
+    70.7,
+    7.9,
+    5.0,
+    4.4,
+    3.8,
+    3.7
+   ],
+   "verdicts": [
+    "background",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 1.53,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 8,
+      "clean": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "i": 12,
+   "objects": 13,
+   "occupied": 0.1853,
+   "masses": [
+    317.7,
+    138.8,
+    134.1,
+    126.6,
+    22.0,
+    19.2,
+    19.1,
+    18.6
+   ],
+   "verdicts": [
+    "background",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 19.16,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 27,
+      "clean": 0.875
+     }
+    },
+    {
+     "verdict": "background",
+     "parent_mass": 15.78,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 31,
+      "clean": 0.926
+     }
+    }
+   ]
+  },
+  {
+   "i": 16,
+   "objects": 9,
+   "occupied": 0.231,
+   "masses": [
+    594.0,
+    125.4,
+    21.3,
+    20.5,
+    18.8,
+    18.0,
+    17.9,
+    13.8
+   ],
+   "verdicts": [
+    "background",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 21.27,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 28,
+      "clean": 0.921
+     }
+    },
+    {
+     "verdict": "background",
+     "parent_mass": 13.76,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 26,
+      "clean": 0.926
+     }
+    }
+   ]
+  },
+  {
+   "i": 20,
+   "objects": 31,
+   "occupied": 0.1929,
+   "masses": [
+    249.0,
+    125.0,
+    121.4,
+    118.8,
+    117.3,
+    10.3,
+    9.7,
+    9.3
+   ],
+   "verdicts": [
+    "background",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 7.69,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 71,
+      "clean": 0.959
+     }
+    }
+   ]
+  },
+  {
+   "i": 25,
+   "objects": 11,
+   "occupied": 0.2048,
+   "masses": [
+    361.7,
+    145.3,
+    139.3,
+    135.0,
+    22.2,
+    20.8,
+    20.8,
+    20.8
+   ],
+   "verdicts": [
+    "background",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 22.19,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 8,
+      "late": 24,
+      "clean": 0.926
+     }
+    }
+   ]
+  },
+  {
+   "i": 27,
+   "objects": 14,
+   "occupied": 0.188,
+   "masses": [
+    449.4,
+    122.2,
+    118.4,
+    29.2,
+    22.7,
+    20.5,
+    20.3,
+    17.8
+   ],
+   "verdicts": [
+    "background",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 14.66,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 6,
+      "late": 27,
+      "clean": 0.943
+     }
+    },
+    {
+     "verdict": "background",
+     "parent_mass": 20.29,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 7,
+      "late": 27,
+      "clean": 0.984
+     }
+    }
+   ]
+  },
+  {
+   "i": 34,
+   "objects": 12,
+   "occupied": 0.1813,
+   "masses": [
+    358.5,
+    220.7,
+    132.9,
+    40.2,
+    23.4,
+    20.5,
+    20.3,
+    20.2
+   ],
+   "verdicts": [
+    "background",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 16.59,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 19,
+      "clean": 0.899
+     }
+    }
+   ]
+  },
+  {
+   "i": 43,
+   "objects": 63,
+   "occupied": 0.1773,
+   "masses": [
+    242.2,
+    107.9,
+    104.4,
+    102.6,
+    7.4,
+    7.2,
+    7.1,
+    6.9
+   ],
+   "verdicts": [
+    "background",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 5.73,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 9,
+      "late": 103,
+      "clean": 1.0
+     }
+    },
+    {
+     "verdict": "background",
+     "parent_mass": 5.39,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 10,
+      "late": 104,
+      "clean": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "i": 54,
+   "objects": 82,
+   "occupied": 0.1868,
+   "masses": [
+    20.2,
+    19.4,
+    15.2,
+    14.9,
+    14.6,
+    14.4,
+    13.7,
+    12.8
+   ],
+   "verdicts": [
+    "no reproduction",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 8.11,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 13,
+      "late": 43,
+      "clean": 0.789
+     }
+    }
+   ]
+  },
+  {
+   "i": 56,
+   "objects": 21,
+   "occupied": 0.1976,
+   "masses": [
+    244.3,
+    129.3,
+    126.3,
+    124.8,
+    118.6,
+    14.6,
+    13.9,
+    13.6
+   ],
+   "verdicts": [
+    "background",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 10.44,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 44,
+      "clean": 0.952
+     }
+    },
+    {
+     "verdict": "background",
+     "parent_mass": 11.31,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 42,
+      "clean": 0.938
+     }
+    }
+   ]
+  },
+  {
+   "i": 59,
+   "objects": 7,
+   "occupied": 0.1833,
+   "masses": [
+    267.1,
+    248.2,
+    144.7,
+    131.5,
+    53.8,
+    29.2,
+    26.0
+   ],
+   "verdicts": [
+    "no reproduction",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 29.23,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 13,
+      "clean": 0.885
+     }
+    }
+   ]
+  },
+  {
+   "i": 64,
+   "objects": 55,
+   "occupied": 0.1837,
+   "masses": [
+    232.5,
+    138.4,
+    120.9,
+    116.6,
+    6.5,
+    6.1,
+    5.6,
+    5.6
+   ],
+   "verdicts": [
+    "background",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 5.14,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 45,
+      "late": 116,
+      "clean": 0.983
+     }
+    },
+    {
+     "verdict": "background",
+     "parent_mass": 3.28,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 42,
+      "late": 121,
+      "clean": 0.961
+     }
+    }
+   ]
+  },
+  {
+   "i": 69,
+   "objects": 13,
+   "occupied": 0.1458,
+   "masses": [
+    141.3,
+    133.9,
+    83.3,
+    79.5,
+    67.9,
+    53.8,
+    42.7,
+    39.4
+   ],
+   "verdicts": [
+    "background",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 39.42,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 2,
+      "late": 16,
+      "clean": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "i": 74,
+   "objects": 15,
+   "occupied": 0.1395,
+   "masses": [
+    590.3,
+    18.5,
+    17.9,
+    17.9,
+    17.2,
+    16.8,
+    16.8,
+    16.7
+   ],
+   "verdicts": [
+    "background",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 16.82,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 7,
+      "late": 38,
+      "clean": 0.999
+     }
+    },
+    {
+     "verdict": "background",
+     "parent_mass": 14.59,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 5,
+      "late": 37,
+      "clean": 0.951
+     }
+    }
+   ]
+  },
+  {
+   "i": 86,
+   "objects": 26,
+   "occupied": 0.3951,
+   "masses": [
+    386.7,
+    255.9,
+    138.0,
+    5.3,
+    4.9,
+    4.8,
+    4.8,
+    4.7
+   ],
+   "verdicts": [
+    "no reproduction",
+    "background"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 4.75,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 86,
+      "clean": 0.954
+     }
+    }
+   ]
+  },
+  {
+   "i": 91,
+   "objects": 9,
+   "occupied": 0.1772,
+   "masses": [
+    271.4,
+    137.6,
+    137.2,
+    135.3,
+    93.5,
+    35.6,
+    28.0,
+    27.5
+   ],
+   "verdicts": [
+    "background",
+    "no reproduction"
+   ],
+   "reproducers": 0,
+   "hits": [
+    {
+     "verdict": "background",
+     "parent_mass": 27.97,
+     "background_copies": 0,
+     "attractor": null,
+     "gen1": {
+      "ok": true,
+      "full": false,
+      "early": 1,
+      "late": 25,
+      "clean": 1.0
+     }
+    }
+   ]
+  }
+ ]
+}
