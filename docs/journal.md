@@ -12,6 +12,48 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-037 · 2026-11-08 · E-32: one random multi-channel Lenia rule makes dividing spots (first Lenia reproducer; prediction wrong)
+
+**Question (pre-registered, `docs/data/e32-preregistration.md`; Track D):** E-29 found no reproducer among 3000 random single-channel Lenia rules. Chan (2020) reports self-replication once Lenia has several channels and kernels. Repeating E-29 unchanged on random `MultiLenia` rules (D-031), does a lone lump ever become a reproducer?
+
+**Ran:** E-32, `scripts/mlenia_lump_scan.py`, commit `7aedcaf`, 4.4 h on 8 workers. 1000 rules (seed 32; 521 with 2 channels, 479 with 3), 2 lumps each (radius 13, 26), 128×128 vacuum, 300 settling steps, birth detector (D-028 + D-030) on the 2 most common object types. Gray-Scott pipeline positive 4/4.
+
+**Found:**
+- **1 reproducer rule in 1000** (#970, 2 channels, 4 kernels): both tested object types passed two generations, with 0 copies from the empty and the perturbed vacuum. **My prediction (0) was wrong.**
+- Rule outcomes: 450 decided (at least one object fully tested; 449 without a reproducer), 143 explosive only, 27 filled, 380 extinct. 5 further "one generation" verdicts (E-29: none).
+- Compared with single-channel Lenia (E-29, 0 of 1453 decided rules): 1 of 450, 95% interval 0.006%–1.2%; Fisher one-sided p = 0.24. **The difference in rate is not significant**; what is new is that a reproducer exists at all in our Lenia family.
+
+**Inspected (as pre-registered):**
+- **By eye** (`docs/assets/report/e32-divider-strip.png`, `e32-divider.gif`): a small spot alone in an empty world stretches, splits in two within ~150 steps, and the halves split again; after ~2000 steps about 100 spots tile the 160×160 world and the total mass saturates (52 → 4200). It looks like Gray-Scott's "mitosis" spots, not like E-30's condensation: matter grows only next to existing spots, in a front, never from the empty background.
+- **Re-run from 3 new lumps** (fresh random streams): a reproducer in **3 of 3**, 0 background copies each time.
+- **The scrambled-patch check reports `attractor = True`**: scrambled lumps of the same values also become dividing spots. As for Gray-Scott, the spot is the rule's attractor, so offspring cannot inherit anything from a particular parent. Heredity is impossible here by construction, and the heredity test was not run.
+- **What the second channel does (post hoc, scratch test):** channel 1 dies out (mass 0 after settling), so everything happens in channel 0. But the kernel from the empty channel 1 into channel 0 still counts in channel 0's averaged growth, as a constant negative term (growth of 0 is −1), i.e. a **uniform decay**. Removing channel 1 (the same two self-kernels of channel 0 in a one-channel rule) or keeping only either self-kernel: **no reproduction** (6/6 lumps, many static objects). The division needs two kernels *plus* that decay.
+
+**Evidence level:** level 3 (self-replication verified by intervention, two generations, three fresh starts) for one rule, in the weakest form: a single attractor type with no possible heredity, as Gray-Scott. Not a creature with a lineage.
+
+**Interpretation:** dividing spots, the classic reaction-diffusion reproducer, can arise in Lenia from a random rule, but rarely (~0.2% of decided rules), and they are copies of an attractor, not of a parent. For heredity, the next physics needs room for several distinct reproducing types (Track D).
+
+**Lesson:** an "extra channel" can matter without holding any matter: in averaged-growth Lenia an empty channel's kernel is a decay term. Check what a component actually does before crediting it.
+
+---
+
+## J-036 · 2026-11-08 · E-31: held-out fed Flow-Lenia on stable food: no reproduction, and the new null holds
+
+**Question (pre-registered, `docs/data/e31-preregistration.md`):** E-30's fed-world "reproducers" were the food condensing (J-035). The perturbed-vacuum null (D-030) was added after those results, and fed worlds only mean something if the food itself is stable. On new rules (seed 31), screened for stable food first, does anything reproduce?
+
+**Ran:** E-31, `scripts/pl_heldout.py`, commit `8d30db2`, 4.8 h on 11 cores (sharing the machine with E-32). 200 rules screened at food 0.05 and at 0.08 (perturbed food alone, 160×160, 4000 steps); the first 50 stable rules at each level (47 at 0.08) run in the E-30 world (6 patches with their own kernel weights, 128×128, 1500 steps), birth detector with D-030, heredity test on any reproducer.
+
+**Found:**
+- **0 reproducers in 97 stable-food worlds** (50 at food 0.05, 47 at 0.08), 183 objects tested, every verdict "no reproduction". No "background" and no "one generation" verdict. Prediction (0) correct; one-sided 95% upper bound ≈ 6% per food level.
+- **Stable food is the minority:** 72/200 rules (36%) at 0.05 (E-30: 32/100), **47/200 (24%) at 0.08**: more food, less stability, as predicted.
+- Pipeline positive (GrayScottTracer, carried trait): reproducer and heredity 4/4 (r = 1.0, p = 0.0005).
+
+**Interpretation:** the held-out test of D-030 passed: with the food screened, the detector no longer reports condensation, and its positive still passes. Fed Flow-Lenia with localized parameters, in our random rule distribution and with this start, does not reproduce (level 3 not reached). The localized-parameter route (Track D route 3) has nothing to evolve yet.
+
+**Lesson:** a null added after the fact needs a held-out run where it cannot be tuned. This one passed it.
+
+---
+
 ## J-035 · 2026-11-07 · E-30: "reproducers" in fed Flow-Lenia were food condensing; the birth detector gets a perturbed-vacuum null
 
 **Question (pre-registered, `docs/data/e30-preregistration.md`; Track D route 3):** in Flow-Lenia with localized parameters (FlowLeniaPL, J-033), fed with a thin food layer and seeded with six "species", does anything reproduce? If so, is there heredity?

@@ -730,7 +730,34 @@ def e30_condensation() -> None:
     save_gif(frames, "e30-condensation.gif", scale=2, ms=60)
 
 
-FIGS = {"e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
+def e32_divider() -> None:
+    """J-037: the one E-32 rule (#970, two channels) whose small objects divide. The rule is rebuilt
+    from the scan's own random stream; its first object after settling is put alone in a 160x160
+    vacuum (as the birth detector does) and filmed for 2000 steps; plus a strip of the first
+    divisions (0-400 steps)."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import lump_scan as L  # noqa: E402
+    import mlenia_lump_scan as M  # noqa: E402
+    from emergence.observatory import births as B
+    from emergence.physics import MultiLenia
+    rng = np.random.default_rng([32, 970])
+    ph = MultiLenia.random(rng)
+    s, _, _ = L.settle(ph, M.mlump(ph, rng, 13))
+    w = B.alone(ph, s, B.find(ph, s)[0]["mask"], 160)
+    frames, early = [], []
+    for t in range(2001):
+        if t % 20 == 0:
+            frames.append(B.field(ph, w))
+        if t <= 400 and t % 50 == 0:
+            early.append(B.field(ph, w)[45:115, 45:115])
+        if t < 2000:
+            w = ph.step(w)
+    save_gif(frames, "e32-divider.gif", scale=2, ms=70)
+    sep = np.full((70, 3), 90, np.uint8)
+    save_png(colour(np.concatenate([x for f in early for x in (f, sep)][:-1], 1)), "e32-divider-strip.png", scale=3)
+
+
+FIGS = {"e32_divider": e32_divider, "e30_condensation": e30_condensation, "e29_lump_scan": e29_lump_scan, "heredity_controls": heredity_controls, "e27_births": e27_births, "e24_patches": e24_patches, "heldout_mover": heldout_mover, "heldout_cutoff": heldout_cutoff, "e19_spontaneous_fusion": e19_spontaneous_fusion, "e20_collisions": e20_collisions, "e19_null_and_sweep": e19_null_and_sweep, "e18_wanderer": e18_wanderer, "e17_wanderer": e17_wanderer, "e15_fates": e15_fates, "e15_clips": e15_clips, "e14_per_rule": e14_per_rule, "static_vs_glider": static_vs_glider, "labels_before_after": labels_before_after,
         "viability_map": viability_map, "e12_engine_vs_random": e12_engine_vs_random,
         "emergence_clip": emergence_clip, "e13_rates": e13_rates}
 
