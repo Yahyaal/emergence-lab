@@ -12,6 +12,24 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-053 · 2026-11-08 · E-53: without relatives in the background, later code does not invade better; E-52 was most likely kinship
+
+**Question (pre-registered, `docs/data/e53-preregistration.md`, commit `ed8418b`):** E-52's advantage of later replicators appeared only in backgrounds where they alone had close relatives. In backgrounds where **neither** group has relatives, do later replicators still invade better?
+
+**Ran:** E-53, `scripts/bff_invasion.py --e53`, assay unchanged. The 33 early (T+2000) and late (T+12000) E-49 replicators of soups 901, 5006, 5010, each in its soup's snapshots at T+4000, T+9000 and a later time (T+20000; 5006: T+12500), 16 replicates, plus 3 resident nulls per background. Two crashes, both fixed without touching the assay: a negative time code in an RNG seed for the null jobs (the first run was lost after 104 of 126 assays; the rerun is deterministic and now cached per assay), then a lookup of T+6000 programs in the race-validity step. Commits `8d4e5e1`-area, see git log.
+
+**Found:**
+- Every candidate's kin share in every background: **0** (as checked before the prereg).
+- **Primary: D = −0.34, permutation p = 0.88. Later code does not invade better.** Per cell (late − early): 901: −0.09, −0.16, −0.05; 5006: −0.06, −0.06, +0.10; 5010: +0.04, −0.09, +0.01 (backgrounds T+4000, T+9000, later).
+- Validity: in these kin-free backgrounds, invasion scores do not predict E-49 race outcomes at all (ρ = −0.02, 166 pairs). In E-52 (own-time backgrounds) they did slightly (0.209).
+- **Prediction met:** we leaned (60%) to "E-52 was a kinship artefact".
+
+**Interpretation:** E-52's "later code fits later soups" was most likely produced by relatives in the count, not by adaptation. Across the four measures now applied to the question (races E-48/E-49, growth rate E-51, invasion E-52/E-53), **later replicators are not reliably fitter than earlier ones.** Soup 5006 leans that way in races and growth rate, but not in kin-free invasion (+0.10 in the latest background only). The post-jump change in these soups looks mostly neutral. **Level 5 is not shown, and the evidence now weighs against a strong directional trend over 10,000 rounds.**
+
+**Lesson:** a pre-registered follow-up that removes a suspected confound is cheap and decisive. Report the first result as suggestive until it is done.
+
+---
+
 ## J-052 · 2026-11-08 · E-52: later replicators invade the later soup better, but kinship is confounded with time
 
 **Question (pre-registered, `docs/data/e52-preregistration.md`, commit `ea948b1`):** growth into random code misses what decides races (J-051). Do later replicators spread better **inside the soups themselves**?
@@ -26,7 +44,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 - Residents drawn at random score −1.2 to −3.6: most programs in a soup are poor copiers or none, and replicators of any time score near 0 or above. In soup 5006's late background every candidate does well (+0.6 to +1.0).
 - **Confound found after the run:** each candidate has close relatives (≥ 90% identical) **only in the background of its own time** (1–2% of the soup; none 2,000 rounds away). An injected copy overwritten by a relative still counts as a family member, so relatives can protect a candidate's score. In the late backgrounds only late candidates have relatives, so kinship and time are the same variable there. Within those cells, score correlates with kinship in 901 (ρ = 0.54) and 5010 (0.64) but not in 5006 (0.00). Against a pure kinship artefact: early candidates do **not** score better in the early backgrounds, where only they have relatives.
 
-**Interpretation:** suggestive, not established. The time-shift pattern (later code better in later soups, not in earlier ones) is what adaptation to a changing soup would look like, but the same pattern can come from kinship in the count. E-53 (pre-registered, running) repeats the assay in backgrounds where neither group has relatives. **Level 5 not shown.**
+**Interpretation:** suggestive, not established. The time-shift pattern (later code better in later soups, not in earlier ones) is what adaptation to a changing soup would look like, but the same pattern can come from kinship in the count. E-53 repeated the assay in backgrounds where neither group has relatives: **no advantage (J-053)**, so the E-52 effect was most likely kinship. **Level 5 not shown.**
 
 **Lesson:** when the background is drawn from the same population as one group of candidates, a family-based count favours that group. Check kinship before choosing backgrounds; a kin-free background (a different time) is the clean design.
 

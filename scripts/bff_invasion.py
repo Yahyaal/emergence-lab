@@ -95,7 +95,7 @@ def main() -> None:
     score = {}
     for r in C:
         score.setdefault(r["program"], []).append(r["s"])
-    races = [r for r in json.load(open(E49))["results"] if r["n"] >= 8]
+    races = [r for r in json.load(open(E49))["results"] if r["n"] >= 8 and r["a"] in score and r["b"] in score]
     dv = [np.mean(score[r["b"]]) - np.mean(score[r["a"]]) for r in races]
     v = spearmanr(dv, [r["b_share"] for r in races], alternative="greater")
     table = {}
