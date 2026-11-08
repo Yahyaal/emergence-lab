@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-049 · 2026-11-08 · E-49: with verified replicators and fresh time points, later code is not reliably fitter
+
+**Question (pre-registered, `docs/data/e49-preregistration.md`, commit `da4000f`):** E-48 with its flaws fixed: are later replicators fitter than earlier ones of the same soup? Samples were filtered by the replicator test (D-040), taken at new time points (2,000, 6,000 and 12,000 rounds after the jump), and the same-round control used random orientation.
+
+**Ran:** E-49, `scripts/bff_time_races2.py`, ~35 min on 11 workers. 47 verified replicators (6 per time point, fewer in 3 cases: 5010 at +6000 had only 2 in 40 candidates), 240 cross-time and 107 same-round pairs, 32 races each.
+
+**Found:**
+- **Primary (program level): later replicator ahead in 24 of 44 cases (55%, p = 0.33). Prediction (≥ 60%, p < 0.01) not met.** Pair level: 129 of 240 (p = 0.14); mean share of races won by the later replicator 0.516.
+- Same-round control: 49 of 107 ahead, mean share 0.503: the control is clean.
+- Soup 5006 again leans later (53 of 84 pairs, p = 0.011, mean 0.548), as predicted; 5010 0.527; 901 0.482.
+- By gap: 2,000 → 12,000 is the clearest (60 of 90 pairs, p = 0.001, mean 0.545), larger than 2,000 → 6,000 (0.523), as predicted; but 6,000 → 12,000 goes the other way (0.469). Pairs share programs, so pair-level p-values overstate the evidence.
+- Figure: `docs/assets/report/e49-time-races.png`.
+
+**Interpretation:** later code is at most **slightly** fitter than earlier code, and not reliably so: the confirmatory test fails. The soups change a lot (J-047) but, measured in races among random programs, most of the change looks neutral. The one consistent signal is soup 5006 (E-46, E-48, E-49 all in the same direction), plus a small advantage over the longest gap. **Adaptive, cumulative change is not shown.**
+
+**Lesson:** fitness differences among emergent replicators are small relative to race noise. Power, not cleverness, is the bottleneck: the next test needs a more sensitive fitness measure (e.g. growth rate from a small seed in a fixed background), validated on the hand-written replicator's known variants first.
+
+---
+
 ## J-048 · 2026-11-08 · E-48: is later code fitter than earlier code? In one soup yes, overall not shown
 
 **Question (pre-registered, `docs/data/e48-preregistration.md`, commit `5695abf`):** the soups drift far from their founders (J-047). If the drift is adaptive, programs from later rounds should out-race programs from earlier rounds of the same soup.
