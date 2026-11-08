@@ -12,7 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
-## J-046 · 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
+## J-047 · 2026-11-08 · E-47: after the jump, no species dominates; the soup is a drifting cloud of variants
+
+**Question (pre-registered, `docs/data/e47-preregistration.md`, commit `f47ba3b`):** is species turnover in running soups driven by selection, i.e. does each new dominant species beat the one it displaced in a race?
+
+**Ran:** E-47, `scripts/bff_turnover.py`. Exact replays of soups 901, 5006 and 5010 to 40,000 rounds (every E-41 checkpoint reproduced bit for bit: 9750/16000, 28250/32000, 17000/32000), snapshots every 250 rounds from 1000 rounds before each transition (271 snapshots), ~55 min on 3 cores. Then the pre-registered dominant-species sequence and races.
+
+**Found:**
+- **Primary outcome not testable: 0 replacements in 3 soups** under the pre-registered rule (prediction ≥ 4: wrong). Also 0 with 2% and 1% thresholds (exploratory).
+- Why: **no 90%-identity family dominates after the transition.** The most common program's family holds a median of 2.2–2.4% of the soup (max 6% in 5006, 12% in 5010, one 30% spike in 901), and consecutive snapshots 250 rounds apart have their most common program in the same family only 5–23% of the time. The soup is a large, shifting cloud of related variants, not a succession of species.
+- **The most common program drifts away from the founder:** byte identity to the first dominant program (best orientation) falls from 100% to about 15–20% in soup 901 over ~20,000 rounds and to ~10% in 5006 over 12,000 rounds; in 5010 it falls to a few % within 5,000 rounds. Random programs share ~0.4%. Figure: `docs/assets/report/e47-turnover.png`.
+- This corrects J-046's wording: #4 and #5/#6 were never dominant; each was one of the most common exact programs, holding ~1.6% of the soup (257 and 269 programs of 16,384).
+
+**Interpretation:** the soups keep changing after the jump, steadily and far: within tens of thousands of rounds the code that is most common shares little with the code that started the takeover. Whether that change is adaptive or neutral drift cannot be told from this measurement: copying with errors drifts on its own. The E-46 result (a newcomer family out-races an older family of the same soup) is one data point in favour of selection; a test needs a null for drift (e.g. race programs sampled at times t and t + Δ against each other, compared with races between programs sampled at the same time).
+
+**Lesson:** "dominant species" was the wrong picture for these soups: the pre-registration assumed a structure the data does not have. Measure the population structure (family sizes, turnover) before defining events on it.
+
+---
+
+· 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
 
 **What we noticed after E-45:** soup 5006's earlier replicator #4 also sat beside its own reverse in the E-41 snapshot (129 copies and 128 reverse copies). We then seeded each of the 9 emergent replicators alone (4 soups each): **every one produces its exact byte-reverse in about equal numbers.** All the replicators that emerged in our soups copy themselves backwards; only the hand-written one copies forwards. So E-44 counted every emergent species by half (one form), and E-45 counted the 5006@32k species (#5/#6) by both forms but its opponents by one. Both biases could have created the reported advantages.
 
@@ -21,13 +39,13 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 **Ran:** E-46, `scripts/bff_species_contests.py`, ~15 min on 11 workers. 8 emergent species (all 28 pairs), the hand-written replicator vs each, and 24 neutral pairs (hand-written vs redrawn tail), 64 races each, seed 46.
 
 **Found:**
-- **Prediction 1 wrong: the 5006@32k species still wins 176 of 252 races against soup 901's species (69.8%, p = 10⁻¹⁰),** the same share as E-45. In winner-take-all races the factor-2 undercount rarely flips a race. It is ahead of all 7 other emergent species (56–79% of races), "favoured" against 3. **It beats #4, the species it replaced in its own soup, in 46 of 64 races (72%, favoured).**
+- **Prediction 1 wrong: the 5006@32k species still wins 176 of 252 races against soup 901's species (69.8%, p = 10⁻¹⁰),** the same share as E-45. In winner-take-all races the factor-2 undercount rarely flips a race. It is ahead of all 7 other emergent species (56–79% of races), "favoured" against 3. **It beats #4, a family that was common earlier in its own soup and had disappeared by round 32000, in 46 of 64 races (72%, favoured).** (J-047: neither family ever held more than ~2% of the soup; "replaced" overstates it.)
 - Prediction 2 wrong in part: the hand-written replicator's advantage shrinks from 77% of races (E-44, biased) to **56% (286/510, p = 0.003)**: most of E-44's advantage was the counting bias; a small one remains.
 - **Neutral controls behave this time: 0 of 24 favoured, pooled 50.9%.** Over E-44 to E-46, 2 of 70 null pair runs got a favoured verdict (~3%).
 - Emergent pairs favoured: 3 of 28 vs 0 of 24 nulls (Fisher p = 0.15, prediction 3 met); all 3 involve the 5006@32k species. Other species are indistinguishable from one another. Cross-epoch pairs in soups 901 and 5010: no difference.
 - Figure: `docs/assets/report/e46-species-contests.png`. Snapshots of soup 5006 (E-41): at epoch 28250, 257 programs belong to #4's species and none to #5's; at 32000, 0 and 269.
 
-**Interpretation:** E-45's conclusion survives a fair measurement: one emergent species is reproducibly fitter than the others in a common environment, and it is the one that **replaced** its predecessor in its own soup, which it also beats in a race. That is what selection driving a change would look like, in **one** soup and one replacement; we have not shown that this replacement *was* caused by the advantage, nor that replacements accumulate. The striking structural fact is that all 9 emergent replicators are mirror replicators: in our soups, self-copying arose in the reversed form every time (3 soups).
+**Interpretation:** E-45's conclusion survives a fair measurement: one emergent species is reproducibly fitter than the others in a common environment, and it also beats a family that was common earlier in its own soup. That is what selection driving a change would look like, in **one** soup and one pair (and J-047 shows neither family was ever dominant); we have not shown that the change *was* caused by the advantage, nor that changes accumulate. The striking structural fact is that all 9 emergent replicators are mirror replicators: in our soups, self-copying arose in the reversed form every time (3 soups).
 
 **Lesson:** check what a "family" is in *every* competitor before comparing families. Our first correction (E-45 counted one species fairly) was itself unfair to the opponents.
 

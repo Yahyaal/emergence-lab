@@ -8,7 +8,7 @@ import numpy as np
 
 d = json.load(open("docs/data/experiments/2026-11-08-e46-species-contests.json"))
 order = [0, 1, 2, 3, 4, 5, 7, 8, -1]
-lab = {0: "901@9.75k a", 1: "901@9.75k b", 2: "901@16k a", 3: "901@16k b", 4: "5006@28k\n(replaced)",
+lab = {0: "901@9.75k a", 1: "901@9.75k b", 2: "901@16k a", 3: "901@16k b", 4: "5006@28k\n(earlier)",
        5: "5006@32k\n(strongest)", 7: "5010@17k", 8: "5010@32k", -1: "hand-\nwritten"}
 idx = {k: n for n, k in enumerate(order)}
 M = np.full((9, 9), np.nan)
