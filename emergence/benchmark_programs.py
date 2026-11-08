@@ -71,3 +71,16 @@ def run(check) -> None:
              np.random.default_rng(5).integers(0, 256, 64, dtype=np.uint8), "bff", "no variation")):
         r = PH.heredity_test(x, np.random.default_rng(3), mode=mode)
         check(name, r["verdict"] == want, hbrief(r))
+
+    # selection among replicator variants (observatory/program_selection.py, J-043, D-042)
+    from .observatory import program_selection as PS
+    x = B.REPLICATOR
+    for name, m, pos, mode, ok in (
+            ("program selection negative: neutral variant (inert tail byte) -> no difference",
+             PS.mutant(x, 40, 7), 40, "bff", lambda v: v == "no difference"),
+            ("program selection positive: variant that cannot copy (broken loop) -> parent favoured",
+             PS.mutant(x, 3, 0x80), 3, "bff", lambda v: v == "parent favoured"),
+            ("program selection deceptive: neutral pair under the copyall rule -> not a favoured verdict",
+             PS.mutant(x, 40, 7), 40, "copyall", lambda v: v in ("undecided", "no difference"))):
+        r = PS.compete(x, m, pos, np.random.default_rng(2), mode=mode)
+        check(name, ok(r["verdict"]), f"{r['verdict']}; mean s {r['mean_s']}, informative {r['informative']}")

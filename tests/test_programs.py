@@ -46,3 +46,11 @@ def test_program_heredity_controls():
     assert PH.heredity_test(B.REPLICATOR, np.random.default_rng(3), mutants=8)["inherited"] >= 4
     assert PH.heredity_test(B.REPLICATOR, np.random.default_rng(3), mode="noexec", mutants=4)["verdict"] == "no variation"
     assert PH.sign_p(6, 6) == 1 / 64
+
+
+def test_program_selection_controls():
+    import numpy as np
+    from emergence.observatory import program_selection as PS
+    from emergence.programs import bff as B
+    r = PS.compete(B.REPLICATOR, PS.mutant(B.REPLICATOR, 3, 0x80), 3, np.random.default_rng(2), reps=4)
+    assert r["verdict"] == "parent favoured"
