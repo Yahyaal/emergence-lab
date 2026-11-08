@@ -58,7 +58,9 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 - **E-40/E-41:** with 16384 programs, the transition is rare: 3 of 16 soups, at epochs 8750, 32000, 43250 (0 in the first 16000 epochs of 12 pre-registered soups). **Every transitioned soup contains verified replicators (several variants); no untransitioned soup does.** Level 3 from random code. Soups are deterministic given the seed (pilot replay exact).
 - **E-42 (D-041, `observatory/program_heredity.py`):** one-byte mutations of all 9 emergent replicators are inherited (9/9 "heredity"; 140 of 141 viable mutants carried). **Level 4 (heritable variation) for program replicators.**
 - **E-43 (D-042, `observatory/program_selection.py`):** head-to-head contests of the 141 viable one-byte variants vs their parents: 2 parent favoured, 139 no difference (neutral null 0/24, p = 0.73). Selection not shown; the assay only sees large effects.
-- **Next (most promising):** contests between replicators from different soups (larger differences), more replicates; tracking the family over time in a running soup; rates vs soup size.
+- **E-44 (D-043, `program_selection.compete_families`, `scripts/bff_contests.py`, `scripts/e44_analysis.py`):** races between replicators from different soups: 0 of 36 pairs with a clear winner (nulls 1/21); the hand-written replicator beats every emergent one (222/287 races). Replicators #5 and #6 of soup 5006 are **exact byte-reverses** of each other: a **mirror replicator** (each writes its reverse into its partner). Count both forms as one species (`a_alt`/`b_alt`).
+- **E-45/E-46 (`scripts/bff_mirror_contests.py`, `scripts/bff_species_contests.py`):** **every emergent replicator is a mirror replicator** (makes its reverse in equal numbers), so always count a species with `a_alt`/`b_alt` = its reverse. With fair counting (E-46), the 5006@32k species wins 176/252 races vs soup 901 (p = 1e-10), is ahead of all 7 other emergent species, and beats #4, the species it replaced in soup 5006 (46/64). Hand-written advantage only 56%. Nulls: 0/24 favoured in E-46, 2/70 over E-44–E-46.
+- **Next (most promising):** track species over time in a running soup with frequent snapshots (replay soup 5006 from E-41 seeds; does each newcomer beat its predecessor? is change cumulative? needs a validated measure); why do all emergent replicators copy backwards; many more null pairs for the contest criterion; rates vs soup size.
 
 The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
 
@@ -67,8 +69,8 @@ The proposed next phase is in [Research → Next steps]({{ '/research.html#next-
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 64 tests, ~3 min
-emergence benchmark --probes             # 39 + 63 validation checks, ~5 min on 12 cores
+pytest                                   # 72 tests, ~2 min
+emergence benchmark --probes             # 39 + 83 validation checks, ~5 min on 12 cores
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -124,7 +126,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
-0. **Program soups (J-041, J-042):** heredity is shown (E-42); next is selection among variants and change over time (level 5 needs a validated measure of cumulative change); transition rate vs soup size (2^14 vs 2^15–2^17); what follows the transition.
+0. **Program soups (J-041–J-045):** heredity is shown (E-42) and one species out-competes others (E-45); next is change over time in a running soup (level 5 needs a validated measure of cumulative change); transition rate vs soup size (2^14 vs 2^15–2^17); what follows the transition.
 1. Lenia beyond level 2 (see the report's "What next"). Next steps:
    - a replication probe for continuous physics (the exact-shape probes do not apply);
    - do fused double gliders (E-20) arise spontaneously in big smooth-start worlds?

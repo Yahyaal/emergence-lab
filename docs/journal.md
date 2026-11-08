@@ -12,6 +12,67 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-046 · 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
+
+**What we noticed after E-45:** soup 5006's earlier replicator #4 also sat beside its own reverse in the E-41 snapshot (129 copies and 128 reverse copies). We then seeded each of the 9 emergent replicators alone (4 soups each): **every one produces its exact byte-reverse in about equal numbers.** All the replicators that emerged in our soups copy themselves backwards; only the hand-written one copies forwards. So E-44 counted every emergent species by half (one form), and E-45 counted the 5006@32k species (#5/#6) by both forms but its opponents by one. Both biases could have created the reported advantages.
+
+**Question (pre-registered, `docs/data/e46-preregistration.md`, commit `c4b0925`):** with both forms counted for every species, do the E-45 advantage and E-44's hand-written advantage survive? We predicted they would not.
+
+**Ran:** E-46, `scripts/bff_species_contests.py`, ~15 min on 11 workers. 8 emergent species (all 28 pairs), the hand-written replicator vs each, and 24 neutral pairs (hand-written vs redrawn tail), 64 races each, seed 46.
+
+**Found:**
+- **Prediction 1 wrong: the 5006@32k species still wins 176 of 252 races against soup 901's species (69.8%, p = 10⁻¹⁰),** the same share as E-45. In winner-take-all races the factor-2 undercount rarely flips a race. It is ahead of all 7 other emergent species (56–79% of races), "favoured" against 3. **It beats #4, the species it replaced in its own soup, in 46 of 64 races (72%, favoured).**
+- Prediction 2 wrong in part: the hand-written replicator's advantage shrinks from 77% of races (E-44, biased) to **56% (286/510, p = 0.003)**: most of E-44's advantage was the counting bias; a small one remains.
+- **Neutral controls behave this time: 0 of 24 favoured, pooled 50.9%.** Over E-44 to E-46, 2 of 70 null pair runs got a favoured verdict (~3%).
+- Emergent pairs favoured: 3 of 28 vs 0 of 24 nulls (Fisher p = 0.15, prediction 3 met); all 3 involve the 5006@32k species. Other species are indistinguishable from one another. Cross-epoch pairs in soups 901 and 5010: no difference.
+- Figure: `docs/assets/report/e46-species-contests.png`. Snapshots of soup 5006 (E-41): at epoch 28250, 257 programs belong to #4's species and none to #5's; at 32000, 0 and 269.
+
+**Interpretation:** E-45's conclusion survives a fair measurement: one emergent species is reproducibly fitter than the others in a common environment, and it is the one that **replaced** its predecessor in its own soup, which it also beats in a race. That is what selection driving a change would look like, in **one** soup and one replacement; we have not shown that this replacement *was* caused by the advantage, nor that replacements accumulate. The striking structural fact is that all 9 emergent replicators are mirror replicators: in our soups, self-copying arose in the reversed form every time (3 soups).
+
+**Lesson:** check what a "family" is in *every* competitor before comparing families. Our first correction (E-45 counted one species fairly) was itself unfair to the opponents.
+
+---
+
+· 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
+
+**Question (pre-registered, `docs/data/e45-preregistration.md`, after a post-hoc pattern in E-44):** does the mirror replicator species of soup 5006 (J-044) out-compete the replicators of soup 901 when both of its forms are counted?
+
+**Ran:** E-45, `scripts/bff_mirror_contests.py`, commit `d2d04a5`, ~3 min on 11 workers. `compete_families` with species counting (`a_alt`, D-043): 8 copies of #5 seeded, family = programs ≥ 90% identical to #5 or #6; 64 replicate races per pair, fresh seed 45.
+
+**Found:**
+- **Primary: the mirror species won 173 of 249 informative races against the four soup-901 replicators (69.5%, binomial p = 4·10⁻¹⁰); "a favoured" in 3 of 4 pairs, the fourth in the same direction (66%, p = 0.015).** Prediction (≥ 0.6, ≥ 2 of 4 favoured, none reversed) met.
+- Secondary: against #4 (its predecessor in soup 5006), #7 and #8 (soup 5010) it won 126 of 187 (67%, p = 10⁻⁶; one pair favoured). Against the hand-written replicator: a tie (50%).
+- **Null prediction failed:** one of the 4 designed-null pairs (hand-written replicator vs a copy with a redrawn inert tail) was also "a favoured" (68%, p = 0.005). The null pairs pooled: 56.9%. Mirror vs null pooled: Fisher p = 0.002. We checked one explanation (tail bytes near 0 that random code can zero, cutting the copy short) and it does not fit: every redrawn tail has such bytes. Across E-44 and E-45, 2 of 46 null pair runs got a favoured verdict, more than the nominal ~1%.
+- Figure: `docs/assets/report/e45-mirror-contests.png`.
+
+**Interpretation:** a reproducible fitness difference between emergent replicator species from different soups: the mirror species spreads faster than the others in a common environment, by a margin found in a fresh, pre-registered test. With heredity (E-42), this gives the three ingredients of natural selection among emergent replicators **in this assay** (variation, heredity, differential reproduction). The effect is moderate (about 2 wins for every loss) and of the same size as one supposedly neutral control, so the verdict for any single pair is weak; the pooled comparison is what carries the claim. Still not level 5: nothing here shows selection *producing* cumulative change in a running soup.
+
+**Correction (J-046):** every emergent replicator turned out to be a mirror replicator, so E-45 undercounted the *opponents* by half. E-46 repeated the test with fair counting: the advantage holds (176/252). The null failure did not recur (0 of 24).
+
+**Lesson:** "designed neutral" controls are not automatically neutral in a soup where random code edits every tape; the false-positive rate of the contest criterion should be measured with many more null pairs before single-pair verdicts are trusted.
+
+---
+
+## J-044 · 2026-11-08 · E-44: unrelated emergent replicators look equally fit; a designed copier beats them all; a mirror replicator
+
+**Question (pre-registered, `docs/data/e44-preregistration.md`):** one-byte variants looked neutral (E-43). Do replicators from *different* soups (65–100% of bytes different) differ in competition? Does the later replicator of a soup beat the earlier one?
+
+**Built (D-043):** `program_selection.compete_families`: two replicators from different families, 8 copies each among 1024 random programs, 96 epochs; families by ≥ 90% byte identity; 16 replicate races; favoured if ≥ 8 informative races, two-sided sign test p < 0.01 and mean |log-ratio| > ln 2. Controls (benchmark section 12): hand-written replicator vs the same copier with a redrawn inert tail → no difference; vs a redrawn-tail copy with a broken loop → a favoured; copyall → undecided.
+
+**Ran:** E-44, `scripts/bff_contests.py`, commit `9b6209a`, ~4 min on 11 workers. All 36 pairs of the 9 emergent replicators, the hand-written one vs each, 12 designed-null and 9 emergent-null pairs; everything twice (batches A and B, independent soups).
+
+**Found:**
+- **Primary: 0 of 36 emergent pairs favoured** (batch A; batch B: 1 of 36); nulls 1 of 21; Fisher p = 1. **Prediction (≥ 30%) wrong.** Batch A and B effect sizes barely agree across pairs (Spearman 0.22, p = 0.19). Cross-epoch pairs: 0 of 7 decided either way.
+- **The hand-written replicator beats the emergent ones:** it won 222 of 287 informative races (p = 3·10⁻²¹; "a favoured" in 1 + 4 of 9 pairs). **Corrected in J-046:** most of this was a counting bias (each emergent species was counted by one of its two forms); with fair counting, 56% (E-46).
+- **A mirror replicator.** Replicators #5 and #6 (soup 5006, epoch 32000) are **exact byte-reversals of each other**. Run first in a pair, #5 stays intact and writes its own reverse into its partner (32 of 32 random partners); the reverse does the same. Seeded alone, #5 gives equal numbers of #5 and #6 (8 of 8 soups). The species alternates between two forms each generation, like a strand and its complement. (In E-42, each form passed the heredity test; by the mechanism, a mutation at byte p of #5 should reappear at byte 63 − p of #6 and back at p a generation later; not measured separately.) Figure: `docs/assets/report/e44-mirror-replicator.png`. Two soup-901 replicators (#0, #1) are 66% reverse-identical, so reverse copying may be common. **(J-046: in fact all 9 emergent replicators are mirror replicators.)**
+- Post hoc, from the contest matrix (`docs/assets/report/e44-bff-contests.png`): the mirror pair, although each form counted only half of its species, ended more common than the four soup-901 replicators in 162 of 250 races (p = 3·10⁻⁶). Tested in E-45.
+
+**Interpretation:** at the resolution of 16-race contests, unrelated emergent replicators are about equally fit, while a hand-written copier is clearly fitter: fitness differences exist in this physics but the soups' replicators sit at similar levels. Selection among them is not shown by E-44's pre-registered test.
+
+**Lesson:** measure what a family *is* before counting it: a species with two forms is undercounted by half when only one form is the reference. `compete_families` now accepts alternative forms.
+
+---
+
 ## J-043 · 2026-11-08 · E-43: one-byte variants of emergent replicators look neutral in competition (selection not shown)
 
 **Question (pre-registered, `docs/data/e43-preregistration.md`):** natural selection needs variation (yes), heredity (yes, E-42) and differences in how well variants spread. Do the one-byte variants of E-42 differ from their parents in head-to-head competition?
