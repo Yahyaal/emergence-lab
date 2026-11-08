@@ -8,6 +8,8 @@
                    neutral copying (rule "copyall": every pair's first program overwrites the
                    second, so counts drift) -> no replication; the replicator in a soup where
                    nothing runs ("noexec") -> no replication
+* growth-rate assay (program_fitness, D-044): trap ladder vs theory, k=3 vs 4 sensitivity,
+                   non-copier, copyall/noexec deceptive, repeat-assay null
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -98,3 +100,27 @@ def run(check) -> None:
         r = PS.compete_families(x, b, np.random.default_rng(2), mode=mode)
         check(name, ok(r["verdict"]), f"{r['verdict']}; mean s {r['mean_s']}, informative {r['informative']}, "
               f"b wins {r['b_wins']}/{r['sign_n']}, p {r['p']}")
+
+    # growth-rate fitness assay (observatory/program_fitness.py, J-050, D-044)
+    from .observatory import program_fitness as F
+    frng = np.random.default_rng(13)
+    ladder = [F.growth_rate(F.trapped(k), frng, bg="halting", reps=8) for k in range(5)]
+    dev = [abs(g["r"] - F.theory(F.trap_p(k))) for k, g in enumerate(ladder)]
+    rs = [g["r"] for g in ladder]
+    check("program fitness positive/known effects: trap ladder p = 1 .. 1/16 in the halting background, r within 0.03 of ln(1 + p/2) and decreasing",
+          max(dev) <= 0.03 and all(a > b for a, b in zip(rs, rs[1:])),
+          "r " + ", ".join(f"{g['r']:.3f}/{F.theory(F.trap_p(k)):.3f}" for k, g in enumerate(ladder)))
+    c34 = F.compare(ladder[3], ladder[4])
+    check("program fitness sensitivity: trap k=3 vs k=4 (theory difference 0.031) separated at p < 0.01 with 8 replicates",
+          c34["p"] < 0.01 and c34["d"] < 0, f"d {c34['d']}, p {c34['p']:.2g}")
+    nc = [F.growth_rate(F.non_copier(), frng, bg=bg, reps=4)["r"] for bg in ("halting", "random")]
+    check("program fitness negative: a non-copier has r < 0.01 (halting and random backgrounds)", max(nc) < 0.01,
+          f"r {nc[0]:.4f}, {nc[1]:.4f}")
+    dec = [F.growth_rate(frng.integers(0, 256, 64, dtype=np.uint8), frng, mode="copyall", reps=4)["r"],
+           F.growth_rate(B.REPLICATOR, frng, mode="noexec", bg="halting", reps=4)["r"]]
+    check("program fitness deceptive: random program under copyall (every program copied, counts only drift) and the replicator under noexec -> r < 0.02",
+          max(dec) < 0.02, f"r {dec[0]:.4f}, {dec[1]:.4f}")
+    ps = [F.compare(F.growth_rate(B.REPLICATOR, frng, reps=8), F.growth_rate(B.REPLICATOR, frng, reps=8))["p"]
+          for _ in range(8)]
+    check("program fitness null: 8 repeat assays of the same program (random background) -> at most 2 'different' at p < 0.05",
+          sum(p < 0.05 for p in ps) <= 2, f"p {[round(p, 3) for p in ps]}")
