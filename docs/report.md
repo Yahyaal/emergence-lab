@@ -455,7 +455,7 @@ A completely different kind of universe. Instead of a field of matter, a **soup 
 | 04:58 | E-45 (pre-registered): the 5006 species wins 70% of races against another soup's replicators; one neutral control misbehaves |
 | 05:02 | All 9 emergent replicators turn out to copy backwards: earlier counts were unfair; E-46 pre-registered to redo them |
 | 05:08 | E-46: with fair counting the advantage holds (70%), and the winner beats an earlier family of its own soup; controls fine |
-| 05:15–06:15 | E-47: exact replays of the three soups to 40,000 rounds; no species dominates (0 replacements, prediction wrong); the most common code drifts far from the founder |
+| 05:15–05:45 | E-47: exact replays of the three soups to 40,000 rounds; no species dominates (0 replacements, prediction wrong); the most common code drifts far from the founder |
 
 Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 122 checks, all passing.
 
