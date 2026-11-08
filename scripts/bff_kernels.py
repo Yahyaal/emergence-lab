@@ -46,6 +46,8 @@ def lib():
         _LIB.classify.restype = None
         _LIB.classify.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
                                   ctypes.c_uint64, ctypes.c_long, ctypes.c_int, ctypes.c_void_p]
+        _LIB.epoch_h.restype = ctypes.c_long
+        _LIB.epoch_h.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_void_p, ctypes.c_int, ctypes.c_long, ctypes.c_int]
     return _LIB
 
 

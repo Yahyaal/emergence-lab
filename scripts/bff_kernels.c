@@ -80,3 +80,18 @@ void classify(const uint8_t *progs, int nprog, int L, int h1start, int partners,
         out[i] = (uint8_t)(fwd | (rev << 1));
     }
 }
+
+/* One soup epoch with head1 starting at h1start (E-56 counterfactual soups); otherwise identical to
+   bff_epoch in emergence/programs/bff.c, mode 0. */
+long epoch_h(uint8_t *soup, int L, const int32_t *pairs, int npairs, long max_steps, int h1start) {
+    uint8_t tape[1024];
+    long total = 0;
+    if (2 * L > 1024) return -1;
+    for (int p = 0; p < npairs; p++) {
+        uint8_t *a = soup + (long)pairs[2 * p] * L, *b = soup + (long)pairs[2 * p + 1] * L;
+        for (int i = 0; i < L; i++) { tape[i] = a[i]; tape[L + i] = b[i]; }
+        total += run(tape, 2 * L, max_steps, h1start);
+        for (int i = 0; i < L; i++) { a[i] = tape[i]; b[i] = tape[L + i]; }
+    }
+    return total;
+}
