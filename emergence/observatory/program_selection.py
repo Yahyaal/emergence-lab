@@ -84,11 +84,22 @@ def sign_p(k: int, n: int) -> float:
     return float(min(1.0, sum(comb(n, i) for i in range(n + 1) if abs(i - n / 2) >= d - 1e-9) / 2 ** n))
 
 
+def _members(programs: np.ndarray, refs: list[np.ndarray]) -> int:
+    m = np.zeros(len(programs), bool)
+    for r in refs:
+        m |= RP.similar(programs, r)
+    return int(m.sum())
+
+
 def compete_families(a: np.ndarray, b: np.ndarray, rng: np.random.Generator, mode: str = "bff",
-                     reps: int = REPS_F) -> dict:
+                     reps: int = REPS_F, a_alt: list | None = None, b_alt: list | None = None) -> dict:
+    """a_alt / b_alt: further forms of the same species (e.g. the byte-reverse of a mirror replicator,
+    E-44), counted as members of that family; seeding still uses a and b only."""
     a, b = np.asarray(a, np.uint8), np.asarray(b, np.uint8)
-    if RP.similar(a[None], b)[0]:
-        raise ValueError("a and b are >= 90% identical: use compete() with a marker byte")
+    ra = [a] + [np.asarray(x, np.uint8) for x in (a_alt or [])]
+    rb = [b] + [np.asarray(x, np.uint8) for x in (b_alt or [])]
+    if any(RP.similar(x[None], y)[0] for x in ra for y in rb):
+        raise ValueError("a and b forms are >= 90% identical: use compete() with a marker byte")
     s, counts = [], []
     for _ in range(reps):
         progs = rng.integers(0, 256, (RP.N, len(a)), dtype=np.uint8)
@@ -98,7 +109,7 @@ def compete_families(a: np.ndarray, b: np.ndarray, rng: np.random.Generator, mod
         soup = B.Soup(n=RP.N, length=len(a), mutation=0.0, mode=mode, seed=int(rng.integers(2 ** 31)), programs=progs)
         for _ in range(RP.EPOCHS):
             soup.epoch()
-        na, nb = int(RP.similar(soup.programs, a).sum()), int(RP.similar(soup.programs, b).sum())
+        na, nb = _members(soup.programs, ra), _members(soup.programs, rb)
         counts.append([na, nb])
         s.append(float(np.log((nb + 1) / (na + 1))))
     inf = [v for v, (na, nb) in zip(s, counts) if na + nb >= MIN_FAMILY]
