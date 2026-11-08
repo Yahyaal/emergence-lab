@@ -319,8 +319,8 @@ A completely different kind of universe. Instead of a field of matter, a **soup 
 **The soup that jumped, examined (E-41).** The simulation is exactly repeatable, so we replayed the pilot soup that jumped: the jump came back **at the same round, 8,750, bit for bit**. Then we ran the detector on it, 1,000 rounds later.
 
 <figure>
-<img src="{{ '/assets/report/e41-bff-soup.png' | relative_url }}" alt="Three panels of coloured pixel rows. Left: random speckle. Middle: more coloured instruction bytes but still varied rows. Right: long bands of identical rows sharing the same pattern of instructions">
-<figcaption>Programs as rows of coloured bytes (colour = instruction type, dark = data). <b>Left:</b> the random start. <b>Middle:</b> just before the jump, richer in instructions but still all different. <b>Right:</b> after the jump, the soup is full of near-identical programs sharing one core.</figcaption>
+<img src="{{ '/assets/report/e41-bff-soup.png' | relative_url }}" alt="Three panels of coloured pixel rows. Left: random speckle. Middle: more coloured instruction bytes but still varied rows. Right: most rows share the same instructions at the same positions, forming vertical stripes">
+<figcaption>Programs as rows of coloured bytes (colour = instruction type, dark = data). <b>Left:</b> the random start. <b>Middle:</b> just before the jump, richer in instructions but still all different. <b>Right:</b> 1,000 rounds after the jump, most programs carry the same code at the same positions (the vertical stripes): one family of self-copying programs and its variants has spread through the soup.</figcaption>
 </figure>
 
 - **The detector confirms emergent self-replicators.** Of the 4 most common programs, **2 are replicators** (8 copies became 116 and 71 among 1024 random programs, and their copies multiplied again), and the other 2 multiplied for one generation. Random programs never multiply under the same test.
