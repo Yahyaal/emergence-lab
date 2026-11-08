@@ -481,7 +481,7 @@ A completely different kind of universe. Instead of a field of matter, a **soup 
 | 04:55–05:12 | E-46: with fair counting the advantage holds (70%), and the winner beats an earlier family of its own soup; controls fine |
 | 05:13–05:48 | E-47: exact replays of the three soups to 40,000 rounds; no species dominates (0 replacements, prediction wrong); the most common code drifts far from the founder |
 | 05:49–05:57 | E-48: later vs earlier code: fitter in soup 5006, not overall (p = 0.07); two non-copying programs spoil soup 901's sample |
-| 06:00–06:45 | E-49 (pre-registered confirmation, verified replicators, new time points): later code not reliably fitter (51.6% of races) |
+| 05:59–06:13 | E-49 (pre-registered confirmation, verified replicators, new time points): later code not reliably fitter (51.6% of races) |
 
 Everything was done on branches, checked with `pytest` and the validation benchmark, and merged by pull request. The benchmark now has 122 checks, all passing.
 
