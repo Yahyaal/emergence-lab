@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-048 · 2026-11-08 · E-48: is later code fitter than earlier code? In one soup yes, overall not shown
+
+**Question (pre-registered, `docs/data/e48-preregistration.md`, commit `5695abf`):** the soups drift far from their founders (J-047). If the drift is adaptive, programs from later rounds should out-race programs from earlier rounds of the same soup.
+
+**Ran:** E-48, `scripts/bff_time_races.py`, ~25 min on 11 workers. From the E-47 replays, the 6 most common distinct families at 1,000 and at 10,000 rounds after each soup's jump; every late program raced every early one (108 pairs), plus same-round pairs as the drift control (90 pairs), 32 races per pair, both orientations counted.
+
+**Found:**
+- **Primary: later program ahead in 62 of 108 pairs (57%, sign test p = 0.07). Prediction (≥ 60%, p < 0.01) not met.**
+- The soups differ. **Soup 5006: later ahead in 28 of 36 pairs (p = 0.0006; 58% of races).** Soup 5010: 22 of 36 (p = 0.12). Soup 901: 12 of 36, later code *behind* (35% of races).
+- Soup 901's result is driven by two of its six late programs that **lost every race against every opponent**: common programs that apparently do not copy themselves in a fresh soup. Excluding them (post hoc): 901 is 12 of 24 (neutral) and the total is 62 of 96 (p = 0.003). Our sample rule ("most common programs") did not require copying; it should have.
+- Same-round pairs: the program that was more common in the soup won 52 of 81 decided pairs (p = 0.014, post hoc), and more so the bigger the gap in abundance; without the two non-copiers 44 of 73 (p = 0.10). Not robust.
+- Figure: `docs/assets/report/e48-time-races.png`.
+
+**Interpretation:** in soup 5006, code from 10,000 rounds after the jump out-races code from 1,000 rounds after: there, the drift includes **adaptive change**, consistent with E-46 (a later 5006 family beat an earlier one). Across the three soups the pre-registered test does not reach significance, partly because the sample mixed in programs that are common but cannot copy. Level 5 (open-ended evolution) is not reached.
+
+**Lesson:** "most common" is not "replicator": a sample for fitness races should be filtered by the replicator test first (pre-registered), and the drift control should use random orientation, not abundance order.
+
+---
+
 ## J-047 · 2026-11-08 · E-47: after the jump, no species dominates; the soup is a drifting cloud of variants
 
 **Question (pre-registered, `docs/data/e47-preregistration.md`, commit `f47ba3b`):** is species turnover in running soups driven by selection, i.e. does each new dominant species beat the one it displaced in a race?
