@@ -12,6 +12,43 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-057 · 2026-11-08 · E-57: the counterfactual speed-up holds at 2^14 (8 of 8 vs 0 of 12); backward copiers are never replicators on their own
+
+**Question (pre-registered, `docs/data/e57-preregistration.md`, commit `0946633`):** (A) is E-56's fast jump under the counterfactual rule real, at another soup size? (B) a mechanism: a forward copier's copy is itself, so any forward copier replicates; a backward copier's copy is its mirror, in which the copy loop is reversed and no longer a loop, so a backward copier only replicates if it also carries a copier facing the other way (two kernels).
+
+**Ran:** E-57, `scripts/bff_mirror.py`. (A) `--part soups --workers 3`, 8 counterfactual soups of 2^14 (seeds 5700–5707), up to 16,000 rounds, D-045 criterion, to T + 1,000, ~16 min in all. Before the run: the counterfactual interpreter with head1 at 0 reproduces the standard soup bit for bit (4096 programs, 300 rounds). (B) `--part census`, 29 s: the 5–6-instruction copier kernels of E-55 rebuilt with fresh filler; a copier is *self-sufficient* if in ≥ 3 of 4 runs the copy it leaves is itself a copier under the same rule. Added `run_tape` to `scripts/bff_kernels.c` (exposes the existing `run`; nothing else changed).
+
+**Found:**
+- **Primary A: pass. 8 of 8 counterfactual soups jumped, at rounds 250–1,750 (median 500); standard rule at this size (E-40): 0 of 12 by 16,000. One-sided Fisher p = 8 × 10⁻⁶.** Secondary: forward copiers in every jumped soup (311 of the 320 most common programs forward, 0 reverse, 9 not copiers).
+- **Primary B: fail as pre-registered.** Standard: **0 of 52** short copiers self-sufficient (prediction ≤ 5%: met). Counterfactual: **97 of 133 (73%)**, below the pre-registered 90%. Looked at after the result: the 36 failures are all kernels that move a head before their first write (`[>}.]`, `[}>.]` and their 6-instruction variants), so they copy everything except their own first byte `[`; the copy lacks the loop's start. They are copiers but not replicators.
+- **Mirror programs (descriptive):** a program with one standard kernel at the start and one reversed at the end is self-sufficient in **2763 of 3025** combinations. The shortest standard-rule replicator found here has **10** instructions; under the counterfactual, **5**.
+- Controls: hand-written replicator and all 9 E-42 emergent replicators self-sufficient; 0 of 1000 random programs; the constant writer `[{.]` not.
+- Copier counts with fresh filler: 52 standard (E-55: 55), 133 counterfactual (E-55: 139): a few kernels depend on their filler.
+- Figure: `docs/assets/report/e57-counterfactual-jumps.png`.
+
+**Interpretation:** under the counterfactual rule, replicators appear one to two orders of magnitude sooner, at two soup sizes. The mechanism is supported, though the pre-registered threshold failed: no backward copier replicates by itself, so under the standard rule the smallest replicator needs two kernels (10 instructions), against 5 under the counterfactual. Five extra specific instructions are far less likely to be assembled by chance, which fits the size of the speed-up; we have not measured that link directly. Caveat from E-56's pre-registration still applies: the counterfactual changes everything a program can do, so other differences may contribute. The standard comparison is from earlier sessions (different seeds, same code path).
+
+**Lesson:** "how easily does life arise" can hinge on one arbitrary detail of the rule: here, where one pointer starts decides whether the simplest replicator needs 5 instructions or 10, and changes the waiting time by over 10×.
+
+---
+
+## J-056 · 2026-11-08 · E-56: under the counterfactual rule, soups evolve forward copiers, and jump within 1,000 rounds
+
+**Question (pre-registered, `docs/data/e56-preregistration.md`, commit `ee34b8c`):** E-55 showed that moving head1's start from byte 0 to byte 64 turns every short copier from backward to forward. Does that hold for what a soup actually evolves?
+
+**Ran:** E-56, `scripts/bff_counterfactual.py --workers 4`, ~50 min per soup. 4 soups of 2^16 programs (seeds 5600–5603) under the counterfactual interpreter (`epoch_h` in `scripts/bff_kernels.c`), up to 24,000 rounds, D-045 jump criterion, then to T + 2,000; the 40 most common distinct programs classified with E-55's copier rule under the counterfactual interpreter. Check made afterwards (J-057 run): the same interpreter with head1 at 0 reproduces the standard soup bit for bit (4096 programs, 300 rounds), so the code path is the soup's.
+
+**Found:**
+- **Primary: pass. In all 4 soups, all 40 of the 40 most common distinct programs are forward copiers (160/160, 0 reverse).**
+- **Secondary (descriptive): all 4 soups jumped, at rounds 250, 250, 250 and 1,000.** Standard 2^16 soups: 5 of 10 in E-50 by 24,000 rounds (first at 11,750); E-54's 12 new soups: 4 jumped (750 to 22,250). After the jump the counterfactual soups run ~7,000 steps per pair (standard post-jump soups: ~4,500–8,000).
+- Comparison arm (standard rule, E-54's jumped soups at T + 2,000): pending E-54.
+
+**Interpretation:** what the soups evolve follows the rule's simplest copiers: change where one head starts and the replicators that take over copy forwards. The jump is also far faster, more than an order of magnitude at this size, a much larger change than the 2.5× more copiers among short kernels would suggest. As pre-registered, a different jump rate cannot be attributed to orientation alone (the change affects everything a program can do). E-57 tests whether the speed-up holds at 2^14 and one mechanism: a forward copier's copy is itself, a backward copier's copy is its mirror, which usually cannot copy.
+
+**Lesson:** a one-detail counterfactual of the rule changed not only the form of the replicators but how quickly they appear; rates measured in one rule say little about "how easy is life" in general.
+
+---
+
 ## J-055 · 2026-11-08 · E-55: replicators copy backwards because the heads wrap around the tape
 
 **Question (pre-registered, `docs/data/e55-preregistration.md`):** all 9 replicators that emerged in our soups copy themselves backwards (J-046). Why? Hypothesis written before the census: both heads start at byte 0, so one `{` (or `<`) puts a head at byte 127, the partner's last byte, and a 5-instruction loop such as `[{.>]` then copies the program into its partner in reverse. A forward copy needs a head 64 cells ahead, which takes 64 moves or a counting loop (the hand-written replicator spends 27 bytes on it). So backward copiers are far easier to stumble on.
