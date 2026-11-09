@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-069 · 2026-11-09 · E-67: no parasites further down the ranking either
+
+**Question (pre-registered, `docs/data/e67-preregistration.md`, commit `543b2b8`):** E-66 found no parasites among the 40 most common programs. Are there any among rarer ones? Final snapshot of each of the 7 jumped E-54 soups; 20 random exact programs per soup in each of three strata (6–40 copies, 2–5 copies, single), 420 in all; replicator test repeated 10×, parasite test (with the self-copy check) on those that never grew.
+
+**Ran:** `scripts/bff_parasites_rare.py --workers 11` (10 min).
+
+**Found:**
+- **P1 pass: 0 parasites in 420 programs.**
+- **P2 pass:** self-copiers 99.3% (6–40 copies), 96.4% (2–5), 69.3% (singletons).
+- **P3:** the 49 non-self-copiers are 29 "not copied" and 20 "context self-copiers" (copy themselves into any partner whose code never runs, die when running second; 17 of them singletons). Non-self-copiers are unrelated to the soup's common programs (median 55–62 of 64 bytes differ from the nearest top-40 program, either orientation); self-copiers are closer (median 22–34).
+
+**Interpretation:** across all abundance levels we sampled, these soups contain self-copiers, newly arisen unrelated programs that nothing copies, and a few unrelated programs that copy themselves but cannot hold their ground; no program is maintained by others' copying. Parasitism, the classic first step of ecological complexity in Tierra-like systems, does not appear in standard BFF at 2^16 programs over 20,000 rounds after the jump. One plausible reason (not tested): BFF replicators copy a fixed half-tape window regardless of content, so a parasite would have to be copied by a host that runs *second*, which in BFF happens only when the first program's code falls through into the host (as in our hand-made parasite). Evidence: pre-registered negative, 7 soups, final snapshots only.
+
+**Lesson:** after fixing the test (J-068), the negative held up in a second, independent sample.
+
+**Next:** the instruction-set / tape-length family (does a richer language allow parasites or other ecology?).
+
+---
+
 ## J-068 · 2026-11-09 · E-66: almost every common program in a jumped soup copies itself; the "non-replicators" were bad luck in our test, and no parasites were found
 
 **Question (pre-registered, `docs/data/e66-preregistration.md`, commit `4807796`):** E-54 found that only 22–78% of the 40 most common programs in jumped soups pass the replicator test. Are the others **parasites**, copied by the replicators without copying themselves? A pilot for the new parasite detector (D-048) showed that the replicator test gives different verdicts for the same program with different seeds, so part A first repeats it 10 times on all 2,800 E-54 programs; part B runs the parasite test on programs whose copies never grew.
