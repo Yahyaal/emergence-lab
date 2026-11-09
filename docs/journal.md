@@ -12,6 +12,27 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-067 · 2026-11-09 · E-65: with 7 new rules, the predictor holds rule by rule; the graded version is not established
+
+**Question (pre-registered, `docs/data/e65-preregistration.md`, commit `febabe2`):** E-64's F arm rested on 3 rules. In 768 new random rules of the two-head-start family, do **all** F rules make replicators quickly (≥ 75% of soups, and ≥ 2 of 4 soups in ≥ 75% of F rules), and C rules not? Secondary: does the number of self-sufficient short copiers predict how soon (Spearman with median jump round)?
+
+**Ran:** `scripts/bff_twoheads2.py --workers 10` (census 1,809 s; 44 soups of 2^14, ~55 min; D-047 exactly as E-62–E-64). Figure: `scripts/e65_figure.py` → `docs/assets/report/e65-twoheads.png`.
+
+**Found:**
+- **Census:** 7 F rules, 118 C, 643 none. Every self-sufficient copier copies forwards.
+- **Primary: pass.** F rules **26 of 28** soups (every rule ≥ 3 of 4: 4/4 in five rules, 3/4 in two); C rules (4 drawn at random) **1 of 16**; Fisher p = 9 × 10⁻⁹. All 26 F jumps end in exact forward copiers (shift 0; 20–40 of 40 programs). The one C jump (g = 11, h = 60, round 9,000) also ends in exact forward copiers: a longer copier evolved.
+- **Secondary: not significant.** ρ = −0.51 between self-sufficient copiers and median jump round, one-sided p = 0.12 (7 rules). The two slowest F rules have 1 and 80 such copiers, so the count is at best a weak guide. We gave it a 40% chance.
+- **Pooled E-64 + E-65 (1,024 random rules):** F rules 36 of 40 soups (10 rules), C rules 2 of 32 (8 rules).
+- **Descriptive, post hoc:** all 10 F rules of the 1,024 have pointers about half a tape apart (h − g = 60–68 mod 128) **and** pointer 1 within a few bytes of a half boundary (g ∈ 2, 60–67, 124–126). Of 76 rules with that offset, the other 66 are C (8) or have no short copier (58). So in this family "F" amounts to: the two pointers start at matching positions in the two halves, give or take a few bytes, which lets a short loop copy one half onto the other.
+
+**Interpretation:** the predictor now has two pre-registered out-of-sample confirmations in the two-head family (E-64, E-65) on top of the one-pointer family (E-60–E-63): 10 of 10 F rules make replicators in most soups, 2 of 32 C-rule soups do. It is binary: whether a rule allows a short self-copying copier matters; how many it allows was not shown to matter. The geometric reading (aligned pointers in the two halves) is post hoc and specific to this family. Evidence: pre-registered replication; still one language, 2^14 soups.
+
+**Lesson:** a replication designed to include every F rule found, not a sample of 3, closed the main weakness of E-64; the graded hypothesis was rightly kept secondary.
+
+**Next:** a family that changes the instruction set or tape length, where the geometry is different; parasites in long soups (J-066).
+
+---
+
 ## J-066 · 2026-11-09 · E-54: seven long-running soups, 20,000 rounds after the jump: later replicators are still not fitter
 
 **Question (pre-registered, `docs/data/e54-preregistration.md`, commit `2601c48`; analysis script `10d2e86` written before the run finished):** with 3 soups and 10,000 rounds, later replicators were not reliably fitter than earlier ones (E-48, E-49, E-51, E-53). With more jumped soups (2^16 programs) and a 16,000-round gap, is there an advantage, measured with the kin-free invasion assay (D-044)?
