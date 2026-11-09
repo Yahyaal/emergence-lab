@@ -12,7 +12,8 @@
                    non-copier, copyall/noexec deceptive, repeat-assay null
 * parasite detector (program_parasites, D-048): hand-made parasite of the hand-written replicator
                    (positive), inert and random programs (negative), copyall rule and a by-product
-                   made from many distinct "makers" (deceptive), common programs of an early soup (null)
+                   made from many distinct "makers" and a soup program that copies
+                   itself but cannot grow alone (deceptive), common programs of an early soup (null)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -172,9 +173,15 @@ def run(check) -> None:
             ("parasite deceptive: copyall rule copies every first program -> unspecific copying",
              prng.integers(0, 256, 64, dtype=np.uint8), PP.host_pool(prng), "copyall", "unspecific copying"),
             ("parasite deceptive: product made from many distinct makers (copied too, but mostly de novo) -> by-product",
-             z, zpool, "bff", "by-product")):
-        r = PP.parasite_test(x, pool, np.random.default_rng(4), mode=mode)
-        check(name, r["verdict"] == want, pbrief(r))
+             z, zpool, "bff", "by-product"),
+            ("parasite deceptive: soup program that copies itself but dies when it runs second (E-66) -> context self-copier",
+             np.frombuffer(PP.CONTEXT_COPIER, np.uint8).copy(), prng.integers(0, 256, (1024, 64), dtype=np.uint8), "bff",
+             "context self-copier")):
+        # under copyall the repeated growth test drifts past its threshold now and then ("one generation"),
+        # so the copying stage is checked on its own there (alone given)
+        r = PP.parasite_test(x, pool, np.random.default_rng(4), mode=mode,
+                             alone="no replication" if mode == "copyall" else None)
+        check(name, r["verdict"] == want, pbrief(r) + f", alone {r['alone']}, self {r['self_rate']}")
     s = B.Soup(n=2048, seed=7)
     for _ in range(50):
         s.epoch()

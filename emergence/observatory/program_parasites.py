@@ -16,14 +16,19 @@ partner pool P (the soup snapshot it came from):
 * specificity: the same for S byte-scrambled versions of x (same bytes, other order). Scrambles keep
   the composition, so a pool that copies whatever runs first (a "permissive" host, or the copyall
   rule) copies them too. One-sided Fisher test of x's copies against the pooled scramble copies.
+* self-copy check (added after E-66, J-068): x runs first against M "halting" partners (an unmatched
+  ']' then inert bytes, so the partner's code never runs; `program_fitness.background`). If x still
+  copies itself into them at rate >= Q_MIN, x is a copier, not a parasite: it fails the alone test only
+  because random partners destroy it when it runs second ("context self-copier"). E-66 found two such
+  programs that the first version called parasites.
 * de novo production b: random pairs drawn from P without x-like programs; b = x-like outputs per
   pair. A by-product is made from other templates; a parasite mostly from its own.
 * templated share F = c q / (c q + (n / 2) b), with c the number of x-like programs in P and n = |P|:
   of the x-like programs made per epoch (mean field), the share copied from an existing x.
 
-Verdicts: "self-copier" (alone test not "no replication"), "parasite" (q >= Q_MIN, Fisher p < ALPHA,
-F >= F_MIN), "by-product" (q >= Q_MIN and specific, but F < F_MIN), "unspecific copying" (q >= Q_MIN,
-not specific), "not copied" (q < Q_MIN).
+Verdicts, in this order: "self-copier" (alone test not "no replication"), "not copied" (q < Q_MIN),
+"unspecific copying" (not specific), "context self-copier" (self-copy rate >= Q_MIN), "by-product"
+(F < F_MIN), "parasite".
 
 Also reported: the hosts, i.e. which partners made the copies (indices into P), so callers can ask
 whether they are verified replicators.
@@ -34,7 +39,8 @@ cells; when it runs first, the instruction pointer runs on into the replicator, 
 partner over itself. Negatives: an inert program and a random program in the same kind of pool; deceptive (a) the copyall rule (every first program is copied:
 unspecific), (b) `byproduct_pool()` (inert "makers" that share the parasite's first 25 bytes and have
 random tails: the host turns each into the same product Z, so Z is copied but mostly made de novo);
-selection-aware null: the most common programs of an early BFF soup (no replicators) tested the same
+(c) `CONTEXT_COPIER` among random programs
+(copies itself, fails the growth test: context self-copier); selection-aware null: the most common programs of an early BFF soup (no replicators) tested the same
 way give no parasite.
 """
 from __future__ import annotations
@@ -113,6 +119,9 @@ def parasite_test(x: np.ndarray, pool: np.ndarray, rng: np.random.Generator, mod
         sc, st = sc + r["copies"], st + r["trials"]
     p = float(fisher_exact([[t["copies"], t["trials"] - t["copies"]], [sc, st - sc]], alternative="greater")[1]) \
         if t["trials"] else 1.0
+    from .program_fitness import background
+    halt = background(rng, m, len(x), "halting")
+    self_copies = sum(bool(like(pair(x, h, mode)[1], x)[0]) for h in halt)
     pr = production_rate(x, pool, rng, m_prod, mode)
     c, n = int(like(pool, x).sum()), len(pool)
     made_t, made_d = c * t["q"], n / 2 * pr["b"]
@@ -123,20 +132,23 @@ def parasite_test(x: np.ndarray, pool: np.ndarray, rng: np.random.Generator, mod
         verdict = "not copied"
     elif p >= ALPHA:
         verdict = "unspecific copying"
+    elif self_copies / m >= Q_MIN:
+        verdict = "context self-copier"
     elif F < F_MIN:
         verdict = "by-product"
     else:
         verdict = "parasite"
     return {"verdict": verdict, "alone": alone, "q": round(t["q"], 4), "copies": t["copies"], "trials": t["trials"],
             "survival": None if t["survival"] is None else round(t["survival"], 4),
-            "q_scrambled": round(sc / st, 4) if st else 0.0, "p": p, "b": round(pr["b"], 5), "count": c,
+            "q_scrambled": round(sc / st, 4) if st else 0.0, "p": p, "self_rate": round(self_copies / m, 4), "b": round(pr["b"], 5), "count": c,
             "templated_share": round(F, 4), "hosts": t["hosts"]}
 
 
 def alone_test(x: np.ndarray, rng: np.random.Generator, repeats: int = 10, mode: str = "bff") -> dict:
     """The replicator test repeated with independent seeds (E-66: one test from K = 8 copies often loses
     every copy by chance, so a single "no replication" does not mean the program cannot copy itself).
-    Verdict "no replication" only if generation 1 never grew in `repeats` tests."""
+    Verdict "no replication" only if generation 1 never grew in `repeats` tests. Valid only where random
+    programs cannot drift to 8x their start: under the copyall rule some repeats pass by drift alone."""
     vs, g1 = [], 0
     for _ in range(repeats):
         r = RP.replication_test(np.asarray(x, np.uint8), np.random.default_rng(int(rng.integers(2 ** 63))), mode=mode)
@@ -147,6 +159,13 @@ def alone_test(x: np.ndarray, rng: np.random.Generator, repeats: int = 10, mode:
 
 
 # --- controls ---------------------------------------------------------------------------------
+
+# A program from soup 5401 at round 16,250 (E-66): it copies itself into any partner when it runs first,
+# but is destroyed whenever it runs second, so alone among random programs its copies never grow (0 of
+# 10 replicator tests). The first version of this detector called it a parasite (deceptive control).
+CONTEXT_COPIER = bytes.fromhex(
+    "000038383800383 8b92c2222b7d4000c0c5394314 6c100003c5b2c3c7d1eb3646d0f50e95d7d3c2c5b0fa25a3c2c04e349ee55bc14b900872ce7000000000000"
+    .replace(" ", ""))
 
 def hand_parasite() -> np.ndarray:
     """Inert program with the hand-written replicator's counter cells (64, 1) at bytes 1-2. Run first
