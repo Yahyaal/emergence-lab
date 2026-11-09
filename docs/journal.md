@@ -12,6 +12,101 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-059 · 2026-11-08 · E-59: confirmed with fresh soups: backward-copier rule 2 of 16, forward-copier rule 8 of 8
+
+**Question (pre-registered, `docs/data/e59-preregistration.md`, commit `628ec53`):** E-58's conclusion rested on a corrected reading of a criterion that misfired. Confirmation with fresh seeds and the D-046 criterion fixed in advance (HOE ≥ 1.0 at 3 checkpoints **and** a copier under the soup's own interpreter; HOE-only crossings keep running).
+
+**Ran:** E-59, `scripts/bff_orient_confirm.py --workers 4`, 39 min. 16 soups of 2^14 with head1 = 127 (seeds 5900–5915), 8 with head1 = 64 (5920–5927), up to 16,000 rounds; jumped soups to T + 1,000.
+
+**Found:**
+- **Primary: pass. head1 = 127: 2 of 16 jumped (T = 3,750, 5,000); head1 = 64: 8 of 8 (T = 250–3,750, median 1,000). One-sided Fisher p = 6 × 10⁻⁵.**
+- Secondary orientation: pass (both head1 = 127 jumps 40/40 backward copiers; all 8 head1 = 64 jumps forward: 309 of 320 programs, 0 backward, 11 not copiers).
+- Secondary steps per pair > 3,000 at T + 1,000: **fail in one soup**: 5904 (head1 = 127) peaked at 4,096 and was at 2,786 at T + 1,000; all 40 common programs are copiers, so it is a real jump; the 3,000 line was a guess.
+- The new criterion did its job: 7 head1 = 127 soups had HOE-only crossings (14 checks in all) with no copier and kept running; 5 of them never jumped. In soup 5915 HOE hovered near 1.0 from round 4,500 and the burst (steps 363 → 5,606) came at 5,750, so its T (5,000) is early by ~750 rounds.
+- **Pooled with E-57/E-58 (2^14, by 16,000 rounds): head1 = 64: 16 of 16; head1 = 127: 3 of 24; standard (E-40): 0 of 12.** Figure updated.
+
+**Interpretation:** confirmed. Two rules with about as many short copiers (133 vs 127) differ by more than 10× in how often replicators arise, and the difference follows the direction of copying: forward copiers are replicators by themselves, backward ones need a mirror partner. Strongest claim we can make: in BFF-like rules, whether the simplest copiers are self-sufficient sets the waiting time for replicators. Still one soup size and three rules.
+
+**Lesson:** pre-registering the fixed criterion and repeating with fresh seeds turned a "rescued" result into a clean one.
+
+---
+
+## J-058 · 2026-11-08 · E-58: a matched control rule with backward copiers is slow again, so orientation, not perturbation, sets the speed (as registered: fail)
+
+**Question (pre-registered, `docs/data/e58-preregistration.md`, commit `cf061d4`):** E-56/E-57's speed-up could come from the mirror requirement (M: backward copiers need a mirror partner) or from changing the rule at all (P). Control rule: head1 starts at byte **127**. Pilot before registering (k = 5 only): 6 shortest copiers, all backward, as many as the fast head1 = 64 rule. (M) predicts slow, (P) gives no reason for slow.
+
+**Ran:** E-58, `scripts/bff_h127.py`: census (12 s) and 8 soups of 2^14 (seeds 5800–5807, 3 workers, ~25 min), settings as E-57. Follow-up, **not pre-registered**: the 4 soups stopped early on an HOE-only crossing were replayed deterministically from scratch to 16,000 rounds with the HOE stop disabled (`--part rerun`, ~15 min).
+
+**Found:**
+- **Census (primary B): pass.** 127 copiers of 5–6 instructions, **all backward**, shortest 5 instructions; **0 of 127 self-sufficient** (standard 0 of 52; head1 = 64: 97 of 133). So this rule has about as many short copiers as the fast rule, but none replicates alone.
+- **Soups (primary A), as registered: fail.** 5 of 8 met the HOE criterion (≥ 1.0 at 3 checkpoints), p = 0.10 vs E-57's 8 of 8; secondary "fail" (4 of the 5 had no copier).
+- **But 4 of those 5 were not jumps.** Under this rule the background HOE sits near 0.9 (standard: 0.3–0.5), and it drifted over 1.0. Those soups had **no copier** among their 40 most common programs and steps per pair stayed ≤ 543 (every real jump so far: 6,000–8,000). Replayed to 16,000 rounds: still **no copier**, steps ≤ 543.
+- **One real jump:** soup 5806 at round **11,500** (HOE 0.58 → 4.41 in one checkpoint, steps 518 → 6,577), **40 of 40 common programs backward copiers**.
+- **Reading with D-045 in full** (a jump needs a replicator; written before E-58, but the pre-registration only named the HOE part): **1 of 8 jumped by 16,000 rounds, vs 8 of 8 at head1 = 64: p = 0.0007**; with E-40's standard 0 of 12. New D-046 makes this the rule for non-standard rules.
+- Figure updated: `docs/assets/report/e57-counterfactual-jumps.png` (five arms; three census bars).
+
+**Interpretation:** a rule with as many short copiers as the fast rule, but backward ones, is slow like the standard rule, and the one replicator it made copies backwards. This supports (M), orientation and the mirror requirement, over (P), any change to the rule. The pre-registered test failed on a criterion that turned out not to measure jumps in this rule; the conclusion rests on the corrected reading and should be confirmed with more soups.
+
+**Lesson:** a threshold calibrated in one rule (HOE ≥ 1.0) does not transfer to another; confirm a "jump" with the thing it is supposed to mean (copiers, a burst of execution).
+
+---
+
+## J-057 · 2026-11-08 · E-57: the counterfactual speed-up holds at 2^14 (8 of 8 vs 0 of 12); backward copiers are never replicators on their own
+
+**Question (pre-registered, `docs/data/e57-preregistration.md`, commit `0946633`):** (A) is E-56's fast jump under the counterfactual rule real, at another soup size? (B) a mechanism: a forward copier's copy is itself, so any forward copier replicates; a backward copier's copy is its mirror, in which the copy loop is reversed and no longer a loop, so a backward copier only replicates if it also carries a copier facing the other way (two kernels).
+
+**Ran:** E-57, `scripts/bff_mirror.py`. (A) `--part soups --workers 3`, 8 counterfactual soups of 2^14 (seeds 5700–5707), up to 16,000 rounds, D-045 criterion, to T + 1,000, ~16 min in all. Before the run: the counterfactual interpreter with head1 at 0 reproduces the standard soup bit for bit (4096 programs, 300 rounds). (B) `--part census`, 29 s: the 5–6-instruction copier kernels of E-55 rebuilt with fresh filler; a copier is *self-sufficient* if in ≥ 3 of 4 runs the copy it leaves is itself a copier under the same rule. Added `run_tape` to `scripts/bff_kernels.c` (exposes the existing `run`; nothing else changed).
+
+**Found:**
+- **Primary A: pass. 8 of 8 counterfactual soups jumped, at rounds 250–1,750 (median 500); standard rule at this size (E-40): 0 of 12 by 16,000. One-sided Fisher p = 8 × 10⁻⁶.** Secondary: forward copiers in every jumped soup (311 of the 320 most common programs forward, 0 reverse, 9 not copiers).
+- **Primary B: fail as pre-registered.** Standard: **0 of 52** short copiers self-sufficient (prediction ≤ 5%: met). Counterfactual: **97 of 133 (73%)**, below the pre-registered 90%. Looked at after the result: the 36 failures are all kernels that move a head before their first write (`[>}.]`, `[}>.]` and their 6-instruction variants), so they copy everything except their own first byte `[`; the copy lacks the loop's start. They are copiers but not replicators.
+- **Mirror programs (descriptive):** a program with one standard kernel at the start and one reversed at the end is self-sufficient in **2763 of 3025** combinations. The shortest standard-rule replicator found here has **10** instructions; under the counterfactual, **5**.
+- Controls: hand-written replicator and all 9 E-42 emergent replicators self-sufficient; 0 of 1000 random programs; the constant writer `[{.]` not.
+- Copier counts with fresh filler: 52 standard (E-55: 55), 133 counterfactual (E-55: 139): a few kernels depend on their filler.
+- Figure: `docs/assets/report/e57-counterfactual-jumps.png`.
+
+**Interpretation:** under the counterfactual rule, replicators appear one to two orders of magnitude sooner, at two soup sizes. The mechanism is supported, though the pre-registered threshold failed: no backward copier replicates by itself, so under the standard rule the smallest replicator needs two kernels (10 instructions), against 5 under the counterfactual. Five extra specific instructions are far less likely to be assembled by chance, which fits the size of the speed-up; we have not measured that link directly. Caveat from E-56's pre-registration still applies: the counterfactual changes everything a program can do, so other differences may contribute. The standard comparison is from earlier sessions (different seeds, same code path).
+
+**Lesson:** "how easily does life arise" can hinge on one arbitrary detail of the rule: here, where one pointer starts decides whether the simplest replicator needs 5 instructions or 10, and changes the waiting time by over 10×.
+
+---
+
+## J-056 · 2026-11-08 · E-56: under the counterfactual rule, soups evolve forward copiers, and jump within 1,000 rounds
+
+**Question (pre-registered, `docs/data/e56-preregistration.md`, commit `ee34b8c`):** E-55 showed that moving head1's start from byte 0 to byte 64 turns every short copier from backward to forward. Does that hold for what a soup actually evolves?
+
+**Ran:** E-56, `scripts/bff_counterfactual.py --workers 4`, ~50 min per soup. 4 soups of 2^16 programs (seeds 5600–5603) under the counterfactual interpreter (`epoch_h` in `scripts/bff_kernels.c`), up to 24,000 rounds, D-045 jump criterion, then to T + 2,000; the 40 most common distinct programs classified with E-55's copier rule under the counterfactual interpreter. Check made afterwards (J-057 run): the same interpreter with head1 at 0 reproduces the standard soup bit for bit (4096 programs, 300 rounds), so the code path is the soup's.
+
+**Found:**
+- **Primary: pass. In all 4 soups, all 40 of the 40 most common distinct programs are forward copiers (160/160, 0 reverse).**
+- **Secondary (descriptive): all 4 soups jumped, at rounds 250, 250, 250 and 1,000.** Standard 2^16 soups: 5 of 10 in E-50 by 24,000 rounds (first at 11,750); E-54's 12 new soups: 4 jumped (750 to 22,250). After the jump the counterfactual soups run ~7,000 steps per pair (standard post-jump soups: ~4,500–8,000).
+- **Comparison arm (standard rule; E-54's 7 jumped soups at T + 2,000, `scripts/e56_comparison.py`, run later the same evening): 247 reverse copiers, 0 forward**, 33 not copiers (32 of them in soup 5401). As E-55 predicted.
+
+**Interpretation:** what the soups evolve follows the rule's simplest copiers: change where one head starts and the replicators that take over copy forwards. The jump is also far faster, more than an order of magnitude at this size, a much larger change than the 2.5× more copiers among short kernels would suggest. As pre-registered, a different jump rate cannot be attributed to orientation alone (the change affects everything a program can do). E-57 tests whether the speed-up holds at 2^14 and one mechanism: a forward copier's copy is itself, a backward copier's copy is its mirror, which usually cannot copy.
+
+**Lesson:** a one-detail counterfactual of the rule changed not only the form of the replicators but how quickly they appear; rates measured in one rule say little about "how easy is life" in general.
+
+---
+
+## J-055 · 2026-11-08 · E-55: replicators copy backwards because the heads wrap around the tape
+
+**Question (pre-registered, `docs/data/e55-preregistration.md`):** all 9 replicators that emerged in our soups copy themselves backwards (J-046). Why? Hypothesis written before the census: both heads start at byte 0, so one `{` (or `<`) puts a head at byte 127, the partner's last byte, and a 5-instruction loop such as `[{.>]` then copies the program into its partner in reverse. A forward copy needs a head 64 cells ahead, which takes 64 moves or a counting loop (the hand-written replicator spends 27 bytes on it). So backward copiers are far easier to stumble on.
+
+**Ran:** E-55, `scripts/bff_kernels.py` (its own copy of the interpreter in `scripts/bff_kernels.c`, with head1's start as a parameter; the soup code is untouched), 2 workers, 21 s. Every kernel of 1–6 instructions (1,111,110) at the start of a 64-byte program padded with random non-instruction filler, run first in a pair with random partners; a copier must leave its partner equal to itself (forward) or to its reverse (≥ 60 of 64 bytes) and stay intact, with 4 of 4 partners. Two physics: the standard rule and a counterfactual in which head1 starts at byte 64. The pre-registration was written before the census but committed together with the results (same session, ~20 minutes).
+
+**Found:**
+- **Primary: standard rule: 55 reverse copiers, 0 forward; counterfactual: 139 forward, 0 reverse. Prediction met in both directions.** The shortest copiers have 5 instructions in both physics. Standard: `[{.>]` (head1 wraps to 127 and writes downwards) and `[<,}]` (head0 wraps to 127 and pulls bytes into the partner); the 6-instruction ones are these with one extra instruction. Counterfactual: `[.>}]`, `[.}>]`, `[>}.]`, `[}>.]`, `[<{,]`, `[{<,]`.
+- Filler that may contain zero bytes (k ≤ 5): the same kernels, same counts.
+- Controls: the hand-written replicator is classified forward; all 9 E-42 emergent replicators reverse; 1000 random programs none; a constant writer `[{.]` (fills its partner with one byte value, then overwrites itself) none; a palindromic copier "both" (not counted as either).
+- **Mechanism trace of the 9 emergent replicators (8 random partners each):** all their writes into the partner are made by a head moving **downwards** (17,752 consecutive downward steps, 0 upward), and in every run the writing head had wrapped below byte 0 before its first write. 7 of 9 write with head0 (`,`, the `[<,}]` kind); the 2 from soup 5006 at 32,000 write with head1 (`.`, the `[{.>]` kind). (Deviation: the pre-registration asked only whether **head1** wraps; after seeing that 7 replicators write with head0, the trace was extended to whichever head writes.)
+- Figure: `docs/assets/report/e55-copy-kernels.png`.
+
+**Interpretation:** the backward copying is explained by the rule, not by anything the soups learned: under the standard rule, every copier of up to 6 instructions is a backward copier, and moving one head's starting point is enough to flip that. The emergent replicators use exactly the two minimal backward mechanisms. This also explains why they are mirror replicators: a backward copy of a backward copier is its reverse, which must itself copy (both forms passed the heredity test, E-42). The census measures how easy the simplest copiers are to reach; it does not trace the soups' actual path to them. Held-out check pending: the orientation of E-54's verified replicators (pre-registered: all reverse).
+
+**Lesson:** a striking regularity in what emerges can be a plain property of the rule; a counterfactual rule that changes one detail is the cheapest way to tell.
+
+---
+
 ## J-054 · 2026-11-08 · E-50: bigger program soups jump sooner, roughly in proportion to their size; two "jumps" were brief spikes
 
 **Question (pre-registered, `docs/data/e50-preregistration.md`, commit `9b31f52`):** does the BFF state transition (the appearance of replicators) become more likely per round in bigger soups? Hypothesis: the origin is a rare event per program interaction, so the rate ∝ N^β with β ≈ 1.

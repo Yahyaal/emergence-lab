@@ -1,0 +1,569 @@
+{
+ "experiment": "E-57",
+ "part": "soups",
+ "summary": {
+  "jumped": 8,
+  "of": 8,
+  "T": {
+   "5700": 750,
+   "5701": 1750,
+   "5702": 500,
+   "5703": 500,
+   "5704": 500,
+   "5705": 500,
+   "5706": 250,
+   "5707": 1000
+  },
+  "reference_E40": {
+   "jumped": 0,
+   "of": 12
+  },
+  "fisher_p": 7.938398031277288e-06,
+  "primary_A": "pass",
+  "secondary_forward": "pass",
+  "orientation": {
+   "5700": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0
+   },
+   "5701": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0
+   },
+   "5702": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0
+   },
+   "5703": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0
+   },
+   "5704": {
+    "forward": 37,
+    "reverse": 0,
+    "both": 0,
+    "none": 3
+   },
+   "5705": {
+    "forward": 34,
+    "reverse": 0,
+    "both": 0,
+    "none": 6
+   },
+   "5706": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0
+   },
+   "5707": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0
+   }
+  }
+ },
+ "results": [
+  {
+   "seed": 5700,
+   "T": 750,
+   "jumped": true,
+   "end": 1750,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 0.296,
+     "steps_per_pair": 634.7
+    },
+    {
+     "epoch": 500,
+     "hoe": 0.329,
+     "steps_per_pair": 597.3
+    },
+    {
+     "epoch": 750,
+     "hoe": 2.119,
+     "steps_per_pair": 184.2
+    },
+    {
+     "epoch": 1000,
+     "hoe": 1.736,
+     "steps_per_pair": 228.6
+    },
+    {
+     "epoch": 1250,
+     "hoe": 4.729,
+     "steps_per_pair": 7429.0
+    },
+    {
+     "epoch": 1500,
+     "hoe": 4.902,
+     "steps_per_pair": 7690.6
+    },
+    {
+     "epoch": 1750,
+     "hoe": 5.049,
+     "steps_per_pair": 7623.4
+    }
+   ],
+   "sec": 263,
+   "orientation": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0,
+    "copiers": [
+     "2e3e5bcf7ddb49558e6f8db62ee92226233e5dd849558ec05f5467e92226233e5d38550a118856bffa2c25ffffbf5426262626bf5488e9222623d15de1ba0a0b",
+     "2e3e5bcf7dd849558ec08dbf2ee9b326233e5dd849558ec008062ee9550a11ff550a11e956bfbfff2dfb11e910bf081a61ffc2e910cf081a6125a22ec9ff0154",
+     "2e3e5bcf7dcd49558ec08d542ee92226233e5dd849558ed18defbd550a11ab5d5de1617d11e956d0212c25ff9f5426262632396125a22dc84bf28db650883301",
+     "2e3e5bcf7df149558eb8af542ee92226233e5dd849558e568d5454550311e9563a072c2525251d5d1b5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d7e5d5dbe5d5d5d2e",
+     "2e545b2e7dd8495512c08d5448e92226233e5dd849550e248de22ece2226238d5dffe0e937bf672c25ffff54e45231772626ff3c073c32fdf3fbedddf1feffff",
+     "2e3e5bcf7db749558efe8d542ee92226233e5dd849558ec08d545455ba4cff0abf07241156013a01ff0725ff54547b542a7caf5ae9972d2e3e5b149cd82e2e3e",
+     "2e2ec020542ee92e262ecc2e072eff2e112ee92ebf2e3e2ee12e0a2ee92e2f2e2e2ee82e6de6fd2ec2d72e2e2e5bd8ca7dd849558ec08d542ed72226233e5db7",
+     "2e3e5bcf7dd8b1558ec08d542ee922e2143e5dd849de8e1a8d54545423e1e1550abf011111e9070a11e956c6072c25ffff545454bf541a542554c9545d54c84e",
+     "2e2e3e5bcf7dd849688ec08d542ebaaf9c233e5dd849558e31b5e9e9225559e9e9564b3e55e05ed00fdfc83ed8cf2e23c03ee0d02e3e5bcf7dd849558ec08d54",
+     "2e2ec02e25e2e92e262ecc2e072effd0112ee92ebf2e3e2ee12e0a2ee92e2f2e2e2eb52e6d2efd2ec22e2e2e2e5bd8d87d9f49768ec08d542ee92226233e5de1"
+    ]
+   }
+  },
+  {
+   "seed": 5701,
+   "T": 1750,
+   "jumped": true,
+   "end": 2750,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 0.297,
+     "steps_per_pair": 603.7
+    },
+    {
+     "epoch": 500,
+     "hoe": 0.345,
+     "steps_per_pair": 619.0
+    },
+    {
+     "epoch": 750,
+     "hoe": 0.336,
+     "steps_per_pair": 616.0
+    },
+    {
+     "epoch": 1000,
+     "hoe": 0.297,
+     "steps_per_pair": 570.8
+    },
+    {
+     "epoch": 1250,
+     "hoe": 0.25,
+     "steps_per_pair": 541.4
+    },
+    {
+     "epoch": 1500,
+     "hoe": 0.218,
+     "steps_per_pair": 532.6
+    },
+    {
+     "epoch": 1750,
+     "hoe": 4.207,
+     "steps_per_pair": 596.3
+    },
+    {
+     "epoch": 2000,
+     "hoe": 5.325,
+     "steps_per_pair": 6515.9
+    },
+    {
+     "epoch": 2250,
+     "hoe": 5.48,
+     "steps_per_pair": 7023.1
+    },
+    {
+     "epoch": 2500,
+     "hoe": 5.581,
+     "steps_per_pair": 7376.4
+    },
+    {
+     "epoch": 2750,
+     "hoe": 5.693,
+     "steps_per_pair": 7726.3
+    }
+   ],
+   "sec": 381,
+   "orientation": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0,
+    "copiers": [
+     "2eff377cffb95166f60823fad5e2d99a5b14ae521a050f912c7846df2c6eda0939ca06f23cbf1b017efa7b58cc05084586b9740a0c906b322f6720bdff2c5d2e",
+     "2efed12c23788546c3df5b2c2c3c1b7e7bc8db0f0809ca2c59390c46ac5f2f2c5d06feda2c8d2f5f20ae075cae0f91daa6087b740a0c2cac452f0ac9322c012c",
+     "2efef62c2378d546c3485b2c2c3c1b7e7bda350b5109ca1b59390c46de5f2f2c5d06cb762cf21cfd20ae075cae0f91da0bda7bb90a2b2c8d320132c13298302e",
+     "2e91f62ce278c88ec3df5b3f2c3ce37e7bdadb0f0809ca2c74390c45ac5f2f2c5d06feda2cf22f397c3c18050e1bdb8dcacac6740cadb28d322f01c92e32012c",
+     "2e91f62c2378d546c3df5b2c2c3c1b7e7bdadb0f0809ca2cca390c8cac5f2f0c5d063fda2cf22f5f7c3c470551f9dbbfcaca74740cfbacacd02fd2c9c9f33905",
+     "2e99c92eff377cff18545128f61223fad5e2c3b35b274447202091ff6cf5df2c6eda092f5f061bf2013c94017beadb01082c45cab90c0aa78e01326e5d2b0128",
+     "2e91f62c2378d546c3df5be02c3c1b7e7bdadb0fb2b7ca2c74390c46ac5f2f0c5d063f4c95f22f877c3c180551f9dbbfcaca74740cfbacacd02fd2c9c9f33905",
+     "2e2c2c186651150a1223fad5e2ec9a5b2ee5b965200f912c78eddf2c6eda09395f2e3c051b7e7efa327b58db05085acab9740a0cec2c2fabe0725dbcdbf0e6b1",
+     "2e91982c2378d546c3df5b2c2c3c1b7e7bdadb0f0809ca2c78390c46ac5f2f2c5d06feda1af22f3904017b01dbcab9d594f00c8eacd6208e322f4ec92cbcf88f",
+     "2e99c92e7f377cff1866fe28f61223fad5e2c39a5b274447202091ff6c46df2c6eda092f5f061bf2013c94cf7b01db01082c45cab90c0aa78e01326e5d2b0128"
+    ]
+   }
+  },
+  {
+   "seed": 5702,
+   "T": 500,
+   "jumped": true,
+   "end": 1500,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 0.485,
+     "steps_per_pair": 624.1
+    },
+    {
+     "epoch": 500,
+     "hoe": 3.878,
+     "steps_per_pair": 713.5
+    },
+    {
+     "epoch": 750,
+     "hoe": 5.318,
+     "steps_per_pair": 7835.3
+    },
+    {
+     "epoch": 1000,
+     "hoe": 5.444,
+     "steps_per_pair": 7870.2
+    },
+    {
+     "epoch": 1250,
+     "hoe": 5.49,
+     "steps_per_pair": 7659.1
+    },
+    {
+     "epoch": 1500,
+     "hoe": 5.512,
+     "steps_per_pair": 7359.9
+    }
+   ],
+   "sec": 347,
+   "orientation": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0,
+    "copiers": [
+     "2ed041db1e26f86c5b591a997be8b01d9f55268c50a1316812687c683c684cf34f2cc89b1740f9e4f688cf876977425de6cbf8fdc107959b988a26ffeaeaeaea",
+     "2ed041142e26f86c5bd21aa37be8b033ff72268c502631d7e1687c683c684c68352cc8621740f9e4f6c5cf876977425de621f8180607ae9b984626572df5ff5d",
+     "2e2e412e2e26f86c5b591a2e7be8b01d63552695503131685c687c683c4dc5744f2cc89b1740f9d0f688cf876977c65de6e30161382d2e2e412e2eff0c2c2c2c",
+     "2e2e412e2e26cb6c5b591a2e7be8b01dff55268c50dda96812147c683c684c684f2cc89b17cdf9e4f688cf876977425de6ff014138912e2e412e28ff0b0f2c2c",
+     "2e2e412e2e26f86c5b591a2e7be8b01d63556e8c503131685c687cf53c4d4c684f2cc89b17aef9e4f6f4cf876977425de6ff0161382d2e35412e2effcf6038ff",
+     "2ece412e2e268b395b591a2e7be8b01d9e18268c5031316812687c683c68e3684f2cc8ca1740f9e4f688e6876977425de6ff0161382d2e2e41b42ea20b8cff2a",
+     "2ed06a2e2e26f86c5b591a3a7bf7b01dff55268c5031316812687c683c684c684f2c889b1740f9e4f6c4cfca6977425de6cbf8fd0607952e988a26b82dff332c",
+     "2ed0412e2e26f86c5bff1a3a7be8971dff55d68c33314268ae6843683c684c684f2cc89b178ef9771e88cf876977655de667f8fd0607959b988a26b8b68eff5d",
+     "2e2e052e2e26f86c5b591a2e7be8f939ff55268c5031316812687c373c684c684f2cc89b1740f946f688cf876977425de6ff0161382d2e35412e2effcf6038ff",
+     "2e2e412e2e26f86c5b591a2e7be8b01d635526c2503131685c687c683c4dc5744f2cc89b17aef9e4f6f4cfc86977425de6ff0161382d2e35412e2effcf6091ff"
+    ]
+   }
+  },
+  {
+   "seed": 5703,
+   "T": 500,
+   "jumped": true,
+   "end": 1500,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 0.391,
+     "steps_per_pair": 612.2
+    },
+    {
+     "epoch": 500,
+     "hoe": 3.319,
+     "steps_per_pair": 557.0
+    },
+    {
+     "epoch": 750,
+     "hoe": 4.915,
+     "steps_per_pair": 3184.6
+    },
+    {
+     "epoch": 1000,
+     "hoe": 5.716,
+     "steps_per_pair": 7600.8
+    },
+    {
+     "epoch": 1250,
+     "hoe": 5.892,
+     "steps_per_pair": 6745.3
+    },
+    {
+     "epoch": 1500,
+     "hoe": 5.974,
+     "steps_per_pair": 5998.4
+    }
+   ],
+   "sec": 275,
+   "orientation": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0,
+    "copiers": [
+     "2eba6c2c3134c8ab4aba9fa197df351d02c3ac4faec65e2e69fb66c92fe23d1aaf5b5b74d8f87be83cef77773939858522932cdbc5322d2c9ea833ce2e115d5d",
+     "2e3243482cc034cd1e57218da164df75f15fc3704f56c6da6059fbc359f4b1c41a335bec74caf87be83c9477699023851d939c7af0322d2c9edf45ced83b5d6c",
+     "2ef15fc3704f56c63a2e5901c3c9f4b1c41a335b6b74dbf87be83cef776939238543492c7af0322d2c9edf45748ad2b45d2e2e2e2e2e2e2e2e2e2e142e57ce5d",
+     "2e2e036c313113e6194a9f0897b067355998ace906ae9cfb69914d662c7f850283af5b8174ca857b803cef776939e985d4222c24f0322d2c17240537062e5d2c",
+     "2e2edd6c31cb09df194a9f0897b067225998ace906ae9cfb69914d662cc085022eaf5b9774ca857b033cef776939238557222c24f032dc2c17240537062e5d2d",
+     "2e3243f22cc090340f57dc8da166bd75f15f1d704f56c6da2e59fbc3c948b1c41a335bfe74caf87be83cef776939cf851d932c7af03222a69edf45ced85d2e32",
+     "2e436c2c313413ab4aba9fa1979e35f102c3ac27aec6892eb8fb66c92fe23d91af5b5b74d8f87be83cef77773939858522932c7ac5322d2c9ea833ce2e225d5d",
+     "2e3243f22cc034cdab57678da164df75f15fc370ed56c6dad259fbc3c9f4b1c41a335bec74caf87be83cff7769398eff1d932c7af073552c9edf45ced85d2e32",
+     "2e3543f22cc034cdcb50198da164df75f15f81704f56ef42175981c30af4ff1a335b5b74749a7be83cefd1ff3939858593937a7a32322c2cdfdfcece2c225d18",
+     "2e57b42c193434ab57baba27a1df75f1f1c3c35e56c6c62e2efbc357c9b1b11a355b5b7474f87be83cef7777392685859393917a3232392cdfdf73cedf225d5d"
+    ]
+   }
+  },
+  {
+   "seed": 5704,
+   "T": 500,
+   "jumped": true,
+   "end": 1500,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 0.382,
+     "steps_per_pair": 652.0
+    },
+    {
+     "epoch": 500,
+     "hoe": 4.181,
+     "steps_per_pair": 208.6
+    },
+    {
+     "epoch": 750,
+     "hoe": 4.98,
+     "steps_per_pair": 6991.6
+    },
+    {
+     "epoch": 1000,
+     "hoe": 5.153,
+     "steps_per_pair": 6567.3
+    },
+    {
+     "epoch": 1250,
+     "hoe": 5.353,
+     "steps_per_pair": 6051.2
+    },
+    {
+     "epoch": 1500,
+     "hoe": 5.423,
+     "steps_per_pair": 5472.2
+    }
+   ],
+   "sec": 297,
+   "orientation": {
+    "forward": 37,
+    "reverse": 0,
+    "both": 0,
+    "none": 3,
+    "copiers": [
+     "2e5cc975ca24e332bb7693769332cab0fe76f4b5aa267cefdac7025b8205712c7bce7c2127ed598bc6c73c9bb52cce5d032cc7273c0dede121e1ffbf2effe02b",
+     "2e89c975ca24e332bb7693845032cab0fe76f498aa26bfefda6c025b82b5fa2c7bce6421d5edd5a177c73cc7b52cce5ded3cc7273c9fede19f67ed29ff2ecb2b",
+     "2e89c9759f24e332bbf593769332cab0d676f49825267cefdac7025b82b5712c7bce6421d9edbf8677c73cc7b52cce5ded53c727329fede1e19f5cfc2effe168",
+     "2e89c975cad5e332082c76243db0fe76f498a5267cefdac7025b82d9716e7bce642127edd58b77c73cc7c32cce5dccce85ce3c9fede19f2eff155eff212ee2ff",
+     "2eda00c700e95b5b000cb500712c007bce64210081edd58b779fc73c5dc7003c1cfa3db81c58df9f00e100e10000005d00ff0000ff0000008c2e000000000000",
+     "2e89c975ca24e332bbf593769332cab02d36f49825267cefdac7025b326a712c7bce64214bedbf7e77c73c33b52cce5ded2cc727329fede1e19f5ced2effe15a",
+     "2e89c975ca24e332082c76243db0fe76f498aa267cefdac7025b82b9716e7bce642127edd58b77c73cc7c32cdd5dcc2c85ce3c9fed7a9f2eff155eff21ff102c",
+     "2e89c975ca24e3a4bb76932493e0cab0fe76f498aa267cef70c7025b82b5542c7bce64216eedd58b77c73cc7592cce5ded3cc7273c9fedd09f2eff2e2ed3f0ff",
+     "2e2e89ce7551247f68bb76935f8ba3e4ca2edf7681f498aae57cda01015b0182b5712c7bce462127edd5be77da3c5db8ce1cc23d320158cf9f01010000000000",
+     "2e89c975ca24e332bbf593769332cab0d68af49825267cefdac7025b82b5712c7bce6421d9edbf8b77c73cc7b52cce5ded2cc7273c9fedc8199f5ced2effe15a"
+    ]
+   }
+  },
+  {
+   "seed": 5705,
+   "T": 500,
+   "jumped": true,
+   "end": 1500,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 0.359,
+     "steps_per_pair": 682.5
+    },
+    {
+     "epoch": 500,
+     "hoe": 5.523,
+     "steps_per_pair": 7303.7
+    },
+    {
+     "epoch": 750,
+     "hoe": 5.747,
+     "steps_per_pair": 7417.6
+    },
+    {
+     "epoch": 1000,
+     "hoe": 5.825,
+     "steps_per_pair": 6607.8
+    },
+    {
+     "epoch": 1250,
+     "hoe": 5.846,
+     "steps_per_pair": 6862.0
+    },
+    {
+     "epoch": 1500,
+     "hoe": 5.902,
+     "steps_per_pair": 6403.4
+    }
+   ],
+   "sec": 361,
+   "orientation": {
+    "forward": 34,
+    "reverse": 0,
+    "both": 0,
+    "none": 6,
+    "copiers": [
+     "2e2e5b2e2c6ced2e9146807280f680f6167b8043f6883c6859f9e2ff2697f92c4c4101f1335a5dfc025c249f365ed35afbdc731ab5ee197f4d931cca4df4ff2e",
+     "2e2e5b2e2c6ce6881db9809e27f68008f67b8043f6c13c3a59f9f9f9f9f9f92c4c4101f1f4805d479952ffce7fbc2daaa64137a7cef25b6c169745b529ffff4a",
+     "2e2e5b2e2c6ced2e91b9809e80f680f6f67b8066f6883c2459f9f999f9f9f92c4c4101f133335d33ed3324f2363363332333733377331933c4331a714d335853",
+     "d22e5b2eb36ced2e91b9807280f680f6f67b8043f6453c6881f9f9ff2697f92c4c4101f1255a5d55ed5c4e9f365ed35a23dc7304b5ee197f4df94feb4da65853",
+     "b62e5b302c6cedbc58b9809e80f680f6f67b9ec9f6883c687ab3f9f9f9f9f92c154101f133335d3371332433b792d3335333734bfb33bf1d4d3380714d33ff56",
+     "2b2d5b016ced2e917f800280f6f67b8043f61f82653c68e859f9f9f9f9f9392c4c4101f13333f5cfebeb63f409539f2cc641a319a21c10ecf54d64a70a95575d",
+     "632e5b2e2c6ca45591b9809e0ff6c2f6f67bc743f6883c6859f9abf9f9f9f92c4c5801f133335dcfc7eb23f42d5342ff9e53a5205c587338a2302eff67012cd3",
+     "2e2e5b2e2c6ced2e91b9809ebef680f6147b804323883c6859f9f9f9f9f9f92c4c410123f48c5d47ed5224ca3687d39b237a732a25c219a34d3a1a583de6582e",
+     "2e745ba62c6c2c2e91b9809e6bf619f6f67b8043f6883c6859f9f9f9f9f9f92c471d01f133335dfded42241b489e3f7f23e4d9c3a90366f4f2f61a584d232e2e",
+     "2e005b002c990091a2800280f6f67b8043f61f9bc63c683d3d0dd7e526975d3167360015d7fa58e19122b893e163a9047a25fecd00b921cbe2109b2e00000000"
+    ]
+   }
+  },
+  {
+   "seed": 5706,
+   "T": 250,
+   "jumped": true,
+   "end": 1250,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 4.983,
+     "steps_per_pair": 6058.7
+    },
+    {
+     "epoch": 500,
+     "hoe": 5.232,
+     "steps_per_pair": 4861.0
+    },
+    {
+     "epoch": 750,
+     "hoe": 5.403,
+     "steps_per_pair": 8039.5
+    },
+    {
+     "epoch": 1000,
+     "hoe": 5.49,
+     "steps_per_pair": 7963.7
+    },
+    {
+     "epoch": 1250,
+     "hoe": 5.581,
+     "steps_per_pair": 7726.7
+    }
+   ],
+   "sec": 426,
+   "orientation": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0,
+    "copiers": [
+     "2b2df598d1ec0ea8498cb8650d8b1f321ff369f2b87f5cd78169193d190319c48a50510a65532f279eb75b7f7b3c2c5de3420b3277932f870eff5da4fed87ddd",
+     "4ef8a8d6ec0e08498cb8650d6f1f321fee64b3b87f5cd70e69933d190319c48a50f10a65532f276ab75b7f7b3c2c5d3c110b3277862f87fffd0a0aff197ca9bd",
+     "5bffa17bde8a3c510a2c532f3c9fe50bce7b772c5d070a0bfe77965f87ff368dccfab57c55a849ec0eb849d55c652b0d3c0a61327719073749870101013f5b01",
+     "5bff2a7bc48a3c510a2c532f3c9fb70b7f7b772c5d070a0bfe771f5f87ff368d13fab57cd9a849ecd6b8f7d55c652b0d3c0a1f3277e715370101540001000db1",
+     "2b2df598d1ec0e7e498cb8650d8b1f3268770ef2b87f5cd78169613d190319f68a50510a65532f277ab75b7f7b3c2c5de30a0b3277932f870eff5da4fed87c2b",
+     "5bff037bc48a3c514e2c532f3c7cb71f7e7b772c5d077b0bfe771f2f0e0c368d13fab57cd9a849d10eb849d546652b0dff0a1f327719a4b849f901e271010200",
+     "5bff037bc48a3c510a2c532f3c9fb7727f7b772c5d070a0bfe771f2f0e0c368d13fab57cd9a849ec0eb849d546652b0dff0a1f327719a465498787e28601b600",
+     "f5a8efec0ea8498cb8650d8b1f321f7749f2b87f5cd70e69193d191b19c4f050510a6553cc27055b5b7f7b3c2c5d3c2b542ccf32d7ae2f873cc1f5b1ff7cf27c",
+     "81f5a8b0ec34a8498ca6650d8b1f32617749f2b8d712d7c569193d190319c45450510a65532f279fb75b147b3c2c5d3c0b3d32771f2f8708fefefe4fffffb27c",
+     "2b2d763fd1ec0ea8568cb865d68b1f32f9776ec3b87f5cd721691904190319c48a50510a65ad2f279fb75b7f7b3c2c5d3c0a0b32771f2f878bfdfe8787fb7201"
+    ]
+   }
+  },
+  {
+   "seed": 5707,
+   "T": 1000,
+   "jumped": true,
+   "end": 2000,
+   "series": [
+    {
+     "epoch": 250,
+     "hoe": 0.425,
+     "steps_per_pair": 663.3
+    },
+    {
+     "epoch": 500,
+     "hoe": 0.431,
+     "steps_per_pair": 672.6
+    },
+    {
+     "epoch": 750,
+     "hoe": 0.784,
+     "steps_per_pair": 707.3
+    },
+    {
+     "epoch": 1000,
+     "hoe": 5.201,
+     "steps_per_pair": 972.2
+    },
+    {
+     "epoch": 1250,
+     "hoe": 5.612,
+     "steps_per_pair": 4876.7
+    },
+    {
+     "epoch": 1500,
+     "hoe": 5.721,
+     "steps_per_pair": 4582.3
+    },
+    {
+     "epoch": 1750,
+     "hoe": 5.873,
+     "steps_per_pair": 4266.6
+    },
+    {
+     "epoch": 2000,
+     "hoe": 5.983,
+     "steps_per_pair": 4113.2
+    }
+   ],
+   "sec": 243,
+   "orientation": {
+    "forward": 40,
+    "reverse": 0,
+    "both": 0,
+    "none": 0,
+    "copiers": [
+     "2e31d4dfae697001fc632ac0300a133f52cba1b5cfb4c3e488a5185b0f503cfa49b1cebbda2f2f7b751db20eac5abab09350b2b4d8babd42ebdb942c2eb61d5d",
+     "2e2f2f822ed02ef7bd632ac01de4133f0ccb82b5cfb4c3e47a74185b16503cfa49b1e3bbda2fdf7b751d600eac5aa6b0937f6fc54c022042ebb2942cbfb6315d",
+     "2ecc2f15d0d08af786632ac0a6f8133f52cbf20ecfb44ee47aa52f5b16503cfa5c52cebada2fdf7b751d600eaca1a6b0937fb275d80220426127942c2eb6b15d",
+     "2ecc2f82d0d08a5686632ac04ce4133f6ecbf2b5cfb4c3a47acc185b16503cfa5c52cebbda2fdf7b751d600eaca1a6b0937fb275d80220426127942c2eb6b15d",
+     "2e2c2f82a3d0be529bae4bc01ddf13a052a0ba12e9b4081bb4b0185b16973cfa49b1f2bbda2fdf7b75f5600efd5aa6b0107f1742d88b2c2eebb2d8c9eb942e5d",
+     "2ee32f822ed038f786632ac070e4133f52cbf2b5cfd4c3e4f098185b16503cfa49b153bbc62fae7b751d600eaca1a6b09399b2d5d8025542eb36042c2eb6f15d",
+     "2e2e2f2e2ed0c5f786632ae61de4133fe9e6f277cfb471e47aa5185bc7503cfa6ab1cebb462fdf7b751d600eac3aa9b0517fb20bd80220f364b5942c2eb65f5d",
+     "2e2e2f2e2ed02ef786632ae61de4133f52cbf277cfb4716c7aa5185b16503cfa6ab11fbb462fdf7b7505600eac3aa6b0517fb2b4d802209c64db942c2eb6315d",
+     "2e2e512c978d35b969c69c6b5143bdcc7fe9fcfdcfb418e445f6185b16d13c4d49b1cebbdafc357bb41d60d4aca1a6b0937fa2b498022042eb3a342c2eb6315d",
+     "2ecc2f82b1ec2eb986632abb1dd4133f52cbf2c1b7b4c3e47aa5185b16503cfa4952cebbda2fdf7be21d6081aca1a6bdc07fb275d8022042613aee2c2ee95d5d"
+    ]
+   }
+  }
+ ],
+ "seconds": 965
+}
