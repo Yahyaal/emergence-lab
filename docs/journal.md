@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-064 · 2026-11-08 · E-63: rules just outside the F′ band are slow: a sharp boundary at the edge of "a copy that copies"
+
+**Question (pre-registered, `docs/data/e63-preregistration.md`, commit `2c9c5fa`):** E-62 found every F′ rule (61–68) makes exact replicators fast under D-047 (28/28). Are rules just outside F′, which still have plenty of short forward copiers (shifted 5–16 bytes) but none whose single copy copies, slow under the same strict criterion?
+
+**Ran:** `scripts/bff_outside.py --workers 10` (837 s). Rules drawn at random from {59, 60, 69–82}: **72, 74, 80, 82**; 4 soups of 2^14 each, plus 4 at h = 64 as a concurrent positive control; D-047 exactly as E-62.
+
+**Found:**
+- **Primary: pass. Outside F′: 1 of 16 soups made real replicators** (rule 72, soup 6300, T = 3,000; 40 of 40 programs exact copiers at the end), against 28 of 28 in F′ rules (E-62); one-sided Fisher p = 7 × 10⁻¹¹. **Control h = 64: 4 of 4** (T = 250, 250, 250, 2,250).
+- The 15 others never had a candidate: 0–1 copiers among 40 after 16,000 rounds, 290–420 steps per pair, although their rules have 110–138 short forward copiers each (E-61 census).
+- Secondary: the one jump outside F′ is exact (shift 0), as predicted: the soup evolved a longer copier that lands its copy at byte 64.
+
+**Interpretation:** across E-60–E-63 the band where soups make replicators fast is exactly the band where a short copier's single copy can copy again (h = 61–68): 32 of 32 soups inside, 1 of 16 just outside (plus 0–1 of 16 in the backward-copier rules tested in E-60 with a weaker criterion). The number of short copiers does not predict it: rules 69–80 have as many as 66–68. What matters is whether the simplest copier's **copy** works, which is a property of the rule computable in seconds. Evidence: a pre-registered prediction about 4 untested rules, with a concurrent control; still one family of rule variants and soups of 2^14.
+
+**Lesson:** after two failed hypotheses (E-61's one-generation test with a weak criterion, E-62's lineages), the simplest rule-level property survived a clean test. The criterion (D-047) mattered as much as the hypothesis.
+
+**Next:** test the same predictor outside the head-start family (e.g. different instruction sets or tape lengths), where the "copy that copies" property is computed before the soups are run.
+
+---
+
 ## J-063 · 2026-11-08 · E-62: lineage persistence does not separate the rules; every rule from 61 to 68 makes exact replicators
 
 **Question (pre-registered, `docs/data/e62-preregistration.md`, commit `a39789e`):** J-062 suggested that what predicts fast replicators is a short copier whose **lineage persists** (exact copies), not one good copy. Census of lineage persistence (64 generations, shift-aware) in all 128 rules; fresh soups in E-61's F′ rules under the strict D-047 criterion (≥ 10 copiers among 40 at T + 1,000; a failed candidate is dropped and the soup runs on to 16,000).
