@@ -3,9 +3,11 @@
    soup interpreter is untouched. */
 #include <stdint.h>
 #include <string.h>
+#include <stdlib.h>
 
 static long run(uint8_t *t, int n, long max_steps, int h1start) {
-    int ip = 0, h0 = 0, h1 = h1start % n;
+    /* E-64: h1start = h + 256 * g starts head0 at g (g = 0 for every earlier experiment). */
+    int ip = 0, h0 = (h1start >> 8) % n, h1 = (h1start & 255) % n;
     long steps = 0;
     while (ip >= 0 && ip < n && steps < max_steps) {
         switch (t[ip]) {
@@ -98,3 +100,50 @@ long epoch_h(uint8_t *soup, int L, const int32_t *pairs, int npairs, long max_st
 
 /* E-57: run one tape in place (exposes run() for product extraction). */
 long run_tape(uint8_t *t, int n, long max_steps, int h1start) { return run(t, n, max_steps, h1start); }
+
+/* E-61: shift-aware copy classifier. Like classify(), but the partner half may hold the program (or its
+   reverse) shifted by d bytes, |d| <= maxshift: agreement is counted on the overlap (L - |d| bytes) and must be
+   >= overlap - (L - thr). The same d must work with every partner. out[i] = orientation bits as classify();
+   shift[i] = d of the forward copy if any, else of the reverse copy (0 if none). Program half intact >= thr. */
+void classify_shift(const uint8_t *progs, int nprog, int L, int h1start, int partners, uint64_t seed,
+                    long max_steps, int thr, int maxshift, uint8_t *out, int8_t *shift) {
+    uint8_t tape[1024];
+    int slack = L - thr, nd = 2 * maxshift + 1;
+    uint8_t okf[129], okr[129];
+    for (int i = 0; i < nprog; i++) {
+        const uint8_t *p = progs + (long)i * L;
+        uint64_t s = seed ^ (0xD1B54A32D192ED03ull * (uint64_t)(i + 1));
+        for (int k = 0; k < nd; k++) okf[k] = okr[k] = 1;
+        int alive = 1;
+        for (int q = 0; q < partners && alive; q++) {
+            memcpy(tape, p, L);
+            for (int j = 0; j < L; j++) tape[L + j] = (uint8_t)sm(&s);
+            run(tape, 2 * L, max_steps, h1start);
+            int intact = 0;
+            for (int j = 0; j < L; j++) intact += tape[j] == p[j];
+            if (intact < thr) { alive = 0; break; }
+            alive = 0;
+            for (int k = 0; k < nd; k++) {
+                int d = k - maxshift, ov = L - (d < 0 ? -d : d), f = 0, r = 0;
+                for (int j = 0; j < L; j++) {
+                    int src = j - d;           /* partner[j] should equal program[j - d] */
+                    if (src < 0 || src >= L) continue;
+                    f += tape[L + j] == p[src];
+                    r += tape[L + j] == p[L - 1 - src];
+                }
+                if (f < ov - slack) okf[k] = 0;
+                if (r < ov - slack) okr[k] = 0;
+                alive |= okf[k] | okr[k];
+            }
+        }
+        int fw = -999, rv = -999;
+        if (alive)
+            for (int k = 0; k < nd; k++) {   /* smallest |d| wins */
+                int d = k - maxshift;
+                if (okf[k] && (fw == -999 || abs(d) < abs(fw))) fw = d;
+                if (okr[k] && (rv == -999 || abs(d) < abs(rv))) rv = d;
+            }
+        out[i] = (uint8_t)((fw != -999) | ((rv != -999) << 1));
+        shift[i] = (int8_t)(fw != -999 ? fw : (rv != -999 ? rv : 0));
+    }
+}

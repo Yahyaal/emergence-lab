@@ -50,6 +50,10 @@ def lib():
         _LIB.epoch_h.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_void_p, ctypes.c_int, ctypes.c_long, ctypes.c_int]
         _LIB.run_tape.restype = ctypes.c_long
         _LIB.run_tape.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_long, ctypes.c_int]
+        _LIB.classify_shift.restype = None
+        _LIB.classify_shift.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+                                        ctypes.c_uint64, ctypes.c_long, ctypes.c_int, ctypes.c_int, ctypes.c_void_p,
+                                        ctypes.c_void_p]
     return _LIB
 
 
@@ -58,6 +62,15 @@ def classify(P: np.ndarray, h1start: int, partners: int, seed: int) -> np.ndarra
     out = np.zeros(len(P), np.uint8)
     lib().classify(P.ctypes.data, len(P), L, h1start, partners, seed, STEPS, THR, out.ctypes.data)
     return out
+
+
+def classify_shift(P: np.ndarray, h1start: int, partners: int, seed: int, maxshift: int = 16):
+    """E-61: shift-aware classify (copies may sit up to `maxshift` bytes off byte L). Returns (codes, shifts)."""
+    P = np.ascontiguousarray(P, dtype=np.uint8)
+    out, sh = np.zeros(len(P), np.uint8), np.zeros(len(P), np.int8)
+    lib().classify_shift(P.ctypes.data, len(P), L, h1start, partners, seed, STEPS, THR, maxshift,
+                         out.ctypes.data, sh.ctypes.data)
+    return out, sh
 
 
 def label(c: int) -> str:

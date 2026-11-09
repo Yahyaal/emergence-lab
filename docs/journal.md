@@ -12,6 +12,171 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-067 · 2026-11-09 · E-65: with 7 new rules, the predictor holds rule by rule; the graded version is not established
+
+**Question (pre-registered, `docs/data/e65-preregistration.md`, commit `febabe2`):** E-64's F arm rested on 3 rules. In 768 new random rules of the two-head-start family, do **all** F rules make replicators quickly (≥ 75% of soups, and ≥ 2 of 4 soups in ≥ 75% of F rules), and C rules not? Secondary: does the number of self-sufficient short copiers predict how soon (Spearman with median jump round)?
+
+**Ran:** `scripts/bff_twoheads2.py --workers 10` (census 1,809 s; 44 soups of 2^14, ~55 min; D-047 exactly as E-62–E-64). Figure: `scripts/e65_figure.py` → `docs/assets/report/e65-twoheads.png`.
+
+**Found:**
+- **Census:** 7 F rules, 118 C, 643 none. Every self-sufficient copier copies forwards.
+- **Primary: pass.** F rules **26 of 28** soups (every rule ≥ 3 of 4: 4/4 in five rules, 3/4 in two); C rules (4 drawn at random) **1 of 16**; Fisher p = 9 × 10⁻⁹. All 26 F jumps end in exact forward copiers (shift 0; 20–40 of 40 programs). The one C jump (g = 11, h = 60, round 9,000) also ends in exact forward copiers: a longer copier evolved.
+- **Secondary: not significant.** ρ = −0.51 between self-sufficient copiers and median jump round, one-sided p = 0.12 (7 rules). The two slowest F rules have 1 and 80 such copiers, so the count is at best a weak guide. We gave it a 40% chance.
+- **Pooled E-64 + E-65 (1,024 random rules):** F rules 36 of 40 soups (10 rules), C rules 2 of 32 (8 rules).
+- **Descriptive, post hoc:** all 10 F rules of the 1,024 have pointers about half a tape apart (h − g = 60–68 mod 128) **and** pointer 1 within a few bytes of a half boundary (g ∈ 2, 60–67, 124–126). Of 76 rules with that offset, the other 66 are C (8) or have no short copier (58). So in this family "F" amounts to: the two pointers start at matching positions in the two halves, give or take a few bytes, which lets a short loop copy one half onto the other.
+
+**Interpretation:** the predictor now has two pre-registered out-of-sample confirmations in the two-head family (E-64, E-65) on top of the one-pointer family (E-60–E-63): 10 of 10 F rules make replicators in most soups, 2 of 32 C-rule soups do. It is binary: whether a rule allows a short self-copying copier matters; how many it allows was not shown to matter. The geometric reading (aligned pointers in the two halves) is post hoc and specific to this family. Evidence: pre-registered replication; still one language, 2^14 soups.
+
+**Lesson:** a replication designed to include every F rule found, not a sample of 3, closed the main weakness of E-64; the graded hypothesis was rightly kept secondary.
+
+**Next:** a family that changes the instruction set or tape length, where the geometry is different; parasites in long soups (J-066).
+
+---
+
+## J-066 · 2026-11-09 · E-54: seven long-running soups, 20,000 rounds after the jump: later replicators are still not fitter
+
+**Question (pre-registered, `docs/data/e54-preregistration.md`, commit `2601c48`; analysis script `10d2e86` written before the run finished):** with 3 soups and 10,000 rounds, later replicators were not reliably fitter than earlier ones (E-48, E-49, E-51, E-53). With more jumped soups (2^16 programs) and a 16,000-round gap, is there an advantage, measured with the kin-free invasion assay (D-044)?
+
+**Ran:** `scripts/bff_long.py` (12 new soups, seeds 5400–5411, up to 24,000 rounds; 3 E-50 soups continued), each jumped soup run to T + 20,000 (~14 h on 11 cores). **Deviation:** a power loss at 22:19 stopped soups 5302 and 5402; they continued from their last snapshots (31,750 and 32,250) with new random streams (`scripts/bff_long_resume.py`). For 5302 this affects only the T+20000 background; for 5402 the late candidates and the T+20000 background come from the resumed run. Analysis: `scripts/bff_long_analysis.py --workers 11` (22 min). Figure: `scripts/e54_figure.py` → `docs/assets/report/e54-long-soups.png`.
+
+**Found:**
+- **Jumps:** 4 of 12 new soups jumped by 24,000 rounds (5401 at 10,250, 5402 at 22,250, 5406 at 16,750, 5410 at 750); E-50 predicted about half (5/10 there). With the 3 continued soups, 7 jumped soups; each gave 6 early and 6 late distinct verified replicators; none had kin in the backgrounds (0 dropped).
+- **Primary: not significant, as predicted.** D = −0.15 (sum over soups of mean s late − mean s early), permutation p = 0.64. Per soup: −0.49 (5401), −0.03, −0.01, −0.01, +0.07, +0.13, +0.19.
+- **Secondary (future background, T+20000):** D = −0.50, p = 0.95; later code is not better at invading the future either.
+- **Descriptive:** verified replicators are only **22–78%** of the 40 most common distinct programs at every snapshot (2,800 tests: 1,423 replicators, 775 copy for one generation only, 602 do not replicate). No trend over 20,000 rounds; soups stay a mix of copiers, partial copiers and non-copiers.
+- Invasion scores are mostly below 0 for both groups: a few copies of a single soup program usually lose ground in a sample of the soup.
+
+**Interpretation:** across 7 soups and 16,000 rounds, the most sensitive calibrated assay we have shows no sign that later replicators are fitter. Together with E-48–E-53 this makes "no detectable cumulative adaptation after the jump in standard BFF at these scales" the best-supported reading: the post-jump change looks mostly neutral (drift). Level 5 is not shown. Caveats: the assay was calibrated on hand-written variants with large built-in differences (J-050, J-052); small advantages, or adaptation that only shows in the soup's own context, would be missed. The jump rate (4/12) is lower than E-50's estimate but within chance (E-50 5/10).
+
+**Lesson:** the long run was worth it as a firm negative: more soups and a longer gap did not reveal a trend hidden by noise. The power-loss deviation was small and is recorded.
+
+**Next:** the large share of programs that copy once or not at all is the obvious lead for parasitism: are the non-copiers copied *by* the replicators (true parasites), or debris? That needs a "copied but does not copy" measure with a null. Head-start rules where soups jump in minutes (E-56) make the level-5 question much cheaper to ask, but the fitness assays then need to run under the rule's own interpreter.
+
+---
+
+## J-065 · 2026-11-09 · E-64: the "copy that copies" predictor carries over to a second family of rules
+
+**Question (pre-registered, `docs/data/e64-preregistration.md`, commit `1c756d5`):** E-60–E-63 found, in the family "pointer 2 starts at byte h", that soups make replicators fast exactly in the rules whose short copiers include one whose single copy copies again (F). Does the same rule-level property, computed before any soup is run, predict fast replicators in a **new family**: pointer 1 starts at byte g and pointer 2 at byte h (g = 1..127, h = 0..127)?
+
+**Ran:** `scripts/bff_twoheads.py` (census of 256 random (g, h) rules, 669 s; 28 soups of 2^14, 2,588 s; strict D-047 criterion, up to 16,000 rounds). Figure: `scripts/e64_figure.py` → `docs/assets/report/e64-twoheads.png`.
+
+**Found:**
+- **Census:** 3 F rules ((2, 64), (60, 126), (67, 127)), 33 C rules (short copiers, none self-sufficient), 220 with no short copier of 5–6 instructions.
+- **Primary: pass.** F rules: **10 of 12** soups made real replicators (4/4, 4/4, 2/4; T = 250–14,750); C rules (4 drawn at random): **1 of 16** (0/4, 0/4, 0/4, 1/4). One-sided Fisher p = 5 × 10⁻⁵. F ≥ 75% and C ≤ 25% as registered. Only 3 F rules exist in the sample, so the F arm rests on 3 rules.
+- **Secondary:** all 11 self-sufficient short copiers copy forwards (as predicted). Copiers at the end of the 10 F-rule jumps: forward, nearly all exact (shift 0; one soup has 5 of 25 at shift 1), as predicted. The one C-rule jump (g = 124, h = 3, at round 13,250) is different: **reverse** copiers with shifts −1 to −4, a kind the 5–6-instruction census does not count as self-sufficient.
+- Descriptive, post hoc: the three F rules have h − g = 62, 66, 60 (mod 128), close to the F′ band 61–68 of the one-pointer family (g = 0). But two C rules have offsets 64 and 68, so the offset alone is not the predictor: the absolute position matters too.
+- The slowest F rule (67, 127; 2 of 4) has the fewest self-sufficient copiers (2), against 3 and 6 in the two 4-of-4 rules.
+
+**Interpretation:** the predictor found in one family (does the rule's simplest copier make a copy that copies?) predicted, before running soups, which rules of a second, much larger family make replicators quickly: 10 of 12 vs 1 of 16 against rules that also have short copiers. This is now a "which rules make it likely" result supported in two families, though both are start-position variants of one language (BFF), the F arm has only 3 rules, and soups are 2^14. Evidence: pre-registered, out-of-family prediction.
+
+**Lesson:** the census is cheap (11 minutes for 256 rules) and its prediction is strong; the rare exceptions (a slow F rule, a C rule that jumped with shifted reverse copiers) point to what the 5–6-instruction census misses: longer or shifted copiers that soups can still find given enough time.
+
+**Next:** a family that changes the instruction set or the tape length, not only start positions; and a graded predictor (number of self-sufficient copiers, or the length of the shortest one) to explain speed within F.
+
+---
+
+## J-064 · 2026-11-08 · E-63: rules just outside the F′ band are slow: a sharp boundary at the edge of "a copy that copies"
+
+**Question (pre-registered, `docs/data/e63-preregistration.md`, commit `2c9c5fa`):** E-62 found every F′ rule (61–68) makes exact replicators fast under D-047 (28/28). Are rules just outside F′, which still have plenty of short forward copiers (shifted 5–16 bytes) but none whose single copy copies, slow under the same strict criterion?
+
+**Ran:** `scripts/bff_outside.py --workers 10` (837 s). Rules drawn at random from {59, 60, 69–82}: **72, 74, 80, 82**; 4 soups of 2^14 each, plus 4 at h = 64 as a concurrent positive control; D-047 exactly as E-62.
+
+**Found:**
+- **Primary: pass. Outside F′: 1 of 16 soups made real replicators** (rule 72, soup 6300, T = 3,000; 40 of 40 programs exact copiers at the end), against 28 of 28 in F′ rules (E-62); one-sided Fisher p = 7 × 10⁻¹¹. **Control h = 64: 4 of 4** (T = 250, 250, 250, 2,250).
+- The 15 others never had a candidate: 0–1 copiers among 40 after 16,000 rounds, 290–420 steps per pair, although their rules have 110–138 short forward copiers each (E-61 census).
+- Secondary: the one jump outside F′ is exact (shift 0), as predicted: the soup evolved a longer copier that lands its copy at byte 64.
+
+**Interpretation:** across E-60–E-63 the band where soups make replicators fast is exactly the band where a short copier's single copy can copy again (h = 61–68): 32 of 32 soups inside, 1 of 16 just outside (plus 0–1 of 16 in the backward-copier rules tested in E-60 with a weaker criterion). The number of short copiers does not predict it: rules 69–80 have as many as 66–68. What matters is whether the simplest copier's **copy** works, which is a property of the rule computable in seconds. Evidence: a pre-registered prediction about 4 untested rules, with a concurrent control; still one family of rule variants and soups of 2^14.
+
+**Lesson:** after two failed hypotheses (E-61's one-generation test with a weak criterion, E-62's lineages), the simplest rule-level property survived a clean test. The criterion (D-047) mattered as much as the hypothesis.
+
+**Next:** test the same predictor outside the head-start family (e.g. different instruction sets or tape lengths), where the "copy that copies" property is computed before the soups are run.
+
+---
+
+## J-063 · 2026-11-08 · E-62: lineage persistence does not separate the rules; every rule from 61 to 68 makes exact replicators
+
+**Question (pre-registered, `docs/data/e62-preregistration.md`, commit `a39789e`):** J-062 suggested that what predicts fast replicators is a short copier whose **lineage persists** (exact copies), not one good copy. Census of lineage persistence (64 generations, shift-aware) in all 128 rules; fresh soups in E-61's F′ rules under the strict D-047 criterion (≥ 10 copiers among 40 at T + 1,000; a failed candidate is dropped and the soup runs on to 16,000).
+
+**Ran:** `scripts/bff_lineage.py` (census 361 s; 28 soups of 2^14, 994 s; 9 workers). Controls passed (hand-written replicator and `[.>}]` at h = 64 persist; `[.>}]` at h = 66 does not; 0 of 100 random).
+
+**Found:**
+- **Primary 1: fail.** P = **62–66**, not 62–65: rule 66 has 2 persistent copiers (shift 1 and 2, e.g. `.[>.}]`). No persistent copier outside 62–66.
+- **Primary 2: fail.** Group P (62, 63, 65, 66): **16 of 16** jumped; group N (61, 67, 68): **12 of 12** (p = 1). Every one of the 28 soups ended with 13–40 copiers among 40, **all at shift 0 (exact)** except 4 programs in two soups.
+- Median T: 63: 750; 61: 1,125; 62: 1,375; 65: 2,500; 67: 2,500; 66: 4,125; 68: 5,375 (2 of 4 soups after 8,000). Rule 68 is the slowest, but the groups overlap completely.
+- 6 candidates were dropped (0–7 copiers at T + 1,000) and those soups went on to real jumps later.
+
+**Interpretation:** the lineage idea is wrong as a predictor here: soups in rules with only drifting short copiers (61, 67, 68) evolve exact copiers within a few thousand rounds anyway. **Correction to J-062:** its "7 of 16 by the strict reading" came from the E-61 soups stopping at T + 1,000 after an early false candidate. Run on under D-047, the same rules give 12 of 12. So E-61's registered result (16/16) was right for the wrong reason, and the F′ class (a short copier whose single copy copies, at any small shift) remains the best predictor we have: all 8 F′ rules are fast (44 of 44 soups across E-60–E-62 by the strict criterion where measured). Still untested: whether rules just outside F′ (e.g. 59–60, 69–80, forward copiers that fail the one-copy test) are slow under the strict criterion.
+
+**Lesson:** a jump criterion that stops a soup on a false candidate under-counts; "drop and continue" is the right design (now D-047). And a mechanism that sounded right (lineages must persist) failed its test because evolution repairs drift quickly.
+
+**Next:** soups in rules just outside F′ under D-047, pre-registered (E-63).
+
+---
+
+## J-062 · 2026-11-08 · E-61: a shift-aware census widens the fast rules to h = 61–68, but what takes over is exact copiers
+
+**Question (pre-registered, `docs/data/e61-preregistration.md`, commit `5b65cc2`):** J-061 showed our copier classifier misses copies placed a few bytes off byte 64. Redo E-60's census of all 128 head-start rules with a shift-aware classifier (`classify_shift`, |d| ≤ 16), and run soups in any rule that becomes F.
+
+**Ran:** `scripts/bff_shift_census.py --part census` (9 workers, 355 s), then `--part soups` (16 soups of 2^14 in rules 61, 66, 67, 68, shift-aware D-046 criterion; 9 workers, 264 s).
+
+**Found:**
+- **Census:** **55 of 128 rules have short copiers** once shifts count (E-60: 12). Shifts follow the geometry: backward copiers in rules 0–10 and 115–127 sit about h (or h − 128) bytes off; forward copiers in 59–82 about h − 64. Checks passed: total copiers ≥ E-60's in every rule; F′ contains 62–65.
+- **Primary 1: pass.** F′ = **61–68** (new: 61, 66, 67, 68), all self-sufficient copiers forward. No backward copier is self-sufficient at any shift (rules 0–10 and 115–127 have 75–233 shifted copiers each, 0 self-sufficient).
+- **Primary 2: pass as registered: 16 of 16 soups jumped**, T = 250–2,750 (one-sided Fisher vs E-60's S soups 2/16: p = 2.5 × 10⁻⁷).
+- **But the bar is weak (as J-060 warned).** 8 of the 16 "jumps" are HOE crossings at rounds 250–500 with 0–4 copiers among 40 at T + 1,000 and 190–680 steps per pair: early waves of short programs, not replicator soups. With J-060's stricter reading (≥ 10 copiers among 40 at T + 1,000): **rule 61: 3/4, 66: 1/4, 67: 3/4, 68: 0/4; 7 of 16** (E-60's F rules 62, 63, 65: 11 of 12; S rules: 0–1 of 16).
+- **In every real jump the takeover is by exact copiers (shift 0, 39–40 of 40 programs), even in rules 61, 66 and 67, where the census found no exact copier of ≤ 6 instructions.** The soups evolved longer exact copiers (heads adjusted to land the copy at byte 64).
+- Exploratory, from Part A (addendum to the pre-registration, written while Part B ran; six soups had finished seconds earlier, unseen): a copier at shift d makes a child shifted by d, a grandchild by 2d, and so on, so its lineage loses the kernel. In 32-generation product chains, exact copiers lasted all 32 generations, shifted ones mostly failed within 1–22.
+
+**Interpretation:** "has a one-generation self-sufficient short copier" over-predicts: by the strict reading the four new rules are in between (7/16), and rule 68, whose only self-sufficient copier is shifted by 2–4 bytes, made none. What took over everywhere was an **exact** copier. A better rule-level predictor is probably "an exact copy is reachable", i.e. a lineage that persists. Not yet tested as a prediction. The primary passes, but read strictly the result is weaker than E-60's. Evidence: 16 soups in 4 rules plus a census; strict reading not pre-registered for this experiment.
+
+**Lesson:** a one-generation copy test cannot tell a lasting replicator from a lineage that drifts away; replication is a property of lineages, not of single copy events. And a jump criterion with "≥ 1 copier" accepts early waves (D-047).
+
+**Correction (J-063):** the strict reading below was confounded: these soups stopped at T + 1,000 after early false candidates; run on under D-047, rules 61, 67, 68 give 12 of 12 real jumps.
+
+**Next (superseded by J-063):** a lineage-persistence census (does a copier's line still copy after 64 generations, shift-aware?) across all 128 rules, pre-registered, predicting fast soups in 62–65 and slower in 61, 66–68; the D-047 jump criterion.
+
+---
+
+## J-061 · 2026-11-08 · E-60 follow-up (exploratory): the rule-7 "puzzle" soup is full of shifted mirror copiers
+
+**Question (not pre-registered; follow-up to J-060's open puzzle):** soup 6031 (head1 starts at byte 7) sat in a high-order, high-execution state from round ~7,000 with no copier by our classifier, which only recognises copies placed exactly at byte 64 (or mirrored there). Do its common programs copy themselves to a *shifted* position?
+
+**Ran:** `scripts/e60_shifted.py` (replay of soup 6031 to round 14,750 = T + 1,000, deterministic). For each of the 40 most common distinct programs, 4 runs against random partners; the best agreement of the partner half with the program rotated by any offset d (0–63), forwards or mirrored. A copy counts at ≥ 56 of 64 bytes in ≥ 3 of 4 runs. Started by the 10th scheduled session; cut off by a power loss at 22:19 and re-run from scratch.
+
+**Found:**
+- **25 of 40 programs are copiers**: 24 write a **mirrored copy shifted by 6–8 bytes** (56–58 of 64 bytes agree, the rest is the part shifted past the partner's end); 1 is an ordinary aligned mirror copier (the one the classifier saw).
+- The copies are not trivial: the programs have 40–52 distinct byte values, the most common byte at most 12% (a constant writer would match a constant program, not these).
+- A shift of ~7 is what a backward copier gets when its writing head starts at byte 7 instead of 0.
+
+**Interpretation:** soup 6031 is a real replicator soup, probably from round ~7,000 (when its HOE rose), not 13,750. So J-060's stricter reading ("S rules 0 of 16") is wrong: at least **1 of 16** S soups made replicators, still much later than any F soup (7,000 vs 250–2,500, one at 10,250). The pre-registered primary (F 12/12 vs S 2/16) stands. But the census behind the F/S split has the same blind spot: rule 7 may have short *shifted* copiers that we never counted, so "116 of 128 rules have no short copier" is an under-count. Evidence: exploratory, one soup.
+
+**Lesson:** a detector tuned on one rule silently misses the same structure under a neighbouring rule. Any census across rules must be invariant to the rule's own geometry (here, where the heads start).
+
+**Next:** a shift-aware copier census of all 128 rules, pre-registered, re-testing the F/S prediction.
+
+---
+
+## J-060 · 2026-11-08 · E-60: across all 128 head-start rules, only four have self-sufficient short copiers, and only those make replicators fast
+
+**Question (pre-registered, `docs/data/e60-preregistration.md`, commit `5c6183f`):** does "has a self-sufficient copier of ≤ 6 instructions" (F) vs not (S) predict fast replicator emergence across the whole family of rules "head1 starts at byte h", h = 0..127?
+
+**Ran:** E-60, `scripts/bff_headstart.py`. Census of all 128 rules (5 workers, 279 s); then 4 soups of 2^14 for each of 3 F rules and 4 S rules (picked at random with seed 60, excluding 0, 64, 127), D-046 criterion as in E-59, up to 16,000 rounds (5 workers, ~45 min).
+
+**Found:**
+- **Census:** only **h = 62, 63, 64, 65 are F** (self-sufficient copiers 4, 47, 96, 10; all forward). Short copiers of any kind exist only near h = 0 (backward: 53, 4), h = 64 (forward) and h = 127 (backward: 2, 32, 130 at 125–127); **116 of 128 rules have no copier of ≤ 6 instructions at all**. Rules 0, 64, 127 agree with E-55/E-57/E-58.
+- The F class had only 3 rules besides 64, so all were used (as pre-registered): 62, 63, 65. S picks: 7, 120, 125, 126.
+- **Primary: pass. F rules: 12 of 12 soups jumped (rounds 250–2,500, one at 10,250); S rules: 2 of 16 (p = 3 × 10⁻⁶).** Rule 126, with 32 backward copiers: 0 of 4; rule 120 (no copiers): 0 of 4.
+- **Caveats found on inspection (not pre-registered):** D-046's "at least one copier among 40" is a weak bar. Both S "jumps" have hardly any copier at T + 1,000 (rule 7: 1 of 40; rule 125: 0 of 40), and so does one F jump (6022, rule 65: 0 of 40, steps per pair ~100–500: a takeover by short non-copying programs). Several F jumps start with steps per pair *falling* to ~90 before replicators spread. With a stricter reading (≥ 10 copiers among 40 at T + 1,000): F 11 of 12, S 0 of 16. Same conclusion.
+- **An open puzzle:** S-rule soup 6031 (h = 7) sat in a high-order, high-execution state (HOE ~4.5, ~5,000–6,600 steps per pair) for ~7,000 rounds with **no** copier by our classifier. The classifier only recognises copies aligned at byte 64 (or mirrored); in rule 7 a replicator might copy to a shifted position. So "no copier" in non-standard rules may miss real replicators. Not followed up yet.
+- Figure: `docs/assets/report/e60-headstart.png`.
+
+**Interpretation:** the link holds across the family. The only rules whose short copiers are self-sufficient are the four where pointer 2 starts at, or within two bytes of, the partner's start, and those are the only rules where soups made replicators fast (16 of 16 at h = 64; 12 of 12 at 62, 63, 65). Rules with only backward copiers (0, 125–127) or none are slow. How common short copiers are does not predict it (rule 126 has 32; 0 of 4 jumped). Evidence: a predictive correlate across 7 newly tested rules plus 3 earlier ones; the classifier's blind spot for shifted copies limits claims about S rules.
+
+**Lesson:** a property computable from the rule alone in seconds (does a short self-sufficient copier exist?) predicted which of 128 universes produce replicators quickly. That is the kind of "which rules make it likely" answer the project is after, at small scale.
+
+---
+
 ## J-059 · 2026-11-08 · E-59: confirmed with fresh soups: backward-copier rule 2 of 16, forward-copier rule 8 of 8
 
 **Question (pre-registered, `docs/data/e59-preregistration.md`, commit `628ec53`):** E-58's conclusion rested on a corrected reading of a criterion that misfired. Confirmation with fresh seeds and the D-046 criterion fixed in advance (HOE ≥ 1.0 at 3 checkpoints **and** a copier under the soup's own interpreter; HOE-only crossings keep running).
