@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-060 · 2026-11-08 · E-60: across all 128 head-start rules, only four have self-sufficient short copiers, and only those make replicators fast
+
+**Question (pre-registered, `docs/data/e60-preregistration.md`, commit `5c6183f`):** does "has a self-sufficient copier of ≤ 6 instructions" (F) vs not (S) predict fast replicator emergence across the whole family of rules "head1 starts at byte h", h = 0..127?
+
+**Ran:** E-60, `scripts/bff_headstart.py`. Census of all 128 rules (5 workers, 279 s); then 4 soups of 2^14 for each of 3 F rules and 4 S rules (picked at random with seed 60, excluding 0, 64, 127), D-046 criterion as in E-59, up to 16,000 rounds (5 workers, ~45 min).
+
+**Found:**
+- **Census:** only **h = 62, 63, 64, 65 are F** (self-sufficient copiers 4, 47, 96, 10; all forward). Short copiers of any kind exist only near h = 0 (backward: 53, 4), h = 64 (forward) and h = 127 (backward: 2, 32, 130 at 125–127); **116 of 128 rules have no copier of ≤ 6 instructions at all**. Rules 0, 64, 127 agree with E-55/E-57/E-58.
+- The F class had only 3 rules besides 64, so all were used (as pre-registered): 62, 63, 65. S picks: 7, 120, 125, 126.
+- **Primary: pass. F rules: 12 of 12 soups jumped (rounds 250–2,500, one at 10,250); S rules: 2 of 16 (p = 3 × 10⁻⁶).** Rule 126, with 32 backward copiers: 0 of 4; rule 120 (no copiers): 0 of 4.
+- **Caveats found on inspection (not pre-registered):** D-046's "at least one copier among 40" is a weak bar. Both S "jumps" have hardly any copier at T + 1,000 (rule 7: 1 of 40; rule 125: 0 of 40), and so does one F jump (6022, rule 65: 0 of 40, steps per pair ~100–500: a takeover by short non-copying programs). Several F jumps start with steps per pair *falling* to ~90 before replicators spread. With a stricter reading (≥ 10 copiers among 40 at T + 1,000): F 11 of 12, S 0 of 16. Same conclusion.
+- **An open puzzle:** S-rule soup 6031 (h = 7) sat in a high-order, high-execution state (HOE ~4.5, ~5,000–6,600 steps per pair) for ~7,000 rounds with **no** copier by our classifier. The classifier only recognises copies aligned at byte 64 (or mirrored); in rule 7 a replicator might copy to a shifted position. So "no copier" in non-standard rules may miss real replicators. Not followed up yet.
+- Figure: `docs/assets/report/e60-headstart.png`.
+
+**Interpretation:** the link holds across the family. The only rules whose short copiers are self-sufficient are the four where pointer 2 starts at, or within two bytes of, the partner's start, and those are the only rules where soups made replicators fast (16 of 16 at h = 64; 12 of 12 at 62, 63, 65). Rules with only backward copiers (0, 125–127) or none are slow. How common short copiers are does not predict it (rule 126 has 32; 0 of 4 jumped). Evidence: a predictive correlate across 7 newly tested rules plus 3 earlier ones; the classifier's blind spot for shifted copies limits claims about S rules.
+
+**Lesson:** a property computable from the rule alone in seconds (does a short self-sufficient copier exist?) predicted which of 128 universes produce replicators quickly. That is the kind of "which rules make it likely" answer the project is after, at small scale.
+
+---
+
 ## J-059 · 2026-11-08 · E-59: confirmed with fresh soups: backward-copier rule 2 of 16, forward-copier rule 8 of 8
 
 **Question (pre-registered, `docs/data/e59-preregistration.md`, commit `628ec53`):** E-58's conclusion rested on a corrected reading of a criterion that misfired. Confirmation with fresh seeds and the D-046 criterion fixed in advance (HOE ≥ 1.0 at 3 checkpoints **and** a copier under the soup's own interpreter; HOE-only crossings keep running).
