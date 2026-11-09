@@ -12,6 +12,27 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-065 · 2026-11-09 · E-64: the "copy that copies" predictor carries over to a second family of rules
+
+**Question (pre-registered, `docs/data/e64-preregistration.md`, commit `1c756d5`):** E-60–E-63 found, in the family "pointer 2 starts at byte h", that soups make replicators fast exactly in the rules whose short copiers include one whose single copy copies again (F). Does the same rule-level property, computed before any soup is run, predict fast replicators in a **new family**: pointer 1 starts at byte g and pointer 2 at byte h (g = 1..127, h = 0..127)?
+
+**Ran:** `scripts/bff_twoheads.py` (census of 256 random (g, h) rules, 669 s; 28 soups of 2^14, 2,588 s; strict D-047 criterion, up to 16,000 rounds). Figure: `scripts/e64_figure.py` → `docs/assets/report/e64-twoheads.png`.
+
+**Found:**
+- **Census:** 3 F rules ((2, 64), (60, 126), (67, 127)), 33 C rules (short copiers, none self-sufficient), 220 with no short copier of 5–6 instructions.
+- **Primary: pass.** F rules: **10 of 12** soups made real replicators (4/4, 4/4, 2/4; T = 250–14,750); C rules (4 drawn at random): **1 of 16** (0/4, 0/4, 0/4, 1/4). One-sided Fisher p = 5 × 10⁻⁵. F ≥ 75% and C ≤ 25% as registered. Only 3 F rules exist in the sample, so the F arm rests on 3 rules.
+- **Secondary:** all 11 self-sufficient short copiers copy forwards (as predicted). Copiers at the end of the 10 F-rule jumps: forward, nearly all exact (shift 0; one soup has 5 of 25 at shift 1), as predicted. The one C-rule jump (g = 124, h = 3, at round 13,250) is different: **reverse** copiers with shifts −1 to −4, a kind the 5–6-instruction census does not count as self-sufficient.
+- Descriptive, post hoc: the three F rules have h − g = 62, 66, 60 (mod 128), close to the F′ band 61–68 of the one-pointer family (g = 0). But two C rules have offsets 64 and 68, so the offset alone is not the predictor: the absolute position matters too.
+- The slowest F rule (67, 127; 2 of 4) has the fewest self-sufficient copiers (2), against 3 and 6 in the two 4-of-4 rules.
+
+**Interpretation:** the predictor found in one family (does the rule's simplest copier make a copy that copies?) predicted, before running soups, which rules of a second, much larger family make replicators quickly: 10 of 12 vs 1 of 16 against rules that also have short copiers. This is now a "which rules make it likely" result supported in two families, though both are start-position variants of one language (BFF), the F arm has only 3 rules, and soups are 2^14. Evidence: pre-registered, out-of-family prediction.
+
+**Lesson:** the census is cheap (11 minutes for 256 rules) and its prediction is strong; the rare exceptions (a slow F rule, a C rule that jumped with shifted reverse copiers) point to what the 5–6-instruction census misses: longer or shifted copiers that soups can still find given enough time.
+
+**Next:** a family that changes the instruction set or the tape length, not only start positions; and a graded predictor (number of self-sufficient copiers, or the length of the shortest one) to explain speed within F.
+
+---
+
 ## J-064 · 2026-11-08 · E-63: rules just outside the F′ band are slow: a sharp boundary at the edge of "a copy that copies"
 
 **Question (pre-registered, `docs/data/e63-preregistration.md`, commit `2c9c5fa`):** E-62 found every F′ rule (61–68) makes exact replicators fast under D-047 (28/28). Are rules just outside F′, which still have plenty of short forward copiers (shifted 5–16 bytes) but none whose single copy copies, slow under the same strict criterion?
