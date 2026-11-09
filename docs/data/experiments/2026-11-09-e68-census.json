@@ -1,0 +1,8876 @@
+{
+ "experiment": "E-68",
+ "part": "census",
+ "rules": [
+  {
+   "L": 16,
+   "h": 0,
+   "copiers": 247,
+   "aligned": 55,
+   "forward": 0,
+   "reverse": 247,
+   "both": 0,
+   "shifts": {
+    "1": 164,
+    "0": 55,
+    "-1": 4,
+    "2": 20,
+    "3": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 1,
+   "copiers": 129,
+   "aligned": 4,
+   "forward": 0,
+   "reverse": 129,
+   "both": 0,
+   "shifts": {
+    "2": 51,
+    "1": 52,
+    "0": 4,
+    "3": 22
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 2,
+   "copiers": 109,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 109,
+   "both": 0,
+   "shifts": {
+    "3": 77,
+    "2": 25,
+    "1": 4,
+    "4": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 3,
+   "copiers": 59,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 59,
+   "both": 0,
+   "shifts": {
+    "4": 34,
+    "3": 23,
+    "2": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 4,
+   "copiers": 21,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 21,
+   "both": 0,
+   "shifts": {
+    "4": 18,
+    "3": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 5,
+   "copiers": 1,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 1,
+   "both": 0,
+   "shifts": {
+    "4": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 6,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 7,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 8,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 9,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 10,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 11,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 12,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 13,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 14,
+   "copiers": 5,
+   "aligned": 4,
+   "forward": 5,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 4,
+    "-1": 1
+   },
+   "self_sufficient": 4,
+   "self_sufficient_orientation": {
+    "forward": 4
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "<[<,{]",
+     0
+    ],
+    [
+     "<[}.>]",
+     0
+    ],
+    [
+     "}[<,{]",
+     0
+    ],
+    [
+     "}[}.>]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 16,
+   "h": 15,
+   "copiers": 80,
+   "aligned": 53,
+   "forward": 80,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 53,
+    "-1": 27
+   },
+   "self_sufficient": 50,
+   "self_sufficient_orientation": {
+    "forward": 50
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<,{]",
+     0
+    ],
+    [
+     "[}.>]",
+     0
+    ],
+    [
+     "<[<{,]",
+     0
+    ],
+    [
+     "<[>}.]",
+     0
+    ],
+    [
+     "<[{<,]",
+     0
+    ],
+    [
+     "<[}>.]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 16,
+   "h": 16,
+   "copiers": 159,
+   "aligned": 131,
+   "forward": 159,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 131,
+    "-1": 16,
+    "1": 12
+   },
+   "self_sufficient": 99,
+   "self_sufficient_orientation": {
+    "forward": 99
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<{,]",
+     0
+    ],
+    [
+     "[{<,]",
+     0
+    ],
+    [
+     "[.>}]",
+     0
+    ],
+    [
+     "[.}>]",
+     0
+    ],
+    [
+     "<[>.}]",
+     0
+    ],
+    [
+     "<[{,<]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 16,
+   "h": 17,
+   "copiers": 105,
+   "aligned": 35,
+   "forward": 105,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "1": 56,
+    "0": 35,
+    "2": 13,
+    "-1": 1
+   },
+   "self_sufficient": 13,
+   "self_sufficient_orientation": {
+    "forward": 13
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "{[<{,]",
+     0
+    ],
+    [
+     "{[{<,]",
+     0
+    ],
+    [
+     "{[.>}]",
+     0
+    ],
+    [
+     "{[.}>]",
+     0
+    ],
+    [
+     "-[>.}]",
+     0
+    ],
+    [
+     "-[{,<]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 16,
+   "h": 18,
+   "copiers": 86,
+   "aligned": 2,
+   "forward": 86,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "2": 56,
+    "1": 15,
+    "3": 13,
+    "0": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 19,
+   "copiers": 84,
+   "aligned": 0,
+   "forward": 84,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "3": 56,
+    "2": 15,
+    "4": 13
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 20,
+   "copiers": 71,
+   "aligned": 0,
+   "forward": 71,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "4": 56,
+    "3": 15
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 21,
+   "copiers": 15,
+   "aligned": 0,
+   "forward": 15,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "4": 15
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 22,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 23,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 24,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 25,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 26,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 27,
+   "copiers": 4,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 4,
+   "both": 0,
+   "shifts": {
+    "-3": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 28,
+   "copiers": 75,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 75,
+   "both": 0,
+   "shifts": {
+    "-3": 69,
+    "-2": 4,
+    "-1": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 29,
+   "copiers": 149,
+   "aligned": 1,
+   "forward": 0,
+   "reverse": 149,
+   "both": 0,
+   "shifts": {
+    "-2": 76,
+    "-3": 39,
+    "-1": 33,
+    "0": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 30,
+   "copiers": 219,
+   "aligned": 35,
+   "forward": 0,
+   "reverse": 219,
+   "both": 0,
+   "shifts": {
+    "-1": 132,
+    "-2": 44,
+    "0": 35,
+    "-3": 4,
+    "1": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 16,
+   "h": 31,
+   "copiers": 240,
+   "aligned": 133,
+   "forward": 0,
+   "reverse": 240,
+   "both": 0,
+   "shifts": {
+    "0": 133,
+    "-1": 54,
+    "1": 46,
+    "-2": 4,
+    "2": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 0,
+   "copiers": 250,
+   "aligned": 56,
+   "forward": 0,
+   "reverse": 250,
+   "both": 0,
+   "shifts": {
+    "1": 163,
+    "0": 56,
+    "-1": 4,
+    "2": 25,
+    "3": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 1,
+   "copiers": 134,
+   "aligned": 4,
+   "forward": 0,
+   "reverse": 134,
+   "both": 0,
+   "shifts": {
+    "2": 55,
+    "1": 53,
+    "0": 4,
+    "3": 22
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 2,
+   "copiers": 125,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 125,
+   "both": 0,
+   "shifts": {
+    "3": 84,
+    "2": 31,
+    "1": 4,
+    "4": 5,
+    "5": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 3,
+   "copiers": 81,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 81,
+   "both": 0,
+   "shifts": {
+    "4": 41,
+    "3": 29,
+    "5": 7,
+    "2": 2,
+    "6": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 4,
+   "copiers": 92,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 92,
+   "both": 0,
+   "shifts": {
+    "5": 49,
+    "4": 25,
+    "3": 3,
+    "6": 14,
+    "7": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 5,
+   "copiers": 86,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 86,
+   "both": 0,
+   "shifts": {
+    "6": 52,
+    "5": 24,
+    "4": 2,
+    "7": 8
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 6,
+   "copiers": 51,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 51,
+   "both": 0,
+   "shifts": {
+    "6": 22,
+    "5": 2,
+    "7": 27
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 7,
+   "copiers": 11,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 11,
+   "both": 0,
+   "shifts": {
+    "6": 2,
+    "7": 9
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 8,
+   "copiers": 1,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 1,
+   "both": 0,
+   "shifts": {
+    "7": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 9,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 10,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 11,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 12,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 13,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 14,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 15,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 16,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 17,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 18,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 19,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 20,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 21,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 22,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 23,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 24,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 25,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 26,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 27,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 28,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 29,
+   "copiers": 1,
+   "aligned": 0,
+   "forward": 1,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-1": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 30,
+   "copiers": 48,
+   "aligned": 4,
+   "forward": 48,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-2": 29,
+    "-1": 15,
+    "0": 4
+   },
+   "self_sufficient": 6,
+   "self_sufficient_orientation": {
+    "forward": 6
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "<[<,{]",
+     0
+    ],
+    [
+     "<[}.>]",
+     0
+    ],
+    [
+     "}[<,{]",
+     0
+    ],
+    [
+     "}[>}.]",
+     -1
+    ],
+    [
+     "}[}>.]",
+     -1
+    ],
+    [
+     "}[}.>]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 32,
+   "h": 31,
+   "copiers": 143,
+   "aligned": 53,
+   "forward": 143,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 53,
+    "-1": 70,
+    "-2": 18,
+    "1": 2
+   },
+   "self_sufficient": 64,
+   "self_sufficient_orientation": {
+    "forward": 64
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<,{]",
+     0
+    ],
+    [
+     "[}.>]",
+     0
+    ],
+    [
+     "<[<{,]",
+     0
+    ],
+    [
+     "<[>}.]",
+     0
+    ],
+    [
+     "<[{<,]",
+     0
+    ],
+    [
+     "<[}>.]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 32,
+   "h": 32,
+   "copiers": 189,
+   "aligned": 134,
+   "forward": 189,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 134,
+    "-1": 26,
+    "1": 26,
+    "2": 2,
+    "-2": 1
+   },
+   "self_sufficient": 127,
+   "self_sufficient_orientation": {
+    "forward": 127
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<{,]",
+     0
+    ],
+    [
+     "[{<,]",
+     0
+    ],
+    [
+     "[}.>]",
+     1
+    ],
+    [
+     "[.>}]",
+     0
+    ],
+    [
+     "[.}>]",
+     0
+    ],
+    [
+     "<[>.}]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 32,
+   "h": 33,
+   "copiers": 148,
+   "aligned": 38,
+   "forward": 148,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "1": 80,
+    "0": 38,
+    "2": 26,
+    "3": 2,
+    "-1": 2
+   },
+   "self_sufficient": 46,
+   "self_sufficient_orientation": {
+    "forward": 46
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[.>}]",
+     1
+    ],
+    [
+     "[.}>]",
+     1
+    ],
+    [
+     ">[.>}]",
+     0
+    ],
+    [
+     ">[.}>]",
+     0
+    ],
+    [
+     "{[<{,]",
+     0
+    ],
+    [
+     "{[>}.]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 32,
+   "h": 34,
+   "copiers": 139,
+   "aligned": 3,
+   "forward": 139,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "2": 80,
+    "1": 28,
+    "3": 26,
+    "4": 2,
+    "0": 3
+   },
+   "self_sufficient": 1,
+   "self_sufficient_orientation": {
+    "forward": 1
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "{[>.}]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 32,
+   "h": 35,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "3": 80,
+    "2": 28,
+    "4": 26,
+    "5": 2,
+    "1": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 36,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "4": 80,
+    "3": 28,
+    "5": 26,
+    "6": 2,
+    "2": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 37,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "5": 80,
+    "4": 28,
+    "6": 26,
+    "7": 2,
+    "3": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 38,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "6": 80,
+    "5": 28,
+    "7": 26,
+    "8": 2,
+    "4": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 39,
+   "copiers": 136,
+   "aligned": 0,
+   "forward": 136,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "7": 80,
+    "6": 28,
+    "8": 26,
+    "5": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 40,
+   "copiers": 110,
+   "aligned": 0,
+   "forward": 110,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "8": 80,
+    "7": 28,
+    "6": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 41,
+   "copiers": 30,
+   "aligned": 0,
+   "forward": 30,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "8": 28,
+    "7": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 42,
+   "copiers": 2,
+   "aligned": 0,
+   "forward": 2,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "8": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 43,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 44,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 45,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 46,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 47,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 48,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 49,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 50,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 51,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 52,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 53,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 54,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 55,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 56,
+   "copiers": 2,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 2,
+   "both": 0,
+   "shifts": {
+    "-7": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 57,
+   "copiers": 7,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 7,
+   "both": 0,
+   "shifts": {
+    "-7": 2,
+    "-5": 5
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 58,
+   "copiers": 75,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 75,
+   "both": 0,
+   "shifts": {
+    "-5": 69,
+    "-3": 2,
+    "-4": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 59,
+   "copiers": 154,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 154,
+   "both": 0,
+   "shifts": {
+    "-4": 74,
+    "-5": 41,
+    "-3": 36,
+    "-2": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 60,
+   "copiers": 215,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 215,
+   "both": 0,
+   "shifts": {
+    "-3": 130,
+    "-4": 44,
+    "-2": 34,
+    "-5": 4,
+    "-1": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 61,
+   "copiers": 231,
+   "aligned": 3,
+   "forward": 0,
+   "reverse": 231,
+   "both": 0,
+   "shifts": {
+    "-2": 134,
+    "-3": 53,
+    "-1": 37,
+    "-4": 4,
+    "0": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 62,
+   "copiers": 235,
+   "aligned": 38,
+   "forward": 0,
+   "reverse": 235,
+   "both": 0,
+   "shifts": {
+    "-1": 135,
+    "-2": 54,
+    "0": 38,
+    "-3": 4,
+    "1": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 32,
+   "h": 63,
+   "copiers": 246,
+   "aligned": 136,
+   "forward": 0,
+   "reverse": 246,
+   "both": 0,
+   "shifts": {
+    "0": 136,
+    "-1": 55,
+    "1": 47,
+    "-2": 4,
+    "2": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 0,
+   "copiers": 230,
+   "aligned": 52,
+   "forward": 0,
+   "reverse": 230,
+   "both": 0,
+   "shifts": {
+    "1": 151,
+    "0": 52,
+    "-1": 4,
+    "2": 20,
+    "3": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 1,
+   "copiers": 126,
+   "aligned": 4,
+   "forward": 0,
+   "reverse": 126,
+   "both": 0,
+   "shifts": {
+    "2": 54,
+    "1": 50,
+    "0": 4,
+    "3": 18
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 2,
+   "copiers": 123,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 123,
+   "both": 0,
+   "shifts": {
+    "3": 85,
+    "2": 29,
+    "1": 4,
+    "4": 5
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 3,
+   "copiers": 89,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 89,
+   "both": 0,
+   "shifts": {
+    "4": 47,
+    "3": 32,
+    "5": 6,
+    "2": 2,
+    "6": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 4,
+   "copiers": 92,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 92,
+   "both": 0,
+   "shifts": {
+    "5": 47,
+    "4": 26,
+    "3": 3,
+    "6": 15,
+    "7": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 5,
+   "copiers": 89,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 89,
+   "both": 0,
+   "shifts": {
+    "6": 52,
+    "5": 27,
+    "4": 2,
+    "7": 7,
+    "8": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 6,
+   "copiers": 93,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 93,
+   "both": 0,
+   "shifts": {
+    "7": 53,
+    "6": 28,
+    "5": 2,
+    "8": 10
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 7,
+   "copiers": 75,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 75,
+   "both": 0,
+   "shifts": {
+    "8": 44,
+    "7": 27,
+    "6": 2,
+    "9": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 8,
+   "copiers": 83,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 83,
+   "both": 0,
+   "shifts": {
+    "9": 61,
+    "8": 20,
+    "7": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 9,
+   "copiers": 31,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 31,
+   "both": 0,
+   "shifts": {
+    "9": 26,
+    "8": 1,
+    "10": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 10,
+   "copiers": 2,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 2,
+   "both": 0,
+   "shifts": {
+    "10": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 11,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 12,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 13,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 14,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 15,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 16,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 17,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 18,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 19,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 20,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 21,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 22,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 23,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 24,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 25,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 26,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 27,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 28,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 29,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 30,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 31,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 32,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 33,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 34,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 35,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 36,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 37,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 38,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 39,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 40,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 41,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 42,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 43,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 44,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 45,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 46,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 47,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 48,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 49,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 50,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 51,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 52,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 53,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 54,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 55,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 56,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 57,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 58,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 59,
+   "copiers": 13,
+   "aligned": 0,
+   "forward": 13,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-4": 13
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 60,
+   "copiers": 73,
+   "aligned": 0,
+   "forward": 73,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-4": 57,
+    "-3": 15,
+    "-2": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 61,
+   "copiers": 116,
+   "aligned": 0,
+   "forward": 116,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-3": 68,
+    "-4": 23,
+    "-2": 23,
+    "-1": 2
+   },
+   "self_sufficient": 2,
+   "self_sufficient_orientation": {
+    "forward": 2
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "<[}.>]",
+     -1
+    ],
+    [
+     "}[}.>]",
+     -1
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 62,
+   "copiers": 137,
+   "aligned": 4,
+   "forward": 137,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-2": 80,
+    "-3": 26,
+    "-1": 26,
+    "0": 4,
+    "-4": 1
+   },
+   "self_sufficient": 17,
+   "self_sufficient_orientation": {
+    "forward": 17
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "<[<,{]",
+     0
+    ],
+    [
+     "<[>}.]",
+     -1
+    ],
+    [
+     "<[}>.]",
+     -1
+    ],
+    [
+     "<[}.>]",
+     0
+    ],
+    [
+     "<[.>}]",
+     -1
+    ],
+    [
+     "<[.}>]",
+     -1
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 63,
+   "copiers": 164,
+   "aligned": 52,
+   "forward": 164,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 52,
+    "-1": 80,
+    "-2": 28,
+    "1": 2,
+    "-3": 2
+   },
+   "self_sufficient": 76,
+   "self_sufficient_orientation": {
+    "forward": 76
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<,{]",
+     0
+    ],
+    [
+     "[}.>]",
+     0
+    ],
+    [
+     "<[<{,]",
+     0
+    ],
+    [
+     "<[>}.]",
+     0
+    ],
+    [
+     "<[>.}]",
+     -1
+    ],
+    [
+     "<[{<,]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 64,
+   "copiers": 188,
+   "aligned": 130,
+   "forward": 188,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 130,
+    "-1": 28,
+    "1": 26,
+    "2": 2,
+    "-2": 2
+   },
+   "self_sufficient": 137,
+   "self_sufficient_orientation": {
+    "forward": 137
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<{,]",
+     0
+    ],
+    [
+     "[{<,]",
+     0
+    ],
+    [
+     "[}.>]",
+     1
+    ],
+    [
+     "[.>}]",
+     0
+    ],
+    [
+     "[.}>]",
+     0
+    ],
+    [
+     "<[>}.]",
+     1
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 65,
+   "copiers": 142,
+   "aligned": 32,
+   "forward": 142,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "1": 80,
+    "0": 32,
+    "2": 26,
+    "3": 2,
+    "-1": 2
+   },
+   "self_sufficient": 93,
+   "self_sufficient_orientation": {
+    "forward": 93
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     2
+    ],
+    [
+     "[.>}]",
+     1
+    ],
+    [
+     "[.}>]",
+     1
+    ],
+    [
+     "<[>}.]",
+     2
+    ],
+    [
+     "<[>.}]",
+     1
+    ],
+    [
+     "<[}>.]",
+     2
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 66,
+   "copiers": 138,
+   "aligned": 2,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "2": 80,
+    "1": 28,
+    "3": 26,
+    "4": 2,
+    "0": 2
+   },
+   "self_sufficient": 77,
+   "self_sufficient_orientation": {
+    "forward": 77
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     3
+    ],
+    [
+     "[.>}]",
+     2
+    ],
+    [
+     "[.}>]",
+     2
+    ],
+    [
+     "<[>.}]",
+     2
+    ],
+    [
+     ">[}.>]",
+     2
+    ],
+    [
+     ">[.>}]",
+     1
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 67,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "3": 80,
+    "2": 28,
+    "4": 26,
+    "5": 2,
+    "1": 2
+   },
+   "self_sufficient": 41,
+   "self_sufficient_orientation": {
+    "forward": 41
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[.>}]",
+     3
+    ],
+    [
+     "[.}>]",
+     3
+    ],
+    [
+     ">[.>}]",
+     2
+    ],
+    [
+     ">[.}>]",
+     2
+    ],
+    [
+     "{[>}.]",
+     2
+    ],
+    [
+     "{[>.}]",
+     1
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 68,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "4": 80,
+    "3": 28,
+    "5": 26,
+    "6": 2,
+    "2": 2
+   },
+   "self_sufficient": 1,
+   "self_sufficient_orientation": {
+    "forward": 1
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "{[>.}]",
+     2
+    ]
+   ]
+  },
+  {
+   "L": 64,
+   "h": 69,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "5": 80,
+    "4": 28,
+    "6": 26,
+    "7": 2,
+    "3": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 70,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "6": 80,
+    "5": 28,
+    "7": 26,
+    "8": 2,
+    "4": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 71,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "7": 80,
+    "6": 28,
+    "8": 26,
+    "9": 2,
+    "5": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 72,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "8": 80,
+    "7": 28,
+    "9": 26,
+    "10": 2,
+    "6": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 73,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "9": 80,
+    "8": 28,
+    "10": 26,
+    "11": 2,
+    "7": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 74,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "10": 80,
+    "9": 28,
+    "11": 26,
+    "12": 2,
+    "8": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 75,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "11": 80,
+    "10": 28,
+    "12": 26,
+    "13": 2,
+    "9": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 76,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "12": 80,
+    "11": 28,
+    "13": 26,
+    "14": 2,
+    "10": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 77,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "13": 80,
+    "12": 28,
+    "14": 26,
+    "15": 2,
+    "11": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 78,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "14": 80,
+    "13": 28,
+    "15": 26,
+    "16": 2,
+    "12": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 79,
+   "copiers": 136,
+   "aligned": 0,
+   "forward": 136,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "15": 80,
+    "14": 28,
+    "16": 26,
+    "13": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 80,
+   "copiers": 110,
+   "aligned": 0,
+   "forward": 110,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "16": 80,
+    "15": 28,
+    "14": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 81,
+   "copiers": 30,
+   "aligned": 0,
+   "forward": 30,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "16": 28,
+    "15": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 82,
+   "copiers": 2,
+   "aligned": 0,
+   "forward": 2,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "16": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 83,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 84,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 85,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 86,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 87,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 88,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 89,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 90,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 91,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 92,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 93,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 94,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 95,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 96,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 97,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 98,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 99,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 100,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 101,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 102,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 103,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 104,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 105,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 106,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 107,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 108,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 109,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 110,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 111,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 112,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 113,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 114,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 115,
+   "copiers": 1,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 1,
+   "both": 0,
+   "shifts": {
+    "-11": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 116,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 117,
+   "copiers": 5,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 5,
+   "both": 0,
+   "shifts": {
+    "-9": 4,
+    "-10": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 118,
+   "copiers": 76,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 76,
+   "both": 0,
+   "shifts": {
+    "-9": 69,
+    "-7": 2,
+    "-8": 5
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 119,
+   "copiers": 144,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 144,
+   "both": 0,
+   "shifts": {
+    "-8": 72,
+    "-9": 40,
+    "-7": 30,
+    "-6": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 120,
+   "copiers": 207,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 207,
+   "both": 0,
+   "shifts": {
+    "-7": 125,
+    "-8": 41,
+    "-6": 35,
+    "-9": 4,
+    "-5": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 121,
+   "copiers": 212,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 212,
+   "both": 0,
+   "shifts": {
+    "-6": 123,
+    "-7": 51,
+    "-5": 32,
+    "-8": 4,
+    "-4": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 122,
+   "copiers": 216,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 216,
+   "both": 0,
+   "shifts": {
+    "-5": 126,
+    "-6": 51,
+    "-4": 32,
+    "-7": 4,
+    "-3": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 123,
+   "copiers": 214,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 214,
+   "both": 0,
+   "shifts": {
+    "-4": 123,
+    "-5": 51,
+    "-3": 34,
+    "-6": 4,
+    "-2": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 124,
+   "copiers": 214,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 214,
+   "both": 0,
+   "shifts": {
+    "-3": 126,
+    "-4": 51,
+    "-2": 31,
+    "-5": 4,
+    "-1": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 125,
+   "copiers": 222,
+   "aligned": 3,
+   "forward": 0,
+   "reverse": 222,
+   "both": 0,
+   "shifts": {
+    "-2": 132,
+    "-3": 51,
+    "-1": 32,
+    "-4": 4,
+    "0": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 126,
+   "copiers": 219,
+   "aligned": 35,
+   "forward": 0,
+   "reverse": 219,
+   "both": 0,
+   "shifts": {
+    "-1": 130,
+    "-2": 48,
+    "0": 35,
+    "-3": 4,
+    "1": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 64,
+   "h": 127,
+   "copiers": 233,
+   "aligned": 132,
+   "forward": 0,
+   "reverse": 233,
+   "both": 0,
+   "shifts": {
+    "0": 132,
+    "-1": 51,
+    "1": 43,
+    "-2": 4,
+    "2": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 0,
+   "copiers": 216,
+   "aligned": 52,
+   "forward": 0,
+   "reverse": 216,
+   "both": 0,
+   "shifts": {
+    "1": 141,
+    "0": 52,
+    "-1": 4,
+    "2": 17,
+    "3": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 1,
+   "copiers": 121,
+   "aligned": 4,
+   "forward": 0,
+   "reverse": 121,
+   "both": 0,
+   "shifts": {
+    "2": 52,
+    "1": 50,
+    "0": 4,
+    "3": 15
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 2,
+   "copiers": 114,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 114,
+   "both": 0,
+   "shifts": {
+    "3": 80,
+    "2": 28,
+    "1": 3,
+    "4": 3
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 3,
+   "copiers": 77,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 77,
+   "both": 0,
+   "shifts": {
+    "4": 42,
+    "3": 29,
+    "5": 4,
+    "2": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 4,
+   "copiers": 76,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 76,
+   "both": 0,
+   "shifts": {
+    "5": 43,
+    "4": 23,
+    "3": 3,
+    "6": 7
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 5,
+   "copiers": 78,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 78,
+   "both": 0,
+   "shifts": {
+    "6": 47,
+    "5": 24,
+    "4": 2,
+    "7": 4,
+    "8": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 6,
+   "copiers": 82,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 82,
+   "both": 0,
+   "shifts": {
+    "7": 47,
+    "6": 24,
+    "5": 2,
+    "8": 8,
+    "9": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 7,
+   "copiers": 84,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 84,
+   "both": 0,
+   "shifts": {
+    "8": 49,
+    "7": 24,
+    "6": 2,
+    "9": 8,
+    "10": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 8,
+   "copiers": 106,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 106,
+   "both": 0,
+   "shifts": {
+    "9": 71,
+    "8": 24,
+    "7": 2,
+    "10": 8,
+    "11": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 9,
+   "copiers": 125,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 125,
+   "both": 0,
+   "shifts": {
+    "10": 71,
+    "9": 35,
+    "8": 2,
+    "11": 16,
+    "12": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 10,
+   "copiers": 157,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 157,
+   "both": 0,
+   "shifts": {
+    "11": 103,
+    "10": 35,
+    "9": 2,
+    "12": 16,
+    "13": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 11,
+   "copiers": 167,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 167,
+   "both": 0,
+   "shifts": {
+    "12": 96,
+    "11": 52,
+    "10": 2,
+    "13": 16,
+    "14": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 12,
+   "copiers": 167,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 167,
+   "both": 0,
+   "shifts": {
+    "13": 96,
+    "12": 50,
+    "11": 4,
+    "14": 16,
+    "15": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 13,
+   "copiers": 167,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 167,
+   "both": 0,
+   "shifts": {
+    "14": 96,
+    "13": 50,
+    "12": 4,
+    "15": 16,
+    "16": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 14,
+   "copiers": 167,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 167,
+   "both": 0,
+   "shifts": {
+    "15": 96,
+    "14": 50,
+    "13": 4,
+    "16": 16,
+    "17": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 15,
+   "copiers": 158,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 158,
+   "both": 0,
+   "shifts": {
+    "16": 88,
+    "15": 50,
+    "14": 4,
+    "17": 16
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 16,
+   "copiers": 126,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 126,
+   "both": 0,
+   "shifts": {
+    "17": 84,
+    "16": 38,
+    "15": 4
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 17,
+   "copiers": 39,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 39,
+   "both": 0,
+   "shifts": {
+    "17": 36,
+    "16": 2,
+    "18": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 18,
+   "copiers": 3,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 3,
+   "both": 0,
+   "shifts": {
+    "17": 2,
+    "19": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 19,
+   "copiers": 1,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 1,
+   "both": 0,
+   "shifts": {
+    "19": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 20,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 21,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 22,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 23,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 24,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 25,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 26,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 27,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 28,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 29,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 30,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 31,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 32,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 33,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 34,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 35,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 36,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 37,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 38,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 39,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 40,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 41,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 42,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 43,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 44,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 45,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 46,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 47,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 48,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 49,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 50,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 51,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 52,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 53,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 54,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 55,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 56,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 57,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 58,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 59,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 60,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 61,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 62,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 63,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 64,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 65,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 66,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 67,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 68,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 69,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 70,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 71,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 72,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 73,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 74,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 75,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 76,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 77,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 78,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 79,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 80,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 81,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 82,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 83,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 84,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 85,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 86,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 87,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 88,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 89,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 90,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 91,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 92,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 93,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 94,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 95,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 96,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 97,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 98,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 99,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 100,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 101,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 102,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 103,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 104,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 105,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 106,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 107,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 108,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 109,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 110,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 111,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 112,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 113,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 114,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 115,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 116,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 117,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 118,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 119,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 120,
+   "copiers": 43,
+   "aligned": 0,
+   "forward": 43,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-8": 27,
+    "-7": 15,
+    "-6": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 121,
+   "copiers": 110,
+   "aligned": 0,
+   "forward": 110,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-7": 68,
+    "-8": 17,
+    "-6": 23,
+    "-5": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 122,
+   "copiers": 135,
+   "aligned": 0,
+   "forward": 135,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-6": 80,
+    "-7": 26,
+    "-5": 26,
+    "-4": 2,
+    "-8": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 123,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-5": 80,
+    "-6": 28,
+    "-4": 26,
+    "-3": 2,
+    "-7": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 124,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-4": 80,
+    "-5": 28,
+    "-3": 26,
+    "-2": 2,
+    "-6": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 125,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-3": 80,
+    "-4": 28,
+    "-2": 26,
+    "-1": 2,
+    "-5": 2
+   },
+   "self_sufficient": 2,
+   "self_sufficient_orientation": {
+    "forward": 2
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "<[}.>]",
+     -1
+    ],
+    [
+     "}[}.>]",
+     -1
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 126,
+   "copiers": 140,
+   "aligned": 4,
+   "forward": 140,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "-2": 80,
+    "-3": 28,
+    "-1": 26,
+    "0": 4,
+    "-4": 2
+   },
+   "self_sufficient": 17,
+   "self_sufficient_orientation": {
+    "forward": 17
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "<[<,{]",
+     0
+    ],
+    [
+     "<[>}.]",
+     -1
+    ],
+    [
+     "<[}>.]",
+     -1
+    ],
+    [
+     "<[}.>]",
+     0
+    ],
+    [
+     "<[.>}]",
+     -1
+    ],
+    [
+     "<[.}>]",
+     -1
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 127,
+   "copiers": 162,
+   "aligned": 50,
+   "forward": 162,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 50,
+    "-1": 80,
+    "-2": 28,
+    "1": 2,
+    "-3": 2
+   },
+   "self_sufficient": 76,
+   "self_sufficient_orientation": {
+    "forward": 76
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<,{]",
+     0
+    ],
+    [
+     "[}.>]",
+     0
+    ],
+    [
+     "<[<{,]",
+     0
+    ],
+    [
+     "<[>}.]",
+     0
+    ],
+    [
+     "<[>.}]",
+     -1
+    ],
+    [
+     "<[{<,]",
+     0
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 128,
+   "copiers": 186,
+   "aligned": 128,
+   "forward": 186,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "0": 128,
+    "-1": 28,
+    "1": 26,
+    "2": 2,
+    "-2": 2
+   },
+   "self_sufficient": 138,
+   "self_sufficient_orientation": {
+    "forward": 138
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[<{,]",
+     0
+    ],
+    [
+     "[{<,]",
+     0
+    ],
+    [
+     "[}.>]",
+     1
+    ],
+    [
+     "[.>}]",
+     0
+    ],
+    [
+     "[.}>]",
+     0
+    ],
+    [
+     "<[>}.]",
+     1
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 129,
+   "copiers": 142,
+   "aligned": 32,
+   "forward": 142,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "1": 80,
+    "0": 32,
+    "2": 26,
+    "3": 2,
+    "-1": 2
+   },
+   "self_sufficient": 95,
+   "self_sufficient_orientation": {
+    "forward": 95
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     2
+    ],
+    [
+     "[.>}]",
+     1
+    ],
+    [
+     "[.}>]",
+     1
+    ],
+    [
+     "<[>}.]",
+     2
+    ],
+    [
+     "<[>.}]",
+     1
+    ],
+    [
+     "<[}>.]",
+     2
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 130,
+   "copiers": 137,
+   "aligned": 2,
+   "forward": 137,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "2": 80,
+    "1": 28,
+    "3": 25,
+    "4": 2,
+    "0": 2
+   },
+   "self_sufficient": 90,
+   "self_sufficient_orientation": {
+    "forward": 90
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     3
+    ],
+    [
+     "[.>}]",
+     2
+    ],
+    [
+     "[.}>]",
+     2
+    ],
+    [
+     "<[>}.]",
+     3
+    ],
+    [
+     "<[>.}]",
+     2
+    ],
+    [
+     "<[}>.]",
+     3
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 131,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "3": 80,
+    "2": 28,
+    "4": 26,
+    "5": 2,
+    "1": 2
+   },
+   "self_sufficient": 93,
+   "self_sufficient_orientation": {
+    "forward": 93
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     4
+    ],
+    [
+     "[.>}]",
+     3
+    ],
+    [
+     "[.}>]",
+     3
+    ],
+    [
+     "<[>}.]",
+     4
+    ],
+    [
+     "<[>.}]",
+     3
+    ],
+    [
+     "<[}>.]",
+     4
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 132,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "4": 80,
+    "3": 28,
+    "5": 26,
+    "6": 2,
+    "2": 2
+   },
+   "self_sufficient": 92,
+   "self_sufficient_orientation": {
+    "forward": 92
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     5
+    ],
+    [
+     "[.>}]",
+     4
+    ],
+    [
+     "[.}>]",
+     4
+    ],
+    [
+     "<[>}.]",
+     5
+    ],
+    [
+     "<[>.}]",
+     4
+    ],
+    [
+     "<[}>.]",
+     5
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 133,
+   "copiers": 137,
+   "aligned": 0,
+   "forward": 137,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "5": 79,
+    "4": 28,
+    "6": 26,
+    "7": 2,
+    "3": 2
+   },
+   "self_sufficient": 85,
+   "self_sufficient_orientation": {
+    "forward": 85
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     6
+    ],
+    [
+     "[.>}]",
+     5
+    ],
+    [
+     "[.}>]",
+     5
+    ],
+    [
+     "<[>}.]",
+     6
+    ],
+    [
+     "<[>.}]",
+     5
+    ],
+    [
+     "<[}>.]",
+     6
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 134,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "6": 80,
+    "5": 28,
+    "7": 26,
+    "8": 2,
+    "4": 2
+   },
+   "self_sufficient": 76,
+   "self_sufficient_orientation": {
+    "forward": 76
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[}.>]",
+     7
+    ],
+    [
+     "[.>}]",
+     6
+    ],
+    [
+     "[.}>]",
+     6
+    ],
+    [
+     "<[>.}]",
+     6
+    ],
+    [
+     ">[.>}]",
+     5
+    ],
+    [
+     ">[.}>]",
+     5
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 135,
+   "copiers": 137,
+   "aligned": 0,
+   "forward": 137,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "7": 80,
+    "6": 27,
+    "8": 26,
+    "9": 2,
+    "5": 2
+   },
+   "self_sufficient": 40,
+   "self_sufficient_orientation": {
+    "forward": 40
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "[.>}]",
+     7
+    ],
+    [
+     "[.}>]",
+     7
+    ],
+    [
+     ">[.>}]",
+     6
+    ],
+    [
+     ">[.}>]",
+     6
+    ],
+    [
+     "{[>}.]",
+     6
+    ],
+    [
+     "{[>.}]",
+     5
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 136,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "8": 80,
+    "7": 28,
+    "9": 26,
+    "10": 2,
+    "6": 2
+   },
+   "self_sufficient": 1,
+   "self_sufficient_orientation": {
+    "forward": 1
+   },
+   "class": "F",
+   "examples_self_sufficient": [
+    [
+     "{[>.}]",
+     6
+    ]
+   ]
+  },
+  {
+   "L": 128,
+   "h": 137,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "9": 80,
+    "8": 28,
+    "10": 26,
+    "11": 2,
+    "7": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 138,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "10": 80,
+    "9": 28,
+    "11": 26,
+    "12": 2,
+    "8": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 139,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "11": 80,
+    "10": 28,
+    "12": 26,
+    "13": 2,
+    "9": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 140,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "12": 80,
+    "11": 28,
+    "13": 26,
+    "14": 2,
+    "10": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 141,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "13": 80,
+    "12": 28,
+    "14": 26,
+    "15": 2,
+    "11": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 142,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "14": 80,
+    "13": 28,
+    "15": 26,
+    "16": 2,
+    "12": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 143,
+   "copiers": 137,
+   "aligned": 0,
+   "forward": 137,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "15": 79,
+    "14": 28,
+    "16": 26,
+    "17": 2,
+    "13": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 144,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "16": 80,
+    "15": 28,
+    "17": 26,
+    "18": 2,
+    "14": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 145,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "17": 80,
+    "16": 28,
+    "18": 26,
+    "19": 2,
+    "15": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 146,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "18": 80,
+    "17": 28,
+    "19": 26,
+    "20": 2,
+    "16": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 147,
+   "copiers": 137,
+   "aligned": 0,
+   "forward": 137,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "19": 79,
+    "18": 28,
+    "20": 26,
+    "21": 2,
+    "17": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 148,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "20": 80,
+    "19": 28,
+    "21": 26,
+    "22": 2,
+    "18": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 149,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "21": 80,
+    "20": 28,
+    "22": 26,
+    "23": 2,
+    "19": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 150,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "22": 80,
+    "21": 28,
+    "23": 26,
+    "24": 2,
+    "20": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 151,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "23": 80,
+    "22": 28,
+    "24": 26,
+    "25": 2,
+    "21": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 152,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "24": 80,
+    "23": 28,
+    "25": 26,
+    "26": 2,
+    "22": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 153,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "25": 80,
+    "24": 28,
+    "26": 26,
+    "27": 2,
+    "23": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 154,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "26": 80,
+    "25": 28,
+    "27": 26,
+    "28": 2,
+    "24": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 155,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "27": 80,
+    "26": 28,
+    "28": 26,
+    "29": 2,
+    "25": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 156,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "28": 80,
+    "27": 28,
+    "29": 26,
+    "30": 2,
+    "26": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 157,
+   "copiers": 137,
+   "aligned": 0,
+   "forward": 137,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "29": 79,
+    "28": 28,
+    "30": 26,
+    "31": 2,
+    "27": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 158,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 138,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "30": 80,
+    "29": 28,
+    "31": 26,
+    "32": 2,
+    "28": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 159,
+   "copiers": 136,
+   "aligned": 0,
+   "forward": 136,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "31": 80,
+    "30": 28,
+    "32": 26,
+    "29": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 160,
+   "copiers": 110,
+   "aligned": 0,
+   "forward": 110,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "32": 80,
+    "31": 28,
+    "30": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 161,
+   "copiers": 30,
+   "aligned": 0,
+   "forward": 30,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "32": 28,
+    "31": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 162,
+   "copiers": 2,
+   "aligned": 0,
+   "forward": 2,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {
+    "32": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 163,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 164,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 165,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 166,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 167,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 168,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 169,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 170,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 171,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 172,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 173,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 174,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 175,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 176,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 177,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 178,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 179,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 180,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 181,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 182,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 183,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 184,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 185,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 186,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 187,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 188,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 189,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 190,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 191,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 192,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 193,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 194,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 195,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 196,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 197,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 198,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 199,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 200,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 201,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 202,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 203,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 204,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 205,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 206,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 207,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 208,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 209,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 210,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 211,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 212,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 213,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 214,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 215,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 216,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 217,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 218,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 219,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 220,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 221,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 222,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 223,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 224,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 225,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 226,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 227,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 228,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 229,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 230,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 231,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 232,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 233,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 234,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 235,
+   "copiers": 0,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 0,
+   "both": 0,
+   "shifts": {},
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 236,
+   "copiers": 3,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 3,
+   "both": 0,
+   "shifts": {
+    "-19": 2,
+    "-18": 1
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 237,
+   "copiers": 11,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 11,
+   "both": 0,
+   "shifts": {
+    "-17": 4,
+    "-18": 5,
+    "-19": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 238,
+   "copiers": 75,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 75,
+   "both": 0,
+   "shifts": {
+    "-17": 59,
+    "-15": 2,
+    "-16": 7,
+    "-18": 7
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 239,
+   "copiers": 138,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 138,
+   "both": 0,
+   "shifts": {
+    "-17": 38,
+    "-15": 33,
+    "-16": 65,
+    "-14": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 240,
+   "copiers": 195,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 195,
+   "both": 0,
+   "shifts": {
+    "-16": 40,
+    "-15": 118,
+    "-14": 31,
+    "-17": 4,
+    "-13": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 241,
+   "copiers": 202,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 202,
+   "both": 0,
+   "shifts": {
+    "-15": 48,
+    "-14": 117,
+    "-13": 31,
+    "-16": 4,
+    "-12": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 242,
+   "copiers": 203,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 203,
+   "both": 0,
+   "shifts": {
+    "-14": 50,
+    "-13": 116,
+    "-12": 31,
+    "-15": 4,
+    "-11": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 243,
+   "copiers": 208,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 208,
+   "both": 0,
+   "shifts": {
+    "-13": 50,
+    "-12": 121,
+    "-11": 31,
+    "-14": 4,
+    "-10": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 244,
+   "copiers": 207,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 207,
+   "both": 0,
+   "shifts": {
+    "-12": 50,
+    "-11": 120,
+    "-10": 31,
+    "-13": 4,
+    "-9": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 245,
+   "copiers": 210,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 210,
+   "both": 0,
+   "shifts": {
+    "-11": 49,
+    "-10": 124,
+    "-9": 31,
+    "-12": 4,
+    "-8": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 246,
+   "copiers": 210,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 210,
+   "both": 0,
+   "shifts": {
+    "-9": 123,
+    "-10": 50,
+    "-8": 31,
+    "-11": 4,
+    "-7": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 247,
+   "copiers": 210,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 210,
+   "both": 0,
+   "shifts": {
+    "-8": 123,
+    "-9": 50,
+    "-7": 31,
+    "-10": 4,
+    "-6": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 248,
+   "copiers": 209,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 209,
+   "both": 0,
+   "shifts": {
+    "-7": 124,
+    "-8": 48,
+    "-6": 31,
+    "-9": 4,
+    "-5": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 249,
+   "copiers": 208,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 208,
+   "both": 0,
+   "shifts": {
+    "-6": 122,
+    "-7": 49,
+    "-5": 31,
+    "-8": 4,
+    "-4": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 250,
+   "copiers": 209,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 209,
+   "both": 0,
+   "shifts": {
+    "-5": 122,
+    "-6": 50,
+    "-4": 31,
+    "-7": 4,
+    "-3": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 251,
+   "copiers": 213,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 213,
+   "both": 0,
+   "shifts": {
+    "-4": 126,
+    "-5": 50,
+    "-3": 31,
+    "-6": 4,
+    "-2": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 252,
+   "copiers": 213,
+   "aligned": 0,
+   "forward": 0,
+   "reverse": 213,
+   "both": 0,
+   "shifts": {
+    "-3": 126,
+    "-4": 50,
+    "-2": 31,
+    "-5": 4,
+    "-1": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 253,
+   "copiers": 212,
+   "aligned": 2,
+   "forward": 0,
+   "reverse": 212,
+   "both": 0,
+   "shifts": {
+    "-2": 124,
+    "-3": 51,
+    "-1": 31,
+    "-4": 4,
+    "0": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 254,
+   "copiers": 215,
+   "aligned": 33,
+   "forward": 0,
+   "reverse": 215,
+   "both": 0,
+   "shifts": {
+    "-1": 125,
+    "-2": 51,
+    "0": 33,
+    "-3": 4,
+    "1": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  },
+  {
+   "L": 128,
+   "h": 255,
+   "copiers": 220,
+   "aligned": 128,
+   "forward": 0,
+   "reverse": 220,
+   "both": 0,
+   "shifts": {
+    "0": 128,
+    "-1": 51,
+    "1": 35,
+    "-2": 4,
+    "2": 2
+   },
+   "self_sufficient": 0,
+   "self_sufficient_orientation": {},
+   "class": "S",
+   "examples_self_sufficient": []
+  }
+ ],
+ "per_L": {
+  "16": {
+   "F": [
+    14,
+    15,
+    16,
+    17
+   ],
+   "S": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    18,
+    19,
+    20,
+    21,
+    27,
+    28,
+    29,
+    30,
+    31
+   ],
+   "none": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    22,
+    23,
+    24,
+    25,
+    26
+   ],
+   "L_is_F": true,
+   "F_near_L": true,
+   "self_sufficient_orientation": [
+    "forward"
+   ]
+  },
+  "32": {
+   "F": [
+    30,
+    31,
+    32,
+    33,
+    34
+   ],
+   "S": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    29,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+   ],
+   "none": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55
+   ],
+   "L_is_F": true,
+   "F_near_L": true,
+   "self_sufficient_orientation": [
+    "forward"
+   ]
+  },
+  "64": {
+   "F": [
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68
+   ],
+   "S": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    59,
+    60,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    115,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127
+   ],
+   "none": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    116
+   ],
+   "L_is_F": true,
+   "F_near_L": true,
+   "self_sufficient_orientation": [
+    "forward"
+   ]
+  },
+  "128": {
+   "F": [
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136
+   ],
+   "S": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    120,
+    121,
+    122,
+    123,
+    124,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255
+   ],
+   "none": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235
+   ],
+   "L_is_F": true,
+   "F_near_L": true,
+   "self_sufficient_orientation": [
+    "forward"
+   ]
+  }
+ },
+ "equivalence_L64_vs_E61": true,
+ "primary1": "pass",
+ "seconds": 1792
+}
