@@ -32,3 +32,12 @@ under the shift-aware classifier.
 copiers in rule h are shifted by about h or h − 128).
 
 **Limits:** shifts up to 16 bytes only; kernels of 5–6 instructions only; one family of rule variations.
+
+## Addendum (written after Part A, before any Part B soup finished; not part of the registered test)
+
+Part A found F′ = 61–68. Inspection (exploratory): a copier at shift d makes a child shifted by d, whose own
+child is shifted by 2d, and so on, so its lineage loses the kernel; in a 32-generation product chain, aligned
+(d = 0) copiers lasted all 32 generations, shifted ones mostly failed within 1–22. In rules 61, 66, 67, 68 every
+self-sufficient copier found is shifted (d ≠ 0). **Additional prediction (not registered as primary):** if a
+lasting lineage matters, soups in 61, 66, 67, 68 jump later than E-60's soups in 62, 63, 65 (median T 250–2,500);
+if one-generation self-sufficiency is what matters, they jump as fast. The registered Primary 2 is unchanged.
