@@ -525,6 +525,22 @@ Section 16 ended with a pattern across all 128 versions of the rule: soups make 
 - **What this means for the research question:** within this family of rules, whether replicators arise quickly is predicted by one property that can be computed from the rule in seconds, before any soup is run: **does the rule's simplest copier make a copy that works?** How many copiers a rule has does not predict it. This is a "which rules make it likely" answer, though still for one narrow family of variations of one language.
 - **What it cost to get here:** two hypotheses that failed their pre-registered tests (E-61's lineage reading, E-62's lineages) and one criterion that had to be fixed. All are in the journal (J-061 to J-064).
 
+## 18 · Monday early: the predictor works in a second family of rules
+
+A predictor found and tested in one family of rules could be a quirk of that family. So we moved **both** pointers: pointer 1 starts at byte g and pointer 2 at byte h, which gives 16,256 new versions of the rule, with copy geometries we had never looked at. Before running any soup, we wrote down the test (E-64, pre-registered): take 256 versions at random, compute for each whether its simplest copier makes a copy that copies again (class **F**), and predict that F versions make replicators quickly while versions that have short copiers but none like that (class **C**) do not.
+
+- **The census (11 minutes):** of 256 versions, **3 are F**, 33 are C, and 220 have no short copier at all.
+- **The soups:** 4 soups of 16,384 programs in each of the 3 F versions and in 4 C versions drawn at random, with the same strict jump test as section 17. **F: 10 of 12 soups made replicators** (4/4, 4/4, 2/4), mostly within 5,000 rounds. **C: 1 of 16** (at round 13,250). p = 5 × 10⁻⁵. **The prediction held.**
+- **As predicted,** every self-sufficient short copier in the F versions copies forwards, and the replicators that took over were exact forward copiers. The single C soup that jumped did it differently: with backward copiers whose copies land 1–4 bytes off, a kind our short-copier census does not count.
+- **A caution:** the F side rests on only 3 versions (F versions are rare: about 1 in 85). The slowest of them (2 of 4 soups) has the fewest self-sufficient copiers, which hints that the predictor could be graded rather than yes/no.
+
+<figure>
+<img src="{{ '/assets/report/e64-twoheads.png' | relative_url }}" alt="Left: scatter of 256 random rule versions by the start bytes of pointer 1 (g) and pointer 2 (h): 220 grey dots with no short copier, 33 blue dots with short copiers none of which makes a working copy, 3 green stars (g 2 h 64, g 60 h 126, g 67 h 127) with one that does. Right: bar chart of soups with real replicators by 16,000 rounds: 4 of 4, 4 of 4 and 2 of 4 in the three green versions; 0 of 4, 0 of 4, 0 of 4 and 1 of 4 in four blue versions.">
+<figcaption><b>Left:</b> 256 versions of the rule drawn at random, classified in 11 minutes from the rule alone. <b>Right:</b> what their soups did (pre-registered test): the versions predicted to be fast (green) made replicators in 10 of 12 soups, the others (blue) in 1 of 16.</figcaption>
+</figure>
+
+- **What this means for the research question:** "does the simplest copier make a copy that works?" is the first property in this project that predicted, before anything was run, which universes make self-copying structure quickly, and it has now done so in **two** families of rules. Both families vary only where pointers start in one programming language, so the next test should change the language itself (its instructions or tape length).
+
 ## Where this leaves the project
 
 | Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) | Program soups (BFF) |
@@ -620,6 +636,8 @@ Section 16 ended with a pattern across all 128 versions of the rule: soups make 
 | 22:50–23:00 | E-61 (pre-registered): a shift-aware census widens the band to 61–68 |
 | 23:05–23:27 | E-62 (pre-registered): lasting lines do not matter; all 28 soups in 61–68 make exact replicators. Both predictions failed |
 | 23:28–23:42 | E-63 (pre-registered): just outside the band, 1 of 16 soups; inside, 32 of 32 |
+| 23:48–00:42 | E-64 (pre-registered): a second family of rules (both pointers move); F versions 10 of 12 soups, C versions 1 of 16 |
+| 01:21 | The last long soup of E-54 finished (resumed after the power loss) |
 Everything was done on branches, checked with `pytest` and the validation benchmark, and submitted by pull request (the newest are waiting for review before they appear here). The benchmark now has 131 checks (39 + 92), all passing.
 
 ## Read more
