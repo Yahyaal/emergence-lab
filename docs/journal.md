@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-058 · 2026-11-08 · E-58: a matched control rule with backward copiers is slow again, so orientation, not perturbation, sets the speed (as registered: fail)
+
+**Question (pre-registered, `docs/data/e58-preregistration.md`, commit `cf061d4`):** E-56/E-57's speed-up could come from the mirror requirement (M: backward copiers need a mirror partner) or from changing the rule at all (P). Control rule: head1 starts at byte **127**. Pilot before registering (k = 5 only): 6 shortest copiers, all backward, as many as the fast head1 = 64 rule. (M) predicts slow, (P) gives no reason for slow.
+
+**Ran:** E-58, `scripts/bff_h127.py`: census (12 s) and 8 soups of 2^14 (seeds 5800–5807, 3 workers, ~25 min), settings as E-57. Follow-up, **not pre-registered**: the 4 soups stopped early on an HOE-only crossing were replayed deterministically from scratch to 16,000 rounds with the HOE stop disabled (`--part rerun`, ~15 min).
+
+**Found:**
+- **Census (primary B): pass.** 127 copiers of 5–6 instructions, **all backward**, shortest 5 instructions; **0 of 127 self-sufficient** (standard 0 of 52; head1 = 64: 97 of 133). So this rule has about as many short copiers as the fast rule, but none replicates alone.
+- **Soups (primary A), as registered: fail.** 5 of 8 met the HOE criterion (≥ 1.0 at 3 checkpoints), p = 0.10 vs E-57's 8 of 8; secondary "fail" (4 of the 5 had no copier).
+- **But 4 of those 5 were not jumps.** Under this rule the background HOE sits near 0.9 (standard: 0.3–0.5), and it drifted over 1.0. Those soups had **no copier** among their 40 most common programs and steps per pair stayed ≤ 543 (every real jump so far: 6,000–8,000). Replayed to 16,000 rounds: still **no copier**, steps ≤ 543.
+- **One real jump:** soup 5806 at round **11,500** (HOE 0.58 → 4.41 in one checkpoint, steps 518 → 6,577), **40 of 40 common programs backward copiers**.
+- **Reading with D-045 in full** (a jump needs a replicator; written before E-58, but the pre-registration only named the HOE part): **1 of 8 jumped by 16,000 rounds, vs 8 of 8 at head1 = 64: p = 0.0007**; with E-40's standard 0 of 12. New D-046 makes this the rule for non-standard rules.
+- Figure updated: `docs/assets/report/e57-counterfactual-jumps.png` (five arms; three census bars).
+
+**Interpretation:** a rule with as many short copiers as the fast rule, but backward ones, is slow like the standard rule, and the one replicator it made copies backwards. This supports (M), orientation and the mirror requirement, over (P), any change to the rule. The pre-registered test failed on a criterion that turned out not to measure jumps in this rule; the conclusion rests on the corrected reading and should be confirmed with more soups.
+
+**Lesson:** a threshold calibrated in one rule (HOE ≥ 1.0) does not transfer to another; confirm a "jump" with the thing it is supposed to mean (copiers, a burst of execution).
+
+---
+
 ## J-057 · 2026-11-08 · E-57: the counterfactual speed-up holds at 2^14 (8 of 8 vs 0 of 12); backward copiers are never replicators on their own
 
 **Question (pre-registered, `docs/data/e57-preregistration.md`, commit `0946633`):** (A) is E-56's fast jump under the counterfactual rule real, at another soup size? (B) a mechanism: a forward copier's copy is itself, so any forward copier replicates; a backward copier's copy is its mirror, in which the copy loop is reversed and no longer a loop, so a backward copier only replicates if it also carries a copier facing the other way (two kernels).

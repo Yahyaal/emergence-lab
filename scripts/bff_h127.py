@@ -73,14 +73,32 @@ def soups(workers: int) -> dict:
             "results": res}
 
 
+def rerun(workers: int, seeds: list[int]) -> dict:
+    """Follow-up (not pre-registered; see J-058): replay the given seeds from scratch with the HOE stop disabled,
+    to 16,000 rounds, and classify the 40 most common programs at the end. Deterministic: the first rounds equal
+    the Part A run."""
+    C.H1, C.N, C.WAIT, C.RUN, C.THRESH = H1, 2 ** 14, 16000, Path("runs/e58b"), float("inf")
+    C.RUN.mkdir(parents=True, exist_ok=True)
+    with Pool(workers) as pool:
+        res = pool.map(C.job, seeds, chunksize=1)
+    return {"summary": {"seeds": seeds,
+                        "end_orientation": {r["seed"]: {k: v for k, v in r["orientation"].items() if k != "copiers"}
+                                            for r in res},
+                        "max_steps_per_pair": {r["seed"]: max(s["steps_per_pair"] for s in r["series"]) for r in res},
+                        "max_hoe": {r["seed"]: max(s["hoe"] for s in r["series"]) for r in res}},
+            "results": res}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--part", choices=("census", "soups"), required=True)
+    ap.add_argument("--part", choices=("census", "soups", "rerun"), required=True)
+    ap.add_argument("--seeds", default="")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     t0 = time.time()
-    out = {"experiment": "E-58", "part": a.part, "h1": H1} | (census() if a.part == "census" else soups(a.workers))
+    out = {"experiment": "E-58", "part": a.part, "h1": H1} | (census() if a.part == "census" else soups(a.workers) if a.part == "soups"
+                                                        else rerun(a.workers, [int(x) for x in a.seeds.split(",")]))
     out["seconds"] = round(time.time() - t0)
     json.dump(out, open(a.out, "w"), indent=1)
     print(json.dumps({k: v for k, v in out.items() if k not in ("results", "rows")}, indent=1, default=str))

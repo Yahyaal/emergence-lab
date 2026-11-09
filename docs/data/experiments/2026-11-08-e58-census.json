@@ -1,0 +1,672 @@
+{
+ "experiment": "E-58",
+ "part": "census",
+ "h1": 127,
+ "copiers": 127,
+ "forward": 0,
+ "reverse": 127,
+ "both": 0,
+ "self_sufficient": 0,
+ "fraction_self_sufficient": 0.0,
+ "shortest": {
+  "forward": null,
+  "reverse": 5
+ },
+ "examples": [
+  "[<},]",
+  "[>{.]",
+  "[{>.]",
+  "[}<,]",
+  "[.>{]",
+  "[.{>]",
+  "<[>.{]",
+  ">[<,}]",
+  ">[{.>]",
+  "{[>.{]",
+  "}[<,}]",
+  "}[{.>]"
+ ],
+ "rows": [
+  {
+   "kernel": "[<},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "<[>.{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ">[<,}]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ">[{.>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "{[>.{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "}[<,}]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "}[{.>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "-[<},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "-[>{.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "-[{>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "-[}<,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "-[.>{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "-[.{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "+[<},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "+[>{.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "+[{>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "+[}<,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "+[.>{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "+[.{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ".[<},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ".[>{.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ".[{>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ".[}<,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ".[.>{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ".[.{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ",[<},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ",[>{.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ",[{>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ",[}<,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ",[.{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": ",[,}<]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<}-,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<}+,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},]<",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},]>",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},]{",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},]}",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},]-",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},]+",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},].",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},],",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},][",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<},]]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<-},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<+},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[<,},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{..]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]<",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]>",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]{",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]}",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]-",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]+",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.].",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.],",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.][",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[>{.]]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>..]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]<",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]>",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]{",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]}",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]-",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]+",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.].",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.],",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.][",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{>.]]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[{.>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<-,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<+,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]<",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]>",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]{",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]}",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]-",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]+",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,].",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,],",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,][",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[}<,]]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.<},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]<",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]>",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]{",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]}",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]-",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]+",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{].",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{],",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{][",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.>{]]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]<",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]>",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]{",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]}",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]-",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]+",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>].",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>],",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>][",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{>]]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.{.>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.}<,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[..>{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[..{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.,>{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[.,{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[[<},]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[[>{.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[[{>.]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[[}<,]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[[.>{]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  },
+  {
+   "kernel": "[[.{>]",
+   "orientation": "reverse",
+   "self_sufficient": false
+  }
+ ],
+ "primary_B": {
+  "reverse_ge_90pct": true,
+  "self_sufficient_le_5pct": true,
+  "pass": true
+ },
+ "seconds": 12
+}

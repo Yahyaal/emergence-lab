@@ -15,6 +15,11 @@ plt.rcParams.update({"figure.dpi": 130, "savefig.bbox": "tight", "axes.spines.to
 E56 = json.load(open("docs/data/experiments/2026-11-08-e56-counterfactual-soups.json"))
 E57S = json.load(open("docs/data/experiments/2026-11-08-e57-soups.json"))
 E57C = json.load(open("docs/data/experiments/2026-11-08-e57-census.json"))
+E58C = json.load(open("docs/data/experiments/2026-11-08-e58-census.json"))
+# E-58 (head1 = 127): real jumps only (D-045 in full: copiers present; the 4 HOE-only crossings had none and,
+# replayed to 16,000 rounds, still none). See J-058.
+E58S = json.load(open("docs/data/experiments/2026-11-08-e58-soups.json"))
+H127 = [r["T"] for r in E58S["results"] if r["jumped"] and r["orientation"]["reverse"] > 0]
 
 # Standard-rule jump rounds (D-045 criterion). 2^16: E-50 (10 soups) + E-54 new soups (12), horizon 24,000.
 # 2^14: E-40, 12 soups, none by 16,000 rounds.
@@ -22,12 +27,13 @@ STD16 = [12500, 13750, 21750, 10250, 22250, 16750, 750]
 STD16_N, STD14_N = 22, 12
 arms = [
     ("standard rule\n16,384 programs", [], STD14_N, 16000, ORANGE),
-    ("counterfactual\n16,384 programs", [r["T"] for r in E57S["results"] if r["jumped"]], len(E57S["results"]), 16000, BLUE),
+    ("head1 at 64\n16,384 programs", [r["T"] for r in E57S["results"] if r["jumped"]], len(E57S["results"]), 16000, BLUE),
+    ("head1 at 127\n16,384 programs", H127, len(E58S["results"]), 16000, "#7a4fb0"),
     ("standard rule\n65,536 programs", STD16, STD16_N, 24000, ORANGE),
-    ("counterfactual\n65,536 programs", [r["T"] for r in E56["results"] if r["jumped"]], len(E56["results"]), 24000, BLUE),
+    ("head1 at 64\n65,536 programs", [r["T"] for r in E56["results"] if r["jumped"]], len(E56["results"]), 24000, BLUE),
 ]
-fig = plt.figure(figsize=(11, 4.4))
-ax = fig.add_axes([0.06, 0.16, 0.5, 0.72])
+fig = plt.figure(figsize=(12.5, 4.6))
+ax = fig.add_axes([0.06, 0.16, 0.55, 0.72])
 rng = np.random.default_rng(3)
 for i, (name, T, n, hor, c) in enumerate(arms):
     x = i + rng.uniform(-0.15, 0.15, len(T))
@@ -39,18 +45,20 @@ for i, (name, T, n, hor, c) in enumerate(arms):
     ax.text(i, 52000, f"{len(T)} of {n} jumped", ha="center", fontsize=9, fontweight="bold")
 ax.set_yscale("log")
 ax.set_ylim(150, 75000)
-ax.set_xticks(range(4), [a[0] for a in arms], fontsize=8)
+ax.set_xticks(range(5), [a[0] for a in arms], fontsize=7.5)
 ax.set_ylabel("round of the jump (log scale)")
 ax.set_title("When soups jump (grey triangles: no jump by the end of the run)", fontsize=10)
 
-ax2 = fig.add_axes([0.66, 0.16, 0.32, 0.72])
-v = [E57C["standard"]["fraction"], E57C["counterfactual"]["fraction"]]
-ax2.bar([0, 1], [100 * x for x in v], 0.5, color=[ORANGE, BLUE])
-for xi, (vi, r) in enumerate(zip(v, ("standard", "counterfactual"))):
-    ax2.text(xi, 100 * vi + 2, f"{E57C[r]['self_sufficient']} of {E57C[r]['copiers']}", ha="center", fontsize=9)
-ax2.set_xticks([0, 1], ["standard rule\n(backward copiers)", "counterfactual\n(forward copiers)"], fontsize=8.5)
+ax2 = fig.add_axes([0.69, 0.16, 0.3, 0.72])
+bars = [(E57C["standard"]["self_sufficient"], E57C["standard"]["copiers"], ORANGE, "standard\n(backward)"),
+        (E57C["counterfactual"]["self_sufficient"], E57C["counterfactual"]["copiers"], BLUE, "head1 at 64\n(forward)"),
+        (E58C["self_sufficient"], E58C["copiers"], "#7a4fb0", "head1 at 127\n(backward)")]
+for xi, (k, n, c, _) in enumerate(bars):
+    ax2.bar(xi, 100 * k / n, 0.55, color=c)
+    ax2.text(xi, 100 * k / n + 2, f"{k} of {n}", ha="center", fontsize=9)
+ax2.set_xticks(range(3), [b[3] for b in bars], fontsize=8)
 ax2.set_ylabel("% of short copiers whose copy also copies")
 ax2.set_ylim(0, 100)
-ax2.set_title("Shortest replicator: 10 vs 5 instructions", fontsize=10)
+ax2.set_title("Short copiers whose copy can copy again", fontsize=10)
 fig.savefig("docs/assets/report/e57-counterfactual-jumps.png")
 print("saved docs/assets/report/e57-counterfactual-jumps.png")
