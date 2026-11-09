@@ -12,6 +12,28 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-062 · 2026-11-08 · E-61: a shift-aware census widens the fast rules to h = 61–68, but what takes over is exact copiers
+
+**Question (pre-registered, `docs/data/e61-preregistration.md`, commit `5b65cc2`):** J-061 showed our copier classifier misses copies placed a few bytes off byte 64. Redo E-60's census of all 128 head-start rules with a shift-aware classifier (`classify_shift`, |d| ≤ 16), and run soups in any rule that becomes F.
+
+**Ran:** `scripts/bff_shift_census.py --part census` (9 workers, 355 s), then `--part soups` (16 soups of 2^14 in rules 61, 66, 67, 68, shift-aware D-046 criterion; 9 workers, 264 s).
+
+**Found:**
+- **Census:** **55 of 128 rules have short copiers** once shifts count (E-60: 12). Shifts follow the geometry: backward copiers in rules 0–10 and 115–127 sit about h (or h − 128) bytes off; forward copiers in 59–82 about h − 64. Checks passed: total copiers ≥ E-60's in every rule; F′ contains 62–65.
+- **Primary 1: pass.** F′ = **61–68** (new: 61, 66, 67, 68), all self-sufficient copiers forward. No backward copier is self-sufficient at any shift (rules 0–10 and 115–127 have 75–233 shifted copiers each, 0 self-sufficient).
+- **Primary 2: pass as registered: 16 of 16 soups jumped**, T = 250–2,750 (one-sided Fisher vs E-60's S soups 2/16: p = 2.5 × 10⁻⁷).
+- **But the bar is weak (as J-060 warned).** 8 of the 16 "jumps" are HOE crossings at rounds 250–500 with 0–4 copiers among 40 at T + 1,000 and 190–680 steps per pair: early waves of short programs, not replicator soups. With J-060's stricter reading (≥ 10 copiers among 40 at T + 1,000): **rule 61: 3/4, 66: 1/4, 67: 3/4, 68: 0/4; 7 of 16** (E-60's F rules 62, 63, 65: 11 of 12; S rules: 0–1 of 16).
+- **In every real jump the takeover is by exact copiers (shift 0, 39–40 of 40 programs), even in rules 61, 66 and 67, where the census found no exact copier of ≤ 6 instructions.** The soups evolved longer exact copiers (heads adjusted to land the copy at byte 64).
+- Exploratory, from Part A (addendum to the pre-registration, written while Part B ran; six soups had finished seconds earlier, unseen): a copier at shift d makes a child shifted by d, a grandchild by 2d, and so on, so its lineage loses the kernel. In 32-generation product chains, exact copiers lasted all 32 generations, shifted ones mostly failed within 1–22.
+
+**Interpretation:** "has a one-generation self-sufficient short copier" over-predicts: by the strict reading the four new rules are in between (7/16), and rule 68, whose only self-sufficient copier is shifted by 2–4 bytes, made none. What took over everywhere was an **exact** copier. A better rule-level predictor is probably "an exact copy is reachable", i.e. a lineage that persists. Not yet tested as a prediction. The primary passes, but read strictly the result is weaker than E-60's. Evidence: 16 soups in 4 rules plus a census; strict reading not pre-registered for this experiment.
+
+**Lesson:** a one-generation copy test cannot tell a lasting replicator from a lineage that drifts away; replication is a property of lineages, not of single copy events. And a jump criterion with "≥ 1 copier" accepts early waves (D-047).
+
+**Next:** a lineage-persistence census (does a copier's line still copy after 64 generations, shift-aware?) across all 128 rules, pre-registered, predicting fast soups in 62–65 and slower in 61, 66–68; the D-047 jump criterion.
+
+---
+
 ## J-061 · 2026-11-08 · E-60 follow-up (exploratory): the rule-7 "puzzle" soup is full of shifted mirror copiers
 
 **Question (not pre-registered; follow-up to J-060's open puzzle):** soup 6031 (head1 starts at byte 7) sat in a high-order, high-execution state from round ~7,000 with no copier by our classifier, which only recognises copies placed exactly at byte 64 (or mirrored there). Do its common programs copy themselves to a *shifted* position?
