@@ -33,7 +33,10 @@ copiers in rule h are shifted by about h or h − 128).
 
 **Limits:** shifts up to 16 bytes only; kernels of 5–6 instructions only; one family of rule variations.
 
-## Addendum (written after Part A, before any Part B soup finished; not part of the registered test)
+## Addendum (written after Part A while Part B was running; not part of the registered test)
+
+**Correction:** six Part B soups (6111–6113, 6101, 6122, 6123) had finished 10–45 s before this addendum was
+committed (22:59:18). I had not looked at them, but the prediction below cannot count as made in advance.
 
 Part A found F′ = 61–68. Inspection (exploratory): a copier at shift d makes a child shifted by d, whose own
 child is shifted by 2d, and so on, so its lineage loses the kernel; in a 32-generation product chain, aligned
