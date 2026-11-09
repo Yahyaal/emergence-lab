@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-063 · 2026-11-08 · E-62: lineage persistence does not separate the rules; every rule from 61 to 68 makes exact replicators
+
+**Question (pre-registered, `docs/data/e62-preregistration.md`, commit `a39789e`):** J-062 suggested that what predicts fast replicators is a short copier whose **lineage persists** (exact copies), not one good copy. Census of lineage persistence (64 generations, shift-aware) in all 128 rules; fresh soups in E-61's F′ rules under the strict D-047 criterion (≥ 10 copiers among 40 at T + 1,000; a failed candidate is dropped and the soup runs on to 16,000).
+
+**Ran:** `scripts/bff_lineage.py` (census 361 s; 28 soups of 2^14, 994 s; 9 workers). Controls passed (hand-written replicator and `[.>}]` at h = 64 persist; `[.>}]` at h = 66 does not; 0 of 100 random).
+
+**Found:**
+- **Primary 1: fail.** P = **62–66**, not 62–65: rule 66 has 2 persistent copiers (shift 1 and 2, e.g. `.[>.}]`). No persistent copier outside 62–66.
+- **Primary 2: fail.** Group P (62, 63, 65, 66): **16 of 16** jumped; group N (61, 67, 68): **12 of 12** (p = 1). Every one of the 28 soups ended with 13–40 copiers among 40, **all at shift 0 (exact)** except 4 programs in two soups.
+- Median T: 63: 750; 61: 1,125; 62: 1,375; 65: 2,500; 67: 2,500; 66: 4,125; 68: 5,375 (2 of 4 soups after 8,000). Rule 68 is the slowest, but the groups overlap completely.
+- 6 candidates were dropped (0–7 copiers at T + 1,000) and those soups went on to real jumps later.
+
+**Interpretation:** the lineage idea is wrong as a predictor here: soups in rules with only drifting short copiers (61, 67, 68) evolve exact copiers within a few thousand rounds anyway. **Correction to J-062:** its "7 of 16 by the strict reading" came from the E-61 soups stopping at T + 1,000 after an early false candidate. Run on under D-047, the same rules give 12 of 12. So E-61's registered result (16/16) was right for the wrong reason, and the F′ class (a short copier whose single copy copies, at any small shift) remains the best predictor we have: all 8 F′ rules are fast (44 of 44 soups across E-60–E-62 by the strict criterion where measured). Still untested: whether rules just outside F′ (e.g. 59–60, 69–80, forward copiers that fail the one-copy test) are slow under the strict criterion.
+
+**Lesson:** a jump criterion that stops a soup on a false candidate under-counts; "drop and continue" is the right design (now D-047). And a mechanism that sounded right (lineages must persist) failed its test because evolution repairs drift quickly.
+
+**Next:** soups in rules just outside F′ under D-047, pre-registered (E-63).
+
+---
+
 ## J-062 · 2026-11-08 · E-61: a shift-aware census widens the fast rules to h = 61–68, but what takes over is exact copiers
 
 **Question (pre-registered, `docs/data/e61-preregistration.md`, commit `5b65cc2`):** J-061 showed our copier classifier misses copies placed a few bytes off byte 64. Redo E-60's census of all 128 head-start rules with a shift-aware classifier (`classify_shift`, |d| ≤ 16), and run soups in any rule that becomes F.
@@ -30,7 +50,9 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 **Lesson:** a one-generation copy test cannot tell a lasting replicator from a lineage that drifts away; replication is a property of lineages, not of single copy events. And a jump criterion with "≥ 1 copier" accepts early waves (D-047).
 
-**Next:** a lineage-persistence census (does a copier's line still copy after 64 generations, shift-aware?) across all 128 rules, pre-registered, predicting fast soups in 62–65 and slower in 61, 66–68; the D-047 jump criterion.
+**Correction (J-063):** the strict reading below was confounded: these soups stopped at T + 1,000 after early false candidates; run on under D-047, rules 61, 67, 68 give 12 of 12 real jumps.
+
+**Next (superseded by J-063):** a lineage-persistence census (does a copier's line still copy after 64 generations, shift-aware?) across all 128 rules, pre-registered, predicting fast soups in 62–65 and slower in 61, 66–68; the D-047 jump criterion.
 
 ---
 
