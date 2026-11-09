@@ -95,3 +95,6 @@ long epoch_h(uint8_t *soup, int L, const int32_t *pairs, int npairs, long max_st
     }
     return total;
 }
+
+/* E-57: run one tape in place (exposes run() for product extraction). */
+long run_tape(uint8_t *t, int n, long max_steps, int h1start) { return run(t, n, max_steps, h1start); }
