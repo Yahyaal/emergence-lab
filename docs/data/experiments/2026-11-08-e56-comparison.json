@@ -1,0 +1,60 @@
+{
+ "experiment": "E-56 comparison",
+ "soups": {
+  "5301": {
+   "T": 21750,
+   "forward": 0,
+   "reverse": 40,
+   "both": 0,
+   "none": 0
+  },
+  "5302": {
+   "T": 13750,
+   "forward": 0,
+   "reverse": 40,
+   "both": 0,
+   "none": 0
+  },
+  "5308": {
+   "T": 12500,
+   "forward": 0,
+   "reverse": 40,
+   "both": 0,
+   "none": 0
+  },
+  "5401": {
+   "T": 10250,
+   "forward": 0,
+   "reverse": 8,
+   "both": 0,
+   "none": 32
+  },
+  "5402": {
+   "T": 22250,
+   "forward": 0,
+   "reverse": 40,
+   "both": 0,
+   "none": 0
+  },
+  "5406": {
+   "T": 16750,
+   "forward": 0,
+   "reverse": 39,
+   "both": 0,
+   "none": 1
+  },
+  "5410": {
+   "T": 750,
+   "forward": 0,
+   "reverse": 40,
+   "both": 0,
+   "none": 0
+  }
+ },
+ "total": {
+  "forward": 0,
+  "reverse": 247,
+  "both": 0,
+  "none": 33
+ }
+}
