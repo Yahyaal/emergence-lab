@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-061 · 2026-11-08 · E-60 follow-up (exploratory): the rule-7 "puzzle" soup is full of shifted mirror copiers
+
+**Question (not pre-registered; follow-up to J-060's open puzzle):** soup 6031 (head1 starts at byte 7) sat in a high-order, high-execution state from round ~7,000 with no copier by our classifier, which only recognises copies placed exactly at byte 64 (or mirrored there). Do its common programs copy themselves to a *shifted* position?
+
+**Ran:** `scripts/e60_shifted.py` (replay of soup 6031 to round 14,750 = T + 1,000, deterministic). For each of the 40 most common distinct programs, 4 runs against random partners; the best agreement of the partner half with the program rotated by any offset d (0–63), forwards or mirrored. A copy counts at ≥ 56 of 64 bytes in ≥ 3 of 4 runs. Started by the 10th scheduled session; cut off by a power loss at 22:19 and re-run from scratch.
+
+**Found:**
+- **25 of 40 programs are copiers**: 24 write a **mirrored copy shifted by 6–8 bytes** (56–58 of 64 bytes agree, the rest is the part shifted past the partner's end); 1 is an ordinary aligned mirror copier (the one the classifier saw).
+- The copies are not trivial: the programs have 40–52 distinct byte values, the most common byte at most 12% (a constant writer would match a constant program, not these).
+- A shift of ~7 is what a backward copier gets when its writing head starts at byte 7 instead of 0.
+
+**Interpretation:** soup 6031 is a real replicator soup, probably from round ~7,000 (when its HOE rose), not 13,750. So J-060's stricter reading ("S rules 0 of 16") is wrong: at least **1 of 16** S soups made replicators, still much later than any F soup (7,000 vs 250–2,500, one at 10,250). The pre-registered primary (F 12/12 vs S 2/16) stands. But the census behind the F/S split has the same blind spot: rule 7 may have short *shifted* copiers that we never counted, so "116 of 128 rules have no short copier" is an under-count. Evidence: exploratory, one soup.
+
+**Lesson:** a detector tuned on one rule silently misses the same structure under a neighbouring rule. Any census across rules must be invariant to the rule's own geometry (here, where the heads start).
+
+**Next:** a shift-aware copier census of all 128 rules, pre-registered, re-testing the F/S prediction.
+
+---
+
 ## J-060 · 2026-11-08 · E-60: across all 128 head-start rules, only four have self-sufficient short copiers, and only those make replicators fast
 
 **Question (pre-registered, `docs/data/e60-preregistration.md`, commit `5c6183f`):** does "has a self-sufficient copier of ≤ 6 instructions" (F) vs not (S) predict fast replicator emergence across the whole family of rules "head1 starts at byte h", h = 0..127?
