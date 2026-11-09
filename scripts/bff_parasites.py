@@ -24,7 +24,7 @@ from emergence.programs import bff as B  # noqa: E402
 E54 = Path("docs/data/experiments/2026-11-08-e54-long-soups.json")
 REPEATS = 10
 NULL_SEEDS, NULL_EPOCHS, NULL_N = (6601, 6602), 2000, 2 ** 14
-_NULL = {}
+CACHE = Path("runs/e66-partA.jsonl")
 
 
 def prog(h: str) -> np.ndarray:
@@ -38,12 +38,17 @@ def alone(arg):
 
 
 def null_soup(seed: int) -> dict:
-    s = B.Soup(n=NULL_N, seed=seed)
-    for _ in range(NULL_EPOCHS):
-        s.epoch()
-    np.save(f"runs/e66-null-{seed}.npy", s.programs)
-    return {"seed": seed, "hoe": round(B.high_order_entropy(s.programs), 3),
-            "top": [bytes(x).hex() for x in LA.distinct_top(s.programs)]}
+    f = Path(f"runs/e66-null-{seed}.npy")
+    if f.exists():
+        P = np.load(f)
+    else:
+        s = B.Soup(n=NULL_N, seed=seed)
+        for _ in range(NULL_EPOCHS):
+            s.epoch()
+        P = s.programs
+        np.save(f, P)
+    return {"seed": seed, "hoe": round(B.high_order_entropy(P), 3),
+            "top": [bytes(x).hex() for x in LA.distinct_top(P)]}
 
 
 def para(arg):
@@ -68,16 +73,25 @@ def main() -> None:
     with Pool(a.workers) as pool:
         nulls = pool.map(null_soup, NULL_SEEDS)
         print("null soups", [(n["seed"], n["hoe"], len(n["top"])) for n in nulls], flush=True)
-        jobs = [((r[0], r[1], r[2]), r[3]) for r in rows]
-        jobs += [((-n["seed"], 0, i), h) for n in nulls for i, h in enumerate(n["top"])]
+        jobs = [((n["seed"], 0, i), h) for n in nulls for i, h in enumerate(n["top"])]
+        jobs += [((r[0], r[1], r[2]), r[3]) for r in rows]
         res = {}
-        for k, (key, g1, vs) in enumerate(pool.imap_unordered(alone, jobs, chunksize=4)):
+        if CACHE.exists():
+            for line in CACHE.read_text().splitlines():
+                k_, g1_, vs_ = json.loads(line)
+                res[tuple(k_)] = (g1_, vs_)
+        todo = [j for j in jobs if j[0] not in res]
+        print(f"part A: {len(res)} cached, {len(todo)} to run", flush=True)
+        cache = CACHE.open("a")
+        for k, (key, g1, vs) in enumerate(pool.imap_unordered(alone, todo, chunksize=4)):
             res[key] = (g1, vs)
+            cache.write(json.dumps([list(key), g1, vs]) + "\n")
+            cache.flush()
             if k % 200 == 0:
-                print(f"part A {k}/{len(jobs)} {time.time() - t0:.0f}s", flush=True)
+                print(f"part A {k}/{len(todo)} {time.time() - t0:.0f}s", flush=True)
         A = [{"soup": r[0], "epoch": r[1], "rank": r[2], "program": r[3], "e54": r[4],
               "gen1_ok": res[(r[0], r[1], r[2])][0], "verdicts": res[(r[0], r[1], r[2])][1]} for r in rows]
-        N = [{"soup": -n["seed"], "rank": i, "program": h, "gen1_ok": res[(-n["seed"], 0, i)][0]}
+        N = [{"soup": n["seed"], "rank": i, "program": h, "gen1_ok": res[(n["seed"], 0, i)][0]}
              for n in nulls for i, h in enumerate(n["top"])]
         snaps = {}
         for r in A:
