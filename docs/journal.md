@@ -20,7 +20,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 **Found:**
 - **Primary: pass. head1 = 127: 2 of 16 jumped (T = 3,750, 5,000); head1 = 64: 8 of 8 (T = 250–3,750, median 1,000). One-sided Fisher p = 6 × 10⁻⁵.**
-- Secondary orientation: pass (both head1 = 127 jumps 40/40 backward copiers; all 8 head1 = 64 jumps 40/40 forward).
+- Secondary orientation: pass (both head1 = 127 jumps 40/40 backward copiers; all 8 head1 = 64 jumps forward: 309 of 320 programs, 0 backward, 11 not copiers).
 - Secondary steps per pair > 3,000 at T + 1,000: **fail in one soup**: 5904 (head1 = 127) peaked at 4,096 and was at 2,786 at T + 1,000; all 40 common programs are copiers, so it is a real jump; the 3,000 line was a guess.
 - The new criterion did its job: 7 head1 = 127 soups had HOE-only crossings (14 checks in all) with no copier and kept running; 5 of them never jumped. In soup 5915 HOE hovered near 1.0 from round 4,500 and the burst (steps 363 → 5,606) came at 5,750, so its T (5,000) is early by ~750 rounds.
 - **Pooled with E-57/E-58 (2^14, by 16,000 rounds): head1 = 64: 16 of 16; head1 = 127: 3 of 24; standard (E-40): 0 of 12.** Figure updated.
