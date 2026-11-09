@@ -12,6 +12,27 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-066 · 2026-11-09 · E-54: seven long-running soups, 20,000 rounds after the jump: later replicators are still not fitter
+
+**Question (pre-registered, `docs/data/e54-preregistration.md`, commit `2601c48`; analysis script `10d2e86` written before the run finished):** with 3 soups and 10,000 rounds, later replicators were not reliably fitter than earlier ones (E-48, E-49, E-51, E-53). With more jumped soups (2^16 programs) and a 16,000-round gap, is there an advantage, measured with the kin-free invasion assay (D-044)?
+
+**Ran:** `scripts/bff_long.py` (12 new soups, seeds 5400–5411, up to 24,000 rounds; 3 E-50 soups continued), each jumped soup run to T + 20,000 (~14 h on 11 cores). **Deviation:** a power loss at 22:19 stopped soups 5302 and 5402; they continued from their last snapshots (31,750 and 32,250) with new random streams (`scripts/bff_long_resume.py`). For 5302 this affects only the T+20000 background; for 5402 the late candidates and the T+20000 background come from the resumed run. Analysis: `scripts/bff_long_analysis.py --workers 11` (22 min). Figure: `scripts/e54_figure.py` → `docs/assets/report/e54-long-soups.png`.
+
+**Found:**
+- **Jumps:** 4 of 12 new soups jumped by 24,000 rounds (5401 at 10,250, 5402 at 22,250, 5406 at 16,750, 5410 at 750); E-50 predicted about half (5/10 there). With the 3 continued soups, 7 jumped soups; each gave 6 early and 6 late distinct verified replicators; none had kin in the backgrounds (0 dropped).
+- **Primary: not significant, as predicted.** D = −0.15 (sum over soups of mean s late − mean s early), permutation p = 0.64. Per soup: −0.49 (5401), −0.03, −0.01, −0.01, +0.07, +0.13, +0.19.
+- **Secondary (future background, T+20000):** D = −0.50, p = 0.95; later code is not better at invading the future either.
+- **Descriptive:** verified replicators are only **22–78%** of the 40 most common distinct programs at every snapshot (2,800 tests: 1,423 replicators, 775 copy for one generation only, 602 do not replicate). No trend over 20,000 rounds; soups stay a mix of copiers, partial copiers and non-copiers.
+- Invasion scores are mostly below 0 for both groups: a few copies of a single soup program usually lose ground in a sample of the soup.
+
+**Interpretation:** across 7 soups and 16,000 rounds, the most sensitive calibrated assay we have shows no sign that later replicators are fitter. Together with E-48–E-53 this makes "no detectable cumulative adaptation after the jump in standard BFF at these scales" the best-supported reading: the post-jump change looks mostly neutral (drift). Level 5 is not shown. Caveats: the assay was calibrated on hand-written variants with large built-in differences (J-050, J-052); small advantages, or adaptation that only shows in the soup's own context, would be missed. The jump rate (4/12) is lower than E-50's estimate but within chance (E-50 5/10).
+
+**Lesson:** the long run was worth it as a firm negative: more soups and a longer gap did not reveal a trend hidden by noise. The power-loss deviation was small and is recorded.
+
+**Next:** the large share of programs that copy once or not at all is the obvious lead for parasitism: are the non-copiers copied *by* the replicators (true parasites), or debris? That needs a "copied but does not copy" measure with a null. Head-start rules where soups jump in minutes (E-56) make the level-5 question much cheaper to ask, but the fitness assays then need to run under the rule's own interpreter.
+
+---
+
 ## J-065 · 2026-11-09 · E-64: the "copy that copies" predictor carries over to a second family of rules
 
 **Question (pre-registered, `docs/data/e64-preregistration.md`, commit `1c756d5`):** E-60–E-63 found, in the family "pointer 2 starts at byte h", that soups make replicators fast exactly in the rules whose short copiers include one whose single copy copies again (F). Does the same rule-level property, computed before any soup is run, predict fast replicators in a **new family**: pointer 1 starts at byte g and pointer 2 at byte h (g = 1..127, h = 0..127)?
