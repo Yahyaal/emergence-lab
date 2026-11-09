@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-059 · 2026-11-08 · E-59: confirmed with fresh soups: backward-copier rule 2 of 16, forward-copier rule 8 of 8
+
+**Question (pre-registered, `docs/data/e59-preregistration.md`, commit `628ec53`):** E-58's conclusion rested on a corrected reading of a criterion that misfired. Confirmation with fresh seeds and the D-046 criterion fixed in advance (HOE ≥ 1.0 at 3 checkpoints **and** a copier under the soup's own interpreter; HOE-only crossings keep running).
+
+**Ran:** E-59, `scripts/bff_orient_confirm.py --workers 4`, 39 min. 16 soups of 2^14 with head1 = 127 (seeds 5900–5915), 8 with head1 = 64 (5920–5927), up to 16,000 rounds; jumped soups to T + 1,000.
+
+**Found:**
+- **Primary: pass. head1 = 127: 2 of 16 jumped (T = 3,750, 5,000); head1 = 64: 8 of 8 (T = 250–3,750, median 1,000). One-sided Fisher p = 6 × 10⁻⁵.**
+- Secondary orientation: pass (both head1 = 127 jumps 40/40 backward copiers; all 8 head1 = 64 jumps 40/40 forward).
+- Secondary steps per pair > 3,000 at T + 1,000: **fail in one soup**: 5904 (head1 = 127) peaked at 4,096 and was at 2,786 at T + 1,000; all 40 common programs are copiers, so it is a real jump; the 3,000 line was a guess.
+- The new criterion did its job: 7 head1 = 127 soups had HOE-only crossings (14 checks in all) with no copier and kept running; 5 of them never jumped. In soup 5915 HOE hovered near 1.0 from round 4,500 and the burst (steps 363 → 5,606) came at 5,750, so its T (5,000) is early by ~750 rounds.
+- **Pooled with E-57/E-58 (2^14, by 16,000 rounds): head1 = 64: 16 of 16; head1 = 127: 3 of 24; standard (E-40): 0 of 12.** Figure updated.
+
+**Interpretation:** confirmed. Two rules with about as many short copiers (133 vs 127) differ by more than 10× in how often replicators arise, and the difference follows the direction of copying: forward copiers are replicators by themselves, backward ones need a mirror partner. Strongest claim we can make: in BFF-like rules, whether the simplest copiers are self-sufficient sets the waiting time for replicators. Still one soup size and three rules.
+
+**Lesson:** pre-registering the fixed criterion and repeating with fresh seeds turned a "rescued" result into a clean one.
+
+---
+
 ## J-058 · 2026-11-08 · E-58: a matched control rule with backward copiers is slow again, so orientation, not perturbation, sets the speed (as registered: fail)
 
 **Question (pre-registered, `docs/data/e58-preregistration.md`, commit `cf061d4`):** E-56/E-57's speed-up could come from the mirror requirement (M: backward copiers need a mirror partner) or from changing the rule at all (P). Control rule: head1 starts at byte **127**. Pilot before registering (k = 5 only): 6 shortest copiers, all backward, as many as the fast head1 = 64 rule. (M) predicts slow, (P) gives no reason for slow.

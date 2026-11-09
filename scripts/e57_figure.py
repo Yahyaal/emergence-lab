@@ -20,6 +20,12 @@ E58C = json.load(open("docs/data/experiments/2026-11-08-e58-census.json"))
 # replayed to 16,000 rounds, still none). See J-058.
 E58S = json.load(open("docs/data/experiments/2026-11-08-e58-soups.json"))
 H127 = [r["T"] for r in E58S["results"] if r["jumped"] and r["orientation"]["reverse"] > 0]
+# E-59 (confirmation, D-046 criterion built in): pooled with E-57 (head1 = 64) and E-58 (head1 = 127).
+E59 = json.load(open("docs/data/experiments/2026-11-08-e59-orientation-confirm.json"))
+H127 += [r["T"] for r in E59["results"] if r["h1"] == 127 and r["jumped"]]
+H64_14 = [r["T"] for r in E57S["results"] if r["jumped"]] + [r["T"] for r in E59["results"] if r["h1"] == 64 and r["jumped"]]
+N127 = len(E58S["results"]) + sum(r["h1"] == 127 for r in E59["results"])
+N64_14 = len(E57S["results"]) + sum(r["h1"] == 64 for r in E59["results"])
 
 # Standard-rule jump rounds (D-045 criterion). 2^16: E-50 (10 soups) + E-54 new soups (12), horizon 24,000.
 # 2^14: E-40, 12 soups, none by 16,000 rounds.
@@ -27,8 +33,8 @@ STD16 = [12500, 13750, 21750, 10250, 22250, 16750, 750]
 STD16_N, STD14_N = 22, 12
 arms = [
     ("standard rule\n16,384 programs", [], STD14_N, 16000, ORANGE),
-    ("head1 at 64\n16,384 programs", [r["T"] for r in E57S["results"] if r["jumped"]], len(E57S["results"]), 16000, BLUE),
-    ("head1 at 127\n16,384 programs", H127, len(E58S["results"]), 16000, "#7a4fb0"),
+    ("head1 at 64\n16,384 programs", H64_14, N64_14, 16000, BLUE),
+    ("head1 at 127\n16,384 programs", H127, N127, 16000, "#7a4fb0"),
     ("standard rule\n65,536 programs", STD16, STD16_N, 24000, ORANGE),
     ("head1 at 64\n65,536 programs", [r["T"] for r in E56["results"] if r["jumped"]], len(E56["results"]), 24000, BLUE),
 ]
