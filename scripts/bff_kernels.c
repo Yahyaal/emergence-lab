@@ -6,7 +6,8 @@
 #include <stdlib.h>
 
 static long run(uint8_t *t, int n, long max_steps, int h1start) {
-    int ip = 0, h0 = 0, h1 = h1start % n;
+    /* E-64: h1start = h + 256 * g starts head0 at g (g = 0 for every earlier experiment). */
+    int ip = 0, h0 = (h1start >> 8) % n, h1 = (h1start & 255) % n;
     long steps = 0;
     while (ip >= 0 && ip < n && steps < max_steps) {
         switch (t[ip]) {
