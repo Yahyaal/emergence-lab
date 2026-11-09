@@ -46,6 +46,8 @@ for i, L in enumerate(LS):
     ax2.text(i - 0.2, fF[i] + 0.02, f"{by[str(L)]['F'][0]}/{by[str(L)]['F'][1]}", ha="center", fontsize=8)
     if fN[i] is not None:
         ax2.text(i + 0.2, fN[i] + 0.02, f"{by[str(L)]['N'][0]}/{by[str(L)]['N'][1]}", ha="center", fontsize=8)
+    else:
+        ax2.text(i + 0.2, 0.02, "not run\n(E-61–E-63)", ha="center", fontsize=7, color=GREY)
 ax2.set_xticks(list(x), [f"L = {L}" for L in LS])
 ax2.set_ylim(0, 1.12)
 ax2.set_ylabel("soups that made replicators\nwithin 16,000 rounds")

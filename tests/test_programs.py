@@ -96,3 +96,23 @@ def test_parasite_detector_controls():
                          alone="no replication", m=64, m_prod=256)
     assert r["verdict"] == "unspecific copying"
     assert PP.parasite_test(hp, PP.host_pool(rng), rng, alone="replicator", m=16, m_prod=16)["verdict"] == "self-copier"
+
+
+def test_tape_length_parameter():
+    """E-68/D-050: bff_kernels.set_length scales L, THR and MAXSHIFT; L = 64 gives the old constants, and the
+    forward copy loop is a forward copier at h1 = L (aligned) for a short length too, but not at h1 = 0."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bff_kernels as K
+    try:
+        K.set_length(16)
+        assert (K.L, K.THR, K.MAXSHIFT) == (16, 15, 4)
+        x = np.full((1, 16), 0x80, np.uint8)
+        x[0, :5] = np.frombuffer(b"[.>}]", np.uint8)
+        c, sh = K.classify_shift(x, 16, 4, 1)
+        assert K.label(c[0]) == "forward" and sh[0] == 0
+        assert K.label(K.classify_shift(x, 0, 4, 1)[0][0]) != "forward"
+    finally:
+        K.set_length(64)
+    assert (K.L, K.THR, K.MAXSHIFT) == (64, 60, 16)
