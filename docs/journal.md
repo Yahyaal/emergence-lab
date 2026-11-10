@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-071 · 2026-11-09 · E-69: with the same amount of code, short programs catch up partly; the F predictor is clean again
+
+**Question (pre-registered, `docs/data/e69-preregistration.md`, commit `6f5c663`):** is E-68's length effect a soup-size effect? E-68 kept 2^14 programs at every L, so short-program soups held fewer bytes, and E-50 found the jump rate ∝ soup size. E-69 reran E-68's 12 rules at L = 16 and 32 (3 F + 3 other each, 4 soups each) with 2^21 bytes per soup, like E-68's L = 128 soups (2^17 programs at L = 16, 2^16 at L = 32).
+
+**Ran:** `scripts/bff_tapelength_bytes.py --workers 11` (3 h 24 min; 48 soups; E-68's `soup_job` and D-050 unchanged).
+
+**Found:**
+- **Primary: undecided** (thresholds: "soup size explains" if F ≥ 50% at L = 16 and ≥ 75% at L = 32; "length itself matters" if ≤ 25% at L = 16). F soups: **L = 16 4/12** (E-68: 0/12), **L = 32 10/12** (E-68: 6/12). Our prediction ("length itself matters") was not borne out either.
+- **Other rules: 0/24** (E-68 at 2^14: 1/24). Post hoc, at matched bytes: F 14/24 vs other 0/24 (Fisher one-sided p = 4e-6); including L = 128 from E-68 (same bytes): F 26/36 vs other 5/36.
+- Every jump was a real take-over: forward, aligned copiers, 10–40 of the 40 most common programs and HOE 1.9–5.1 at T + 1,000. L = 16 jumps came from 2 of the 3 F rules (h1 = 15: 3/4 at round 1,500; h1 = 16: 1/4 at 500; h1 = 14: 0/4).
+- At equal bytes, success still rises with length: 4/12 (L = 16), 10/12 (L = 32), 12/12 (L = 128).
+
+**Interpretation:** soup size accounts for much of E-68's length effect (it doubled or more the F success at L = 16 and 32, and the predictor separates F from other rules cleanly once bytes are matched), but not all of it: with the same bytes, 16-byte programs still make replicators less often than 32- or 128-byte ones. Two caveats: a round at 2^17 programs runs 8× more pairings than at 2^14, so "same bytes" is not "same compute per round"; and 4 soups per rule leaves wide intervals. The census predictor is now supported at four lengths for *which* rules can be fast; the *pace* depends on the amount of code and, to a lesser degree, on length.
+
+**Lesson:** when changing one property of a language, ask what else changes with it (here, total bytes); a matched control converted a failed prediction into a mostly explained one.
+
+**Next:** instruction-set variants (e.g. an auto-advancing copy instruction) need a variant switch in `scripts/bff_kernels.c run()`; check equivalence at the default first, then census before soups.
+
+---
+
 ## J-070 · 2026-11-09 · E-68: change the program length, and F rules still sit half a tape apart; but short programs make no replicators at all
 
 **Question (pre-registered, `docs/data/e68-preregistration.md`, commit `d2c0138`):** E-60–E-65 tested the F predictor only with 64-byte programs. Does it carry over when the language itself changes, here the program length L (tape 2L)? (1) Census: is h1 = L an F rule at every L, with every F rule within L/8 of L? (2) Soups: do F rules make replicators fast at every length?
@@ -29,7 +49,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 **Lesson:** a predictor of *which* rules can make replicators is not a predictor of *whether* a given soup will; the soup's raw material (here, length or bytes) sets the pace.
 
-**Next:** E-69 (matched bytes, L = 16 and 32).
+**Next:** E-69 (matched bytes, L = 16 and 32): soup size explains much but not all (J-071).
 
 ---
 
