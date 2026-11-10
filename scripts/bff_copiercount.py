@@ -107,8 +107,9 @@ def main() -> None:
         "secondary_v1_low_vs_high": {"low_60_68": low, "high_63_67": high,
                                      "low_slower": bool(low and high and min(low) > max(high))},
         "seconds": round(time.time() - t0)}
-    json.dump({"experiment": "E-71", "summary": summary, "per_rule": per, "results": res}, open(a.out, "w"), indent=1)
-    print(json.dumps(summary, indent=1))
+    json.dump({"experiment": "E-71", "summary": summary, "per_rule": per, "results": res}, open(a.out, "w"), indent=1,
+              default=lambda o: o.item() if hasattr(o, "item") else str(o))
+    print(json.dumps(summary, indent=1, default=str))
     print("=== SENTINEL e71 DONE", flush=True)
 
 

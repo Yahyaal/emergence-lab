@@ -12,6 +12,32 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-073 · 2026-11-10 · E-71: the copier count predicts speed within a language, not across languages; the share of copiers that work does better
+
+**Question (pre-registered, `docs/data/e71-preregistration.md`, commit `ea680f8`):** E-70 found, as an exploratory result, that F rules with more self-sufficient copiers in the census make replicators sooner (ρ = −0.80 over 15 rules). Is this a graded predictor, or a difference between variants? Test on the 22 F rules of the E-70 census (v1–v5) that E-70 did not run soups in, 8 soups each, jump time at 50-round resolution. (1) Pooled Spearman ρ ≤ −0.4, one-sided permutation p < 0.01. (2) Within variants (v1, v3, v4, v5): the sum of the within-variant ρ is negative, with p < 0.05 against permutations within each variant.
+
+**Ran:** `scripts/bff_copiercount.py --workers 11` (176 soups of 2^14 programs, about 1 h; D-050 criterion with checkpoints every 50 rounds). The first two runs crashed while writing the summary (numpy bool in JSON). The soups were cached and the analysis reran unchanged. Figure: `scripts/e71_figure.py` → `docs/assets/report/e71-copiercount.png`.
+
+**Found:**
+- **P1 (pooled) fail:** ρ = −0.34, permutation p = 0.06.
+- **P2 (within variant) pass:** the sum of within-variant ρ is −2.45, p = 0.006. Every variant is negative: v1 −0.55, v3 −0.60, v4 −0.80, v5 −0.50.
+- **Jump rate:** 165/176 soups jumped (94%). 21 of 22 F rules jumped in at least 5 of 8 soups. **One F rule failed completely: v1/h1 = 68**, 0/8 in 16,000 rounds. It has 4,317 copiers but only 18 self-sufficient ones, and its soups never had more than 1 copier among the 40 most common programs (HOE stayed below 0.6, so the detector did not miss a jump). The F class is not a guarantee at the edge of the band.
+- **Secondary:**
+  - The total copier count carries no information (pooled ρ = +0.01).
+  - The **self-sufficient fraction** (self-sufficient copiers ÷ all copiers) does better: pooled ρ = −0.48 (p = 0.012), within-variant p = 0.004.
+  - The v1 contrast failed: v1/60, with 1 self-sufficient copier, was fast (median 200 rounds), while v1/67, with 1,525, was slow (6,850; 3 of 8 soups did not jump).
+  - Pooling E-70's 15 rules with E-71's 22 gives ρ = −0.44 (p = 0.006). This mixes 4-soup and 8-soup estimates and 250- and 50-round checkpoints.
+
+**Interpretation:** within a language, versions with more short self-copiers tend to make replicators sooner. Across languages the raw count does not compare: v1 counts thousands, because `[.]` is a complete copier there, yet some v1 versions are slow. E-70's ρ = −0.80 was largely a between-variant effect. A number that compares across languages may be the *share* of copiers whose copy copies (exploratory here). The v1/68 failure suggests that one generation of copying (the F test) is not always enough: in v1 at h1 = 68 copies may drift off position over generations. That is untested.
+
+**Changed:** `scripts/bff_copiercount.py`, `scripts/e71_figure.py`. No detector or `emergence/` change.
+
+**Lesson:** an exploratory correlation that pools groups can be a difference between the groups; pre-registering a within-group test is what separated the two here.
+
+**Next:** (a) a multi-generation version of the F test (does the copy of the copy still copy, 2–3 generations?) to explain v1/68 and v1/67, computed before any new soups; (b) pre-register the self-sufficient fraction as the graded predictor, on fresh rules (e.g. the two-head or tape-length families); (c) a language outside the BFF family.
+
+---
+
 ## J-072 · 2026-11-09 · E-70: change what an instruction does, and the F predictor holds in all five variants (60/60 vs 15/60)
 
 **Question (pre-registered, `docs/data/e70-preregistration.md`, commit `7f3e1f0`):** every test of the F predictor (E-61–E-69) kept BFF's instruction semantics fixed. Does it carry over when one instruction does something else? Five variants (D-051): `.` then both heads +1 (v1) or −1 (v2); `,` then both heads +1 (v3); `[` `]` test head1's byte (v4); `+` `−` act on head1's byte (v5), each × 128 head1 starts. (1) Census: is h1 = 64 F in every variant, with every F rule in 48–80? (2) Soups: F ≥ 75% jump, others ≤ 25%, Fisher p < 0.01, F ≥ others in every variant.
