@@ -116,3 +116,29 @@ def test_tape_length_parameter():
     finally:
         K.set_length(64)
     assert (K.L, K.THR, K.MAXSHIFT) == (64, 60, 16)
+
+
+def test_instruction_set_variants():
+    """E-70: code = h1 + 65536 * v selects a variant in bff_kernels.c run(). v = 0 is standard BFF (same tape as
+    the soup interpreter); v1 ('.' then both heads +1) makes the 3-instruction loop '[.]' a forward copier at
+    h1 = 64, which it is not in standard BFF; v4 ('[' tests head1) changes the result of a loop."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bff_kernels as K
+    rng = np.random.default_rng(70)
+    tape = rng.integers(0, 256, 128, dtype=np.uint8)
+    a, b = tape.copy(), tape.copy()
+    K.lib().run_tape(a.ctypes.data, 128, K.STEPS, 64)
+    K.lib().run_tape(b.ctypes.data, 128, K.STEPS, 64 + 65536 * 0)
+    assert (a == b).all()
+    x = K.NONOP_NZ[rng.integers(0, len(K.NONOP_NZ), (1, 64))]
+    x[0, :3] = np.frombuffer(b"[.]", np.uint8)
+    assert K.label(K.classify_shift(x, 64 + 65536, 4, 1)[0][0]) == "forward"
+    assert K.label(K.classify_shift(x, 64, 4, 1)[0][0]) == "none"
+    t = np.zeros(128, np.uint8)
+    t[:3] = np.frombuffer(b"[+]", np.uint8)  # head0 byte is '[' (nonzero): standard loops; head1 at 64 is 0
+    s0, s4 = t.copy(), t.copy()
+    K.lib().run_tape(s0.ctypes.data, 128, 100, 64)
+    K.lib().run_tape(s4.ctypes.data, 128, 100, 64 + 4 * 65536)
+    assert s0[0] != t[0] and s4[0] == t[0]
