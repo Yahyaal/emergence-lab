@@ -12,6 +12,26 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-072 · 2026-11-09 · E-70: change what an instruction does, and the F predictor holds in all five variants (60/60 vs 15/60)
+
+**Question (pre-registered, `docs/data/e70-preregistration.md`, commit `7f3e1f0`):** every test of the F predictor (E-61–E-69) kept BFF's instruction semantics fixed. Does it carry over when one instruction does something else? Five variants (D-051): `.` then both heads +1 (v1) or −1 (v2); `,` then both heads +1 (v3); `[` `]` test head1's byte (v4); `+` `−` act on head1's byte (v5), each × 128 head1 starts. (1) Census: is h1 = 64 F in every variant, with every F rule in 48–80? (2) Soups: F ≥ 75% jump, others ≤ 25%, Fisher p < 0.01, F ≥ others in every variant.
+
+**Ran:** `scripts/bff_instrset.py --workers 11` (census 28 min, 768 rules incl. v0; soups 2 h 26 min, 120 soups of 2^14 programs, D-050 criterion). Figures: `scripts/e70_figure.py`, `scripts/e70_soup_picture.py`. Pilot results (h1 = 64 F in every variant; a few soups) were seen before the pre-registration and disclosed in it.
+
+**Found:**
+- **Equivalence:** v0 reproduces E-61 on all 128 rules.
+- **P1 pass:** F rules v1 60–68, v2 62–66, v3 61–68, v4 61–67, v5 61–68 (v0 61–68); all self-sufficient copiers forward. Self-sufficient kernels at h1 = 64: v1 3,893 (e.g. `<>[.]`: the auto-advancing copy makes `[.]` a complete copier), v3 535, v2 314, v5 142, v0 137, v4 99.
+- **P2 pass:** F soups **60/60** jumped (median T 250–750 per rule, slowest v5/h1 = 67 at 1,500–3,500); other rules **15/60** (exactly at the 25% limit); one-sided Fisher p = 2e-20; F ≥ others in each variant (12/12 vs 1, 3, 3, 4, 4 of 12). 8 of the 15 non-F jumps are rules one step outside the band (v4/h1 = 59, v5/h1 = 60: 4/4 each, T 750–6,250); the other 7 from v2/7 (3/4), v3/83 (2/4), v3/125 (1/4), v1/123 (1/4, at 14,500). Non-F median T 3,000.
+- **Secondary (exploratory):** over the 15 F rules, number of self-sufficient copiers vs median T: ρ = −0.80, p = 0.0004 (E-65 within one family: ρ = −0.51, p = 0.12).
+
+**Interpretation:** the F property, computed from the rule alone, has now predicted fast replicator emergence across four kinds of rule change (head1 start, both head starts, program length, instruction semantics), in pre-registered tests; within F rules, the abundance of short self-copiers looks like a graded predictor of speed. Caveats: the five variants are hand-picked, not a sample of languages; non-F rules next to the band often jump too (the census's 5–6-instruction window misses slightly longer or shifted self-copiers, as in E-63/E-64); the graded result was exploratory and mixes variants; nothing here bears on level 5.
+
+**Lesson:** packing the variant into the rule code that every tool already passes along (D-051) made the whole census/soup pipeline reusable without touching it, and the v0 equivalence check came for free.
+
+**Next:** confirm the copier-count/speed link with fresh rules (pre-registered, e.g. F rules from all four families binned by count); try a language outside the BFF family; level-5 questions in fast variants (v1 jumps in 250 rounds) need fitness assays under the variant's own interpreter.
+
+---
+
 ## J-071 · 2026-11-09 · E-69: with the same amount of code, short programs catch up partly; the F predictor is clean again
 
 **Question (pre-registered, `docs/data/e69-preregistration.md`, commit `6f5c663`):** is E-68's length effect a soup-size effect? E-68 kept 2^14 programs at every L, so short-program soups held fewer bytes, and E-50 found the jump rate ∝ soup size. E-69 reran E-68's 12 rules at L = 16 and 32 (3 F + 3 other each, 4 soups each) with 2^21 bytes per soup, like E-68's L = 128 soups (2^17 programs at L = 16, 2^16 at L = 32).
