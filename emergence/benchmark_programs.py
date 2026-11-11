@@ -14,6 +14,10 @@
                    (positive), inert and random programs (negative), copyall rule and a by-product
                    made from many distinct "makers" and a soup program that copies
                    itself but cannot grow alone (deceptive), common programs of an early soup (null)
+* copy-fidelity test (scripts/bff_fidelity.py, E-73, D-053): sloppy replicators that copy 58-60/64 bytes and
+                   exact replicators (positive), random programs (negative), filler smears that match 60/64 bytes
+                   without copying instructions (deceptive), top-40 programs of soups without replicators (null),
+                   thr 60 without the guard == the old shift-aware test (equivalence)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -190,3 +194,13 @@ def run(check) -> None:
     vs = [PP.parasite_test(t, s.programs, np.random.default_rng(5))["verdict"] for t in top]
     check("parasite selection-aware null: the 3 most common programs of an early BFF soup (no replicators) -> no parasite",
           "parasite" not in vs, f"verdicts {vs}")
+
+    # copy-fidelity test for BFF variant rules (scripts/bff_fidelity.py, E-73, D-053)
+    import sys
+    from pathlib import Path
+    scripts = Path(__file__).resolve().parents[1] / "scripts"
+    if (scripts / "bff_fidelity.py").exists():
+        sys.path.insert(0, str(scripts))
+        import bff_fidelity as FID
+        for name, ok, det in FID.controls():
+            check(name, ok, det)

@@ -158,3 +158,57 @@ void classify_shift(const uint8_t *progs, int nprog, int L, int h1start, int par
         shift[i] = (int8_t)(fw != -999 ? fw : (rv != -999 ? rv : 0));
     }
 }
+
+/* E-73 (D-053): classify_shift with an instruction-fidelity guard. A partner copy at shift d (forward or
+   mirrored) counts only if it matches >= ov - (L - thr) bytes of the overlap AND reproduces >= opmin percent
+   of the program's instruction bytes in the overlap. opmin = 0 gives classify_shift exactly. */
+static int isop(uint8_t b) {
+    return b == '<' || b == '>' || b == '{' || b == '}' || b == '-' || b == '+' || b == '.' || b == ',' ||
+           b == '[' || b == ']';
+}
+
+void classify_fid(const uint8_t *progs, int nprog, int L, int h1start, int partners, uint64_t seed,
+                  long max_steps, int thr, int maxshift, int opmin, uint8_t *out, int8_t *shift) {
+    uint8_t tape[1024];
+    int slack = L - thr, nd = 2 * maxshift + 1;
+    uint8_t okf[129], okr[129];
+    for (int i = 0; i < nprog; i++) {
+        const uint8_t *p = progs + (long)i * L;
+        uint64_t s = seed ^ (0xD1B54A32D192ED03ull * (uint64_t)(i + 1));
+        for (int k = 0; k < nd; k++) okf[k] = okr[k] = 1;
+        int alive = 1;
+        for (int q = 0; q < partners && alive; q++) {
+            memcpy(tape, p, L);
+            for (int j = 0; j < L; j++) tape[L + j] = (uint8_t)sm(&s);
+            run(tape, 2 * L, max_steps, h1start);
+            int intact = 0;
+            for (int j = 0; j < L; j++) intact += tape[j] == p[j];
+            if (intact < thr) { alive = 0; break; }
+            alive = 0;
+            for (int k = 0; k < nd; k++) {
+                int d = k - maxshift, ov = L - (d < 0 ? -d : d), f = 0, r = 0, nf = 0, nr = 0, of = 0, orr = 0;
+                for (int j = 0; j < L; j++) {
+                    int src = j - d;
+                    if (src < 0 || src >= L) continue;
+                    int mf = tape[L + j] == p[src], mr = tape[L + j] == p[L - 1 - src];
+                    f += mf;
+                    r += mr;
+                    if (isop(p[src])) { nf++; of += mf; }
+                    if (isop(p[L - 1 - src])) { nr++; orr += mr; }
+                }
+                if (f < ov - slack || (opmin && (nf == 0 || of * 100 < opmin * nf))) okf[k] = 0;
+                if (r < ov - slack || (opmin && (nr == 0 || orr * 100 < opmin * nr))) okr[k] = 0;
+                alive |= okf[k] | okr[k];
+            }
+        }
+        int fw = -999, rv = -999;
+        if (alive)
+            for (int k = 0; k < nd; k++) {
+                int d = k - maxshift;
+                if (okf[k] && (fw == -999 || abs(d) < abs(fw))) fw = d;
+                if (okr[k] && (rv == -999 || abs(d) < abs(rv))) rv = d;
+            }
+        out[i] = (uint8_t)((fw != -999) | ((rv != -999) << 1));
+        shift[i] = (int8_t)(fw != -999 ? fw : (rv != -999 ? rv : 0));
+    }
+}

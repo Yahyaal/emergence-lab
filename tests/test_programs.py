@@ -142,3 +142,14 @@ def test_instruction_set_variants():
     K.lib().run_tape(s0.ctypes.data, 128, 100, 64)
     K.lib().run_tape(s4.ctypes.data, 128, 100, 64 + 4 * 65536)
     assert s0[0] != t[0] and s4[0] == t[0]
+
+
+def test_copy_fidelity_controls():
+    """E-73/D-053: looser copy test (58/64 bytes + instruction-fidelity guard): sloppy and exact replicators found,
+    nulls and filler smears rejected; thr 60 without the guard equals classify_shift."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bff_fidelity as F
+    bad = [(n, d) for n, ok, d in F.controls() if not ok]
+    assert not bad, bad
