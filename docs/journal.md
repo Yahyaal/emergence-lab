@@ -12,6 +12,32 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-074 · 2026-11-10 · E-72: following copies for five generations explains the old failures but does not predict new ones; and our jump detector misses sloppy copiers
+
+**Question (pre-registered, `docs/data/e72-preregistration.md`, commit `bf5ee1b`):** E-71's F rule v1/68 made nothing. The F test checks one generation (does the copy copy?). Does a five-generation version predict speed better? Each self-sufficient kernel starts 8 lineages of single copies, each into a fresh random partner. A kernel is *deep* if ≥ 4 of its 8 lineages still copy at generation 5. An F rule is *F-deep* if it has any deep kernel, else *F-shallow*. Primary (fresh rules): F-shallow rules are ≥ 3× slower (median of rule medians), with Mann–Whitney p < 0.01.
+
+**Ran:** `scripts/bff_multigen.py`.
+- Part A: the 44 E-70 F rules (1.5 min). Explanatory only, because their soups were already known.
+- Part B: 240 rules never run before: variants v1–v5 with head0 starting at g = 1–127 and head1 at g + 60..68. Census plus depth (8 min), then 6 soups in each of 8 F-deep and 8 F-shallow rules (96 soups, 4 h 10 min).
+
+**Found:**
+- **Part A (explanatory):** the enumeration reproduces the census counts exactly. At v1/67 and v1/68 no kernel is deep: copies of copies stop copying. Over the 37 rules with soups, the deep count against median T gives ρ = −0.66, against −0.44 for the one-generation count. Shallow rules took 2,250 rounds, deep rules 250. Some shallow rules were fast anyway (v1/60, v3/67, v3/68).
+- **Part B census:** 27 of 240 rules are F (11%), 17 deep and 10 shallow.
+- **Part B primary: fail.** Shallow rules took a median 1,675 rounds and deep rules 1,475 (ratio 1.1, p = 0.58). The one-generation self-sufficient count predicted better (ρ = −0.74, p = 0.001; exploratory).
+- **A measurement failure in two rules.** Deep rules v2 g = 57/58, h = 122 scored 0/6 under D-050. Yet HOE rose to 6.4 within about 500 rounds, and nearly every pair ran to the step limit. Re-running seed 7220 for 600 rounds: the most common programs (`>[ . ]` loops) copy **59–60 of 64 bytes** in place. These are sloppy replicators just under the classifier's 60-byte threshold, and D-050 missed them. The same probably applies to v4 g = 64, h = 124 (three soups at HOE 3.0, no copiers detected).
+- **Re-analysis with an HOE jump time** (HOE ≥ 2 at 3 consecutive checkpoints; post hoc): deep 188 rounds vs shallow 1,500, p = 0.04. The direction now matches the prediction, but the result is still short of p < 0.01. HOE in turn misses copier take-overs in v3/67 at g = 0 (4 of 6 soups stay below HOE 2).
+- **E-71 checked the same way:** 13 of 176 soups disagree between the two definitions. The within-variant result holds under every definition (p ≤ 0.004). **The pooled result does not:** under HOE timing ρ = −0.57, p = 0.003, which would have passed P1. J-073's "across languages, no" is corrected to "not shown either way". v1/68 stands: its soups never exceeded HOE 0.6.
+
+**Interpretation:** a multi-generation census explains the two slow v1 rules after the fact, but it did not predict speed in a fresh family. It is not established as a better predictor. The bigger lesson is about measurement: in variant languages, "when did replicators take over?" depends on the detector. Copy fidelity varies by language, and a fixed 60/64 threshold misses sloppy copiers. Results about *whether* soups jump (E-70: F 60/60 vs 15/60) are less exposed than results about *how fast*, but the 15 "non-jumps" there could hide some sloppy take-overs too.
+
+**Changed:** `scripts/bff_multigen.py`; D-052 (report jump times under both definitions; require agreement).
+
+**Lesson:** when a soup scores "no jump" while HOE sits at 6, look at the soup before accepting the verdict.
+
+**Next:** (a) validate a copy-fidelity threshold (for example 56/64) with positive controls (sloppy copiers), negative controls (partial copiers that never take over) and a null, then re-score E-70–E-72 under it; (b) pre-register the speed predictors again only after that; (c) a language outside BFF.
+
+---
+
 ## J-073 · 2026-11-10 · E-71: the copier count predicts speed within a language, not across languages; the share of copiers that work does better
 
 **Question (pre-registered, `docs/data/e71-preregistration.md`, commit `ea680f8`):** E-70 found, as an exploratory result, that F rules with more self-sufficient copiers in the census make replicators sooner (ρ = −0.80 over 15 rules). Is this a graded predictor, or a difference between variants? Test on the 22 F rules of the E-70 census (v1–v5) that E-70 did not run soups in, 8 soups each, jump time at 50-round resolution. (1) Pooled Spearman ρ ≤ −0.4, one-sided permutation p < 0.01. (2) Within variants (v1, v3, v4, v5): the sum of the within-variant ρ is negative, with p < 0.05 against permutations within each variant.
@@ -27,6 +53,8 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
   - The **self-sufficient fraction** (self-sufficient copiers ÷ all copiers) does better: pooled ρ = −0.48 (p = 0.012), within-variant p = 0.004.
   - The v1 contrast failed: v1/60, with 1 self-sufficient copier, was fast (median 200 rounds), while v1/67, with 1,525, was slow (6,850; 3 of 8 soups did not jump).
   - Pooling E-70's 15 rules with E-71's 22 gives ρ = −0.44 (p = 0.006). This mixes 4-soup and 8-soup estimates and 250- and 50-round checkpoints.
+
+**Correction (J-074):** the pooled failure below depends on the jump definition: with an HOE-based jump time the pooled test gives ρ = −0.57, p = 0.003. Read "across languages" as *not shown either way*. The within-variant result holds under both definitions.
 
 **Interpretation:** within a language, versions with more short self-copiers tend to make replicators sooner. Across languages the raw count does not compare: v1 counts thousands, because `[.]` is a complete copier there, yet some v1 versions are slow. E-70's ρ = −0.80 was largely a between-variant effect. A number that compares across languages may be the *share* of copiers whose copy copies (exploratory here). The v1/68 failure suggests that one generation of copying (the F test) is not always enough: in v1 at h1 = 68 copies may drift off position over generations. That is untested.
 
