@@ -12,6 +12,42 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-079 · 2026-11-12 · E-75 phase 2: every predicted soup makes replicators, but so do half the others; the rest die by halting
+
+**Question (pilot, exploratory; protocol `docs/data/e75-phase2-protocol.md`, commit `b39e166`):** do rules classed F by the phase-1 census make replicators in soups, and do C rules not? Calibrate run length for phase 3.
+
+**Ran:** `scripts/sq_pilot.py` (1 h 41 min, 11 workers).
+- **Re-census (D-056):** 6 F and 6 C candidates at 10^8 random programs. All F stayed F. One C candidate (n4/always/s+1/W32/o64) turned F, with 2 replicators in 5,000 verified hits, and was dropped.
+- **Soups:** 2 per rule in 4 F and 4 C rules, all n4/always, so they are matched on the knobs phase 1 found necessary. 16 soups of 2^14 programs, up to 16,000 rounds, top 40 tested every 50 rounds.
+
+**Found:**
+- **F: 8 of 8 soups jumped**, median T = 100 rounds (50 to 3,150).
+- **C: 4 of 8 jumped.** n4/always/s+1/W8/o126 did by round 50 in both soups; s−1/W32/o15 at 2,400 and 6,150. One-sided Fisher p = 0.04.
+- **The 4 C soups that did not jump died.** Within 50 rounds their programs became **halters**: the first instruction jumps off the tape, so the program stops after 1–2 steps. Nothing is copied after that, and HOE is ≈ 0.
+- **What took over in fast soups is a tile.** Many top programs are one 4-byte instruction repeated 16 times (e.g. `43007e12` × 16, `b749db00` × 16). It loops on itself at byte 0; as the index walks it copies bytes a fixed distance away, and since the program is periodic, any displacement reproduces it.
+  - A periodic program is essentially never drawn at random, so the census cannot see it. That is why a C rule (0 replicators in 1,039 hits at 10^8) jumps in 50 rounds.
+- **Predictions:**
+  1. Gate (≥ 1 F soup jumps): **passed**.
+  2. ≥ 7/8 F soups jump with median T ≤ 500: **right** (8/8, 100).
+  3. ≤ 2/8 C soups jump: **wrong** (4/8).
+  4. The whole-program test misses most F replicators: **wrong**. It agrees with inheritance at T + 1,000 in 7 of 8 F soups (one soup: 0 vs 40). Tiles copy all of themselves; the self-rewriting loop of J-077 (W = 128) is not what these rules make.
+- HOE is slightly negative (−0.05 to 0) in the dead soups, a small-sample artefact of near-constant programs. It is not used here.
+
+**Interpretation:** at matched knobs, the random-program census predicts soups in one direction only. Every F rule's soups made replicators fast, but "C" did not mean "no replicators": half of C soups made them anyway, through periodic programs the census never samples. The other half did not fail to find replicators; they **froze** into programs that stop at once. The split that matters may be **copy vs halt**, not F vs C. This is a pilot (8 rules); it sets up phase 3 but is not itself a test.
+
+**Changed:**
+- pilot data `docs/data/experiments/2026-11-12-e75-pilot.json`;
+- protocol outcome;
+- D-056 accepted.
+
+**Lesson:** a census of random programs measures what random code does once, not what a soup does after 50 rounds of selection. The soup reached structures (periodic tiles) that the census, by construction, never samples.
+
+**Next:** phase 3, pre-registered. The pilot says the design's prediction (C ≤ 25%) is likely to fail. Options:
+- (a) run the design as is, as a fair test of a prediction we now doubt;
+- (b) revise the predictor before phase 3 with a census that sees tiles and halting (for example periodic programs, and the fraction of random programs that halt at once), disclosed as post-pilot.
+
+---
+
 ## J-078 · 2026-11-12 · E-75 phase 1: one SUBLEQ version in 19 makes replicators out of random code; the published ones make none
 
 **Question (protocol `docs/data/e75-phase1-protocol.md`, commit `fb43474`, written before the run):** in a sample of the SUBLEQ family, how often is a random program already a replicator? Which knobs matter, and do the two published languages (SUBLEQ, RSUBLEQ4) make any?

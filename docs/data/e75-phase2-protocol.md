@@ -32,3 +32,13 @@ Design: `docs/data/e75-design.md` (phase 2). Phase 1: J-078. Selection rule: D-0
 4. In jumped F soups, the whole-program test finds < 10 of 40 at T + 1,000 in at least half of them (~60%; replicators that rewrite their own body, as in J-077).
 
 **Use:** pilot rules are excluded from phase 3. Phase 3's pre-registration sets run length and the expected jump rates from this pilot.
+
+## Outcome (added after the run; J-079)
+
+- **Re-census:** all 6 F candidates stayed F. One C candidate (n4/always/s+1/W32/o64) turned F (2 replicators at 10^8) and was dropped.
+  - Used, F: s+1/W32/o120, s+1/W32/o44, s−1/W64/o68, s+1/W16/o44.
+  - Used, C: s−1/W16/o32, s−1/W8/o72, s−1/W32/o15, s+1/W8/o126.
+1. Gate: **passed** (8 of 8 F soups jumped).
+2. **Right:** 8/8, median T = 100 rounds.
+3. **Wrong:** 4 of 8 C soups jumped (W8/o126 at 50 and 50; W32/o15 at 2,400 and 6,150). The other 4 froze into programs that halt at once.
+4. **Wrong:** the whole-program test agrees with inheritance in 7 of 8 jumped F soups.
