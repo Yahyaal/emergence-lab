@@ -181,3 +181,14 @@ def test_subleq_phase0_controls():
     import sq_phase0 as P0
     bad = [(n, d) for n, ok, d in P0.controls() if not ok]
     assert not bad, bad
+
+
+def test_subleq_census_period_matches_census_hits():
+    """D-057: sq_census_p with period = L reproduces sq_census exactly; tiles are periodic."""
+    from emergence.programs import subleq as Q
+    R = Q.Rule(4, 3, 1, 32, 120)
+    n, h = Q.census_hits(R, 20000, 5)
+    n2, h2, halt = Q.census_period(R, 20000, 5, 64)
+    assert n == n2 and (h == h2).all() and 0 < halt < 20000
+    _, t, _ = Q.census_period(R, 20000, 6, 4)
+    assert len(t) and all((p == np.tile(p[:4], 16)).all() for p in t)

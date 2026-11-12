@@ -190,3 +190,42 @@ long sq_census(int code, long nprog, int L, uint64_t seed, long max_steps, int m
     }
     return nh;
 }
+
+/* E-75 phase 3 predictor census (D-057): as sq_census, but each program is `period` random bytes repeated to L
+   (period = L gives sq_census's random programs). Also counts runs that halt within `halt_k` steps (*nhalt):
+   the freezing risk. Program and partner come from the same splitmix stream as sq_census. */
+long sq_census_p(int code, long nprog, int L, uint64_t seed, long max_steps, int m, int period, int halt_k,
+                 uint8_t *hits, long maxhits, long *nhalt) {
+    uint8_t p[512], tape[1024];
+    uint64_t pb[512], qb[512];
+    long nh = 0, nhl = 0;
+    uint64_t s = seed;
+    if (m > 8 || m < 1 || 2 * L > 1024 || period < 1 || period > L) return -1;
+    uint64_t mask = m == 8 ? ~0ull : ((1ull << (8 * m)) - 1);
+    int nb = L - m + 1;
+    for (long i = 0; i < nprog; i++) {
+        for (int j = 0; j < period; j += 8) { uint64_t z = sm(&s); memcpy(p + j, &z, period - j < 8 ? period - j : 8); }
+        for (int j = period; j < L; j++) p[j] = p[j % period];
+        for (int j = 0; j < L; j += 8) { uint64_t z = sm(&s); memcpy(tape + L + j, &z, 8); }
+        memcpy(tape, p, L);
+        long st = run(tape, 2 * L, max_steps, code);
+        if (st <= halt_k) nhl++;
+        for (int j = 0; j < nb; j++) {
+            uint64_t x = 0, y = 0;
+            memcpy(&x, p + j, m);
+            memcpy(&y, tape + L + j, m);
+            pb[j] = x & mask;
+            qb[j] = y & mask;
+        }
+        int hit = 0;
+        for (int a = 0; a < nb && !hit; a++)
+            for (int b = 0; b < nb; b++)
+                if (pb[a] == qb[b]) { hit = 1; break; }
+        if (hit) {
+            if (nh < maxhits) memcpy(hits + nh * L, p, L);
+            nh++;
+        }
+    }
+    *nhalt = nhl;
+    return nh;
+}

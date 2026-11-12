@@ -88,6 +88,10 @@ def _lib():
         lib.sq_census.restype = ctypes.c_long
         lib.sq_census.argtypes = [ctypes.c_int, ctypes.c_long, ctypes.c_int, ctypes.c_uint64, ctypes.c_long,
                                   ctypes.c_int, ctypes.c_void_p, ctypes.c_long]
+        lib.sq_census_p.restype = ctypes.c_long
+        lib.sq_census_p.argtypes = [ctypes.c_int, ctypes.c_long, ctypes.c_int, ctypes.c_uint64, ctypes.c_long,
+                                    ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_long,
+                                    ctypes.c_void_p]
         _LIB = lib
     return _LIB
 
@@ -153,6 +157,20 @@ def census_hits(rule, nprog: int, seed: int, max_steps: int = 512, m: int = 8, L
     if n < 0:
         raise ValueError("bad census arguments")
     return int(n), buf[:min(n, maxhits)].copy()
+
+
+def census_period(rule, nprog: int, seed: int, period: int, max_steps: int = 512, m: int = 8, L: int = 64,
+                  maxhits: int = 2000, halt_k: int = 2) -> tuple[int, np.ndarray, int]:
+    """D-057 census (subleq.c sq_census_p): programs of `period` random bytes repeated to L bytes (period = L: plain
+    random programs, as `census_hits`). Returns (hits, up to maxhits hit programs, runs halting within halt_k
+    steps)."""
+    buf = np.zeros((maxhits, L), np.uint8)
+    nhalt = ctypes.c_long(0)
+    n = _lib().sq_census_p(_code(rule), nprog, L, seed & (2 ** 64 - 1), max_steps, m, period, halt_k,
+                           buf.ctypes.data, maxhits, ctypes.byref(nhalt))
+    if n < 0:
+        raise ValueError("bad census arguments")
+    return int(n), buf[:min(n, maxhits)].copy(), int(nhalt.value)
 
 
 class Soup:
