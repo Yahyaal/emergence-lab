@@ -43,3 +43,14 @@ is classed C or none here even if replicators exist (for example the paper's 25-
 - 10^7 programs per rule bounds the detectable density.
 - The 512-step pre-filter misses replicators that take longer to make their first copy.
 - Up to 2,000 hits are checked per rule, so an F rule with very many non-replicating hits can be classed C.
+
+## Outcome (added after the run; J-078)
+
+Census: 32 F, 100 C, 468 none of 600 (83 min, 11 workers).
+1. Anchors: both "none" (0 hits in 10^7). **Right.**
+2. All 32 F rules have s = ±1 (and n = 4). **Right.**
+3. Band: 19 of 25 F rules with W ≤ 32 (76% < 80%). **Wrong.** The band was too wide to be a strong test (at W = 32 it
+   excludes only o = 0).
+4. Gate: 32 F and 100 C. **Passed.**
+5. Stability: 37 of 40 (< 38). **Failed.** All three disagreements are rules with ≤ 3 hits or 1 replicator.
+   As stated above, the sample size is raised before phase 2 (D-056).

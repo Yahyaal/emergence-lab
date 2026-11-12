@@ -12,6 +12,50 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-078 · 2026-11-12 · E-75 phase 1: one SUBLEQ version in 19 makes replicators out of random code; the published ones make none
+
+**Question (protocol `docs/data/e75-phase1-protocol.md`, commit `fb43474`, written before the run):** in a sample of the SUBLEQ family, how often is a random program already a replicator? Which knobs matter, and do the two published languages (SUBLEQ, RSUBLEQ4) make any?
+
+**Ran:** `scripts/sq_census.py` (83 min on 11 workers).
+- 600 rules drawn from the 16,416 (seed 75), plus the two anchors.
+- 10^7 random 64-byte programs per rule. Each is run once with a random partner; a *hit* passes an 8-byte block of itself to the partner.
+- Up to 2,000 hits per rule are checked with the inheritance test (D-055).
+- The first 40 rules were censused again with a second seed.
+
+**Found:**
+- **Classes:** 32 F (5%), 100 C (copies something, nothing inherited), 468 none.
+- **F rules:**
+  - Replicator density ranges from 1 to 314 per 10^7 random programs (median 19).
+  - **76 of the 84 example replicators are one instruction at byte 0 that jumps to itself.** With a stepping index it copies a run of bytes, displaced by a fixed amount.
+- **Predictions:**
+  1. Anchors are not F, and SUBLEQ is "none": **right**. Both anchors are "none" (0 hits in 10^7).
+  2. Every F rule has s ≠ 0: **right**. All 32 have s = ±1, and all have 4 operands. No 3-operand rule is F (0 of 294).
+     - s = +2 gives no hits at all. That is by construction: it copies every other byte, so no 8-byte block can pass.
+     - The jump "== 0" gives no hits either (0 of 143); not investigated.
+     - 28 of the F rules jump always, 4 jump on ≤ 0.
+  3. Band (≥ 80% of narrow-window F rules have o near 32, 64 or 96): **wrong**, 19 of 25 (76%).
+     - The prediction was weak to begin with: at W = 32 it excludes only o = 0.
+     - Copy displacements of the example replicators range widely (2–123), though s = −1 rules favour 64, 96 and 112.
+  4. Gate (≥ 16 F and ≥ 16 C): **passed** (32 and 100).
+  5. Stability (≥ 38 of 40 same class with a second seed): **failed**, 37 of 40. All three changes are at the edge of detection:
+     - a rule with 1 replicator in 208 hits went to 0 in 186;
+     - 2 hits vs 0;
+     - 0 hits vs 3.
+- **C can mean many copies and no heredity.** For example, n4/always/s−1/W8/o72 has 6,005 hits in 10^7, and none of the 2,000 checked passes the inheritance test.
+
+**Interpretation:** in this language, a replicator that random code can hit is a single self-jumping instruction with a walking index. Without such an index (s = 0), or with three operands, nothing in 10^7 random programs inherits. The published SUBLEQ and RSUBLEQ4 fit the same picture: their known replicators are 25–60 bytes, and the census found nothing in them. This is level 3 at most (replicators exist in random code), measured one program at a time, not in soups.
+
+**Changed:**
+- census data `docs/data/experiments/2026-11-12-e75-census.json`;
+- protocol outcome appended to `docs/data/e75-phase1-protocol.md`;
+- D-056 (how phase 2 handles the stability failure).
+
+**Lesson:** a pre-registered "near 32, 64 or 96" band that covers most offsets is not a test. Check what fraction of the space a prediction excludes before committing it.
+
+**Next:** phase 2 pilot soups. Per the protocol, the stability failure means a larger sample first: candidate rules are re-censused at 10^8 programs (D-056).
+
+---
+
 ## J-077 · 2026-11-12 · E-75 phase 0: a second language, a replicator our copy tests could not see, and a test that can
 
 **Question:** before testing the F predictor outside BFF (design `docs/data/e75-design.md`, D-054), build the SUBLEQ-family language and a replicator test that works in it, and pass controls.
