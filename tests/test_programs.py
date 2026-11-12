@@ -153,3 +153,31 @@ def test_copy_fidelity_controls():
     import bff_fidelity as F
     bad = [(n, d) for n, ok, d in F.controls() if not ok]
     assert not bad, bad
+
+
+def test_subleq_interpreter_matches_reference():
+    """E-75: SUBLEQ-family C interpreter == pure-Python reference, every knob."""
+    import numpy as np
+    from emergence.programs import subleq as Q
+    rng = np.random.default_rng(1)
+    for n in (3, 4):
+        for j in range(4):
+            for s in Q.S_VALUES:
+                for W in Q.W_VALUES:
+                    R = Q.Rule(n=n, j=j, s=s, W=W, o=int(rng.integers(128)), absolute=bool(rng.random() < 0.2))
+                    assert Q.Rule.from_code(R.code) == R
+                    t = rng.integers(0, 256, 128, dtype=np.uint8)
+                    a, sa = Q.run(t, R, 2000)
+                    b, sb = Q.run_py(t, R, 2000)
+                    assert sa == sb and (a == b).all(), str(R)
+
+
+def test_subleq_phase0_controls():
+    """E-75 phase 0 / D-055: hand-written and emergent replicators found, nulls, random programs, smears and
+    copy-all soups rejected, in SUBLEQ and (cross-check) on E-73's BFF fixtures."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import sq_phase0 as P0
+    bad = [(n, d) for n, ok, d in P0.controls() if not ok]
+    assert not bad, bad

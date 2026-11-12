@@ -204,3 +204,9 @@ def run(check) -> None:
         import bff_fidelity as FID
         for name, ok, det in FID.controls():
             check(name, ok, det)
+
+    # SUBLEQ family and the language-agnostic inheritance test (scripts/sq_phase0.py, E-75 phase 0, D-055)
+    if (scripts / "sq_phase0.py").exists():
+        import sq_phase0 as P0
+        for name, ok, det in P0.controls():
+            check(name, ok, det)

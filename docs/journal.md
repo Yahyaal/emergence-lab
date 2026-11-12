@@ -12,6 +12,47 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-077 · 2026-11-12 · E-75 phase 0: a second language, a replicator our copy tests could not see, and a test that can
+
+**Question:** before testing the F predictor outside BFF (design `docs/data/e75-design.md`, D-054), build the SUBLEQ-family language and a replicator test that works in it, and pass controls.
+
+**Ran:**
+- `emergence/programs/subleq.c` and `subleq.py`: interpreter, Python reference, soup, copy test, and three hand-written replicators.
+- `emergence/programs/inherit.py`: the inheritance test.
+- `scripts/sq_phase0.py`: 22 controls, also in pytest and `emergence benchmark --probes`; 38 s.
+
+**Found:**
+- **The interpreter matches its reference:** C == Python on every knob combination (pytest) and on 300 random rules (benchmark).
+- **The hand-written replicators work in soups.** Each (forward, backward, and a narrow-window "band" rule at offset 64) is a 5-byte loop. Seeded 16 times among 4,096 programs, each fills the 40 most common programs within 60 rounds.
+- **An unseeded soup made replicators within 100 rounds** (4,096 programs, rule n4/always/s+1, one soup; an anecdote, not a result: it is a rule I wrote a replicator for). The take-over is a **5-byte loop that copies every byte 32 places on**. It ends up at bytes 0, 32, 64 and 96, so the partner always receives the loop. With a random partner it overwrites most of its own body: only 10 of 64 bytes survive. Programs in the soup are two copies of a 32-byte block.
+  - **Every whole-program copy test misses it** (D-050, D-053, and the first draft's functional guard: 0 of 40), because they require the whole program to be copied and kept intact.
+  - Order rose to HOE 6.9, but HOE is fooled here by copy-all soups too (7.3).
+- **A language-agnostic test, by inheritance** (D-055): a block of ≥ 4 bytes must survive 5 generations of copies into fresh random partners in 3 of 4 lineages, and must vanish when knocked out of the program (inherited, not written from scratch).
+  - The depth was chosen by a sweep after seeing the controls. With 3 generations, 7 of 40 programs of E-71's v1/68 soup (a rule that never made replicators) passed; with 5, none did. With blocks of 6 or more bytes the emergent loop is missed.
+- **All 22 controls pass:**
+  - emergent loop 39/40 (whole-program test 0/40);
+  - anchors' soups at round 300 (plain SUBLEQ and RSUBLEQ4): 0/40;
+  - random programs: 0/200 under 4 rules;
+  - zero smear: rejected (the unguarded whole-program test accepts it);
+  - no-execution and copy-all soups: 0/40.
+  - **On E-73's BFF fixtures the inheritance test agrees with D-053:** replicators 39–40/40, nulls 0/40, filler smears 0.
+- **Design changes made during the build** (before any census; recorded in the design file):
+  - "never jump" became "always jump";
+  - the step register touches the a and b addresses only, not the operand bytes;
+  - an operand window W was added, because without it the write offset does nothing.
+
+  The rule space is now 16,416 rules.
+
+**Interpretation:** the replicator test was BFF-specific without our knowing it. "Copies its whole self and stays intact" describes BFF's replicators, not replicators in general. In a language where every byte runs, the first thing to spread was a 5-byte loop in a body it rewrites. Inheritance of a block, checked by knockout, is closer to what replication means, and it agrees with our earlier tests wherever those worked.
+
+**Changed:** new `emergence/programs/subleq.c`, `subleq.py`, `inherit.py`; `scripts/sq_phase0.py`; fixtures `scripts/fixtures/e75-*.npy`; benchmark section; 2 tests; D-055.
+
+**Lesson:** a detector inherits the assumptions of the system it was built for. Test it on the new system's first real example before trusting its "no".
+
+**Next:** phase 1 — a census of sampled rules with an F test based on inheritance, the anchors stated before running.
+
+---
+
 ## J-076 · 2026-11-11 · E-74: on 24 fresh rules, copies of copies do not predict speed under any timing
 
 **Question (pre-registered, `docs/data/e74-preregistration.md`, commit `0b93128`):** E-73 found that under the validated D-053 copy test, E-72's F-deep rules made replicators about ten times sooner than F-shallow ones (p = 0.06, 8 vs 8 rules). Does this hold on a larger, fresh set? Primary: shallow rules are ≥ 3× slower (median of rule medians), with one-sided Mann–Whitney p < 0.01. This must hold under D-053 **and** HOE timing to pass; it fails if both fail.
