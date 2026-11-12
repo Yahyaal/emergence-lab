@@ -85,6 +85,9 @@ def _lib():
         lib.sq_classify.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
                                     ctypes.c_uint64, ctypes.c_long, ctypes.c_int, ctypes.c_int, ctypes.c_int,
                                     ctypes.c_void_p, ctypes.c_void_p]
+        lib.sq_census.restype = ctypes.c_long
+        lib.sq_census.argtypes = [ctypes.c_int, ctypes.c_long, ctypes.c_int, ctypes.c_uint64, ctypes.c_long,
+                                  ctypes.c_int, ctypes.c_void_p, ctypes.c_long]
         _LIB = lib
     return _LIB
 
@@ -139,6 +142,17 @@ def classify(P: np.ndarray, rule, partners: int = 4, seed: int = 0, thr: int = 5
     _lib().sq_classify(P.ctypes.data, len(P), P.shape[1], _code(rule), partners, seed & (2 ** 64 - 1), max_steps,
                        thr, maxshift, int(guard), out.ctypes.data, sh.ctypes.data)
     return out, sh
+
+
+def census_hits(rule, nprog: int, seed: int, max_steps: int = 512, m: int = 8, L: int = 64,
+                maxhits: int = 2000) -> tuple[int, np.ndarray]:
+    """E-75 phase 1 pre-filter (subleq.c sq_census): random programs that pass an m-byte block of themselves to a
+    random partner in one run. Returns (number of hits, up to maxhits hit programs)."""
+    buf = np.zeros((maxhits, L), np.uint8)
+    n = _lib().sq_census(_code(rule), nprog, L, seed & (2 ** 64 - 1), max_steps, m, buf.ctypes.data, maxhits)
+    if n < 0:
+        raise ValueError("bad census arguments")
+    return int(n), buf[:min(n, maxhits)].copy()
 
 
 class Soup:

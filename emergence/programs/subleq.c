@@ -155,3 +155,38 @@ void sq_classify(const uint8_t *progs, int nprog, int L, int code, int partners,
         shift[i] = o ? sh : 0;
     }
 }
+
+/* E-75 phase 1 census pre-filter: nprog random programs (L bytes) each run once with a random partner (max_steps).
+   A program is a hit if some m-byte block of it (as it was before the run) appears anywhere in the partner half
+   afterwards. Hits are written to hits (maxhits x L bytes); returns the number of hits (may exceed maxhits). */
+long sq_census(int code, long nprog, int L, uint64_t seed, long max_steps, int m, uint8_t *hits, long maxhits) {
+    uint8_t p[512], tape[1024];
+    uint64_t pb[512], qb[512];
+    long nh = 0;
+    uint64_t s = seed;
+    if (m > 8 || m < 1 || 2 * L > 1024) return -1;
+    uint64_t mask = m == 8 ? ~0ull : ((1ull << (8 * m)) - 1);
+    int nb = L - m + 1;
+    for (long i = 0; i < nprog; i++) {
+        for (int j = 0; j < L; j += 8) { uint64_t z = sm(&s); memcpy(p + j, &z, 8); }
+        for (int j = 0; j < L; j += 8) { uint64_t z = sm(&s); memcpy(tape + L + j, &z, 8); }
+        memcpy(tape, p, L);
+        run(tape, 2 * L, max_steps, code);
+        for (int j = 0; j < nb; j++) {
+            uint64_t x = 0, y = 0;
+            memcpy(&x, p + j, m);
+            memcpy(&y, tape + L + j, m);
+            pb[j] = x & mask;
+            qb[j] = y & mask;
+        }
+        int hit = 0;
+        for (int a = 0; a < nb && !hit; a++)
+            for (int b = 0; b < nb; b++)
+                if (pb[a] == qb[b]) { hit = 1; break; }
+        if (hit) {
+            if (nh < maxhits) memcpy(hits + nh * L, p, L);
+            nh++;
+        }
+    }
+    return nh;
+}
