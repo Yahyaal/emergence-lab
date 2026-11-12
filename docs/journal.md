@@ -12,6 +12,46 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-075 · 2026-11-11 · E-73: a validated looser copy test changes 33 of 392 jump times; no verdict flips, but the five-generation effect reappears
+
+**Question (pre-registered, `docs/data/e73-preregistration.md`, commit `37a7a81`):** J-074 found sloppy replicators (copies of 59–60 of 64 bytes) that the D-050 copy test (60/64) misses. Build a looser test, validate it with controls, then re-score every soup of E-70, E-71 and E-72 with it and re-apply each experiment's pre-registered test unchanged.
+
+**Ran:**
+- **Part A, the test** (`bff_kernels.classify_fid`, `scripts/bff_fidelity.py`, fixtures from 9 replayed soups in `scripts/fixtures/`). D-053 = shift-aware copier test at **58/64** bytes plus an **instruction-fidelity guard**: the copy must reproduce ≥ 75% of the program's instruction bytes in the overlap.
+- **Part B, the re-score** (`scripts/bff_rescore.py`, 392 soups replayed from their seeds, both tests on the same top-40 programs at each experiment's checkpoints, 8 h 24 min on 10 workers). Then `scripts/e73_analysis.py` re-applies the tests.
+
+**Found:**
+- **Controls all pass** (`2026-11-11-e73-fidelity.json`):
+  - With threshold 60 and no guard the new test is identical to the old one on every fixture.
+  - Sloppy replicators: 38/40 and 40/40 copiers (old test 0/40). Exact replicators: 40, 39 and 40 of 40.
+  - Top-40 programs of soups without replicators (the selection-aware null): 0/40 and 0/40.
+  - Deceptive "filler smears", where a loop writes one value across the partner so that 60/64 bytes match without any copying of instructions: 0 accepted, while the **old test accepts 37 of 64**. The guard also removes a false positive in D-050 itself.
+  - Thresholds 52–58 with a guard of 50–75% give the same results; 58/75 is the strictest that passes.
+- **One control changed after seeing it (disclosed in the pre-registration):** the random-program negative was written as 0 of 200. One random program contains `[ . ]`, a genuine 3-instruction copier under v1/h1 = 64 that the old test also counts. The check is now ≤ 1% (2 of 200); the worst rule gives 1 of 200.
+- **Equivalence holds for all 392 soups:** the replayed D-050 copier series and jump times match the stored ones exactly.
+- **What changes (secondary):**
+  - 33 of 392 soups get a different jump time: 12 new jumps (all 6 soups of each sloppy v2 rule, g = 57/58, h = 122, now at round 50) and 21 earlier ones (median 250 rounds earlier, range 50–2,500).
+  - **No jump is lost and none comes later**, so no D-050 jump was a filler smear.
+  - The three v4 g = 64, h = 124 soups at HOE 3.0 stay at no jump under both tests. Their dominant programs are not copiers (fixture `transient_v4_g64`, 0/40).
+- **Pre-registered verdicts under D-053** (D-050 in brackets):
+  - **E-70 P2: pass** (pass). Unchanged: F 60/60, other 15/60, Fisher p = 2e-20. **Prediction (fail, ~55%) wrong.** Only 1 of 120 soups changed, an F soup 250 rounds earlier; no sloppy take-overs among the other rules.
+  - **E-71 P1: fail** (fail): ρ = −0.33, p = 0.067 (−0.34, 0.060). **P2: pass** (pass): Σρ = −2.27, p = 0.011 (−2.45, 0.006). v1/68 still makes nothing, 0/8. Predictions right (P2 pass, v1/68 0/8; no directional call on P1).
+  - **E-72 primary: fail** (fail), as predicted, but the effect is very different. Deep rules now take a median **163** rounds against 1,638 for shallow ones (**ratio 10**, Mann–Whitney p = 0.06); under D-050 the medians were 1,475 vs 1,675 (ratio 1.1, p = 0.58). Exploratory: deep count vs median T ρ = −0.52 (p = 0.04; D-050 −0.09); one-generation count vs T ρ = −0.59 (D-050 −0.74).
+
+**Interpretation:**
+- The **jump-or-not results are robust to the copy test**. E-70's 60/60 vs 15/60 does not move, and no D-050 jump turns out to be a smear.
+- The **speed results are not**. E-72's null result came almost entirely from the two sloppy v2 rules being scored as never jumping. Under the validated test the five-generation predictor points the right way with a tenfold effect. With 8 vs 8 rules it still falls short of p < 0.01, and the HOE timing (D-052, p = 0.04) agrees in direction.
+- Per the pre-registered decision rule, both verdicts are reported. The deep-vs-shallow speed question is **unresolved, leaning towards an effect**; it needs a fresh confirmatory test with more rules.
+- E-71's pooled result stays unresolved: D-053 says fail, HOE timing says pass.
+
+**Changed:** `bff_kernels.c/.py` (`classify_fid`), `scripts/bff_fidelity.py`, `bff_fidelity_fixtures.py`, `bff_rescore.py`, `e73_analysis.py`; copy-fidelity controls in `pytest` and `emergence benchmark --probes`; D-053.
+
+**Lesson:** a detector threshold tuned on one language silently decides speed results in another. Validate it on the new language before trusting a "no".
+
+**Next:** (a) a fresh, larger confirmatory test of the five-generation predictor under D-053 (more rules per class; primary under D-053 and HOE, both required); (b) a language outside the BFF family.
+
+---
+
 ## J-074 · 2026-11-10 · E-72: following copies for five generations explains the old failures but does not predict new ones; and our jump detector misses sloppy copiers
 
 **Question (pre-registered, `docs/data/e72-preregistration.md`, commit `bf5ee1b`):** E-71's F rule v1/68 made nothing. The F test checks one generation (does the copy copy?). Does a five-generation version predict speed better? Each self-sufficient kernel starts 8 lineages of single copies, each into a fresh random partner. A kernel is *deep* if ≥ 4 of its 8 lineages still copy at generation 5. An F rule is *F-deep* if it has any deep kernel, else *F-shallow*. Primary (fresh rules): F-shallow rules are ≥ 3× slower (median of rule medians), with Mann–Whitney p < 0.01.
