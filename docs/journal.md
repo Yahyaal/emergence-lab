@@ -12,6 +12,48 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-076 · 2026-11-11 · E-74: on 24 fresh rules, copies of copies do not predict speed under any timing
+
+**Question (pre-registered, `docs/data/e74-preregistration.md`, commit `0b93128`):** E-73 found that under the validated D-053 copy test, E-72's F-deep rules made replicators about ten times sooner than F-shallow ones (p = 0.06, 8 vs 8 rules). Does this hold on a larger, fresh set? Primary: shallow rules are ≥ 3× slower (median of rule medians), with one-sided Mann–Whitney p < 0.01. This must hold under D-053 **and** HOE timing to pass; it fails if both fail.
+
+**Ran:** `scripts/bff_deepconfirm.py`.
+- Census and depth for 600 fresh rules of the E-72 family, excluding all 240 rules of the E-72 census (25 min).
+- 6 soups in each of 12 F-deep and 12 F-shallow rules, 144 soups, each timed by D-053, HOE and D-050 in the same run (2 h 23 min on 11 workers).
+
+**Found:**
+- **Census:** 62 of 600 rules are F (10%): 38 deep and 24 shallow.
+- **Primary: fail, under every timing.** Shallow rules are not slower:
+
+  | Timing | Deep (rounds) | Shallow (rounds) | Ratio | p |
+  |---|---|---|---|---|
+  | D-053 | 825 | 788 | 0.95 | 0.18 |
+  | HOE | 1,063 | 700 | 0.66 | 0.73 |
+  | D-050 | 925 | 788 | 0.85 | 0.19 |
+
+  **Prediction (pass, ~45%) wrong.**
+- **Every rule made replicators:** 143 of 144 soups jumped under D-053, and the only miss is one shallow soup. Shallow rules are not blocked: all 12 jumped in 6 of 6 soups.
+- **Neither count predicts speed** (exploratory). Under D-053, the deep count gives ρ = −0.22 (p = 0.31) and the one-generation self-sufficient count ρ = −0.16 (p = 0.47). In E-72 the one-generation count gave −0.59 to −0.74.
+- **Fast and slow rules are in both classes:**
+  - Deep: from 50 rounds (v2/v3 rules) to 3,300.
+  - Shallow: from 150 to 9,000 (a v5 rule).
+  - The 8 slowest rules (median ≥ 1,775 rounds) are all v3–v5, split 4 deep and 4 shallow.
+- **The timings disagree by more than 1,000 rounds in 24 of 144 soups.** D-050 and D-053 differ in 20 soups; in one of them D-053 is 8,700 rounds earlier. HOE gives a different ranking in a few rules: for example, v3 g = 62, h = 0 jumps at 50 rounds by the copy tests but never reaches HOE 2 in most soups.
+- **Pooling E-72 and E-74** (20 vs 20 rules, post hoc, not a test of anything): D-053 medians 700 vs 788 rounds, p = 0.03. Similar medians; the small p comes from E-72's tail.
+
+**Interpretation:**
+- On fresh rules, whether a rule's copiers stay copiers for five generations does **not** predict how fast its soups make replicators, under either primary timing.
+- E-73's tenfold effect came from a few rules in a sample of 16 (the sloppy v2 deep rules at 50 rounds, three slow v4 shallow rules). It did not replicate.
+- What does replicate across E-60–E-74 is the yes/no result: F rules make replicators. Here it held in 143 of 144 soups, and in E-70 in 60 of 60.
+- Among F rules, speed varies by up to 100×. None of our census measures predicts it in a fresh family: one-generation count, depth, and earlier the copier count across variants.
+
+**Changed:** `scripts/bff_deepconfirm.py`. No detector change.
+
+**Lesson:** a large post-hoc effect (10×) from 16 rules was mostly a few rules. The fresh test with 24 rules shows none, which is why we pre-register and replicate.
+
+**Next:** stop refining the speed predictor within BFF variants. Take the F/non-F result to a language outside the BFF family, which is the open generalisation question.
+
+---
+
 ## J-075 · 2026-11-11 · E-73: a validated looser copy test changes 33 of 392 jump times; no verdict flips, but the five-generation effect reappears
 
 **Question (pre-registered, `docs/data/e73-preregistration.md`, commit `37a7a81`):** J-074 found sloppy replicators (copies of 59–60 of 64 bytes) that the D-050 copy test (60/64) misses. Build a looser test, validate it with controls, then re-score every soup of E-70, E-71 and E-72 with it and re-apply each experiment's pre-registered test unchanged.
