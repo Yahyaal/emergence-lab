@@ -12,6 +12,31 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-082 · 2026-11-13 · E-75 phase 4b: there is no "frozen" state; random SUBLEQ soups are inert from the start (exploratory)
+
+**Question / why:** after J-081 the plan, approved by the owner, was a passive look inside frozen soups, then a pre-registered knockout of non-inheriting copiers on clones. The look came first because the knockout only makes sense if copiers are active once a soup is frozen.
+
+**Ran:** `scripts/sq_inert.py`, about 10 min. Soup 0 of every phase-3 rule and every phase-4 pool-A rule (48) was replayed with its original seed and measured at rounds 0, 50 and 200. Each checkpoint used 2,000 random pairs. Data: `docs/data/experiments/2026-11-13-e75-inert.json`.
+
+**Found:**
+- **Round 0 already looks "frozen".**
+  - Steps per pair are 2.3–7.3 under always-jump rules, with outliers of 15 and 21 (W8/o125 and W64/o75, both of which jump), and 3.4–3.8 under ≤ 0 rules.
+  - 92–95% of runs stop within 4 steps under always-jump rules, and 70–76% under ≤ 0 rules.
+- **Nothing converges.** All 16,384 programs remain distinct at rounds 50 and 200 in every soup that has not jumped; the one exception is 16,381, one checkpoint before a jump. The most common first instruction never exceeds 0.13%.
+- **Almost no copying:** copy hits are 0–0.2% of runs at every checkpoint. The share of runs that stop within 4 steps rises a little, by 2–10 points.
+- **Soups that later jump are indistinguishable** from soups that never do, up to the jump.
+
+**What this changes:**
+- The phase-2 claim that non-jumping soups "freeze into halters" (J-079) is wrong. So is phase 3's race mechanism (J-080), and phase 4's "freeze, then escape" (J-081, post hoc 1). Non-jumping soups simply stay as random code starts. Secondary predictions that "non-jumping soups are frozen" were true trivially.
+- The planned clone knockout is dropped (D-059): there are no active copiers to remove.
+- The hit-count correlation from J-081 stands as an observation, without a mechanism. It may be a proxy for operand reach: 9 of the 10 W8 rules in pool A jumped in at most 1 of 6 soups.
+
+**Changed:** `scripts/sq_inert.py`; corrections in report sections 29–31, the cards, the lead and the timeline; a correction note in J-081 and in the phase-4 protocol; D-059; handoff.
+
+**Lesson:** before naming a state a soup "reaches", measure the soup at round 0.
+
+---
+
 ## J-081 · 2026-11-13 · E-75 phase 4: tile density does not transfer to jump ≤ 0 (pre-registered, fails)
 
 **Question (pre-registered, `docs/data/e75-phase4-preregistration.md`, commit `fa0fa53`; D-058):** does the phase-3 predictor, with its thresholds unchanged, predict soups in rules that jump only on ≤ 0 (pool A) or < 0 (pool B)? Both groups had to copy tiles (LOW: ≥ 50 tile hits per 10^6, none inheriting), and no random program could be a replicator at 10^7 or 10^8.
@@ -25,7 +50,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
   - D_T does not separate jumping from non-jumping rules within the HIGH group: the range is 23–42 in both.
 - **Pool B: 25/36 vs 0/36,** but confounded. All 6 HIGH rules have s = +1 and all 6 LOW rules s = −1. The HIGH share of the pool is 3.5%, against a predicted ≤ 1%.
 - **Right:** every non-jumping LOW soup froze (52/52 in A, 36/36 in B), and HIGH median T was 900 rounds.
-- **Post hoc 1: freezing is not final.** 73 of the 74 jumped soups had been frozen (≤ 4 steps per pair) at a checkpoint before they jumped. Re-reading phase 3, 44 of its 70 jumped soups had too. So the "race" mechanism stated in J-080 and report section 30 is wrong. Soups freeze, and jumps are escapes from the frozen state.
+- **Post hoc 1 (withdrawn in J-082: "frozen" is the random start): freezing is not final.** 73 of the 74 jumped soups had been frozen (≤ 4 steps per pair) at a checkpoint before they jumped. Re-reading phase 3, 44 of its 70 jumped soups had too. So the "race" mechanism stated in J-080 and report section 30 is wrong. Soups freeze, and jumps are escapes from the frozen state.
 - **Post hoc 2: copying without inheritance goes with freezing.** Random-program hits at 10^8 are copies that do not inherit. More of them means fewer jumps:
   - pool A: ρ = −0.79 over 24 rules (Mann–Whitney p = 8 × 10^-5 for jumping vs not);
   - phase 3: ρ = −0.85. This includes the unexplained HIGH exception W8/o56 (88,973 hits, froze), and the LOW exception W64/o75 (14,280) is the lowest of its group.

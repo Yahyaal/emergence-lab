@@ -94,3 +94,9 @@ because the halting race is weaker here, so LOW soups may linger without freezin
       10,078–91,041.
     - This covers phase 3's HIGH exception W8/o56 (88,973 hits, froze), but the thresholds differ about
       twentyfold between the two jump conditions.
+
+**Correction (J-082, `scripts/sq_inert.py`):** the first post-hoc point is withdrawn. Random soups in these rules
+already run at 2–7 steps per pair at round 0, and non-jumping soups stay as they started. So "frozen" is the inert
+random start, not a state the soup reaches, and secondary 2 (and phase 3's secondary 2) were true trivially.
+Within soups, copy hits are ≤ 0.2% of runs, so the guess that non-inheriting copiers spread halting code is also
+withdrawn. The hit-count correlation stands as an observation.
