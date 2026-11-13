@@ -66,3 +66,31 @@ because the halting race is weaker here, so LOW soups may linger without freezin
   test under a different jump condition.
 - The LOW tile-hit floor (≥ 50 per 10^6) is new. It was chosen from the dev census, where it keeps most copying
   rules in both pools.
+
+## Outcome (added after the run; J-081)
+
+- **Selection:**
+  - Pool A: 150 HIGH and 499 LOW of 980 rules. 12 + 12 selected; 22 + 22 screened. Of the screened HIGH rules, 6
+    were F, 4 of them only at 10^8.
+  - Pool B: 34 HIGH and 359 LOW of 982 rules. 6 + 6 selected; 11 + 11 screened.
+  - Run time: 6.3 h.
+- **Primary: fail.** HIGH 29/72 soups jumped (40%), LOW 20/72 (28%); Fisher p = 0.08.
+- **Secondary:**
+  1. Per rule: 5/12 vs 3/12. **Wrong.**
+  2. 52/52 non-jumping LOW soups frozen. **Right.**
+  3. HIGH median T = 900. **Right.**
+  4. Pool B HIGH fraction: 3.5% (> 1%). **Wrong.**
+  5. Pool B LOW: 0/36 jumped. **Right.**
+  6. Pool B HIGH: 25/36 (69%, < 75%). **Wrong.** Also, every B HIGH rule has s = +1 and every B LOW rule
+     s = −1, so pool B cannot separate D_T from the index direction.
+- **Post hoc (not pre-registered; a hypothesis only):**
+  - **Freezing is not final.** 73 of the 74 jumped soups had been frozen (≤ 4 steps per pair) at a checkpoint
+    before T, and so had 44 of 70 in phase 3. Jumps are escapes from a frozen soup, not the winner of an early
+    race.
+  - **Copying without inheritance predicts freezing.** The number of random-program hits at 10^8 (copies that
+    do not inherit) correlates negatively with jumping:
+    - in pool A, Spearman ρ = −0.79 over 24 rules; jumping rules have 43–170 hits, the others 87–1,255;
+    - in phase 3, ρ = −0.85; jumping rules have 896–3,341 hits (and 14,280 for W64/o75), the others
+      10,078–91,041.
+    - This covers phase 3's HIGH exception W8/o56 (88,973 hits, froze), but the thresholds differ about
+      twentyfold between the two jump conditions.

@@ -12,6 +12,34 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-081 · 2026-11-13 · E-75 phase 4: tile density does not transfer to jump ≤ 0 (pre-registered, fails)
+
+**Question (pre-registered, `docs/data/e75-phase4-preregistration.md`, commit `fa0fa53`; D-058):** does the phase-3 predictor, with its thresholds unchanged, predict soups in rules that jump only on ≤ 0 (pool A) or < 0 (pool B)? Both groups had to copy tiles (LOW: ≥ 50 tile hits per 10^6, none inheriting), and no random program could be a replicator at 10^7 or 10^8.
+
+**Ran:** `scripts/sq_phase4.py` (6 h 20 min on 11 workers, overnight, on the owner's go-ahead), 216 soups, cache `runs/e75-phase4/`.
+
+**Found:**
+- **Primary fails.** Pool A: HIGH 29/72 soups jumped, LOW 20/72 (Fisher p = 0.08). Per rule: 5/12 vs 3/12.
+  - Five HIGH rules froze in all 6 soups, despite D_T of 23–41.
+  - Two LOW rules (D_T 1–3) jumped in all 6.
+  - D_T does not separate jumping from non-jumping rules within the HIGH group: the range is 23–42 in both.
+- **Pool B: 25/36 vs 0/36,** but confounded. All 6 HIGH rules have s = +1 and all 6 LOW rules s = −1. The HIGH share of the pool is 3.5%, against a predicted ≤ 1%.
+- **Right:** every non-jumping LOW soup froze (52/52 in A, 36/36 in B), and HIGH median T was 900 rounds.
+- **Post hoc 1: freezing is not final.** 73 of the 74 jumped soups had been frozen (≤ 4 steps per pair) at a checkpoint before they jumped. Re-reading phase 3, 44 of its 70 jumped soups had too. So the "race" mechanism stated in J-080 and report section 30 is wrong. Soups freeze, and jumps are escapes from the frozen state.
+- **Post hoc 2: copying without inheritance goes with freezing.** Random-program hits at 10^8 are copies that do not inherit. More of them means fewer jumps:
+  - pool A: ρ = −0.79 over 24 rules (Mann–Whitney p = 8 × 10^-5 for jumping vs not);
+  - phase 3: ρ = −0.85. This includes the unexplained HIGH exception W8/o56 (88,973 hits, froze), and the LOW exception W64/o75 (14,280) is the lowest of its group.
+  - The cut between jumping and not differs about twentyfold between jump conditions (~100–170 vs ~3,000–14,000), so this is not yet one predictor.
+  - It is a hypothesis from 48 rules seen after the fact.
+  - A guess at the mechanism: copiers that do not inherit spread halting code into their partners, which deepens the freeze.
+- **The top program at the end of jumped soups** has period 4 in 29 of 74, 8 in 13, 16 in 8, and no period in 24. Many take-overs are not tiles.
+
+**Changed:** `scripts/sq_phase4.py`; D-058 accepted (run as designed, primary failed); report section 31, with a correction to section 30's "what it means"; handoff.
+
+**Lesson:** a predictor that passed one pre-registered test can still fail when the conditions change. The phase-3 pass was real, but its explanation was a story we had not checked.
+
+---
+
 ## J-080 · 2026-11-13 · E-75 phase 3: tile-replicator density predicts which copying rules make replicators (pre-registered, passes)
 
 **Question (pre-registered, `docs/data/e75-phase3-preregistration.md`, commit `bdfe800`; predictor D-057):** among fresh copying rules in which no random program replicates, do rules with many tile replicators (D_T ≥ 20 per 10^6 random tiles) make replicators in soups, and rules with few (D_T ≤ 5) not?
