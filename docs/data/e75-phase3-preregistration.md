@@ -51,3 +51,14 @@ The first 12 per group are used. **Every selected rule is C under the old predic
 - The pool is restricted to the knobs where copying is common, so the result says nothing about other jump conditions.
 - D_T thresholds come from 8 pilot rules.
 - A HIGH rule that is C at 10^8 may be rare (in development, 2 of 42 such rules), so HIGH may fall short of 12. The rule-count condition guards against that.
+
+## Outcome (added after the run; J-080)
+
+- **Selection:** 585 HIGH and 291 LOW rules in the pool. 12 per group selected (275 HIGH and 22 LOW candidates screened).
+- **Primary: pass.** HIGH 64/72 soups jumped, LOW 6/72; Fisher p = 1.3 × 10^-24.
+- **Secondary:**
+  1. 11/12 vs 1/12 rules: **right**.
+  2. 66/66 non-jumping LOW soups frozen: **right**.
+  3. HIGH median T = 725: **right**.
+- **Exceptions:** W8/o56 (HIGH) froze in 6/6; W64/o75 (LOW) jumped in 6/6.
+- **Disclosed skew:** 10 of the 12 HIGH rules have s = −1 and o 3–16.

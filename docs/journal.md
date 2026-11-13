@@ -12,6 +12,63 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-080 · 2026-11-13 · E-75 phase 3: tile-replicator density predicts which copying rules make replicators (pre-registered, passes)
+
+**Question (pre-registered, `docs/data/e75-phase3-preregistration.md`, commit `bdfe800`; predictor D-057):** among fresh copying rules in which no random program replicates, do rules with many tile replicators (D_T ≥ 20 per 10^6 random tiles) make replicators in soups, and rules with few (D_T ≤ 5) not?
+
+**Development, after the pilot and before the pre-registration** (`scripts/sq_tiles.py`, 5 min):
+- **Tile census of the 600 phase-1 rules,** 10^6 random tiles each. A tile is one instruction's bytes repeated to 64.
+- **Cross-tab:** all 32 F rules have tile replicators, and so do 28 of 100 C rules and 6 "none" rules. 428 rules have none.
+- **The pilot's rules:**
+  - every pilot rule is tile-F, even the two that froze, so a yes/no tile test does not separate them;
+  - the density does: frozen 1 and 4 per 10^6, jumped 29–272.
+- **The halting fraction is useless as a predictor:** 72% of random programs halt within 2 steps in every always-jump rule.
+
+**Ran:** `scripts/sq_phase3.py` (7 h 30 min on 11 workers).
+- **Pool:** 982 fresh n4/always/s±1 rules. The tile census put 585 in HIGH and 291 in LOW.
+- **Screening, in a seed-77 order:**
+  - HIGH: 275 candidates screened to find 12; 247 failed because random programs replicate (F at 10^7), 11 because they were F at 10^8.
+  - LOW: 22 screened.
+- **Soups:** 144, 6 per rule.
+
+**Found:**
+- **Primary: pass.** HIGH 64 of 72 soups jumped (89%), LOW 6 of 72 (8%); one-sided Fisher p = 10^-24. **Prediction (pass, ~50%) right.**
+- **Secondary:**
+  1. Per rule: 11 of 12 HIGH rules jump, against 1 of 12 LOW. **Right.**
+  2. Of the 66 non-jumping LOW soups, 66 froze into halters. **Right.**
+  3. HIGH median T = 725 rounds. **Right.**
+- **Exceptions, one rule each way:**
+  - n4/always/s+1/W8/o56 (HIGH, D_T 255, the highest) froze in 6 of 6 soups. It also has the most random-program hits (89,000 at 10^8, only 5,000 verified).
+  - n4/always/s+1/W64/o75 (LOW, D_T 2.7) jumped in 6 of 6.
+- **The old predictor said "no" for all 24 rules** (all are C at 10^8). It is wrong for 11 of them.
+- **Selection skewed HIGH:** 10 of the 12 HIGH rules have s = −1 and a small write offset (o 3–16), so HIGH rules that stay C at 10^8 are a particular corner of the pool. The result holds for that corner; the pool's HIGH group overall is half s+1.
+- **The whole-program copy test agrees** with inheritance at T + 1,000 in 59 of 70 jumped soups.
+
+**Interpretation:**
+- **What the result supports:** in copying SUBLEQ rules, whether a soup makes replicators or freezes is predicted by how common copying tiles are among random tiles. Random programs are the wrong sample: the soup reaches periodic code within tens of rounds, and the census of random programs never sees it.
+- **Evidence level:** level 3 (replicators arise spontaneously), with a pre-registered predictor of where.
+- **Limits:**
+  - It is tested only on n4/always/s±1 rules.
+  - The thresholds were fitted on 8 pilot rules; this test is their first fair one.
+  - The F predictor of the BFF work had the same shape, "a short copier that makes working copies"; here the short copier is one instruction repeated.
+
+**Changed:**
+- `subleq.census_period` / `sq_census_p` (with a pytest check);
+- `scripts/sq_tiles.py`, `scripts/sq_phase3.py`;
+- data `2026-11-13-e75-tiles-dev.json` and `2026-11-13-e75-phase3.json`;
+- D-057 accepted.
+
+**Lesson:**
+- A failed pilot prediction was more useful than a passed one: it pointed to what the soup was actually doing.
+- Fixing the predictor before the confirmatory test saved a test whose failure we could already foresee.
+
+**Next:**
+- Test the tile predictor outside n4/always (jump ≤ 0 and < 0 rules also have tile replicators).
+- Explain the two exceptions.
+- Check whether tile replicators keep changing after the jump (level 4–5 questions, as in BFF).
+
+---
+
 ## J-079 · 2026-11-12 · E-75 phase 2: every predicted soup makes replicators, but so do half the others; the rest die by halting
 
 **Question (pilot, exploratory; protocol `docs/data/e75-phase2-protocol.md`, commit `b39e166`):** do rules classed F by the phase-1 census make replicators in soups, and do C rules not? Calibrate run length for phase 3.
