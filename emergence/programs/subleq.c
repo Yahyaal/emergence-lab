@@ -229,3 +229,112 @@ long sq_census_p(int code, long nprog, int L, uint64_t seed, long max_steps, int
     *nhalt = nhl;
     return nh;
 }
+
+/* E-75 phase 6 product census (D-061): does a random pair's run WRITE a replicator?
+   Pre-filter for one candidate program x (L bytes): `lin` lineages, each running x with a fresh random partner,
+   then that partner half with a fresh random partner, for `gens` generations. x passes if some m-byte block of x
+   that is not one repeated byte (skip_const) is found in the partner half after every generation of >= need
+   lineages (a lineage stops at the first generation with none).
+   This is a cheap version of the inheritance test (inherit.py: 5 generations, 3 of 4 lineages, then a
+   knockout), whose positives are then confirmed in Python. */
+static inline uint32_t bh(uint64_t v) { return (uint32_t)((v * 0x9E3779B97F4A7C15ull) >> 52); } /* 12 bits */
+
+static int has_block(const uint8_t *cur, int nb, int m, uint64_t mask, const uint64_t *xb, int nx,
+                     const uint64_t *bloom) {
+    for (int b = 0; b < nb; b++) {
+        uint64_t y = 0;
+        memcpy(&y, cur + b, m);
+        y &= mask;
+        uint32_t h = bh(y);
+        if (!(bloom[h >> 6] >> (h & 63) & 1)) continue;
+        for (int a = 0; a < nx; a++)
+            if (xb[a] == y) return 1;
+    }
+    return 0;
+}
+
+static int prefilter(const uint8_t *x, int L, int code, uint64_t *s, long max_steps, int m, int gens, int lin,
+                     int need, int skip_const) {
+    uint8_t tape[1024], cur[512];
+    uint64_t xb[512], bloom[64];
+    int nb = L - m + 1, ok = 0, nx = 0;
+    uint64_t mask = m == 8 ? ~0ull : ((1ull << (8 * m)) - 1);
+    memset(bloom, 0, sizeof bloom);
+    for (int j = 0; j < nb; j++) {
+        if (skip_const) {
+            int c = 1;
+            for (int k = 1; k < m; k++) c &= x[j + k] == x[j];
+            if (c) continue;
+        }
+        uint64_t v = 0;
+        memcpy(&v, x + j, m);
+        v &= mask;
+        xb[nx++] = v;
+        uint32_t h = bh(v);
+        bloom[h >> 6] |= 1ull << (h & 63);
+    }
+    if (!nx) return 0;
+    for (int l = 0; l < lin; l++) {
+        memcpy(cur, x, L);
+        int found = 1;
+        for (int g = 0; g < gens && found; g++) {
+            memcpy(tape, cur, L);
+            for (int j = 0; j < L; j += 8) { uint64_t z = sm(s); memcpy(tape + L + j, &z, 8); }
+            run(tape, 2 * L, max_steps, code);
+            memcpy(cur, tape + L, L);
+            found = has_block(cur, nb, m, mask, xb, nx, bloom); /* a block absent after any generation fails */
+        }
+        ok += found;
+        if (ok >= need) return 1;
+        if (ok + (lin - l - 1) < need) return 0;
+    }
+    return ok >= need;
+}
+
+long sq_prefilter(const uint8_t *progs, int nprog, int L, int code, uint64_t seed, long max_steps, int m, int gens,
+                  int lin, int need, int skip_const, uint8_t *out) {
+    uint64_t s = seed;
+    long n = 0;
+    if (m > 8 || m < 1 || 2 * L > 1024) return -1;
+    for (int i = 0; i < nprog; i++) {
+        out[i] = (uint8_t)prefilter(progs + (long)i * L, L, code, &s, max_steps, m, gens, lin, need, skip_const);
+        n += out[i];
+    }
+    return n;
+}
+
+/* Product census: npairs random pairs (A, B), each run once (max_steps) as in a soup. Each half of the result that
+   differs from its input is a *product*; products passing the pre-filter are hits. hits receives up to maxhits
+   rows of 3L bytes: the product, then the input pair (A, B); side[k] = 0 (A's half, rewritten by its own run) or
+   1 (B's half, written by A). stats[0] = products, stats[1] = total steps of the pair runs, stats[2] = pair
+   runs reaching max_steps. Returns the number of hits (may exceed maxhits). */
+long sq_products(int code, long npairs, int L, uint64_t seed, long max_steps, int m, int gens, int lin, int need,
+                 int skip_const, uint8_t *hits, uint8_t *side, long maxhits, long *stats) {
+    uint8_t in[1024], tape[1024];
+    uint64_t s = seed, s2 = seed ^ 0x6a09e667f3bcc909ull;
+    long nh = 0, np = 0, st = 0, nmax = 0;
+    if (m > 8 || m < 1 || 2 * L > 1024) return -1;
+    for (long i = 0; i < npairs; i++) {
+        for (int j = 0; j < 2 * L; j += 8) { uint64_t z = sm(&s); memcpy(in + j, &z, 8); }
+        memcpy(tape, in, 2 * L);
+        long k = run(tape, 2 * L, max_steps, code);
+        st += k;
+        nmax += k >= max_steps;
+        for (int h = 0; h < 2; h++) {
+            if (!memcmp(tape + h * L, in + h * L, L)) continue;
+            np++;
+            if (prefilter(tape + h * L, L, code, &s2, max_steps, m, gens, lin, need, skip_const)) {
+                if (nh < maxhits) {
+                    memcpy(hits + nh * 3 * L, tape + h * L, L);
+                    memcpy(hits + nh * 3 * L + L, in, 2 * L);
+                    side[nh] = (uint8_t)h;
+                }
+                nh++;
+            }
+        }
+    }
+    stats[0] = np;
+    stats[1] = st;
+    stats[2] = nmax;
+    return nh;
+}

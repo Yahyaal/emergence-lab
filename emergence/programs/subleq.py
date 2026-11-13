@@ -92,6 +92,14 @@ def _lib():
         lib.sq_census_p.argtypes = [ctypes.c_int, ctypes.c_long, ctypes.c_int, ctypes.c_uint64, ctypes.c_long,
                                     ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_long,
                                     ctypes.c_void_p]
+        lib.sq_prefilter.restype = ctypes.c_long
+        lib.sq_prefilter.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_uint64,
+                                     ctypes.c_long, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+                                     ctypes.c_int, ctypes.c_void_p]
+        lib.sq_products.restype = ctypes.c_long
+        lib.sq_products.argtypes = [ctypes.c_int, ctypes.c_long, ctypes.c_int, ctypes.c_uint64, ctypes.c_long,
+                                    ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+                                    ctypes.c_void_p, ctypes.c_void_p, ctypes.c_long, ctypes.c_void_p]
         _LIB = lib
     return _LIB
 
@@ -171,6 +179,37 @@ def census_period(rule, nprog: int, seed: int, period: int, max_steps: int = 512
     if n < 0:
         raise ValueError("bad census arguments")
     return int(n), buf[:min(n, maxhits)].copy(), int(nhalt.value)
+
+
+PRE = dict(m=4, gens=2, lin=2, need=1, skip_const=1)  # product-census pre-filter defaults (D-061)
+
+
+def prefilter(P: np.ndarray, rule, seed: int, max_steps: int = 8192, **kw) -> np.ndarray:
+    """Product-census pre-filter (subleq.c sq_prefilter) on each row of P: a cheap necessary-ish version of the
+    inheritance test. Returns a bool per program."""
+    k = {**PRE, **kw}
+    P = np.ascontiguousarray(np.atleast_2d(P), dtype=np.uint8)
+    out = np.zeros(len(P), np.uint8)
+    if _lib().sq_prefilter(P.ctypes.data, len(P), P.shape[1], _code(rule), seed & (2 ** 64 - 1), max_steps,
+                           k["m"], k["gens"], k["lin"], k["need"], k["skip_const"], out.ctypes.data) < 0:
+        raise ValueError("bad prefilter arguments")
+    return out.astype(bool)
+
+
+def products(rule, npairs: int, seed: int, max_steps: int = 8192, L: int = 64, maxhits: int = 5000,
+             **kw) -> tuple[int, np.ndarray, np.ndarray, dict]:
+    """Product census (subleq.c sq_products, D-061): random pairs run once; changed halves (products) that pass
+    the pre-filter are hits. Returns (hits, up to maxhits rows of [product, A, B], side per row, stats)."""
+    k = {**PRE, **kw}
+    buf = np.zeros((maxhits, 3 * L), np.uint8)
+    side = np.zeros(maxhits, np.uint8)
+    st = (ctypes.c_long * 3)()
+    n = _lib().sq_products(_code(rule), npairs, L, seed & (2 ** 64 - 1), max_steps, k["m"], k["gens"], k["lin"],
+                           k["need"], k["skip_const"], buf.ctypes.data, side.ctypes.data, maxhits, st)
+    if n < 0:
+        raise ValueError("bad products arguments")
+    h = min(n, maxhits)
+    return int(n), buf[:h].copy(), side[:h].copy(), {"products": st[0], "steps": st[1], "maxed": st[2]}
 
 
 class Soup:

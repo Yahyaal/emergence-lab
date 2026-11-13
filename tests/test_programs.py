@@ -192,3 +192,19 @@ def test_subleq_census_period_matches_census_hits():
     assert n == n2 and (h == h2).all() and 0 < halt < 20000
     _, t, _ = Q.census_period(R, 20000, 6, 4)
     assert len(t) and all((p == np.tile(p[:4], 16)).all() for p in t)
+
+
+def test_subleq_product_census_prefilter():
+    """D-061: the product-census pre-filter passes hand-written replicators, rejects random programs and the
+    zero smear (constant blocks skipped); products() reports products that differ from their inputs."""
+    from emergence.programs import subleq as Q
+    for R, p in Q.POSITIVES.values():
+        assert Q.prefilter(p, R, 3).all()
+    R, z = Q.ZERO_SMEAR
+    assert not Q.prefilter(z, R, 3).any()
+    rnd = np.random.default_rng(4).integers(0, 256, (500, 64), dtype=np.uint8)
+    assert Q.prefilter(rnd, Q.Rule(4, 0, 1, 32, 28), 3).sum() <= 5
+    n, X, S, st = Q.products(Q.Rule(4, 0, 1, 32, 28), 20000, 9, maxhits=50)
+    assert 0 < st["products"] <= 40000 and st["steps"] > 0 and len(X) == min(n, 50)
+    for x, s in zip(X, S):
+        assert (x[:64] != x[64 + 64 * s:128 + 64 * s]).any()  # a product differs from the input half it replaced
