@@ -83,3 +83,34 @@ failed in the next. Neither looked at the event that actually starts a jump. Thi
 - Runs shorter than 16 steps are not tested. A replicator that copies in fewer steps would be missed (none is
   known; tile replicators loop for ≥ 64 steps).
 - Two soups per rule.
+
+## Outcome (added after the run; J-083)
+
+Run time 4.8 h, 11 workers. Analysis: `scripts/sq_nucleation_report.py`.
+
+1. **Controls pass.**
+   - Positive: both injected replicators were detected at round 1 with cause "initial", as in the smoke run.
+   - Negative: 0 origins in 4,000 rounds in all 4 soups.
+2. **The tracer agrees with the original runs. Right.**
+   - 40/40 soups that jumped originally establish a lineage. 38 of them do so within 50 rounds of the original T
+     (range −152 to +373).
+   - 0/56 soups that did not jump establish anything.
+3. **Null first:**
+   - under ≤ 0, 5 of 16 (31%). **Wrong.**
+   - under always, 0 of 24. **Right.**
+   - In all 5 null-first soups, informative inheritors reached ≥ 10 within 16–97 rounds (part B).
+4. **Origin rate vs establishment:**
+   - Origin rate: often-jumping rules have a median of 30 origins per 1,000 rounds, rarely-jumping rules 0;
+     p = 3 × 10^-19. **Right.** 53 of the 54 rarely-jumping soups had **no origin at all** in 4,000 rounds, and
+     the other had 3 that died out.
+   - Establishment fraction: p = 0.10, technically right, but **uninformative**. Only one rarely-jumping soup
+     had any origin to compare.
+5. **Founder cause:** "partner" 24, "self" 16, and none by mutation alone. **Wrong:** "self" is not the most
+   common.
+
+**Also seen:**
+- In 25 of 40 soups the first origin of any kind came at ≥ 90% of the establishment round.
+- The established lineage was the very first origin in 17 of 40 soups, and it established a median of 16.5 rounds
+  after the first origin (≤ 20 rounds in 23 of 40).
+- Some rules (W32/o42, W32/o111, W64/o60 under ≤ 0; W16/o4–o7 and W64/o3 under always) make hundreds to thousands of
+  short-lived origins before one lineage establishes.

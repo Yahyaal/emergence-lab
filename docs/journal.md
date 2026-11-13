@@ -12,6 +12,40 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-083 · 2026-11-13 · E-75 phase 5: replicators are rare single events; whether a soup jumps is set by how often they arise (pre-registered trace)
+
+**Question (pre-registered, `docs/data/e75-phase5-preregistration.md`, commit `aa6843b`; D-060):** where do the first replicators come from? Is the difference between rules that jump and rules that don't in how often replicators arise, or in whether they survive?
+
+**Ran:** `scripts/sq_nucleation.py` (4.8 h on 11 workers); analysis `scripts/sq_nucleation_report.py`. An exact Python replay of 96 soups (soups 0 and 1 of every phase-3 and phase-4-A rule) plus 6 controls. Every executing program that runs ≥ 16 steps gets the inheritance test, confirmed twice. Lineages are followed from their first appearance to the first establishment (≥ 200 executions in a round).
+
+**Development finding (before the pre-registration): the all-zero program.** Under jump ≤ 0 or always, the instruction 00 00 00 00 writes 0, jumps to itself and walks the index, so 64 zero bytes zero their partner, which then does the same. It passes the inheritance test (D-055), but carries no information. A check of 7 jumped soups of phases 3–4 found that every one still has 14–40 *informative* inheritors at T + 1,000, so those jump calls stand. Jump times can be early, though: at T, 3 of those soups were mostly null.
+
+**Found:**
+- **Controls pass.**
+  - Both injected replicators were seen at round 1 with cause "initial". One established at round 17. The other, a single copy, was lost, and the soup jumped later from a new origin.
+  - The negative-control soups (jump < 0, D_T = 0) had no origin at all.
+- **The trace reproduces the original runs.** 40/40 originally jumped soups establish, 38 of them within 50 rounds of the original T. 0/56 others establish anything.
+- **Rarely-jumping rules simply never make a replicator.** 53 of their 54 soups had **zero** origins in 4,000 rounds, that is in 33 million pair runs. Frequently jumping rules: median 30 origins per 1,000 rounds (p = 3 × 10^-19).
+  - There is no hidden layer of replicators that arise and die out; they almost never arise.
+  - So the establishment comparison could not be made: only one rarely-jumping soup had origins.
+- **Once one arises, it takes over quickly.**
+  - In 25 of 40 soups the first origin of any kind came at ≥ 90% of the establishment round.
+  - The established lineage was the very first origin in 17 of 40.
+  - Establishment came a median of 16.5 rounds after the first origin.
+- **Founders appear in one run, not by mutation.**
+  - 24 were written by a partner's run and 16 by the program's own run; none came from mutation alone.
+  - The programs they replaced look random (0–6 zero bytes in most).
+- **Null replicators first:** 5 of 16 soups under ≤ 0 (predicted ≥ 50%, wrong) and 0 of 24 under always (right). In all 5, informative inheritors followed within 16–97 rounds.
+- **Exceptions:** some rules (W32/o42, W32/o111, W64/o60 under ≤ 0; W16/o4–o7, W64/o3 under always) make hundreds to thousands of short-lived origins first. These look like borderline copiers that pass the test but do not spread.
+
+**Meaning:** the waiting time to a jump is the waiting time for one rare event: a run of two near-random programs that writes a replicator. Survival is not the bottleneck. A predictor should therefore estimate **how often a random pair's run produces a replicator**, a "product census". None of our censuses measured that. They asked whether a random program or tile *is* a replicator, not whether runs *make* one.
+
+**Changed:** `scripts/sq_nucleation.py`, `scripts/sq_nucleation_report.py`; D-060 accepted; report section 32; handoff.
+
+**Lesson:** to predict when something emerges, measure the event that creates it, not the abundance of finished examples.
+
+---
+
 ## J-082 · 2026-11-13 · E-75 phase 4b: there is no "frozen" state; random SUBLEQ soups are inert from the start (exploratory)
 
 **Question / why:** after J-081 the plan, approved by the owner, was a passive look inside frozen soups, then a pre-registered knockout of non-inheriting copiers on clones. The look came first because the knockout only makes sense if copiers are active once a soup is frozen.
