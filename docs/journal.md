@@ -12,6 +12,60 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-087 · 2026-11-14 · E-77: the discovery engine beats random search on all 20 seeds (H1 with power, pre-registered, passes)
+
+**Question (pre-registered, `docs/data/e77-preregistration.md`, commit `7c7edbe`):** H1, "guided search finds more interesting rules than random search at equal compute", rested on E-03 to E-06: 2 seeds per arm. Does it hold over 20 seeds, paired by seed, after removing near-duplicates?
+
+**Ran:**
+- **Reproduction first (seeds 11 and 12, not part of the test).** All four E-03 to E-06 runs were repeated with the documented command on `7f0eacb`.
+- **E-77.** Master seeds 101–120, engine and random arm on each, E-03 to E-06 settings unchanged: 100 rules × 2 seeds × 6 generations, 96×96, 500 steps, 6 follow-ups.
+  - Driver: `scripts/h1_power.py run` (`--workers 2`, 3 runs at a time).
+  - Time: 2 h 39 min in all; 483–1057 s per run, median 674 s.
+
+**Found:**
+- **E-03 to E-06 reproduce exactly** on today's code.
+  - Raw counts: self-propelled 81 / 29 / 99 / 29, complex on every seed 53 / 8 / 60 / 8, niches 34 / 27 / 32 / 23.
+  - Calibrated thresholds: 0.331 / 0.296 / 0.315 / 0.247.
+- **The near-duplicate code behind D-013 had never been committed.** Only the phrase "rules at least 2 mutations apart" survived.
+  - It is now `h1_power.distinct_greedy`: mutation distance |B △ B′| + |S △ S′| + |C − C′|; in exploration order, a rule is kept only if it is ≥ 2 from every rule already kept.
+  - It gives the published distinct counts exactly: 50 / 27 / 55 / 29 and 34 / 8 / 33 / 8.
+  - The other plausible reading (clusters linked by single mutations) does not: 25 / 25 / 24 / 29.
+- **Primary passes.** Distinct rules with self-propelled structures:
+  - Medians: engine 49, random 26.5.
+  - Median per-seed ratio **1.84**, bootstrap 95% interval [1.70, 2.25] (ratio of medians 1.85).
+  - The engine is ahead on **20 of 20 seeds**: exact one-sided Wilcoxon p = 9.5 × 10^-7, the smallest possible with n = 20; sign test the same.
+  - Per-seed ratios run 1.36–2.77; 2 seeds are below 1.5 (106: 38 vs 28; 114: 38 vs 27).
+- **Secondary, also clear.**
+  - Distinct rules "complex on every seed": medians 23 vs 7, median ratio **3.4** [2.6, 3.9], 20 of 20 seeds.
+  - Niches: 29.5 vs 25.5, ratio **1.16** [1.12, 1.23]; 19 seeds ahead, 1 tie.
+  - Raw counts: self-propelled 87 vs 30 (2.9×), complex 35 vs 7 (5.4×). 43% of the engine's raw self-propelled rules are near-duplicates (D-013 said ~40%).
+- **Generation 0 is identical within every seed** (hash check), so the gap is due to selection alone.
+- **Robustness thresholds (D-010) differ by arm.** They range 0.23–0.59 across the 40 runs: engine median ≈ 0.34 (engine-s109: 0.59), random ≈ 0.26. The engine's eligible rules vary more between seeds. No outcome here depends on the threshold.
+
+**Predictions:**
+- Primary pass (we gave ~85%): right.
+- Complex ratio "~4": it was 3.4.
+- Niches "~1.3": it was 1.16.
+
+**Meaning:**
+- H1 now stands on 20 paired seeds instead of 2. In this rule family at this budget, the engine finds about 1.8× as many distinct rules with self-propelled structures and about 3.4× as many distinct "complex on every seed" rules, on every seed tried.
+- The 1.9× and 4.2× of J-004 were close for self-propelled and somewhat high for complex.
+- Limits:
+  - One family (Life-like/Generations), one budget, one world size.
+  - Self-propelled is one of the engine's own objectives, so that win is partly circular. "Complex on every seed" is not optimised directly.
+  - E-12 and E-17 (Lenia) remain single-seed.
+- Evidence levels unchanged: this is about search efficiency, not a new level.
+
+**Changed:**
+- `scripts/h1_power.py` (driver, deduplication, exact tests by hand).
+- `docs/data/e77-preregistration.md` (`7c7edbe`).
+- Export `docs/data/experiments/2026-11-14-e77-h1-power.json`.
+- No `emergence/*.py` change.
+
+**Lesson:** an analysis step that changes the headline number (here deduplication) must be committed code, not a session's ad hoc calculation; it took a reproduction to recover it.
+
+---
+
 ## J-085 · 2026-11-14 · E-75 phase 7: rules chosen by product rate alone, before their soups ran, jump far more often, but the test came out short of rules (pre-registered)
 
 **Question (pre-registered, `docs/data/e75-phase7-preregistration.md`, commit `2c72454`; D-062):** J-084 was retrospective. If new rules are chosen by their product rate R_P alone, with HIGH and ZERO thresholds fixed from phase 6, do the HIGH rules' soups jump and the ZERO rules' soups not?
