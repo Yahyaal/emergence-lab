@@ -1,0 +1,406 @@
+{
+ "experiment": "E-73",
+ "thr": 58,
+ "opmin": 75,
+ "sweep": {
+  "52/0": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 52
+  },
+  "52/50": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "52/75": {
+   "sloppy_v2_g57": 38,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "52/100": {
+   "sloppy_v2_g57": 33,
+   "sloppy_v2_g58": 31,
+   "exact_v1_h64": 39,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 37,
+   "smears": 0
+  },
+  "54/0": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 52
+  },
+  "54/50": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "54/75": {
+   "sloppy_v2_g57": 38,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "54/100": {
+   "sloppy_v2_g57": 33,
+   "sloppy_v2_g58": 31,
+   "exact_v1_h64": 39,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 37,
+   "smears": 0
+  },
+  "56/0": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 52
+  },
+  "56/50": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "56/75": {
+   "sloppy_v2_g57": 38,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "56/100": {
+   "sloppy_v2_g57": 33,
+   "sloppy_v2_g58": 31,
+   "exact_v1_h64": 39,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 37,
+   "smears": 0
+  },
+  "57/0": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 49
+  },
+  "57/50": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "57/75": {
+   "sloppy_v2_g57": 38,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "57/100": {
+   "sloppy_v2_g57": 33,
+   "sloppy_v2_g58": 31,
+   "exact_v1_h64": 39,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 37,
+   "smears": 0
+  },
+  "58/0": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 45
+  },
+  "58/50": {
+   "sloppy_v2_g57": 40,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "58/75": {
+   "sloppy_v2_g57": 38,
+   "sloppy_v2_g58": 40,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "58/100": {
+   "sloppy_v2_g57": 33,
+   "sloppy_v2_g58": 31,
+   "exact_v1_h64": 39,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 37,
+   "smears": 0
+  },
+  "59/0": {
+   "sloppy_v2_g57": 11,
+   "sloppy_v2_g58": 39,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 40
+  },
+  "59/50": {
+   "sloppy_v2_g57": 11,
+   "sloppy_v2_g58": 39,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "59/75": {
+   "sloppy_v2_g57": 11,
+   "sloppy_v2_g58": 39,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 40,
+   "smears": 0
+  },
+  "59/100": {
+   "sloppy_v2_g57": 10,
+   "sloppy_v2_g58": 31,
+   "exact_v1_h64": 39,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 37,
+   "smears": 0
+  },
+  "60/0": {
+   "sloppy_v2_g57": 0,
+   "sloppy_v2_g58": 0,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 0,
+   "smears": 37
+  },
+  "60/50": {
+   "sloppy_v2_g57": 0,
+   "sloppy_v2_g58": 0,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 0,
+   "smears": 0
+  },
+  "60/75": {
+   "sloppy_v2_g57": 0,
+   "sloppy_v2_g58": 0,
+   "exact_v1_h64": 40,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 0,
+   "smears": 0
+  },
+  "60/100": {
+   "sloppy_v2_g57": 0,
+   "sloppy_v2_g58": 0,
+   "exact_v1_h64": 39,
+   "exact_v2_h64": 39,
+   "exact_v3_h64": 40,
+   "transient_v4_g64": 0,
+   "null_v1_h68": 0,
+   "null_v0_h0": 0,
+   "null_v4_h124_g58": 0,
+   "smears": 0
+  }
+ },
+ "checks": [
+  {
+   "name": "fidelity equivalence: thr 60, no guard == classify_shift on all fixtures",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "fidelity positive: sloppy_v2_g57 (sloppy replicators (E-72; HOE 6.4, D-050 0 copiers)) -> >= 30/40 copiers",
+   "ok": true,
+   "detail": "38/40 (D-050 test: 0/40)"
+  },
+  {
+   "name": "fidelity positive: sloppy_v2_g58 (sloppy replicators (E-72; HOE 6.5, D-050 0 copiers)) -> >= 30/40 copiers",
+   "ok": true,
+   "detail": "40/40 (D-050 test: 0/40)"
+  },
+  {
+   "name": "fidelity positive: exact_v1_h64 (exact replicators (E-70; D-050 jump at 250)) -> >= 30/40 copiers",
+   "ok": true,
+   "detail": "40/40 (D-050 test: 40/40)"
+  },
+  {
+   "name": "fidelity positive: exact_v2_h64 (exact replicators (E-70 v2/64; D-050 jump at 250)) -> >= 30/40 copiers",
+   "ok": true,
+   "detail": "39/40 (D-050 test: 39/40)"
+  },
+  {
+   "name": "fidelity positive: exact_v3_h64 (exact replicators (E-70 v3/64; D-050 jump at 250)) -> >= 30/40 copiers",
+   "ok": true,
+   "detail": "40/40 (D-050 test: 40/40)"
+  },
+  {
+   "name": "fidelity negative: 200 random programs, every fixture rule -> <= 1% copiers",
+   "ok": true,
+   "detail": "max 1/200"
+  },
+  {
+   "name": "fidelity null (top-40 selection): null_v0_h0 (standard BFF before any transition) -> <= 1/40 copiers",
+   "ok": true,
+   "detail": "0/40"
+  },
+  {
+   "name": "fidelity null (top-40 selection): null_v1_h68 (no replicators (E-71; HOE <= 0.6 for 16,000 rounds)) -> <= 1/40 copiers",
+   "ok": true,
+   "detail": "0/40"
+  },
+  {
+   "name": "fidelity deceptive: 64 filler smears x 9 rules -> 0 copiers",
+   "ok": true,
+   "detail": "guarded 0; unguarded at thr 60 (D-050 test): 37"
+  }
+ ],
+ "fixtures": {
+  "sloppy_v2_g57": "sloppy replicators (E-72; HOE 6.4, D-050 0 copiers)",
+  "sloppy_v2_g58": "sloppy replicators (E-72; HOE 6.5, D-050 0 copiers)",
+  "exact_v1_h64": "exact replicators (E-70; D-050 jump at 250)",
+  "exact_v2_h64": "exact replicators (E-70 v2/64; D-050 jump at 250)",
+  "exact_v3_h64": "exact replicators (E-70 v3/64; D-050 jump at 250)",
+  "transient_v4_g64": "E-72: HOE 2.7 at 2,000 then falls; no D-050 jump",
+  "null_v1_h68": "no replicators (E-71; HOE <= 0.6 for 16,000 rounds)",
+  "null_v0_h0": "standard BFF before any transition",
+  "null_v4_h124_g58": "E-72 deep rule, early (no jump before 1,200)"
+ }
+}

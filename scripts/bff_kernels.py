@@ -55,6 +55,10 @@ def lib():
         _LIB.classify_shift.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
                                         ctypes.c_uint64, ctypes.c_long, ctypes.c_int, ctypes.c_int, ctypes.c_void_p,
                                         ctypes.c_void_p]
+        _LIB.classify_fid.restype = None
+        _LIB.classify_fid.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+                                      ctypes.c_uint64, ctypes.c_long, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+                                      ctypes.c_void_p, ctypes.c_void_p]
     return _LIB
 
 
@@ -81,6 +85,19 @@ def classify_shift(P: np.ndarray, h1start: int, partners: int, seed: int, maxshi
     out, sh = np.zeros(len(P), np.uint8), np.zeros(len(P), np.int8)
     lib().classify_shift(P.ctypes.data, len(P), L, h1start, partners, seed, STEPS, THR, maxshift,
                          out.ctypes.data, sh.ctypes.data)
+    return out, sh
+
+
+def classify_fid(P: np.ndarray, h1start: int, partners: int, seed: int, thr: int | None = None, opmin: int = 75,
+                 maxshift: int | None = None):
+    """E-73 (D-053): classify_shift plus an instruction-fidelity guard (copy must reproduce >= opmin % of the
+    program's instruction bytes). thr = THR and opmin = 0 reproduce classify_shift exactly."""
+    thr = THR if thr is None else thr
+    maxshift = MAXSHIFT if maxshift is None else maxshift
+    P = np.ascontiguousarray(P, dtype=np.uint8)
+    out, sh = np.zeros(len(P), np.uint8), np.zeros(len(P), np.int8)
+    lib().classify_fid(P.ctypes.data, len(P), L, h1start, partners, seed, STEPS, thr, maxshift, opmin,
+                       out.ctypes.data, sh.ctypes.data)
     return out, sh
 
 

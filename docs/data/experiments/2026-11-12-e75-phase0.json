@@ -1,0 +1,123 @@
+{
+ "experiment": "E-75",
+ "phase": 0,
+ "inheritance": {
+  "gens": 5,
+  "lineages": 4,
+  "need": 3,
+  "m": 4
+ },
+ "checks": [
+  {
+   "name": "subleq interpreter: C == Python reference on 300 random rules and tapes",
+   "ok": true,
+   "detail": "0/300 differ"
+  },
+  {
+   "name": "subleq positive: hand-written forward replicator (n4 jalways s+1 W128 o0) -> inherited and whole-program copier",
+   "ok": true,
+   "detail": "inheritance True, whole-program True"
+  },
+  {
+   "name": "subleq positive: hand-written backward replicator (n4 jalways s-1 W128 o0) -> inherited and whole-program copier",
+   "ok": true,
+   "detail": "inheritance True, whole-program True"
+  },
+  {
+   "name": "subleq positive: hand-written band replicator (n4 jalways s+1 W16 o64) -> inherited and whole-program copier",
+   "ok": true,
+   "detail": "inheritance True, whole-program True"
+  },
+  {
+   "name": "subleq deceptive: zero smear (partner matches 59/64 bytes, nothing copied) -> rejected",
+   "ok": true,
+   "detail": "inheritance False; unguarded whole-program test accepts: True"
+  },
+  {
+   "name": "subleq positive: unseeded n4/always/s+1 soup at round 100 (5-byte loop) -> >= 30/40 inherited",
+   "ok": true,
+   "detail": "39/40 (whole-program test: 0/40)"
+  },
+  {
+   "name": "subleq null (top-40 selection): null-rsubleq4 soup at round 300 -> <= 1/40",
+   "ok": true,
+   "detail": "0/40"
+  },
+  {
+   "name": "subleq null (top-40 selection): null-subleq soup at round 300 -> <= 1/40",
+   "ok": true,
+   "detail": "0/40"
+  },
+  {
+   "name": "subleq negative: 200 random programs under 4 rules -> <= 1% inherited",
+   "ok": true,
+   "detail": "max 0/200"
+  },
+  {
+   "name": "subleq soup positive: 16 seeded forward replicators in 4,096, round 60 -> >= 30/40 inherited",
+   "ok": true,
+   "detail": "40/40"
+  },
+  {
+   "name": "subleq soup positive: 16 seeded backward replicators in 4,096, round 60 -> >= 30/40 inherited",
+   "ok": true,
+   "detail": "40/40"
+  },
+  {
+   "name": "subleq soup positive: 16 seeded band replicators in 4,096, round 60 -> >= 30/40 inherited",
+   "ok": true,
+   "detail": "40/40"
+  },
+  {
+   "name": "subleq soup negative: noexec soup, round 100 -> 0/40 inherited",
+   "ok": true,
+   "detail": "0/40, HOE -0.00"
+  },
+  {
+   "name": "subleq soup deceptive: copyall soup, round 100 -> 0/40 inherited (HOE is fooled)",
+   "ok": true,
+   "detail": "0/40, HOE 7.25"
+  },
+  {
+   "name": "inheritance on BFF: sloppy_v2_g57 -> >= 30/40",
+   "ok": true,
+   "detail": "40/40 (D-053 38/40)"
+  },
+  {
+   "name": "inheritance on BFF: sloppy_v2_g58 -> >= 30/40",
+   "ok": true,
+   "detail": "40/40 (D-053 40/40)"
+  },
+  {
+   "name": "inheritance on BFF: exact_v1_h64 -> >= 30/40",
+   "ok": true,
+   "detail": "40/40 (D-053 40/40)"
+  },
+  {
+   "name": "inheritance on BFF: exact_v2_h64 -> >= 30/40",
+   "ok": true,
+   "detail": "39/40 (D-053 39/40)"
+  },
+  {
+   "name": "inheritance on BFF: exact_v3_h64 -> >= 30/40",
+   "ok": true,
+   "detail": "40/40 (D-053 40/40)"
+  },
+  {
+   "name": "inheritance on BFF null (top-40): null_v0_h0 -> <= 1/40",
+   "ok": true,
+   "detail": "0/40"
+  },
+  {
+   "name": "inheritance on BFF null (top-40): null_v1_h68 -> <= 1/40",
+   "ok": true,
+   "detail": "0/40"
+  },
+  {
+   "name": "inheritance on BFF deceptive: 64 filler smears x 9 rules -> 0",
+   "ok": true,
+   "detail": "0"
+  }
+ ],
+ "all_pass": true
+}

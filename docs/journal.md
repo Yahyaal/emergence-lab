@@ -12,6 +12,480 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-085 · 2026-11-14 · E-75 phase 7: rules chosen by product rate alone, before their soups ran, jump far more often, but the test came out short of rules (pre-registered)
+
+**Question (pre-registered, `docs/data/e75-phase7-preregistration.md`, commit `2c72454`; D-062):** J-084 was retrospective. If new rules are chosen by their product rate R_P alone, with HIGH and ZERO thresholds fixed from phase 6, do the HIGH rules' soups jump and the ZERO rules' soups not?
+
+**Ran:** `scripts/sq_phase7.py` (12 h 8 min, 11 workers); analysis `scripts/sq_phase7_report.py`. 132 new rules screened (up to 3 × 10^8 pairs each, plus the D-056 random-program screen), 19 selected, 114 soups.
+
+**Found:**
+- **Too few HIGH rules.** The selection found 7 HIGH and 12 ZERO, against 12 + 12 wanted.
+  - Under always, 15 of the 16 HIGH candidates that reached stage 2 had replicators among random programs, so the D-056 screen removed them. A high product rate and random-program replicators mostly go together there.
+  - Under < 0, only 3 of 44 candidates had any product in 10^8 pairs.
+- **The separation replicates.** HIGH soups jumped in 33 of 42 (79%), ZERO soups in 12 of 72 (17%); one-sided Fisher p = 6 × 10^-11. These numbers meet the primary's criteria, but with 7 HIGH rules (< 8) the primary is **undecided**, as pre-registered.
+- **Rate sets speed again.** Among the 6 HIGH rules that jumped, ρ(R_P, median T) = −0.88 (p = 0.010).
+- **Low rates are unreliable.** The 4 HIGH rules with R_P ≥ 4 jumped in 24 of 24 soups; the 3 at R_P 1–2 in 9 of 18, including one (< 0 W32/o61) that never jumped.
+- **ZERO under ≤ 0 still fails as before.** Two of the four ≤ 0 ZERO rules (s−1 W32/o5 and s−1 W64/o100) jumped in every soup; all 12 ZERO jumps were theirs. Always and < 0 ZERO rules: 0 of 48.
+- **Tile density did better on these 19 rules:** ρ = 0.75 vs 0.67 for R_P.
+
+**Predictions:** primary undecided (criteria met); of the other four, 2 right (ZERO bounds, speed) and 2 wrong (≥ 80% of HIGH rules jump in ≥ 4 soups; beating D_T).
+
+**Meaning:**
+- Prospectively, a measurable property of a rule's fresh random code, the rate at which pair runs write replicators, sorts new rules into ones that jump and ones that don't: 79% vs 17%. That is the main claim of J-084, now with outcomes unknown at selection. Formally it is not a pass, because the design asked for more rules than the pools gave.
+- It is not better than tile density on these rules. Selecting by R_P alone does not tell us which predictor is better: R_P was cut into two groups (ZERO rules all tie), while D_T varied freely.
+- The ≤ 0 misses persist: in some rules soup material writes replicators while fresh code does not. That is the next question.
+- Evidence level unchanged (level 3 replicators; nothing about levels 4–5).
+
+**Changed:** `scripts/sq_phase7.py`, `scripts/sq_phase7_report.py`; D-062 accepted; report section 34; handoff.
+
+**Lesson:** a design that needs a fixed number of rare items should estimate their frequency first. Here the D-056 screen, needed to keep the test clean, removed almost all of the very rules the test was about.
+
+---
+
+## J-084 · 2026-11-13 · E-75 phase 6: how often a random pair's run writes a replicator predicts which rules jump, including where tile density failed (pre-registered)
+
+**Question (pre-registered, `docs/data/e75-phase6-preregistration.md`, commit `ff6b4e5`; D-061):** J-083 found that jumps are set by how often replicators originate, and that each founder is written in one run. Does the rate at which runs of fresh random pairs write a replicator (R_P) predict which of the 60 phase-3/4 rules jump?
+
+**Built:** `subleq.products()` and `subleq.prefilter()` (C). Random pairs are run once (8,192 steps). A changed half passes the pre-filter if some non-constant 4-byte block of it survives 2 generations with random partners in ≥ 1 of 2 lineages. The pre-filter keeps 99.7% of the 3,118 informative founders and origins from phase 5, and runs at about 290k pairs/s per core. Hits get the inheritance test, confirmed twice; inputs are tested too. Test: `test_subleq_product_census_prefilter`.
+
+**Development (disclosed):**
+- 10^7 pairs gave no confirmed product for two rules that jump in every soup, so 3 × 10^8 per rule was needed.
+- A pilot of 5 rules at 2.2 × 10^8 (seed 81) showed 5–1,911 products for jumping rules and 0 for a non-jumper.
+
+**Ran:** `scripts/sq_products.py` (3 h 22 min, 11 workers); analysis `scripts/sq_products_report.py`. 1.8 × 10^10 pair runs in all.
+
+**Found:**
+- **Primary passes.** In pool A (jump ≤ 0), ρ(R_P, soups jumped) = 0.64, p = 4 × 10^-4. Tile density on the same 24 rules: 0.14.
+- **Beats tile density overall:** ρ = 0.71 vs 0.63 over 60 rules; 0.88 vs 0.76 under always.
+  - In pool B it is worse (0.71 vs 0.97), though above its pre-registered bar.
+- **Rate sets speed.** Among the 24 rules that jumped in ≥ 4 soups, a higher R_P means an earlier jump: ρ = −0.65, p = 3 × 10^-4. R_P ranges from 0.3 to 879 per 10^8.
+- **"No product, no jump" is wrong.**
+  - The 37 rules with no product in 3 × 10^8 pairs still jumped in 35 of 222 soups.
+  - All of those jumps were under ≤ 0 or < 0; under always, the 8 zero-product rules jumped in 0 of 48.
+  - Six of these rules jump in ≥ 4 soups.
+- **Under ≤ 0 and < 0, fresh random pairs barely produce.** Only 7 of 36 rules had any product, at ≤ 8 per 10^8. The 30 jumped soups of the six zero-product rules jumped after a median of 5,250 rounds (4.3 × 10^7 runs), and the fastest after 250. Fresh-pair rates would predict waits of over 36,000 rounds, so soup material there is at least several times, and up to over 100 times, more productive than fresh random code.
+- **False positives:** 4 always rules with low R_P (0.3–2) never jumped, including W8/o56, whose tile density is 269.
+- **Post hoc:** rules with R_P > 0 jumped in 109 of 138 soups; rules with R_P = 0 in 35 of 222.
+- **Other counts:**
+  - Self-written products 1,342, partner-written 1,916.
+  - 1 null product.
+  - 8,194 products came from inputs that were already replicators, almost all in s+1 W8/o125.
+
+**Predictions:** 4 of 5 right, including the primary (both parts of prediction 3 right). Prediction 4 (no product, no jump) was wrong.
+
+**Meaning:**
+- Counting the event that starts a jump works better than counting finished replicators. It predicts which rules jump and how soon, and it recovers pool A, where tile density said nothing.
+- This is still a retrospective test: the outcomes were known, though the predictor was computed blind to them.
+- The miss is systematic. Under ≤ 0 and < 0, the material in a soup is not fresh random code. Earlier runs have rewritten it, and it writes replicators much more often.
+- Evidence level unchanged: this predicts where level-3 replicators arise; it says nothing about levels 4–5.
+
+**Changed:** `emergence/programs/subleq.c`/`.py` (product census), `scripts/sq_products.py`, `scripts/sq_products_report.py`, a test; D-061 accepted; report section 33; handoff.
+
+**Lesson:** a predictor of the event works, and its failures point to where our model of the inputs is wrong: soups are not random code, even when they look like it.
+
+---
+
+## J-083 · 2026-11-13 · E-75 phase 5: replicators are rare single events; whether a soup jumps is set by how often they arise (pre-registered trace)
+
+**Question (pre-registered, `docs/data/e75-phase5-preregistration.md`, commit `aa6843b`; D-060):** where do the first replicators come from? Is the difference between rules that jump and rules that don't in how often replicators arise, or in whether they survive?
+
+**Ran:** `scripts/sq_nucleation.py` (4.8 h on 11 workers); analysis `scripts/sq_nucleation_report.py`. An exact Python replay of 96 soups (soups 0 and 1 of every phase-3 and phase-4-A rule) plus 6 controls. Every executing program that runs ≥ 16 steps gets the inheritance test, confirmed twice. Lineages are followed from their first appearance to the first establishment (≥ 200 executions in a round).
+
+**Development finding (before the pre-registration): the all-zero program.** Under jump ≤ 0 or always, the instruction 00 00 00 00 writes 0, jumps to itself and walks the index, so 64 zero bytes zero their partner, which then does the same. It passes the inheritance test (D-055), but carries no information. A check of 7 jumped soups of phases 3–4 found that every one still has 14–40 *informative* inheritors at T + 1,000, so those jump calls stand. Jump times can be early, though: at T, 3 of those soups were mostly null.
+
+**Found:**
+- **Controls pass.**
+  - Both injected replicators were seen at round 1 with cause "initial". One established at round 17. The other, a single copy, was lost, and the soup jumped later from a new origin.
+  - The negative-control soups (jump < 0, D_T = 0) had no origin at all.
+- **The trace reproduces the original runs.** 40/40 originally jumped soups establish, 38 of them within 50 rounds of the original T. 0/56 others establish anything.
+- **Rarely-jumping rules simply never make a replicator.** 53 of their 54 soups had **zero** origins in 4,000 rounds, that is in 33 million pair runs. Frequently jumping rules: median 30 origins per 1,000 rounds (p = 3 × 10^-19).
+  - There is no hidden layer of replicators that arise and die out; they almost never arise.
+  - So the establishment comparison could not be made: only one rarely-jumping soup had origins.
+- **Once one arises, it takes over quickly.**
+  - In 25 of 40 soups the first origin of any kind came at ≥ 90% of the establishment round.
+  - The established lineage was the very first origin in 17 of 40.
+  - Establishment came a median of 16.5 rounds after the first origin.
+- **Founders appear in one run, not by mutation.**
+  - 24 were written by a partner's run and 16 by the program's own run; none came from mutation alone.
+  - The programs they replaced look random (0–6 zero bytes in most).
+- **Null replicators first:** 5 of 16 soups under ≤ 0 (predicted ≥ 50%, wrong) and 0 of 24 under always (right). In all 5, informative inheritors followed within 16–97 rounds.
+- **Exceptions:** some rules (W32/o42, W32/o111, W64/o60 under ≤ 0; W16/o4–o7, W64/o3 under always) make hundreds to thousands of short-lived origins first. These look like borderline copiers that pass the test but do not spread.
+
+**Meaning:** the waiting time to a jump is the waiting time for one rare event: a run of two near-random programs that writes a replicator. Survival is not the bottleneck. A predictor should therefore estimate **how often a random pair's run produces a replicator**, a "product census". None of our censuses measured that. They asked whether a random program or tile *is* a replicator, not whether runs *make* one.
+
+**Changed:** `scripts/sq_nucleation.py`, `scripts/sq_nucleation_report.py`; D-060 accepted; report section 32; handoff.
+
+**Lesson:** to predict when something emerges, measure the event that creates it, not the abundance of finished examples.
+
+---
+
+## J-082 · 2026-11-13 · E-75 phase 4b: there is no "frozen" state; random SUBLEQ soups are inert from the start (exploratory)
+
+**Question / why:** after J-081 the plan, approved by the owner, was a passive look inside frozen soups, then a pre-registered knockout of non-inheriting copiers on clones. The look came first because the knockout only makes sense if copiers are active once a soup is frozen.
+
+**Ran:** `scripts/sq_inert.py`, about 10 min. Soup 0 of every phase-3 rule and every phase-4 pool-A rule (48) was replayed with its original seed and measured at rounds 0, 50 and 200. Each checkpoint used 2,000 random pairs. Data: `docs/data/experiments/2026-11-13-e75-inert.json`.
+
+**Found:**
+- **Round 0 already looks "frozen".**
+  - Steps per pair are 2.3–7.3 under always-jump rules, with outliers of 15 and 21 (W8/o125 and W64/o75, both of which jump), and 3.4–3.8 under ≤ 0 rules.
+  - 92–95% of runs stop within 4 steps under always-jump rules, and 70–76% under ≤ 0 rules.
+- **Nothing converges.** All 16,384 programs remain distinct at rounds 50 and 200 in every soup that has not jumped; the one exception is 16,381, one checkpoint before a jump. The most common first instruction never exceeds 0.13%.
+- **Almost no copying:** copy hits are 0–0.2% of runs at every checkpoint. The share of runs that stop within 4 steps rises a little, by 2–10 points.
+- **Soups that later jump are indistinguishable** from soups that never do, up to the jump.
+
+**What this changes:**
+- The phase-2 claim that non-jumping soups "freeze into halters" (J-079) is wrong. So is phase 3's race mechanism (J-080), and phase 4's "freeze, then escape" (J-081, post hoc 1). Non-jumping soups simply stay as random code starts. Secondary predictions that "non-jumping soups are frozen" were true trivially.
+- The planned clone knockout is dropped (D-059): there are no active copiers to remove.
+- The hit-count correlation from J-081 stands as an observation, without a mechanism. It may be a proxy for operand reach: 9 of the 10 W8 rules in pool A jumped in at most 1 of 6 soups.
+
+**Changed:** `scripts/sq_inert.py`; corrections in report sections 29–31, the cards, the lead and the timeline; a correction note in J-081 and in the phase-4 protocol; D-059; handoff.
+
+**Lesson:** before naming a state a soup "reaches", measure the soup at round 0.
+
+---
+
+## J-081 · 2026-11-13 · E-75 phase 4: tile density does not transfer to jump ≤ 0 (pre-registered, fails)
+
+**Question (pre-registered, `docs/data/e75-phase4-preregistration.md`, commit `fa0fa53`; D-058):** does the phase-3 predictor, with its thresholds unchanged, predict soups in rules that jump only on ≤ 0 (pool A) or < 0 (pool B)? Both groups had to copy tiles (LOW: ≥ 50 tile hits per 10^6, none inheriting), and no random program could be a replicator at 10^7 or 10^8.
+
+**Ran:** `scripts/sq_phase4.py` (6 h 20 min on 11 workers, overnight, on the owner's go-ahead), 216 soups, cache `runs/e75-phase4/`.
+
+**Found:**
+- **Primary fails.** Pool A: HIGH 29/72 soups jumped, LOW 20/72 (Fisher p = 0.08). Per rule: 5/12 vs 3/12.
+  - Five HIGH rules froze in all 6 soups, despite D_T of 23–41.
+  - Two LOW rules (D_T 1–3) jumped in all 6.
+  - D_T does not separate jumping from non-jumping rules within the HIGH group: the range is 23–42 in both.
+- **Pool B: 25/36 vs 0/36,** but confounded. All 6 HIGH rules have s = +1 and all 6 LOW rules s = −1. The HIGH share of the pool is 3.5%, against a predicted ≤ 1%.
+- **Right:** every non-jumping LOW soup froze (52/52 in A, 36/36 in B), and HIGH median T was 900 rounds.
+- **Post hoc 1 (withdrawn in J-082: "frozen" is the random start): freezing is not final.** 73 of the 74 jumped soups had been frozen (≤ 4 steps per pair) at a checkpoint before they jumped. Re-reading phase 3, 44 of its 70 jumped soups had too. So the "race" mechanism stated in J-080 and report section 30 is wrong. Soups freeze, and jumps are escapes from the frozen state.
+- **Post hoc 2: copying without inheritance goes with freezing.** Random-program hits at 10^8 are copies that do not inherit. More of them means fewer jumps:
+  - pool A: ρ = −0.79 over 24 rules (Mann–Whitney p = 8 × 10^-5 for jumping vs not);
+  - phase 3: ρ = −0.85. This includes the unexplained HIGH exception W8/o56 (88,973 hits, froze), and the LOW exception W64/o75 (14,280) is the lowest of its group.
+  - The cut between jumping and not differs about twentyfold between jump conditions (~100–170 vs ~3,000–14,000), so this is not yet one predictor.
+  - It is a hypothesis from 48 rules seen after the fact.
+  - A guess at the mechanism: copiers that do not inherit spread halting code into their partners, which deepens the freeze.
+- **The top program at the end of jumped soups** has period 4 in 29 of 74, 8 in 13, 16 in 8, and no period in 24. Many take-overs are not tiles.
+
+**Changed:** `scripts/sq_phase4.py`; D-058 accepted (run as designed, primary failed); report section 31, with a correction to section 30's "what it means"; handoff.
+
+**Lesson:** a predictor that passed one pre-registered test can still fail when the conditions change. The phase-3 pass was real, but its explanation was a story we had not checked.
+
+---
+
+## J-080 · 2026-11-13 · E-75 phase 3: tile-replicator density predicts which copying rules make replicators (pre-registered, passes)
+
+**Question (pre-registered, `docs/data/e75-phase3-preregistration.md`, commit `bdfe800`; predictor D-057):** among fresh copying rules in which no random program replicates, do rules with many tile replicators (D_T ≥ 20 per 10^6 random tiles) make replicators in soups, and rules with few (D_T ≤ 5) not?
+
+**Development, after the pilot and before the pre-registration** (`scripts/sq_tiles.py`, 5 min):
+- **Tile census of the 600 phase-1 rules,** 10^6 random tiles each. A tile is one instruction's bytes repeated to 64.
+- **Cross-tab:** all 32 F rules have tile replicators, and so do 28 of 100 C rules and 6 "none" rules. 428 rules have none.
+- **The pilot's rules:**
+  - every pilot rule is tile-F, even the two that froze, so a yes/no tile test does not separate them;
+  - the density does: frozen 1 and 4 per 10^6, jumped 29–272.
+- **The halting fraction is useless as a predictor:** 72% of random programs halt within 2 steps in every always-jump rule.
+
+**Ran:** `scripts/sq_phase3.py` (7 h 30 min on 11 workers).
+- **Pool:** 982 fresh n4/always/s±1 rules. The tile census put 585 in HIGH and 291 in LOW.
+- **Screening, in a seed-77 order:**
+  - HIGH: 275 candidates screened to find 12; 247 failed because random programs replicate (F at 10^7), 11 because they were F at 10^8.
+  - LOW: 22 screened.
+- **Soups:** 144, 6 per rule.
+
+**Found:**
+- **Primary: pass.** HIGH 64 of 72 soups jumped (89%), LOW 6 of 72 (8%); one-sided Fisher p = 10^-24. **Prediction (pass, ~50%) right.**
+- **Secondary:**
+  1. Per rule: 11 of 12 HIGH rules jump, against 1 of 12 LOW. **Right.**
+  2. Of the 66 non-jumping LOW soups, 66 froze into halters. **Right.**
+  3. HIGH median T = 725 rounds. **Right.**
+- **Exceptions, one rule each way:**
+  - n4/always/s+1/W8/o56 (HIGH, D_T 255, the highest) froze in 6 of 6 soups. It also has the most random-program hits (89,000 at 10^8, only 5,000 verified).
+  - n4/always/s+1/W64/o75 (LOW, D_T 2.7) jumped in 6 of 6.
+- **The old predictor said "no" for all 24 rules** (all are C at 10^8). It is wrong for 11 of them.
+- **Selection skewed HIGH:** 10 of the 12 HIGH rules have s = −1 and a small write offset (o 3–16), so HIGH rules that stay C at 10^8 are a particular corner of the pool. The result holds for that corner; the pool's HIGH group overall is half s+1.
+- **The whole-program copy test agrees** with inheritance at T + 1,000 in 59 of 70 jumped soups.
+
+**Interpretation:**
+- **What the result supports:** in copying SUBLEQ rules, whether a soup makes replicators or freezes is predicted by how common copying tiles are among random tiles. Random programs are the wrong sample: the soup reaches periodic code within tens of rounds, and the census of random programs never sees it.
+- **Evidence level:** level 3 (replicators arise spontaneously), with a pre-registered predictor of where.
+- **Limits:**
+  - It is tested only on n4/always/s±1 rules.
+  - The thresholds were fitted on 8 pilot rules; this test is their first fair one.
+  - The F predictor of the BFF work had the same shape, "a short copier that makes working copies"; here the short copier is one instruction repeated.
+
+**Changed:**
+- `subleq.census_period` / `sq_census_p` (with a pytest check);
+- `scripts/sq_tiles.py`, `scripts/sq_phase3.py`;
+- data `2026-11-13-e75-tiles-dev.json` and `2026-11-13-e75-phase3.json`;
+- D-057 accepted.
+
+**Lesson:**
+- A failed pilot prediction was more useful than a passed one: it pointed to what the soup was actually doing.
+- Fixing the predictor before the confirmatory test saved a test whose failure we could already foresee.
+
+**Next:**
+- Test the tile predictor outside n4/always (jump ≤ 0 and < 0 rules also have tile replicators).
+- Explain the two exceptions.
+- Check whether tile replicators keep changing after the jump (level 4–5 questions, as in BFF).
+
+---
+
+## J-079 · 2026-11-12 · E-75 phase 2: every predicted soup makes replicators, but so do half the others; the rest die by halting
+
+**Question (pilot, exploratory; protocol `docs/data/e75-phase2-protocol.md`, commit `b39e166`):** do rules classed F by the phase-1 census make replicators in soups, and do C rules not? Calibrate run length for phase 3.
+
+**Ran:** `scripts/sq_pilot.py` (1 h 41 min, 11 workers).
+- **Re-census (D-056):** 6 F and 6 C candidates at 10^8 random programs. All F stayed F. One C candidate (n4/always/s+1/W32/o64) turned F, with 2 replicators in 5,000 verified hits, and was dropped.
+- **Soups:** 2 per rule in 4 F and 4 C rules, all n4/always, so they are matched on the knobs phase 1 found necessary. 16 soups of 2^14 programs, up to 16,000 rounds, top 40 tested every 50 rounds.
+
+**Found:**
+- **F: 8 of 8 soups jumped**, median T = 100 rounds (50 to 3,150).
+- **C: 4 of 8 jumped.** n4/always/s+1/W8/o126 did by round 50 in both soups; s−1/W32/o15 at 2,400 and 6,150. One-sided Fisher p = 0.04.
+- **The 4 C soups that did not jump died.** Within 50 rounds their programs became **halters**: the first instruction jumps off the tape, so the program stops after 1–2 steps. Nothing is copied after that, and HOE is ≈ 0.
+- **What took over in fast soups is a tile.** Many top programs are one 4-byte instruction repeated 16 times (e.g. `43007e12` × 16, `b749db00` × 16). It loops on itself at byte 0; as the index walks it copies bytes a fixed distance away, and since the program is periodic, any displacement reproduces it.
+  - A periodic program is essentially never drawn at random, so the census cannot see it. That is why a C rule (0 replicators in 1,039 hits at 10^8) jumps in 50 rounds.
+- **Predictions:**
+  1. Gate (≥ 1 F soup jumps): **passed**.
+  2. ≥ 7/8 F soups jump with median T ≤ 500: **right** (8/8, 100).
+  3. ≤ 2/8 C soups jump: **wrong** (4/8).
+  4. The whole-program test misses most F replicators: **wrong**. It agrees with inheritance at T + 1,000 in 7 of 8 F soups (one soup: 0 vs 40). Tiles copy all of themselves; the self-rewriting loop of J-077 (W = 128) is not what these rules make.
+- HOE is slightly negative (−0.05 to 0) in the dead soups, a small-sample artefact of near-constant programs. It is not used here.
+
+**Interpretation:** at matched knobs, the random-program census predicts soups in one direction only. Every F rule's soups made replicators fast, but "C" did not mean "no replicators": half of C soups made them anyway, through periodic programs the census never samples. The other half did not fail to find replicators; they **froze** into programs that stop at once. The split that matters may be **copy vs halt**, not F vs C. This is a pilot (8 rules); it sets up phase 3 but is not itself a test.
+
+**Changed:**
+- pilot data `docs/data/experiments/2026-11-12-e75-pilot.json`;
+- protocol outcome;
+- D-056 accepted.
+
+**Lesson:** a census of random programs measures what random code does once, not what a soup does after 50 rounds of selection. The soup reached structures (periodic tiles) that the census, by construction, never samples.
+
+**Next:** phase 3, pre-registered. The pilot says the design's prediction (C ≤ 25%) is likely to fail. Options:
+- (a) run the design as is, as a fair test of a prediction we now doubt;
+- (b) revise the predictor before phase 3 with a census that sees tiles and halting (for example periodic programs, and the fraction of random programs that halt at once), disclosed as post-pilot.
+
+---
+
+## J-078 · 2026-11-12 · E-75 phase 1: one SUBLEQ version in 19 makes replicators out of random code; the published ones make none
+
+**Question (protocol `docs/data/e75-phase1-protocol.md`, commit `fb43474`, written before the run):** in a sample of the SUBLEQ family, how often is a random program already a replicator? Which knobs matter, and do the two published languages (SUBLEQ, RSUBLEQ4) make any?
+
+**Ran:** `scripts/sq_census.py` (83 min on 11 workers).
+- 600 rules drawn from the 16,416 (seed 75), plus the two anchors.
+- 10^7 random 64-byte programs per rule. Each is run once with a random partner; a *hit* passes an 8-byte block of itself to the partner.
+- Up to 2,000 hits per rule are checked with the inheritance test (D-055).
+- The first 40 rules were censused again with a second seed.
+
+**Found:**
+- **Classes:** 32 F (5%), 100 C (copies something, nothing inherited), 468 none.
+- **F rules:**
+  - Replicator density ranges from 1 to 314 per 10^7 random programs (median 19).
+  - **76 of the 84 example replicators are one instruction at byte 0 that jumps to itself.** With a stepping index it copies a run of bytes, displaced by a fixed amount.
+- **Predictions:**
+  1. Anchors are not F, and SUBLEQ is "none": **right**. Both anchors are "none" (0 hits in 10^7).
+  2. Every F rule has s ≠ 0: **right**. All 32 have s = ±1, and all have 4 operands. No 3-operand rule is F (0 of 294).
+     - s = +2 gives no hits at all. That is by construction: it copies every other byte, so no 8-byte block can pass.
+     - The jump "== 0" gives no hits either (0 of 143); not investigated.
+     - 28 of the F rules jump always, 4 jump on ≤ 0.
+  3. Band (≥ 80% of narrow-window F rules have o near 32, 64 or 96): **wrong**, 19 of 25 (76%).
+     - The prediction was weak to begin with: at W = 32 it excludes only o = 0.
+     - Copy displacements of the example replicators range widely (2–123), though s = −1 rules favour 64, 96 and 112.
+  4. Gate (≥ 16 F and ≥ 16 C): **passed** (32 and 100).
+  5. Stability (≥ 38 of 40 same class with a second seed): **failed**, 37 of 40. All three changes are at the edge of detection:
+     - a rule with 1 replicator in 208 hits went to 0 in 186;
+     - 2 hits vs 0;
+     - 0 hits vs 3.
+- **C can mean many copies and no heredity.** For example, n4/always/s−1/W8/o72 has 6,005 hits in 10^7, and none of the 2,000 checked passes the inheritance test.
+
+**Interpretation:** in this language, a replicator that random code can hit is a single self-jumping instruction with a walking index. Without such an index (s = 0), or with three operands, nothing in 10^7 random programs inherits. The published SUBLEQ and RSUBLEQ4 fit the same picture: their known replicators are 25–60 bytes, and the census found nothing in them. This is level 3 at most (replicators exist in random code), measured one program at a time, not in soups.
+
+**Changed:**
+- census data `docs/data/experiments/2026-11-12-e75-census.json`;
+- protocol outcome appended to `docs/data/e75-phase1-protocol.md`;
+- D-056 (how phase 2 handles the stability failure).
+
+**Lesson:** a pre-registered "near 32, 64 or 96" band that covers most offsets is not a test. Check what fraction of the space a prediction excludes before committing it.
+
+**Next:** phase 2 pilot soups. Per the protocol, the stability failure means a larger sample first: candidate rules are re-censused at 10^8 programs (D-056).
+
+---
+
+## J-077 · 2026-11-12 · E-75 phase 0: a second language, a replicator our copy tests could not see, and a test that can
+
+**Question:** before testing the F predictor outside BFF (design `docs/data/e75-design.md`, D-054), build the SUBLEQ-family language and a replicator test that works in it, and pass controls.
+
+**Ran:**
+- `emergence/programs/subleq.c` and `subleq.py`: interpreter, Python reference, soup, copy test, and three hand-written replicators.
+- `emergence/programs/inherit.py`: the inheritance test.
+- `scripts/sq_phase0.py`: 22 controls, also in pytest and `emergence benchmark --probes`; 38 s.
+
+**Found:**
+- **The interpreter matches its reference:** C == Python on every knob combination (pytest) and on 300 random rules (benchmark).
+- **The hand-written replicators work in soups.** Each (forward, backward, and a narrow-window "band" rule at offset 64) is a 5-byte loop. Seeded 16 times among 4,096 programs, each fills the 40 most common programs within 60 rounds.
+- **An unseeded soup made replicators within 100 rounds** (4,096 programs, rule n4/always/s+1, one soup; an anecdote, not a result: it is a rule I wrote a replicator for). The take-over is a **5-byte loop that copies every byte 32 places on**. It ends up at bytes 0, 32, 64 and 96, so the partner always receives the loop. With a random partner it overwrites most of its own body: only 10 of 64 bytes survive. Programs in the soup are two copies of a 32-byte block.
+  - **Every whole-program copy test misses it** (D-050, D-053, and the first draft's functional guard: 0 of 40), because they require the whole program to be copied and kept intact.
+  - Order rose to HOE 6.9, but HOE is fooled here by copy-all soups too (7.3).
+- **A language-agnostic test, by inheritance** (D-055): a block of ≥ 4 bytes must survive 5 generations of copies into fresh random partners in 3 of 4 lineages, and must vanish when knocked out of the program (inherited, not written from scratch).
+  - The depth was chosen by a sweep after seeing the controls. With 3 generations, 7 of 40 programs of E-71's v1/68 soup (a rule that never made replicators) passed; with 5, none did. With blocks of 6 or more bytes the emergent loop is missed.
+- **All 22 controls pass:**
+  - emergent loop 39/40 (whole-program test 0/40);
+  - anchors' soups at round 300 (plain SUBLEQ and RSUBLEQ4): 0/40;
+  - random programs: 0/200 under 4 rules;
+  - zero smear: rejected (the unguarded whole-program test accepts it);
+  - no-execution and copy-all soups: 0/40.
+  - **On E-73's BFF fixtures the inheritance test agrees with D-053:** replicators 39–40/40, nulls 0/40, filler smears 0.
+- **Design changes made during the build** (before any census; recorded in the design file):
+  - "never jump" became "always jump";
+  - the step register touches the a and b addresses only, not the operand bytes;
+  - an operand window W was added, because without it the write offset does nothing.
+
+  The rule space is now 16,416 rules.
+
+**Interpretation:** the replicator test was BFF-specific without our knowing it. "Copies its whole self and stays intact" describes BFF's replicators, not replicators in general. In a language where every byte runs, the first thing to spread was a 5-byte loop in a body it rewrites. Inheritance of a block, checked by knockout, is closer to what replication means, and it agrees with our earlier tests wherever those worked.
+
+**Changed:** new `emergence/programs/subleq.c`, `subleq.py`, `inherit.py`; `scripts/sq_phase0.py`; fixtures `scripts/fixtures/e75-*.npy`; benchmark section; 2 tests; D-055.
+
+**Lesson:** a detector inherits the assumptions of the system it was built for. Test it on the new system's first real example before trusting its "no".
+
+**Next:** phase 1 — a census of sampled rules with an F test based on inheritance, the anchors stated before running.
+
+---
+
+## J-076 · 2026-11-11 · E-74: on 24 fresh rules, copies of copies do not predict speed under any timing
+
+**Question (pre-registered, `docs/data/e74-preregistration.md`, commit `0b93128`):** E-73 found that under the validated D-053 copy test, E-72's F-deep rules made replicators about ten times sooner than F-shallow ones (p = 0.06, 8 vs 8 rules). Does this hold on a larger, fresh set? Primary: shallow rules are ≥ 3× slower (median of rule medians), with one-sided Mann–Whitney p < 0.01. This must hold under D-053 **and** HOE timing to pass; it fails if both fail.
+
+**Ran:** `scripts/bff_deepconfirm.py`.
+- Census and depth for 600 fresh rules of the E-72 family, excluding all 240 rules of the E-72 census (25 min).
+- 6 soups in each of 12 F-deep and 12 F-shallow rules, 144 soups, each timed by D-053, HOE and D-050 in the same run (2 h 23 min on 11 workers).
+
+**Found:**
+- **Census:** 62 of 600 rules are F (10%): 38 deep and 24 shallow.
+- **Primary: fail, under every timing.** Shallow rules are not slower:
+
+  | Timing | Deep (rounds) | Shallow (rounds) | Ratio | p |
+  |---|---|---|---|---|
+  | D-053 | 825 | 788 | 0.95 | 0.18 |
+  | HOE | 1,063 | 700 | 0.66 | 0.73 |
+  | D-050 | 925 | 788 | 0.85 | 0.19 |
+
+  **Prediction (pass, ~45%) wrong.**
+- **Every rule made replicators:** 143 of 144 soups jumped under D-053, and the only miss is one shallow soup. Shallow rules are not blocked: all 12 jumped in 6 of 6 soups.
+- **Neither count predicts speed** (exploratory). Under D-053, the deep count gives ρ = −0.22 (p = 0.31) and the one-generation self-sufficient count ρ = −0.16 (p = 0.47). In E-72 the one-generation count gave −0.59 to −0.74.
+- **Fast and slow rules are in both classes:**
+  - Deep: from 50 rounds (v2/v3 rules) to 3,300.
+  - Shallow: from 150 to 9,000 (a v5 rule).
+  - The 8 slowest rules (median ≥ 1,775 rounds) are all v3–v5, split 4 deep and 4 shallow.
+- **The timings disagree by more than 1,000 rounds in 24 of 144 soups.** D-050 and D-053 differ in 20 soups; in one of them D-053 is 8,700 rounds earlier. HOE gives a different ranking in a few rules: for example, v3 g = 62, h = 0 jumps at 50 rounds by the copy tests but never reaches HOE 2 in most soups.
+- **Pooling E-72 and E-74** (20 vs 20 rules, post hoc, not a test of anything): D-053 medians 700 vs 788 rounds, p = 0.03. Similar medians; the small p comes from E-72's tail.
+
+**Interpretation:**
+- On fresh rules, whether a rule's copiers stay copiers for five generations does **not** predict how fast its soups make replicators, under either primary timing.
+- E-73's tenfold effect came from a few rules in a sample of 16 (the sloppy v2 deep rules at 50 rounds, three slow v4 shallow rules). It did not replicate.
+- What does replicate across E-60–E-74 is the yes/no result: F rules make replicators. Here it held in 143 of 144 soups, and in E-70 in 60 of 60.
+- Among F rules, speed varies by up to 100×. None of our census measures predicts it in a fresh family: one-generation count, depth, and earlier the copier count across variants.
+
+**Changed:** `scripts/bff_deepconfirm.py`. No detector change.
+
+**Lesson:** a large post-hoc effect (10×) from 16 rules was mostly a few rules. The fresh test with 24 rules shows none, which is why we pre-register and replicate.
+
+**Next:** stop refining the speed predictor within BFF variants. Take the F/non-F result to a language outside the BFF family, which is the open generalisation question.
+
+---
+
+## J-075 · 2026-11-11 · E-73: a validated looser copy test changes 33 of 392 jump times; no verdict flips, but the five-generation effect reappears
+
+**Question (pre-registered, `docs/data/e73-preregistration.md`, commit `37a7a81`):** J-074 found sloppy replicators (copies of 59–60 of 64 bytes) that the D-050 copy test (60/64) misses. Build a looser test, validate it with controls, then re-score every soup of E-70, E-71 and E-72 with it and re-apply each experiment's pre-registered test unchanged.
+
+**Ran:**
+- **Part A, the test** (`bff_kernels.classify_fid`, `scripts/bff_fidelity.py`, fixtures from 9 replayed soups in `scripts/fixtures/`). D-053 = shift-aware copier test at **58/64** bytes plus an **instruction-fidelity guard**: the copy must reproduce ≥ 75% of the program's instruction bytes in the overlap.
+- **Part B, the re-score** (`scripts/bff_rescore.py`, 392 soups replayed from their seeds, both tests on the same top-40 programs at each experiment's checkpoints, 8 h 24 min on 10 workers). Then `scripts/e73_analysis.py` re-applies the tests.
+
+**Found:**
+- **Controls all pass** (`2026-11-11-e73-fidelity.json`):
+  - With threshold 60 and no guard the new test is identical to the old one on every fixture.
+  - Sloppy replicators: 38/40 and 40/40 copiers (old test 0/40). Exact replicators: 40, 39 and 40 of 40.
+  - Top-40 programs of soups without replicators (the selection-aware null): 0/40 and 0/40.
+  - Deceptive "filler smears", where a loop writes one value across the partner so that 60/64 bytes match without any copying of instructions: 0 accepted, while the **old test accepts 37 of 64**. The guard also removes a false positive in D-050 itself.
+  - Thresholds 52–58 with a guard of 50–75% give the same results; 58/75 is the strictest that passes.
+- **One control changed after seeing it (disclosed in the pre-registration):** the random-program negative was written as 0 of 200. One random program contains `[ . ]`, a genuine 3-instruction copier under v1/h1 = 64 that the old test also counts. The check is now ≤ 1% (2 of 200); the worst rule gives 1 of 200.
+- **Equivalence holds for all 392 soups:** the replayed D-050 copier series and jump times match the stored ones exactly.
+- **What changes (secondary):**
+  - 33 of 392 soups get a different jump time: 12 new jumps (all 6 soups of each sloppy v2 rule, g = 57/58, h = 122, now at round 50) and 21 earlier ones (median 250 rounds earlier, range 50–2,500).
+  - **No jump is lost and none comes later**, so no D-050 jump was a filler smear.
+  - The three v4 g = 64, h = 124 soups at HOE 3.0 stay at no jump under both tests. Their dominant programs are not copiers (fixture `transient_v4_g64`, 0/40).
+- **Pre-registered verdicts under D-053** (D-050 in brackets):
+  - **E-70 P2: pass** (pass). Unchanged: F 60/60, other 15/60, Fisher p = 2e-20. **Prediction (fail, ~55%) wrong.** Only 1 of 120 soups changed, an F soup 250 rounds earlier; no sloppy take-overs among the other rules.
+  - **E-71 P1: fail** (fail): ρ = −0.33, p = 0.067 (−0.34, 0.060). **P2: pass** (pass): Σρ = −2.27, p = 0.011 (−2.45, 0.006). v1/68 still makes nothing, 0/8. Predictions right (P2 pass, v1/68 0/8; no directional call on P1).
+  - **E-72 primary: fail** (fail), as predicted, but the effect is very different. Deep rules now take a median **163** rounds against 1,638 for shallow ones (**ratio 10**, Mann–Whitney p = 0.06); under D-050 the medians were 1,475 vs 1,675 (ratio 1.1, p = 0.58). Exploratory: deep count vs median T ρ = −0.52 (p = 0.04; D-050 −0.09); one-generation count vs T ρ = −0.59 (D-050 −0.74).
+
+**Interpretation:**
+- The **jump-or-not results are robust to the copy test**. E-70's 60/60 vs 15/60 does not move, and no D-050 jump turns out to be a smear.
+- The **speed results are not**. E-72's null result came almost entirely from the two sloppy v2 rules being scored as never jumping. Under the validated test the five-generation predictor points the right way with a tenfold effect. With 8 vs 8 rules it still falls short of p < 0.01, and the HOE timing (D-052, p = 0.04) agrees in direction.
+- Per the pre-registered decision rule, both verdicts are reported. The deep-vs-shallow speed question is **unresolved, leaning towards an effect**; it needs a fresh confirmatory test with more rules.
+- E-71's pooled result stays unresolved: D-053 says fail, HOE timing says pass.
+
+**Changed:** `bff_kernels.c/.py` (`classify_fid`), `scripts/bff_fidelity.py`, `bff_fidelity_fixtures.py`, `bff_rescore.py`, `e73_analysis.py`; copy-fidelity controls in `pytest` and `emergence benchmark --probes`; D-053.
+
+**Lesson:** a detector threshold tuned on one language silently decides speed results in another. Validate it on the new language before trusting a "no".
+
+**Next:** (a) a fresh, larger confirmatory test of the five-generation predictor under D-053 (more rules per class; primary under D-053 and HOE, both required); (b) a language outside the BFF family.
+
+---
+
+## J-074 · 2026-11-10 · E-72: following copies for five generations explains the old failures but does not predict new ones; and our jump detector misses sloppy copiers
+
+**Question (pre-registered, `docs/data/e72-preregistration.md`, commit `bf5ee1b`):** E-71's F rule v1/68 made nothing. The F test checks one generation (does the copy copy?). Does a five-generation version predict speed better? Each self-sufficient kernel starts 8 lineages of single copies, each into a fresh random partner. A kernel is *deep* if ≥ 4 of its 8 lineages still copy at generation 5. An F rule is *F-deep* if it has any deep kernel, else *F-shallow*. Primary (fresh rules): F-shallow rules are ≥ 3× slower (median of rule medians), with Mann–Whitney p < 0.01.
+
+**Ran:** `scripts/bff_multigen.py`.
+- Part A: the 44 E-70 F rules (1.5 min). Explanatory only, because their soups were already known.
+- Part B: 240 rules never run before: variants v1–v5 with head0 starting at g = 1–127 and head1 at g + 60..68. Census plus depth (8 min), then 6 soups in each of 8 F-deep and 8 F-shallow rules (96 soups, 4 h 10 min).
+
+**Found:**
+- **Part A (explanatory):** the enumeration reproduces the census counts exactly. At v1/67 and v1/68 no kernel is deep: copies of copies stop copying. Over the 37 rules with soups, the deep count against median T gives ρ = −0.66, against −0.44 for the one-generation count. Shallow rules took 2,250 rounds, deep rules 250. Some shallow rules were fast anyway (v1/60, v3/67, v3/68).
+- **Part B census:** 27 of 240 rules are F (11%), 17 deep and 10 shallow.
+- **Part B primary: fail.** Shallow rules took a median 1,675 rounds and deep rules 1,475 (ratio 1.1, p = 0.58). The one-generation self-sufficient count predicted better (ρ = −0.74, p = 0.001; exploratory).
+- **A measurement failure in two rules.** Deep rules v2 g = 57/58, h = 122 scored 0/6 under D-050. Yet HOE rose to 6.4 within about 500 rounds, and nearly every pair ran to the step limit. Re-running seed 7220 for 600 rounds: the most common programs (`>[ . ]` loops) copy **59–60 of 64 bytes** in place. These are sloppy replicators just under the classifier's 60-byte threshold, and D-050 missed them. The same probably applies to v4 g = 64, h = 124 (three soups at HOE 3.0, no copiers detected).
+- **Re-analysis with an HOE jump time** (HOE ≥ 2 at 3 consecutive checkpoints; post hoc): deep 188 rounds vs shallow 1,500, p = 0.04. The direction now matches the prediction, but the result is still short of p < 0.01. HOE in turn misses copier take-overs in v3/67 at g = 0 (4 of 6 soups stay below HOE 2).
+- **E-71 checked the same way:** 13 of 176 soups disagree between the two definitions. The within-variant result holds under every definition (p ≤ 0.004). **The pooled result does not:** under HOE timing ρ = −0.57, p = 0.003, which would have passed P1. J-073's "across languages, no" is corrected to "not shown either way". v1/68 stands: its soups never exceeded HOE 0.6.
+
+**Interpretation:** a multi-generation census explains the two slow v1 rules after the fact, but it did not predict speed in a fresh family. It is not established as a better predictor. The bigger lesson is about measurement: in variant languages, "when did replicators take over?" depends on the detector. Copy fidelity varies by language, and a fixed 60/64 threshold misses sloppy copiers. Results about *whether* soups jump (E-70: F 60/60 vs 15/60) are less exposed than results about *how fast*, but the 15 "non-jumps" there could hide some sloppy take-overs too.
+
+**Changed:** `scripts/bff_multigen.py`; D-052 (report jump times under both definitions; require agreement).
+
+**Lesson:** when a soup scores "no jump" while HOE sits at 6, look at the soup before accepting the verdict.
+
+**Next:** (a) validate a copy-fidelity threshold (for example 56/64) with positive controls (sloppy copiers), negative controls (partial copiers that never take over) and a null, then re-score E-70–E-72 under it; (b) pre-register the speed predictors again only after that; (c) a language outside BFF.
+
+---
+
+## J-073 · 2026-11-10 · E-71: the copier count predicts speed within a language, not across languages; the share of copiers that work does better
+
+**Question (pre-registered, `docs/data/e71-preregistration.md`, commit `ea680f8`):** E-70 found, as an exploratory result, that F rules with more self-sufficient copiers in the census make replicators sooner (ρ = −0.80 over 15 rules). Is this a graded predictor, or a difference between variants? Test on the 22 F rules of the E-70 census (v1–v5) that E-70 did not run soups in, 8 soups each, jump time at 50-round resolution. (1) Pooled Spearman ρ ≤ −0.4, one-sided permutation p < 0.01. (2) Within variants (v1, v3, v4, v5): the sum of the within-variant ρ is negative, with p < 0.05 against permutations within each variant.
+
+**Ran:** `scripts/bff_copiercount.py --workers 11` (176 soups of 2^14 programs, about 1 h; D-050 criterion with checkpoints every 50 rounds). The first two runs crashed while writing the summary (numpy bool in JSON). The soups were cached and the analysis reran unchanged. Figure: `scripts/e71_figure.py` → `docs/assets/report/e71-copiercount.png`.
+
+**Found:**
+- **P1 (pooled) fail:** ρ = −0.34, permutation p = 0.06.
+- **P2 (within variant) pass:** the sum of within-variant ρ is −2.45, p = 0.006. Every variant is negative: v1 −0.55, v3 −0.60, v4 −0.80, v5 −0.50.
+- **Jump rate:** 165/176 soups jumped (94%). 21 of 22 F rules jumped in at least 5 of 8 soups. **One F rule failed completely: v1/h1 = 68**, 0/8 in 16,000 rounds. It has 4,317 copiers but only 18 self-sufficient ones, and its soups never had more than 1 copier among the 40 most common programs (HOE stayed below 0.6, so the detector did not miss a jump). The F class is not a guarantee at the edge of the band.
+- **Secondary:**
+  - The total copier count carries no information (pooled ρ = +0.01).
+  - The **self-sufficient fraction** (self-sufficient copiers ÷ all copiers) does better: pooled ρ = −0.48 (p = 0.012), within-variant p = 0.004.
+  - The v1 contrast failed: v1/60, with 1 self-sufficient copier, was fast (median 200 rounds), while v1/67, with 1,525, was slow (6,850; 3 of 8 soups did not jump).
+  - Pooling E-70's 15 rules with E-71's 22 gives ρ = −0.44 (p = 0.006). This mixes 4-soup and 8-soup estimates and 250- and 50-round checkpoints.
+
+**Correction (J-074):** the pooled failure below depends on the jump definition: with an HOE-based jump time the pooled test gives ρ = −0.57, p = 0.003. Read "across languages" as *not shown either way*. The within-variant result holds under both definitions.
+
+**Interpretation:** within a language, versions with more short self-copiers tend to make replicators sooner. Across languages the raw count does not compare: v1 counts thousands, because `[.]` is a complete copier there, yet some v1 versions are slow. E-70's ρ = −0.80 was largely a between-variant effect. A number that compares across languages may be the *share* of copiers whose copy copies (exploratory here). The v1/68 failure suggests that one generation of copying (the F test) is not always enough: in v1 at h1 = 68 copies may drift off position over generations. That is untested.
+
+**Changed:** `scripts/bff_copiercount.py`, `scripts/e71_figure.py`. No detector or `emergence/` change.
+
+**Lesson:** an exploratory correlation that pools groups can be a difference between the groups; pre-registering a within-group test is what separated the two here.
+
+**Next:** (a) a multi-generation version of the F test (does the copy of the copy still copy, 2–3 generations?) to explain v1/68 and v1/67, computed before any new soups; (b) pre-register the self-sufficient fraction as the graded predictor, on fresh rules (e.g. the two-head or tape-length families); (c) a language outside the BFF family.
+
+---
+
 ## J-072 · 2026-11-09 · E-70: change what an instruction does, and the F predictor holds in all five variants (60/60 vs 15/60)
 
 **Question (pre-registered, `docs/data/e70-preregistration.md`, commit `7f3e1f0`):** every test of the F predictor (E-61–E-69) kept BFF's instruction semantics fixed. Does it carry over when one instruction does something else? Five variants (D-051): `.` then both heads +1 (v1) or −1 (v2); `,` then both heads +1 (v3); `[` `]` test head1's byte (v4); `+` `−` act on head1's byte (v5), each × 128 head1 starts. (1) Census: is h1 = 64 F in every variant, with every F rule in 48–80? (2) Soups: F ≥ 75% jump, others ≤ 25%, Fisher p < 0.01, F ≥ others in every variant.

@@ -142,3 +142,76 @@ def test_instruction_set_variants():
     K.lib().run_tape(s0.ctypes.data, 128, 100, 64)
     K.lib().run_tape(s4.ctypes.data, 128, 100, 64 + 4 * 65536)
     assert s0[0] != t[0] and s4[0] == t[0]
+
+
+def test_copy_fidelity_controls():
+    """E-73/D-053: looser copy test (58/64 bytes + instruction-fidelity guard): sloppy and exact replicators found,
+    nulls and filler smears rejected; thr 60 without the guard equals classify_shift."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bff_fidelity as F
+    bad = [(n, d) for n, ok, d in F.controls() if not ok]
+    assert not bad, bad
+
+
+def test_subleq_interpreter_matches_reference():
+    """E-75: SUBLEQ-family C interpreter == pure-Python reference, every knob."""
+    import numpy as np
+    from emergence.programs import subleq as Q
+    rng = np.random.default_rng(1)
+    for n in (3, 4):
+        for j in range(4):
+            for s in Q.S_VALUES:
+                for W in Q.W_VALUES:
+                    R = Q.Rule(n=n, j=j, s=s, W=W, o=int(rng.integers(128)), absolute=bool(rng.random() < 0.2))
+                    assert Q.Rule.from_code(R.code) == R
+                    t = rng.integers(0, 256, 128, dtype=np.uint8)
+                    a, sa = Q.run(t, R, 2000)
+                    b, sb = Q.run_py(t, R, 2000)
+                    assert sa == sb and (a == b).all(), str(R)
+
+
+def test_subleq_phase0_controls():
+    """E-75 phase 0 / D-055: hand-written and emergent replicators found, nulls, random programs, smears and
+    copy-all soups rejected, in SUBLEQ and (cross-check) on E-73's BFF fixtures."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import sq_phase0 as P0
+    bad = [(n, d) for n, ok, d in P0.controls() if not ok]
+    assert not bad, bad
+
+
+def test_subleq_census_period_matches_census_hits():
+    """D-057: sq_census_p with period = L reproduces sq_census exactly; tiles are periodic."""
+    from emergence.programs import subleq as Q
+    R = Q.Rule(4, 3, 1, 32, 120)
+    n, h = Q.census_hits(R, 20000, 5)
+    n2, h2, halt = Q.census_period(R, 20000, 5, 64)
+    assert n == n2 and (h == h2).all() and 0 < halt < 20000
+    _, t, _ = Q.census_period(R, 20000, 6, 4)
+    assert len(t) and all((p == np.tile(p[:4], 16)).all() for p in t)
+
+
+def test_subleq_product_census_prefilter():
+    """D-061: the product-census pre-filter passes hand-written replicators, rejects random programs and the
+    zero smear (constant blocks skipped); products() reports products that differ from their inputs."""
+    from emergence.programs import subleq as Q
+    for R, p in Q.POSITIVES.values():
+        assert Q.prefilter(p, R, 3).all()
+    R, z = Q.ZERO_SMEAR
+    assert not Q.prefilter(z, R, 3).any()
+    rnd = np.random.default_rng(4).integers(0, 256, (500, 64), dtype=np.uint8)
+    assert Q.prefilter(rnd, Q.Rule(4, 0, 1, 32, 28), 3).sum() <= 5
+    n, X, S, st = Q.products(Q.Rule(4, 0, 1, 32, 28), 20000, 9, maxhits=50)
+    assert 0 < st["products"] <= 40000 and st["steps"] > 0 and len(X) == min(n, 50)
+    for x, s in zip(X, S):
+        assert (x[:64] != x[64 + 64 * s:128 + 64 * s]).any()  # a product differs from the input half it replaced
+    soup = np.random.default_rng(5).integers(0, 256, (300, 64), dtype=np.uint8)
+    keep = soup.copy()
+    n, X, S, st = Q.products_from(Q.Rule(4, 0, 1, 32, 28), soup, 20000, 9, maxhits=50)
+    assert (soup == keep).all() and st["products"] > 0 and len(X) == min(n, 50)
+    rows = {r.tobytes() for r in soup}
+    for x in X:  # both inputs are distinct members of the soup
+        assert x[64:128].tobytes() in rows and x[128:].tobytes() in rows and (x[64:128] != x[128:]).any()
