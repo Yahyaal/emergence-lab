@@ -232,3 +232,14 @@ def test_spatial_soup_controls():
     assert nx["pass"], nx
     r = S.spread("spatial", side=32, rounds=20, every=10)
     assert r["series"][-1]["copies"] > r["series"][0]["copies"] and r["series"][-1]["largest_component"] > 0.8
+
+
+def test_e78_resume_exact():
+    """E-78 driver (scripts/e78_run.py): a continuation interrupted after round 25 and resumed from its round-20
+    snapshot (programs + saved generator state) equals an uninterrupted run, in both arms."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import e78_run as R
+    r = R.check_resume()
+    assert r["pass"], r
