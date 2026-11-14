@@ -5,7 +5,7 @@ description: External reviews of the work, and how each point was handled.
 
 # Reviews
 
-The project owner shared the work with ChatGPT for independent review three times. Each review is summarised with our response: agreed (implemented), qualified, or pushed back (with evidence). Reviews were of source code; our responses include the experiments run to check their claims.
+The work has had five reviews: three by ChatGPT, shared by the project owner (R-1 to R-3), an independent agent review of the overnight Lenia work (R-4), and a review of the project's goal and approach by Claude at the owner's request (R-5). Each review is summarised with our response: agreed (implemented), qualified, pushed back (with evidence), or open. R-1 to R-3 were reviews of source code; our responses include the experiments run to check their claims.
 
 ## R-1 · Review of v0.1 {#r-1}
 
@@ -56,3 +56,27 @@ An independent agent with no part in the work reviewed the journal, data, code a
 | Numbers: 51 structures (not 49); 9/160 soups unsettled (not "all freeze"); 12 seed shapes (not 8); E-13 did find a σ 0.0195 glider; path vs net speed of the wanderer; `compare`'s self-propelled count definition | **All confirmed and corrected** |
 | "Small island of rule space" contradicted by the E-17 wanderer; island count not deduplicated | **Agreed.** Now "among single-ring rules"; non-deduplicated count labelled |
 | "New kind of creature" may already be in Chan's catalogue | **Agreed.** We claim only "new to this project" |
+
+
+## R-5 · Goal and approach review (2026-11-14) {#r-5}
+
+Reviewer: Claude, at the owner's request, on branch `v3.7-copiercount` (E-75 phase 7, J-085). It read the research page, handoff, decisions, reviews, the report summary and sections 27 to 34, journal entries J-077 to J-085, the E-75 design and the exported data of phases 6 and 7. It did not re-run experiments, the tests or the benchmark. The responses below are the owner's decisions so far; points without a decision are marked open.
+
+| Point | Response |
+|---|---|
+| **Verdict:** the science is on goal and careful. The founding principles (passive observation, nothing planted, deceptive controls, claims held at their evidence level) have been kept, and failed predictions are recorded as failures | Noted; no action asked |
+| **Verdict:** the drift is one of emphasis. 26 of 75 experiments and phases, and nearly everything since 9 November, ask which rule versions make replicators, and how soon (objective O6, about where level 3 appears); levels 4 and 5, the "evolving" half of the goal, are parked | **Agreed.** The predictor thread ends after at most one more run, and the next main question is level 5 (spatial test, below) |
+| **Verdict:** the predictor chase has reached its natural end. One result is robust (in BFF variants, a rule whose shortest copier makes a working copy makes replicators); in SUBLEQ each predictor passed once, then failed to transfer or came out undecided, and the newest costs about a quarter of the experiment it predicts | **Agreed.** The thread ends after at most one more run |
+| **Verdict:** a simpler model already explains most of it: a jump is the wait for one rare event (J-083), so one rate per rule, measured from the soups, could replace five censuses | **Agreed; in progress:** a one-rate synthesis |
+| **Verdict:** the written record is redundant and stale at the same time: each result is written in five or six places, the overview still said level 2, and the published site stops at E-65 because pull requests are waiting | **Agreed; in progress:** the four stale pages are refreshed (this change, branch `v3.8-docs-refresh`). The merge queue is open (recommendation 7) |
+| **1.** Close the predictor thread with one model (one rate per rule, estimated from time to jump across soups, rule as the unit, survival analysis) and stop adding censuses; run phase 8 at most once, as a test of whether the rate rises with soup age | **Agreed; in progress:** the one-rate synthesis is being written; at most one more run |
+| **2.** Go back to level 5 with the instruments already built (kin-free invasion, growth rate, parasite detector), comparing soups where programs meet only their neighbours on a grid against well-mixed soups, pre-registered. The reviewer's own suggestion, untested here | **Agreed:** the spatial level-5 test is to be pre-registered |
+| **3.** Make the rule the unit of analysis: report by-rule tests first, size designs by rules, and count rare rules before a design needs them. By the reviewer's own one-sided Fisher tests (not in the journal), phase 3 stays clear (11/12 vs 1/12), phase 4 is a plain failure (5/12 vs 3/12) and phase 7 is modest (6/7 vs 2/12) | open |
+| **4.** Drop the "no random-program replicator" screen: a rule where random programs already replicate is a rule with a high rate, and the screen cost phase 7 15 of 16 high-rate candidates | open |
+| **5.** Add a stopping rule for lines of inquiry: after two revised predictors fail to transfer, write the synthesis and return to the main question | open (the current predictor thread is being closed, as in point 1) |
+| **6.** One source of truth: the journal stays the append-only record, the handoff becomes a short current-state page, the report is regrouped by finding; fix the stale index, research, handoff and report pages now | **In progress:** the four pages are refreshed and the handoff now opens with a short state summary above its history (this change). Regrouping the report by finding: open |
+| **7.** Clear the merge queue and keep pull requests small (four stacked pull requests; the published site stops at E-65) | open |
+| **8.** Close cheap open items or retire them: run H1 at 20 runs per arm (under 3 hours), or stop quoting the 1.9–4.2× figure | **Agreed; in progress:** H1 is being re-run at 20 runs per arm. Until then the figure stays labelled preliminary (n = 2 seeds per arm) |
+| **Question:** paper or exploration? | **Owner:** exploration, held to paper-quality rigour |
+| **Question:** do program soups count as the "universes" meant by the goal? They have no space and no dashboard | **Owner:** yes, program soups count as a third family. The research page now says plainly that they have no space and are not covered by the engine, discovery engine or dashboard |
+| **Question:** may the predictor thread end after one more run? | **Owner:** yes, after at most one more run |

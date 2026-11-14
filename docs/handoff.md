@@ -13,6 +13,14 @@ Find out whether complex, persistent and possibly evolving structure emerges spo
 
 ## State in one paragraph
 
+*Updated 14 November 2026.* Emergence Lab (Python) studies four substrates. Two are spatial and go through the engine, observatory, discovery engine and dashboard: Life-like/Generations cellular automata and the Lenia family (Lenia, Flow-Lenia, multi-channel Lenia). Two are **program soups** with no space, run by scripts outside the engine and not shown in the dashboard: BFF (`emergence/programs/bff.py`) and a SUBLEQ family we defined (`emergence/programs/subleq.c/.py`, D-054). Highest evidence levels: 2 in Life-like rules; 2 arising spontaneously in Lenia from smooth starts (E-14, E-19) and 3 in one multi-channel rule (E-32, one type, no heredity); 3 from random code in BFF (E-40, E-41) and in SUBLEQ versions we added (E-75; the published versions make none); **4 in BFF only** (E-42: mutations inherited in 9 of 9 replicators). Level 5 is not shown: later BFF code is not fitter by four measures (E-48 to E-54), and no parasites were found (E-66, E-67). Since 9 November the work asked which rule versions make replicators. In BFF variants, a rule whose shortest copier makes a working copy makes replicators (E-60 to E-70), but no census measure predicts speed (E-71, E-72, E-74). In SUBLEQ, tile density passed then failed (E-75 phases 3, 4); the product rate passed looking back and was undecided looking forward (phases 6, 7). After review R-5 the plan is: end this predictor thread with a one-rate synthesis and at most one more run; re-run H1 at 20 runs per arm; then pre-register a level-5 test of soups with neighbour-only interaction against well-mixed soups.
+
+The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
+
+## History (newest last)
+
+The dated log below is kept as it was written; the state paragraph above replaces its first two paragraphs (the v0.5 summary).
+
 Emergence Lab (v0.5, Python) runs many 2D cellular-automaton universes (Life-like B/S and Generations B/S/C rules on a torus). A passive observatory measures them, and a discovery engine searches rule space: Pareto ranking, novelty search, MAP-Elites niches and seed screening. Promising rules get follow-ups: new seeds, a larger world, a 4× longer run, an innovation-over-time probe, and a replication probe on isolated clones. Each discovery gets an evidence level (1–5). v0.4 added initial-condition generators (`UniverseSpec.init`), a paired conditions study (`emergence conditions`) and a causal knockout probe calibrated with placebo deletions. So far:
 - the engine beats random search (preliminary);
 - the best evidence reached is level 2 (self-propelled structures);
@@ -88,15 +96,13 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
   - **E-75 phase 6 (J-084, D-061; `scripts/sq_products.py`, `scripts/sq_products_report.py`, pre-registration `docs/data/e75-phase6-preregistration.md`):** the **product census**. `subleq.products()` (C `sq_products`) runs random pairs once and keeps changed halves that pass `subleq.prefilter()` (C `sq_prefilter`: a non-constant 4-byte block survives 2 generations in ≥ 1 of 2 lineages; recall 99.7% on phase-5 founders); Python confirms them with `sq_nucleation.Tester`. About 290k pairs/s per core; 3·10^8 pairs × 60 rules took 3 h 22 min on 11 workers. **R_P predicts jumps** (ρ 0.71 over 60 rules; 0.64 in pool A where D_T failed; speed ρ −0.65). **Limit:** under jump ≤ 0 / < 0, fresh random pairs almost never produce (≤ 8 per 10^8), yet soups of such rules jump. Soup material is several to 100+ times more productive there, so a census of aged soup material is the open fix. Next: a prospective test (choose new rules by R_P, then run soups).
   - **E-75 phase 7 (J-085, D-062; `scripts/sq_phase7.py`, `scripts/sq_phase7_report.py`, pre-registration `docs/data/e75-phase7-preregistration.md`):** prospective test. 132 new n4 rules screened by R_P (stage 1: 10^8 pairs; stage 2: 2·10^8 more) plus the D-056 random-program screen; 7 HIGH + 12 ZERO selected, 6 soups each (12 h on 11 workers). HIGH 33/42 vs ZERO 12/72 (p = 6·10^-11), speed ρ −0.88, but the primary is **undecided** (7 HIGH < 8). Under always, 15/16 HIGH candidates had random-program replicators; under < 0, 3/44 rules produce at all. Low R_P (1–2) is unreliable; ≤ 0 ZERO rules s−1 W32/o5 and s−1 W64/o100 jump 6/6. D_T beat R_P on these 19 (0.75 vs 0.67). `subleq.products_from()` (C `sq_products_from`) runs pairs drawn from a given soup, for the aged-soup census. Next: pre-register that census.
 
-The proposed next phase is in [Research → Next steps]({{ '/research.html#next-steps' | relative_url }}) (D-018).
-
 ## Run it
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 73 tests, ~4 min
-emergence benchmark --probes             # 39 + 92 validation checks, ~8 min on 12 cores
+pytest                                   # 81 test functions
+emergence benchmark --probes             # 39 + 131 validation checks (as last reported)
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000
@@ -154,7 +160,11 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
-0. **Program soups (J-041–J-054):** heredity is shown (E-42); one species out-competes others (E-45/E-46); later code is not reliably fitter over 10,000 rounds by four measures (E-48–E-53); transition rate ∝ soup size (E-50). Next: many 2^16 soups run long after the jump, kin-free invasion over long gaps (level 5 needs this), parasites; ~~backward copying~~ (E-55–E-57). Counterfactual soups jump in minutes and could carry the level-5 questions (state that results are for that rule).
+0. **Next steps (review R-5; owner decisions of 14 Nov):**
+   - **Wind down the predictor thread** (which rule versions make replicators, and how soon; E-60 to E-75). Write a one-rate synthesis: one rate per rule, the chance that a pair's run writes a replicator, estimated from time to jump with the rule as the unit (a jump is the wait for one rare event, J-083; rate ∝ soup size, E-50). At most one more run, e.g. the aged-soup census (E-75 phase 8, not yet pre-registered) as a test of whether the rate rises with soup age.
+   - **H1 at 20 runs per arm** (in progress; still 2 seeds per arm until then).
+   - **Level 5 in soups with space:** pre-register a comparison of soups where programs meet only their neighbours on a grid against well-mixed soups, with the existing level-5 instruments (kin-free invasion and growth rate, D-044, E-53; parasite detector, D-048). So far level 5 was tested only in well-mixed BFF soups (E-48 to E-54: later code not fitter). Counterfactual BFF rules jump in minutes (E-56) and could supply many jumped soups (state that results are for that rule).
+   - Docs refresh (index, research, handoff, report) done in v3.8; keep these pages current, with the journal as the append-only record.
 1. Lenia beyond level 2 (see the report's "What next"). Next steps:
    - a replication probe for continuous physics (the exact-shape probes do not apply);
    - do fused double gliders (E-20) arise spontaneously in big smooth-start worlds?
@@ -166,7 +176,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
    Known gap: creatures that rotate or pulse in place are not counted as `complex` yet.
 2. Flow-Lenia needs a positive control before any experiment (J-016, J-018). Try multi-channel Flow-Lenia, or check our implementation against the paper's figures.
 3. A density sweep for rules whose behaviour changed with density (E-09, E-10).
-4. Statistical power for H1 (10–30 runs per arm).
+4. Statistical power for H1 (10–30 runs per arm): in progress at 20 per arm, see item 0.
 5. Sampling validation of the innovation probe, and a same-rule null (Track A).
 6. Replication: more nulls, copy-origin tracing, multi-part candidates.
 
