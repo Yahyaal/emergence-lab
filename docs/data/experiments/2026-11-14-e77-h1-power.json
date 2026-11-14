@@ -1,0 +1,1184 @@
+{
+ "label": "E-77 H1 power: engine vs random search, 20 seeds",
+ "experiment": "E-77",
+ "journal": "J-087",
+ "code_commit": "7c7edbe",
+ "preregistration": "docs/data/e77-preregistration.md",
+ "command": "python scripts/h1_power.py run --seeds 101-120 --jobs 3 --out runs/e77; python scripts/h1_power.py analyse --out runs/e77 --json <this file> --commit <commit>",
+ "per_run_command": "emergence --db runs/e77/<arm>-s<seed>.db explore --name e77-<arm>-s<seed> --seed <seed> --workers 2 --generations 6 --steps 500 --followups 6 [--baseline-random]",
+ "config": {
+  "name": null,
+  "population": 100,
+  "generations": 6,
+  "steps": 500,
+  "window": 100,
+  "width": 96,
+  "height": 96,
+  "density_min": 0.15,
+  "density_max": 0.5,
+  "screen_seeds": 2,
+  "immigrant_fraction": 0.2,
+  "novelty_k": 10,
+  "followups": 6,
+  "followup_seeds": 3,
+  "extend_factor": 4,
+  "seed": null,
+  "workers": 2,
+  "selection": null,
+  "physics": "outer_totalistic",
+  "init": null
+ },
+ "environment": {
+  "emergence": "0.2.0",
+  "python": "3.12.3",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.39"
+ },
+ "seeds": [
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109,
+  110,
+  111,
+  112,
+  113,
+  114,
+  115,
+  116,
+  117,
+  118,
+  119,
+  120
+ ],
+ "near_duplicates": "scripts/h1_power.py:distinct_greedy (mutation distance >= 2, exploration order)",
+ "generation0_identical_within_seed": true,
+ "tests": {
+  "distinct_self_propelled": {
+   "engine_median": 49.0,
+   "random_median": 26.5,
+   "ratio_of_medians": 1.849056603773585,
+   "median_ratio": 1.835978835978836,
+   "median_ratio_ci95": [
+    1.7049689440993787,
+    2.2529761904761907
+   ],
+   "wilcoxon": {
+    "n": 20,
+    "W_plus": 210.0,
+    "p": 9.5367431640625e-07
+   },
+   "sign": {
+    "positive": 20,
+    "negative": 0,
+    "ties": 0,
+    "p": 9.5367431640625e-07
+   }
+  },
+  "distinct_complex_all_seeds": {
+   "engine_median": 23.0,
+   "random_median": 7.0,
+   "ratio_of_medians": 3.2857142857142856,
+   "median_ratio": 3.4047619047619047,
+   "median_ratio_ci95": [
+    2.603896103896104,
+    3.928571428571429
+   ],
+   "wilcoxon": {
+    "n": 20,
+    "W_plus": 210.0,
+    "p": 9.5367431640625e-07
+   },
+   "sign": {
+    "positive": 20,
+    "negative": 0,
+    "ties": 0,
+    "p": 9.5367431640625e-07
+   }
+  },
+  "niches": {
+   "engine_median": 29.5,
+   "random_median": 25.5,
+   "ratio_of_medians": 1.1568627450980393,
+   "median_ratio": 1.1574074074074074,
+   "median_ratio_ci95": [
+    1.1153846153846154,
+    1.2304347826086957
+   ],
+   "wilcoxon": {
+    "n": 19,
+    "W_plus": 190.0,
+    "p": 1.9073486328125e-06
+   },
+   "sign": {
+    "positive": 19,
+    "negative": 0,
+    "ties": 1,
+    "p": 1.9073486328125e-06
+   }
+  },
+  "raw_self_propelled": {
+   "engine_median": 87.0,
+   "random_median": 30.0,
+   "ratio_of_medians": 2.9,
+   "median_ratio": 2.8735431235431235,
+   "median_ratio_ci95": [
+    2.6862980769230766,
+    3.273109243697479
+   ],
+   "wilcoxon": {
+    "n": 20,
+    "W_plus": 210.0,
+    "p": 9.5367431640625e-07
+   },
+   "sign": {
+    "positive": 20,
+    "negative": 0,
+    "ties": 0,
+    "p": 9.5367431640625e-07
+   }
+  },
+  "raw_complex_all_seeds": {
+   "engine_median": 35.0,
+   "random_median": 7.0,
+   "ratio_of_medians": 5.0,
+   "median_ratio": 5.404761904761905,
+   "median_ratio_ci95": [
+    3.9545454545454546,
+    6.4523809523809526
+   ],
+   "wilcoxon": {
+    "n": 20,
+    "W_plus": 210.0,
+    "p": 9.5367431640625e-07
+   },
+   "sign": {
+    "positive": 20,
+    "negative": 0,
+    "ties": 0,
+    "p": 9.5367431640625e-07
+   }
+  },
+  "distinct_structured": {
+   "engine_median": 42.5,
+   "random_median": 15.5,
+   "ratio_of_medians": 2.7419354838709675,
+   "median_ratio": 2.6722222222222225,
+   "median_ratio_ci95": [
+    2.3571428571428568,
+    3.15625
+   ],
+   "wilcoxon": {
+    "n": 20,
+    "W_plus": 210.0,
+    "p": 9.5367431640625e-07
+   },
+   "sign": {
+    "positive": 20,
+    "negative": 0,
+    "ties": 0,
+    "p": 9.5367431640625e-07
+   }
+  },
+  "raw_structured": {
+   "engine_median": 74.0,
+   "random_median": 15.5,
+   "ratio_of_medians": 4.774193548387097,
+   "median_ratio": 4.692857142857143,
+   "median_ratio_ci95": [
+    3.732142857142857,
+    5.160416666666666
+   ],
+   "wilcoxon": {
+    "n": 20,
+    "W_plus": 210.0,
+    "p": 9.5367431640625e-07
+   },
+   "sign": {
+    "positive": 20,
+    "negative": 0,
+    "ties": 0,
+    "p": 9.5367431640625e-07
+   }
+  }
+ },
+ "primary_verdict": "pass",
+ "robust_threshold_per_run": {
+  "engine": {
+   "101": [
+    0.32
+   ],
+   "102": [
+    0.401
+   ],
+   "103": [
+    0.295
+   ],
+   "104": [
+    0.34
+   ],
+   "105": [
+    0.277
+   ],
+   "106": [
+    0.371
+   ],
+   "107": [
+    0.317
+   ],
+   "108": [
+    0.374
+   ],
+   "109": [
+    0.591
+   ],
+   "110": [
+    0.292
+   ],
+   "111": [
+    0.297
+   ],
+   "112": [
+    0.346
+   ],
+   "113": [
+    0.341
+   ],
+   "114": [
+    0.305
+   ],
+   "115": [
+    0.354
+   ],
+   "116": [
+    0.266
+   ],
+   "117": [
+    0.429
+   ],
+   "118": [
+    0.383
+   ],
+   "119": [
+    0.273
+   ],
+   "120": [
+    0.367
+   ]
+  },
+  "random": {
+   "101": [
+    0.261
+   ],
+   "102": [
+    0.263
+   ],
+   "103": [
+    0.249
+   ],
+   "104": [
+    0.23
+   ],
+   "105": [
+    0.244
+   ],
+   "106": [
+    0.27
+   ],
+   "107": [
+    0.274
+   ],
+   "108": [
+    0.292
+   ],
+   "109": [
+    0.298
+   ],
+   "110": [
+    0.232
+   ],
+   "111": [
+    0.282
+   ],
+   "112": [
+    0.27
+   ],
+   "113": [
+    0.24
+   ],
+   "114": [
+    0.263
+   ],
+   "115": [
+    0.296
+   ],
+   "116": [
+    0.291
+   ],
+   "117": [
+    0.239
+   ],
+   "118": [
+    0.256
+   ],
+   "119": [
+    0.243
+   ],
+   "120": [
+    0.243
+   ]
+  }
+ },
+ "runs": {
+  "engine": {
+   "101": {
+    "rules": 600,
+    "niches": 29,
+    "raw": {
+     "self_propelled": 117,
+     "complex_all_seeds": 60,
+     "structured": 91
+    },
+    "distinct": {
+     "self_propelled": 62,
+     "complex_all_seeds": 34,
+     "structured": 52
+    },
+    "components": {
+     "self_propelled": 31,
+     "complex_all_seeds": 27,
+     "structured": 38
+    },
+    "discoveries": 7,
+    "wall_s": 650.7
+   },
+   "102": {
+    "rules": 600,
+    "niches": 33,
+    "raw": {
+     "self_propelled": 120,
+     "complex_all_seeds": 27,
+     "structured": 81
+    },
+    "distinct": {
+     "self_propelled": 72,
+     "complex_all_seeds": 20,
+     "structured": 47
+    },
+    "components": {
+     "self_propelled": 27,
+     "complex_all_seeds": 18,
+     "structured": 24
+    },
+    "discoveries": 7,
+    "wall_s": 656.9
+   },
+   "103": {
+    "rules": 600,
+    "niches": 29,
+    "raw": {
+     "self_propelled": 72,
+     "complex_all_seeds": 38,
+     "structured": 69
+    },
+    "distinct": {
+     "self_propelled": 39,
+     "complex_all_seeds": 23,
+     "structured": 41
+    },
+    "components": {
+     "self_propelled": 25,
+     "complex_all_seeds": 17,
+     "structured": 26
+    },
+    "discoveries": 7,
+    "wall_s": 675.9
+   },
+   "104": {
+    "rules": 600,
+    "niches": 32,
+    "raw": {
+     "self_propelled": 73,
+     "complex_all_seeds": 32,
+     "structured": 82
+    },
+    "distinct": {
+     "self_propelled": 36,
+     "complex_all_seeds": 22,
+     "structured": 52
+    },
+    "components": {
+     "self_propelled": 15,
+     "complex_all_seeds": 17,
+     "structured": 32
+    },
+    "discoveries": 7,
+    "wall_s": 736.4
+   },
+   "105": {
+    "rules": 600,
+    "niches": 31,
+    "raw": {
+     "self_propelled": 87,
+     "complex_all_seeds": 20,
+     "structured": 34
+    },
+    "distinct": {
+     "self_propelled": 47,
+     "complex_all_seeds": 10,
+     "structured": 18
+    },
+    "components": {
+     "self_propelled": 15,
+     "complex_all_seeds": 7,
+     "structured": 11
+    },
+    "discoveries": 7,
+    "wall_s": 827.2
+   },
+   "106": {
+    "rules": 600,
+    "niches": 32,
+    "raw": {
+     "self_propelled": 65,
+     "complex_all_seeds": 24,
+     "structured": 60
+    },
+    "distinct": {
+     "self_propelled": 38,
+     "complex_all_seeds": 16,
+     "structured": 32
+    },
+    "components": {
+     "self_propelled": 21,
+     "complex_all_seeds": 13,
+     "structured": 20
+    },
+    "discoveries": 6,
+    "wall_s": 731.1
+   },
+   "107": {
+    "rules": 600,
+    "niches": 28,
+    "raw": {
+     "self_propelled": 69,
+     "complex_all_seeds": 37,
+     "structured": 56
+    },
+    "distinct": {
+     "self_propelled": 37,
+     "complex_all_seeds": 22,
+     "structured": 31
+    },
+    "components": {
+     "self_propelled": 25,
+     "complex_all_seeds": 19,
+     "structured": 25
+    },
+    "discoveries": 7,
+    "wall_s": 726.9
+   },
+   "108": {
+    "rules": 600,
+    "niches": 28,
+    "raw": {
+     "self_propelled": 91,
+     "complex_all_seeds": 44,
+     "structured": 83
+    },
+    "distinct": {
+     "self_propelled": 52,
+     "complex_all_seeds": 28,
+     "structured": 47
+    },
+    "components": {
+     "self_propelled": 36,
+     "complex_all_seeds": 22,
+     "structured": 34
+    },
+    "discoveries": 7,
+    "wall_s": 708.4
+   },
+   "109": {
+    "rules": 600,
+    "niches": 30,
+    "raw": {
+     "self_propelled": 102,
+     "complex_all_seeds": 34,
+     "structured": 71
+    },
+    "distinct": {
+     "self_propelled": 61,
+     "complex_all_seeds": 24,
+     "structured": 44
+    },
+    "components": {
+     "self_propelled": 35,
+     "complex_all_seeds": 19,
+     "structured": 32
+    },
+    "discoveries": 7,
+    "wall_s": 802.3
+   },
+   "110": {
+    "rules": 600,
+    "niches": 29,
+    "raw": {
+     "self_propelled": 53,
+     "complex_all_seeds": 23,
+     "structured": 44
+    },
+    "distinct": {
+     "self_propelled": 30,
+     "complex_all_seeds": 12,
+     "structured": 24
+    },
+    "components": {
+     "self_propelled": 11,
+     "complex_all_seeds": 7,
+     "structured": 10
+    },
+    "discoveries": 7,
+    "wall_s": 960.3
+   },
+   "111": {
+    "rules": 600,
+    "niches": 32,
+    "raw": {
+     "self_propelled": 81,
+     "complex_all_seeds": 50,
+     "structured": 93
+    },
+    "distinct": {
+     "self_propelled": 49,
+     "complex_all_seeds": 32,
+     "structured": 56
+    },
+    "components": {
+     "self_propelled": 28,
+     "complex_all_seeds": 22,
+     "structured": 36
+    },
+    "discoveries": 7,
+    "wall_s": 694.6
+   },
+   "112": {
+    "rules": 600,
+    "niches": 29,
+    "raw": {
+     "self_propelled": 105,
+     "complex_all_seeds": 46,
+     "structured": 78
+    },
+    "distinct": {
+     "self_propelled": 61,
+     "complex_all_seeds": 27,
+     "structured": 51
+    },
+    "components": {
+     "self_propelled": 36,
+     "complex_all_seeds": 18,
+     "structured": 34
+    },
+    "discoveries": 7,
+    "wall_s": 661.4
+   },
+   "113": {
+    "rules": 600,
+    "niches": 34,
+    "raw": {
+     "self_propelled": 102,
+     "complex_all_seeds": 56,
+     "structured": 86
+    },
+    "distinct": {
+     "self_propelled": 59,
+     "complex_all_seeds": 33,
+     "structured": 49
+    },
+    "components": {
+     "self_propelled": 23,
+     "complex_all_seeds": 19,
+     "structured": 26
+    },
+    "discoveries": 7,
+    "wall_s": 1056.9
+   },
+   "114": {
+    "rules": 600,
+    "niches": 34,
+    "raw": {
+     "self_propelled": 58,
+     "complex_all_seeds": 34,
+     "structured": 83
+    },
+    "distinct": {
+     "self_propelled": 38,
+     "complex_all_seeds": 23,
+     "structured": 50
+    },
+    "components": {
+     "self_propelled": 24,
+     "complex_all_seeds": 17,
+     "structured": 30
+    },
+    "discoveries": 7,
+    "wall_s": 770.2
+   },
+   "115": {
+    "rules": 600,
+    "niches": 26,
+    "raw": {
+     "self_propelled": 78,
+     "complex_all_seeds": 28,
+     "structured": 52
+    },
+    "distinct": {
+     "self_propelled": 49,
+     "complex_all_seeds": 17,
+     "structured": 34
+    },
+    "components": {
+     "self_propelled": 32,
+     "complex_all_seeds": 14,
+     "structured": 28
+    },
+    "discoveries": 7,
+    "wall_s": 773.5
+   },
+   "116": {
+    "rules": 600,
+    "niches": 32,
+    "raw": {
+     "self_propelled": 79,
+     "complex_all_seeds": 23,
+     "structured": 36
+    },
+    "distinct": {
+     "self_propelled": 45,
+     "complex_all_seeds": 14,
+     "structured": 21
+    },
+    "components": {
+     "self_propelled": 14,
+     "complex_all_seeds": 13,
+     "structured": 16
+    },
+    "discoveries": 6,
+    "wall_s": 738.8
+   },
+   "117": {
+    "rules": 600,
+    "niches": 28,
+    "raw": {
+     "self_propelled": 94,
+     "complex_all_seeds": 52,
+     "structured": 87
+    },
+    "distinct": {
+     "self_propelled": 55,
+     "complex_all_seeds": 28,
+     "structured": 50
+    },
+    "components": {
+     "self_propelled": 32,
+     "complex_all_seeds": 11,
+     "structured": 26
+    },
+    "discoveries": 6,
+    "wall_s": 671.8
+   },
+   "118": {
+    "rules": 600,
+    "niches": 29,
+    "raw": {
+     "self_propelled": 103,
+     "complex_all_seeds": 43,
+     "structured": 77
+    },
+    "distinct": {
+     "self_propelled": 59,
+     "complex_all_seeds": 29,
+     "structured": 41
+    },
+    "components": {
+     "self_propelled": 26,
+     "complex_all_seeds": 21,
+     "structured": 18
+    },
+    "discoveries": 7,
+    "wall_s": 712.4
+   },
+   "119": {
+    "rules": 600,
+    "niches": 25,
+    "raw": {
+     "self_propelled": 97,
+     "complex_all_seeds": 36,
+     "structured": 67
+    },
+    "distinct": {
+     "self_propelled": 48,
+     "complex_all_seeds": 18,
+     "structured": 32
+    },
+    "components": {
+     "self_propelled": 19,
+     "complex_all_seeds": 12,
+     "structured": 18
+    },
+    "discoveries": 7,
+    "wall_s": 726.4
+   },
+   "120": {
+    "rules": 600,
+    "niches": 31,
+    "raw": {
+     "self_propelled": 87,
+     "complex_all_seeds": 31,
+     "structured": 60
+    },
+    "distinct": {
+     "self_propelled": 53,
+     "complex_all_seeds": 23,
+     "structured": 39
+    },
+    "components": {
+     "self_propelled": 30,
+     "complex_all_seeds": 21,
+     "structured": 25
+    },
+    "discoveries": 7,
+    "wall_s": 722.9
+   }
+  },
+  "random": {
+   "101": {
+    "rules": 600,
+    "niches": 23,
+    "raw": {
+     "self_propelled": 31,
+     "complex_all_seeds": 9,
+     "structured": 16
+    },
+    "distinct": {
+     "self_propelled": 28,
+     "complex_all_seeds": 9,
+     "structured": 16
+    },
+    "components": {
+     "self_propelled": 27,
+     "complex_all_seeds": 9,
+     "structured": 16
+    },
+    "discoveries": 7,
+    "wall_s": 650.2
+   },
+   "102": {
+    "rules": 600,
+    "niches": 24,
+    "raw": {
+     "self_propelled": 35,
+     "complex_all_seeds": 10,
+     "structured": 18
+    },
+    "distinct": {
+     "self_propelled": 29,
+     "complex_all_seeds": 10,
+     "structured": 18
+    },
+    "components": {
+     "self_propelled": 24,
+     "complex_all_seeds": 10,
+     "structured": 18
+    },
+    "discoveries": 7,
+    "wall_s": 637.0
+   },
+   "103": {
+    "rules": 600,
+    "niches": 27,
+    "raw": {
+     "self_propelled": 26,
+     "complex_all_seeds": 6,
+     "structured": 15
+    },
+    "distinct": {
+     "self_propelled": 23,
+     "complex_all_seeds": 6,
+     "structured": 15
+    },
+    "components": {
+     "self_propelled": 22,
+     "complex_all_seeds": 6,
+     "structured": 15
+    },
+    "discoveries": 7,
+    "wall_s": 667.1
+   },
+   "104": {
+    "rules": 600,
+    "niches": 27,
+    "raw": {
+     "self_propelled": 26,
+     "complex_all_seeds": 7,
+     "structured": 17
+    },
+    "distinct": {
+     "self_propelled": 24,
+     "complex_all_seeds": 7,
+     "structured": 17
+    },
+    "components": {
+     "self_propelled": 19,
+     "complex_all_seeds": 7,
+     "structured": 17
+    },
+    "discoveries": 7,
+    "wall_s": 655.5
+   },
+   "105": {
+    "rules": 600,
+    "niches": 27,
+    "raw": {
+     "self_propelled": 32,
+     "complex_all_seeds": 6,
+     "structured": 14
+    },
+    "distinct": {
+     "self_propelled": 28,
+     "complex_all_seeds": 6,
+     "structured": 14
+    },
+    "components": {
+     "self_propelled": 24,
+     "complex_all_seeds": 6,
+     "structured": 14
+    },
+    "discoveries": 7,
+    "wall_s": 692.1
+   },
+   "106": {
+    "rules": 600,
+    "niches": 29,
+    "raw": {
+     "self_propelled": 31,
+     "complex_all_seeds": 6,
+     "structured": 18
+    },
+    "distinct": {
+     "self_propelled": 28,
+     "complex_all_seeds": 6,
+     "structured": 18
+    },
+    "components": {
+     "self_propelled": 24,
+     "complex_all_seeds": 6,
+     "structured": 18
+    },
+    "discoveries": 6,
+    "wall_s": 610.5
+   },
+   "107": {
+    "rules": 600,
+    "niches": 26,
+    "raw": {
+     "self_propelled": 26,
+     "complex_all_seeds": 6,
+     "structured": 16
+    },
+    "distinct": {
+     "self_propelled": 21,
+     "complex_all_seeds": 6,
+     "structured": 16
+    },
+    "components": {
+     "self_propelled": 19,
+     "complex_all_seeds": 6,
+     "structured": 16
+    },
+    "discoveries": 6,
+    "wall_s": 664.6
+   },
+   "108": {
+    "rules": 600,
+    "niches": 25,
+    "raw": {
+     "self_propelled": 30,
+     "complex_all_seeds": 7,
+     "structured": 13
+    },
+    "distinct": {
+     "self_propelled": 28,
+     "complex_all_seeds": 7,
+     "structured": 12
+    },
+    "components": {
+     "self_propelled": 25,
+     "complex_all_seeds": 7,
+     "structured": 12
+    },
+    "discoveries": 6,
+    "wall_s": 856.9
+   },
+   "109": {
+    "rules": 600,
+    "niches": 25,
+    "raw": {
+     "self_propelled": 24,
+     "complex_all_seeds": 6,
+     "structured": 12
+    },
+    "distinct": {
+     "self_propelled": 22,
+     "complex_all_seeds": 6,
+     "structured": 12
+    },
+    "components": {
+     "self_propelled": 19,
+     "complex_all_seeds": 6,
+     "structured": 12
+    },
+    "discoveries": 7,
+    "wall_s": 662.8
+   },
+   "110": {
+    "rules": 600,
+    "niches": 29,
+    "raw": {
+     "self_propelled": 17,
+     "complex_all_seeds": 8,
+     "structured": 12
+    },
+    "distinct": {
+     "self_propelled": 16,
+     "complex_all_seeds": 8,
+     "structured": 12
+    },
+    "components": {
+     "self_propelled": 16,
+     "complex_all_seeds": 8,
+     "structured": 12
+    },
+    "discoveries": 6,
+    "wall_s": 815.3
+   },
+   "111": {
+    "rules": 600,
+    "niches": 27,
+    "raw": {
+     "self_propelled": 32,
+     "complex_all_seeds": 6,
+     "structured": 15
+    },
+    "distinct": {
+     "self_propelled": 27,
+     "complex_all_seeds": 6,
+     "structured": 15
+    },
+    "components": {
+     "self_propelled": 24,
+     "complex_all_seeds": 6,
+     "structured": 15
+    },
+    "discoveries": 6,
+    "wall_s": 631.5
+   },
+   "112": {
+    "rules": 600,
+    "niches": 26,
+    "raw": {
+     "self_propelled": 38,
+     "complex_all_seeds": 7,
+     "structured": 16
+    },
+    "distinct": {
+     "self_propelled": 35,
+     "complex_all_seeds": 7,
+     "structured": 16
+    },
+    "components": {
+     "self_propelled": 30,
+     "complex_all_seeds": 7,
+     "structured": 16
+    },
+    "discoveries": 6,
+    "wall_s": 636.5
+   },
+   "113": {
+    "rules": 600,
+    "niches": 25,
+    "raw": {
+     "self_propelled": 25,
+     "complex_all_seeds": 11,
+     "structured": 19
+    },
+    "distinct": {
+     "self_propelled": 22,
+     "complex_all_seeds": 11,
+     "structured": 19
+    },
+    "components": {
+     "self_propelled": 22,
+     "complex_all_seeds": 11,
+     "structured": 19
+    },
+    "discoveries": 7,
+    "wall_s": 626.7
+   },
+   "114": {
+    "rules": 600,
+    "niches": 25,
+    "raw": {
+     "self_propelled": 30,
+     "complex_all_seeds": 5,
+     "structured": 16
+    },
+    "distinct": {
+     "self_propelled": 27,
+     "complex_all_seeds": 5,
+     "structured": 16
+    },
+    "components": {
+     "self_propelled": 27,
+     "complex_all_seeds": 5,
+     "structured": 16
+    },
+    "discoveries": 6,
+    "wall_s": 681.0
+   },
+   "115": {
+    "rules": 600,
+    "niches": 19,
+    "raw": {
+     "self_propelled": 32,
+     "complex_all_seeds": 4,
+     "structured": 14
+    },
+    "distinct": {
+     "self_propelled": 26,
+     "complex_all_seeds": 4,
+     "structured": 14
+    },
+    "components": {
+     "self_propelled": 23,
+     "complex_all_seeds": 4,
+     "structured": 14
+    },
+    "discoveries": 6,
+    "wall_s": 608.5
+   },
+   "116": {
+    "rules": 600,
+    "niches": 28,
+    "raw": {
+     "self_propelled": 26,
+     "complex_all_seeds": 8,
+     "structured": 18
+    },
+    "distinct": {
+     "self_propelled": 18,
+     "complex_all_seeds": 8,
+     "structured": 18
+    },
+    "components": {
+     "self_propelled": 16,
+     "complex_all_seeds": 8,
+     "structured": 18
+    },
+    "discoveries": 7,
+    "wall_s": 609.3
+   },
+   "117": {
+    "rules": 600,
+    "niches": 24,
+    "raw": {
+     "self_propelled": 25,
+     "complex_all_seeds": 3,
+     "structured": 14
+    },
+    "distinct": {
+     "self_propelled": 24,
+     "complex_all_seeds": 3,
+     "structured": 14
+    },
+    "components": {
+     "self_propelled": 24,
+     "complex_all_seeds": 3,
+     "structured": 14
+    },
+    "discoveries": 6,
+    "wall_s": 600.2
+   },
+   "118": {
+    "rules": 600,
+    "niches": 26,
+    "raw": {
+     "self_propelled": 22,
+     "complex_all_seeds": 11,
+     "structured": 15
+    },
+    "distinct": {
+     "self_propelled": 22,
+     "complex_all_seeds": 11,
+     "structured": 15
+    },
+    "components": {
+     "self_propelled": 22,
+     "complex_all_seeds": 11,
+     "structured": 15
+    },
+    "discoveries": 6,
+    "wall_s": 615.1
+   },
+   "119": {
+    "rules": 600,
+    "niches": 23,
+    "raw": {
+     "self_propelled": 33,
+     "complex_all_seeds": 7,
+     "structured": 14
+    },
+    "distinct": {
+     "self_propelled": 28,
+     "complex_all_seeds": 7,
+     "structured": 14
+    },
+    "components": {
+     "self_propelled": 24,
+     "complex_all_seeds": 7,
+     "structured": 14
+    },
+    "discoveries": 6,
+    "wall_s": 658.9
+   },
+   "120": {
+    "rules": 600,
+    "niches": 24,
+    "raw": {
+     "self_propelled": 39,
+     "complex_all_seeds": 10,
+     "structured": 16
+    },
+    "distinct": {
+     "self_propelled": 34,
+     "complex_all_seeds": 10,
+     "structured": 16
+    },
+    "components": {
+     "self_propelled": 28,
+     "complex_all_seeds": 10,
+     "structured": 16
+    },
+    "discoveries": 7,
+    "wall_s": 482.9
+   }
+  }
+ }
+}
