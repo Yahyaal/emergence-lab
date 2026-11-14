@@ -12,6 +12,48 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-069 · 2026-11-09 · E-67: no parasites further down the ranking either
+
+**Question (pre-registered, `docs/data/e67-preregistration.md`, commit `543b2b8`):** E-66 found no parasites among the 40 most common programs. Are there any among rarer ones? Final snapshot of each of the 7 jumped E-54 soups; 20 random exact programs per soup in each of three strata (6–40 copies, 2–5 copies, single), 420 in all; replicator test repeated 10×, parasite test (with the self-copy check) on those that never grew.
+
+**Ran:** `scripts/bff_parasites_rare.py --workers 11` (10 min).
+
+**Found:**
+- **P1 pass: 0 parasites in 420 programs.**
+- **P2 pass:** self-copiers 99.3% (6–40 copies), 96.4% (2–5), 69.3% (singletons).
+- **P3:** the 49 non-self-copiers are 29 "not copied" and 20 "context self-copiers" (copy themselves into any partner whose code never runs, die when running second; 17 of them singletons). Non-self-copiers are unrelated to the soup's common programs (median 55–62 of 64 bytes differ from the nearest top-40 program, either orientation); self-copiers are closer (median 22–34).
+
+**Interpretation:** across all abundance levels we sampled, these soups contain self-copiers, newly arisen unrelated programs that nothing copies, and a few unrelated programs that copy themselves but cannot hold their ground; no program is maintained by others' copying. Parasitism, the classic first step of ecological complexity in Tierra-like systems, does not appear in standard BFF at 2^16 programs over 20,000 rounds after the jump. One plausible reason (not tested): BFF replicators copy a fixed half-tape window regardless of content, so a parasite would have to be copied by a host that runs *second*, which in BFF happens only when the first program's code falls through into the host (as in our hand-made parasite). Evidence: pre-registered negative, 7 soups, final snapshots only.
+
+**Lesson:** after fixing the test (J-068), the negative held up in a second, independent sample.
+
+**Next:** the instruction-set / tape-length family (does a richer language allow parasites or other ecology?).
+
+---
+
+## J-068 · 2026-11-09 · E-66: almost every common program in a jumped soup copies itself; the "non-replicators" were bad luck in our test, and no parasites were found
+
+**Question (pre-registered, `docs/data/e66-preregistration.md`, commit `4807796`):** E-54 found that only 22–78% of the 40 most common programs in jumped soups pass the replicator test. Are the others **parasites**, copied by the replicators without copying themselves? A pilot for the new parasite detector (D-048) showed that the replicator test gives different verdicts for the same program with different seeds, so part A first repeats it 10 times on all 2,800 E-54 programs; part B runs the parasite test on programs whose copies never grew.
+
+**Ran:** `scripts/bff_parasites.py --workers 11` (77 min; first launch crashed at the end of part A on a negative seed key for the null programs and saved nothing; fixed in `32081a9` with a result cache, tests and seeds unchanged). Post hoc re-scoring of part B: `scripts/e66_rescore.py`. Figure: `scripts/e66_figure.py` → `docs/assets/report/e66-parasites.png`.
+
+**Found:**
+- **P1 pass:** of the 602 programs E-54 called "no replication", **597 (99.2%)** grew in at least one of 10 repeats; every soup ≥ 95%.
+- **P2 pass:** **2,795 of 2,800 (99.8%)** common programs are self-copiers by the repeated test (single-test "replicator" in E-54: 50.8%). The verdict mix over all 28,000 repeats (52% replicator, 27% one generation, 22% no replication) is almost exactly E-54's (51/28/22): **the single-test differences between programs were mostly chance.** Copies of a typical program grew in ~78% of tests (8 starting copies are often all lost before they spread); programs E-54 called replicators grew in 81%, those it called non-replicators in 73%.
+- **P3 pass:** 0 of 80 common programs of two pre-transition soups (HOE 0.49, 0.56) grew in any repeat.
+- **P4 fail:** true non-copiers are rare (5 of 2,800, 0.18%, all in soup 5401), but the parasite + by-product share was 2/5, below the 50% predicted.
+- **The two "parasites" were not parasites.** Inspection: each copies itself into **every** partner whose code never runs (200/200 "halting" partners) and into 80% of random partners, but is destroyed whenever it runs second; alone among random programs its copies therefore shrink. It is a copier that only persists among partners that spare it. The detector now checks this (self-copy rate into halting partners; verdict "context self-copier"); with it, part B is **0 parasites, 2 context self-copiers, 3 not copied** (post hoc, same data).
+
+**Changed:** `observatory/program_parasites.py` (D-048: parasite test, repeated `alone_test`, self-copy check, `CONTEXT_COPIER` control); benchmark section 14 (8 checks: positive, two negatives, three deceptive incl. the E-66 program, selection-aware null); D-049 (single replicator-test verdicts on common soup programs are lower bounds).
+
+**Interpretation:** after a jump, the soup's common programs are essentially all self-copiers; E-54's "soups stay mixed" was a property of our test, not of the soups. We found **no parasites** among common programs of 7 soups (level-3 ecology question answered negatively at this scale; a rare parasite below the top 40 would be missed). E-54's primary result is unaffected (it compared programs that passed).
+
+**Lesson:** a stochastic test run once per item measures luck as much as the item; repeat it before reading differences between items. And a detector that counts copies must ask who made them.
+
+**Next:** parasites, if they exist, are rare; looking further down the abundance ranking needs the same test on less common programs. The instruction-set / tape-length family remains the main open lead.
+
+---
+
 ## J-067 · 2026-11-09 · E-65: with 7 new rules, the predictor holds rule by rule; the graded version is not established
 
 **Question (pre-registered, `docs/data/e65-preregistration.md`, commit `febabe2`):** E-64's F arm rested on 3 rules. In 768 new random rules of the two-head-start family, do **all** F rules make replicators quickly (≥ 75% of soups, and ≥ 2 of 4 soups in ≥ 75% of F rules), and C rules not? Secondary: does the number of self-sufficient short copiers predict how soon (Spearman with median jump round)?
@@ -43,7 +85,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 - **Jumps:** 4 of 12 new soups jumped by 24,000 rounds (5401 at 10,250, 5402 at 22,250, 5406 at 16,750, 5410 at 750); E-50 predicted about half (5/10 there). With the 3 continued soups, 7 jumped soups; each gave 6 early and 6 late distinct verified replicators; none had kin in the backgrounds (0 dropped).
 - **Primary: not significant, as predicted.** D = −0.15 (sum over soups of mean s late − mean s early), permutation p = 0.64. Per soup: −0.49 (5401), −0.03, −0.01, −0.01, +0.07, +0.13, +0.19.
 - **Secondary (future background, T+20000):** D = −0.50, p = 0.95; later code is not better at invading the future either.
-- **Descriptive:** verified replicators are only **22–78%** of the 40 most common distinct programs at every snapshot (2,800 tests: 1,423 replicators, 775 copy for one generation only, 602 do not replicate). No trend over 20,000 rounds; soups stay a mix of copiers, partial copiers and non-copiers.
+- **Descriptive:** verified replicators are only **22–78%** of the 40 most common distinct programs at every snapshot (2,800 tests: 1,423 replicators, 775 copy for one generation only, 602 do not replicate). No trend over 20,000 rounds; soups stay a mix of copiers, partial copiers and non-copiers. **Corrected by E-66 (J-068):** with the test repeated 10 times, 99.8% of these programs copy themselves; the single-test split was mostly chance.
 - Invasion scores are mostly below 0 for both groups: a few copies of a single soup program usually lose ground in a sample of the soup.
 
 **Interpretation:** across 7 soups and 16,000 rounds, the most sensitive calibrated assay we have shows no sign that later replicators are fitter. Together with E-48–E-53 this makes "no detectable cumulative adaptation after the jump in standard BFF at these scales" the best-supported reading: the post-jump change looks mostly neutral (drift). Level 5 is not shown. Caveats: the assay was calibrated on hand-written variants with large built-in differences (J-050, J-052); small advantages, or adaptation that only shows in the soup's own context, would be missed. The jump rate (4/12) is lower than E-50's estimate but within chance (E-50 5/10).

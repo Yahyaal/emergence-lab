@@ -10,6 +10,10 @@
                    nothing runs ("noexec") -> no replication
 * growth-rate assay (program_fitness, D-044): trap ladder vs theory, k=3 vs 4 sensitivity,
                    non-copier, copyall/noexec deceptive, repeat-assay null
+* parasite detector (program_parasites, D-048): hand-made parasite of the hand-written replicator
+                   (positive), inert and random programs (negative), copyall rule and a by-product
+                   made from many distinct "makers" and a soup program that copies
+                   itself but cannot grow alone (deceptive), common programs of an early soup (null)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -148,3 +152,41 @@ def run(check) -> None:
     cd = F.compare({"r": d0["s"], "rs": d0["ss"]}, {"r": d1["s"], "rs": d1["ss"]})
     check("program invasion deceptive: the same q = 0.5 pair under copyall (code never runs, the trap cannot act) -> not different",
           cd["p"] >= 0.05, f"s {d0['s']:.2f} vs {d1['s']:.2f}, p {cd['p']:.2g}")
+
+    # parasites: copied by others, not by themselves (observatory/program_parasites.py, J-068, D-048)
+    from .observatory import program_parasites as PP
+
+    def pbrief(r):
+        return (f"{r['verdict']}; q {r['q']}, scrambled {r['q_scrambled']}, p {r['p']:.2g}, b {r['b']}, "
+                f"count {r['count']}, templated share {r['templated_share']}")
+
+    prng = np.random.default_rng(66)
+    hp, ine = PP.hand_parasite(), PP.inert()
+    zpool, z = PP.byproduct_pool(prng)
+    for name, x, pool, mode, want in (
+            ("parasite positive: hand-made parasite at 5% among hand-written replicators -> parasite",
+             hp, PP.host_pool(prng, guest=hp), "bff", "parasite"),
+            ("parasite negative: inert program at 5% among the same hosts -> not copied",
+             ine, PP.host_pool(prng, guest=ine), "bff", "not copied"),
+            ("parasite negative: random program among the hosts -> not copied",
+             prng.integers(0, 256, 64, dtype=np.uint8), PP.host_pool(prng), "bff", "not copied"),
+            ("parasite deceptive: copyall rule copies every first program -> unspecific copying",
+             prng.integers(0, 256, 64, dtype=np.uint8), PP.host_pool(prng), "copyall", "unspecific copying"),
+            ("parasite deceptive: product made from many distinct makers (copied too, but mostly de novo) -> by-product",
+             z, zpool, "bff", "by-product"),
+            ("parasite deceptive: soup program that copies itself but dies when it runs second (E-66) -> context self-copier",
+             np.frombuffer(PP.CONTEXT_COPIER, np.uint8).copy(), prng.integers(0, 256, (1024, 64), dtype=np.uint8), "bff",
+             "context self-copier")):
+        # under copyall the repeated growth test drifts past its threshold now and then ("one generation"),
+        # so the copying stage is checked on its own there (alone given)
+        r = PP.parasite_test(x, pool, np.random.default_rng(4), mode=mode,
+                             alone="no replication" if mode == "copyall" else None)
+        check(name, r["verdict"] == want, pbrief(r) + f", alone {r['alone']}, self {r['self_rate']}")
+    s = B.Soup(n=2048, seed=7)
+    for _ in range(50):
+        s.epoch()
+    vals, counts = np.unique(s.programs, axis=0, return_counts=True)
+    top = vals[np.argsort(-counts, kind="stable")[:3]]
+    vs = [PP.parasite_test(t, s.programs, np.random.default_rng(5))["verdict"] for t in top]
+    check("parasite selection-aware null: the 3 most common programs of an early BFF soup (no replicators) -> no parasite",
+          "parasite" not in vs, f"verdicts {vs}")

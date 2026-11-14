@@ -82,3 +82,17 @@ def test_growth_rate_assay():
     assert F.growth_rate(F.non_copier(), rng, bg="halting", reps=2)["r"] < 0.01
     ps = F.pair_stats(B.REPLICATOR, rng, bg="halting", partners=16)
     assert ps["p"] == ps["s1"] == ps["s2"] == 1.0
+
+
+def test_parasite_detector_controls():
+    from emergence.observatory import program_parasites as PP
+    rng = np.random.default_rng(3)
+    hp = PP.hand_parasite()
+    r = PP.parasite_test(hp, PP.host_pool(rng, guest=hp), rng, alone="no replication", m=64, m_prod=256, scrambles=2)
+    assert r["verdict"] == "parasite" and r["q_scrambled"] == 0
+    r = PP.parasite_test(PP.inert(), PP.host_pool(rng, guest=PP.inert()), rng, alone="no replication", m=64, m_prod=256)
+    assert r["verdict"] == "not copied"
+    r = PP.parasite_test(rng.integers(0, 256, 64, dtype=np.uint8), PP.host_pool(rng), rng, mode="copyall",
+                         alone="no replication", m=64, m_prod=256)
+    assert r["verdict"] == "unspecific copying"
+    assert PP.parasite_test(hp, PP.host_pool(rng), rng, alone="replicator", m=16, m_prod=16)["verdict"] == "self-copier"
