@@ -338,3 +338,40 @@ long sq_products(int code, long npairs, int L, uint64_t seed, long max_steps, in
     stats[2] = nmax;
     return nh;
 }
+
+/* Soup-material product census (E-75 phase 8): as sq_products, but each pair (A, B) is two distinct programs drawn
+   at random from `soup` (nprog x L) instead of fresh random bytes. The soup is not modified. */
+long sq_products_from(int code, const uint8_t *soup, long nprog, long npairs, int L, uint64_t seed, long max_steps,
+                      int m, int gens, int lin, int need, int skip_const, uint8_t *hits, uint8_t *side,
+                      long maxhits, long *stats) {
+    uint8_t in[1024], tape[1024];
+    uint64_t s = seed, s2 = seed ^ 0x6a09e667f3bcc909ull;
+    long nh = 0, np = 0, st = 0, nmax = 0;
+    if (m > 8 || m < 1 || 2 * L > 1024 || nprog < 2) return -1;
+    for (long i = 0; i < npairs; i++) {
+        long a = (long)(sm(&s) % (uint64_t)nprog), b;
+        do { b = (long)(sm(&s) % (uint64_t)nprog); } while (b == a);
+        memcpy(in, soup + a * L, L);
+        memcpy(in + L, soup + b * L, L);
+        memcpy(tape, in, 2 * L);
+        long k = run(tape, 2 * L, max_steps, code);
+        st += k;
+        nmax += k >= max_steps;
+        for (int h = 0; h < 2; h++) {
+            if (!memcmp(tape + h * L, in + h * L, L)) continue;
+            np++;
+            if (prefilter(tape + h * L, L, code, &s2, max_steps, m, gens, lin, need, skip_const)) {
+                if (nh < maxhits) {
+                    memcpy(hits + nh * 3 * L, tape + h * L, L);
+                    memcpy(hits + nh * 3 * L + L, in, 2 * L);
+                    side[nh] = (uint8_t)h;
+                }
+                nh++;
+            }
+        }
+    }
+    stats[0] = np;
+    stats[1] = st;
+    stats[2] = nmax;
+    return nh;
+}

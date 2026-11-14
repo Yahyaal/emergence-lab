@@ -208,3 +208,10 @@ def test_subleq_product_census_prefilter():
     assert 0 < st["products"] <= 40000 and st["steps"] > 0 and len(X) == min(n, 50)
     for x, s in zip(X, S):
         assert (x[:64] != x[64 + 64 * s:128 + 64 * s]).any()  # a product differs from the input half it replaced
+    soup = np.random.default_rng(5).integers(0, 256, (300, 64), dtype=np.uint8)
+    keep = soup.copy()
+    n, X, S, st = Q.products_from(Q.Rule(4, 0, 1, 32, 28), soup, 20000, 9, maxhits=50)
+    assert (soup == keep).all() and st["products"] > 0 and len(X) == min(n, 50)
+    rows = {r.tobytes() for r in soup}
+    for x in X:  # both inputs are distinct members of the soup
+        assert x[64:128].tobytes() in rows and x[128:].tobytes() in rows and (x[64:128] != x[128:]).any()

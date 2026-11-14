@@ -100,6 +100,11 @@ def _lib():
         lib.sq_products.argtypes = [ctypes.c_int, ctypes.c_long, ctypes.c_int, ctypes.c_uint64, ctypes.c_long,
                                     ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
                                     ctypes.c_void_p, ctypes.c_void_p, ctypes.c_long, ctypes.c_void_p]
+        lib.sq_products_from.restype = ctypes.c_long
+        lib.sq_products_from.argtypes = [ctypes.c_int, ctypes.c_void_p, ctypes.c_long, ctypes.c_long, ctypes.c_int,
+                                         ctypes.c_uint64, ctypes.c_long, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+                                         ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_long,
+                                         ctypes.c_void_p]
         _LIB = lib
     return _LIB
 
@@ -208,6 +213,24 @@ def products(rule, npairs: int, seed: int, max_steps: int = 8192, L: int = 64, m
                            k["need"], k["skip_const"], buf.ctypes.data, side.ctypes.data, maxhits, st)
     if n < 0:
         raise ValueError("bad products arguments")
+    h = min(n, maxhits)
+    return int(n), buf[:h].copy(), side[:h].copy(), {"products": st[0], "steps": st[1], "maxed": st[2]}
+
+
+def products_from(rule, soup: np.ndarray, npairs: int, seed: int, max_steps: int = 8192, maxhits: int = 5000,
+                  **kw) -> tuple[int, np.ndarray, np.ndarray, dict]:
+    """As `products`, but pairs are two distinct programs drawn at random from `soup` (not modified)."""
+    k = {**PRE, **kw}
+    S = np.ascontiguousarray(soup, dtype=np.uint8)
+    L = S.shape[1]
+    buf = np.zeros((maxhits, 3 * L), np.uint8)
+    side = np.zeros(maxhits, np.uint8)
+    st = (ctypes.c_long * 3)()
+    n = _lib().sq_products_from(_code(rule), S.ctypes.data, len(S), npairs, L, seed & (2 ** 64 - 1), max_steps,
+                                k["m"], k["gens"], k["lin"], k["need"], k["skip_const"], buf.ctypes.data,
+                                side.ctypes.data, maxhits, st)
+    if n < 0:
+        raise ValueError("bad products_from arguments")
     h = min(n, maxhits)
     return int(n), buf[:h].copy(), side[:h].copy(), {"products": st[0], "steps": st[1], "maxed": st[2]}
 

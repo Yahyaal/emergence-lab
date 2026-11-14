@@ -12,6 +12,36 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-085 · 2026-11-14 · E-75 phase 7: rules chosen by product rate alone, before their soups ran, jump far more often, but the test came out short of rules (pre-registered)
+
+**Question (pre-registered, `docs/data/e75-phase7-preregistration.md`, commit `2c72454`; D-062):** J-084 was retrospective. If new rules are chosen by their product rate R_P alone, with HIGH and ZERO thresholds fixed from phase 6, do the HIGH rules' soups jump and the ZERO rules' soups not?
+
+**Ran:** `scripts/sq_phase7.py` (12 h 8 min, 11 workers); analysis `scripts/sq_phase7_report.py`. 132 new rules screened (up to 3 × 10^8 pairs each, plus the D-056 random-program screen), 19 selected, 114 soups.
+
+**Found:**
+- **Too few HIGH rules.** The selection found 7 HIGH and 12 ZERO, against 12 + 12 wanted.
+  - Under always, 15 of the 16 HIGH candidates that reached stage 2 had replicators among random programs, so the D-056 screen removed them. A high product rate and random-program replicators mostly go together there.
+  - Under < 0, only 3 of 44 candidates had any product in 10^8 pairs.
+- **The separation replicates.** HIGH soups jumped in 33 of 42 (79%), ZERO soups in 12 of 72 (17%); one-sided Fisher p = 6 × 10^-11. These numbers meet the primary's criteria, but with 7 HIGH rules (< 8) the primary is **undecided**, as pre-registered.
+- **Rate sets speed again.** Among the 6 HIGH rules that jumped, ρ(R_P, median T) = −0.88 (p = 0.010).
+- **Low rates are unreliable.** The 4 HIGH rules with R_P ≥ 4 jumped in 24 of 24 soups; the 3 at R_P 1–2 in 9 of 18, including one (< 0 W32/o61) that never jumped.
+- **ZERO under ≤ 0 still fails as before.** Two of the four ≤ 0 ZERO rules (s−1 W32/o5 and s−1 W64/o100) jumped in every soup; all 12 ZERO jumps were theirs. Always and < 0 ZERO rules: 0 of 48.
+- **Tile density did better on these 19 rules:** ρ = 0.75 vs 0.67 for R_P.
+
+**Predictions:** primary undecided (criteria met); of the other four, 2 right (ZERO bounds, speed) and 2 wrong (≥ 80% of HIGH rules jump in ≥ 4 soups; beating D_T).
+
+**Meaning:**
+- Prospectively, a measurable property of a rule's fresh random code, the rate at which pair runs write replicators, sorts new rules into ones that jump and ones that don't: 79% vs 17%. That is the main claim of J-084, now with outcomes unknown at selection. Formally it is not a pass, because the design asked for more rules than the pools gave.
+- It is not better than tile density on these rules. Selecting by R_P alone does not tell us which predictor is better: R_P was cut into two groups (ZERO rules all tie), while D_T varied freely.
+- The ≤ 0 misses persist: in some rules soup material writes replicators while fresh code does not. That is the next question.
+- Evidence level unchanged (level 3 replicators; nothing about levels 4–5).
+
+**Changed:** `scripts/sq_phase7.py`, `scripts/sq_phase7_report.py`; D-062 accepted; report section 34; handoff.
+
+**Lesson:** a design that needs a fixed number of rare items should estimate their frequency first. Here the D-056 screen, needed to keep the test clean, removed almost all of the very rules the test was about.
+
+---
+
 ## J-084 · 2026-11-13 · E-75 phase 6: how often a random pair's run writes a replicator predicts which rules jump, including where tile density failed (pre-registered)
 
 **Question (pre-registered, `docs/data/e75-phase6-preregistration.md`, commit `ff6b4e5`; D-061):** J-083 found that jumps are set by how often replicators originate, and that each founder is written in one run. Does the rate at which runs of fresh random pairs write a replicator (R_P) predict which of the 60 phase-3/4 rules jump?

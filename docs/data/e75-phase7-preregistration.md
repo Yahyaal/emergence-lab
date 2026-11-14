@@ -55,3 +55,39 @@ The thresholds differ by jump rule because under always, low rates (0.3–2) gav
 - 6 soups per rule.
 - HIGH and ZERO rules may differ in other ways (W, s, o) that also matter. R_P could be a proxy for them.
 - The selection is stratified by jump rule, and ZERO rules under ≤ 0 / < 0 are expected to jump sometimes (phase 6).
+
+## Outcome (added after the run; J-085)
+
+Run time 12 h 8 min, 11 workers (selection about 7.5 h, soups about 4.5 h). Analysis: `scripts/sq_phase7_report.py`.
+
+**Selection fell short of 24 rules: 7 HIGH and 12 ZERO.**
+- **always:** 31 of 44 candidates had ≥ 5 products in stage 1, but 15 of the 16 that reached stage 2 had replicators
+  among random programs (the D-056 screen), so only 1 HIGH rule was selected. Under always, a high product rate and
+  random-program replicators mostly go together.
+- **≤ 0:** 3 HIGH (3 more had random-program replicators; 1 had only 1 product in 3 × 10^8).
+- **< 0:** only 3 of 44 candidates had any product in 10^8 pairs; all 3 passed.
+- ZERO: 4 per jump rule (1 always ZERO candidate was rejected by the screen).
+
+| Group | Rules | Soups jumped |
+|---|---|---|
+| HIGH | 7 | 33 / 42 (79%) |
+| ZERO | 12 | 12 / 72 (17%) |
+
+1. **Primary: undecided** (7 HIGH rules < 8, as pre-registered). The pass criteria themselves were met: 79% ≥ 75%,
+   17% ≤ 25%, one-sided Fisher p = 6 × 10^-11.
+2. **HIGH rules: wrong.** 5 of 7 jumped in ≥ 4 soups (71% < 80%). The misses are the two rules at the floor:
+   < 0 s+1 W32/o61 (R_P 2, 0 of 6) and ≤ 0 s−1 W32/o48 (R_P 1, 3 of 6).
+3. **ZERO: right, both parts.**
+   - always: 0 of 24.
+   - ≤ 0 and < 0: 12 of 48 (25% ≤ 35%). All 12 came from two ≤ 0 rules that jumped in 6 of 6: s−1 W32/o5 (D_T 6)
+     and s−1 W64/o100 (D_T 7). The other two ≤ 0 ZERO rules and all four < 0 ZERO rules: 0 of 36.
+4. **Speed: right.** Among the 6 HIGH rules that jumped, ρ(R_P, median T) = −0.88, one-sided p = 0.010.
+5. **Versus tile density: wrong.** ρ(R_P, soups jumped) = 0.67, ρ(D_T, soups jumped) = 0.75 over the 19 rules.
+
+**Score:** of the 4 decided predictions, 2 right (3, 4) and 2 wrong (2, 5); the primary is undecided but its
+criteria were met.
+
+**Also seen (post hoc):**
+- The 4 HIGH rules with R_P ≥ 4 jumped in 24 of 24 soups; the 3 with R_P ≤ 2 in 9 of 18.
+- R_P = 0 is reliable under always (0 of 24 here, 0 of 48 in phase 6). Under < 0 it held here (0 of 24) but not in
+  phase 6 (10 of 54); under ≤ 0 it fails in both (12 of 24 here, 25 of 120 in phase 6).
