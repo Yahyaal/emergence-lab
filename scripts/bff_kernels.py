@@ -24,6 +24,7 @@ import numpy as np
 from emergence.programs import bff as B
 
 L, STEPS, THR, KMAX, CHUNK = 64, 8192, 60, 6, 100_000
+MAXSHIFT = 16  # classify_shift default; E-68 scales L, THR and MAXSHIFT together with set_length()
 OPS = np.frombuffer(b"<>{}-+.,[]", np.uint8)
 NONOP = np.array([v for v in range(256) if v not in set(OPS.tolist())], np.uint8)  # includes 0
 NONOP_NZ = NONOP[NONOP != 0]
@@ -57,6 +58,15 @@ def lib():
     return _LIB
 
 
+def set_length(length: int) -> None:
+    """E-68: program length L (tape 2L). THR = L - L // 16 and MAXSHIFT = L // 4, so L = 64 gives the defaults
+    (60, 16) used by every earlier experiment. Module-global: call it in each worker before classifying."""
+    global L, THR, MAXSHIFT
+    if not 16 <= length <= 240 or length % 16:
+        raise ValueError("length must be a multiple of 16 in 16..240 (h1start packs h1 into 8 bits)")
+    L, THR, MAXSHIFT = length, length - length // 16, length // 4
+
+
 def classify(P: np.ndarray, h1start: int, partners: int, seed: int) -> np.ndarray:
     P = np.ascontiguousarray(P, dtype=np.uint8)
     out = np.zeros(len(P), np.uint8)
@@ -64,8 +74,9 @@ def classify(P: np.ndarray, h1start: int, partners: int, seed: int) -> np.ndarra
     return out
 
 
-def classify_shift(P: np.ndarray, h1start: int, partners: int, seed: int, maxshift: int = 16):
+def classify_shift(P: np.ndarray, h1start: int, partners: int, seed: int, maxshift: int | None = None):
     """E-61: shift-aware classify (copies may sit up to `maxshift` bytes off byte L). Returns (codes, shifts)."""
+    maxshift = MAXSHIFT if maxshift is None else maxshift
     P = np.ascontiguousarray(P, dtype=np.uint8)
     out, sh = np.zeros(len(P), np.uint8), np.zeros(len(P), np.int8)
     lib().classify_shift(P.ctypes.data, len(P), L, h1start, partners, seed, STEPS, THR, maxshift,
