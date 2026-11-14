@@ -12,6 +12,25 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-088 · 2026-11-14 · E-78 groundwork: a neighbour-only soup runner, its controls, and what a level-5 test with 7 soups can see
+
+**Question / why:** level 5 has been tested only in well-mixed BFF soups (E-48 to E-54: later code not fitter; E-66/E-67: no parasites). The next experiment (E-78) forks the 7 jumped E-54 soups at T + 2000 into a well-mixed and a spatial continuation (256 × 256 torus, each program paired with one lattice neighbour per round). This entry is the groundwork only; the experiment is not run and the pre-registration is a draft (`docs/data/e78-preregistration.md`).
+
+**Ran:** `scripts/bff_spatial.py --controls` (~1 min), a 200-round timing pilot of soup 5301 in both arms, an 11-process load test, `scripts/e78_power.py` (detectable effect, wall time). Export `docs/data/experiments/2026-11-14-e78-groundwork.json`.
+
+**Found:**
+- **Runner:** `ArmSoup` is `bff.Soup` with only the pair list changed; the mixed arm equals `bff.Soup` bit for bit (50 rounds, random and snapshot programs). Spatial pairs are a perfect matching of torus neighbours in every round (200 rounds checked).
+- **Positive control:** a block of the hand-written replicator spreads as one patch in the spatial arm (excess copies ∝ t^1.86, front ~0.1 cell per round, neighbour ratio 40 at 2% share) and exponentially and unclustered in the mixed arm (neighbour ratio 0.93). Under `noexec` neither arm changes anything but mutation; a seeded block stays clustered without spreading, so clustering alone is not evidence.
+- **Pitfall:** HOE compresses the soup in storage order, so in the spatial arm it rises with clustering alone (5301: 4.29 → 5.15 in 200 rounds, while HOE on shuffled rows fell to 3.90). Compare arms with shuffled-row HOE.
+- **Timing:** ~1.4 × 10⁻⁴ s per round per unit of steps per pair under full load (0.3–1.3 s per round). 7 soups × 3 arms × 20,000 rounds ≈ 10 h on 11 workers (2 arms: 8.3 h).
+- **Power:** with the soup as the unit (n = 7), the between-arm invasion difference detectable with 80% power is about 0.3 log units under E-54-like heterogeneity (0.08 if only assay noise mattered).
+
+**Changed:** `scripts/bff_spatial.py`, `scripts/e78_power.py`, `tests/test_programs.py::test_spatial_soup_controls`; draft `docs/data/e78-preregistration.md`. No package code changed.
+
+**Lesson:** a measure computed on the storage order of a soup (HOE, compression) is not geometry-free once the soup has geometry.
+
+---
+
 ## J-087 · 2026-11-14 · E-77: the discovery engine beats random search on all 20 seeds (H1 with power, pre-registered, passes)
 
 **Question (pre-registered, `docs/data/e77-preregistration.md`, commit `7c7edbe`):** H1, "guided search finds more interesting rules than random search at equal compute", rested on E-03 to E-06: 2 seeds per arm. Does it hold over 20 seeds, paired by seed, after removing near-duplicates?
