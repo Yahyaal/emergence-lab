@@ -12,6 +12,49 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-084 · 2026-11-13 · E-75 phase 6: how often a random pair's run writes a replicator predicts which rules jump, including where tile density failed (pre-registered)
+
+**Question (pre-registered, `docs/data/e75-phase6-preregistration.md`, commit `ff6b4e5`; D-061):** J-083 found that jumps are set by how often replicators originate, and that each founder is written in one run. Does the rate at which runs of fresh random pairs write a replicator (R_P) predict which of the 60 phase-3/4 rules jump?
+
+**Built:** `subleq.products()` and `subleq.prefilter()` (C). Random pairs are run once (8,192 steps). A changed half passes the pre-filter if some non-constant 4-byte block of it survives 2 generations with random partners in ≥ 1 of 2 lineages. The pre-filter keeps 99.7% of the 3,118 informative founders and origins from phase 5, and runs at about 290k pairs/s per core. Hits get the inheritance test, confirmed twice; inputs are tested too. Test: `test_subleq_product_census_prefilter`.
+
+**Development (disclosed):**
+- 10^7 pairs gave no confirmed product for two rules that jump in every soup, so 3 × 10^8 per rule was needed.
+- A pilot of 5 rules at 2.2 × 10^8 (seed 81) showed 5–1,911 products for jumping rules and 0 for a non-jumper.
+
+**Ran:** `scripts/sq_products.py` (3 h 22 min, 11 workers); analysis `scripts/sq_products_report.py`. 1.8 × 10^10 pair runs in all.
+
+**Found:**
+- **Primary passes.** In pool A (jump ≤ 0), ρ(R_P, soups jumped) = 0.64, p = 4 × 10^-4. Tile density on the same 24 rules: 0.14.
+- **Beats tile density overall:** ρ = 0.71 vs 0.63 over 60 rules; 0.88 vs 0.76 under always.
+  - In pool B it is worse (0.71 vs 0.97), though above its pre-registered bar.
+- **Rate sets speed.** Among the 24 rules that jumped in ≥ 4 soups, a higher R_P means an earlier jump: ρ = −0.65, p = 3 × 10^-4. R_P ranges from 0.3 to 879 per 10^8.
+- **"No product, no jump" is wrong.**
+  - The 37 rules with no product in 3 × 10^8 pairs still jumped in 35 of 222 soups.
+  - All of those jumps were under ≤ 0 or < 0; under always, the 8 zero-product rules jumped in 0 of 48.
+  - Six of these rules jump in ≥ 4 soups.
+- **Under ≤ 0 and < 0, fresh random pairs barely produce.** Only 7 of 36 rules had any product, at ≤ 8 per 10^8. The 30 jumped soups of the six zero-product rules jumped after a median of 5,250 rounds (4.3 × 10^7 runs), and the fastest after 250. Fresh-pair rates would predict waits of over 36,000 rounds, so soup material there is at least several times, and up to over 100 times, more productive than fresh random code.
+- **False positives:** 4 always rules with low R_P (0.3–2) never jumped, including W8/o56, whose tile density is 269.
+- **Post hoc:** rules with R_P > 0 jumped in 109 of 138 soups; rules with R_P = 0 in 35 of 222.
+- **Other counts:**
+  - Self-written products 1,342, partner-written 1,916.
+  - 1 null product.
+  - 8,194 products came from inputs that were already replicators, almost all in s+1 W8/o125.
+
+**Predictions:** 4 of 5 right, including the primary (both parts of prediction 3 right). Prediction 4 (no product, no jump) was wrong.
+
+**Meaning:**
+- Counting the event that starts a jump works better than counting finished replicators. It predicts which rules jump and how soon, and it recovers pool A, where tile density said nothing.
+- This is still a retrospective test: the outcomes were known, though the predictor was computed blind to them.
+- The miss is systematic. Under ≤ 0 and < 0, the material in a soup is not fresh random code. Earlier runs have rewritten it, and it writes replicators much more often.
+- Evidence level unchanged: this predicts where level-3 replicators arise; it says nothing about levels 4–5.
+
+**Changed:** `emergence/programs/subleq.c`/`.py` (product census), `scripts/sq_products.py`, `scripts/sq_products_report.py`, a test; D-061 accepted; report section 33; handoff.
+
+**Lesson:** a predictor of the event works, and its failures point to where our model of the inputs is wrong: soups are not random code, even when they look like it.
+
+---
+
 ## J-083 · 2026-11-13 · E-75 phase 5: replicators are rare single events; whether a soup jumps is set by how often they arise (pre-registered trace)
 
 **Question (pre-registered, `docs/data/e75-phase5-preregistration.md`, commit `aa6843b`; D-060):** where do the first replicators come from? Is the difference between rules that jump and rules that don't in how often replicators arise, or in whether they survive?

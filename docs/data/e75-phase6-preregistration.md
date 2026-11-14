@@ -69,3 +69,38 @@ from replicator inputs, and the number of distinct products.
 - Products are counted, not pairs; one pair can give two.
 - The pre-filter can miss a replicator whose block survives only in some lineages (0.3% of phase-5 founders).
 - 6 soups per rule, so jump counts are coarse.
+
+## Outcome (added after the run; J-084)
+
+Run time 3 h 22 min, 11 workers. Analysis: `scripts/sq_products_report.py`. All pre-filter hits were tested; none
+of the 1,800 chunks reached 5,000 hits.
+
+1. **Primary, pool A: right.** ρ = 0.64, one-sided p = 4 × 10^-4. D_T on the same rules: ρ = 0.14.
+2. **All 60 rules: right.** ρ(R_P) = 0.71 vs ρ(D_T) = 0.63.
+3. **Per pool: right.**
+   - always: ρ = 0.88 (D_T 0.76).
+   - pool B: ρ = 0.71. This passes the threshold but is worse than D_T's 0.97 on the same 12 rules.
+4. **No product, no jump: wrong.** The 37 rules with no informative product jumped in 35 of 222 soups (16%, not
+   ≤ 10%).
+   - always: 8 rules, 0 of 48.
+   - pool A: 20 rules, 25 of 120.
+   - pool B: 9 rules, 10 of 54.
+   - Six of these rules jumped in ≥ 4 of 6 soups, all under ≤ 0 or < 0: W8/o17, W16/o22, s−1 W32/o93 and W64/o61
+     under ≤ 0; W16/o123 and W8/o11 under < 0.
+5. **Rate sets speed: right.** Among the 24 rules that jumped in ≥ 4 soups, ρ(R_P, median T) = −0.65, one-sided
+   p = 3 × 10^-4.
+
+**Also seen:**
+- **R_P > 0 vs R_P = 0 (post hoc):** 109 of 138 soups jumped vs 35 of 222 (Fisher p = 6 × 10^-34).
+- **False positives.** Four always rules have a low R_P (0.3–2 per 10^8) and no jumping soup: s+1 W8/o56 (D_T 269),
+  W16/o88, W32/o79, and s−1 W16/o28.
+- **Under ≤ 0 and < 0, fresh pairs rarely produce at all.**
+  - Only 7 of 36 rules had any informative product, at ≤ 8 per 10^8, against up to 879 under always.
+  - Yet the 30 jumped soups of the six zero-product rules jumped after a median of 5,250 rounds (4.3 × 10^7 runs),
+    and the fastest after 250.
+  - At a fresh-pair rate below 1 per 3 × 10^8 runs, the expected wait would exceed 36,000 rounds.
+  - So under these jump rules, soup material produces replicators at least several times, and in the fastest soups
+    over 100 times, more often than fresh random pairs do.
+- **Sides.** Products were written by the program's own run 1,342 times and by its partner's run 1,916 times.
+- **Null products:** 1, under ≤ 0.
+- **Products from replicator inputs:** 8,194, of which 8,024 were in the always rule s+1 W8/o125.
