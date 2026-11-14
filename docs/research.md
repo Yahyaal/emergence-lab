@@ -28,7 +28,7 @@ Each objective is measurable, and progress is recorded on the [evidence ladder](
 | # | Objective | Status |
 |---|---|---|
 | O1 | Build an observatory that tells randomness, repetition and organisation apart, *validated against deceptive controls* | done for 2D CA, Lenia and program soups (170 benchmark checks: 39 standard + 131 probes, as last reported); extended with every new detector |
-| O2 | Build a discovery engine that finds interesting universes more efficiently than random search, without a single complexity score | supported, preliminary (H1, n = 2 seeds per arm); re-run at 20 runs per arm in progress |
+| O2 | Build a discovery engine that finds interesting universes more efficiently than random search, without a single complexity score | supported (H1, E-77) |
 | O3 | Find universes with persistent organisation and self-propelled structures (evidence levels 1–2) | reached: level 2 in Life-like rules (found by search) and in Lenia (arising spontaneously from smooth starts, E-14) |
 | O4 | Detect spontaneous self-replication (level 3), and then heredity and variation (level 4) | not observed in Life-like rules (0 of 17 candidates). **Replication observed:** one multi-channel Lenia rule makes dividing spots of a single type (E-32); replicators arise from random code in BFF soups (E-40, E-41) and in SUBLEQ versions we added (E-75; the two published versions make none). **Heredity observed in program soups:** one-byte mutations are inherited in 9 of 9 BFF replicators (E-42); not tested in SUBLEQ |
 | O5 | Detect cumulative, open-ended innovation, where new structures enable further new structures (level 5) | not observed in Life-like rules (knockouts ≈ placebo, J-010). **Tested in BFF soups, not shown:** later replicators are not reliably fitter than earlier ones by races, growth rate or kin-free invasion, up to 20,000 rounds after the jump (E-48 to E-54); no parasites (E-66, E-67). Only well-mixed soups were tested |
@@ -72,7 +72,7 @@ Each discovery is tagged with the highest level its evidence supports (D-014). L
 
 | | Hypothesis | Status |
 |---|---|---|
-| H1 | Guided search beats random search at equal compute | supported, preliminary (n = 2 seeds per arm; 1.9–4.2× after removing near-duplicates); re-run at 20 runs per arm in progress |
+| H1 | Guided search beats random search at equal compute | supported (E-77: 20 paired seeds, pre-registered; distinct rules with self-propelled structures 1.84× [1.70, 2.25], complex on every seed 3.4× [2.6, 3.9], engine ahead on 20 of 20 seeds, p = 9.5 × 10⁻⁷; Life-like/Generations rules only, one budget; self-propulsion is one of the engine's own objectives) |
 | H2 | Spontaneous self-replication occurs in Life-like / Generations rules at 96×96, ≤ 2000 steps | not observed (0 / 17 top candidates) |
 | H3 | Some rules show ongoing innovation | not observed; 2 inconclusive (chaos-like universes, no matched null) |
 | H4 | Initial conditions modulate how much complexity a fixed rule produces | Life-like rules: not supported as tested; the patch effect disappears at matched density (E-09, E-10); density itself matters; the gradient signal is weak and untested. **Lenia: supported** in the rules tested: smooth starts make gliders, soups with the same mass almost never do (E-14, pre-registered), and the spatial arrangement is the cause (E-19) |
@@ -87,13 +87,13 @@ They mean the *top candidates of this search*, in *this rule family*, at *this s
 
 Proposed plan for the next phase (D-018). The ordering takes the third review ([R-3]({{ '/reviews.html#r-3' | relative_url }})) into account.
 
-**Current status (14 November 2026; review [R-5]({{ '/reviews.html#r-5' | relative_url }})).** Tracks B, C and D below are done; in Track A, the knockout test is done and the H1 re-run is in progress. Since 9 November most work asked which rule versions make replicators, and how soon. That predictor thread is being wound down: a one-rate synthesis (one rate per rule, the chance that a run writes a replicator, estimated with the rule as the unit) will summarise it, with at most one more run. The next main question is level 5. It will be tested in program soups where programs meet only their neighbours on a grid, against well-mixed soups, with the existing level-5 measures; the design is to be pre-registered. H1 (engine against random search) is being re-run at 20 runs per arm.
+**Current status (14 November 2026; review [R-5]({{ '/reviews.html#r-5' | relative_url }})).** Tracks B, C and D below are done; in Track A, the knockout test is done and H1 was re-run at 20 seeds per arm and passed (E-77, J-087). Since 9 November most work asked which rule versions make replicators, and how soon. That predictor thread is being wound down: a one-rate synthesis (one rate per rule, the chance that a run writes a replicator, estimated with the rule as the unit) will summarise it, with at most one more run. The next main question is level 5. It will be tested in program soups where programs meet only their neighbours on a grid, against well-mixed soups, with the existing level-5 measures; the design is to be pre-registered. H1 (engine against random search) is being re-run at 20 runs per arm.
 
 **Track A: innovation science** (step 3 done; step 4 in progress; steps 1, 2 and 5 open)
 1. **Sampling validation:** run the innovation probe against continuous observation (every step) on ~10 universes, and quantify missed and spurious types.
 2. **Same-rule null:** compare a universe's late innovation with independent seeds of the same rule at the same age. This separates rule-level regularity from history-specific events, which is the null we actually need for "cumulative".
 3. *(Done: J-010, E-10, E-11; knockouts ≈ placebo.)* **Causal knockout test** for "earlier innovations enable later ones": when a new type appears, delete it in a clone and check whether the later new types still appear. Dependency means cumulative structure. This is an intervention on clones, which the architecture already supports (D-003).
-4. *(In progress: H1 at 20 runs per arm.)* **Statistics:** 10–30 runs per arm for H1, with confidence intervals; probe rates per 1000 steps.
+4. *(Done for H1: E-77, 20 paired seeds.)* **Statistics:** 10–30 runs per arm for H1, with confidence intervals; probe rates per 1000 steps.
 5. **Replication:** rename positives to "candidate self-replicator"; use more null patterns (≥ 20); trace where each copy came from.
 
 **Track B: initial conditions** (cheap; no new physics). *Done: Life-like rules (E-09, E-10, J-009); Lenia smooth starts (E-13, E-14, E-19, E-24).*

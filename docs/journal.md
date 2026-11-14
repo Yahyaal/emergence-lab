@@ -63,6 +63,8 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 - No `emergence/*.py` change.
 
 **Lesson:** an analysis step that changes the headline number (here deduplication) must be committed code, not a session's ad hoc calculation; it took a reproduction to recover it.
+---
+
 ## J-086 · 2026-11-14 · E-76: one origin rate per rule fits the soups roughly; under jump ≤ 0 soups make replicators ~7 times faster than fresh pairs, already in the first rounds (exploratory)
 
 **Question / why:** J-083 found that a jump is the wait for one rare event, and E-50 found that the BFF jump rate grows with soup size. Both suggest one model: each rule has a single rate λ (replicator origins per pair run), and the wait to a jump is exponential with hazard λ × N/2 per round. A review proposed measuring this rate directly, with the rule as the unit, instead of testing more census predictors. Does the model fit our soups? How does the soup rate compare with the fresh-pair product rate R_P? And are the rule-level versions of the confirmatory tests as strong as the soup-level ones? **Exploratory:** this re-analyses existing exports whose outcomes were known. Nothing was run, and nothing was pre-registered.

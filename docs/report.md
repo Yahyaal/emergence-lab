@@ -817,9 +817,33 @@ Section 33 was a test on soups we had already run. Here we chose **new** version
 
 **What it means.** On versions chosen before their soups ran, product rate sorts them into those that make replicators and those that don't, as section 33 suggested. The unexplained part is the same: under "≤ 0", some versions make replicators in soups but never from fresh random pairs. Next, we measure the product rate of the soups' own code.
 
+## 35 · Saturday: two follow-ups from a review of the whole project
+
+A review of the project against its goal ([R-5]({{ '/reviews.html#r-5' | relative_url }})) asked for two checks that needed no new idea.
+
+**One rate per version (E-76, exploratory; no new runs).** Section 32 found that a soup makes replicators after waiting for one rare event. So each version of the language should have a single number: how often a run of two programs writes a replicator. We estimated that number from the soups we already had (79 versions, 474 soups) and compared it with section 33's count from fresh random pairs.
+
+<figure>
+<img src="{{ '/assets/report/rate-model.png' | relative_url }}" alt="Scatter plot: the rate at which soups make replicators against the rate at which fresh random pairs write them, for 79 versions. Always-jump versions lie along the diagonal; versions that jump on zero or negative results lie above it.">
+<figcaption>Each point is one version. On the dashed line, soups make replicators exactly as often as fresh random pairs do. Bars are 95% intervals; arrows are bounds.</figcaption>
+</figure>
+
+- **Under "always", the two agree:** in the first 500 rounds the ratio is 1.00 (0.69 to 1.38).
+- **Under "≤ 0", soups are about 7 times faster** than fresh pairs (4.8 to 10.0). The gap is already there in the first 150 rounds and does not grow as the soup gets older. So it is not slow "ageing" of the code, as section 33 suggested. Something happens in a soup that a single run of a fresh pair does not capture, or our count of fresh pairs misses some replicators under this rule.
+- **Section 33's "several to over a hundred times" was too strong.** For the six versions it was based on, the data only show at least 1.0 to 3.8 times. Under "< 0" there is no excess (0.66).
+- **A single rate is a fair description, not an exact one.** On average, waiting times vary as a constant rate predicts. But 8 of 26 versions deviate (2.6 expected by chance); some switch on only after a delay.
+- **Counting versions, not soups.** Six soups of one version are not six independent tests. Counting each version once: section 30 still passes clearly (11 of 12 against 1 of 12, p = 0.00005), section 34 passes modestly (6 of 7 against 2 of 12, p = 0.006), and section 31's main test is flat (6 of 12 against 5 of 12).
+- **In BFF, one rate explains every soup size** (section 14): 0.036 replicator origins per 100 million runs (0.017 to 0.066).
+
+**Does the discovery engine beat random search? (E-77, pre-registered.)** This claim had rested on 2 seeds since the first week. We ran 20 new seeds, engine and random search on each, with the settings of the original runs.
+
+- **The engine was ahead on all 20 seeds.** It found 1.84 times as many distinct rules with self-propelled structures (1.70 to 2.25), and 3.4 times as many rules that are complex on every seed.
+- **The original numbers reproduce exactly**, but the code that removed near-duplicate rules had never been saved. We rebuilt it and checked that it gives the published counts.
+- **Limits:** Life-like rules only, one search budget, and self-propulsion is something the engine is told to look for.
+
 ## Where this leaves the project
 
-| Evidence level | Life-like rules (v0.1–v0.4) | Lenia (tonight) | Program soups (BFF) |
+| Evidence level | Life-like rules (v0.1–v0.4) | Lenia family | Program soups (BFF, and the SUBLEQ family where named) |
 |---|---|---|---|
 | 1 · persistent organisation | yes | yes | after a transition: one family of code persists for thousands of rounds |
 | 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too | not applicable (no space) |
