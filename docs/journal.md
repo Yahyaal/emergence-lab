@@ -12,6 +12,58 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-086 · 2026-11-14 · E-76: one origin rate per rule fits the soups roughly; under jump ≤ 0 soups make replicators ~7 times faster than fresh pairs, already in the first rounds (exploratory)
+
+**Question / why:** J-083 found that a jump is the wait for one rare event, and E-50 found that the BFF jump rate grows with soup size. Both suggest one model: each rule has a single rate λ (replicator origins per pair run), and the wait to a jump is exponential with hazard λ × N/2 per round. A review proposed measuring this rate directly, with the rule as the unit, instead of testing more census predictors. Does the model fit our soups? How does the soup rate compare with the fresh-pair product rate R_P? And are the rule-level versions of the confirmatory tests as strong as the soup-level ones? **Exploratory:** this re-analyses existing exports whose outcomes were known. Nothing was run, and nothing was pre-registered.
+
+**Ran:** `scripts/rate_model.py` (deterministic, seed 2026 for the bootstraps; ~2 min). Data: `docs/data/experiments/2026-11-14-rate-model.json`; figure `docs/assets/report/rate-model.png`.
+- **Inputs:** the 79 SUBLEQ rules of E-75 phases 3, 4 and 7 (474 soups; fields `soups[].T`, group labels, and R_P from the product census, 3·10^8 pairs per rule), plus BFF E-40/E-41/E-50/E-54.
+- **Jump times:** T is the 50-round checkpoint at which an inheritor was first seen, confirmed 1,000 rounds later. So soups without a jump are censored at 15,000 rounds, not 16,000.
+- **Fitting:** rates are fitted with interval censoring, with the origin in (T − 50 − L, T − L]. Primary L = 0; sensitivity runs use L = 16 (the establishment lag) and L = −100 (T early because null replicators came first, J-083). Intervals are profile likelihood.
+
+**Found:**
+- **Rates (per 10^8 pair runs):**
+  - 37 of 79 rules jumped at least once. Their rates run from 0.14 (one jump in 6 soups) to about 100. s+1 W8/o125 jumped at the first checkpoint in all 6 soups, so it has only a lower bound (≥ 316).
+  - Rules that never jumped: < 0.41 (one-sided 95%).
+  - The lag conventions change rates by a median of 4% (at most 2.1×).
+- **Fit: adequate on average, not rule by rule.**
+  - The mean coefficient of variation of T in the 26 rules that jumped in 6 of 6 soups is 0.77. An exponential with 50-round checkpoints predicts 0.79 (90% band 0.71–0.87).
+  - But 8 of these 26 rules fall in a 5% tail (2.6 expected, binomial p = 0.003). Five are too regular, and look like a delay followed by a fast hazard: < 0 W32/o0 jumps only at 1,250–3,600, always W16/o4 at 100–200. Three are too variable, with one soup far later than the rest.
+  - The pooled standardised times are borderline: KS p = 0.06.
+  - A common delay of up to 49 rounds does not help (LR 0.9). Longer delays are ruled out wherever soups jump at T = 50.
+- **Soup rate vs fresh-pair rate R_P,** as common ratios with 95% CIs:
+  - **always: 0.60 (0.48–0.76).** The ratio varies strongly between rules (p = 10^-10). In the first 500 rounds it is **1.00 (0.69–1.38)** and homogeneous: fresh soups produce exactly as the census predicts.
+  - **≤ 0: 6.9 (4.8–10.0) over all rounds; 7.9 (5.2–12.0) in the first 500 rounds; 4.2 (1.7–8.3) in the first 150 rounds (7 jumps).** 10 of 16 informative rules have a lower bound above 1, and 2 above 10 (s+1 W32/o28, 132×, 23–2,500; s−1 W32/o5, ≥ 52×).
+  - **< 0: 0.66 (0.46–0.91), not above 1.** This is a mix: s+1 W16/o3 makes products at 371 per 10^8 but its soups run at 0.22× (0.09–0.44), while 3 rules sit above 1.
+- **Does the hazard rise with soup age?** Within rules, the hazard is 1.4× (0.9–2.3) and 1.7× (1.05–3.0) the round 0–500 hazard in rounds 500–2,000 and 2,000–15,000; p = 0.12 for a constant hazard. This depends on where T is placed (p = 0.34 to 0.0005 across conventions), and under ≤ 0 alone there is no rise (p = 0.48). So the ≤ 0 excess is present early, not built up over thousands of rounds.
+- **J-084's claim, checked:** "soup material is several to 100+ times more productive" holds for jump ≤ 0 as a class (~7×), but not for < 0. For the six phase-3/4 zero-product rules it cites, the 95% lower bounds of the ratio are 1.0–3.8, not several to 100. The "waits of over 36,000 rounds" figure assumed exactly one product in 3·10^8 pairs; the 95% upper bound on R_P (1.0 per 10^8) implies about 12,000 rounds. The median T (5,250) and fastest T (250) are confirmed.
+- **Rule-level Fisher tests (one-sided)**, with "any soup jumped" first, then "≥ 4 of 6", then the soup level:
+  - phase 3: 11/12 vs 1/12, p = 5.4·10^-5; same for ≥ 4 of 6; soup level 10^-24.
+  - phase 4 pool A: **6/12 vs 5/12, p = 0.50**; ≥ 4 of 6: 5/12 vs 3/12, p = 0.33; soup level 0.08.
+  - phase 4 pool B: 6/6 vs 0/6, p = 0.001; ≥ 4 of 6: 4/6 vs 0/6, p = 0.03.
+  - phase 7: 6/7 vs 2/12, p = 0.006; ≥ 4 of 6: 5/7 vs 2/12, p = 0.03; soup level 6·10^-11.
+  - The reviewer's numbers are right for phases 3 and 7. For pool A, their 5/12 vs 3/12 is the ≥ 4-of-6 count; under "any" it is 6 vs 5.
+  - Rule-level p values are 10^5–10^19 times weaker than the soup-level ones; the six soups of a rule are not independent tests of a predictor.
+- **BFF: one per-pair rate explains all four soup sizes.**
+  - With the pre-registered HOE events: 0.045 (0.021–0.086) per 10^8. Common vs per-size rates: p = 0.06.
+  - Counting verified replicators only (D-045): 0.030 (0.011–0.065), p = 0.21.
+  - Adding E-54's 12 new 2^16 soups (4 jumps): **0.036 (0.017–0.066), p = 0.16; β = 1.16 (0.30–2.25).**
+  - 2^15's 0 of 12 has P = 0.10 under the common rate.
+  - BFF's rate is 10–1,000 times below the jumping SUBLEQ rules.
+
+**Meaning:**
+- The one-rate model is a fair first description. In BFF it explains soup size; under jump always it ties the product census to the soups quantitatively (ratio 1.0 early).
+- It is not exact. Some rules switch on after a delay, some soups are much later than their siblings, and the ratio to R_P varies between rules.
+- Under ≤ 0 the soup produces ~7 times faster than single runs of fresh pairs, and does so within the first few hundred rounds. That points less to slow "aging" of code and more to something soups do that one fresh pair run does not (two-step origins, mutation, or null-zero waves), or to a census that undercounts there.
+- Rule-level tests are the honest unit for a predictor of rules: phase 3 and phase 7 survive (p = 5·10^-5, 0.006), and pool A is null.
+- Evidence level unchanged (level 3; nothing about levels 4–5).
+
+**Changed:** `scripts/rate_model.py`; data `2026-11-14-rate-model.json`; figure `docs/assets/report/rate-model.png`; E-76.
+
+**Lesson:** fitting the simplest generative model to all the data at once shows both what earlier predictors were approximating, and where a claim stated without intervals ("100+ times") was larger than the evidence.
+
+---
+
 ## J-085 · 2026-11-14 · E-75 phase 7: rules chosen by product rate alone, before their soups ran, jump far more often, but the test came out short of rules (pre-registered)
 
 **Question (pre-registered, `docs/data/e75-phase7-preregistration.md`, commit `2c72454`; D-062):** J-084 was retrospective. If new rules are chosen by their product rate R_P alone, with HIGH and ZERO thresholds fixed from phase 6, do the HIGH rules' soups jump and the ZERO rules' soups not?
