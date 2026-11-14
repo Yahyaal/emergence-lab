@@ -60,7 +60,7 @@ An independent agent with no part in the work reviewed the journal, data, code a
 
 ## R-5 · Goal and approach review (2026-11-14) {#r-5}
 
-Reviewer: Claude, at the owner's request, on branch `v3.7-copiercount` (E-75 phase 7, J-085). It read the research page, handoff, decisions, reviews, the report summary and sections 27 to 34, journal entries J-077 to J-085, the E-75 design and the exported data of phases 6 and 7. It did not re-run experiments, the tests or the benchmark. The responses below are the owner's decisions so far; points without a decision are marked open.
+Reviewer: Claude, at the owner's request, on branch `v3.7-copiercount` (E-75 phase 7, J-085). It read the research page, handoff, decisions, reviews, the report summary and sections 27 to 34, journal entries J-077 to J-085, the E-75 design and the exported data of phases 6 and 7. It did not re-run experiments, the tests or the benchmark. The owner answered the first question and asked the reviewer for its suggestion on the other two, then asked it to plan and carry out the follow-up work. So, apart from that first answer, the responses below are the reviewer's proposals, acted on unless the owner overrules them; points with no action yet are marked open.
 
 | Point | Response |
 |---|---|
@@ -78,5 +78,5 @@ Reviewer: Claude, at the owner's request, on branch `v3.7-copiercount` (E-75 pha
 | **7.** Clear the merge queue and keep pull requests small (four stacked pull requests; the published site stops at E-65) | open |
 | **8.** Close cheap open items or retire them: run H1 at 20 runs per arm (under 3 hours), or stop quoting the 1.9–4.2× figure | **Agreed; in progress:** H1 is being re-run at 20 runs per arm. Until then the figure stays labelled preliminary (n = 2 seeds per arm) |
 | **Question:** paper or exploration? | **Owner:** exploration, held to paper-quality rigour |
-| **Question:** do program soups count as the "universes" meant by the goal? They have no space and no dashboard | **Owner:** yes, program soups count as a third family. The research page now says plainly that they have no space and are not covered by the engine, discovery engine or dashboard |
-| **Question:** may the predictor thread end after one more run? | **Owner:** yes, after at most one more run |
+| **Question:** do program soups count as the "universes" meant by the goal? They have no space and no dashboard | **Reviewer's suggestion, at the owner's request (owner not sure):** count them as a third family. The research page now says plainly that they have no space and are not covered by the engine, discovery engine or dashboard |
+| **Question:** may the predictor thread end after one more run? | **Reviewer's suggestion, at the owner's request:** yes, after at most one more run; the owner has not confirmed |

@@ -160,7 +160,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 
 ## Open problems, in priority order
 
-0. **Next steps (review R-5; owner decisions of 14 Nov):**
+0. **Next steps (review R-5, 14 Nov; proposed by the reviewer and started at the owner's request):**
    - **Wind down the predictor thread** (which rule versions make replicators, and how soon; E-60 to E-75). Write a one-rate synthesis: one rate per rule, the chance that a pair's run writes a replicator, estimated from time to jump with the rule as the unit (a jump is the wait for one rare event, J-083; rate ∝ soup size, E-50). At most one more run, e.g. the aged-soup census (E-75 phase 8, not yet pre-registered) as a test of whether the rate rises with soup age.
    - **H1 at 20 runs per arm** (in progress; still 2 seeds per arm until then).
    - **Level 5 in soups with space:** pre-register a comparison of soups where programs meet only their neighbours on a grid against well-mixed soups, with the existing level-5 instruments (kin-free invasion and growth rate, D-044, E-53; parasite detector, D-048). So far level 5 was tested only in well-mixed BFF soups (E-48 to E-54: later code not fitter). Counterfactual BFF rules jump in minutes (E-56) and could supply many jumped soups (state that results are for that rule).
