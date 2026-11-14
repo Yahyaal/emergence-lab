@@ -6,8 +6,12 @@
 #include <stdlib.h>
 
 static long run(uint8_t *t, int n, long max_steps, int h1start) {
-    /* E-64: h1start = h + 256 * g starts head0 at g (g = 0 for every earlier experiment). */
-    int ip = 0, h0 = (h1start >> 8) % n, h1 = (h1start & 255) % n;
+    /* E-64: h1start = h + 256 * g starts head0 at g (g = 0 for every earlier experiment).
+       E-70: + 65536 * v selects an instruction-set variant (v = 0 = standard BFF):
+       1 '.' then h0++, h1++   2 '.' then h0--, h1--   3 ',' then h0++, h1++
+       4 '[' and ']' test t[h1]   5 '+' and '-' act on t[h1]. */
+    int ip = 0, h0 = ((h1start >> 8) & 255) % n, h1 = (h1start & 255) % n, v = h1start >> 16;
+    int *th = v == 4 ? &h1 : &h0, *ah = v == 5 ? &h1 : &h0;
     long steps = 0;
     while (ip >= 0 && ip < n && steps < max_steps) {
         switch (t[ip]) {
@@ -15,12 +19,19 @@ static long run(uint8_t *t, int n, long max_steps, int h1start) {
         case '>': h0 = (h0 + 1) % n; break;
         case '{': h1 = (h1 + n - 1) % n; break;
         case '}': h1 = (h1 + 1) % n; break;
-        case '-': t[h0]--; break;
-        case '+': t[h0]++; break;
-        case '.': t[h1] = t[h0]; break;
-        case ',': t[h0] = t[h1]; break;
+        case '-': t[*ah]--; break;
+        case '+': t[*ah]++; break;
+        case '.':
+            t[h1] = t[h0];
+            if (v == 1) { h0 = (h0 + 1) % n; h1 = (h1 + 1) % n; }
+            else if (v == 2) { h0 = (h0 + n - 1) % n; h1 = (h1 + n - 1) % n; }
+            break;
+        case ',':
+            t[h0] = t[h1];
+            if (v == 3) { h0 = (h0 + 1) % n; h1 = (h1 + 1) % n; }
+            break;
         case '[':
-            if (t[h0] == 0) {
+            if (t[*th] == 0) {
                 int d = 1, j = ip + 1;
                 for (; j < n; j++) {
                     if (t[j] == '[') d++;
@@ -31,7 +42,7 @@ static long run(uint8_t *t, int n, long max_steps, int h1start) {
             }
             break;
         case ']':
-            if (t[h0] != 0) {
+            if (t[*th] != 0) {
                 int d = 1, j = ip - 1;
                 for (; j >= 0; j--) {
                     if (t[j] == ']') d++;
