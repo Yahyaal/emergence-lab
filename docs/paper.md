@@ -1,0 +1,456 @@
+---
+title: Paper
+description: A paper-style synthesis of the project's findings, 5 to 15 November 2026, with every number traced to its source.
+---
+
+# Structure from fixed rules: spontaneous movers in Lenia, replicators in program soups, and no open-ended evolution yet
+
+<p class="lead">A synthesis of Emergence Lab, 5 to 15 November 2026 (journal entries J-001 to J-089). Written from the committed data, journal, decisions, pre-registrations and reviews; no new experiments or analyses. Every number in the text has a row in <a href="#appendix-a-claims-table">Appendix A</a>.</p>
+
+## Abstract
+
+We ran small artificial universes under fixed rules and asked whether persistent, self-propelled, self-copying or evolving structure appears without design, and what makes it likely. Every detector was checked against a positive, a negative, a control built to fool it, and a null matched to how its candidates are selected; confirmatory tests were pre-registered. (A) In Lenia, a continuous cellular automaton, self-propelled structures arise on their own from spatially correlated random starts and almost never from uncorrelated starts of the same mass. A shuffled control shows that spatial arrangement is the cause, in the 8 rules tested. (B) In soups of random programs, self-replicators arise with no fitness function: in BFF, as reported by others, and in a SUBLEQ-like family we defined. In BFF variants, whether a rule's shortest copier makes a copy that also copies predicted which rules make replicators in several pre-registered tests; nothing predicted how fast. In the SUBLEQ family each predictor passed once, then failed to transfer or came out undecided. (C) Mutations in replicators are inherited (evidence level 4), but later code was not fitter by four measures, no parasites appeared, and lattice-only interaction changed neither. Open-ended evolution (level 5) was not shown. Limits: few rules per test, rule families partly shaped by us, laptop scale, well-mixed fitness instruments, and no systematic literature review.
+
+## 1. Question and approach
+
+**Goal.** The project asks whether complex structures and behaviours can emerge spontaneously from simple mathematical rules, and which properties of the rules, or of the initial conditions, make that more likely ([Research]({{ '/research.html#goal-and-objectives' | relative_url }})). It is not a simulation of our universe and not an attempt to build life by design. Nothing is planted, steered or rewarded inside a running universe.
+
+**Terms.** A *rule* is one fixed version of a physics or a programming language. A *world* is one run of a rule from one random start. In the program work, a *soup* is a population of random programs that meet in pairs and run on a shared tape; one soup is one run of one rule. (In the Lenia work, "soup" is also the name of one start condition: uniform, uncorrelated random cells. We say "soup start" there.) A *jump* is the moment a program soup is taken over by self-copying programs, confirmed by a replicator detector, not by an entropy curve alone. A test is *pre-registered* when its hypothesis, analysis and pass/fail criteria were committed to the repository before the run; *post hoc* marks anything decided after seeing the data. *HOE* is the high-order entropy of a soup, a compression-based measure of how repetitive it is.
+
+**Evidence ladder.** Each claim carries the highest level its evidence reaches (D-014). Levels 4 and 5 are never assigned without a validated measurement.
+
+| Level | Meaning | How it is measured |
+|---|---|---|
+| 1 | Persistent organisation | several persistent shape types, reproduced across seeds |
+| 2 | Self-propelled structures | a shape travels on its own in an isolated clone |
+| 3 | Self-replication | a shape or program makes a growing number of copies of itself alone, and random patterns do not |
+| 4 | Heredity and variation | variants also replicate and pass their variation on |
+| 5 | Open-ended evolution | innovation that continues and builds on earlier innovation |
+
+**Method.** Four commitments shaped the work.
+
+1. *Validation first.* Every detector has a known positive, a negative, a deceptive control built to fool it, and a null that accounts for how its candidates were selected (D-012; `emergence benchmark --probes`). As last reported, the benchmark held 170 checks.
+2. *Passive observation.* The simulation never sees the observer. Interventions (isolation tests, knockouts, transplants, forks) run only on cloned universes (D-003).
+3. *Pre-registration.* Confirmatory tests were pre-registered; the files are in `docs/data/`. Exploratory results are labelled as such.
+4. *The rule as the unit.* Questions about which rules make structure are answered with rules as the unit of analysis. This was adopted late (D-063, after E-76). Earlier tests were run with worlds or soups as the unit, and we report both. Six soups of one rule are not six independent tests of a property of that rule.
+
+## 2. Substrates and methods
+
+| Substrate | What it is | Where |
+|---|---|---|
+| Life-like and Generations cellular automata | 2D outer-totalistic rules (B/S, B/S/C) on a torus | `emergence/physics/totalistic.py` |
+| Lenia family | continuous cellular automata with smooth ring kernels: Lenia (states quantised to 256 levels), Flow-Lenia (mass-conserving, float states), multi-channel Lenia | `emergence/physics/` |
+| BFF program soups | random 64-byte programs in a minimal Brainfuck-like language; each round, programs are paired at random and run on their joined 128-byte tape; background mutation | `emergence/programs/bff.py` |
+| SUBLEQ family | a family of SUBLEQ-like languages defined by us | `emergence/programs/subleq.c`, `subleq.py` |
+
+The spatial substrates run through one engine, a passive observatory and a discovery engine (Pareto ranking, novelty search and behaviour niches; D-004, D-009). The program soups have no space; scripts run them outside the engine.
+
+**The SUBLEQ family is ours.** We built it to test a BFF result in a structurally different language (D-054). Its knobs are the number of operands, the jump condition, a write offset, and two features we added: an index that steps on each instruction, and an operand window W (J-077). The family has 16,416 rules. The two published variants we included as anchors, plain SUBLEQ and RSUBLEQ4, made no replicators: not one hit in 10<sup>7</sup> random programs each (E-75 phase 1). Every SUBLEQ result below is therefore about rule versions we designed.
+
+**Compute.** Everything ran on one laptop with no GPU: NumPy and SciPy, plus small C interpreters called through ctypes. Experiments took from minutes to 15.8 hours on 11 worker processes (E-78).
+
+## 3. Finding A: in Lenia, self-propelled structures depend on the spatial correlation of the random start
+
+<figure>
+<img src="{{ '/assets/report/emergence-soup-vs-smooth.png' | relative_url }}" alt="Two rows of four Lenia snapshots at steps 0, 100, 400 and 2000. Top: a fine-grained random start freezes into a maze of static blobs. Bottom: a smooth random start breaks into lumps, a few become gliders, and one glider remains.">
+<figcaption><b>Figure 1.</b> One illustrative world pair: the Orbium rule, same seed, same total mass. Top: a soup start freezes into static blobs. Bottom: a smooth start breaks into lumps; a few become gliders and one survives. The rates are in Figure 2 and Appendix A, not in this picture.</figcaption>
+</figure>
+
+**A search from soup starts finds no movers, although movers can exist.** The discovery engine and a random search together ran 2,085 Lenia worlds from soup starts and found no self-propelled structure (E-12). Yet a viability scan, which grew gliders from 12 hand-made seed shapes, found 8 of 99 single-ring rules that support a glider (E-13a), all around Chan's Orbium. This is a lower bound, since other seed shapes might work. So in these rules the limit was emergence, not existence.
+
+**Smooth starts make gliders; soup starts with the same mass almost never do.** A smooth start is Gaussian-blurred white noise, matched to the soup start by total mass (D-023). In an exploratory run, 18 of 240 smooth-start worlds grew a verified glider, against 0 of 80 soup starts (E-13). Its pre-registered rule-level sign test could not pass: with 8 rules the smallest possible p is 0.0078, above the registered threshold. The confirmatory test (E-14, fresh seeds, universe-level Fisher tests at α = 0.025) found 28 of 160 smooth worlds against 0 of 160 soup worlds at density 0.10 (p = 1.0 × 10⁻⁹), and 21 of 160 against 0 of 160 at density 0.35 (p = 2.4 × 10⁻⁷). Every glider survived 1,000 steps alone. **At the rule level the evidence is weaker:** 6 of the 8 rules made gliders, a sign test gives p = 0.031 for both contrasts, and that is above the registered α (review R-4).
+
+**The cause is spatial arrangement, not the mix of values.** A smooth field also has more weakly filled cells than a soup start. Review R-4 pointed out this confound, and a pre-registered shuffled control removed it (E-19a): the same values as the smooth start, randomly permuted in space. At density 0.10, smooth starts made gliders in 37 of 160 worlds, shuffled starts in 0 of 160 and soup starts in 0 of 160 (p = 6.9 × 10⁻¹³). At density 0.35 the counts were 11, 0 and 0 of 160 (p = 4.1 × 10⁻⁴). By rule, 6 rules were higher and none lower (sign test p = 0.016), and 5 higher, none lower (p = 0.031).
+
+**Soup starts are not hopeless, only close to it.** R-4 also noted that soup starts either die or freeze into blob fields, so their zero was nearly guaranteed. A density sweep (E-19b) found that soup starts die below density 0.18 and become blob fields above 0.24. One soup world in 400 made a glider, at density 0.20, right at the switch. Across all soup-start worlds run in this rule panel, gliders appeared in 1 of 1,120. Smooth starts gave 7 to 23% of worlds, depending on rule panel and density (E-14, E-19a).
+
+<figure>
+<img src="{{ '/assets/report/e19-null-and-sweep.png' | relative_url }}" alt="Left: glider worlds by start condition at two densities; gliders only from smooth starts, none from shuffled or soup starts. Right: soup-start outcomes across densities 0.12 to 0.30; extinct below about 0.18, blob fields above about 0.24, one glider world at 0.20.">
+<figcaption><b>Figure 2.</b> E-19 (pre-registered). Left: shuffling the positions of the smooth start's values removes every glider. Right: the soup-start density sweep; one glider world sits at the die/freeze switch. World-level counts; the rule-level sign tests are in the text.</figcaption>
+</figure>
+
+**Sparse patches also work, given room.** Chan's published start places 15 to 40 dense patches in an empty world. It made no gliders in 40 worlds of 128 × 128 (E-13). In worlds of 256 × 256 run for 3,000 steps, it made gliders in 13 of 160 worlds (8.1%), in 5 of the 8 rules, while 110 patches made none in 160 and smooth starts made them in 29 of 160 (E-24). World size and run length changed together, so "room matters" is suggested, not shown. Both successful starts put matter into isolated lumps with space around them; that mechanism is consistent with the data but untested.
+
+**Other movers.** A search from smooth starts found a slow, turning mover, the "wanderer", in one rule (E-17). In that rule, smooth starts made wanderers in 36 of 40 worlds and soup starts in 0 of 40 (E-18a). On a grid of 42 neighbouring rules, wanderers arose in 7, all on a narrow diagonal band, and in none of 252 soup-start worlds (E-18b). A rule drawn at random gave a third kind, a slow straight "ring glider", in 13 and 18 of 40 smooth worlds at two densities and in 0 of 40 soup worlds at each (E-26). Each of these is one rule. We claim only that they are new to this project.
+
+**Populations and collisions.** In worlds of 384 × 384, a growing blob field swallowed the gliders in 23 of 30 worlds (E-15). In 500 controlled collisions no glider was born, but 7 fused two gliders into a stable double glider (E-20). Spontaneous double gliders were rare (1 genuine case in 320 smooth worlds, E-21), and a double glider hit by a glider never formed a triple in 312 collisions (E-23). Meeting wanderers usually merged into one (71% of 200 encounters, E-22).
+
+**No reproduction, except one multi-channel rule.** A birth detector (D-028, validated on HighLife's replicator and Gray-Scott spots) found no reproducing mover among 285, and no reproducer in 350 held-out worlds (E-27, E-28). Lone lumps in 3,000 random single-channel rules gave no reproducer in the 1,453 rules the detector could decide (E-29). Flow-Lenia produced no movers in 400 worlds (E-16), and fed Flow-Lenia with travelling parameters produced no reproducers once a food artefact was removed (E-30, E-31). One rule in 1,000 random multi-channel rules made dividing spots (E-32; 1 of 450 decided rules). Lumps with scrambled values also became dividing spots, so the spot is an attractor of the rule: offspring cannot inherit anything from a particular parent. This is level 3 in its weakest form, with no possible heredity. Its rate did not differ significantly from single-channel Lenia (p = 0.24).
+
+**What finding A supports.** Level 2, arising spontaneously, in the Lenia family, from spatially correlated starts. The causal role of arrangement is tested by the shuffled control, at the world level with p values below 10⁻³, and at the rule level with sign-test p values of 0.016 to 0.031 over the 8 rules of one panel near Orbium. It does not establish a general law for glider-capable rules. It contrasts with Life-like rules, where an apparent effect of a central patch (+1.35 self-propelled shape types, p = 0.004) disappeared when density was matched (−0.08, p = 1; E-09, E-10).
+
+## 4. Finding B: which rules make replicators in program soups
+
+### 4.1 Replicators from random BFF code
+
+In 12 pre-registered BFF soups of 2<sup>14</sup> programs, none jumped by round 16,000 (E-40), against our prediction of 2 to 6. Continued to round 48,000, two more jumped (E-41). With a pilot that jumped at round 8,750, that makes 3 of 16 soups. The detector found verified replicators in every jumped soup and none in the 22 end scans of soups that did not jump. A deceptive control mattered here: a "copy-all" mode raised HOE to 7.0 bits with no replicator present, so HOE alone would have reported a jump. This reproduces, at small scale, the central observation of Agüera y Arcas et al. (2024): self-replicators emerge from random BFF programs with no fitness function. We did not compare rates with theirs.
+
+<figure>
+<img src="{{ '/assets/report/e41-bff-soup.png' | relative_url }}" alt="Three panels of coloured pixel rows. Left: random speckle. Middle: more instruction bytes but still varied rows. Right: most rows share code at the same positions, forming vertical stripes.">
+<figcaption><b>Figure 3.</b> One soup (pilot seed 901, replayed exactly), programs as rows of coloured bytes. Left: the random start. Middle: just before the jump. Right: 1,000 rounds after it, one family of self-copying programs and its variants has spread. One soup, shown for illustration.</figcaption>
+</figure>
+
+**The jump rate grows with soup size.** Across soups of 2<sup>13</sup> to 2<sup>16</sup> programs, the jump rate per round scaled as size<sup>β</sup> with β = 1.02 (95% interval 0.11 to 2.02, one-sided p = 0.014; E-50, pre-registered). Three of the registered "jumps" were brief waves of zero-writing programs with no replicator; counting only verified jumps (post hoc), β = 0.93 (−0.17 to 2.15), p = 0.049. A later exploratory fit (E-76) found one rate per pair run, 0.036 per 10<sup>8</sup> (0.017 to 0.066), adequate for all four sizes (p = 0.16 against separate rates).
+
+<figure>
+<img src="{{ '/assets/report/e50-soup-size.png' | relative_url }}" alt="Left: jump rate per million rounds against soup size on log scales, with a fit line; the 32,768 arm has no jumps. Right: HOE traces of the five largest soups that crossed the threshold; three stay high, two spike and fall back.">
+<figcaption><b>Figure 4.</b> E-50. Left: jumps per million rounds by soup size, as pre-registered (blue) and counting verified replicators only (orange); grey is the fit. Right: two of the threshold crossings were brief zero-writing waves, not jumps. Nine events in all, so the interval on β is wide.</figcaption>
+</figure>
+
+### 4.2 Why emergent copiers run backwards, and a one-detail counterfactual
+
+All 9 replicators that emerged in our standard BFF soups copied themselves backwards and made their own byte-reverse (J-046). A census of every program kernel of 1 to 6 instructions explained why (E-55, pre-registered): under the standard rule both heads start at byte 0 and wrap around the tape, so all 55 short copiers copy in reverse. Moving one head's starting byte to 64 turned that into 139 forward copiers and no reverse ones. A backward copier's copy is its mirror, which no longer contains a working loop, so under the standard rule the smallest replicator needs two kernels (10 instructions), against 5 under the counterfactual (E-57).
+
+Under the counterfactual rule, 8 of 8 soups of 2<sup>14</sup> programs jumped within 250 to 1,750 rounds, against 0 of 12 under the standard rule by round 16,000 (p = 8 × 10⁻⁶; E-57). A control rule with as many short copiers, all backward (head 1 starting at byte 127), was slow again: 2 of 16 soups against 8 of 8 (p = 6 × 10⁻⁵; E-59). That control's first test (E-58) failed as registered, because its HOE threshold misfired in this rule; the conclusion rests on a corrected reading and on the fresh confirmation E-59.
+
+### 4.3 The "shortest copier makes a working copy" predictor (F)
+
+We call a rule **F** if, among its copiers of at most 6 instructions, at least one leaves a copy that is itself a copier. The property is computed from the rule alone, in seconds to minutes, before any soup runs. The table gives every soup test of it, rule-level counts first. Rule counts are tallied from the exports; only the soup-level p values were computed by the experiments.
+
+| Exp. | Rule family | F rules with any jump | Other rules with any jump | Soups (F vs other) | Registered verdict |
+|---|---|---|---|---|---|
+| E-60 | head 1 start h, all 128 rules | 3 of 3 | 2 of 4 (weak criterion; 1 of 4 on the corrected reading, J-061) | 12/12 vs 2/16, p = 3 × 10⁻⁶ | pass |
+| E-62 | F′ rules (shift-aware) | 7 of 7 | (none run) | 28/28 | lineage predictor fails |
+| E-63 | rules just outside F′ | (control h = 64: 4/4) | 1 of 4 | 1/16 vs 28/28, p = 7 × 10⁻¹¹ | pass |
+| E-64 | two head starts (g, h), 256 rules | 3 of 3 | 1 of 4 | 10/12 vs 1/16, p = 5 × 10⁻⁵ | pass |
+| E-65 | same family, 768 new rules | 7 of 7 | 1 of 4 | 26/28 vs 1/16, p = 9 × 10⁻⁹ | pass |
+| E-68 | program length 16 to 128 bytes | (not tallied) | (not tallied) | 18/36 vs 6/36; length 16: 0/12 vs 0/12 | soup prediction fails |
+| E-69 | lengths 16, 32 at matched bytes | (not tallied) | (not tallied) | length 16: 4/12; length 32: 10/12; other 0/24 | undecided |
+| E-70 | five instruction-set variants | 15 of 15 | 6 of 15 | 60/60 vs 15/60, p = 2 × 10⁻²⁰ | pass |
+| E-71 | 22 further F rules from E-70 | 21 of 22 | — | 165/176 | (a speed test; one F rule made nothing) |
+| E-74 | 24 fresh F rules | 24 of 24 | — | 143/144 | (a speed test) |
+
+Three failures bound the result. In E-68 the property held in the census at every program length, but 16-byte programs made no replicators at all; at matched bytes this was partly a soup-size effect (E-69). One F rule (variant 1, h = 68) made nothing in 8 soups (E-71). And non-F rules next to the band often jumped too (6 of 15 non-F rules in E-70), because the census misses slightly longer or shifted copiers. A first version of this predictor also failed in a different form: "lineages that persist" did not separate rules (E-62).
+
+<figure>
+<img src="{{ '/assets/report/e60-headstart.png' | relative_url }}" alt="Top: short copiers per rule over h from 0 to 127; backward copiers near 0 and 127, forward copiers only at 62 to 65, where stars mark rules with a self-sufficient copier. Bottom: share of soups that jumped by 16,000 rounds in the rules run.">
+<figcaption><b>Figure 5.</b> E-60 and earlier soups. Top: short copiers in each of the 128 rule versions; stars mark F versions. Bottom: soups that jumped. Caveat found later (J-061): the copier test here saw only copies aligned at byte 64, so it missed shifted copiers; one soup at h = 7 turned out to be full of them.</figcaption>
+</figure>
+
+**No census measure predicted speed.** The number of self-sufficient copiers looked like a graded predictor in exploratory data (ρ = −0.80 over 15 rules, E-70), but a pre-registered test found it worked within a variant (p = 0.006) and not pooled across variants (p = 0.06; E-71). A five-generation version failed on fresh rules (E-72), looked ten times better after a validated re-scoring (p = 0.06, E-73), then failed under every timing on 24 fresh rules (ratios 0.66 to 0.95; E-74). Speed results also depended on the detector: in E-74 the three jump timings differed by more than 1,000 rounds in 24 of 144 soups.
+
+### 4.4 The SUBLEQ family: a chain in which each predictor passed once
+
+We then asked whether "a short copier that makes working copies" generalises to a different language. The answer is a chain of partial results.
+
+- **Phase 0 (build).** The first unseeded take-over was a 5-byte loop that rewrites most of its own body. Every whole-program copy test missed it (0 of 40), so we built an inheritance test: a block of at least 4 bytes must survive 5 generations of copies into fresh random partners, and vanish when knocked out (D-055; 39 of 40 on the loop).
+- **Phase 1 (census).** Of 600 sampled rules, 32 were F, 100 copied without inheritance, 468 neither. Every F rule had 4 operands and an index step of ±1. A pre-registered stability check failed (37 of 40 rules kept their class with a second seed).
+- **Phase 2 (pilot).** F rules: 8 of 8 soups jumped. Non-F copying rules: 4 of 8. The take-overs were periodic tiles, one instruction repeated, which a census of random programs never samples.
+- **Phase 3 (pre-registered, passes).** A new predictor, tile-replicator density, separated rules: 11 of 12 HIGH rules jumped, 1 of 12 LOW (rule-level p = 5.4 × 10⁻⁵; soups 64/72 vs 6/72).
+- **Phase 4 (pre-registered, fails).** With thresholds unchanged, under another jump condition: 6 of 12 HIGH rules vs 5 of 12 LOW (p = 0.50; soups 29/72 vs 20/72, p = 0.08).
+- **Phase 4b (exploratory).** Earlier entries said non-jumping soups "freeze into halters" and that jumps were "escapes". Measuring at round 0 showed they never leave the random start. Those claims are withdrawn (J-082).
+- **Phase 5 (pre-registered trace of origins).** In 53 of 54 soups of rarely-jumping rules, no replicator ever arose in 4,000 rounds. Where one arose, it established within a median of 16.5 rounds. Founders were written in a single run of a pair (24 by the partner, 16 by the program itself), never by mutation alone. **A jump is the wait for one rare event.**
+- **Phase 6 (pre-registered, retrospective).** So we measured that event: R<sub>P</sub>, the rate at which runs of fresh random pairs write a replicator. It predicted jumps where tile density had failed (ρ = 0.64, p = 4 × 10⁻⁴), but rules with no product still jumped in 35 of 222 soups.
+- **Phase 7 (pre-registered, prospective).** New rules chosen by R<sub>P</sub> alone: 6 of 7 HIGH rules jumped against 2 of 12 ZERO rules (rule-level p = 0.006; soups 33/42 vs 12/72). The design needed 8 HIGH rules and the pools gave 7, so the primary is **undecided**. On these 19 rules, tile density correlated with outcome slightly better than R<sub>P</sub> (ρ = 0.75 vs 0.67).
+
+### 4.5 One rate per rule
+
+Review R-5 proposed replacing further censuses with one model: each rule has a single origin rate, and the wait to a jump is exponential (E-76, exploratory, rule as the unit). It is a fair first description, not an exact one. The mean coefficient of variation of jump times, 0.77, matches the exponential's 0.79. But 8 of 26 rules fall in the 5% tails, against 2.6 expected (p = 0.003). Where jumps follow "always", soups produced replicators at the fresh-pair rate in their first 500 rounds (ratio 1.00, 95% interval 0.69 to 1.38). Under "jump if ≤ 0" they produced about 7 times faster (6.9, 4.8 to 10.0), already in the first rounds, with no rise with soup age (p = 0.48). Under "jump if < 0" the ratio was 0.66 (0.46 to 0.91). Why soups beat fresh pairs under one jump condition is open. BFF's rate is 10 to 1,000 times lower than that of the SUBLEQ rules that jumped.
+
+<figure>
+<img src="{{ '/assets/report/rate-model.png' | relative_url }}" alt="Scatter of soup origin rate against fresh-pair product rate for 79 SUBLEQ rules on log axes, coloured by jump condition, with a diagonal line; many rules with no product and no jump sit at a single point near the census limit.">
+<figcaption><b>Figure 6.</b> E-76 (exploratory; outcomes known before the analysis). Each point is one rule; open markers and arrows are bounds; on the dashed line soups make replicators exactly as often as fresh random pairs. 37 rules with no jump and no product share one point.</figcaption>
+</figure>
+
+**What finding B supports.** Level 3: replicators arise from random code in BFF and in SUBLEQ versions we designed. In BFF variants, the F property predicted which rules make replicators in pre-registered tests across four kinds of rule change, with stated exceptions. All of these variants keep BFF's head-and-tape design, and the five instruction sets were picked by hand. Outside BFF, no single predictor transferred. The best summary is a rate: replicators appear when a rare pair run writes one, so anything that raises the number of pair runs (soup size) or the chance per run (the rule) brings the jump sooner.
+
+## 5. Finding C: after replicators appear
+
+**Heredity: yes, in BFF.** Every single-byte mutant of the 9 emergent replicators was seeded alone in a fresh soup (E-42, pre-registered). All 9 replicators showed heredity: of 141 mutants that could still copy, 140 were carried by at least 60% of their descendants. This is level 4 for programs that arose from random code. It was not tested in SUBLEQ, and it is impossible in the Lenia divider.
+
+**Selection among variants: mostly not seen.** One-byte variants were indistinguishable from their parents in head-to-head races: 2 of 141 pairs showed a difference, 0 of 24 neutral pairs (p = 0.73; E-43). Replicators from different soups did not differ either: 0 of 36 pairs (E-44). One exception held up. A species from soup 5006 won 176 of 252 races against soup 901's replicators (69.8%, p = 1.3 × 10⁻¹⁰; E-46), after we found that every emergent replicator has two mirror forms and corrected the counting (J-046). The same correction shrank a hand-written replicator's apparent advantage from 77% to 56% of races. This is one species in one soup; it does not show that selection drove the soup's change.
+
+**Drift without adaptation, by four measures.** After a jump no family dominates: the most common family holds a median of about 2% of the soup, and the most common program drifts far from the founder (E-47). Is the drift adaptive? Races between late and early programs: not significant (E-48, p = 0.07; with verified replicators only, E-49, p = 0.33). Growth rate into random code: no trend (E-51, p = 0.38). Invasion into the soup itself showed an advantage for later code (E-52, p = 0.045), but only in backgrounds where the later code alone had relatives; in kin-free backgrounds it vanished (E-53, p = 0.88). Across 7 soups and a 16,000-round gap, kin-free invasion again showed nothing (E-54, D = −0.15, p = 0.64). Soup 5006 leaned upward in several of these measures; that is post hoc.
+
+**No parasites.** E-54 had reported that only 22 to 78% of common programs were replicators. That was luck of a single stochastic test. Repeated 10 times, 99.8% of 2,800 common programs copied themselves, and none was a parasite (E-66). Among 420 rarer programs, there were again none (E-67).
+
+**Space did not change the answer.** Review R-5 suggested that well-mixed soups might hide adaptation that needs local interaction. E-78 (pre-registered) forked each of the 7 jumped E-54 soups into three continuations of 20,000 rounds: well mixed (M), neighbour-only on a 256 × 256 torus (S), and well mixed with another seed (M′, a seed null). The primary test asked whether late S code gained more fitness, in a well-mixed common garden, than late M code. It failed: the mean difference was −0.42 (95% interval −1.10 to 0.25, below the registered bound of 0.28; p = 0.91). The seed null was significant: M′ fell below M in 7 of 7 soups (p = 0.016). Two well-mixed continuations of one snapshot therefore differ about as much as space and mixing do, which means continuation noise is large at 7 soups. Late code was not fitter within any arm, and no parasites appeared. Post hoc, S became a mosaic of small local families: about 55% of neighbouring programs were at least 90% identical, while the largest family held only 0.2 to 0.4% of the soup.
+
+<figure>
+<img src="{{ '/assets/report/e78-spatial.png' | relative_url }}" alt="Left: per-soup late-minus-early invasion score in three arms; the neighbour-only arm is not higher and is much lower in two soups. Middle: families holding at least 1% of the soup over time; the neighbour-only arm falls to zero. Right: share of near-identical grid neighbours, about 55% in the neighbour-only arm.">
+<figcaption><b>Figure 7.</b> E-78. Left: late minus early invasion score per soup (pre-registered measure). Middle: families holding at least 1% of the soup (pre-registered descriptive; undefined in S, which has none). Right: near-identical grid neighbours (post hoc). Orange: neighbour-only; blue and grey: well mixed, two seeds. Seven soups.</figcaption>
+</figure>
+
+**What "level 5 not shown" means.** In standard BFF soups of up to 2<sup>16</sup> programs, followed up to 20,000 rounds after the jump, later replicators were not detectably fitter than earlier ones by races, growth rate or kin-free invasion, and no parasites were found, with well-mixed or neighbour-only meetings. It does **not** mean that these soups cannot evolve. Both fitness instruments are well mixed, so an advantage that exists only in space is invisible to them. The assays were calibrated on hand-made variants with large built-in differences; small advantages would be missed. Seven soups is a small sample, the gap is a few tens of thousands of rounds, and one language at one scale was tested. In Life-like rules, the earlier knockout test of "earlier innovations enable later ones" found real knockouts indistinguishable from placebo deletions (P = 0.49 to 0.51 over 92 tests; E-10, E-11).
+
+## 6. The discovery engine (H1)
+
+H1 says the guided search finds more interesting rules than random search at equal compute. The first test used 2 seeds per arm (E-03 to E-06) and found 1.9× more distinct rules with self-propelled shapes and 4.2× more rules "complex" on every seed, after removing near-duplicates. The code for that removal was never committed; it was rebuilt when the test was repeated (J-087, D-064). The pre-registered repeat with 20 paired seeds (E-77) found 1.84× more distinct self-propelled rules (bootstrap 95% interval 1.70 to 2.25), with the engine ahead on 20 of 20 seeds (p = 9.5 × 10⁻⁷, the smallest possible with 20). For rules complex on every seed the ratio was 3.4 (2.6 to 3.9). Limits: Life-like and Generations rules only, one budget, one world size, and self-propulsion is one of the engine's own objectives, so that win is partly circular. In Lenia the engine found the glider island (59 of its 500 rules against 9 for random search, E-13a), but the Lenia comparisons E-12 and E-17 are single-seed.
+
+## 7. How the detectors were fooled, and what caught it
+
+| Case | What was wrong | How it was caught | Control that now exists |
+|---|---|---|---|
+| Static Lenia blobs called complex (J-012) | the "complex" label, tuned on two-state rules, called 27 of 60 random Lenia rules complex; all were static blob fields | a review, then looking at the universes | "complex" needs a verified mover; blob-soup negative, jitter and selection-aware null probes (D-022) |
+| Labyrinth bursts (J-032) | the first birth detector reported 2 reproducers: single blobs bursting into world-filling labyrinths | pre-registered inspection of every hit | doubling rule and fixed reference parent; labyrinth as deceptive control; held-out E-28 |
+| Food condensation (J-035) | 17 of 100 fed Flow-Lenia worlds had "reproducers"; the food layer itself condensed into droplets | pre-registered inspection; food alone with slight noise | perturbed-vacuum null (D-030), tested on held-out rules (E-31) |
+| Kinship in invasion (J-052, J-053) | later code "invaded better" only where it alone had relatives in the background | kin check after the run | kin-free backgrounds (E-53 onward) |
+| Single stochastic test (J-068) | "only 22 to 78% are replicators" was the luck of one test per program | a pilot of the parasite detector gave different verdicts for the same program | test repeated 10 times; single verdicts are lower bounds (D-049) |
+| Sloppy copiers, filler smears (J-074, J-075) | a 60-of-64-byte copy test missed copiers at 59 to 60 bytes, and accepted loops that smear one value (37 of 64) | HOE at 6.4 in soups scored "no jump" | 58-byte test with an instruction-fidelity guard (D-053), sloppy positive, smear deceptive, null |
+| Self-rewriting replicators (J-077) | every whole-program copy test missed a loop that rewrites its own body (0 of 40) | the first unseeded SUBLEQ take-over | inheritance test with knockout (D-055) |
+| The null all-zero replicator (J-083) | a program of zero bytes passes the inheritance test while carrying no information | development of the origin trace | tracer classifies all-zero inherited blocks; jump calls rechecked on 7 soups |
+| "Frozen" soups (J-082) | a "freeze into halters" mechanism was reported for three phases | measuring soups at round 0 | claims withdrawn; the flag now reads "never left the random start" |
+| Soup-level p values (J-086) | six soups of one rule were treated as six tests; p values 10⁵ to 10¹⁹ times too small | the one-rate synthesis (review R-5) | rule as the unit (D-063) |
+| Uncommitted deduplication (J-087) | the step behind H1's headline ratios existed only as a session's calculation | reproduction of E-03 to E-06 | committed `distinct_greedy` (D-064) |
+| HOE rising with clustering (J-088) | in spatial soups, HOE rises with clustering alone because it reads the soup in storage order | the positive and `noexec` controls of the spatial runner | HOE on shuffled rows |
+| Zero-writing waves (J-054) | brief waves of zero-writing programs crossed the HOE threshold for one checkpoint | the replicator scan found nothing | jump needs 3 checkpoints and a verified replicator (D-045) |
+
+The common pattern: a measure validated on one system was trusted on another. The fix each time was a control from the new system itself.
+
+## 8. Limitations and threats to validity
+
+- **Sample sizes.** The Lenia result rests on one panel of 8 rules near Orbium, plus single rules for the other movers. The level-5 tests use 3 to 7 soups. The F-predictor arms had 3 to 15 F rules per test, and SUBLEQ phase 7 had 7 HIGH rules where 8 were needed. Rule-level tests are therefore modest even where world-level p values are tiny.
+- **Many tests, no global correction.** 45 experiments with a pre-registered primary are scored in Appendix B, several with more than one primary. We did not correct across them, and a few passes would be expected by chance alone.
+- **Post hoc steps.** Several thresholds were set after seeing data: the quasi-static cut-off of D-022 (on 60 rules), the birth detector's doubling rule (after E-27), the perturbed-vacuum null (after E-30), the inheritance test's depth (by a sweep after the controls), and the tile thresholds (on 8 pilot rules). Most were then tested on held-out data; the E-78 mosaic and the soup-5006 trend were not.
+- **Families shaped by us.** The SUBLEQ family's stepping index and operand window are our additions (D-054); the published variants made no replicators. The BFF variants are hand-picked. "Which rules make replicators" is answered within these families, not across languages in general.
+- **One laptop scale.** Worlds of 96 to 384 cells on a side; soups of 2<sup>13</sup> to 2<sup>17</sup> programs; runs of at most tens of thousands of rounds. Rates and effects may change at larger scales.
+- **Well-mixed instruments.** Both fitness assays and the parasite test run in well-mixed soups. Advantages or parasites that exist only in space are invisible to E-78.
+- **Timescale.** The whole project ran over 11 days (5 to 15 November 2026). Single experiments ran for minutes to 16 hours. Nothing here speaks to long-term evolution.
+- **Authorship.** AI agents (Claude) designed, ran and wrote up most of the work, with the owner setting goals and approving long runs. Five reviews were made by AI systems (three by ChatGPT, R-1 to R-3; an independent agent, R-4; Claude, R-5). No human domain expert has reviewed the work.
+- **No systematic literature review.** Related work (section 9) has not been checked systematically. Some of our results may already be known; we claim novelty only with respect to this project.
+
+## 9. Related work
+
+*Note: these are the references already listed on the [Research]({{ '/research.html#could-this-be-academic-research' | relative_url }}) page, described no more specifically than that page does. They have not been systematically checked.*
+
+- **Classic theory:** Wolfram's classes; Langton's λ and the edge of chaos.
+- **Surveys of Life-like rules:** e.g. Eppstein's work on growth and decay.
+- **Compression-based classification:** Zenil.
+- **Evolutionary search for gliders:** Sapin and colleagues.
+- **Lenia:** Chan (2019, *Complex Systems* 28(3); arXiv 1812.05433), whose published random starts were 15 to 40 dense patches in an empty world, not full-grid soups (section 3 tests this start). Chan (2020) reports self-replicating creatures in multi-channel Lenia. Follow-ups: Asymptotic Lenia (Kawaguchi et al. 2021) and its "glider equation" (Kojima et al. 2025); Particle Lenia (Mordvintsev et al. 2022).
+- **Flow-Lenia** (Plantec et al., ALIFE 2023, arXiv 2212.07906; *Artificial Life* 31(2), 2025): mass conservation and parameter localization; reports localized and moving patterns as common, without counts. We could not reproduce movers (E-16).
+- **Reaction-diffusion reproducers:** Gray-Scott dividing spots (Pearson 1993), used here only as a control.
+- **Intrinsically motivated diversity search in self-organizing systems:** Reinke, Etcheverry and Oudeyer (Reinke et al. ICLR 2020; Etcheverry et al. NeurIPS 2020); also Faldor & Cully (ALIFE 2024) and Hamon et al. (2024).
+- **Foundation-model-guided search for artificial life:** Kumar and colleagues (2024).
+- **Open-endedness measures:** Bedau and Packard's evolutionary activity statistics; Channon.
+- **Program soups:** Agüera y Arcas et al. (2024): self-replicators emerge from random BFF programs.
+
+The Research page notes that none of the Lenia-related works it lists measures spontaneous, within-run emergence with nulls. If that survives a real review, the likely contribution is methodological: detectors validated against controls built to fool them, causal claims tested on clones, negative results reported.
+
+## 10. Reproducibility
+
+- **Code and tests.** `pip install -e '.[dev]'`, then `pytest` and `emergence benchmark --probes`. The same command, commit and seed give the same universes and soups (D-006); several soups were replayed bit for bit (E-41, E-47, E-75 phase 5).
+- **Experiments.** The [Experiments]({{ '/experiments.html' | relative_url }}) page lists each experiment's exact command and code commit. Compact JSON exports are in `docs/data/experiments/`; `emergence reproduce` checks state hashes for the spatial families.
+- **Pre-registrations.** `docs/data/e*-preregistration.md`, plus the E-75 design and protocols; each is committed before its run, and the journal gives the commit.
+- **Not committed.** SQLite run databases (D-017) and soup caches and snapshots under `runs/` (for example `runs/e54/`, `runs/e66-partA.jsonl`, `runs/e70/`, `runs/e73/`, `runs/e75-*`, and `runs/e78/run/`, about 0.9 GB). They regenerate from the commands. The C interpreters compile on first use into `~/.cache/emergence-lab`.
+- **Known gaps.** The first Lenia exploration (E-12 run 1) was lost with a cloud container and is not used. A power loss interrupted two E-54 soups, which were resumed from snapshots with new random streams (recorded in J-066).
+
+## Appendix A: claims table
+
+Sources are paths under `docs/`. "J-0xx" means the journal entry of that ID; JSON paths are given as file → key. Pre-registered: *yes* (the number is a registered outcome), *no* (exploratory or descriptive), *post hoc* (decided after seeing data). Unit: what one observation is.
+
+| # | Claim | Value | Exp. / journal | Source | Pre-reg. | Unit |
+|---|---|---|---|---|---|---|
+| A1 | Benchmark checks, as last reported | 170 (39 + 131) | — | `research.md` O1; `index.md` | no | check |
+| A2 | SUBLEQ family size | 16,416 rules | E-75 ph. 0, J-077 | `journal.md` J-077 | no | rule |
+| A3 | Published anchors' random-program hits | 0 in 10⁷ each | E-75 ph. 1, J-078 | `data/experiments/2026-11-12-e75-census.json` → `anchors`, `nprog` | yes (protocol) | program |
+| A4 | Longest single experiment | 15.8 h (15 h 48 min) on 11 workers | E-78, J-089 | `journal.md` J-089 | no | run |
+| A5 | Soup-start Lenia worlds without a mover in search | 0 in 2,085 | E-12, J-013 | `journal.md` J-013 | no | world |
+| A6 | Seed shapes in viability scan | 12 | E-13a, J-013, R-4 | `data/experiments/2026-11-07-e13a-glider-viability.json` → `seeds`; `reviews.md` R-4 | no | shape |
+| A7 | Single-ring rules supporting a glider | 8 of 99 | E-13a, J-013 | `journal.md` J-013 | no | rule |
+| A8 | Exploratory smooth vs soup | 18/240 vs 0/80 | E-13, J-014 | `journal.md` J-014 | yes (counts); test post hoc | world |
+| A9 | Smallest attainable sign-test p with 8 rules | 0.0078 | E-13, J-014 | `journal.md` J-014 | yes | rule |
+| A10 | E-14 density 0.10 | 28/160 vs 0/160, p = 1.0 × 10⁻⁹ | E-14, J-015 | `2026-11-07-e14-movers.json` → `fisher` | yes | world |
+| A11 | E-14 density 0.35 | 21/160 vs 0/160, p = 2.4 × 10⁻⁷ | E-14, J-015 | `2026-11-07-e14-movers.json` → `fisher` | yes | world |
+| A12 | E-14 registered α | 0.025 per contrast | E-14, J-015 | `2026-11-07-e14-movers.json` → `fisher.alpha_per_contrast` | yes | — |
+| A13 | Gliders surviving 1,000 steps alone | all (51 of 51) | E-14, J-015 | `2026-11-07-e14-verify-movers.json`; `journal.md` J-015 | yes | object |
+| A14 | E-14 rules making gliders; rule-level sign test | 6 of 8; p = 0.031 | E-14, J-015, R-4 | `journal.md` J-015; `reviews.md` R-4 | no (rule-level added after review) | rule |
+| A15 | E-19a density 0.10 | 37 / 0 / 0 of 160 (smooth / shuffled / soup), p = 6.9 × 10⁻¹³ | E-19a, J-021 | `2026-11-07-e19-shuffled-null-and-soup-sweep.json` → `e19a.d0.1` | yes | world |
+| A16 | E-19a density 0.35 | 11 / 0 / 0 of 160, p = 4.1 × 10⁻⁴ | E-19a, J-021 | same → `e19a.d0.35` | yes | world |
+| A17 | E-19a rules higher/lower | 6/0 (p = 0.016); 5/0 (p = 0.031) | E-19a, J-021 | same → `rules_higher`, `sign_p` | yes | rule |
+| A18 | Soup-start die / freeze densities | die < 0.18; blob fields > 0.24 | E-19b, J-021 | same → `e19b_soup_sweep` | yes | world |
+| A19 | Soup-start glider worlds in sweep | 1 of 400, at density 0.20 | E-19b, J-021 | same → `e19b_soup_sweep` | yes | world |
+| A20 | All soup-start worlds with a glider | 1 of 1,120 (E-13 80 + E-14 320 + E-19a 320 + E-19b 400) | J-021 | `journal.md` J-021 | no | world |
+| A21 | Smooth-start glider share | 7 to 23% of worlds (11/160 to 37/160) | E-14, E-19a | A10, A11, A15, A16 | yes | world |
+| A22 | Chan patches, 128 × 128 | 0 of 40 | E-13, J-014 | `journal.md` J-014 | yes | world |
+| A23 | Chan patches, 256 × 256, 3,000 steps | 13/160 (8.1%), in 5 of 8 rules | E-24, J-029 | `2026-11-07-e24-chan-patches.json` → `verified_by_arm.patches`, `conditions_summary.per_rule` | yes | world (rule) |
+| A24 | 110 patches; smooth ℓ = 3 | 0/160; 29/160 | E-24, J-029 | same → `verified_by_arm` | yes | world |
+| A25 | Patch counts in Chan's start | 15 to 40 | E-24 | `research.md` literature notes | — | — |
+| A26 | Wanderer, smooth vs soup | 36/40 vs 0/40 | E-18a, J-020 | `journal.md` J-020; `2026-11-07-e18-wanderer.json` | yes | world |
+| A27 | Wanderer ridge | 7 of 42 rules; 0 of 252 soup-start worlds | E-18b, J-020 | `journal.md` J-020 | yes | rule / world |
+| A28 | Ring glider | 13/40 and 18/40 smooth vs 0/40 soup at each density | E-26, J-031 | `journal.md` J-031 | yes | world |
+| A29 | Blob field wins in big worlds | 23 of 30 worlds, 384 × 384 | E-15, J-017 | `journal.md` J-017; `2026-11-07-e15-glider-population.json` | no | world |
+| A30 | Controlled collisions; births; fusions | 500; 0; 7 | E-20, J-023 | `journal.md` J-023 | yes | collision |
+| A31 | Spontaneous double gliders | 1 genuine in 320 worlds | E-21, J-025 | `journal.md` J-025 | yes (outcome redefined, disclosed) | world |
+| A32 | Double + glider collisions; triples | 312; 0 | E-23, J-027 | `journal.md` J-027 | yes | collision |
+| A33 | Wanderer encounters ending with one | 142 of 200 (71%) | E-22, J-026 | `journal.md` J-026 | yes | encounter |
+| A34 | Movers tested for reproduction | 0 of 285 | E-27/E-28, J-032 | `journal.md` J-032 | yes | object |
+| A35 | Held-out worlds with a reproducer | 0 of 350 | E-28, J-032 | `journal.md` J-032 | yes | world |
+| A36 | Single-channel lump scan | 0 reproducers; 1,453 of 3,000 rules decided | E-29, J-034 | `journal.md` J-034; `2026-11-07-e29-lump-scan.json` → `summary` | yes | rule |
+| A37 | Flow-Lenia movers | 0 in 400 worlds | E-16, J-018 | `journal.md` J-018 | no (plan) | world |
+| A38 | Multi-channel reproducer rules | 1 of 1,000; 1 of 450 decided | E-32, J-037 | `journal.md` J-037; `2026-11-08-e32-mlenia-lumps.json` → `summary` | yes | rule |
+| A39 | Rate vs single-channel | p = 0.24 | E-32, J-037 | `journal.md` J-037 | yes | rule |
+| A40 | Life-like central patch effect | +1.35 types, p = 0.004 | E-09, J-009 | `journal.md` J-009; `2026-11-05-e09-initial-conditions.json` | outcomes fixed in advance | rule (paired) |
+| A41 | At matched density | −0.08, p = 1 | E-10, J-009 | `journal.md` J-009; `2026-11-05-e10-density-matched.json` | outcomes fixed in advance | rule (paired) |
+| A42 | E-14/E-19 world-level p values below | 10⁻³ | E-14, E-19a | A10, A11, A15, A16 | yes | world |
+| A43 | BFF soups jumped by round 16,000 | 0 of 12 (prediction 2 to 6) | E-40, J-040 | `2026-11-08-e40-bff-soups.json` → `summary.bff` | yes | soup |
+| A44 | BFF soup size in E-40/E-41 | 2¹⁴ programs | E-40 | `journal.md` J-040 | yes | — |
+| A45 | Jumps by round 48,000 | 2 more of 12 | E-41, J-041 | `2026-11-08-e41-bff-longer.json` → `summary`; `journal.md` J-041 | yes | soup |
+| A46 | Pilot jump round; total | 8,750; 3 of 16 soups | E-41, J-041 | `journal.md` J-041 | yes | soup |
+| A47 | End scans of non-jumped soups with a replicator | 0 of 22 | E-41, J-041 | `journal.md` J-041 | yes | soup |
+| A48 | Copy-all HOE without a replicator | 7.0 bits | E-40, J-040 | `journal.md` J-040 | yes (control) | soup |
+| A49 | Size range | 2¹³ to 2¹⁶ programs | E-50, J-054 | `2026-11-08-e50-soup-size.json` → `analysis.arms` | yes | soup |
+| A50 | Size exponent; events | β = 1.02 (0.11 to 2.02), p = 0.014; 9 events | E-50, J-054 | same → `analysis.fit` | yes | soup |
+| A51 | Registered jumps that were zero waves | 3 | E-50, J-054 | `journal.md` J-054 | yes (found on inspection) | soup |
+| A52 | Verified-only exponent | β = 0.93 (−0.17 to 2.15), p = 0.049 | E-50, J-054 | `2026-11-14-rate-model.json` → `step5_bff."verified replicator (D-045 reading)".beta_free`; `journal.md` J-054 | post hoc | soup |
+| A53 | BFF one rate | 0.036 per 10⁸ pair runs (0.017 to 0.066); common-rate p = 0.16 | E-76, J-086 | `2026-11-14-rate-model.json` → `step5_bff."verified + E-54 new 2^16 soups"` | no | soup |
+| A54 | Emergent replicators, all backward and mirror | 9 of 9 | E-46, J-046 | `journal.md` (E-46 entry, J-046) | post hoc observation, then tested | program |
+| A55 | Short copiers, standard rule | 55 reverse, 0 forward | E-55, J-055 | `journal.md` J-055; `2026-11-08-e55-kernels.json` | yes | kernel |
+| A56 | Kernel sizes in census | 1 to 6 instructions | E-55 | `journal.md` J-055 | yes | — |
+| A57 | Short copiers, counterfactual (head 1 at byte 64) | 139 forward, 0 reverse | E-55, J-055 | same | yes | kernel |
+| A58 | Smallest replicator | 10 instructions (standard) vs 5 | E-57, J-057 | `journal.md` J-057 | no (descriptive) | program |
+| A59 | Counterfactual vs standard soups | 8/8 (rounds 250 to 1,750) vs 0/12 by 16,000; p = 8 × 10⁻⁶ | E-57, J-057 | `2026-11-08-e57-soups.json` → `summary` | yes | soup |
+| A60 | Head-1-at-127 control | 2/16 vs 8/8, p = 6 × 10⁻⁵ | E-59, J-059 | `2026-11-08-e59-orientation-confirm.json` → `summary` | yes | soup |
+| A61 | F definition: copier length | ≤ 6 instructions | E-60 | `journal.md` J-060 | yes | — |
+| A62 | E-60 census size; rule level | 128 rules; F 3 of 3; others 2 of 4 with any jump (1 of 4 after J-061) | E-60, J-060, J-061 | `2026-11-08-e60-soups.json` → `results` (tallied by `h1`); `journal.md` J-061 | yes (soups); rule tally post hoc | rule |
+| A63 | E-60 soups | 12/12 vs 2/16, p = 3 × 10⁻⁶ | E-60, J-060 | same → `summary` | yes | soup |
+| A64 | E-62 rule level; soups | 7 of 7; 28/28 | E-62, J-063 | `journal.md` J-063 | yes | rule / soup |
+| A65 | E-63 | outside rules 1 of 4; soups 1/16 vs 28/28, p = 7 × 10⁻¹¹; control 4/4 | E-63, J-064 | `2026-11-09-e63-outside.json` → `summary` | yes | rule / soup |
+| A66 | E-64 rule level | F 3 of 3; C 1 of 4 | E-64, J-065 | `2026-11-09-e64-soups.json` → `results` (tallied) | rule tally post hoc | rule |
+| A67 | E-64 rule family size; soups | 256 rules; 10/12 vs 1/16, p = 5 × 10⁻⁵ | E-64, J-065 | same → `summary` | yes | soup |
+| A68 | E-65 rule level | F 7 of 7 (all ≥ 3 of 4); C 1 of 4 | E-65, J-067 | `2026-11-09-e65-soups.json` → `results` (tallied) | rule tally post hoc | rule |
+| A69 | E-65 family size; soups | 768 rules; 26/28 vs 1/16, p = 9 × 10⁻⁹ | E-65, J-067 | same → `summary` | yes | soup |
+| A70 | E-68 program lengths; soups | 16 to 128 bytes; 18/36 vs 6/36; length 16: 0/12 vs 0/12 | E-68, J-070 | `journal.md` J-070 | yes | soup |
+| A71 | E-69 matched bytes | length 16: 4/12; length 32: 10/12; other 0/24 | E-69, J-071 | `journal.md` J-071 | yes | soup |
+| A72 | E-70 rule level | F 15 of 15; other 6 of 15 with any jump | E-70, J-072 | `2026-11-09-e70-soups.json` → `results` (tallied by `h1`) | rule tally post hoc | rule |
+| A73 | E-70 soups | 60/60 vs 15/60, p = 2 × 10⁻²⁰ | E-70, J-072 | same → `summary` | yes | soup |
+| A74 | E-70 variants | five | E-70, D-051 | `journal.md` J-072 | yes | — |
+| A75 | E-71 | 21 of 22 F rules jumped; soups 165/176; one F rule 0 of 8 | E-71, J-073 | `journal.md` J-073 | yes | rule / soup |
+| A76 | E-74 | 24 of 24 F rules; soups 143/144 | E-74, J-076 | `2026-11-12-e74-soups.json` → `summary`; `journal.md` J-076 | yes | rule / soup |
+| A77 | Copier count vs speed (exploratory) | ρ = −0.80 over 15 rules | E-70, J-072 | `2026-11-09-e70-soups.json` → `summary.secondary_selfsufficient_vs_medianT` | no | rule |
+| A78 | Within / pooled across variants | p = 0.006 / p = 0.06 | E-71, J-073 | `journal.md` J-073 | yes | rule |
+| A79 | Five-generation predictor after re-score | tenfold, p = 0.06 | E-73, J-075 | `journal.md` J-075 | yes (re-score) | rule |
+| A80 | E-74 timing ratios | 0.66 to 0.95 | E-74, J-076 | `2026-11-12-e74-soups.json` → `summary.{d050,d053,hoe}.ratio` | yes | rule |
+| A81 | Timings differing by > 1,000 rounds | 24 of 144 soups | E-74, J-076 | `journal.md` J-076 | no | soup |
+| A82 | Inheritance test parameters | ≥ 4-byte block, 5 generations | E-75 ph. 0, D-055 | `decisions.md` D-055 | no (depth by sweep) | — |
+| A83 | Emergent loop: whole-program vs inheritance | 0/40 vs 39/40 | E-75 ph. 0, J-077 | `journal.md` J-077 | no | program |
+| A84 | Loop size | 5 bytes | E-75 ph. 0, J-077 | `journal.md` J-077 | no | — |
+| A85 | Phase 1 classes | 600 rules: 32 F, 100 C, 468 none | E-75 ph. 1, J-078 | `2026-11-12-e75-census.json` → `summary.classes` | yes (protocol) | rule |
+| A86 | F rules' knobs | all 4 operands, step ±1 | E-75 ph. 1, J-078 | same → `summary.by_n`, `by_s` | yes (protocol) | rule |
+| A87 | Stability check | 37 of 40 (failed) | E-75 ph. 1, J-078 | same → `summary.stability` | yes | rule |
+| A88 | Phase 2 pilot | F 8/8; C 4/8 | E-75 ph. 2, J-079 | `2026-11-12-e75-pilot.json` → `summary` | protocol (pilot) | soup |
+| A89 | Phase 3 | rules 11/12 vs 1/12, p = 5.4 × 10⁻⁵; soups 64/72 vs 6/72 | E-75 ph. 3, J-080, J-086 | `2026-11-14-rate-model.json` → `step4_rule_level."phase 3"`; `2026-11-13-e75-phase3.json` → `summary.primary` | yes (soup); rule-level post hoc | rule / soup |
+| A90 | Phase 4 pool A | rules 6/12 vs 5/12, p = 0.50; soups 29/72 vs 20/72, p = 0.08 | E-75 ph. 4, J-081, J-086 | `2026-11-14-rate-model.json` → `step4_rule_level."phase 4 pool A"`; `2026-11-13-e75-phase4.json` → `summary.A` | yes (soup); rule-level post hoc | rule / soup |
+| A91 | Phase 5 rarely-jumping soups with no origin | 53 of 54 in 4,000 rounds | E-75 ph. 5, J-083 | `journal.md` J-083 | yes | soup |
+| A92 | Establishment after first origin | median 16.5 rounds | E-75 ph. 5, J-083 | `journal.md` J-083 | yes | soup |
+| A93 | Founders by partner / self | 24 / 16 | E-75 ph. 5, J-083 | `journal.md` J-083 | yes | founder |
+| A94 | Phase 6 primary | ρ = 0.64, p = 4 × 10⁻⁴ | E-75 ph. 6, J-084 | `journal.md` J-084 | yes | rule |
+| A95 | Zero-product rules still jumping | 35 of 222 soups | E-75 ph. 6, J-084 | `journal.md` J-084 | yes | soup |
+| A96 | Phase 7 | rules 6/7 vs 2/12, p = 0.006; soups 33/42 vs 12/72 | E-75 ph. 7, J-085, J-086 | `2026-11-14-rate-model.json` → `step4_rule_level."phase 7"`; `journal.md` J-085 | yes (soup); rule-level post hoc | rule / soup |
+| A97 | Phase 7 HIGH rules needed / found | 8 / 7 | E-75 ph. 7, J-085 | `journal.md` J-085 | yes | rule |
+| A98 | Phase 7 rules; D_T vs R_P | 19; ρ = 0.75 vs 0.67 | E-75 ph. 7, J-085 | `journal.md` J-085 | no | rule |
+| A99 | Mean CV of jump times | 0.77 observed vs 0.79 expected | E-76, J-086 | `2026-11-14-rate-model.json` → `step2_fit.cv_full_rules` | no | rule |
+| A100 | Rules in 5% tails | 8 of 26 vs 2.6 expected, p = 0.003 | E-76, J-086 | same | no | rule |
+| A101 | Soup / fresh-pair ratio, "always", first 500 rounds | 1.00 (0.69 to 1.38) | E-76, J-086 | `journal.md` J-086; same file → `step3_aging.by_condition` | no | rule |
+| A102 | Ratio, "≤ 0", all rounds | 6.9 (4.8 to 10.0) | E-76, J-086 | same → `step3_aging.by_condition."<=0"` | no | rule |
+| A103 | No rise with age under "≤ 0" | p = 0.48 | E-76, J-086 | `journal.md` J-086 | no | rule |
+| A104 | Ratio, "< 0" | 0.66 (0.46 to 0.91) | E-76, J-086 | same → `step3_aging.by_condition."<0"` | no | rule |
+| A105 | BFF vs jumping SUBLEQ rates | 10 to 1,000 times lower | E-76, J-086 | `journal.md` J-086 | no | rule |
+| A106 | Rules in E-76 figure; rules at one point | 79; 37 | E-76, J-086 | `2026-11-14-rate-model.json` → `step1`; figure annotation | no | rule |
+| A107 | Heredity | 9 of 9 replicators | E-42, J-042 | `2026-11-08-e42-bff-heredity.json` → `summary` | yes | program |
+| A108 | Viable mutants carried by ≥ 60% | 140 of 141 | E-42, J-042 | `journal.md` J-042 | yes | mutant |
+| A109 | One-byte variants differing | 2 of 141; null 0 of 24; p = 0.73 | E-43, J-043 | `2026-11-08-e43-bff-selection.json` → `summary`; `journal.md` J-043 | yes | pair |
+| A110 | Cross-soup pairs differing | 0 of 36 | E-44, J-044 | `journal.md` J-044 | yes | pair |
+| A111 | Soup 5006 species vs soup 901 | 176/252 (69.8%), p = 1.3 × 10⁻¹⁰ | E-46, J-046 | `2026-11-08-e46-species-contests.json` → `summary.o1_mirror_vs_901` | yes | race |
+| A112 | Hand-written advantage before / after fair counting | 77% (222/287) → 56% (286/510) | E-44, E-46 | `journal.md` J-044; `2026-11-08-e46-species-contests.json` → `summary.o2_handwritten_vs_emergent` | yes | race |
+| A113 | Most common family's share after a jump | median about 2% (2.2 to 2.4%) | E-47, J-047 | `journal.md` J-047 | yes (descriptive) | snapshot |
+| A114 | Late vs early races | p = 0.07 (E-48); p = 0.33 (E-49) | E-48, E-49 | `journal.md` J-048, J-049 | yes | program pair / program |
+| A115 | Growth-rate trend | p = 0.38 | E-51, J-051 | `journal.md` J-051 | yes | program |
+| A116 | Invasion, own-time backgrounds | p = 0.045 | E-52, J-052 | `journal.md` J-052 | yes | soup × background |
+| A117 | Invasion, kin-free | p = 0.88 | E-53, J-053 | `journal.md` J-053 | yes | soup × background |
+| A118 | Long soups | 7 soups; 16,000-round gap; D = −0.15, p = 0.64 | E-54, J-066 | `2026-11-08-e54-long-soups.json` → `summary.primary` | yes | soup |
+| A119 | E-54 single-test replicator share | 22 to 78% | E-54, J-066 | same → `summary.replicator_share_top40` | no (descriptive; corrected) | program |
+| A120 | Self-copiers with 10 repeats | 99.8% of 2,800 | E-66, J-068 | `2026-11-09-e66-parasites.json` → `summary.P2` | yes | program |
+| A121 | Parasites among rarer programs | 0 of 420 | E-67, J-069 | `2026-11-09-e67-rare.json` → `summary.P1` | yes | program |
+| A122 | E-78 design | 7 soups; 3 arms; 20,000 rounds; 256 × 256 torus | E-78, J-089, D-065 | `2026-11-15-e78-spatial.json` → `summary.settings`; `decisions.md` D-065 | yes | soup |
+| A123 | E-78 primary | mean d = −0.42 (−1.10 to 0.25); p = 0.91; bound 0.28 | E-78, J-089 | same → `summary.primary.test` (`mean_d`, `ci95_mean_d`, `p_one_sided`); `settings.DELTA_STAR` | yes | soup |
+| A124 | E-78 seed null | M′ below M in 7 of 7; p = 0.016 | E-78, J-089 | same → `summary.primary.test` (`null_d`, `p_null_two_sided`) | yes | soup |
+| A125 | Neighbour pairs ≥ 90% identical in S | about 55% | E-78, J-089 | `journal.md` J-089; `2026-11-15-e78-explore.json` | post hoc | neighbour pair |
+| A126 | Largest family in S | 0.2 to 0.4% of the soup | E-78, J-089 | `journal.md` J-089 | post hoc | soup |
+| A127 | Max soup size studied | 2¹⁶ programs (E-54, E-78) | E-54, E-78 | `journal.md` J-066 | yes | soup |
+| A128 | Gap after jump studied | up to 20,000 rounds | E-54, E-78 | `journal.md` J-066, J-089 | yes | soup |
+| A129 | Life-like knockouts vs placebo | P = 0.49 to 0.51 over 92 tests | E-10, E-11, J-010 | `journal.md` J-010 | outcomes fixed in advance | knockout |
+| A130 | H1 first test | 2 seeds; 1.9× and 4.2× after deduplication | E-03 to E-06, J-004 | `experiments.md` E-03 to E-06 table; `journal.md` J-004 | no | seed |
+| A131 | H1 repeat | 20 paired seeds; 1.84× (1.70 to 2.25); 20 of 20; p = 9.5 × 10⁻⁷ | E-77, J-087 | `2026-11-14-e77-h1-power.json` → `tests.distinct_self_propelled` | yes | seed |
+| A132 | H1 complex on every seed | 3.4 (2.6 to 3.9) | E-77, J-087 | same → `tests.distinct_complex_all_seeds` | yes | seed |
+| A133 | Lenia engine vs random in glider island | 59 vs 9 of 500 rules | E-13a, J-013 | `journal.md` J-013 | no | rule |
+| A134 | Static blobs labelled complex | 27 of 60 rules | J-012 | `journal.md` J-012 | no | rule |
+| A135 | Birth detector v1 false reproducers | 2 | E-27, J-032 | `journal.md` J-032 | yes (inspection) | object |
+| A136 | Fed worlds with false reproducers | 17 of 100 | E-30, J-035 | `journal.md` J-035 | yes | world |
+| A137 | Missed sloppy copies; smears accepted by old test | 59 to 60 of 64 bytes; 37 of 64 | E-72, E-73, J-074, J-075 | `journal.md` J-074, J-075 | yes (controls) | program |
+| A138 | HOE in a soup scored "no jump" | 6.4 | E-72, J-074 | `journal.md` J-074 | no | soup |
+| A139 | Copy-test thresholds | 60 of 64 (old); 58 of 64 with guard (new) | D-050, D-053 | `decisions.md` D-053 | yes | — |
+| A140 | All-zero replicator: jump calls rechecked | 7 soups | E-75 ph. 5, J-083 | `journal.md` J-083 | no | soup |
+| A141 | Soup-level p values too small by | 10⁵ to 10¹⁹ | E-76, J-086 | `journal.md` J-086 | no | — |
+| A142 | Jump persistence requirement | 3 checkpoints | D-045 | `decisions.md` D-045 | — | — |
+| A143 | Experiments with a pre-registered primary, scored | 45 | Appendix B | this page, Appendix B | — | experiment |
+| A144 | Lenia rule panel | 8 rules | E-13 to E-24 | `data/rule-panel-e13.txt` | yes | rule |
+| A145 | Level-5 test sizes | 3 to 7 soups | E-48 to E-54, E-78 | `journal.md` J-048 to J-066, J-089 | yes | soup |
+| A146 | F rules per test | 3 to 15 | E-60 to E-70 | A62 to A72 | yes | rule |
+| A147 | Quasi-static cut-off set on | 60 rules | J-012, D-022 | `journal.md` J-012 | post hoc | rule |
+| A148 | Tile thresholds fitted on | 8 pilot rules | E-75 ph. 3, J-080 | `journal.md` J-080 | post hoc | rule |
+| A149 | World and soup scales | 96 to 384 cells per side; 2¹³ to 2¹⁷ programs | all | E-03 to E-06 (96), E-15 (384), E-50 (2¹³), E-69 (2¹⁷) | — | — |
+| A150 | Project span; experiment durations | 11 days (5 to 15 Nov 2026); minutes to 16 h | J-001 to J-089 | `journal.md` dates; J-089 | — | — |
+| A151 | Reviews | five (R-1 to R-5) | — | `reviews.md` | — | — |
+| A152 | Uncommitted E-78 snapshots | about 0.9 GB | E-78 | `handoff.md` open problems | — | — |
+| A153 | Soups interrupted by power loss in E-54 | 2 | E-54, J-066 | `journal.md` J-066 | deviation recorded | soup |
+| A154 | BFF program and tape size | 64-byte programs; 128-byte joined tape | D-040, J-040 | `journal.md` J-040, J-055 | — | — |
+| A155 | Lenia state quantisation | 256 levels | J-011 | `journal.md` J-011 | — | — |
+| A156 | Figure 3 snapshot | 1,000 rounds after the jump | E-41, J-041 | `report.md` figure caption; `journal.md` J-041 (detector 1,000 epochs after) | yes | soup |
+| A157 | Fitness measures with no later advantage | four (races, growth rate, invasion, kin-free invasion) | E-48 to E-54 | `research.md` O5; `journal.md` J-053 | yes | — |
+
+## Appendix B: pre-registered primaries scorecard
+
+Compiled from the journal's own wording for each experiment (J-014 to J-089). The pre-registration files were not re-read for this table, so the column "Registered primary" is the journal's summary of each primary. "Met" means the registered test reached its criterion for the effect it tested; for tests whose hypothesis was a null (for example "later code is fitter", predicted not significant), "not met" is the predicted outcome. Experiments with only a descriptive count, a pilot, a protocol or a re-score are listed separately and not tallied.
+
+| Exp. | Registered primary (journal wording) | Result |
+|---|---|---|
+| E-13 | sign test across 8 rules, smooth vs soup | not met (design could not reach its threshold) |
+| E-14 | smooth vs soup, two universe-level Fisher tests | met |
+| E-18 | wanderer rule, smooth ℓ = 6 vs soup | met |
+| E-19 | smooth vs shuffled, two densities | met |
+| E-26 | ring-glider rule, smooth vs soup | met |
+| E-41 | replay and detector confirmation of jumps | met |
+| E-42 | heredity in ≥ 7 of 9 replicators | met |
+| E-43 | parent favoured in 5 to 30% of variant pairs | not met |
+| E-44 | ≥ 30% of cross-soup pairs favoured | not met |
+| E-45 | mirror species ≥ 0.6 of races | met |
+| E-46 | does E-45's advantage survive fair counting (predicted no) | met (advantage survives) |
+| E-47 | dominant-species replacements | not testable (0 replacements) |
+| E-48 | later ahead in ≥ 60% of pairs, p < 0.01 | not met |
+| E-49 | same, verified replicators | not met |
+| E-50 | rate rises with soup size | met |
+| E-51 | growth-rate trend with time | not met (predicted) |
+| E-52 | later code invades better (predicted not significant) | met (later explained by kinship) |
+| E-53 | same in kin-free backgrounds | not met (predicted) |
+| E-54 | later replicators fitter, kin-free invasion | not met (predicted) |
+| E-55 | backward vs forward short copiers by rule | met |
+| E-56 | counterfactual soups evolve forward copiers | met |
+| E-57 | A: counterfactual speed-up; B: ≥ 90% of counterfactual copiers self-sufficient | mixed (A met, B not) |
+| E-58 | control rule slow (HOE criterion) | not met (criterion misfired) |
+| E-59 | head-1-at-127 slower than 64 | met |
+| E-60 | F vs S rules | met |
+| E-61 | shift-aware F′ band; F′ soups jump | met |
+| E-62 | lineage persistence separates rules | not met |
+| E-63 | rules just outside F′ slow | met |
+| E-64 | F vs C in a new family | met |
+| E-65 | all F rules fast, C not | met |
+| E-66 | P1 to P4 on parasites and repeated tests | mixed (P1 to P3 met, P4 not) |
+| E-67 | no parasites among rarer programs | met |
+| E-68 | P1 census band; P2 soups | mixed (P1 met, P2 not) |
+| E-69 | soup size vs length | undecided |
+| E-70 | P1 census band; P2 soups | met |
+| E-71 | P1 pooled; P2 within variant | mixed (P1 not, P2 met) |
+| E-72 | shallow rules ≥ 3× slower | not met |
+| E-74 | same, fresh rules, two timings | not met |
+| E-75 ph. 3 | tile density separates rules | met |
+| E-75 ph. 4 | tile density transfers to jump ≤ 0 | not met |
+| E-75 ph. 5 | origin vs establishment as the bottleneck | not testable (only one slow soup had origins) |
+| E-75 ph. 6 | R<sub>P</sub> predicts jumps in pool A | met |
+| E-75 ph. 7 | rules chosen by R<sub>P</sub> jump | undecided (too few HIGH rules) |
+| E-77 | engine beats random at 20 seeds | met |
+| E-78 | neighbour-only late code fitter | not met |
+
+**Tally (45 experiments):** met 23; not met 14 (for 3 of these, E-51, E-53 and E-54, not meeting the criterion was the predicted outcome; E-13 failed by a design error and E-58 by a criterion that misfired); mixed 4; undecided 2; not testable 2.
+
+Not tallied (descriptive counts, pilots, protocols or re-scores, though pre-registered or protocol-led): E-17, E-20 to E-25, E-27 to E-32, E-40, E-73, E-75 phases 1 and 2. Of these, the journal records a stated prediction as wrong for E-24, E-30 (as first scored), E-32 and E-40, and as right for E-29 and E-31.

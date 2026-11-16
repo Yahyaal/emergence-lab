@@ -12,6 +12,28 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-090 · 2026-11-16 · A paper-style synthesis of the findings (writing only, no new results)
+
+**Question / why:** review R-5 found the record redundant and grouped by date, not by finding, and the owner wants exploration held to paper-quality rigour. A reader who has not seen the project needs one page that states what was found, at what evidence level, and where each number comes from.
+
+**Did:** wrote `docs/paper.md` (nav entry "Paper", linked from the overview). Sources, in order of authority: the exports in `docs/data/experiments/`, this journal (later entries override earlier ones), decisions, pre-registrations, research and reviews. No experiment was run and no new analysis was made, apart from tallying rule-level jump counts that the exports already contain (E-60, E-64, E-65, E-70; no new p values).
+- Three findings: (A) Lenia movers depend on the spatial correlation of the start; (B) which rules make replicators in program soups, rule-level statistics first; (C) heredity yes, level 5 not shown, including E-78.
+- Section 7 tabulates thirteen ways our detectors were fooled and the control each one led to.
+- Appendix A traces every number in the text to a JSON key or journal entry, with its pre-registration status and unit of analysis.
+- Appendix B scores 45 experiments with a pre-registered primary, from the journal's wording only: 23 met, 14 not met, 4 mixed, 2 undecided, 2 not testable.
+
+**Found while writing (no result changes):**
+- J-021's "13–23% for smooth starts" leaves out E-19a's 11/160 (6.9%) at density 0.35; the paper says 7–23%.
+- J-013 gives both "12 asymmetric seed shapes" and, in its caveats, "8 hand-chosen seed shapes"; R-4 confirmed 12.
+- E-32: J-037 says 1 of 450 decided rules; the export's `decided_rules` is 449 (it appears to count rules without a reproducer).
+- The headers of the E-45 and E-46 entries (J-045, J-046) lack their "## J-04x" prefix, so they do not appear as entries; J-038 and J-039 do not exist.
+
+**Changed:** `docs/paper.md`; `_layouts/default.html` (nav); `docs/index.md`; R-5 rows in `docs/reviews.md`. No code, no data.
+
+**Lesson:** writing every number into a claims table with its source is a cheap audit; it found a range that silently dropped one arm.
+
+---
+
 ## J-089 · 2026-11-15 · E-78: soups where programs meet only their neighbours do not evolve fitter code either (pre-registered, fails)
 
 **Question (pre-registered, `docs/data/e78-preregistration.md`, commit `bf6fce6`, 6 s before the run started; D-065):** level 5 had been tested only in well-mixed BFF soups. When the 7 jumped E-54 soups continue with programs that meet only lattice neighbours, does later code become fitter than in a well-mixed continuation of the same snapshot?
@@ -1167,7 +1189,7 @@ This design cannot see advantages or parasites that exist only in space: both in
 
 ---
 
-· 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
+## J-046 · 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
 
 **What we noticed after E-45:** soup 5006's earlier replicator #4 also sat beside its own reverse in the E-41 snapshot (129 copies and 128 reverse copies). We then seeded each of the 9 emergent replicators alone (4 soups each): **every one produces its exact byte-reverse in about equal numbers.** All the replicators that emerged in our soups copy themselves backwards; only the hand-written one copies forwards. So E-44 counted every emergent species by half (one form), and E-45 counted the 5006@32k species (#5/#6) by both forms but its opponents by one. Both biases could have created the reported advantages.
 
@@ -1188,7 +1210,7 @@ This design cannot see advantages or parasites that exist only in space: both in
 
 ---
 
-· 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
+## J-045 · 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
 
 **Question (pre-registered, `docs/data/e45-preregistration.md`, after a post-hoc pattern in E-44):** does the mirror replicator species of soup 5006 (J-044) out-compete the replicators of soup 901 when both of its forms are counted?
 
