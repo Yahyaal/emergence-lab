@@ -1,0 +1,2458 @@
+{
+ "experiment": "E-78 exploratory structure (post hoc)",
+ "final": {
+  "M": {
+   "seed": [
+    5301,
+    5302,
+    5308,
+    5401,
+    5402,
+    5406,
+    5410
+   ],
+   "kin_nbr": [
+    0.0011,
+    0.004,
+    0.0032,
+    0.0018,
+    0.0029,
+    0.004,
+    0.0006
+   ],
+   "kin_rand": [
+    0.0014,
+    0.0038,
+    0.0031,
+    0.0016,
+    0.0033,
+    0.0039,
+    0.0007
+   ],
+   "families_ge01pct": [
+    62,
+    150,
+    139,
+    189,
+    144,
+    144,
+    50
+   ],
+   "top_share": [
+    0.0051,
+    0.0092,
+    0.0072,
+    0.0023,
+    0.0042,
+    0.007,
+    0.0073
+   ]
+  },
+  "S": {
+   "seed": [
+    5301,
+    5302,
+    5308,
+    5401,
+    5402,
+    5406,
+    5410
+   ],
+   "kin_nbr": [
+    0.6124,
+    0.6468,
+    0.5539,
+    0.1004,
+    0.48,
+    0.6261,
+    0.4972
+   ],
+   "kin_rand": [
+    0.0014,
+    0.0014,
+    0.0009,
+    0.0007,
+    0.0013,
+    0.0014,
+    0.0015
+   ],
+   "families_ge01pct": [
+    157,
+    159,
+    128,
+    107,
+    145,
+    166,
+    158
+   ],
+   "top_share": [
+    0.0026,
+    0.0022,
+    0.004,
+    0.0024,
+    0.0032,
+    0.0041,
+    0.002
+   ]
+  },
+  "Mp": {
+   "seed": [
+    5301,
+    5302,
+    5308,
+    5401,
+    5402,
+    5406,
+    5410
+   ],
+   "kin_nbr": [
+    0.0014,
+    0.0035,
+    0.0019,
+    0.0014,
+    0.0032,
+    0.0035,
+    0.0034
+   ],
+   "kin_rand": [
+    0.0015,
+    0.0037,
+    0.0018,
+    0.0011,
+    0.0036,
+    0.0034,
+    0.0039
+   ],
+   "families_ge01pct": [
+    108,
+    158,
+    77,
+    148,
+    140,
+    111,
+    141
+   ],
+   "top_share": [
+    0.0047,
+    0.0051,
+    0.0074,
+    0.002,
+    0.005,
+    0.0099,
+    0.0061
+   ]
+  }
+ },
+ "rows": [
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 23750,
+   "dt": 0,
+   "kin_nbr": 0.001,
+   "kin_rand": 0.001,
+   "families_ge01pct": 75,
+   "top_share": 0.0053
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 25750,
+   "dt": 2000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.001,
+   "families_ge01pct": 84,
+   "top_share": 0.0099
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 27750,
+   "dt": 4000,
+   "kin_nbr": 0.0014,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 86,
+   "top_share": 0.0137
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 29750,
+   "dt": 6000,
+   "kin_nbr": 0.0009,
+   "kin_rand": 0.001,
+   "families_ge01pct": 76,
+   "top_share": 0.0084
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 31750,
+   "dt": 8000,
+   "kin_nbr": 0.0013,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 71,
+   "top_share": 0.0051
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 33750,
+   "dt": 10000,
+   "kin_nbr": 0.0009,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 66,
+   "top_share": 0.007
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 35750,
+   "dt": 12000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 73,
+   "top_share": 0.0122
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 37750,
+   "dt": 14000,
+   "kin_nbr": 0.0016,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 85,
+   "top_share": 0.0044
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 39750,
+   "dt": 16000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 93,
+   "top_share": 0.0035
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 41750,
+   "dt": 18000,
+   "kin_nbr": 0.0006,
+   "kin_rand": 0.0007,
+   "families_ge01pct": 87,
+   "top_share": 0.0059
+  },
+  {
+   "seed": 5301,
+   "arm": "M",
+   "epoch": 43750,
+   "dt": 20000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 62,
+   "top_share": 0.0051
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 23750,
+   "dt": 0,
+   "kin_nbr": 0.001,
+   "kin_rand": 0.001,
+   "families_ge01pct": 75,
+   "top_share": 0.0053
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 25750,
+   "dt": 2000,
+   "kin_nbr": 0.4342,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 126,
+   "top_share": 0.0029
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 27750,
+   "dt": 4000,
+   "kin_nbr": 0.6474,
+   "kin_rand": 0.0019,
+   "families_ge01pct": 147,
+   "top_share": 0.0021
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 29750,
+   "dt": 6000,
+   "kin_nbr": 0.6153,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 155,
+   "top_share": 0.0034
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 31750,
+   "dt": 8000,
+   "kin_nbr": 0.6371,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 163,
+   "top_share": 0.0021
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 33750,
+   "dt": 10000,
+   "kin_nbr": 0.6031,
+   "kin_rand": 0.0017,
+   "families_ge01pct": 156,
+   "top_share": 0.0027
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 35750,
+   "dt": 12000,
+   "kin_nbr": 0.6251,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 156,
+   "top_share": 0.0029
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 37750,
+   "dt": 14000,
+   "kin_nbr": 0.6708,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 154,
+   "top_share": 0.0043
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 39750,
+   "dt": 16000,
+   "kin_nbr": 0.6082,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 162,
+   "top_share": 0.0026
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 41750,
+   "dt": 18000,
+   "kin_nbr": 0.6481,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 151,
+   "top_share": 0.0023
+  },
+  {
+   "seed": 5301,
+   "arm": "S",
+   "epoch": 43750,
+   "dt": 20000,
+   "kin_nbr": 0.6124,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 157,
+   "top_share": 0.0026
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 23750,
+   "dt": 0,
+   "kin_nbr": 0.001,
+   "kin_rand": 0.001,
+   "families_ge01pct": 75,
+   "top_share": 0.0053
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 25750,
+   "dt": 2000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.001,
+   "families_ge01pct": 73,
+   "top_share": 0.0108
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 27750,
+   "dt": 4000,
+   "kin_nbr": 0.001,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 72,
+   "top_share": 0.0063
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 29750,
+   "dt": 6000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 83,
+   "top_share": 0.0158
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 31750,
+   "dt": 8000,
+   "kin_nbr": 0.0014,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 103,
+   "top_share": 0.0084
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 33750,
+   "dt": 10000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 73,
+   "top_share": 0.0083
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 35750,
+   "dt": 12000,
+   "kin_nbr": 0.0008,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 87,
+   "top_share": 0.0052
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 37750,
+   "dt": 14000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0009,
+   "families_ge01pct": 97,
+   "top_share": 0.0025
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 39750,
+   "dt": 16000,
+   "kin_nbr": 0.0016,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 101,
+   "top_share": 0.0046
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 41750,
+   "dt": 18000,
+   "kin_nbr": 0.0012,
+   "kin_rand": 0.001,
+   "families_ge01pct": 75,
+   "top_share": 0.005
+  },
+  {
+   "seed": 5301,
+   "arm": "Mp",
+   "epoch": 43750,
+   "dt": 20000,
+   "kin_nbr": 0.0014,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 108,
+   "top_share": 0.0047
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 15750,
+   "dt": 0,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0037,
+   "families_ge01pct": 148,
+   "top_share": 0.0105
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 17750,
+   "dt": 2000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 140,
+   "top_share": 0.0103
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 19750,
+   "dt": 4000,
+   "kin_nbr": 0.0039,
+   "kin_rand": 0.0038,
+   "families_ge01pct": 143,
+   "top_share": 0.0119
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 21750,
+   "dt": 6000,
+   "kin_nbr": 0.0035,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 150,
+   "top_share": 0.0083
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 23750,
+   "dt": 8000,
+   "kin_nbr": 0.0037,
+   "kin_rand": 0.0036,
+   "families_ge01pct": 152,
+   "top_share": 0.0047
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 25750,
+   "dt": 10000,
+   "kin_nbr": 0.0034,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 155,
+   "top_share": 0.0071
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 27750,
+   "dt": 12000,
+   "kin_nbr": 0.0042,
+   "kin_rand": 0.0044,
+   "families_ge01pct": 154,
+   "top_share": 0.0071
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 29750,
+   "dt": 14000,
+   "kin_nbr": 0.0039,
+   "kin_rand": 0.0043,
+   "families_ge01pct": 145,
+   "top_share": 0.0068
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 31750,
+   "dt": 16000,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0038,
+   "families_ge01pct": 151,
+   "top_share": 0.0078
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 33750,
+   "dt": 18000,
+   "kin_nbr": 0.0037,
+   "kin_rand": 0.0041,
+   "families_ge01pct": 147,
+   "top_share": 0.0234
+  },
+  {
+   "seed": 5302,
+   "arm": "M",
+   "epoch": 35750,
+   "dt": 20000,
+   "kin_nbr": 0.004,
+   "kin_rand": 0.0038,
+   "families_ge01pct": 150,
+   "top_share": 0.0092
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 15750,
+   "dt": 0,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0037,
+   "families_ge01pct": 148,
+   "top_share": 0.0105
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 17750,
+   "dt": 2000,
+   "kin_nbr": 0.6166,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 164,
+   "top_share": 0.0021
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 19750,
+   "dt": 4000,
+   "kin_nbr": 0.644,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 156,
+   "top_share": 0.0035
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 21750,
+   "dt": 6000,
+   "kin_nbr": 0.5995,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 158,
+   "top_share": 0.0026
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 23750,
+   "dt": 8000,
+   "kin_nbr": 0.6863,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 150,
+   "top_share": 0.0019
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 25750,
+   "dt": 10000,
+   "kin_nbr": 0.5995,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 159,
+   "top_share": 0.0058
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 27750,
+   "dt": 12000,
+   "kin_nbr": 0.6442,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 147,
+   "top_share": 0.0032
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 29750,
+   "dt": 14000,
+   "kin_nbr": 0.6172,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 154,
+   "top_share": 0.0032
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 31750,
+   "dt": 16000,
+   "kin_nbr": 0.6159,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 163,
+   "top_share": 0.0019
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 33750,
+   "dt": 18000,
+   "kin_nbr": 0.6334,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 160,
+   "top_share": 0.0037
+  },
+  {
+   "seed": 5302,
+   "arm": "S",
+   "epoch": 35750,
+   "dt": 20000,
+   "kin_nbr": 0.6468,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 159,
+   "top_share": 0.0022
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 15750,
+   "dt": 0,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0037,
+   "families_ge01pct": 148,
+   "top_share": 0.0105
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 17750,
+   "dt": 2000,
+   "kin_nbr": 0.004,
+   "kin_rand": 0.0037,
+   "families_ge01pct": 151,
+   "top_share": 0.005
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 19750,
+   "dt": 4000,
+   "kin_nbr": 0.0035,
+   "kin_rand": 0.0033,
+   "families_ge01pct": 155,
+   "top_share": 0.0072
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 21750,
+   "dt": 6000,
+   "kin_nbr": 0.0037,
+   "kin_rand": 0.0038,
+   "families_ge01pct": 146,
+   "top_share": 0.0067
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 23750,
+   "dt": 8000,
+   "kin_nbr": 0.0039,
+   "kin_rand": 0.004,
+   "families_ge01pct": 143,
+   "top_share": 0.01
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 25750,
+   "dt": 10000,
+   "kin_nbr": 0.0037,
+   "kin_rand": 0.0041,
+   "families_ge01pct": 141,
+   "top_share": 0.0062
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 27750,
+   "dt": 12000,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 160,
+   "top_share": 0.0072
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 29750,
+   "dt": 14000,
+   "kin_nbr": 0.0039,
+   "kin_rand": 0.004,
+   "families_ge01pct": 155,
+   "top_share": 0.0084
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 31750,
+   "dt": 16000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0037,
+   "families_ge01pct": 153,
+   "top_share": 0.0078
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 33750,
+   "dt": 18000,
+   "kin_nbr": 0.004,
+   "kin_rand": 0.0039,
+   "families_ge01pct": 144,
+   "top_share": 0.0042
+  },
+  {
+   "seed": 5302,
+   "arm": "Mp",
+   "epoch": 35750,
+   "dt": 20000,
+   "kin_nbr": 0.0035,
+   "kin_rand": 0.0037,
+   "families_ge01pct": 158,
+   "top_share": 0.0051
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 14500,
+   "dt": 0,
+   "kin_nbr": 0.0024,
+   "kin_rand": 0.0026,
+   "families_ge01pct": 124,
+   "top_share": 0.0065
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 16500,
+   "dt": 2000,
+   "kin_nbr": 0.0021,
+   "kin_rand": 0.0022,
+   "families_ge01pct": 117,
+   "top_share": 0.009
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 18500,
+   "dt": 4000,
+   "kin_nbr": 0.0028,
+   "kin_rand": 0.0027,
+   "families_ge01pct": 122,
+   "top_share": 0.0047
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 20500,
+   "dt": 6000,
+   "kin_nbr": 0.0028,
+   "kin_rand": 0.003,
+   "families_ge01pct": 139,
+   "top_share": 0.0046
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 22500,
+   "dt": 8000,
+   "kin_nbr": 0.0031,
+   "kin_rand": 0.0029,
+   "families_ge01pct": 147,
+   "top_share": 0.0077
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 24500,
+   "dt": 10000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0026,
+   "families_ge01pct": 148,
+   "top_share": 0.01
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 26500,
+   "dt": 12000,
+   "kin_nbr": 0.0025,
+   "kin_rand": 0.0028,
+   "families_ge01pct": 141,
+   "top_share": 0.0135
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 28500,
+   "dt": 14000,
+   "kin_nbr": 0.003,
+   "kin_rand": 0.0028,
+   "families_ge01pct": 131,
+   "top_share": 0.0067
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 30500,
+   "dt": 16000,
+   "kin_nbr": 0.0033,
+   "kin_rand": 0.0032,
+   "families_ge01pct": 142,
+   "top_share": 0.0206
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 32500,
+   "dt": 18000,
+   "kin_nbr": 0.0032,
+   "kin_rand": 0.0031,
+   "families_ge01pct": 130,
+   "top_share": 0.0068
+  },
+  {
+   "seed": 5308,
+   "arm": "M",
+   "epoch": 34500,
+   "dt": 20000,
+   "kin_nbr": 0.0032,
+   "kin_rand": 0.0031,
+   "families_ge01pct": 139,
+   "top_share": 0.0072
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 14500,
+   "dt": 0,
+   "kin_nbr": 0.0024,
+   "kin_rand": 0.0026,
+   "families_ge01pct": 124,
+   "top_share": 0.0065
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 16500,
+   "dt": 2000,
+   "kin_nbr": 0.5464,
+   "kin_rand": 0.0012,
+   "families_ge01pct": 136,
+   "top_share": 0.0027
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 18500,
+   "dt": 4000,
+   "kin_nbr": 0.5592,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 129,
+   "top_share": 0.0085
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 20500,
+   "dt": 6000,
+   "kin_nbr": 0.5415,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 139,
+   "top_share": 0.0021
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 22500,
+   "dt": 8000,
+   "kin_nbr": 0.5407,
+   "kin_rand": 0.0009,
+   "families_ge01pct": 136,
+   "top_share": 0.0013
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 24500,
+   "dt": 10000,
+   "kin_nbr": 0.5692,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 132,
+   "top_share": 0.0036
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 26500,
+   "dt": 12000,
+   "kin_nbr": 0.5453,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 128,
+   "top_share": 0.0033
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 28500,
+   "dt": 14000,
+   "kin_nbr": 0.5232,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 140,
+   "top_share": 0.0019
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 30500,
+   "dt": 16000,
+   "kin_nbr": 0.5958,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 137,
+   "top_share": 0.0023
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 32500,
+   "dt": 18000,
+   "kin_nbr": 0.5209,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 140,
+   "top_share": 0.0018
+  },
+  {
+   "seed": 5308,
+   "arm": "S",
+   "epoch": 34500,
+   "dt": 20000,
+   "kin_nbr": 0.5539,
+   "kin_rand": 0.0009,
+   "families_ge01pct": 128,
+   "top_share": 0.004
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 14500,
+   "dt": 0,
+   "kin_nbr": 0.0024,
+   "kin_rand": 0.0026,
+   "families_ge01pct": 124,
+   "top_share": 0.0065
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 16500,
+   "dt": 2000,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0041,
+   "families_ge01pct": 149,
+   "top_share": 0.0067
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 18500,
+   "dt": 4000,
+   "kin_nbr": 0.0032,
+   "kin_rand": 0.0032,
+   "families_ge01pct": 143,
+   "top_share": 0.0038
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 20500,
+   "dt": 6000,
+   "kin_nbr": 0.0035,
+   "kin_rand": 0.0032,
+   "families_ge01pct": 140,
+   "top_share": 0.0057
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 22500,
+   "dt": 8000,
+   "kin_nbr": 0.003,
+   "kin_rand": 0.0032,
+   "families_ge01pct": 143,
+   "top_share": 0.0121
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 24500,
+   "dt": 10000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0028,
+   "families_ge01pct": 152,
+   "top_share": 0.0099
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 26500,
+   "dt": 12000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.003,
+   "families_ge01pct": 147,
+   "top_share": 0.0071
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 28500,
+   "dt": 14000,
+   "kin_nbr": 0.0022,
+   "kin_rand": 0.0025,
+   "families_ge01pct": 151,
+   "top_share": 0.0063
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 30500,
+   "dt": 16000,
+   "kin_nbr": 0.002,
+   "kin_rand": 0.002,
+   "families_ge01pct": 144,
+   "top_share": 0.0083
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 32500,
+   "dt": 18000,
+   "kin_nbr": 0.0022,
+   "kin_rand": 0.0024,
+   "families_ge01pct": 86,
+   "top_share": 0.0048
+  },
+  {
+   "seed": 5308,
+   "arm": "Mp",
+   "epoch": 34500,
+   "dt": 20000,
+   "kin_nbr": 0.0019,
+   "kin_rand": 0.0018,
+   "families_ge01pct": 77,
+   "top_share": 0.0074
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 12250,
+   "dt": 0,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 161,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 14250,
+   "dt": 2000,
+   "kin_nbr": 0.0015,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 181,
+   "top_share": 0.0016
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 16250,
+   "dt": 4000,
+   "kin_nbr": 0.0013,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 186,
+   "top_share": 0.0039
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 18250,
+   "dt": 6000,
+   "kin_nbr": 0.0017,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 164,
+   "top_share": 0.0039
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 20250,
+   "dt": 8000,
+   "kin_nbr": 0.0014,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 171,
+   "top_share": 0.0032
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 22250,
+   "dt": 10000,
+   "kin_nbr": 0.0015,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 166,
+   "top_share": 0.0027
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 24250,
+   "dt": 12000,
+   "kin_nbr": 0.0016,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 192,
+   "top_share": 0.0019
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 26250,
+   "dt": 14000,
+   "kin_nbr": 0.0018,
+   "kin_rand": 0.0017,
+   "families_ge01pct": 176,
+   "top_share": 0.0059
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 28250,
+   "dt": 16000,
+   "kin_nbr": 0.0019,
+   "kin_rand": 0.0019,
+   "families_ge01pct": 194,
+   "top_share": 0.0065
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 30250,
+   "dt": 18000,
+   "kin_nbr": 0.0016,
+   "kin_rand": 0.0017,
+   "families_ge01pct": 204,
+   "top_share": 0.0018
+  },
+  {
+   "seed": 5401,
+   "arm": "M",
+   "epoch": 32250,
+   "dt": 20000,
+   "kin_nbr": 0.0018,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 189,
+   "top_share": 0.0023
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 12250,
+   "dt": 0,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 161,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 14250,
+   "dt": 2000,
+   "kin_nbr": 0.1468,
+   "kin_rand": 0.0007,
+   "families_ge01pct": 98,
+   "top_share": 0.0014
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 16250,
+   "dt": 4000,
+   "kin_nbr": 0.1355,
+   "kin_rand": 0.0005,
+   "families_ge01pct": 76,
+   "top_share": 0.0012
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 18250,
+   "dt": 6000,
+   "kin_nbr": 0.0527,
+   "kin_rand": 0.0005,
+   "families_ge01pct": 86,
+   "top_share": 0.0013
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 20250,
+   "dt": 8000,
+   "kin_nbr": 0.0464,
+   "kin_rand": 0.0005,
+   "families_ge01pct": 75,
+   "top_share": 0.0036
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 22250,
+   "dt": 10000,
+   "kin_nbr": 0.044,
+   "kin_rand": 0.0007,
+   "families_ge01pct": 131,
+   "top_share": 0.0012
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 24250,
+   "dt": 12000,
+   "kin_nbr": 0.083,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 89,
+   "top_share": 0.0028
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 26250,
+   "dt": 14000,
+   "kin_nbr": 0.0994,
+   "kin_rand": 0.0004,
+   "families_ge01pct": 101,
+   "top_share": 0.0014
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 28250,
+   "dt": 16000,
+   "kin_nbr": 0.1053,
+   "kin_rand": 0.0007,
+   "families_ge01pct": 113,
+   "top_share": 0.0014
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 30250,
+   "dt": 18000,
+   "kin_nbr": 0.1242,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 106,
+   "top_share": 0.0018
+  },
+  {
+   "seed": 5401,
+   "arm": "S",
+   "epoch": 32250,
+   "dt": 20000,
+   "kin_nbr": 0.1004,
+   "kin_rand": 0.0007,
+   "families_ge01pct": 107,
+   "top_share": 0.0024
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 12250,
+   "dt": 0,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 161,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 14250,
+   "dt": 2000,
+   "kin_nbr": 0.0017,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 156,
+   "top_share": 0.0026
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 16250,
+   "dt": 4000,
+   "kin_nbr": 0.0015,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 148,
+   "top_share": 0.0017
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 18250,
+   "dt": 6000,
+   "kin_nbr": 0.0015,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 170,
+   "top_share": 0.0021
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 20250,
+   "dt": 8000,
+   "kin_nbr": 0.0015,
+   "kin_rand": 0.002,
+   "families_ge01pct": 158,
+   "top_share": 0.0027
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 22250,
+   "dt": 10000,
+   "kin_nbr": 0.0016,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 175,
+   "top_share": 0.0026
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 24250,
+   "dt": 12000,
+   "kin_nbr": 0.0018,
+   "kin_rand": 0.002,
+   "families_ge01pct": 185,
+   "top_share": 0.0057
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 26250,
+   "dt": 14000,
+   "kin_nbr": 0.0013,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 147,
+   "top_share": 0.003
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 28250,
+   "dt": 16000,
+   "kin_nbr": 0.0011,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 129,
+   "top_share": 0.0012
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 30250,
+   "dt": 18000,
+   "kin_nbr": 0.0012,
+   "kin_rand": 0.001,
+   "families_ge01pct": 146,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5401,
+   "arm": "Mp",
+   "epoch": 32250,
+   "dt": 20000,
+   "kin_nbr": 0.0014,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 148,
+   "top_share": 0.002
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 24250,
+   "dt": 0,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0041,
+   "families_ge01pct": 136,
+   "top_share": 0.0115
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 26250,
+   "dt": 2000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0038,
+   "families_ge01pct": 134,
+   "top_share": 0.0054
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 28250,
+   "dt": 4000,
+   "kin_nbr": 0.0032,
+   "kin_rand": 0.0031,
+   "families_ge01pct": 152,
+   "top_share": 0.0102
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 30250,
+   "dt": 6000,
+   "kin_nbr": 0.0033,
+   "kin_rand": 0.0036,
+   "families_ge01pct": 141,
+   "top_share": 0.0042
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 32250,
+   "dt": 8000,
+   "kin_nbr": 0.0033,
+   "kin_rand": 0.003,
+   "families_ge01pct": 143,
+   "top_share": 0.006
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 34250,
+   "dt": 10000,
+   "kin_nbr": 0.0034,
+   "kin_rand": 0.0035,
+   "families_ge01pct": 140,
+   "top_share": 0.0118
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 36250,
+   "dt": 12000,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0039,
+   "families_ge01pct": 143,
+   "top_share": 0.0192
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 38250,
+   "dt": 14000,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0033,
+   "families_ge01pct": 130,
+   "top_share": 0.0077
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 40250,
+   "dt": 16000,
+   "kin_nbr": 0.0034,
+   "kin_rand": 0.0033,
+   "families_ge01pct": 144,
+   "top_share": 0.0121
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 42250,
+   "dt": 18000,
+   "kin_nbr": 0.0034,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 131,
+   "top_share": 0.0051
+  },
+  {
+   "seed": 5402,
+   "arm": "M",
+   "epoch": 44250,
+   "dt": 20000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0033,
+   "families_ge01pct": 144,
+   "top_share": 0.0042
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 24250,
+   "dt": 0,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0041,
+   "families_ge01pct": 136,
+   "top_share": 0.0115
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 26250,
+   "dt": 2000,
+   "kin_nbr": 0.5724,
+   "kin_rand": 0.0012,
+   "families_ge01pct": 147,
+   "top_share": 0.0036
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 28250,
+   "dt": 4000,
+   "kin_nbr": 0.618,
+   "kin_rand": 0.0012,
+   "families_ge01pct": 152,
+   "top_share": 0.0027
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 30250,
+   "dt": 6000,
+   "kin_nbr": 0.5797,
+   "kin_rand": 0.0012,
+   "families_ge01pct": 155,
+   "top_share": 0.0016
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 32250,
+   "dt": 8000,
+   "kin_nbr": 0.6136,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 152,
+   "top_share": 0.0037
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 34250,
+   "dt": 10000,
+   "kin_nbr": 0.5877,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 151,
+   "top_share": 0.0036
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 36250,
+   "dt": 12000,
+   "kin_nbr": 0.5419,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 158,
+   "top_share": 0.0021
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 38250,
+   "dt": 14000,
+   "kin_nbr": 0.5391,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 131,
+   "top_share": 0.0027
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 40250,
+   "dt": 16000,
+   "kin_nbr": 0.4678,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 155,
+   "top_share": 0.0044
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 42250,
+   "dt": 18000,
+   "kin_nbr": 0.4797,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 147,
+   "top_share": 0.002
+  },
+  {
+   "seed": 5402,
+   "arm": "S",
+   "epoch": 44250,
+   "dt": 20000,
+   "kin_nbr": 0.48,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 145,
+   "top_share": 0.0032
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 24250,
+   "dt": 0,
+   "kin_nbr": 0.0038,
+   "kin_rand": 0.0041,
+   "families_ge01pct": 136,
+   "top_share": 0.0115
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 26250,
+   "dt": 2000,
+   "kin_nbr": 0.003,
+   "kin_rand": 0.003,
+   "families_ge01pct": 145,
+   "top_share": 0.0054
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 28250,
+   "dt": 4000,
+   "kin_nbr": 0.0034,
+   "kin_rand": 0.0031,
+   "families_ge01pct": 137,
+   "top_share": 0.0037
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 30250,
+   "dt": 6000,
+   "kin_nbr": 0.0032,
+   "kin_rand": 0.0031,
+   "families_ge01pct": 138,
+   "top_share": 0.0091
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 32250,
+   "dt": 8000,
+   "kin_nbr": 0.003,
+   "kin_rand": 0.0031,
+   "families_ge01pct": 144,
+   "top_share": 0.0063
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 34250,
+   "dt": 10000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0032,
+   "families_ge01pct": 138,
+   "top_share": 0.0106
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 36250,
+   "dt": 12000,
+   "kin_nbr": 0.0028,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 158,
+   "top_share": 0.0063
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 38250,
+   "dt": 14000,
+   "kin_nbr": 0.0035,
+   "kin_rand": 0.0038,
+   "families_ge01pct": 149,
+   "top_share": 0.0041
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 40250,
+   "dt": 16000,
+   "kin_nbr": 0.0032,
+   "kin_rand": 0.003,
+   "families_ge01pct": 150,
+   "top_share": 0.0051
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 42250,
+   "dt": 18000,
+   "kin_nbr": 0.0033,
+   "kin_rand": 0.0033,
+   "families_ge01pct": 131,
+   "top_share": 0.0079
+  },
+  {
+   "seed": 5402,
+   "arm": "Mp",
+   "epoch": 44250,
+   "dt": 20000,
+   "kin_nbr": 0.0032,
+   "kin_rand": 0.0036,
+   "families_ge01pct": 140,
+   "top_share": 0.005
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 18750,
+   "dt": 0,
+   "kin_nbr": 0.0024,
+   "kin_rand": 0.0024,
+   "families_ge01pct": 145,
+   "top_share": 0.0037
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 20750,
+   "dt": 2000,
+   "kin_nbr": 0.0007,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 31,
+   "top_share": 0.0025
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 22750,
+   "dt": 4000,
+   "kin_nbr": 0.003,
+   "kin_rand": 0.0029,
+   "families_ge01pct": 141,
+   "top_share": 0.0072
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 24750,
+   "dt": 6000,
+   "kin_nbr": 0.0037,
+   "kin_rand": 0.004,
+   "families_ge01pct": 141,
+   "top_share": 0.0042
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 26750,
+   "dt": 8000,
+   "kin_nbr": 0.004,
+   "kin_rand": 0.0039,
+   "families_ge01pct": 142,
+   "top_share": 0.0134
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 28750,
+   "dt": 10000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0033,
+   "families_ge01pct": 154,
+   "top_share": 0.0037
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 30750,
+   "dt": 12000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0039,
+   "families_ge01pct": 156,
+   "top_share": 0.0092
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 32750,
+   "dt": 14000,
+   "kin_nbr": 0.0033,
+   "kin_rand": 0.0029,
+   "families_ge01pct": 153,
+   "top_share": 0.0079
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 34750,
+   "dt": 16000,
+   "kin_nbr": 0.0042,
+   "kin_rand": 0.004,
+   "families_ge01pct": 135,
+   "top_share": 0.0145
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 36750,
+   "dt": 18000,
+   "kin_nbr": 0.0039,
+   "kin_rand": 0.0039,
+   "families_ge01pct": 146,
+   "top_share": 0.0086
+  },
+  {
+   "seed": 5406,
+   "arm": "M",
+   "epoch": 38750,
+   "dt": 20000,
+   "kin_nbr": 0.004,
+   "kin_rand": 0.0039,
+   "families_ge01pct": 144,
+   "top_share": 0.007
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 18750,
+   "dt": 0,
+   "kin_nbr": 0.0024,
+   "kin_rand": 0.0024,
+   "families_ge01pct": 145,
+   "top_share": 0.0037
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 20750,
+   "dt": 2000,
+   "kin_nbr": 0.4975,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 134,
+   "top_share": 0.0039
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 22750,
+   "dt": 4000,
+   "kin_nbr": 0.5709,
+   "kin_rand": 0.0012,
+   "families_ge01pct": 153,
+   "top_share": 0.0025
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 24750,
+   "dt": 6000,
+   "kin_nbr": 0.5542,
+   "kin_rand": 0.0012,
+   "families_ge01pct": 152,
+   "top_share": 0.0031
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 26750,
+   "dt": 8000,
+   "kin_nbr": 0.2876,
+   "kin_rand": 0.0009,
+   "families_ge01pct": 116,
+   "top_share": 0.0034
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 28750,
+   "dt": 10000,
+   "kin_nbr": 0.3493,
+   "kin_rand": 0.0009,
+   "families_ge01pct": 126,
+   "top_share": 0.0012
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 30750,
+   "dt": 12000,
+   "kin_nbr": 0.4532,
+   "kin_rand": 0.001,
+   "families_ge01pct": 138,
+   "top_share": 0.004
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 32750,
+   "dt": 14000,
+   "kin_nbr": 0.5454,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 153,
+   "top_share": 0.0018
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 34750,
+   "dt": 16000,
+   "kin_nbr": 0.6034,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 144,
+   "top_share": 0.0021
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 36750,
+   "dt": 18000,
+   "kin_nbr": 0.6328,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 159,
+   "top_share": 0.002
+  },
+  {
+   "seed": 5406,
+   "arm": "S",
+   "epoch": 38750,
+   "dt": 20000,
+   "kin_nbr": 0.6261,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 166,
+   "top_share": 0.0041
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 18750,
+   "dt": 0,
+   "kin_nbr": 0.0024,
+   "kin_rand": 0.0024,
+   "families_ge01pct": 145,
+   "top_share": 0.0037
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 20750,
+   "dt": 2000,
+   "kin_nbr": 0.0014,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 84,
+   "top_share": 0.0084
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 22750,
+   "dt": 4000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0032,
+   "families_ge01pct": 142,
+   "top_share": 0.0067
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 24750,
+   "dt": 6000,
+   "kin_nbr": 0.0031,
+   "kin_rand": 0.003,
+   "families_ge01pct": 139,
+   "top_share": 0.0096
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 26750,
+   "dt": 8000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0027,
+   "families_ge01pct": 149,
+   "top_share": 0.0077
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 28750,
+   "dt": 10000,
+   "kin_nbr": 0.0028,
+   "kin_rand": 0.0028,
+   "families_ge01pct": 140,
+   "top_share": 0.0098
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 30750,
+   "dt": 12000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0028,
+   "families_ge01pct": 138,
+   "top_share": 0.0126
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 32750,
+   "dt": 14000,
+   "kin_nbr": 0.003,
+   "kin_rand": 0.0026,
+   "families_ge01pct": 148,
+   "top_share": 0.0091
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 34750,
+   "dt": 16000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0038,
+   "families_ge01pct": 133,
+   "top_share": 0.0079
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 36750,
+   "dt": 18000,
+   "kin_nbr": 0.0029,
+   "kin_rand": 0.0029,
+   "families_ge01pct": 123,
+   "top_share": 0.0083
+  },
+  {
+   "seed": 5406,
+   "arm": "Mp",
+   "epoch": 38750,
+   "dt": 20000,
+   "kin_nbr": 0.0035,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 111,
+   "top_share": 0.0099
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 2750,
+   "dt": 0,
+   "kin_nbr": 0.0004,
+   "kin_rand": 0.0004,
+   "families_ge01pct": 26,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 4750,
+   "dt": 2000,
+   "kin_nbr": 0.0003,
+   "kin_rand": 0.0004,
+   "families_ge01pct": 21,
+   "top_share": 0.0105
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 6750,
+   "dt": 4000,
+   "kin_nbr": 0.0005,
+   "kin_rand": 0.0006,
+   "families_ge01pct": 30,
+   "top_share": 0.0069
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 8750,
+   "dt": 6000,
+   "kin_nbr": 0.0002,
+   "kin_rand": 0.0002,
+   "families_ge01pct": 19,
+   "top_share": 0.0055
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 10750,
+   "dt": 8000,
+   "kin_nbr": 0.0009,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 54,
+   "top_share": 0.004
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 12750,
+   "dt": 10000,
+   "kin_nbr": 0.0009,
+   "kin_rand": 0.0012,
+   "families_ge01pct": 57,
+   "top_share": 0.0038
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 14750,
+   "dt": 12000,
+   "kin_nbr": 0.0017,
+   "kin_rand": 0.0018,
+   "families_ge01pct": 76,
+   "top_share": 0.0229
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 16750,
+   "dt": 14000,
+   "kin_nbr": 0.0003,
+   "kin_rand": 0.0004,
+   "families_ge01pct": 33,
+   "top_share": 0.004
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 18750,
+   "dt": 16000,
+   "kin_nbr": 0.0006,
+   "kin_rand": 0.0005,
+   "families_ge01pct": 51,
+   "top_share": 0.0078
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 20750,
+   "dt": 18000,
+   "kin_nbr": 0.0006,
+   "kin_rand": 0.0008,
+   "families_ge01pct": 55,
+   "top_share": 0.004
+  },
+  {
+   "seed": 5410,
+   "arm": "M",
+   "epoch": 22750,
+   "dt": 20000,
+   "kin_nbr": 0.0006,
+   "kin_rand": 0.0007,
+   "families_ge01pct": 50,
+   "top_share": 0.0073
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 2750,
+   "dt": 0,
+   "kin_nbr": 0.0004,
+   "kin_rand": 0.0004,
+   "families_ge01pct": 26,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 4750,
+   "dt": 2000,
+   "kin_nbr": 0.5199,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 152,
+   "top_share": 0.0029
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 6750,
+   "dt": 4000,
+   "kin_nbr": 0.5165,
+   "kin_rand": 0.0017,
+   "families_ge01pct": 153,
+   "top_share": 0.0038
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 8750,
+   "dt": 6000,
+   "kin_nbr": 0.5238,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 149,
+   "top_share": 0.0043
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 10750,
+   "dt": 8000,
+   "kin_nbr": 0.458,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 147,
+   "top_share": 0.0031
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 12750,
+   "dt": 10000,
+   "kin_nbr": 0.5132,
+   "kin_rand": 0.0013,
+   "families_ge01pct": 145,
+   "top_share": 0.0048
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 14750,
+   "dt": 12000,
+   "kin_nbr": 0.5292,
+   "kin_rand": 0.0016,
+   "families_ge01pct": 155,
+   "top_share": 0.0015
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 16750,
+   "dt": 14000,
+   "kin_nbr": 0.4098,
+   "kin_rand": 0.0011,
+   "families_ge01pct": 146,
+   "top_share": 0.0032
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 18750,
+   "dt": 16000,
+   "kin_nbr": 0.429,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 132,
+   "top_share": 0.0047
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 20750,
+   "dt": 18000,
+   "kin_nbr": 0.455,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 144,
+   "top_share": 0.0054
+  },
+  {
+   "seed": 5410,
+   "arm": "S",
+   "epoch": 22750,
+   "dt": 20000,
+   "kin_nbr": 0.4972,
+   "kin_rand": 0.0015,
+   "families_ge01pct": 158,
+   "top_share": 0.002
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 2750,
+   "dt": 0,
+   "kin_nbr": 0.0004,
+   "kin_rand": 0.0004,
+   "families_ge01pct": 26,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 4750,
+   "dt": 2000,
+   "kin_nbr": 0.0002,
+   "kin_rand": 0.0003,
+   "families_ge01pct": 16,
+   "top_share": 0.0059
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 6750,
+   "dt": 4000,
+   "kin_nbr": 0.0014,
+   "kin_rand": 0.0014,
+   "families_ge01pct": 60,
+   "top_share": 0.0137
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 8750,
+   "dt": 6000,
+   "kin_nbr": 0.0006,
+   "kin_rand": 0.0006,
+   "families_ge01pct": 24,
+   "top_share": 0.0113
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 10750,
+   "dt": 8000,
+   "kin_nbr": 0.0009,
+   "kin_rand": 0.0009,
+   "families_ge01pct": 56,
+   "top_share": 0.0118
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 12750,
+   "dt": 10000,
+   "kin_nbr": 0.002,
+   "kin_rand": 0.002,
+   "families_ge01pct": 106,
+   "top_share": 0.0041
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 14750,
+   "dt": 12000,
+   "kin_nbr": 0.0028,
+   "kin_rand": 0.0029,
+   "families_ge01pct": 138,
+   "top_share": 0.0079
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 16750,
+   "dt": 14000,
+   "kin_nbr": 0.0021,
+   "kin_rand": 0.0018,
+   "families_ge01pct": 127,
+   "top_share": 0.0045
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 18750,
+   "dt": 16000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0034,
+   "families_ge01pct": 131,
+   "top_share": 0.0058
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 20750,
+   "dt": 18000,
+   "kin_nbr": 0.0036,
+   "kin_rand": 0.0036,
+   "families_ge01pct": 156,
+   "top_share": 0.0047
+  },
+  {
+   "seed": 5410,
+   "arm": "Mp",
+   "epoch": 22750,
+   "dt": 20000,
+   "kin_nbr": 0.0034,
+   "kin_rand": 0.0039,
+   "families_ge01pct": 141,
+   "top_share": 0.0061
+  }
+ ]
+}

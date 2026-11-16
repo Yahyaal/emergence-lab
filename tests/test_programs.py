@@ -215,3 +215,31 @@ def test_subleq_product_census_prefilter():
     rows = {r.tobytes() for r in soup}
     for x in X:  # both inputs are distinct members of the soup
         assert x[64:128].tobytes() in rows and x[128:].tobytes() in rows and (x[64:128] != x[128:]).any()
+
+
+def test_spatial_soup_controls():
+    """E-78 groundwork (scripts/bff_spatial.py): spatial pairs are a perfect matching of torus neighbours every
+    round; the mixed arm equals bff.Soup bit for bit (50 rounds); under noexec both arms change nothing but
+    mutation. The replicator-spread positive control is slower (~1 min) and runs in `--controls`."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bff_spatial as S
+    assert S.check_matching(rounds=50)["pass"]
+    assert S.check_matching(rounds=50, w=8, h=6)["pass"]
+    assert S.check_mixed_identical(rounds=50)["pass"]
+    nx = S.check_noexec(rounds=30)
+    assert nx["pass"], nx
+    r = S.spread("spatial", side=32, rounds=20, every=10)
+    assert r["series"][-1]["copies"] > r["series"][0]["copies"] and r["series"][-1]["largest_component"] > 0.8
+
+
+def test_e78_resume_exact():
+    """E-78 driver (scripts/e78_run.py): a continuation interrupted after round 25 and resumed from its round-20
+    snapshot (programs + saved generator state) equals an uninterrupted run, in both arms."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import e78_run as R
+    r = R.check_resume()
+    assert r["pass"], r

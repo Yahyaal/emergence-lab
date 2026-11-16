@@ -12,13 +12,15 @@ title: Overview
 
 This site is the project's **research journal**: what we did, why, what we found, what turned out to be wrong, and what comes next. It is written so that a person or an AI agent can pick up the work with no other context. Start at **[Handoff]({{ '/handoff.html' | relative_url }})** if you are continuing the work.
 
-<p><b>New:</b> <a href="{{ '/report.html' | relative_url }}">the report</a> now covers 6 to 14 November. Its latest section (34) is a prospective test in the SUBLEQ soups: versions chosen by how often random pairs write a replicator made replicators in 33 of 42 soups, against 12 of 72, but the pre-registered test came out undecided (7 high-rate versions, not 8). A <a href="{{ '/reviews.html#r-5' | relative_url }}">goal and approach review (R-5)</a> led to the next steps on the <a href="{{ '/handoff.html' | relative_url }}">Handoff</a> page.</p>
+<p><b>New (16 November):</b> <a href="{{ '/paper.html' | relative_url }}">a paper-style synthesis</a> of the work to date, written for a reader who has not seen the project. It adds no new results.</p>
+
+<p><b>Earlier:</b> <a href="{{ '/report.html' | relative_url }}">the report</a> now covers 6 to 14 November. Its latest section (34) is a prospective test in the SUBLEQ soups: versions chosen by how often random pairs write a replicator made replicators in 33 of 42 soups, against 12 of 72, but the pre-registered test came out undecided (7 high-rate versions, not 8). A <a href="{{ '/reviews.html#r-5' | relative_url }}">goal and approach review (R-5)</a> led to the next steps on the <a href="{{ '/handoff.html' | relative_url }}">Handoff</a> page.</p>
 
 ## Where things stand
 
 <div class="cards">
 <div class="card"><div class="stat">4 substrates</div><p>Life-like cellular automata, the Lenia family (Lenia, Flow-Lenia, multi-channel Lenia), and two kinds of <b>program soup</b>: BFF and a SUBLEQ family. The soups have no space and run in scripts, outside the engine, discovery engine and dashboard.</p></div>
-<div class="card"><div class="stat">4 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: <b>heritable variation</b> in BFF replicators that arose from random code (one-byte mutations inherited in 9 of 9, E-42). <b>Level 3</b> (self-replication) in one multi-channel Lenia rule (dividing spots of a single type, E-32) and in both soup languages (E-40, E-41; E-75). <b>Level 5 not shown:</b> later code is not fitter by four measures (E-48 to E-54).</p></div>
+<div class="card"><div class="stat">4 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: <b>heritable variation</b> in BFF replicators that arose from random code (one-byte mutations inherited in 9 of 9, E-42). <b>Level 3</b> (self-replication) in one multi-channel Lenia rule (dividing spots of a single type, E-32) and in both soup languages (E-40, E-41; E-75). <b>Level 5 not shown:</b> later code is not fitter by four measures (E-48 to E-54), also when programs meet only their neighbours on a grid (E-78).</p></div>
 <div class="card"><div class="stat">1.8×</div><p>How many more distinct rules with self-propelled structures the discovery engine finds than random search at equal compute, after removing near-duplicates; 3.4× for rules "complex" on every seed. Engine ahead on <b>20 of 20</b> paired seeds (E-77, pre-registered). Life-like rules only.</p></div>
 <div class="card"><div class="stat">170 / 170</div><p>Benchmark checks passing, as last reported: 39 standard checks plus 131 hard and deceptive controls (probes, knockouts, Lenia, Flow-Lenia, births, heredity, program soups).</p></div>
 </div>
@@ -46,6 +48,7 @@ More in the **[Gallery]({{ '/gallery.html' | relative_url }})**.
 
 ## How to read this journal
 
+- **[Paper]({{ '/paper.html' | relative_url }})**: a paper-style synthesis of the three main findings (Lenia movers, program-soup replicators, no open-ended evolution yet), with a claims table that traces every number to its source.
 - **[Journal]({{ '/journal.html' | relative_url }})**: chronological entries, newest first.
 - **[Decisions]({{ '/decisions.html' | relative_url }})**: why the system is the way it is, with the alternatives we rejected.
 - **[Experiments]({{ '/experiments.html' | relative_url }})**: every experiment, with its exact command, code commit, results and raw data.

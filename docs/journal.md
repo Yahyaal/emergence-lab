@@ -12,6 +12,88 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-090 · 2026-11-16 · A paper-style synthesis of the findings (writing only, no new results)
+
+**Question / why:** review R-5 found the record redundant and grouped by date, not by finding, and the owner wants exploration held to paper-quality rigour. A reader who has not seen the project needs one page that states what was found, at what evidence level, and where each number comes from.
+
+**Did:** wrote `docs/paper.md` (nav entry "Paper", linked from the overview). Sources, in order of authority: the exports in `docs/data/experiments/`, this journal (later entries override earlier ones), decisions, pre-registrations, research and reviews. No experiment was run and no new analysis was made, apart from tallying rule-level jump counts that the exports already contain (E-60, E-64, E-65, E-70; no new p values).
+- Three findings: (A) Lenia movers depend on the spatial correlation of the start; (B) which rules make replicators in program soups, rule-level statistics first; (C) heredity yes, level 5 not shown, including E-78.
+- Section 7 tabulates thirteen ways our detectors were fooled and the control each one led to.
+- Appendix A traces every number in the text to a JSON key or journal entry, with its pre-registration status and unit of analysis.
+- Appendix B scores 45 experiments with a pre-registered primary, from the journal's wording only: 23 met, 14 not met, 4 mixed, 2 undecided, 2 not testable.
+
+**Found while writing (no result changes):**
+- J-021's "13–23% for smooth starts" leaves out E-19a's 11/160 (6.9%) at density 0.35; the paper says 7–23%.
+- J-013 gives both "12 asymmetric seed shapes" and, in its caveats, "8 hand-chosen seed shapes"; R-4 confirmed 12.
+- E-32: J-037 says 1 of 450 decided rules; the export's `decided_rules` is 449 (it appears to count rules without a reproducer).
+- The headers of the E-45 and E-46 entries (J-045, J-046) lack their "## J-04x" prefix, so they do not appear as entries; J-038 and J-039 do not exist.
+
+**Changed:** `docs/paper.md`; `_layouts/default.html` (nav); `docs/index.md`; R-5 rows in `docs/reviews.md`. No code, no data.
+
+**Lesson:** writing every number into a claims table with its source is a cheap audit; it found a range that silently dropped one arm.
+
+---
+
+## J-089 · 2026-11-15 · E-78: soups where programs meet only their neighbours do not evolve fitter code either (pre-registered, fails)
+
+**Question (pre-registered, `docs/data/e78-preregistration.md`, commit `bf6fce6`, 6 s before the run started; D-065):** level 5 had been tested only in well-mixed BFF soups. When the 7 jumped E-54 soups continue with programs that meet only lattice neighbours, does later code become fitter than in a well-mixed continuation of the same snapshot?
+
+**Ran:**
+- **Run:** `scripts/e78_run.py --workers 11`. Each soup's T + 2000 snapshot was forked into M (well mixed), S (256 × 256 torus, neighbour matching) and M′ (well mixed, another seed), 20,000 rounds each, 21 jobs. Wall time **15 h 48 min** (projected 9.9 h: S ran at more steps per pair than M in soups 5301 and 5410). No interruptions; nothing resumed.
+- **Analysis:** `scripts/e78_analysis.py` (61 min, no crash, code unchanged since the pre-registration). Post hoc structure measures: `scripts/e78_explore.py`. Figure: `scripts/e78_figure.py` → `docs/assets/report/e78-spatial.png`.
+
+**Found:**
+- **Primary: fail.** d = Δ_S − Δ_M per soup in the original run's T+10000 soup: 5301 −0.02, 5302 −0.12, 5308 +0.00, 5401 −1.20, 5402 −0.03, 5406 −1.74, 5410 +0.13.
+  - Mean −0.42, one-sided p = 0.91, 95% interval −1.10 to **0.25**, below δ* = 0.28.
+  - **The seed-null contrast was significant:** Δ_M′ − Δ_M was negative in 7 of 7 soups (mean −0.24, two-sided p = 0.016). It cannot affect a fail, but it would have blocked a pass. M and M′ are the same process, so this is either chance (1 in 64) or a sign that two continuations of one snapshot differ more than the test assumes. Either way, S's deficit (mean −0.42) is of the same order as the M′-vs-M gap.
+  - Most of d comes from two soups. In 5401, S and M′ both fell by about 2 (M by 0.8). In 5406, only S fell (−1.28; M +0.46, M′ +0.35).
+- **Sensitivity:** without 5410: fail (mean −0.52, interval up to 0.28). Without 5401: undecided (mean −0.30, interval up to 0.45).
+- **Secondary, T+20000 background: fail** (mean d −0.29, p = 0.94, interval −0.78 to 0.21). Seed null n.s. (p = 0.89). Fail in both sensitivity analyses too.
+- **Within each arm, later code is not fitter** (E-54's test, primary background):
+  - S: D = −3.05, p = 0.999;
+  - M: D = −0.08, p = 0.56;
+  - M′: D = −1.73, p = 0.99.
+- **Reciprocal transplant (descriptive):**
+  - Late S code in the M arm's final soup: Δ″ mean −0.13 (+0.01 to +0.13 in 5 soups; −1.25 in 5401).
+  - Late M code in the S arm's final soup: −0.02 (the early reference scored +1.45 and −3.74 there in 5401 and 5406).
+  - Difference p = 1.0.
+- **Parasites: none in any arm.** The 40 most common programs of each final soup (280 per arm) are 99.6% (M), 99.6% (S) and 98.9% (M′) self-copiers. The 5 that never grew were "not copied" or "context self-copier".
+- **Coexistence (pre-registered): S has no 90%-identity family holding ≥ 1% of the soup after round 2,000, in any soup.** M and M′ keep 0–6. The pre-registered clustering statistic is therefore undefined in S. We predicted "more families ≥ 1% in S" at ~90%: wrong.
+  - `hoe_shuffled` at the end: S 2.7–3.5 against M 4.3–5.0.
+  - Distinct programs: S 17k–37k, M 14k–56k.
+- **Post hoc structure** (`e78_explore.py`, not pre-registered): S becomes a **mosaic of small local families**.
+  - From round 2,000 on, ~55% of grid-neighbour pairs are ≥ 90% identical (5401: 10%). Random pairs: 0.1%.
+  - The largest family holds only 0.2–0.4% of the soup. Families ≥ 0.1%: S 107–166, M 50–189.
+
+**Changed:** `scripts/e78_run.py`, `e78_analysis.py`, `e78_explore.py`, `e78_figure.py`; `tests/test_programs.py::test_e78_resume_exact`; D-065; report section 36; handoff; research O5.
+
+**Interpretation:** with neighbour-only meetings, the soups take on strong spatial structure within 2,000 rounds: patches of near-identical code, and no family that spreads widely. But in a well-mixed common garden, late code from S is no fitter than late code from M or than the code they started from. If anything it is less fit, driven by two soups. Together with E-48 to E-54, **level 5 is still not shown, now in both well-mixed and neighbour-only BFF soups.**
+
+This design cannot see advantages or parasites that exist only in space: both instruments are well mixed. A between-arm difference in structure (the mosaic) is not level 5. The arms also differ by about as much between two well-mixed seeds as between space and mixing, so continuation-to-continuation noise is large at n = 7.
+
+**Lesson:** a descriptive threshold chosen from the well-mixed case (families ≥ 1%) can be undefined in the new condition. Pre-register a threshold-free version beside it.
+
+---
+
+## J-088 · 2026-11-14 · E-78 groundwork: a neighbour-only soup runner, its controls, and what a level-5 test with 7 soups can see
+
+**Question / why:** level 5 has been tested only in well-mixed BFF soups (E-48 to E-54: later code not fitter; E-66/E-67: no parasites). The next experiment (E-78) forks the 7 jumped E-54 soups at T + 2000 into a well-mixed and a spatial continuation (256 × 256 torus, each program paired with one lattice neighbour per round). This entry is the groundwork only; the experiment is not run and the pre-registration is a draft (`docs/data/e78-preregistration.md`).
+
+**Ran:** `scripts/bff_spatial.py --controls` (~1 min), a 200-round timing pilot of soup 5301 in both arms, an 11-process load test, `scripts/e78_power.py` (detectable effect, wall time). Export `docs/data/experiments/2026-11-14-e78-groundwork.json`.
+
+**Found:**
+- **Runner:** `ArmSoup` is `bff.Soup` with only the pair list changed; the mixed arm equals `bff.Soup` bit for bit (50 rounds, random and snapshot programs). Spatial pairs are a perfect matching of torus neighbours in every round (200 rounds checked).
+- **Positive control:** a block of the hand-written replicator spreads as one patch in the spatial arm (excess copies ∝ t^1.86, front ~0.1 cell per round, neighbour ratio 40 at 2% share) and exponentially and unclustered in the mixed arm (neighbour ratio 0.93). Under `noexec` neither arm changes anything but mutation; a seeded block stays clustered without spreading, so clustering alone is not evidence.
+- **Pitfall:** HOE compresses the soup in storage order, so in the spatial arm it rises with clustering alone (5301: 4.29 → 5.15 in 200 rounds, while HOE on shuffled rows fell to 3.90). Compare arms with shuffled-row HOE.
+- **Timing:** ~1.4 × 10⁻⁴ s per round per unit of steps per pair under full load (0.3–1.3 s per round). 7 soups × 3 arms × 20,000 rounds ≈ 10 h on 11 workers (2 arms: 8.3 h).
+- **Power:** with the soup as the unit (n = 7), the between-arm invasion difference detectable with 80% power is about 0.3 log units under E-54-like heterogeneity (0.08 if only assay noise mattered).
+
+**Changed:** `scripts/bff_spatial.py`, `scripts/e78_power.py`, `tests/test_programs.py::test_spatial_soup_controls`; draft `docs/data/e78-preregistration.md`. No package code changed.
+
+**Lesson:** a measure computed on the storage order of a soup (HOE, compression) is not geometry-free once the soup has geometry.
+
+---
+
 ## J-087 · 2026-11-14 · E-77: the discovery engine beats random search on all 20 seeds (H1 with power, pre-registered, passes)
 
 **Question (pre-registered, `docs/data/e77-preregistration.md`, commit `7c7edbe`):** H1, "guided search finds more interesting rules than random search at equal compute", rested on E-03 to E-06: 2 seeds per arm. Does it hold over 20 seeds, paired by seed, after removing near-duplicates?
@@ -1107,7 +1189,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
-· 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
+## J-046 · 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
 
 **What we noticed after E-45:** soup 5006's earlier replicator #4 also sat beside its own reverse in the E-41 snapshot (129 copies and 128 reverse copies). We then seeded each of the 9 emergent replicators alone (4 soups each): **every one produces its exact byte-reverse in about equal numbers.** All the replicators that emerged in our soups copy themselves backwards; only the hand-written one copies forwards. So E-44 counted every emergent species by half (one form), and E-45 counted the 5006@32k species (#5/#6) by both forms but its opponents by one. Both biases could have created the reported advantages.
 
@@ -1128,7 +1210,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
-· 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
+## J-045 · 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
 
 **Question (pre-registered, `docs/data/e45-preregistration.md`, after a post-hoc pattern in E-44):** does the mirror replicator species of soup 5006 (J-044) out-compete the replicators of soup 901 when both of its forms are counted?
 
