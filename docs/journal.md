@@ -1189,7 +1189,7 @@ This design cannot see advantages or parasites that exist only in space: both in
 
 ---
 
-· 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
+## J-046 · 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
 
 **What we noticed after E-45:** soup 5006's earlier replicator #4 also sat beside its own reverse in the E-41 snapshot (129 copies and 128 reverse copies). We then seeded each of the 9 emergent replicators alone (4 soups each): **every one produces its exact byte-reverse in about equal numbers.** All the replicators that emerged in our soups copy themselves backwards; only the hand-written one copies forwards. So E-44 counted every emergent species by half (one form), and E-45 counted the 5006@32k species (#5/#6) by both forms but its opponents by one. Both biases could have created the reported advantages.
 
@@ -1210,7 +1210,7 @@ This design cannot see advantages or parasites that exist only in space: both in
 
 ---
 
-· 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
+## J-045 · 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
 
 **Question (pre-registered, `docs/data/e45-preregistration.md`, after a post-hoc pattern in E-44):** does the mirror replicator species of soup 5006 (J-044) out-compete the replicators of soup 901 when both of its forms are counted?
 
