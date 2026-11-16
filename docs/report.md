@@ -841,6 +841,34 @@ A review of the project against its goal ([R-5]({{ '/reviews.html#r-5' | relativ
 - **The original numbers reproduce exactly**, but the code that removed near-duplicate rules had never been saved. We rebuilt it and checked that it gives the published counts.
 - **Limits:** Life-like rules only, one search budget, and self-propulsion is something the engine is told to look for.
 
+## 36 · Sunday: soups where programs meet only their neighbours
+
+Every level-5 test so far (sections 12, 13 and 19) used soups where any program can meet any other. In many artificial-life systems, space changes this: neighbours compete, families form patches, and parasites or cooperation can last. So we asked whether the negative answer depends on mixing (pre-registered, `docs/data/e78-preregistration.md`).
+
+**What we did.** We took the 7 soups of section 19, each 2,000 rounds after its jump, and laid each one out on a 256 × 256 grid. Each soup then continued three ways for 20,000 rounds:
+- **S:** every program meets one of its four neighbours each round;
+- **M:** well mixed, as before;
+- **M′:** well mixed again with another seed, to show how much two runs differ by chance alone.
+
+Everything else was unchanged. Then we used the same fitness test as section 19: copies of later programs invade a sample of an unrelated soup, against the programs the run started from.
+
+<figure>
+<img src="{{ '/assets/report/e78-spatial.png' | relative_url }}" alt="Left: per-soup change in invasion score from early to late programs in three arms; the neighbour-only arm is not higher, and is much lower in two soups. Middle: number of families holding at least 1% of the soup over time; the neighbour-only arm drops to zero. Right: share of grid neighbours that are near-identical; about 55% in the neighbour-only arm, near zero in the mixed arms.">
+<figcaption>Left: late minus early invasion score per soup (0 = no change). Middle: families holding ≥ 1% of the soup. Right (post hoc): share of grid-neighbour pairs that are ≥ 90% identical. Orange: neighbours only; blue and grey: well mixed with two seeds.</figcaption>
+</figure>
+
+- **Later code is not fitter with space either.** S minus M averaged −0.42; the main test failed by its own rule. The upper end of the 95% interval is 0.25, below the 0.28 the test could detect. In five soups the arms were within 0.15 of each other; in two, S's late code was much worse.
+- **Two well-mixed runs differed about as much.** M′ came out below M in all 7 soups, which happens by chance about once in 64. Over 20,000 rounds, separate runs of one soup drift apart a lot. With 7 soups, only large effects can be seen.
+- **No run made fitter code** than the code it started from, in any arm. That matches section 19.
+- **No parasites in any arm.** Nearly every common program still copies itself (99%), as in section 20.
+- **Space changed how the soup looks, not how fit it is.**
+  - With neighbours only, the soup becomes a mosaic: about 55% of neighbours are near-identical copies, against 0.1% for random pairs, yet no family holds even 1% of the soup.
+  - In the mixed arms a few families hold 1% or more each.
+  - We had predicted the opposite: more large families with space.
+- **Limits.** Our fitness test and parasite test both mix programs, so an advantage or a parasite that only works among neighbours would not show. A difference in how the soups look is not evidence of evolution.
+
+**What it means.** Adding space is the most common way to make these systems richer, and here it did not produce fitter code within 20,000 rounds. Level 5 remains unshown in BFF soups, now with and without space. Seeing an advantage that exists only among neighbours would need new, spatial instruments, built and calibrated like those of section 13.
+
 ## Where this leaves the project
 
 | Evidence level | Life-like rules (v0.1–v0.4) | Lenia family | Program soups (BFF, and the SUBLEQ family where named) |
@@ -849,7 +877,7 @@ A review of the project against its goal ([R-5]({{ '/reviews.html#r-5' | relativ
 | 2 · self-propelled structures | yes | **yes, arising spontaneously from correlated starts** (gliders; a turning "wanderer"; a straight "ring glider"); from Chan's sparse patches in big worlds too | not applicable (no space) |
 | 3 · self-replication | not observed | **yes, in one multi-channel rule (E-32): dividing spots of a single type**, like Gray-Scott; none in 3000 random single-channel rules from a lone lump (E-29), none in fed Flow-Lenia (E-30, after removing a false alarm; E-31 held out); no births in big worlds (E-15), in 500 glider collisions (E-20) or 200 wanderer encounters (E-22); gliders can *fuse* into a larger mover, wanderers absorb each other. A validated birth detector finds no reproducer in 568 worlds (E-27, E-28) | **yes, emergent from random code** in 3 of 16 soups of 16,384 programs (E-40, E-41) and in 4 of 34 more of other sizes (E-50), every real jump verified by the replicator detector; none in soups without one. **Bigger soups jump sooner, rate ∝ size** (E-50). **How soon depends on one detail of the rule:** only rule versions whose shortest copier also makes a working copy of itself produce replicators within a few thousand rounds: 32 of 32 soups inside that band, 1 of 16 just outside (E-55–E-63); the same property predicted fast rules in a second family (36 of 40 vs 2 of 32, E-64, E-65) and in five instruction-set variants (60 of 60 vs 15 of 60, E-70). **In a second language** (SUBLEQ family), replicators also arise from random code, and a pre-registered predictor of which versions make them passes: 64 of 72 soups vs 6 of 72 (E-75), but fails under another jump rule (29 of 72 vs 20 of 72, E-75 phase 4) |
 | 4 · heredity and variation | not measured | a validated heredity test exists (J-033); the only Lenia reproducer has one attractor type, so nothing can be inherited | **yes: in 9 of 9 emergent replicators, one-byte mutations are carried by their descendants** (E-42); one emergent species out-competes the others in controlled races (E-45, E-46); nearly every common program after the jump copies itself, and no parasites were found at any abundance (E-66, E-67) |
-| 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested | **not shown**: after the jump the code keeps changing far from its founder, but later replicators are not reliably fitter than earlier ones, by races (E-48, E-49), a calibrated growth rate (E-51) or invasion of kin-free soups (E-53), including 7 soups 20,000 rounds after their jump (E-54); an apparent advantage in their own soups was kinship (E-52) |
+| 5 · open-ended evolution | not observed (knockouts ≈ placebo) | not tested | **not shown**: after the jump the code keeps changing far from its founder, but later replicators are not reliably fitter than earlier ones, by races (E-48, E-49), a calibrated growth rate (E-51) or invasion of kin-free soups (E-53), including 7 soups 20,000 rounds after their jump (E-54); an apparent advantage in their own soups was kinship (E-52); the same when programs meet only their neighbours on a grid (E-78) |
 
 **Mistakes we caught and recorded:** two wrong predictions about Chan's start and world size (J-029); a cut-off whose safety margin did not survive new rules (J-028); an over-inclusive mover check in a new script (J-025); the inflated label (J-012); a pre-registered test that could not reach its own threshold (J-014); a glider speed documented 5× too low, because measuring across more than half the world wraps around (J-012); a quick glider counter whose "births" were artefacts (J-017).
 

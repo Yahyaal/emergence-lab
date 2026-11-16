@@ -12,6 +12,47 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-089 · 2026-11-15 · E-78: soups where programs meet only their neighbours do not evolve fitter code either (pre-registered, fails)
+
+**Question (pre-registered, `docs/data/e78-preregistration.md`, commit `bf6fce6`, 6 s before the run started; D-065):** level 5 had been tested only in well-mixed BFF soups. When the 7 jumped E-54 soups continue with programs that meet only lattice neighbours, does later code become fitter than in a well-mixed continuation of the same snapshot?
+
+**Ran:**
+- **Run:** `scripts/e78_run.py --workers 11`. Each soup's T + 2000 snapshot was forked into M (well mixed), S (256 × 256 torus, neighbour matching) and M′ (well mixed, another seed), 20,000 rounds each, 21 jobs. Wall time **15 h 48 min** (projected 9.9 h: S ran at more steps per pair than M in soups 5301 and 5410). No interruptions; nothing resumed.
+- **Analysis:** `scripts/e78_analysis.py` (61 min, no crash, code unchanged since the pre-registration). Post hoc structure measures: `scripts/e78_explore.py`. Figure: `scripts/e78_figure.py` → `docs/assets/report/e78-spatial.png`.
+
+**Found:**
+- **Primary: fail.** d = Δ_S − Δ_M per soup in the original run's T+10000 soup: 5301 −0.02, 5302 −0.12, 5308 +0.00, 5401 −1.20, 5402 −0.03, 5406 −1.74, 5410 +0.13.
+  - Mean −0.42, one-sided p = 0.91, 95% interval −1.10 to **0.25**, below δ* = 0.28.
+  - **The seed-null contrast was significant:** Δ_M′ − Δ_M was negative in 7 of 7 soups (mean −0.24, two-sided p = 0.016). It cannot affect a fail, but it would have blocked a pass. M and M′ are the same process, so this is either chance (1 in 64) or a sign that two continuations of one snapshot differ more than the test assumes. Either way, S's deficit (mean −0.42) is of the same order as the M′-vs-M gap.
+  - Most of d comes from two soups. In 5401, S and M′ both fell by about 2 (M by 0.8). In 5406, only S fell (−1.28; M +0.46, M′ +0.35).
+- **Sensitivity:** without 5410: fail (mean −0.52, interval up to 0.28). Without 5401: undecided (mean −0.30, interval up to 0.45).
+- **Secondary, T+20000 background: fail** (mean d −0.29, p = 0.94, interval −0.78 to 0.21). Seed null n.s. (p = 0.89). Fail in both sensitivity analyses too.
+- **Within each arm, later code is not fitter** (E-54's test, primary background):
+  - S: D = −3.05, p = 0.999;
+  - M: D = −0.08, p = 0.56;
+  - M′: D = −1.73, p = 0.99.
+- **Reciprocal transplant (descriptive):**
+  - Late S code in the M arm's final soup: Δ″ mean −0.13 (+0.01 to +0.13 in 5 soups; −1.25 in 5401).
+  - Late M code in the S arm's final soup: −0.02 (the early reference scored +1.45 and −3.74 there in 5401 and 5406).
+  - Difference p = 1.0.
+- **Parasites: none in any arm.** The 40 most common programs of each final soup (280 per arm) are 99.6% (M), 99.6% (S) and 98.9% (M′) self-copiers. The 5 that never grew were "not copied" or "context self-copier".
+- **Coexistence (pre-registered): S has no 90%-identity family holding ≥ 1% of the soup after round 2,000, in any soup.** M and M′ keep 0–6. The pre-registered clustering statistic is therefore undefined in S. We predicted "more families ≥ 1% in S" at ~90%: wrong.
+  - `hoe_shuffled` at the end: S 2.7–3.5 against M 4.3–5.0.
+  - Distinct programs: S 17k–37k, M 14k–56k.
+- **Post hoc structure** (`e78_explore.py`, not pre-registered): S becomes a **mosaic of small local families**.
+  - From round 2,000 on, ~55% of grid-neighbour pairs are ≥ 90% identical (5401: 10%). Random pairs: 0.1%.
+  - The largest family holds only 0.2–0.4% of the soup. Families ≥ 0.1%: S 107–166, M 50–189.
+
+**Changed:** `scripts/e78_run.py`, `e78_analysis.py`, `e78_explore.py`, `e78_figure.py`; `tests/test_programs.py::test_e78_resume_exact`; D-065; report section 36; handoff; research O5.
+
+**Interpretation:** with neighbour-only meetings, the soups take on strong spatial structure within 2,000 rounds: patches of near-identical code, and no family that spreads widely. But in a well-mixed common garden, late code from S is no fitter than late code from M or than the code they started from. If anything it is less fit, driven by two soups. Together with E-48 to E-54, **level 5 is still not shown, now in both well-mixed and neighbour-only BFF soups.**
+
+This design cannot see advantages or parasites that exist only in space: both instruments are well mixed. A between-arm difference in structure (the mosaic) is not level 5. The arms also differ by about as much between two well-mixed seeds as between space and mixing, so continuation-to-continuation noise is large at n = 7.
+
+**Lesson:** a descriptive threshold chosen from the well-mixed case (families ≥ 1%) can be undefined in the new condition. Pre-register a threshold-free version beside it.
+
+---
+
 ## J-088 · 2026-11-14 · E-78 groundwork: a neighbour-only soup runner, its controls, and what a level-5 test with 7 soups can see
 
 **Question / why:** level 5 has been tested only in well-mixed BFF soups (E-48 to E-54: later code not fitter; E-66/E-67: no parasites). The next experiment (E-78) forks the 7 jumped E-54 soups at T + 2000 into a well-mixed and a spatial continuation (256 × 256 torus, each program paired with one lattice neighbour per round). This entry is the groundwork only; the experiment is not run and the pre-registration is a draft (`docs/data/e78-preregistration.md`).
