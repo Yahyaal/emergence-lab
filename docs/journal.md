@@ -12,6 +12,193 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-090 · 2026-11-16 · A paper-style synthesis of the findings (writing only, no new results)
+
+**Question / why:** review R-5 found the record redundant and grouped by date, not by finding, and the owner wants exploration held to paper-quality rigour. A reader who has not seen the project needs one page that states what was found, at what evidence level, and where each number comes from.
+
+**Did:** wrote `docs/paper.md` (nav entry "Paper", linked from the overview). Sources, in order of authority: the exports in `docs/data/experiments/`, this journal (later entries override earlier ones), decisions, pre-registrations, research and reviews. No experiment was run and no new analysis was made, apart from tallying rule-level jump counts that the exports already contain (E-60, E-64, E-65, E-70; no new p values).
+- Three findings: (A) Lenia movers depend on the spatial correlation of the start; (B) which rules make replicators in program soups, rule-level statistics first; (C) heredity yes, level 5 not shown, including E-78.
+- Section 7 tabulates thirteen ways our detectors were fooled and the control each one led to.
+- Appendix A traces every number in the text to a JSON key or journal entry, with its pre-registration status and unit of analysis.
+- Appendix B scores 45 experiments with a pre-registered primary, from the journal's wording only: 23 met, 14 not met, 4 mixed, 2 undecided, 2 not testable.
+
+**Found while writing (no result changes):**
+- J-021's "13–23% for smooth starts" leaves out E-19a's 11/160 (6.9%) at density 0.35; the paper says 7–23%.
+- J-013 gives both "12 asymmetric seed shapes" and, in its caveats, "8 hand-chosen seed shapes"; R-4 confirmed 12.
+- E-32: J-037 says 1 of 450 decided rules; the export's `decided_rules` is 449 (it appears to count rules without a reproducer).
+- The headers of the E-45 and E-46 entries (J-045, J-046) lack their "## J-04x" prefix, so they do not appear as entries; J-038 and J-039 do not exist.
+
+**Changed:** `docs/paper.md`; `_layouts/default.html` (nav); `docs/index.md`; R-5 rows in `docs/reviews.md`. No code, no data.
+
+**Lesson:** writing every number into a claims table with its source is a cheap audit; it found a range that silently dropped one arm.
+
+---
+
+## J-089 · 2026-11-15 · E-78: soups where programs meet only their neighbours do not evolve fitter code either (pre-registered, fails)
+
+**Question (pre-registered, `docs/data/e78-preregistration.md`, commit `bf6fce6`, 6 s before the run started; D-065):** level 5 had been tested only in well-mixed BFF soups. When the 7 jumped E-54 soups continue with programs that meet only lattice neighbours, does later code become fitter than in a well-mixed continuation of the same snapshot?
+
+**Ran:**
+- **Run:** `scripts/e78_run.py --workers 11`. Each soup's T + 2000 snapshot was forked into M (well mixed), S (256 × 256 torus, neighbour matching) and M′ (well mixed, another seed), 20,000 rounds each, 21 jobs. Wall time **15 h 48 min** (projected 9.9 h: S ran at more steps per pair than M in soups 5301 and 5410). No interruptions; nothing resumed.
+- **Analysis:** `scripts/e78_analysis.py` (61 min, no crash, code unchanged since the pre-registration). Post hoc structure measures: `scripts/e78_explore.py`. Figure: `scripts/e78_figure.py` → `docs/assets/report/e78-spatial.png`.
+
+**Found:**
+- **Primary: fail.** d = Δ_S − Δ_M per soup in the original run's T+10000 soup: 5301 −0.02, 5302 −0.12, 5308 +0.00, 5401 −1.20, 5402 −0.03, 5406 −1.74, 5410 +0.13.
+  - Mean −0.42, one-sided p = 0.91, 95% interval −1.10 to **0.25**, below δ* = 0.28.
+  - **The seed-null contrast was significant:** Δ_M′ − Δ_M was negative in 7 of 7 soups (mean −0.24, two-sided p = 0.016). It cannot affect a fail, but it would have blocked a pass. M and M′ are the same process, so this is either chance (1 in 64) or a sign that two continuations of one snapshot differ more than the test assumes. Either way, S's deficit (mean −0.42) is of the same order as the M′-vs-M gap.
+  - Most of d comes from two soups. In 5401, S and M′ both fell by about 2 (M by 0.8). In 5406, only S fell (−1.28; M +0.46, M′ +0.35).
+- **Sensitivity:** without 5410: fail (mean −0.52, interval up to 0.28). Without 5401: undecided (mean −0.30, interval up to 0.45).
+- **Secondary, T+20000 background: fail** (mean d −0.29, p = 0.94, interval −0.78 to 0.21). Seed null n.s. (p = 0.89). Fail in both sensitivity analyses too.
+- **Within each arm, later code is not fitter** (E-54's test, primary background):
+  - S: D = −3.05, p = 0.999;
+  - M: D = −0.08, p = 0.56;
+  - M′: D = −1.73, p = 0.99.
+- **Reciprocal transplant (descriptive):**
+  - Late S code in the M arm's final soup: Δ″ mean −0.13 (+0.01 to +0.13 in 5 soups; −1.25 in 5401).
+  - Late M code in the S arm's final soup: −0.02 (the early reference scored +1.45 and −3.74 there in 5401 and 5406).
+  - Difference p = 1.0.
+- **Parasites: none in any arm.** The 40 most common programs of each final soup (280 per arm) are 99.6% (M), 99.6% (S) and 98.9% (M′) self-copiers. The 5 that never grew were "not copied" or "context self-copier".
+- **Coexistence (pre-registered): S has no 90%-identity family holding ≥ 1% of the soup after round 2,000, in any soup.** M and M′ keep 0–6. The pre-registered clustering statistic is therefore undefined in S. We predicted "more families ≥ 1% in S" at ~90%: wrong.
+  - `hoe_shuffled` at the end: S 2.7–3.5 against M 4.3–5.0.
+  - Distinct programs: S 17k–37k, M 14k–56k.
+- **Post hoc structure** (`e78_explore.py`, not pre-registered): S becomes a **mosaic of small local families**.
+  - From round 2,000 on, ~55% of grid-neighbour pairs are ≥ 90% identical (5401: 10%). Random pairs: 0.1%.
+  - The largest family holds only 0.2–0.4% of the soup. Families ≥ 0.1%: S 107–166, M 50–189.
+
+**Changed:** `scripts/e78_run.py`, `e78_analysis.py`, `e78_explore.py`, `e78_figure.py`; `tests/test_programs.py::test_e78_resume_exact`; D-065; report section 36; handoff; research O5.
+
+**Interpretation:** with neighbour-only meetings, the soups take on strong spatial structure within 2,000 rounds: patches of near-identical code, and no family that spreads widely. But in a well-mixed common garden, late code from S is no fitter than late code from M or than the code they started from. If anything it is less fit, driven by two soups. Together with E-48 to E-54, **level 5 is still not shown, now in both well-mixed and neighbour-only BFF soups.**
+
+This design cannot see advantages or parasites that exist only in space: both instruments are well mixed. A between-arm difference in structure (the mosaic) is not level 5. The arms also differ by about as much between two well-mixed seeds as between space and mixing, so continuation-to-continuation noise is large at n = 7.
+
+**Lesson:** a descriptive threshold chosen from the well-mixed case (families ≥ 1%) can be undefined in the new condition. Pre-register a threshold-free version beside it.
+
+---
+
+## J-088 · 2026-11-14 · E-78 groundwork: a neighbour-only soup runner, its controls, and what a level-5 test with 7 soups can see
+
+**Question / why:** level 5 has been tested only in well-mixed BFF soups (E-48 to E-54: later code not fitter; E-66/E-67: no parasites). The next experiment (E-78) forks the 7 jumped E-54 soups at T + 2000 into a well-mixed and a spatial continuation (256 × 256 torus, each program paired with one lattice neighbour per round). This entry is the groundwork only; the experiment is not run and the pre-registration is a draft (`docs/data/e78-preregistration.md`).
+
+**Ran:** `scripts/bff_spatial.py --controls` (~1 min), a 200-round timing pilot of soup 5301 in both arms, an 11-process load test, `scripts/e78_power.py` (detectable effect, wall time). Export `docs/data/experiments/2026-11-14-e78-groundwork.json`.
+
+**Found:**
+- **Runner:** `ArmSoup` is `bff.Soup` with only the pair list changed; the mixed arm equals `bff.Soup` bit for bit (50 rounds, random and snapshot programs). Spatial pairs are a perfect matching of torus neighbours in every round (200 rounds checked).
+- **Positive control:** a block of the hand-written replicator spreads as one patch in the spatial arm (excess copies ∝ t^1.86, front ~0.1 cell per round, neighbour ratio 40 at 2% share) and exponentially and unclustered in the mixed arm (neighbour ratio 0.93). Under `noexec` neither arm changes anything but mutation; a seeded block stays clustered without spreading, so clustering alone is not evidence.
+- **Pitfall:** HOE compresses the soup in storage order, so in the spatial arm it rises with clustering alone (5301: 4.29 → 5.15 in 200 rounds, while HOE on shuffled rows fell to 3.90). Compare arms with shuffled-row HOE.
+- **Timing:** ~1.4 × 10⁻⁴ s per round per unit of steps per pair under full load (0.3–1.3 s per round). 7 soups × 3 arms × 20,000 rounds ≈ 10 h on 11 workers (2 arms: 8.3 h).
+- **Power:** with the soup as the unit (n = 7), the between-arm invasion difference detectable with 80% power is about 0.3 log units under E-54-like heterogeneity (0.08 if only assay noise mattered).
+
+**Changed:** `scripts/bff_spatial.py`, `scripts/e78_power.py`, `tests/test_programs.py::test_spatial_soup_controls`; draft `docs/data/e78-preregistration.md`. No package code changed.
+
+**Lesson:** a measure computed on the storage order of a soup (HOE, compression) is not geometry-free once the soup has geometry.
+
+---
+
+## J-087 · 2026-11-14 · E-77: the discovery engine beats random search on all 20 seeds (H1 with power, pre-registered, passes)
+
+**Question (pre-registered, `docs/data/e77-preregistration.md`, commit `7c7edbe`):** H1, "guided search finds more interesting rules than random search at equal compute", rested on E-03 to E-06: 2 seeds per arm. Does it hold over 20 seeds, paired by seed, after removing near-duplicates?
+
+**Ran:**
+- **Reproduction first (seeds 11 and 12, not part of the test).** All four E-03 to E-06 runs were repeated with the documented command on `7f0eacb`.
+- **E-77.** Master seeds 101–120, engine and random arm on each, E-03 to E-06 settings unchanged: 100 rules × 2 seeds × 6 generations, 96×96, 500 steps, 6 follow-ups.
+  - Driver: `scripts/h1_power.py run` (`--workers 2`, 3 runs at a time).
+  - Time: 2 h 39 min in all; 483–1057 s per run, median 674 s.
+
+**Found:**
+- **E-03 to E-06 reproduce exactly** on today's code.
+  - Raw counts: self-propelled 81 / 29 / 99 / 29, complex on every seed 53 / 8 / 60 / 8, niches 34 / 27 / 32 / 23.
+  - Calibrated thresholds: 0.331 / 0.296 / 0.315 / 0.247.
+- **The near-duplicate code behind D-013 had never been committed.** Only the phrase "rules at least 2 mutations apart" survived.
+  - It is now `h1_power.distinct_greedy`: mutation distance |B △ B′| + |S △ S′| + |C − C′|; in exploration order, a rule is kept only if it is ≥ 2 from every rule already kept.
+  - It gives the published distinct counts exactly: 50 / 27 / 55 / 29 and 34 / 8 / 33 / 8.
+  - The other plausible reading (clusters linked by single mutations) does not: 25 / 25 / 24 / 29.
+- **Primary passes.** Distinct rules with self-propelled structures:
+  - Medians: engine 49, random 26.5.
+  - Median per-seed ratio **1.84**, bootstrap 95% interval [1.70, 2.25] (ratio of medians 1.85).
+  - The engine is ahead on **20 of 20 seeds**: exact one-sided Wilcoxon p = 9.5 × 10^-7, the smallest possible with n = 20; sign test the same.
+  - Per-seed ratios run 1.36–2.77; 2 seeds are below 1.5 (106: 38 vs 28; 114: 38 vs 27).
+- **Secondary, also clear.**
+  - Distinct rules "complex on every seed": medians 23 vs 7, median ratio **3.4** [2.6, 3.9], 20 of 20 seeds.
+  - Niches: 29.5 vs 25.5, ratio **1.16** [1.12, 1.23]; 19 seeds ahead, 1 tie.
+  - Raw counts: self-propelled 87 vs 30 (2.9×), complex 35 vs 7 (5.4×). 43% of the engine's raw self-propelled rules are near-duplicates (D-013 said ~40%).
+- **Generation 0 is identical within every seed** (hash check), so the gap is due to selection alone.
+- **Robustness thresholds (D-010) differ by arm.** They range 0.23–0.59 across the 40 runs: engine median ≈ 0.34 (engine-s109: 0.59), random ≈ 0.26. The engine's eligible rules vary more between seeds. No outcome here depends on the threshold.
+
+**Predictions:**
+- Primary pass (we gave ~85%): right.
+- Complex ratio "~4": it was 3.4.
+- Niches "~1.3": it was 1.16.
+
+**Meaning:**
+- H1 now stands on 20 paired seeds instead of 2. In this rule family at this budget, the engine finds about 1.8× as many distinct rules with self-propelled structures and about 3.4× as many distinct "complex on every seed" rules, on every seed tried.
+- The 1.9× and 4.2× of J-004 were close for self-propelled and somewhat high for complex.
+- Limits:
+  - One family (Life-like/Generations), one budget, one world size.
+  - Self-propelled is one of the engine's own objectives, so that win is partly circular. "Complex on every seed" is not optimised directly.
+  - E-12 and E-17 (Lenia) remain single-seed.
+- Evidence levels unchanged: this is about search efficiency, not a new level.
+
+**Changed:**
+- `scripts/h1_power.py` (driver, deduplication, exact tests by hand).
+- `docs/data/e77-preregistration.md` (`7c7edbe`).
+- Export `docs/data/experiments/2026-11-14-e77-h1-power.json`.
+- No `emergence/*.py` change.
+
+**Lesson:** an analysis step that changes the headline number (here deduplication) must be committed code, not a session's ad hoc calculation; it took a reproduction to recover it.
+---
+
+## J-086 · 2026-11-14 · E-76: one origin rate per rule fits the soups roughly; under jump ≤ 0 soups make replicators ~7 times faster than fresh pairs, already in the first rounds (exploratory)
+
+**Question / why:** J-083 found that a jump is the wait for one rare event, and E-50 found that the BFF jump rate grows with soup size. Both suggest one model: each rule has a single rate λ (replicator origins per pair run), and the wait to a jump is exponential with hazard λ × N/2 per round. A review proposed measuring this rate directly, with the rule as the unit, instead of testing more census predictors. Does the model fit our soups? How does the soup rate compare with the fresh-pair product rate R_P? And are the rule-level versions of the confirmatory tests as strong as the soup-level ones? **Exploratory:** this re-analyses existing exports whose outcomes were known. Nothing was run, and nothing was pre-registered.
+
+**Ran:** `scripts/rate_model.py` (deterministic, seed 2026 for the bootstraps; ~2 min). Data: `docs/data/experiments/2026-11-14-rate-model.json`; figure `docs/assets/report/rate-model.png`.
+- **Inputs:** the 79 SUBLEQ rules of E-75 phases 3, 4 and 7 (474 soups; fields `soups[].T`, group labels, and R_P from the product census, 3·10^8 pairs per rule), plus BFF E-40/E-41/E-50/E-54.
+- **Jump times:** T is the 50-round checkpoint at which an inheritor was first seen, confirmed 1,000 rounds later. So soups without a jump are censored at 15,000 rounds, not 16,000.
+- **Fitting:** rates are fitted with interval censoring, with the origin in (T − 50 − L, T − L]. Primary L = 0; sensitivity runs use L = 16 (the establishment lag) and L = −100 (T early because null replicators came first, J-083). Intervals are profile likelihood.
+
+**Found:**
+- **Rates (per 10^8 pair runs):**
+  - 37 of 79 rules jumped at least once. Their rates run from 0.14 (one jump in 6 soups) to about 100. s+1 W8/o125 jumped at the first checkpoint in all 6 soups, so it has only a lower bound (≥ 316).
+  - Rules that never jumped: < 0.41 (one-sided 95%).
+  - The lag conventions change rates by a median of 4% (at most 2.1×).
+- **Fit: adequate on average, not rule by rule.**
+  - The mean coefficient of variation of T in the 26 rules that jumped in 6 of 6 soups is 0.77. An exponential with 50-round checkpoints predicts 0.79 (90% band 0.71–0.87).
+  - But 8 of these 26 rules fall in a 5% tail (2.6 expected, binomial p = 0.003). Five are too regular, and look like a delay followed by a fast hazard: < 0 W32/o0 jumps only at 1,250–3,600, always W16/o4 at 100–200. Three are too variable, with one soup far later than the rest.
+  - The pooled standardised times are borderline: KS p = 0.06.
+  - A common delay of up to 49 rounds does not help (LR 0.9). Longer delays are ruled out wherever soups jump at T = 50.
+- **Soup rate vs fresh-pair rate R_P,** as common ratios with 95% CIs:
+  - **always: 0.60 (0.48–0.76).** The ratio varies strongly between rules (p = 10^-10). In the first 500 rounds it is **1.00 (0.69–1.38)** and homogeneous: fresh soups produce exactly as the census predicts.
+  - **≤ 0: 6.9 (4.8–10.0) over all rounds; 7.9 (5.2–12.0) in the first 500 rounds; 4.2 (1.7–8.3) in the first 150 rounds (7 jumps).** 10 of 16 informative rules have a lower bound above 1, and 2 above 10 (s+1 W32/o28, 132×, 23–2,500; s−1 W32/o5, ≥ 52×).
+  - **< 0: 0.66 (0.46–0.91), not above 1.** This is a mix: s+1 W16/o3 makes products at 371 per 10^8 but its soups run at 0.22× (0.09–0.44), while 3 rules sit above 1.
+- **Does the hazard rise with soup age?** Within rules, the hazard is 1.4× (0.9–2.3) and 1.7× (1.05–3.0) the round 0–500 hazard in rounds 500–2,000 and 2,000–15,000; p = 0.12 for a constant hazard. This depends on where T is placed (p = 0.34 to 0.0005 across conventions), and under ≤ 0 alone there is no rise (p = 0.48). So the ≤ 0 excess is present early, not built up over thousands of rounds.
+- **J-084's claim, checked:** "soup material is several to 100+ times more productive" holds for jump ≤ 0 as a class (~7×), but not for < 0. For the six phase-3/4 zero-product rules it cites, the 95% lower bounds of the ratio are 1.0–3.8, not several to 100. The "waits of over 36,000 rounds" figure assumed exactly one product in 3·10^8 pairs; the 95% upper bound on R_P (1.0 per 10^8) implies about 12,000 rounds. The median T (5,250) and fastest T (250) are confirmed.
+- **Rule-level Fisher tests (one-sided)**, with "any soup jumped" first, then "≥ 4 of 6", then the soup level:
+  - phase 3: 11/12 vs 1/12, p = 5.4·10^-5; same for ≥ 4 of 6; soup level 10^-24.
+  - phase 4 pool A: **6/12 vs 5/12, p = 0.50**; ≥ 4 of 6: 5/12 vs 3/12, p = 0.33; soup level 0.08.
+  - phase 4 pool B: 6/6 vs 0/6, p = 0.001; ≥ 4 of 6: 4/6 vs 0/6, p = 0.03.
+  - phase 7: 6/7 vs 2/12, p = 0.006; ≥ 4 of 6: 5/7 vs 2/12, p = 0.03; soup level 6·10^-11.
+  - The reviewer's numbers are right for phases 3 and 7. For pool A, their 5/12 vs 3/12 is the ≥ 4-of-6 count; under "any" it is 6 vs 5.
+  - Rule-level p values are 10^5–10^19 times weaker than the soup-level ones; the six soups of a rule are not independent tests of a predictor.
+- **BFF: one per-pair rate explains all four soup sizes.**
+  - With the pre-registered HOE events: 0.045 (0.021–0.086) per 10^8. Common vs per-size rates: p = 0.06.
+  - Counting verified replicators only (D-045): 0.030 (0.011–0.065), p = 0.21.
+  - Adding E-54's 12 new 2^16 soups (4 jumps): **0.036 (0.017–0.066), p = 0.16; β = 1.16 (0.30–2.25).**
+  - 2^15's 0 of 12 has P = 0.10 under the common rate.
+  - BFF's rate is 10–1,000 times below the jumping SUBLEQ rules.
+
+**Meaning:**
+- The one-rate model is a fair first description. In BFF it explains soup size; under jump always it ties the product census to the soups quantitatively (ratio 1.0 early).
+- It is not exact. Some rules switch on after a delay, some soups are much later than their siblings, and the ratio to R_P varies between rules.
+- Under ≤ 0 the soup produces ~7 times faster than single runs of fresh pairs, and does so within the first few hundred rounds. That points less to slow "aging" of code and more to something soups do that one fresh pair run does not (two-step origins, mutation, or null-zero waves), or to a census that undercounts there.
+- Rule-level tests are the honest unit for a predictor of rules: phase 3 and phase 7 survive (p = 5·10^-5, 0.006), and pool A is null.
+- Evidence level unchanged (level 3; nothing about levels 4–5).
+
+**Changed:** `scripts/rate_model.py`; data `2026-11-14-rate-model.json`; figure `docs/assets/report/rate-model.png`; E-76.
+
+**Lesson:** fitting the simplest generative model to all the data at once shows both what earlier predictors were approximating, and where a claim stated without intervals ("100+ times") was larger than the evidence.
+
+---
+
 ## J-085 · 2026-11-14 · E-75 phase 7: rules chosen by product rate alone, before their soups ran, jump far more often, but the test came out short of rules (pre-registered)
 
 **Question (pre-registered, `docs/data/e75-phase7-preregistration.md`, commit `2c72454`; D-062):** J-084 was retrospective. If new rules are chosen by their product rate R_P alone, with HIGH and ZERO thresholds fixed from phase 6, do the HIGH rules' soups jump and the ZERO rules' soups not?
@@ -1002,7 +1189,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
-· 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
+## J-046 · 2026-11-08 · E-46: every emergent replicator is a mirror replicator; with fair counting, one species still wins
 
 **What we noticed after E-45:** soup 5006's earlier replicator #4 also sat beside its own reverse in the E-41 snapshot (129 copies and 128 reverse copies). We then seeded each of the 9 emergent replicators alone (4 soups each): **every one produces its exact byte-reverse in about equal numbers.** All the replicators that emerged in our soups copy themselves backwards; only the hand-written one copies forwards. So E-44 counted every emergent species by half (one form), and E-45 counted the 5006@32k species (#5/#6) by both forms but its opponents by one. Both biases could have created the reported advantages.
 
@@ -1023,7 +1210,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
-· 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
+## J-045 · 2026-11-08 · E-45: the mirror replicator species beats other emergent replicators (confirmed, with a caveat about the null)
 
 **Question (pre-registered, `docs/data/e45-preregistration.md`, after a post-hoc pattern in E-44):** does the mirror replicator species of soup 5006 (J-044) out-compete the replicators of soup 901 when both of its forms are counted?
 

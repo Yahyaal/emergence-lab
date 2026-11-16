@@ -12,25 +12,28 @@ title: Overview
 
 This site is the project's **research journal**: what we did, why, what we found, what turned out to be wrong, and what comes next. It is written so that a person or an AI agent can pick up the work with no other context. Start at **[Handoff]({{ '/handoff.html' | relative_url }})** if you are continuing the work.
 
-<p><b>New: <a href="{{ '/report.html' | relative_url }}">overnight report of 7 November 2026</a></b>. Lenia gliders arise on their own, but only from smooth random starts (pre-registered, confirmed).</p>
+<p><b>New (16 November):</b> <a href="{{ '/paper.html' | relative_url }}">a paper-style synthesis</a> of the work to date, written for a reader who has not seen the project. It adds no new results.</p>
+
+<p><b>Earlier:</b> <a href="{{ '/report.html' | relative_url }}">the report</a> now covers 6 to 14 November. Its latest section (34) is a prospective test in the SUBLEQ soups: versions chosen by how often random pairs write a replicator made replicators in 33 of 42 soups, against 12 of 72, but the pre-registered test came out undecided (7 high-rate versions, not 8). A <a href="{{ '/reviews.html#r-5' | relative_url }}">goal and approach review (R-5)</a> led to the next steps on the <a href="{{ '/handoff.html' | relative_url }}">Handoff</a> page.</p>
 
 ## Where things stand
 
 <div class="cards">
-<div class="card"><div class="stat">v0.6</div><p>Current version: two physics families (Life-like rules and Lenia), validated discovery and probes, initial conditions, causal knockouts, and the Lenia start-condition experiments (E-12 to E-14).</p></div>
-<div class="card"><div class="stat">2 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: self-propelled structures, in Lenia arising spontaneously from smooth random starts (E-14). No replication, heredity or ongoing innovation observed yet.</p></div>
-<div class="card"><div class="stat">1.9–4.2×</div><p>How many more distinct interesting rules the discovery engine finds than random search, at equal compute (2 seeds per arm, so preliminary).</p></div>
-<div class="card"><div class="stat">77 / 77</div><p>Benchmark checks passing: 39 standard checks plus 38 hard and deceptive controls (probes, knockouts, Lenia, Flow-Lenia).</p></div>
+<div class="card"><div class="stat">4 substrates</div><p>Life-like cellular automata, the Lenia family (Lenia, Flow-Lenia, multi-channel Lenia), and two kinds of <b>program soup</b>: BFF and a SUBLEQ family. The soups have no space and run in scripts, outside the engine, discovery engine and dashboard.</p></div>
+<div class="card"><div class="stat">4 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: <b>heritable variation</b> in BFF replicators that arose from random code (one-byte mutations inherited in 9 of 9, E-42). <b>Level 3</b> (self-replication) in one multi-channel Lenia rule (dividing spots of a single type, E-32) and in both soup languages (E-40, E-41; E-75). <b>Level 5 not shown:</b> later code is not fitter by four measures (E-48 to E-54), also when programs meet only their neighbours on a grid (E-78).</p></div>
+<div class="card"><div class="stat">1.8×</div><p>How many more distinct rules with self-propelled structures the discovery engine finds than random search at equal compute, after removing near-duplicates; 3.4× for rules "complex" on every seed. Engine ahead on <b>20 of 20</b> paired seeds (E-77, pre-registered). Life-like rules only.</p></div>
+<div class="card"><div class="stat">170 / 170</div><p>Benchmark checks passing, as last reported: 39 standard checks plus 131 hard and deceptive controls (probes, knockouts, Lenia, Flow-Lenia, births, heredity, program soups).</p></div>
 </div>
 
 ## Hypotheses so far
 
 | Hypothesis | Status | Evidence |
 |---|---|---|
-| H1. Guided search (Pareto + novelty + niches) finds more interesting rules than random search | <span class="tag supported">supported, preliminary</span> | [E-03–E-06]({{ '/experiments.html' | relative_url }}): 1.9× more distinct rules with self-propelled shapes, 4.2× more rules "complex" on every seed; n = 2 seeds per arm |
-| H2. Spontaneous self-replication occurs in Life-like / Generations rules (96×96, ≤ 2000 steps) | <span class="tag notobserved">not observed</span> | 0 of 17 top candidates; the detector does find HighLife's replicator (positive control) |
-| H3. Some rules keep producing new kinds of persistent structure (ongoing innovation) | <span class="tag notobserved">not observed</span> / <span class="tag open">2 inconclusive</span> | Innovation ends when universes settle; 2 chaos-like universes are inconclusive (no matched null yet) |
-| H4. Initial conditions, not just rules, determine how much complexity appears | <span class="tag notobserved">not supported as tested</span> | [E-09, E-10]({{ '/experiments.html' | relative_url }}): an apparent patch effect vanished at matched density; the amount of matter matters, its arrangement didn't |
+| H1. Guided search (Pareto + novelty + niches) finds more interesting rules than random search | <span class="tag supported">supported</span> | [E-77]({{ '/experiments.html' | relative_url }}): 20 paired seeds, pre-registered. 1.84× more distinct rules with self-propelled shapes (95% interval 1.70–2.25), 3.4× more rules "complex" on every seed; engine ahead on 20 of 20 seeds. The earlier 1.9× and 4.2× (E-03–E-06, 2 seeds) reproduce exactly. Life-like rules only |
+| H2. Spontaneous self-replication occurs in Life-like / Generations rules (96×96, ≤ 2000 steps) | <span class="tag notobserved">not observed</span> | 0 of 17 top candidates; the detector does find HighLife's replicator (positive control). Self-replication does arise elsewhere: one multi-channel Lenia rule (E-32) and program soups (E-40, E-41, E-75) |
+| H3. Some rules keep producing new kinds of persistent structure (ongoing innovation) | <span class="tag notobserved">not observed</span> / <span class="tag open">2 inconclusive</span> | Innovation ends when universes settle; 2 chaos-like universes are inconclusive (no matched null yet). In BFF soups code keeps drifting after the jump, but later code is not fitter (E-47 to E-54) |
+| H4. Initial conditions, not just rules, determine how much complexity appears | <span class="tag supported">supported in Lenia</span> / <span class="tag notobserved">not in Life-like rules</span> | Lenia: smooth random starts made gliders in 49 of 320 worlds, soups with the same mass in 0 of 320 (E-14, pre-registered); shuffling the same values removes them (E-19). Life-like: an apparent patch effect vanished at matched density (E-09, E-10) |
+| H5. A richer physics family reaches higher evidence levels under the same search budget | <span class="tag open">not tested as stated</span> | Higher levels were reached in other families (Lenia level 3, BFF level 4), but no comparison at equal search budget was run |
 | H6. Earlier innovations enable later ones | <span class="tag notobserved">not observed</span> | Knockouts are indistinguishable from placebo deletions (P = 0.49–0.51, 92 tests) |
 
 ## A taste
@@ -45,6 +48,7 @@ More in the **[Gallery]({{ '/gallery.html' | relative_url }})**.
 
 ## How to read this journal
 
+- **[Paper]({{ '/paper.html' | relative_url }})**: a paper-style synthesis of the three main findings (Lenia movers, program-soup replicators, no open-ended evolution yet), with a claims table that traces every number to its source.
 - **[Journal]({{ '/journal.html' | relative_url }})**: chronological entries, newest first.
 - **[Decisions]({{ '/decisions.html' | relative_url }})**: why the system is the way it is, with the alternatives we rejected.
 - **[Experiments]({{ '/experiments.html' | relative_url }})**: every experiment, with its exact command, code commit, results and raw data.
