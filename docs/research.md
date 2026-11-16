@@ -119,7 +119,7 @@ Status: a birth detector for both physics families is built and validated (`obse
 
 ## Could this be academic research?
 
-Yes. Automated discovery in cellular automata is an active area, so the contribution has to be clear. Related work to position against (to be checked in a proper literature review):
+Yes. Automated discovery in cellular automata is an active area, so the contribution has to be clear. **A literature review by AI agents (16 November 2026, J-091) is on the [Literature]({{ '/literature.html' | relative_url }}) page.** It is not exhaustive and has had no expert check. Two of our results were already published, most are partly known, and the strongest remaining contributions are controlled counterfactuals that were "not found in this search" (not the same as new). The list below is the earlier, unchecked starting list:
 - **Classic theory:** Wolfram's classes, Langton's λ and the edge of chaos.
 - **Surveys of Life-like rules:** e.g. Eppstein's work on growth and decay.
 - **Compression-based classification:** Zenil.
@@ -132,24 +132,25 @@ Yes. Automated discovery in cellular automata is an active area, so the contribu
 ### Literature notes: Lenia and spontaneous movers (2026-11-07, J-013)
 
 A first focused review: papers and code read where available, abstracts only where marked in J-013. What it changed for us:
-- **Chan's random starts were not soups.** Chan (2019, *Complex Systems* 28(3); arXiv 1812.05433) writes that creatures such as Orbium emerge "given enough time" from random starts, but gives no rate. His code (`LeniaND.py`, MIT) seeds **15–40 dense square patches of side 0.9 R, values uniform in [0, 0.9], in vacuum**. Our E-12 soup filled the whole grid. Most of his 400+ species came from interactive evolution, not soups.
+- **Chan's random starts were not soups.** Chan (2019, *Complex Systems* 28(3); arXiv 1812.05433) writes that creatures such as Orbium emerge "given enough time" from random starts, but gives no rate. His code (`LeniaND.py`, MIT) seeds **15–39 dense square patches of side 0.9 R, values uniform in [0, 0.9), in vacuum** (`np.random.randint(15, 40)`; corrected in J-091; our `patch_mask` draws 15–40). Our E-12 soup filled the whole grid. Most of his 400+ species came from interactive evolution, not soups.
 - **Nobody has published a rate.** We found no estimate of what fraction of Lenia rule space supports movers, or how often they emerge. Chan's μ–σ maps are qualitative (a narrow "river" of creatures). Our E-13a scan gives a first number: 8 of 99 single-ring rules.
 - **Flow-Lenia** (Plantec et al., ALIFE 2023, arXiv 2212.07906; *Artificial Life* 31(2), 2025):
   - **Mechanism:** mass conservation, via a flow along the affinity gradient and reintegration tracking.
   - **Claims:** localized and moving patterns are "quite common" from a random central patch, and per-cell parameters (parameter localization) allow evolution inside the simulation.
   - **Weak spots:** no counts of movers; the 2025 evolution analysis uses parameter-point "species", 5 seeds and no neutral (shadow) model. We treat these as hypotheses to test, not results to inherit.
+  - **Our runs (J-016, E-16) are not comparable with the paper** (J-091, D-066): single channel, few kernels, mostly R = 13, and a detector that counts only isolated translating structures, against a paper that gives no rate and counts gyrating patterns as dynamic. They are not a failed reproduction.
 - **Other routes:**
   - Asymptotic Lenia (Kawaguchi et al. 2021) and its "glider equation" (Kojima et al. 2025);
   - Particle Lenia (Mordvintsev et al. 2022);
   - diversity search (Reinke et al. ICLR 2020; Etcheverry et al. NeurIPS 2020; Faldor & Cully ALIFE 2024; Hamon et al. 2024);
   - foundation-model search (Kumar et al. 2024).
 
-  None of these measures *spontaneous, within-run* emergence with nulls. That is the gap our validation-first approach can fill.
+  None of these measures *spontaneous, within-run* emergence with nulls. That is the gap our validation-first approach can fill. *(J-091: this held for the eight Lenia-family works the review checked; two non-Lenia preprints, Yin 2026 and Hintze and Bohm 2025, claim spontaneous self-replication in cellular automata, without selection-aware nulls. See [Literature]({{ '/literature.html' | relative_url }}).)*
 
 **Our likely contribution:** a *validated* discovery methodology. Every detector is tested against deceptive controls, causal claims are tested by intervention on clones, and the search is compared with a baseline at equal compute. The results include negative findings. Most automated-discovery work reports what it found; much less reports how often it is fooled.
 
 **Needed before submission:**
-- a real literature review;
+- a real literature review *(a first one by AI agents is done, J-091, [Literature]({{ '/literature.html' | relative_url }}); a check by a human expert is still needed)*;
 - 20–30 runs per condition, with confidence intervals and analyses specified in advance;
 - matched nulls for innovation;
 - at least two physics families;
