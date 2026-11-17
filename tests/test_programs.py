@@ -321,3 +321,41 @@ def test_e80b_resume_and_rule():
             t = np.concatenate([x, q]).copy()
             K.lib().run_tape(t.ctypes.data, 128, 8192, 64)
             assert bool((t[64:] == x).all()) == w
+
+
+def test_bffvl_cut_rule():
+    """E-81 (D-070): the BFF-VL cut rule on hand-made tapes: cut after each marker, at LMAX, never below LMIN, a short
+    last piece merged (or the last cut moved back), bytes conserved."""
+    import sys
+    from pathlib import Path
+    import numpy as np
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bffvl as V
+    M = V.MARKER
+
+    def tape(*parts):
+        return np.concatenate([np.frombuffer(p, np.uint8) if isinstance(p, bytes) else np.full(p, 0x80, np.uint8)
+                               for p in parts])
+    assert V.cut(tape(5, bytes([M]), 9, bytes([M]))).tolist() == [6, 10]
+    assert V.cut(tape(1, bytes([M]), 10)).tolist() == [12]                  # piece of 2 < LMIN: no cut
+    assert V.cut(tape(300)).tolist() == [128, 128, 44]                       # forced cuts at LMAX
+    assert V.cut(tape(127, bytes([M]), 2)).tolist() == [126, 4]  # last piece 2 < LMIN; merging would exceed LMAX
+    assert V.cut(tape(10, bytes([M]), 2)).tolist() == [13]                   # last piece merged
+    rng = np.random.default_rng(0)
+    for _ in range(200):
+        t = rng.integers(0, 256, int(rng.integers(8, 257)), dtype=np.uint8)
+        t[rng.random(len(t)) < 0.1] = M
+        c = V.cut(t)
+        assert c.sum() == len(t) and c.min() >= V.LMIN and c.max() <= V.LMAX
+
+
+def test_bffvl_controls():
+    """E-81 groundwork (scripts/bffvl.py, scripts/bffvl_assay.py, J-097): the rule equals the h = 64 BFF soup with the
+    marker off; copy screen, replicator detector and head-to-head assay each with positive, negative, deceptive and
+    selection-aware null controls; the length-trend nulls (noexec stationary, copyall collapse)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bffvl_assay as A
+    bad = [(n, d) for n, ok, d in A.controls() if not ok]
+    assert not bad, bad

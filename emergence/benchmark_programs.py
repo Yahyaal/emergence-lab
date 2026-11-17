@@ -22,6 +22,9 @@
                    replicator front and parent trapped(0) > handicapped trapped(1) (positive), same code under two labels
                    (negative), filler smear, persisting non-copier, kin in the resident, tag drift under noexec +
                    mutation (deceptive), random-position blocks of the garden relabelled (null)
+* variable-length BFF (scripts/bffvl.py, bffvl_assay.py, E-81 groundwork, J-097): rule == h = 64 BFF with the marker
+                   off; copy screen, replicator detector, head-to-head assay (shorter copier ahead, one-byte floor step,
+                   neutral variant, short non-copier, repeat null); length nulls (noexec stationary, copyall collapse)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -219,4 +222,10 @@ def run(check) -> None:
     if (scripts / "lattice_assay.py").exists():
         import lattice_assay as LAT
         for name, ok, det in LAT.controls():
+            check(name, ok, det)
+
+    # variable-length BFF (scripts/bffvl.py, scripts/bffvl_assay.py, E-81 groundwork, J-097, D-070)
+    if (scripts / "bffvl_assay.py").exists():
+        import bffvl_assay as VLA
+        for name, ok, det in VLA.controls():
             check(name, ok, det)
