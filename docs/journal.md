@@ -12,6 +12,22 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-094 · 2026-11-16 · The illustrated overview becomes a page of the site (writing only, no new results)
+
+**Question / why:** the owner asked for a presentation of the whole project for non-technical readers, and then asked for it to live in the repository, not only as an external page, so that it is kept and can be changed with the project. (J-093 is reserved for the E-80 groundwork, in progress on another branch.)
+
+**Ran:** no experiment and no analysis, so there is no experiment row or JSON export.
+
+**Found:** nothing new. The page restates the paper's numbers for a general reader: why the question matters, the five-level ladder, the four substrates, how detectors were fooled, findings A to C, the scorecard after E-79 (44 experiments; 18 of 20 statistical passes survive Holm), the comparison with other research from the Literature page (J-091), limits, and options for next steps.
+
+**Changed:** new `docs/story.html` (standalone page, `layout: null`, own styles, light and dark themes, a Game of Life running live in the browser); three cropped panels of the E-41 soup figure in `docs/assets/story/`; all other images are the existing ones in `docs/assets/report/`. "Story" added to the site navigation and to the page list on the overview. `handoff.md` repo map updated.
+
+**Limits:** the page simplifies. Where it and the [Paper]({{ '/paper.html' | relative_url }}) differ, the paper is right. It must be updated by hand when results change; nothing generates it from the data. Checked by rendering the file locally at desktop and phone widths; the Jekyll build itself was not run.
+
+**Lesson:** a summary for outsiders is another place where claims can drift from the evidence, so it belongs under version control next to the paper it summarises.
+
+---
+
 ## J-092 · 2026-11-16 · E-79: a Holm correction across the pre-registered primaries keeps 18 of 20 passes; with rules as the unit, far fewer survive (analysis of existing results)
 
 **Question / why:** the paper (J-090) scored 45 experiments with a pre-registered primary and corrected for none of them; the literature review (J-091, correction 4) and D-067 proposed a Holm correction. The owner approved D-067 and D-063 on 16 November 2026. Which passes survive a family-wise correction?

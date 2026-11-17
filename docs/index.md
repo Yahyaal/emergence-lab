@@ -48,6 +48,7 @@ More in the **[Gallery]({{ '/gallery.html' | relative_url }})**.
 
 ## How to read this journal
 
+- **[Story]({{ '/story.html' | relative_url }})**: the whole project for non-technical readers, with animations and a live simulation: why, the idea, the three results, how they compare with other research, and what could come next.
 - **[Paper]({{ '/paper.html' | relative_url }})**: a paper-style synthesis of the three main findings (Lenia movers, program-soup replicators, no open-ended evolution yet), with a claims table that traces every number to its source.
 - **[Literature]({{ '/literature.html' | relative_url }})**: how each claim compares with published work (published, partly known, not found in this search, tension), from a review by AI agents with no expert check.
 - **[Journal]({{ '/journal.html' | relative_url }})**: chronological entries, newest first.
