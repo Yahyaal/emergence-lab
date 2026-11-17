@@ -1,0 +1,2034 @@
+{
+ "experiment": "E-79",
+ "journal": "J-092",
+ "preregistration": {
+  "file": "docs/data/e79-preregistration.md",
+  "commit": "341ff62"
+ },
+ "description": "One record per registered primary of the 45 experiments in docs/paper.md Appendix B (plus excluded and predicted-null primaries). family = in | excluded | predicted_null. p_source gives the committed file, line and quoted line; JSON keys are written as a → b.",
+ "threads": [
+  "Life-like",
+  "Lenia",
+  "BFF emergence",
+  "BFF after emergence",
+  "SUBLEQ",
+  "Search engine"
+ ],
+ "records": [
+  {
+   "id": "E-13/smooth:3/d0.35",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, smooth:3 vs uniform (density 0.35); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13b-conditions-d035.json",
+    "key": "vs_uniform → smooth:3 → self_prop → sign_test_p",
+    "line": 111,
+    "quote": "\"sign_test_p\": 1.0"
+   },
+   "effect": "rules higher 0, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 smooth:3 density 0.35",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/smooth:6/d0.35",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, smooth:6 vs uniform (density 0.35); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 0.25,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13b-conditions-d035.json",
+    "key": "vs_uniform → smooth:6 → self_prop → sign_test_p",
+    "line": 136,
+    "quote": "\"sign_test_p\": 0.25"
+   },
+   "effect": "rules higher 3, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 smooth:6 density 0.35",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/smooth:10/d0.35",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, smooth:10 vs uniform (density 0.35); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13b-conditions-d035.json",
+    "key": "vs_uniform → smooth:10 → self_prop → sign_test_p",
+    "line": 161,
+    "quote": "\"sign_test_p\": 1.0"
+   },
+   "effect": "rules higher 1, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 smooth:10 density 0.35",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/spots/d0.35",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, spots vs uniform (density 0.35); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13b-conditions-d035.json",
+    "key": "vs_uniform → spots → self_prop → sign_test_p",
+    "line": 186,
+    "quote": "\"sign_test_p\": 1.0"
+   },
+   "effect": "rules higher 0, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 spots density 0.35",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/patches",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, patches vs uniform (any density); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13b-conditions-d035.json",
+    "key": "vs_uniform → patches → self_prop → sign_test_p",
+    "line": 211,
+    "quote": "\"sign_test_p\": 1.0"
+   },
+   "effect": "rules higher 0, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 patches any density",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/smooth:3/d0.10",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, smooth:3 vs uniform (density 0.10); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 0.0625,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13c-conditions-d010.json",
+    "key": "vs_uniform → smooth:3 → self_prop → sign_test_p",
+    "line": 100,
+    "quote": "\"sign_test_p\": 0.0625"
+   },
+   "effect": "rules higher 5, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 smooth:3 density 0.10",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/smooth:6/d0.10",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, smooth:6 vs uniform (density 0.10); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 0.5,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13c-conditions-d010.json",
+    "key": "vs_uniform → smooth:6 → self_prop → sign_test_p",
+    "line": 125,
+    "quote": "\"sign_test_p\": 0.5"
+   },
+   "effect": "rules higher 2, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 smooth:6 density 0.10",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/smooth:10/d0.10",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, smooth:10 vs uniform (density 0.10); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13c-conditions-d010.json",
+    "key": "vs_uniform → smooth:10 → self_prop → sign_test_p",
+    "line": 150,
+    "quote": "\"sign_test_p\": 1.0"
+   },
+   "effect": "rules higher 1, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 smooth:10 density 0.10",
+   "recomputed": false
+  },
+  {
+   "id": "E-13/spots/d0.10",
+   "experiment": "E-13",
+   "thread": "Lenia",
+   "journal": "J-014",
+   "preregistration": {
+    "file": "docs/data/e13-preregistration.md",
+    "commit": "819f497"
+   },
+   "test": "sign test across the 8 rules, self_prop, spots vs uniform (density 0.10); built into `emergence conditions`",
+   "unit": "rule (paired, 8 rules)",
+   "sidedness": "two-sided (as computed by `emergence conditions`; the registration does not state sidedness)",
+   "alpha": 0.0025,
+   "alpha_note": "0.05/20 (Bonferroni, Amendment 1)",
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e13c-conditions-d010.json",
+    "key": "vs_uniform → spots → self_prop → sign_test_p",
+    "line": 175,
+    "quote": "\"sign_test_p\": 1.0"
+   },
+   "effect": "rules higher 0, lower 0",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-13 spots density 0.10",
+   "recomputed": false
+  },
+  {
+   "id": "E-14/d0.10",
+   "experiment": "E-14",
+   "thread": "Lenia",
+   "journal": "J-015",
+   "preregistration": {
+    "file": "docs/data/e14-preregistration.md",
+    "commit": "3453e99"
+   },
+   "test": "one-sided Fisher exact on universes, d0.10 smooth:3 vs soup",
+   "unit": "world (160 vs 160)",
+   "sidedness": "one-sided",
+   "alpha": 0.025,
+   "p_raw": 1.02e-09,
+   "p_kind": "rounded (3 significant figures, as exported)",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e14-movers.json",
+    "key": "fisher → d0.10 smooth:3 vs soup → p_one_sided",
+    "line": 829,
+    "quote": "\"p_one_sided\": 1.02e-09"
+   },
+   "effect": "28/160 vs 0/160",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": {
+    "p": 0.031,
+    "test": "sign test across rules, 6 higher / 0 lower (two-sided, as reported)",
+    "source": {
+     "file": "docs/journal.md",
+     "line": 1964,
+     "quote": "- **Scope:** these p-values are for universes within these 8 rules and this start generator. The rule-level sign test is p = 0.031 for both contrasts, above α = 0.025, because only 6 of 8 rules contribute. The finding does not yet generalise to \"glider-viable rules\" (R-4)."
+    },
+    "variant": "as reported"
+   },
+   "line_label": "E-14 smooth vs soup, density 0.10",
+   "recomputed": false
+  },
+  {
+   "id": "E-14/d0.35",
+   "experiment": "E-14",
+   "thread": "Lenia",
+   "journal": "J-015",
+   "preregistration": {
+    "file": "docs/data/e14-preregistration.md",
+    "commit": "3453e99"
+   },
+   "test": "one-sided Fisher exact on universes, d0.35 smooth:6 vs soup",
+   "unit": "world (160 vs 160)",
+   "sidedness": "one-sided",
+   "alpha": 0.025,
+   "p_raw": 2.36e-07,
+   "p_kind": "rounded (3 significant figures, as exported)",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e14-movers.json",
+    "key": "fisher → d0.35 smooth:6 vs soup → p_one_sided",
+    "line": 840,
+    "quote": "\"p_one_sided\": 2.36e-07"
+   },
+   "effect": "21/160 vs 0/160",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": {
+    "p": 0.031,
+    "test": "sign test across rules, 6 higher / 0 lower (two-sided, as reported)",
+    "source": {
+     "file": "docs/journal.md",
+     "line": 1964,
+     "quote": "- **Scope:** these p-values are for universes within these 8 rules and this start generator. The rule-level sign test is p = 0.031 for both contrasts, above α = 0.025, because only 6 of 8 rules contribute. The finding does not yet generalise to \"glider-viable rules\" (R-4)."
+    },
+    "variant": "as reported"
+   },
+   "line_label": "E-14 smooth vs soup, density 0.35",
+   "recomputed": false
+  },
+  {
+   "id": "E-18a",
+   "experiment": "E-18",
+   "thread": "Lenia",
+   "journal": "J-020",
+   "preregistration": {
+    "file": "docs/data/e18-preregistration.md",
+    "commit": "cb5fd24"
+   },
+   "test": "one-sided Fisher exact, worlds with a verified mover, smooth:6 vs uniform (wanderer rule)",
+   "unit": "world (40 vs 40), one rule",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 1.2627153248552899e-18,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e18-wanderer.json",
+    "key": "e18a_fisher_smooth6_vs_uniform",
+    "line": 20,
+    "quote": "\"e18a_fisher_smooth6_vs_uniform\": 1.2627153248552899e-18,"
+   },
+   "effect": "36/40 vs 0/40",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": null,
+   "rule_level_note": "single rule: no rule-level test exists",
+   "line_label": "E-18 wanderer, smooth vs soup",
+   "recomputed": false
+  },
+  {
+   "id": "E-19a/d0.1",
+   "experiment": "E-19",
+   "thread": "Lenia",
+   "journal": "J-021",
+   "preregistration": {
+    "file": "docs/data/e19-preregistration.md",
+    "commit": "e5c18e8"
+   },
+   "test": "one-sided Fisher exact on universes, smooth vs smooth_shuffled, density 0.10",
+   "unit": "world (160 vs 160)",
+   "sidedness": "one-sided",
+   "alpha": 0.025,
+   "p_raw": 6.899364943239487e-13,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e19-shuffled-null-and-soup-sweep.json",
+    "key": "e19a → d0.1 → fisher_p",
+    "line": 18,
+    "quote": "\"fisher_p\": 6.899364943239487e-13,"
+   },
+   "effect": "37/160 vs 0/160 (shuffled)",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": {
+    "p": 0.015625,
+    "test": "exact sign test across rules, 6 higher / 0 lower (one-sided; registered secondary)",
+    "source": {
+     "file": "docs/data/experiments/2026-11-07-e19-shuffled-null-and-soup-sweep.json",
+     "key": "e19a → d0.1 → sign_p",
+     "line": 21,
+     "quote": "\"sign_p\": 0.015625"
+    },
+    "variant": "as exported"
+   },
+   "line_label": "E-19 smooth vs shuffled, density 0.10",
+   "recomputed": false
+  },
+  {
+   "id": "E-19a/d0.35",
+   "experiment": "E-19",
+   "thread": "Lenia",
+   "journal": "J-021",
+   "preregistration": {
+    "file": "docs/data/e19-preregistration.md",
+    "commit": "e5c18e8"
+   },
+   "test": "one-sided Fisher exact on universes, smooth vs smooth_shuffled, density 0.35",
+   "unit": "world (160 vs 160)",
+   "sidedness": "one-sided",
+   "alpha": 0.025,
+   "p_raw": 0.0004087697470870986,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e19-shuffled-null-and-soup-sweep.json",
+    "key": "e19a → d0.35 → fisher_p",
+    "line": 38,
+    "quote": "\"fisher_p\": 0.0004087697470870986,"
+   },
+   "effect": "11/160 vs 0/160 (shuffled)",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": {
+    "p": 0.03125,
+    "test": "exact sign test across rules, 5 higher / 0 lower (one-sided; registered secondary)",
+    "source": {
+     "file": "docs/data/experiments/2026-11-07-e19-shuffled-null-and-soup-sweep.json",
+     "key": "e19a → d0.35 → sign_p",
+     "line": 41,
+     "quote": "\"sign_p\": 0.03125"
+    },
+    "variant": "as exported"
+   },
+   "line_label": "E-19 smooth vs shuffled, density 0.35",
+   "recomputed": false
+  },
+  {
+   "id": "E-26",
+   "experiment": "E-26",
+   "thread": "Lenia",
+   "journal": "J-031",
+   "preregistration": {
+    "file": "docs/data/e26-preregistration.md",
+    "commit": "bc9cc43"
+   },
+   "test": "one-sided Fisher exact, worlds with a verified mover, smooth:6 vs uniform at density 0.35 (ring-glider rule)",
+   "unit": "world (40 vs 40), one rule",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 3.8184186883349533e-05,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-07-e26-ring-glider.json",
+    "key": "result → 0.35 → fisher_one_sided_p",
+    "line": 81,
+    "quote": "\"fisher_one_sided_p\": 3.8184186883349533e-05,"
+   },
+   "effect": "13/40 vs 0/40",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": null,
+   "rule_level_note": "single rule: no rule-level test exists",
+   "line_label": "E-26 ring glider, smooth vs soup",
+   "recomputed": false
+  },
+  {
+   "id": "E-41",
+   "experiment": "E-41",
+   "thread": "BFF emergence",
+   "journal": "J-041",
+   "preregistration": {
+    "file": "docs/data/e41-preregistration.md",
+    "commit": "1c335d4"
+   },
+   "test": "A: pilot replay reproduces the jump and the detector finds a replicator; B: 2 to 6 of 12 soups transition by 48,000 rounds",
+   "unit": "soup",
+   "family": "excluded",
+   "reason": "replay check (A) and count threshold (B); not significance tests",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-42",
+   "experiment": "E-42",
+   "thread": "BFF after emergence",
+   "journal": "J-042",
+   "preregistration": {
+    "file": "docs/data/e42-preregistration.md",
+    "commit": "7aa4749"
+   },
+   "test": "'heredity' verdict for at least 7 of 9 replicators (per-candidate sign tests inside the verdict)",
+   "unit": "replicator",
+   "family": "excluded",
+   "reason": "count threshold over verdicts, not a single significance test",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-43",
+   "experiment": "E-43",
+   "thread": "BFF after emergence",
+   "journal": "J-043",
+   "preregistration": {
+    "file": "docs/data/e43-preregistration.md",
+    "commit": "841accf"
+   },
+   "test": "one-sided Fisher, share of the 141 emergent pairs with a favoured verdict vs the 24 neutral pairs",
+   "unit": "variant pair",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.73,
+   "p_kind": "rounded (as reported; not in the export)",
+   "p_source": {
+    "file": "docs/journal.md",
+    "line": 1289,
+    "quote": "- **2 of 141 emergent pairs \"parent favoured\"** (1.4%), 0 \"variant favoured\", 139 \"no difference\". Neutral null: 0 of 24. Fisher one-sided p = 0.73. **Prediction (5–30% parent favoured) wrong; the primary test is not significant.**"
+   },
+   "effect": "2/141 vs 0/24",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "recheck": "recomputed from the committed counts (export `summary`: emergent 2 favoured of 141, neutral 0 of 24) by the script as a check only",
+   "recheck_counts": {
+    "table": [
+     [
+      2,
+      139
+     ],
+     [
+      0,
+      24
+     ]
+    ]
+   },
+   "appendix_b_disagreement": "Appendix B gives the primary as 'parent favoured in 5 to 30% of variant pairs'; the file registers the Fisher test vs the neutral null as the primary outcome, and 5–30% as a prediction.",
+   "line_label": "E-43 one-byte variants vs neutral null",
+   "recomputed": false
+  },
+  {
+   "id": "E-44",
+   "experiment": "E-44",
+   "thread": "BFF after emergence",
+   "journal": "J-044",
+   "preregistration": {
+    "file": "docs/data/e44-preregistration.md",
+    "commit": "9b6209a"
+   },
+   "test": "one-sided Fisher, batch-A share of the 36 emergent pairs favoured vs the 21 pooled null pairs",
+   "unit": "replicator pair",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e44-bff-contests.json",
+    "key": "analysis → primary → fisher_p",
+    "line": 13775,
+    "quote": "\"fisher_p\": 1.0"
+   },
+   "effect": "0/36 vs 1/21",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "appendix_b_disagreement": "Appendix B gives the primary as '≥ 30% of cross-soup pairs favoured'; the file registers the Fisher test vs the pooled nulls, and ≥ 30% as a prediction.",
+   "line_label": "E-44 cross-soup pairs vs nulls",
+   "recomputed": false
+  },
+  {
+   "id": "E-45",
+   "experiment": "E-45",
+   "thread": "BFF after emergence",
+   "journal": "J-045",
+   "preregistration": {
+    "file": "docs/data/e45-preregistration.md",
+    "commit": "d2d04a5"
+   },
+   "test": "one-sided binomial vs 1/2, pooled share of informative races won by the mirror species (4 primary pairs)",
+   "unit": "race (pooled over 4 pairs)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 3.6066498174152433e-10,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e45-mirror-contests.json",
+    "key": "summary → primary → p_greater",
+    "line": 14,
+    "quote": "\"p_greater\": 3.6066498174152433e-10"
+   },
+   "effect": "173/249 races",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "appendix_b_disagreement": "Appendix B gives the primary as 'mirror species ≥ 0.6 of races'; the file registers a one-sided binomial test at p < 0.01, with ≥ 0.6 as a prediction. E-46 later found the E-45 counting biased (opponents counted by one form only).",
+   "line_label": "E-45 mirror species vs soup 901",
+   "recomputed": false
+  },
+  {
+   "id": "E-46/o1",
+   "experiment": "E-46",
+   "thread": "BFF after emergence",
+   "journal": "J-046",
+   "preregistration": {
+    "file": "docs/data/e46-preregistration.md",
+    "commit": "c4b0925"
+   },
+   "test": "outcome 1: one-sided binomial, pooled share won by the mirror species vs the four soup-901 species",
+   "unit": "race",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 1.3138246448586631e-10,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e46-species-contests.json",
+    "key": "summary → o1_mirror_vs_901 → p_greater",
+    "line": 8,
+    "quote": "\"p_greater\": 1.3138246448586631e-10"
+   },
+   "effect": "176/252",
+   "original_verdict": "predicted null; prediction wrong (advantage survives)",
+   "test_met_alpha": true,
+   "family": "predicted_null",
+   "reason": "the pre-registration predicts 'not above 1/2 at p < 0.01' (outcomes 1, 2) and 'not significant' (outcome 3)",
+   "appendix_b_disagreement": "Appendix B scores only outcome 1. The file registers outcomes 1 to 3 (all predicted null) and 4 (descriptive); outcome 2 also came out against its predicted null (p = 0.0034 < 0.01).",
+   "line_label": "E-46 o1",
+   "recomputed": false
+  },
+  {
+   "id": "E-46/o2",
+   "experiment": "E-46",
+   "thread": "BFF after emergence",
+   "journal": "J-046",
+   "preregistration": {
+    "file": "docs/data/e46-preregistration.md",
+    "commit": "c4b0925"
+   },
+   "test": "outcome 2: one-sided binomial, pooled share won by the hand-written replicator vs emergent species",
+   "unit": "race",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.0034263584872227994,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e46-species-contests.json",
+    "key": "summary → o2_handwritten_vs_emergent → p_greater",
+    "line": 14,
+    "quote": "\"p_greater\": 0.0034263584872227994"
+   },
+   "effect": "286/510",
+   "original_verdict": "predicted null; prediction wrong (p < 0.01)",
+   "test_met_alpha": true,
+   "family": "predicted_null",
+   "reason": "the pre-registration predicts 'not above 1/2 at p < 0.01' (outcomes 1, 2) and 'not significant' (outcome 3)",
+   "appendix_b_disagreement": null,
+   "line_label": "E-46 o2",
+   "recomputed": false
+  },
+  {
+   "id": "E-46/o3",
+   "experiment": "E-46",
+   "thread": "BFF after emergence",
+   "journal": "J-046",
+   "preregistration": {
+    "file": "docs/data/e46-preregistration.md",
+    "commit": "c4b0925"
+   },
+   "test": "outcome 3: one-sided Fisher, emergent pairs favoured vs 24 null pairs",
+   "unit": "species pair",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.14823529411764705,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e46-species-contests.json",
+    "key": "summary → o3_fisher_p",
+    "line": 24,
+    "quote": "\"o3_fisher_p\": 0.14823529411764705,"
+   },
+   "effect": "3/28 vs 0/24",
+   "original_verdict": "predicted null; prediction right",
+   "test_met_alpha": false,
+   "family": "predicted_null",
+   "reason": "the pre-registration predicts 'not above 1/2 at p < 0.01' (outcomes 1, 2) and 'not significant' (outcome 3)",
+   "appendix_b_disagreement": null,
+   "line_label": "E-46 o3",
+   "recomputed": false
+  },
+  {
+   "id": "E-47",
+   "experiment": "E-47",
+   "thread": "BFF after emergence",
+   "journal": "J-047",
+   "preregistration": {
+    "file": "docs/data/e47-preregistration.md",
+    "commit": "f47ba3b"
+   },
+   "test": "one-sided sign test over replacements (newcomer wins > half its races), p < 0.05; needs ≥ 5 replacements",
+   "unit": "replacement",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "family": "excluded",
+   "reason": "not recoverable: the registered test was never computed (0 replacements, so no test statistic exists)",
+   "original_verdict": "not testable",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-48",
+   "experiment": "E-48",
+   "thread": "BFF after emergence",
+   "journal": "J-048",
+   "preregistration": {
+    "file": "docs/data/e48-preregistration.md",
+    "commit": "5695abf"
+   },
+   "test": "one-sided sign test vs 1/2, cross-time pairs in which the late program wins > half the races",
+   "unit": "program pair",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.0742881738052811,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e48-time-races.json",
+    "key": "summary → cross/all → sign_p",
+    "line": 7,
+    "quote": "\"sign_p\": 0.0742881738052811,"
+   },
+   "effect": "62/108 pairs",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-48 late vs early races",
+   "recomputed": false
+  },
+  {
+   "id": "E-49",
+   "experiment": "E-49",
+   "thread": "BFF after emergence",
+   "journal": "J-049",
+   "preregistration": {
+    "file": "docs/data/e49-preregistration.md",
+    "commit": "da4000f"
+   },
+   "test": "one-sided sign test, later programs with mean race share > 0.5 (program level)",
+   "unit": "program",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.325793913604457,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e49-time-races.json",
+    "key": "summary → primary_program_level → p",
+    "line": 398,
+    "quote": "\"p\": 0.325793913604457"
+   },
+   "effect": "24/44 programs",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-49 late vs early, verified replicators",
+   "recomputed": false
+  },
+  {
+   "id": "E-51",
+   "experiment": "E-51",
+   "thread": "BFF after emergence",
+   "journal": "J-051",
+   "preregistration": {
+    "file": "docs/data/e51-preregistration.md",
+    "commit": "3ee9274"
+   },
+   "test": "S = Σ Spearman ρ(time, growth rate) over 3 soups, one-sided permutation",
+   "unit": "program (within soup)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.3838616138386161,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e51-growth-rates.json",
+    "key": "summary → primary → p",
+    "line": 11,
+    "quote": "\"p\": 0.3838616138386161"
+   },
+   "effect": "S = 0.14",
+   "original_verdict": "predicted null; prediction right",
+   "test_met_alpha": false,
+   "family": "predicted_null",
+   "reason": "the pre-registration predicts 'not significant'",
+   "line_label": "E-51 later code fitter",
+   "recomputed": false
+  },
+  {
+   "id": "E-52",
+   "experiment": "E-52",
+   "thread": "BFF after emergence",
+   "journal": "J-052",
+   "preregistration": {
+    "file": "docs/data/e52-preregistration.md",
+    "commit": "ea948b1"
+   },
+   "test": "D = Σ Δ(late − early invasion score) over 6 cells, one-sided permutation",
+   "unit": "program (within soup × background)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.04509549045095491,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e52-invasion.json",
+    "key": "summary → primary → p",
+    "line": 6,
+    "quote": "\"p\": 0.04509549045095491,"
+   },
+   "effect": "D = 0.418",
+   "original_verdict": "predicted null; test significant (prediction wrong; explained by kinship, E-53)",
+   "test_met_alpha": true,
+   "family": "predicted_null",
+   "reason": "the pre-registration predicts 'not significant'",
+   "line_label": "E-52 later code fitter",
+   "recomputed": false
+  },
+  {
+   "id": "E-53",
+   "experiment": "E-53",
+   "thread": "BFF after emergence",
+   "journal": "J-053",
+   "preregistration": {
+    "file": "docs/data/e53-preregistration.md",
+    "commit": "ed8418b"
+   },
+   "test": "D over 9 kin-free cells, one-sided permutation",
+   "unit": "program (within soup × background)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.8774122587741225,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e53-invasion-kinfree.json",
+    "key": "summary → primary → p",
+    "line": 7,
+    "quote": "\"p\": 0.8774122587741225,"
+   },
+   "effect": "D = −0.339",
+   "original_verdict": "predicted null; prediction right",
+   "test_met_alpha": false,
+   "family": "predicted_null",
+   "reason": "the pre-registration predicts 'not significant'",
+   "line_label": "E-53 later code fitter",
+   "recomputed": false
+  },
+  {
+   "id": "E-54",
+   "experiment": "E-54",
+   "thread": "BFF after emergence",
+   "journal": "J-066",
+   "preregistration": {
+    "file": "docs/data/e54-preregistration.md",
+    "commit": "2601c48"
+   },
+   "test": "D over 7 jumped soups, kin-free invasion, one-sided permutation",
+   "unit": "program (within soup)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.6381361863813618,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e54-long-soups.json",
+    "key": "summary → primary → p",
+    "line": 17,
+    "quote": "\"p\": 0.6381361863813618,"
+   },
+   "effect": "D = −0.15",
+   "original_verdict": "predicted null; prediction right",
+   "test_met_alpha": false,
+   "family": "predicted_null",
+   "reason": "the pre-registration predicts 'not significant'",
+   "line_label": "E-54 later code fitter",
+   "recomputed": false
+  },
+  {
+   "id": "E-66",
+   "experiment": "E-66",
+   "thread": "BFF after emergence",
+   "journal": "J-068",
+   "preregistration": {
+    "file": "docs/data/e66-preregistration.md",
+    "commit": "4807796"
+   },
+   "test": "P1: ≥ 60% of E-54 'no replication' rows grow in ≥ 1 of 10 repeats (pooled), and ≥ 50% in ≥ 5 of 7 soups",
+   "unit": "program",
+   "family": "excluded",
+   "reason": "descriptive share threshold, not a significance test",
+   "original_verdict": "met",
+   "appendix_b_disagreement": "Appendix B scores P1 to P4 (mixed); the file labels only P1 primary. P2 to P4 are further predictions.",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-67",
+   "experiment": "E-67",
+   "thread": "BFF after emergence",
+   "journal": "J-069",
+   "preregistration": {
+    "file": "docs/data/e67-preregistration.md",
+    "commit": "543b2b8"
+   },
+   "test": "P1: at most 2 of 420 programs get the verdict 'parasite'",
+   "unit": "program",
+   "family": "excluded",
+   "reason": "count threshold, not a significance test",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-78",
+   "experiment": "E-78",
+   "thread": "BFF after emergence",
+   "journal": "J-089",
+   "preregistration": {
+    "file": "docs/data/e78-preregistration.md",
+    "commit": "27fa64e"
+   },
+   "test": "exact one-sided sign-flip permutation test of Σ d_k > 0, d_k = Δ_S − Δ_M, original T+10000 background",
+   "unit": "soup (n = 7)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.9140625,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-15-e78-spatial.json",
+    "key": "summary → primary → test → p_one_sided",
+    "line": 110,
+    "quote": "\"p_one_sided\": 0.9140625,"
+   },
+   "effect": "mean d = −0.42",
+   "original_verdict": "not met (fail: CI upper 0.25 < δ* 0.28)",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-78 neighbour-only vs well-mixed",
+   "recomputed": false
+  },
+  {
+   "id": "E-78/seed-null",
+   "experiment": "E-78",
+   "thread": "BFF after emergence",
+   "journal": "J-089",
+   "preregistration": {
+    "file": "docs/data/e78-preregistration.md",
+    "commit": "27fa64e"
+   },
+   "test": "seed-null contrast: two-sided sign-flip test of Σ d′_k, d′_k = Δ_M′ − Δ_M (had to be non-significant for a pass)",
+   "unit": "soup (n = 7)",
+   "sidedness": "two-sided",
+   "alpha": 0.05,
+   "p_raw": 0.015625,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-15-e78-spatial.json",
+    "key": "summary → primary → test → p_null_two_sided",
+    "line": 125,
+    "quote": "\"p_null_two_sided\": 0.015625,"
+   },
+   "effect": "7 of 7 negative, mean −0.24",
+   "original_verdict": "significant (would have blocked a pass)",
+   "test_met_alpha": true,
+   "family": "predicted_null",
+   "reason": "a null check: the registered pass required it to be non-significant",
+   "line_label": "E-78 seed null",
+   "recomputed": false
+  },
+  {
+   "id": "E-50",
+   "experiment": "E-50",
+   "thread": "BFF emergence",
+   "journal": "J-054",
+   "preregistration": {
+    "file": "docs/data/e50-preregistration.md",
+    "commit": "9b31f52"
+   },
+   "test": "one-sided likelihood-ratio test of β > 0 in a Poisson waiting-time model over four soup sizes",
+   "unit": "soup (one rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.01414,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e50-soup-size.json",
+    "key": "analysis → fit → p_one_sided",
+    "line": 55,
+    "quote": "\"p_one_sided\": 0.01414,"
+   },
+   "effect": "β = 1.02 (0.11 to 2.02); 9 events (3 later found to be zero-writing waves)",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": null,
+   "rule_level_note": "single rule: no rule-level test exists",
+   "note": "Post hoc, with only detector-verified jumps (D-045), the exponent's p is 0.049 (A52); not used here (not registered).",
+   "line_label": "E-50 rate vs soup size",
+   "recomputed": false
+  },
+  {
+   "id": "E-55",
+   "experiment": "E-55",
+   "thread": "BFF emergence",
+   "journal": "J-055",
+   "preregistration": {
+    "file": "docs/data/e55-preregistration.md",
+    "commit": "feb7fb1"
+   },
+   "test": "census: reverse copiers outnumber forward ≥ 10:1 (standard) and the order flips (counterfactual)",
+   "unit": "kernel",
+   "family": "excluded",
+   "reason": "count ratio in a census, not a significance test",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-56",
+   "experiment": "E-56",
+   "thread": "BFF emergence",
+   "journal": "J-056",
+   "preregistration": {
+    "file": "docs/data/e56-preregistration.md",
+    "commit": "ee34b8c"
+   },
+   "test": "≥ 90% of classified copiers forward in every jumped counterfactual soup",
+   "unit": "program",
+   "family": "excluded",
+   "reason": "descriptive share criterion",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-57/A",
+   "experiment": "E-57",
+   "thread": "BFF emergence",
+   "journal": "J-057",
+   "preregistration": {
+    "file": "docs/data/e57-preregistration.md",
+    "commit": "0946633"
+   },
+   "test": "Primary A: ≥ 6 of 8 counterfactual soups jump by 16,000 rounds and one-sided Fisher vs E-40's 0/12, p < 0.01",
+   "unit": "soup (one rule per arm)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 7.938398031277288e-06,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e57-soups.json",
+    "key": "summary → fisher_p",
+    "line": 21,
+    "quote": "\"fisher_p\": 7.938398031277288e-06,"
+   },
+   "effect": "8/8 vs 0/12",
+   "original_verdict": "met (A); B not met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": null,
+   "rule_level_note": "one rule per arm: no rule-level test exists",
+   "line_label": "E-57 counterfactual vs standard",
+   "recomputed": false
+  },
+  {
+   "id": "E-57/B",
+   "experiment": "E-57",
+   "thread": "BFF emergence",
+   "journal": "J-057",
+   "preregistration": {
+    "file": "docs/data/e57-preregistration.md",
+    "commit": "0946633"
+   },
+   "test": "Primary B: standard rule ≤ 5% of copier kernels self-sufficient, counterfactual ≥ 90%",
+   "unit": "kernel",
+   "family": "excluded",
+   "reason": "census thresholds, not a significance test",
+   "original_verdict": "not met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-58/A",
+   "experiment": "E-58",
+   "thread": "BFF emergence",
+   "journal": "J-058",
+   "preregistration": {
+    "file": "docs/data/e58-preregistration.md",
+    "commit": "cf061d4"
+   },
+   "test": "Primary A: ≤ 2 of 8 head1 = 127 soups jump and fewer than E-57's 8 of 8, one-sided Fisher p < 0.01 (HOE jump criterion as registered)",
+   "unit": "soup (one rule per arm)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.1,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e58-soups.json",
+    "key": "summary → fisher_p_lower",
+    "line": 22,
+    "quote": "\"fisher_p_lower\": 0.1,"
+   },
+   "effect": "5/8 vs 8/8 (as registered; 4 of the 5 were HOE drift, J-058)",
+   "original_verdict": "not met (criterion misfired)",
+   "test_met_alpha": false,
+   "family": "in",
+   "rule_level": null,
+   "rule_level_note": "one rule per arm: no rule-level test exists",
+   "note": "Post hoc reading with D-045 in full: 1 of 8 vs 8 of 8, p = 0.0007 (J-058); not registered, not used.",
+   "appendix_b_disagreement": "Appendix B lists only Primary A; the file also registers Primary B (census: copiers ≥ 90% reverse, ≤ 5% self-sufficient), which passed (J-058).",
+   "line_label": "E-58 head1 = 127 control",
+   "recomputed": false
+  },
+  {
+   "id": "E-58/B",
+   "experiment": "E-58",
+   "thread": "BFF emergence",
+   "journal": "J-058",
+   "preregistration": {
+    "file": "docs/data/e58-preregistration.md",
+    "commit": "cf061d4"
+   },
+   "test": "Primary B: copiers ≥ 90% reverse and ≤ 5% self-sufficient under head1 = 127",
+   "unit": "kernel",
+   "family": "excluded",
+   "reason": "census thresholds, not a significance test",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-59",
+   "experiment": "E-59",
+   "thread": "BFF emergence",
+   "journal": "J-059",
+   "preregistration": {
+    "file": "docs/data/e59-preregistration.md",
+    "commit": "628ec53"
+   },
+   "test": "head1 = 127 ≤ 4 of 16, head1 = 64 ≥ 7 of 8, one-sided Fisher p < 0.01 (D-046 criterion)",
+   "unit": "soup (one rule per arm)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 6.118528126873799e-05,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e59-orientation-confirm.json",
+    "key": "summary → fisher_p",
+    "line": 12,
+    "quote": "\"fisher_p\": 6.118528126873799e-05,"
+   },
+   "effect": "2/16 vs 8/8",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": null,
+   "rule_level_note": "one rule per arm: no rule-level test exists",
+   "line_label": "E-59 orientation confirmation",
+   "recomputed": false
+  },
+  {
+   "id": "E-60",
+   "experiment": "E-60",
+   "thread": "BFF emergence",
+   "journal": "J-060",
+   "preregistration": {
+    "file": "docs/data/e60-preregistration.md",
+    "commit": "5c6183f"
+   },
+   "test": "F soups ≥ 12/16, S ≤ 4/16, one-sided Fisher p < 0.01",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 2.9912804175827465e-06,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e60-soups.json",
+    "key": "summary → fisher_p",
+    "line": 26,
+    "quote": "\"fisher_p\": 2.9912804175827465e-06,"
+   },
+   "effect": "12/12 vs 2/16",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "F",
+     "S"
+    ],
+    "jumped": [
+     3,
+     2
+    ],
+    "of": [
+     3,
+     4
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-08-e60-soups.json",
+     "key": "summary → per_rule (a rule jumps if any soup jumped)"
+    }
+   },
+   "line_label": "E-60 F vs S rules (head-start family)",
+   "recomputed": false
+  },
+  {
+   "id": "E-61/P2",
+   "experiment": "E-61",
+   "thread": "BFF emergence",
+   "journal": "J-062",
+   "preregistration": {
+    "file": "docs/data/e61-preregistration.md",
+    "commit": "5b65cc2"
+   },
+   "test": "Primary 2: ≥ 75% of new F′-rule soups jump and one-sided Fisher p < 0.01 vs E-60's S-rule soups (2/16)",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 2.54541659560712e-07,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-08-e61-soups.json",
+    "key": "summary → fisher_p_vs_e60_S",
+    "line": 13,
+    "quote": "\"fisher_p_vs_e60_S\": 2.54541659560712e-07,"
+   },
+   "effect": "16/16 vs 2/16 (comparison arm reused from E-60)",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "new F′",
+     "E-60 S"
+    ],
+    "jumped": [
+     4,
+     2
+    ],
+    "of": [
+     4,
+     4
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-08-e61-soups.json and docs/data/experiments/2026-11-08-e60-soups.json",
+     "key": "summary → per_rule"
+    }
+   },
+   "line_label": "E-61 new F′ rules vs E-60 S rules",
+   "recomputed": false
+  },
+  {
+   "id": "E-61/P1",
+   "experiment": "E-61",
+   "thread": "BFF emergence",
+   "journal": "J-062",
+   "preregistration": {
+    "file": "docs/data/e61-preregistration.md",
+    "commit": "5b65cc2"
+   },
+   "test": "Primary 1: every F′ rule in 48 ≤ h ≤ 80 and every self-sufficient copier forward",
+   "unit": "rule",
+   "family": "excluded",
+   "reason": "census band, not a significance test",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-62/P2",
+   "experiment": "E-62",
+   "thread": "BFF emergence",
+   "journal": "J-063",
+   "preregistration": {
+    "file": "docs/data/e62-preregistration.md",
+    "commit": "a39789e"
+   },
+   "test": "Primary 2: group P ≥ 75% jumps and more than group N, one-sided Fisher p < 0.05 (strict D-047 criterion)",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 1.0,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-09-e62-soups.json",
+    "key": "summary → fisher_p",
+    "line": 20,
+    "quote": "\"fisher_p\": 1.0,"
+   },
+   "effect": "16/16 vs 12/12",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "P",
+     "N"
+    ],
+    "jumped": [
+     4,
+     3
+    ],
+    "of": [
+     4,
+     3
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-09-e62-soups.json",
+     "key": "summary → per_rule, P, N"
+    }
+   },
+   "line_label": "E-62 lineage persistence",
+   "recomputed": false
+  },
+  {
+   "id": "E-62/P1",
+   "experiment": "E-62",
+   "thread": "BFF emergence",
+   "journal": "J-063",
+   "preregistration": {
+    "file": "docs/data/e62-preregistration.md",
+    "commit": "a39789e"
+   },
+   "test": "Primary 1: P = {62, 63, 64, 65} exactly",
+   "unit": "rule",
+   "family": "excluded",
+   "reason": "census set equality, not a significance test",
+   "original_verdict": "not met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-63",
+   "experiment": "E-63",
+   "thread": "BFF emergence",
+   "journal": "J-064",
+   "preregistration": {
+    "file": "docs/data/e63-preregistration.md",
+    "commit": "2c9c5fa"
+   },
+   "test": "outside-F′ soups ≤ 4/16 and fewer than E-62's F′ soups (28/28), one-sided Fisher p < 0.01",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 6.959195974904935e-11,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-09-e63-outside.json",
+    "key": "summary → fisher_p_vs_e62",
+    "line": 12,
+    "quote": "\"fisher_p_vs_e62\": 6.959195974904935e-11,"
+   },
+   "effect": "1/16 vs 28/28 (comparison arm reused from E-62)",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "E-62 F′",
+     "outside F′"
+    ],
+    "jumped": [
+     7,
+     1
+    ],
+    "of": [
+     7,
+     4
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-09-e63-outside.json and docs/data/experiments/2026-11-09-e62-soups.json",
+     "key": "summary → per_rule (h = 64 control excluded)"
+    }
+   },
+   "line_label": "E-63 just outside F′",
+   "recomputed": false
+  },
+  {
+   "id": "E-64",
+   "experiment": "E-64",
+   "thread": "BFF emergence",
+   "journal": "J-065",
+   "preregistration": {
+    "file": "docs/data/e64-preregistration.md",
+    "commit": "1c756d5"
+   },
+   "test": "F soups ≥ 75%, C ≤ 25%, one-sided Fisher p < 0.01 (two-head family)",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 4.973414584398566e-05,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-09-e64-soups.json",
+    "key": "summary → fisher_p",
+    "line": 47,
+    "quote": "\"fisher_p\": 4.973414584398566e-05,"
+   },
+   "effect": "10/12 vs 1/16",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "F",
+     "C"
+    ],
+    "jumped": [
+     3,
+     1
+    ],
+    "of": [
+     3,
+     4
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-09-e64-soups.json",
+     "key": "summary → per_rule"
+    }
+   },
+   "line_label": "E-64 F vs C, new family",
+   "recomputed": false
+  },
+  {
+   "id": "E-65",
+   "experiment": "E-65",
+   "thread": "BFF emergence",
+   "journal": "J-067",
+   "preregistration": {
+    "file": "docs/data/e65-preregistration.md",
+    "commit": "febabe2"
+   },
+   "test": "F soups ≥ 75%, C ≤ 25%, one-sided Fisher p < 0.01, and ≥ 75% of F rules with ≥ 2 of 4 jumping",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 8.85257722462907e-09,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-09-e65-soups.json",
+    "key": "summary → fisher_p",
+    "line": 63,
+    "quote": "\"fisher_p\": 8.85257722462907e-09,"
+   },
+   "effect": "26/28 vs 1/16",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "F",
+     "C"
+    ],
+    "jumped": [
+     7,
+     1
+    ],
+    "of": [
+     7,
+     4
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-09-e65-soups.json",
+     "key": "summary → per_rule"
+    }
+   },
+   "line_label": "E-65 all F rules, two-head family",
+   "recomputed": false
+  },
+  {
+   "id": "E-68/P2",
+   "experiment": "E-68",
+   "thread": "BFF emergence",
+   "journal": "J-070",
+   "preregistration": {
+    "file": "docs/data/e68-preregistration.md",
+    "commit": "d2c0138"
+   },
+   "test": "Primary 2 (L ≠ 64): F ≥ 75% jump, non-F ≤ 25%, one-sided Fisher p < 0.01, F ≥ non-F at each L",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.002690523333935335,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-09-e68-soups.json",
+    "key": "summary → fisher_p",
+    "line": 110,
+    "quote": "\"fisher_p\": 0.002690523333935335,"
+   },
+   "effect": "18/36 vs 6/36",
+   "original_verdict": "not met (F share 50% < 75%)",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "F",
+     "non-F"
+    ],
+    "jumped": [
+     6,
+     4
+    ],
+    "of": [
+     9,
+     9
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-09-e68-soups.json",
+     "key": "summary → by_L (L ≠ 64) → per_rule → T"
+    }
+   },
+   "line_label": "E-68 program length, F vs non-F",
+   "recomputed": false
+  },
+  {
+   "id": "E-68/P1",
+   "experiment": "E-68",
+   "thread": "BFF emergence",
+   "journal": "J-070",
+   "preregistration": {
+    "file": "docs/data/e68-preregistration.md",
+    "commit": "d2c0138"
+   },
+   "test": "Primary 1: at every L, h1 = L is F and every F rule has |h1 − L| ≤ L/8",
+   "unit": "rule",
+   "family": "excluded",
+   "reason": "census band, not a significance test",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-69",
+   "experiment": "E-69",
+   "thread": "BFF emergence",
+   "journal": "J-071",
+   "preregistration": {
+    "file": "docs/data/e69-preregistration.md",
+    "commit": "6f5c663"
+   },
+   "test": "fraction of F soups that jump: 'soup size explains' if ≥ 50% at L = 16 and ≥ 75% at L = 32; 'length matters' if ≤ 25% at L = 16",
+   "unit": "soup",
+   "family": "excluded",
+   "reason": "descriptive thresholds, not a significance test",
+   "original_verdict": "undecided",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-70/P2",
+   "experiment": "E-70",
+   "thread": "BFF emergence",
+   "journal": "J-072",
+   "preregistration": {
+    "file": "docs/data/e70-preregistration.md",
+    "commit": "7f3e1f0"
+   },
+   "test": "Primary 2: F ≥ 75% jump, non-F ≤ 25%, one-sided Fisher p < 0.01, F ≥ non-F in each variant",
+   "unit": "soup (4 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 2.359897363752981e-20,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-09-e70-soups.json",
+    "key": "summary → fisher_p",
+    "line": 165,
+    "quote": "\"fisher_p\": 2.359897363752981e-20,"
+   },
+   "effect": "60/60 vs 15/60",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_counts": {
+    "groups": [
+     "F",
+     "non-F"
+    ],
+    "jumped": [
+     15,
+     6
+    ],
+    "of": [
+     15,
+     15
+    ],
+    "source": {
+     "file": "docs/data/experiments/2026-11-09-e70-soups.json",
+     "key": "summary → by_v → per_rule → T"
+    }
+   },
+   "note": "E-73 re-scored with D-053: Fisher p unchanged (2.4e-20), P2 pass (`2026-11-11-e73-analysis.json` → E-70_P2).",
+   "line_label": "E-70 instruction variants, F vs non-F",
+   "recomputed": false
+  },
+  {
+   "id": "E-70/P1",
+   "experiment": "E-70",
+   "thread": "BFF emergence",
+   "journal": "J-072",
+   "preregistration": {
+    "file": "docs/data/e70-preregistration.md",
+    "commit": "7f3e1f0"
+   },
+   "test": "Primary 1: in every variant h1 = 64 is F and every F rule has 48 ≤ h1 ≤ 80",
+   "unit": "rule",
+   "family": "excluded",
+   "reason": "census band, not a significance test",
+   "original_verdict": "met",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-71/P1",
+   "experiment": "E-71",
+   "thread": "BFF emergence",
+   "journal": "J-073",
+   "preregistration": {
+    "file": "docs/data/e71-preregistration.md",
+    "commit": "ea680f8"
+   },
+   "test": "Primary 1: pooled Spearman ρ(self-sufficient count, median T) ≤ −0.4 over 22 rules, one-sided permutation p < 0.01",
+   "unit": "rule (22)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.05952940470595294,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-10-e71-copiercount.json",
+    "key": "summary → primary1_pooled → p_one_sided_perm",
+    "line": 9,
+    "quote": "\"p_one_sided_perm\": 0.05952940470595294,"
+   },
+   "effect": "ρ = −0.34",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "note": "E-73 re-score (D-053): p = 0.067, still fails.",
+   "line_label": "E-71 copier count, pooled",
+   "recomputed": false
+  },
+  {
+   "id": "E-71/P2",
+   "experiment": "E-71",
+   "thread": "BFF emergence",
+   "journal": "J-073",
+   "preregistration": {
+    "file": "docs/data/e71-preregistration.md",
+    "commit": "ea680f8"
+   },
+   "test": "Primary 2: Σ within-variant Spearman ρ negative, one-sided permutation within variants, p < 0.05",
+   "unit": "rule (within variant)",
+   "sidedness": "one-sided",
+   "alpha": 0.05,
+   "p_raw": 0.006029939700602994,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-10-e71-copiercount.json",
+    "key": "summary → primary2_within_variant → p_one_sided_perm",
+    "line": 16,
+    "quote": "\"p_one_sided_perm\": 0.006029939700602994,"
+   },
+   "effect": "Σρ = −2.45",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "note": "E-73 re-score (D-053): p = 0.011, still passes at 0.05.",
+   "line_label": "E-71 copier count, within variant",
+   "recomputed": false
+  },
+  {
+   "id": "E-72",
+   "experiment": "E-72",
+   "thread": "BFF emergence",
+   "journal": "J-074",
+   "preregistration": {
+    "file": "docs/data/e72-preregistration.md",
+    "commit": "bf5ee1b"
+   },
+   "test": "shallow median T ≥ 3× deep and one-sided Mann–Whitney at rule level p < 0.01 (8 vs 8 rules)",
+   "unit": "rule (8 vs 8)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.5833639584771115,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-10-e72-soups.json",
+    "key": "summary → mannwhitney_p_shallow_slower",
+    "line": 10,
+    "quote": "\"mannwhitney_p_shallow_slower\": 0.5833639584771115,"
+   },
+   "effect": "ratio 1.14",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "note": "E-73 re-score (D-053): ratio 10, p = 0.06, still fails.",
+   "line_label": "E-72 deep vs shallow",
+   "recomputed": false
+  },
+  {
+   "id": "E-74",
+   "experiment": "E-74",
+   "thread": "BFF emergence",
+   "journal": "J-076",
+   "preregistration": {
+    "file": "docs/data/e74-preregistration.md",
+    "commit": "0b93128"
+   },
+   "test": "shallow ≥ 3× slower and one-sided Mann–Whitney p < 0.01 at rule level, under D-053 AND under HOE (both needed)",
+   "unit": "rule (12 vs 12)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.7278586897190209,
+   "p_kind": "intersection-union: the larger of the two component p values (pre-registration rule 3)",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-12-e74-soups.json",
+    "key": "summary → hoe → mannwhitney_p",
+    "line": 57,
+    "quote": "\"mannwhitney_p\": 0.7278586897190209,"
+   },
+   "components": [
+    {
+     "timing": "D-053",
+     "p": 0.17712370151810208,
+     "source": {
+      "file": "docs/data/experiments/2026-11-12-e74-soups.json",
+      "key": "summary → d053 → mannwhitney_p",
+      "line": 36,
+      "quote": "\"mannwhitney_p\": 0.17712370151810208,"
+     }
+    },
+    {
+     "timing": "HOE",
+     "p": 0.7278586897190209,
+     "source": {
+      "file": "docs/data/experiments/2026-11-12-e74-soups.json",
+      "key": "summary → hoe → mannwhitney_p",
+      "line": 57,
+      "quote": "\"mannwhitney_p\": 0.7278586897190209,"
+     }
+    }
+   ],
+   "effect": "ratios 0.95 (D-053), 0.66 (HOE)",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-74 deep vs shallow, fresh rules",
+   "recomputed": false
+  },
+  {
+   "id": "E-75 ph. 3",
+   "experiment": "E-75 ph. 3",
+   "thread": "SUBLEQ",
+   "journal": "J-080",
+   "preregistration": {
+    "file": "docs/data/e75-phase3-preregistration.md",
+    "commit": "bdfe800"
+   },
+   "test": "HIGH ≥ 75%, LOW ≤ 25%, one-sided Fisher over soups p < 0.01, ≥ 6 rules per group",
+   "unit": "soup (6 per rule, 12 rules per group)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 1.3498478383689585e-24,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-13-e75-phase3.json",
+    "key": "summary → primary → fisher_p",
+    "line": 19803,
+    "quote": "\"fisher_p\": 1.3498478383689585e-24,"
+   },
+   "effect": "64/72 vs 6/72",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": {
+    "p": 5.362e-05,
+    "test": "one-sided Fisher on rules, a rule jumps if ≥ 4 of 6 soups do (11/12 vs 1/12)",
+    "source": {
+     "file": "docs/data/experiments/2026-11-14-rate-model.json",
+     "key": "step4_rule_level → phase 3 → ge4_of_6 → p_one_sided",
+     "line": 4100,
+     "quote": "\"p_one_sided\": 5.362e-05"
+    },
+    "variant": "ge4_of_6 (the pre-registration's rule definition)",
+    "any_soup_jumped_p": 5.362e-05
+   },
+   "appendix_b_disagreement": "Appendix B's wording 'tile density separates rules' suggests a rule-level test; the registered primary is a Fisher test over soups (the rule-level count is secondary 1).",
+   "line_label": "E-75 ph. 3 tile density, jump always",
+   "recomputed": false
+  },
+  {
+   "id": "E-75 ph. 4",
+   "experiment": "E-75 ph. 4",
+   "thread": "SUBLEQ",
+   "journal": "J-081",
+   "preregistration": {
+    "file": "docs/data/e75-phase4-preregistration.md",
+    "commit": "fa0fa53"
+   },
+   "test": "pool A: HIGH ≥ 75%, LOW ≤ 25%, one-sided Fisher over soups p < 0.01, ≥ 6 rules per group",
+   "unit": "soup (6 per rule, 12 rules per group)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.0795410208682116,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-13-e75-phase4.json",
+    "key": "summary → A → fisher_p",
+    "line": 34069,
+    "quote": "\"fisher_p\": 0.0795410208682116,"
+   },
+   "effect": "29/72 vs 20/72",
+   "original_verdict": "not met",
+   "test_met_alpha": false,
+   "family": "in",
+   "rule_level": {
+    "p": 0.3334,
+    "test": "one-sided Fisher on rules, ≥ 4 of 6 soups (5/12 vs 3/12)",
+    "source": {
+     "file": "docs/data/experiments/2026-11-14-rate-model.json",
+     "key": "step4_rule_level → phase 4 pool A → ge4_of_6 → p_one_sided",
+     "line": 4135,
+     "quote": "\"p_one_sided\": 0.3334"
+    },
+    "variant": "ge4_of_6",
+    "any_soup_jumped_p": 0.5
+   },
+   "line_label": "E-75 ph. 4 tile density, jump ≤ 0",
+   "recomputed": false
+  },
+  {
+   "id": "E-75 ph. 5",
+   "experiment": "E-75 ph. 5",
+   "thread": "SUBLEQ",
+   "journal": "J-083",
+   "preregistration": {
+    "file": "docs/data/e75-phase5-preregistration.md",
+    "commit": "aa6843b"
+   },
+   "test": "no primary: 'no single primary verdict; this phase is mainly descriptive' (five predictions)",
+   "unit": "soup",
+   "family": "excluded",
+   "reason": "the pre-registration registers no primary",
+   "original_verdict": "Appendix B: not testable",
+   "note": "Prediction 4a (origin rate higher in often-jumping rules, one-sided Mann–Whitney p < 0.05) was tested: p = 3 × 10⁻¹⁹, right; 4b (establishment fraction not different) p = 0.10, uninformative (J-083).",
+   "appendix_b_disagreement": "Appendix B scores a primary ('origin vs establishment as the bottleneck', not testable); the file states that the phase has no single primary verdict, and its origin-rate prediction (4a) was tested and right (p = 3 × 10⁻¹⁹); only 4b was uninformative.",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "id": "E-75 ph. 6",
+   "experiment": "E-75 ph. 6",
+   "thread": "SUBLEQ",
+   "journal": "J-084",
+   "preregistration": {
+    "file": "docs/data/e75-phase6-preregistration.md",
+    "commit": "ff6b4e5"
+   },
+   "test": "pool A: Spearman ρ(R_P, soups jumped of 6) ≥ 0.5 with one-sided p < 0.01 (24 rules)",
+   "unit": "rule (24)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 0.0004,
+   "p_kind": "rounded (as reported, 1 significant figure; not in the export)",
+   "p_source": {
+    "file": "docs/data/e75-phase6-preregistration.md",
+    "line": 78,
+    "quote": "1. **Primary, pool A: right.** ρ = 0.64, one-sided p = 4 × 10^-4. D_T on the same rules: ρ = 0.14."
+   },
+   "also_reported": {
+    "file": "docs/journal.md",
+    "line": 272,
+    "quote": "- **Primary passes.** In pool A (jump ≤ 0), ρ(R_P, soups jumped) = 0.64, p = 4 × 10^-4. Tile density on the same 24 rules: 0.14."
+   },
+   "effect": "ρ = 0.64 (retrospective: outcomes known, predictor computed blind)",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "line_label": "E-75 ph. 6 product rate, pool A",
+   "precise_value": {
+    "p": 0.00041376314598200203,
+    "recomputed": true,
+    "used": false,
+    "method": "scipy.stats.spearmanr(R_P, jumped, alternative='greater') over the 24 pool-A rules, as in scripts/sq_products_report.py",
+    "source": {
+     "file": "docs/data/experiments/2026-11-13-e75-products.json",
+     "key": "rules[pool = A] → R_P, jumped"
+    }
+   },
+   "recomputed": false
+  },
+  {
+   "id": "E-75 ph. 7",
+   "experiment": "E-75 ph. 7",
+   "thread": "SUBLEQ",
+   "journal": "J-085",
+   "preregistration": {
+    "file": "docs/data/e75-phase7-preregistration.md",
+    "commit": "2c72454"
+   },
+   "test": "HIGH ≥ 75%, ZERO ≤ 25%, one-sided Fisher over soups p < 0.001; needs ≥ 8 HIGH and ≥ 8 ZERO rules",
+   "unit": "soup (6 per rule)",
+   "sidedness": "one-sided",
+   "alpha": 0.001,
+   "p_raw": 6e-11,
+   "p_kind": "rounded (as reported)",
+   "p_source": {
+    "file": "docs/data/e75-phase7-preregistration.md",
+    "line": 77,
+    "quote": "17% ≤ 25%, one-sided Fisher p = 6 × 10^-11."
+   },
+   "precise_value": {
+    "p": 5.812e-11,
+    "source": {
+     "file": "docs/data/experiments/2026-11-14-rate-model.json",
+     "key": "step4_rule_level → phase 7 → soup_level → p_one_sided",
+     "line": 4216,
+     "quote": "\"p_one_sided\": 5.812e-11"
+    }
+   },
+   "effect": "33/42 vs 12/72",
+   "original_verdict": "undecided (7 HIGH rules < 8; the test's criteria were met)",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": {
+    "p": 0.02919,
+    "test": "one-sided Fisher on rules, ≥ 4 of 6 soups (5/7 vs 2/12)",
+    "source": {
+     "file": "docs/data/experiments/2026-11-14-rate-model.json",
+     "key": "step4_rule_level → phase 7 → ge4_of_6 → p_one_sided",
+     "line": 4205,
+     "quote": "\"p_one_sided\": 0.02919"
+    },
+    "variant": "ge4_of_6",
+    "any_soup_jumped_p": 0.006271
+   },
+   "line_label": "E-75 ph. 7 product rate, prospective",
+   "recomputed": false
+  },
+  {
+   "id": "E-77",
+   "experiment": "E-77",
+   "thread": "Search engine",
+   "journal": "J-087",
+   "preregistration": {
+    "file": "docs/data/e77-preregistration.md",
+    "commit": "7c7edbe"
+   },
+   "test": "one-sided exact Wilcoxon signed-rank, distinct self-propelled rules, engine vs random, p < 0.01 AND median ratio ≥ 1.5",
+   "unit": "seed (20 paired)",
+   "sidedness": "one-sided",
+   "alpha": 0.01,
+   "p_raw": 9.5367431640625e-07,
+   "p_kind": "exact",
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-14-e77-h1-power.json",
+    "key": "tests → distinct_self_propelled → wilcoxon → p",
+    "line": 75,
+    "quote": "\"p\": 9.5367431640625e-07"
+   },
+   "effect": "20 of 20 seeds; median ratio 1.84",
+   "original_verdict": "met",
+   "test_met_alpha": true,
+   "family": "in",
+   "rule_level": null,
+   "rule_level_note": "seed is the unit; not a world/soup test",
+   "line_label": "E-77 engine vs random (H1)",
+   "recomputed": false
+  }
+ ],
+ "rescores_reference": [
+  {
+   "label": "E-71 P1 under D-053",
+   "p": 0.06733932660673393,
+   "source": {
+    "file": "docs/data/experiments/2026-11-11-e73-analysis.json",
+    "key": "E-71 → T_d053 → p_one_sided_perm",
+    "line": 381,
+    "quote": "\"p_one_sided_perm\": 0.06733932660673393,"
+   }
+  },
+  {
+   "label": "E-71 P2 under D-053",
+   "p": 0.01087989120108799,
+   "source": {
+    "file": "docs/data/experiments/2026-11-11-e73-analysis.json",
+    "key": "E-71 → T_d053 → within_p_one_sided_perm",
+    "line": 383,
+    "quote": "\"within_p_one_sided_perm\": 0.01087989120108799,"
+   }
+  },
+  {
+   "label": "E-72 under D-053",
+   "p": 0.06249924117544085,
+   "source": {
+    "file": "docs/data/experiments/2026-11-11-e73-analysis.json",
+    "key": "E-72 → T_d053 → mannwhitney_p",
+    "line": 603,
+    "quote": "\"mannwhitney_p\": 0.06249924117544085,"
+   }
+  }
+ ]
+}
