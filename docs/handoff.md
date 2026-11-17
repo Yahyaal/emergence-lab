@@ -127,7 +127,7 @@ emergence conditions --rules "LENIA/..." --inits uniform,smooth:3,smooth:6,smoot
 | `emergence/analysis.py` | `compare` for baselines |
 | `emergence/benchmark.py`, `benchmark_probes.py` | validation suite |
 | `emergence/server.py`, `web/` | dashboard |
-| `docs/` | this journal (GitHub Pages, Jekyll). `paper.md` is the synthesis with a claims table; `literature.md` compares each claim with published work (J-091), with its working notes in `data/literature/`. `_data/media.json` lists the clips; `data/experiments/` holds the exports |
+| `docs/` | this journal (GitHub Pages, Jekyll). `story.html` is the illustrated overview for non-technical readers (standalone page with its own styles; reuses `assets/report/` animations; J-094); `paper.md` is the synthesis with a claims table; `literature.md` compares each claim with published work (J-091), with its working notes in `data/literature/`. `_data/media.json` lists the clips; `data/experiments/` holds the exports |
 | `scripts/` | `journal_export.py`, `make_media.py`, `make_figures.py`, `make_report_figures.py`, `lenia_static_fields.py` (C-01/C-02 diagnostics behind D-022), `heldout_free_activity.py` (C-02), `verify_movers.py`, `detector_calibration.py` (E-25), `birth_scan.py` (E-27), `lump_scan.py` (E-29), `pl_scan.py` (E-30), experiment scripts |
 
 ## Conventions
