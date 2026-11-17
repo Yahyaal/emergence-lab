@@ -12,6 +12,55 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-092 · 2026-11-16 · E-79: a Holm correction across the pre-registered primaries keeps 18 of 20 passes; with rules as the unit, far fewer survive (analysis of existing results)
+
+**Question / why:** the paper (J-090) scored 45 experiments with a pre-registered primary and corrected for none of them; the literature review (J-091, correction 4) and D-067 proposed a Holm correction. The owner approved D-067 and D-063 on 16 November 2026. Which passes survive a family-wise correction?
+
+**Pre-registered:** `docs/data/e79-preregistration.md`, commit `341ff62` (2026-11-16 22:28:43 −0600), committed alone before any adjusted value was computed. The raw p values were public before; what it fixed is the family, the rules for choosing each p value and the methods. Disclosed there: I had read every pre-registration and export while defining the family.
+
+**Ran (E-79, no simulation):**
+- Re-read all 45 pre-registration files (and those of the experiments Appendix B leaves out as descriptive: none registers a primary significance test, so none is added). Built `docs/data/e79-primaries.json`: one record per registered primary, with test, unit, sidedness, α, raw p, its committed source file, line and quoted line, original verdict, family membership or the reason for exclusion, and the rule-level p where one exists.
+- `PYTHONPATH=. python scripts/holm_primaries.py` → `docs/data/experiments/2026-11-16-e79-holm.json`. Holm and BH implemented directly; BH matches `scipy.stats.false_discovery_control` (max difference 1e-16), Holm matches the sequential rejection rule at every α tested; `statsmodels` is not installed. Tests: `tests/test_holm.py` (hand-worked example, cap at 1, scipy check).
+
+**Family:** 42 p values that test a predicted effect (Lenia 15, of which 9 are E-13's sign tests; BFF emergence 16; BFF after emergence 6; SUBLEQ 4; search engine 1; the Life-like thread has none). **Excluded (15):** primaries that are not significance tests (E-41 replay and count; E-42 count of verdicts; E-55, E-56 census counts and shares; E-57 B, E-58 B; census bands E-61 P1, E-62 P1, E-68 P1, E-70 P1; E-66 P1 and E-67 P1 shares and counts; E-69 thresholds), E-47 (its sign test was never computed: 0 replacements; not recoverable) and E-75 phase 5 (no primary registered). **Predicted null, listed apart (8):** E-46 outcomes 1, 2, 3; E-51; E-52; E-53; E-54; E-78's seed-null contrast. Conjunctive primaries enter with their test's p value; E-74's two timings enter as one intersection-union p (the larger, 0.73). Rounded as reported and used as such: E-43 (0.73, recomputed from committed counts as 0.729), E-75 phase 6 (4 × 10⁻⁴; exact 4.14 × 10⁻⁴ recomputed, not used), phase 7 (6 × 10⁻¹¹; committed 5.8 × 10⁻¹¹). No p value was reported only as a bound, and none in the family had to be recomputed.
+
+**Found:**
+- **Holm (α = 0.05, family-wise):** of 42 tests, 22 met their registered α, 20 of them passes. **18 of 20 passes survive.** Lost: **E-50**, the soup-size exponent (p = 0.014 → adjusted 0.30), and **E-71 primary 2**, the within-variant copier count (0.0060 → 0.13). E-68's Fisher test also loses significance (0.0027 → 0.062), but its verdict had already failed on the 75% share. E-75 phase 7's soup-level test survives (2.3 × 10⁻⁹); its verdict stays undecided (7 HIGH rules < 8).
+- **Kept:** E-14 (two contrasts, 3.6 × 10⁻⁸ and 7.8 × 10⁻⁶), E-18a, E-19a (2.7 × 10⁻¹¹ and 0.010), E-26, E-45, E-57 A, E-59, E-60, E-61 P2, E-63, E-64, E-65, E-70 P2, E-75 phases 3 and 6, E-77. E-75 phase 6 is at the edge: adjusted 0.010, below 0.05 but not below its own registered α of 0.01 (with the exact p, 0.0103).
+- **BH (q = 0.05):** all 22 significant tests survive.
+- **Sensitivity (a), rule-level p values where committed (D-063):** 14 passes survive. The Lenia contrasts fall away: E-14's rule-level sign tests (0.031, two-sided as reported) and E-19a's (0.016, 0.031, one-sided) adjust to 0.39 to 0.71. E-75 phase 3 survives at the rule level (5.4 × 10⁻⁵ → 0.002); phase 7's rule-level p with its own registered rule definition (≥ 4 of 6 soups) is 0.029 (0.006 with "any soup", which the paper quoted) and does not survive (0.70).
+- **Sensitivity (b), Holm within each thread:** only E-50 is lost (0.085); E-71 P2 survives within BFF emergence (0.042).
+- **Sensitivity (c), exploratory:** rule-level Fisher tests recomputed from the committed per-rule outcomes for the F predictor: E-60 0.29, E-61 0.21, E-62 1, E-63 0.024, E-64 0.11, E-65 0.024, E-68 0.32, E-70 3.5 × 10⁻⁴. After Holm only E-70 survives (0.012); 9 passes survive in all (E-18a, E-26, E-45, E-57, E-59, E-70, E-75 phases 3 and 6, E-77).
+- **Outside the family, for the record:** E-46 outcome 1 (the 5006 species, p = 1.3 × 10⁻¹⁰) would survive any correction of this size, but it was registered with a null prediction; E-52 (0.045) was too, and was explained by kinship (E-53).
+
+**Appendix B against the pre-registration files (fixed in the paper; rows marked †):**
+1. E-13: the journal wording "sign test across 8 rules, smooth vs soup" left out that five starts (smooth ℓ = 3, 6, 10; spots; Chan's patches) were each registered against soup at two densities, at p < 0.05/20 (9 distinct tests; patches ran once).
+2. E-43: given as "parent favoured in 5 to 30% of variant pairs"; the file registers a one-sided Fisher test of the favoured share against the neutral null (5–30% was a prediction).
+3. E-44: given as "≥ 30% of cross-soup pairs favoured"; registered: one-sided Fisher against the pooled nulls (≥ 30% was a prediction).
+4. E-45: given as "mirror species ≥ 0.6 of races"; registered: one-sided binomial against 1/2 at p < 0.01 (≥ 0.6 was a prediction).
+5. E-46: only outcome 1 was scored; the file registers outcomes 1 to 3, all with a null prediction, and outcome 2 (hand-written vs emergent, p = 0.0034) also came out against it. Result changed from "met" to "mixed".
+6. E-58: Primary B (census: copiers ≥ 90% reverse, ≤ 5% self-sufficient), which passed (J-058), was missing. Result changed from "not met" to "mixed".
+7. E-66: scored P1 to P4 as primaries ("mixed"); the file labels only P1 primary, and P1 was met. Result changed to "met".
+8. E-75 phase 3: "tile density separates rules" suggested a rule-level test; the registered primary is a Fisher test over soups.
+9. E-75 phase 5: scored as having a primary ("not testable"); the file says "no single primary verdict; this phase is mainly descriptive", and its origin-rate prediction (4a) was tested and right (p = 3 × 10⁻¹⁹). Moved to the not-tallied list, so Appendix B now tallies 44 experiments (met 23, not met 13, mixed 5, undecided 2, not testable 1).
+- Also in Appendix A: A39 (E-32's rate comparison, p = 0.24) was marked pre-registered; the E-32 file registers only a count, so it is now marked "no".
+
+**Interpretation:** most pre-registered passes survive a family-wise correction at the units they were registered at, including every Lenia world-level contrast, every F-predictor soup test, E-45, E-57/E-59 and H1. Two passes do not: the soup-size scaling of the BFF jump rate (E-50; its post hoc verified-only version had p = 0.049 already, and E-76's one-rate fit is exploratory) and the within-variant copier count (E-71). The correction changes no evidence level: none rests on E-50 or E-71. The larger loss is at the unit D-063 now prefers: with rules as the unit, the Lenia smooth-start effect (8 rules) and the F predictor (3 to 7 rules per arm, except E-70's 15) are not significant after correction. They remain consistent effects at the world and soup level; as statements about rules they are suggestive, not established. That was already said for Lenia (R-4) and is now said for F.
+
+**Limits:**
+- **Dependence.** The tests are not independent: E-61 and E-63 reuse E-60's and E-62's soups as comparison arms; E-14 and E-19a share the 8-rule panel; E-71, E-72, E-74 and E-75 phases 4 to 7 reuse rules or soups of earlier phases; E-45 and E-46 race the same replicators. Holm is valid under any dependence, but conservative; BH assumes positive dependence.
+- **The family is shaped by registration choices.** E-13's nine registered contrasts make up 9 of 42 p values (all ≥ 0.0625); they raise m without adding a pass. Excluding the 15 non-test primaries and the 8 null predictions is a choice fixed in advance, not a neutral one.
+- **Rounded p values** (E-43, phase 6, phase 7) were used as reported; only phase 6 is near a boundary (Holm 0.0100 vs its α 0.01).
+- **Sidedness differs** between tools (E-13's sign tests and E-14's rule-level test are two-sided as reported; E-19a's are one-sided).
+- **Rule-level tests in (c)** are recomputed from tallies, with "any soup jumped" as the rule outcome; they are exploratory and the pre-registrations did not register them.
+- No detector or ranking code changed, so the probe benchmark was not rerun.
+
+**Changed:** `docs/data/e79-preregistration.md` (commit `341ff62`), `docs/data/e79-primaries.json`, `scripts/holm_primaries.py`, `tests/test_holm.py`, `docs/data/experiments/2026-11-16-e79-holm.json`; `docs/paper.md` (abstract limits sentence, sections 3, 4.1, 4.3, 4.4, 5 and 8, Appendix A rows A39 and A143 fixed and A166 to A180 added, Appendix B fixes, new Appendix B2); D-067 and D-063 accepted; E-79 row in experiments; `literature.md` correction 4 applied; `handoff.md`; R-5 note in `reviews.md`.
+
+**Lesson:** re-reading the pre-registration files, not the journal's summary of them, changed three scorecard verdicts and took one experiment out of the tally; the correction itself mostly confirmed what the units already said.
+
+---
+
 ## J-091 · 2026-11-16 · A literature review by AI agents: two results published, most partly known, the Flow-Lenia sentence corrected (writing only, no new results)
 
 **Question / why:** the paper (J-090) said no literature review had been done, and the research page had asked for one since J-013. Which of our claims are already published, which are partly known, and which conflict with published work?
