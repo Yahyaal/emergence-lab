@@ -18,6 +18,10 @@
                    exact replicators (positive), random programs (negative), filler smears that match 60/64 bytes
                    without copying instructions (deceptive), top-40 programs of soups without replicators (null),
                    thr 60 without the guard == the old shift-aware test (equivalence)
+* lattice assay (scripts/lattice_assay.py, E-80 groundwork, J-093): lineage tags on the neighbour-only lattice;
+                   replicator front and parent trapped(0) > handicapped trapped(1) (positive), same code under two labels
+                   (negative), filler smear, persisting non-copier, kin in the resident, tag drift under noexec +
+                   mutation (deceptive), random-position blocks of the garden relabelled (null)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -209,4 +213,10 @@ def run(check) -> None:
     if (scripts / "sq_phase0.py").exists():
         import sq_phase0 as P0
         for name, ok, det in P0.controls():
+            check(name, ok, det)
+
+    # lattice-native common-garden assay with lineage tags (scripts/lattice_assay.py, E-80 groundwork, J-093)
+    if (scripts / "lattice_assay.py").exists():
+        import lattice_assay as LAT
+        for name, ok, det in LAT.controls():
             check(name, ok, det)

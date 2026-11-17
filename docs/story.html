@@ -1,0 +1,503 @@
+---
+layout: null
+title: Story
+description: "The whole project for non-technical readers: why, the idea, what was done, the three results, how it compares with other research, and what could come next."
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Story · Emergence Lab</title>
+<meta name="description" content="The whole Emergence Lab project for non-technical readers.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column of chapters; simulation frames sit in black "specimen wells";
+   colours are taken from the magma palette the simulations are drawn in. */
+:root{
+  --bg:#150f1c; --bg2:#1e1628; --bg3:#2a1f37; --line:#3a2c4b;
+  --fg:#f3ecf4; --muted:#b3a4bd; --faint:#8a7a96;
+  --glow:#fcd58a; --hot:#f58a4b; --rose:#d4467f; --plum:#8b3fa0;
+  --yes:#fcd58a; --no:#7f8fb5; --well:#000;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
+  --bg:#f6f1f7; --bg2:#ffffff; --bg3:#ece3ef; --line:#d9cbdf;
+  --fg:#231628; --muted:#5d4b68; --faint:#7d6b88;
+  --glow:#b0590a; --hot:#c8501a; --rose:#b52a66; --plum:#7a2f90;
+  --yes:#b0590a; --no:#55648c; --well:#000; color-scheme:light } }
+:root[data-theme="light"]{
+  --bg:#f6f1f7; --bg2:#ffffff; --bg3:#ece3ef; --line:#d9cbdf;
+  --fg:#231628; --muted:#5d4b68; --faint:#7d6b88;
+  --glow:#b0590a; --hot:#c8501a; --rose:#b52a66; --plum:#7a2f90;
+  --yes:#b0590a; --no:#55648c; --well:#000; color-scheme:light }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+section{padding-block:56px;border-top:1px solid var(--line)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,6.2vw,4.4rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:700;letter-spacing:-.01em;margin-bottom:18px}
+h3{font-size:1.25rem;font-weight:700;margin-bottom:8px}
+p{margin:0 0 14px;max-width:66ch}
+a{color:var(--glow)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:12px}
+.lead{font-size:1.2rem;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:.9rem}
+em.k{font-style:normal;color:var(--glow);font-weight:600}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:start}
+.cols>*{min-width:0}
+
+/* hero */
+.hero{padding-block:44px 48px;border-top:0}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
+.hero-grid>*{min-width:0}
+.well{background:var(--well);border-radius:6px;overflow:hidden;line-height:0}
+.well img,.well canvas{width:100%;height:auto;display:block;image-rendering:pixelated}
+.cap{font-size:.86rem;color:var(--muted);margin-top:8px;line-height:1.45;max-width:none}
+.btn{font:600 .85rem var(--body);background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.btn:hover{border-color:var(--glow);color:var(--glow)}
+.facts{display:flex;flex-wrap:wrap;gap:10px 34px;margin-top:26px}
+.fact b{display:block;font-family:var(--display);font-size:1.9rem;font-weight:700;color:var(--glow);font-variant-numeric:tabular-nums;line-height:1.1}
+.fact span{font-size:.86rem;color:var(--muted)}
+
+/* ladder */
+.ladder{display:grid;gap:6px;margin-top:8px}
+.rung{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:12px 14px;background:var(--bg2);border-radius:6px}
+.rung .n{font-family:var(--display);font-weight:800;font-size:1.7rem;color:var(--plum);text-align:center}
+.rung b{display:block}
+.rung span{color:var(--muted);font-size:.92rem}
+.rung.top{border:1px dashed var(--rose);background:transparent}
+.rung.top .n{color:var(--rose)}
+
+/* universes */
+.uni{background:var(--bg2);border-radius:8px;padding:14px 14px 18px;display:flex;flex-direction:column;gap:12px}
+.uni .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.uni p{font-size:.95rem;margin:0}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.grid4>*{min-width:0}
+
+/* bars */
+.bars{display:grid;gap:12px;margin:14px 0 6px}
+.bar{display:grid;grid-template-columns:minmax(120px,210px) 1fr 86px;gap:12px;align-items:center;font-size:.93rem}
+.bar .track{height:22px;background:var(--bg3);border-radius:3px;position:relative;overflow:hidden}
+.bar .fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--plum),var(--rose) 45%,var(--hot) 80%,var(--glow));border-radius:3px;min-width:2px}
+.bar .fill.zero{background:var(--no);width:2px}
+.bar .v{font-family:var(--mono);font-size:.84rem;font-variant-numeric:tabular-nums;text-align:right;color:var(--fg)}
+@media(max-width:520px){.bar{grid-template-columns:1fr 70px}.bar .lab{grid-column:1/-1;margin-bottom:-6px}}
+.panel{background:var(--bg2);border-radius:8px;padding:20px}
+.panel h3{font-size:1.05rem}
+.pill{display:inline-block;font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.y{color:var(--yes)} .pill.n{color:var(--no)} .pill.m{color:var(--rose)}
+
+.finding{display:grid;grid-template-columns:64px 1fr;gap:18px;margin-bottom:20px;align-items:start}
+.finding .let{font-family:var(--display);font-weight:800;font-size:3.4rem;line-height:.9;color:var(--hot)}
+@media(max-width:560px){.finding{grid-template-columns:1fr;gap:4px}}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tiles figure{margin:0;min-width:0}
+.tiles figcaption{font-size:.8rem;color:var(--muted);margin-top:6px;line-height:1.35}
+
+/* chain */
+.chain{display:grid;gap:8px;margin-top:10px}
+.step{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:var(--bg2);border-radius:6px;padding:10px 14px;font-size:.95rem}
+.step span.t{min-width:0}
+
+/* climb */
+.climb{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;height:300px;position:relative;margin-top:26px;border-bottom:1px solid var(--line)}
+.climb .col{display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative;min-width:0}
+.climb .tower{background:linear-gradient(0deg,var(--plum),var(--rose) 50%,var(--hot) 85%,var(--glow));border-radius:5px 5px 0 0;position:relative}
+.climb .tower b{position:absolute;top:-30px;left:0;right:0;text-align:center;font-family:var(--display);font-size:1.15rem}
+.climb-labels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px;font-size:.88rem;text-align:center;color:var(--muted)}
+.climb-labels b{display:block;color:var(--fg)}
+.climb .l5{position:absolute;left:0;right:0;top:0;border-top:2px dashed var(--rose);font:600 .74rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--rose);padding-top:4px}
+
+/* scorecard */
+.sq{display:flex;flex-wrap:wrap;gap:5px;margin:14px 0}
+.sq i{width:20px;height:20px;border-radius:3px;display:block}
+.s-met{background:var(--glow)} .s-not{background:var(--no)} .s-mix{background:var(--rose)} .s-und{background:var(--plum)} .s-nt{background:transparent;border:1px solid var(--faint)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.88rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:13px;height:13px;border-radius:2px;display:inline-block}
+
+/* timeline */
+.tl{display:grid;gap:8px;margin-top:14px}
+.tl .row{display:grid;grid-template-columns:minmax(120px,230px) 1fr;gap:12px;align-items:center;font-size:.9rem}
+.tl .trk{height:20px;background:var(--bg3);border-radius:3px;position:relative}
+.tl .trk i{position:absolute;top:0;bottom:0;border-radius:3px;background:var(--rose)}
+.tl .axis{display:flex;justify-content:space-between;font:.72rem var(--mono);color:var(--faint)}
+@media(max-width:560px){.tl .row{grid-template-columns:1fr;gap:3px}}
+
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.scroll{overflow-x:auto}
+.scroll table{min-width:640px}
+.next{counter-reset:n;display:grid;gap:12px;margin-top:10px}
+.next>div{background:var(--bg2);border-radius:8px;padding:16px 18px}
+.next p{margin:0;font-size:.96rem;max-width:none}
+.effort{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+svg text{font-family:var(--mono);fill:var(--muted);font-size:12px}
+footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--faint);font-size:.86rem}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
+.sitebar{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;padding-block:14px;font-size:.9rem;border-bottom:1px solid var(--line)}
+.sitebar a{color:var(--muted);text-decoration:none}
+.sitebar a:hover{color:var(--glow)}
+.sitebar .brand{font-family:var(--display);font-weight:700;color:var(--fg);margin-right:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="sitebar" aria-label="Site">
+  <a class="brand" href="./">Emergence Lab</a>
+  <a href="./">Overview</a><a href="paper.html">Paper</a><a href="literature.html">Literature</a><a href="report.html">Report</a><a href="gallery.html">Gallery</a><a href="journal.html">Journal</a>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Emergence Lab · 5 to 17 November 2026</div>
+      <h1>Can a handful of fixed rules build something that looks alive?</h1>
+      <p class="lead" style="margin-top:20px">We built tiny toy universes, switched them on, and watched without touching. Things started to move by themselves. Random computer code began copying itself. Evolution, so far, did not take off. This page tells the whole story.</p>
+      <div class="facts">
+        <div class="fact"><b>4</b><span>kinds of toy universe</span></div>
+        <div class="fact"><b>70+</b><span>experiments</span></div>
+        <div class="fact"><b>11</b><span>days, one laptop</span></div>
+        <div class="fact"><b>13</b><span>times we caught ourselves fooled</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="well"><canvas id="life" width="480" height="360" aria-label="A live simulation of Conway's Game of Life"></canvas></div>
+      <p class="cap">Running live in your browser: Conway's Game of Life, the classic toy universe. Each square only looks at its 8 neighbours and follows two rules. Nothing else is programmed, yet shapes form, blink and travel. <button class="btn" id="reseed" type="button" style="margin-left:6px">New random start</button></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Why</div>
+  <h2>The oldest question, made small enough to test</h2>
+  <div class="cols">
+    <div>
+      <p>Our universe began as hot, nearly featureless gas. Today it holds galaxies, cells and people. Nobody designed the steps in between. Simple laws ran for a long time, and structure appeared.</p>
+      <p>Was that a lucky accident, or is it what simple laws tend to do? We cannot rerun the real universe to find out. But we can build very small artificial ones on a computer, run thousands of them, and count.</p>
+    </div>
+    <div>
+      <p>Scientists call this <em class="k">emergence</em>: a whole that does things none of its parts were told to do. No single bird steers the flock. No single water molecule is wet.</p>
+      <p><b>The goal of this project:</b> find out whether complex, lasting, and possibly evolving structure appears spontaneously from simple fixed rules, and which rules or starting conditions make it likely.</p>
+      <p class="muted">We are not simulating our universe, and we are not building life by design. Nothing is planted, steered or rewarded inside a running world.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">The idea</div>
+  <h2>A ladder with five rungs</h2>
+  <p>"Looks alive" is vague, so we broke it into five steps. Each one is harder than the last, and each needs its own proof. A world only gets credit for the highest rung we could actually measure.</p>
+  <div class="ladder">
+    <div class="rung top"><div class="n">5</div><div><b>Open-ended evolution</b><span>New inventions keep coming and build on earlier ones, the way life on Earth never stopped changing.</span></div></div>
+    <div class="rung"><div class="n">4</div><div><b>Heredity</b><span>Copies carry small changes, and pass those changes on to their own copies.</span></div></div>
+    <div class="rung"><div class="n">3</div><div><b>Self-copying</b><span>A thing makes more of itself.</span></div></div>
+    <div class="rung"><div class="n">2</div><div><b>Moving by itself</b><span>A shape holds together and travels, with nothing pushing it.</span></div></div>
+    <div class="rung"><div class="n">1</div><div><b>Lasting shapes</b><span>Order that persists instead of dissolving back into noise.</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">The universes</div>
+  <h2>Four kinds of toy world</h2>
+  <p>A <em class="k">rule</em> is one fixed version of a world's physics. A <em class="k">world</em> is one run of that rule from one random start. We ran thousands.</p>
+  <div class="grid4" style="margin-top:18px">
+    <div class="uni"><div class="well"><canvas id="life2" width="200" height="200" aria-label="Game of Life, small view"></canvas></div><div class="tag">Grids of on/off squares</div><h3>Life-like worlds</h3><p>Squares switch on or off depending on their neighbours. The family that contains Conway's Game of Life.</p></div>
+    <div class="uni"><div class="well"><img src="assets/report/gliders.gif" alt="Two soft glowing shapes gliding across a black field" loading="lazy"></div><div class="tag">Smooth, continuous</div><h3>Lenia</h3><p>The same idea with smooth shades instead of on/off. Its creatures look like microscope footage.</p></div>
+    <div class="uni"><div class="well"><img src="assets/story/soup2.png" alt="Rows of coloured pixels, each row one small program" style="aspect-ratio:1;object-fit:cover" loading="lazy"></div><div class="tag">Program soup</div><h3>BFF</h3><p>No space at all. Thousands of tiny random programs meet in pairs, run on each other, and can overwrite each other.</p></div>
+    <div class="uni"><div class="well"><img src="assets/report/e32-divider.gif" alt="A small spot dividing again and again until it fills the field" loading="lazy"></div><div class="tag">Our own additions</div><h3>SUBLEQ soups and more</h3><p>A second, very different programming language we adapted, plus Lenia variants with several interacting layers (shown: one that divides).</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">The method</div>
+  <h2>The hardest part was not fooling ourselves</h2>
+  <div class="cols">
+    <div>
+      <p>It is very easy to see life where there is none. A program that scores "interesting" can be tricked by a flickering blob. So every measuring tool had to pass four checks before we trusted it:</p>
+      <p><b>A known yes.</b> Something we know has the property.<br>
+      <b>A known no.</b> Something we know does not.<br>
+      <b>A trap.</b> Something built on purpose to fool the tool.<br>
+      <b>A fair baseline.</b> What pure chance would score.</p>
+      <p>Three more habits: we only <em class="k">watch</em> a running world and do experiments on copies of it; we write down the prediction and the pass mark <em class="k">before</em> each big test; and we publish the failures.</p>
+    </div>
+    <div class="cols" style="grid-template-columns:1fr 1fr;gap:14px">
+      <figure style="margin:0"><div class="well"><img src="assets/report/e27-labyrinth.gif" alt="A blob bursting into a maze that fills the world" loading="lazy"></div><figcaption class="cap"><b>Fooled once:</b> our first "birth detector" reported reproduction. It was a single blob bursting into a maze.</figcaption></figure>
+      <figure style="margin:0"><div class="well"><img src="assets/report/e30-condensation.gif" alt="Two panels where dots condense out of a uniform background" loading="lazy" style="aspect-ratio:1;object-fit:cover;object-position:right"></div><figcaption class="cap"><b>Fooled again:</b> 17 of 100 worlds had "reproducers". The food supply itself was condensing into droplets.</figcaption></figure>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:14px">In all, 13 such cases were caught and each one left behind a permanent trap in the test suite. The shared lesson: a tool proven in one world cannot be trusted in the next without new traps from that world.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Result 1 of 3</div>
+  <div class="finding"><div class="let">A</div><div><h2 style="margin:0">Things move by themselves, if the start is lumpy</h2></div></div>
+  <div class="cols">
+    <div>
+      <div class="well"><img src="assets/report/emergence-soup-vs-smooth.gif" alt="Left: fine random noise freezes into a static maze. Right: a lumpy random start collapses into a small creature that glides away." loading="lazy"></div>
+      <p class="cap">Same rule, same amount of "matter". <b>Left:</b> a start of fine random speckle freezes into a dead maze. <b>Right:</b> a start with soft lumps collapses into a creature that glides away.</p>
+    </div>
+    <div>
+      <p>In Lenia, we first ran 2,085 worlds from fine random speckle. Not one produced a moving creature, even though we knew those rules <i>could</i> hold one.</p>
+      <p>Then we changed only how the starting matter was arranged: soft lumps instead of fine speckle. Gliding creatures appeared in 7 to 23% of worlds.</p>
+      <p>To be sure the lumps were the cause, we took a lumpy start and shuffled its values to random places. Same ingredients, arrangement destroyed:</p>
+      <div class="bars">
+        <div class="bar"><span class="lab">Lumpy start</span><div class="track"><div class="fill" style="width:23.1%"></div></div><span class="v">37 of 160</span></div>
+        <div class="bar"><span class="lab">Same values, shuffled</span><div class="track"><div class="fill zero"></div></div><span class="v">0 of 160</span></div>
+        <div class="bar"><span class="lab">Fine speckle</span><div class="track"><div class="fill zero"></div></div><span class="v">0 of 160</span></div>
+      </div>
+      <p class="cap">Worlds that grew a verified glider. Bars drawn to scale; the full track is 160 worlds.</p>
+    </div>
+  </div>
+  <div class="cols" style="margin-top:22px">
+    <div class="panel"><h3>What it means</h3><p class="small" style="margin:0">Whether a world comes alive with movement can depend less on its laws than on how its matter is spread out at the beginning. Speckle is not hopeless, only close: 1 world in 1,120.</p></div>
+    <div class="panel"><h3>Other creatures we met</h3><p class="small" style="margin:0">A slow turning "wanderer", a "ring glider", and pairs of gliders that fuse into a stable double. In 500 staged collisions, no new glider was ever born.</p></div>
+    <div class="panel"><h3>How sure</h3><p class="small" style="margin:0">Tested in 8 related rules, with the test plan written in advance. It is solid there. It is not yet a general law.</p></div>
+  </div>
+  <div class="grid4" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(150px,220px))">
+    <figure style="margin:0"><div class="well"><img src="assets/report/e17-wanderer.gif" alt="A round creature slowly wandering and turning" loading="lazy"></div><figcaption class="cap">The wanderer</figcaption></figure>
+    <figure style="margin:0"><div class="well"><img src="assets/report/e20-fusion.gif" alt="Two gliders collide and fuse into one larger glider" loading="lazy"></div><figcaption class="cap">Two gliders fuse into one</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Result 2 of 3</div>
+  <div class="finding"><div class="let">B</div><div><h2 style="margin:0">Random code starts copying itself</h2></div></div>
+  <p>Fill a soup with thousands of tiny programs made of pure random bytes. Let them bump into each other. For thousands of rounds nothing happens. Then, suddenly, one program that happens to copy itself appears, and within moments its descendants own the soup. Nobody wrote it. Nobody rewarded it.</p>
+  <div class="tiles" style="margin:18px 0 6px;max-width:760px">
+    <figure><div class="well"><img src="assets/story/soup0.png" alt="Sparse random coloured dots" loading="lazy"></div><figcaption><b>Start.</b> Random bytes. Each row is one program; coloured dots are instructions.</figcaption></figure>
+    <figure><div class="well"><img src="assets/story/soup1.png" alt="More coloured dots, still disordered" loading="lazy"></div><figcaption><b>Round 8,500.</b> More instructions, still no order.</figcaption></figure>
+    <figure><div class="well"><img src="assets/story/soup2.png" alt="Vertical stripes: most rows share the same code" loading="lazy"></div><figcaption><b>Round 9,750.</b> Stripes: almost every program now carries the same self-copying code.</figcaption></figure>
+  </div>
+  <p class="cap">One real soup from the project. This repeats, at small scale, a result first published by a Google team in 2024.</p>
+
+  <div class="cols" style="margin-top:26px">
+    <div>
+      <h3>One tiny detail decides everything</h3>
+      <p>Under the standard rule, a short copying program can only copy itself <i>backwards</i>, and a backwards copy does not work. We changed one detail (where a read/write pointer starts) so short copiers copy forwards.</p>
+      <div class="bars">
+        <div class="bar"><span class="lab">Standard rule</span><div class="track"><div class="fill zero"></div></div><span class="v">0 of 12</span></div>
+        <div class="bar"><span class="lab">One detail changed</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">8 of 8</span></div>
+        <div class="bar"><span class="lab">Control: changed, still backwards</span><div class="track"><div class="fill" style="width:12.5%"></div></div><span class="v">2 of 16</span></div>
+      </div>
+      <p class="cap">Soups taken over by self-copiers within 16,000 rounds.</p>
+    </div>
+    <div>
+      <h3>A prediction you can make in advance</h3>
+      <p>That gave a simple test of a rule, done before running any soup: <em class="k">does its shortest copier make a copy that can also copy?</em> Across five different instruction sets:</p>
+      <div class="bars">
+        <div class="bar"><span class="lab">Rules that pass the test</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">15 of 15</span></div>
+        <div class="bar"><span class="lab">Rules that fail it</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="v">6 of 15</span></div>
+      </div>
+      <p class="cap">Rules in which at least one soup was taken over. The test predicted <i>whether</i> replicators appear. Nothing we tried predicted <i>how fast</i>.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:30px">Then we tried a completely different language, and it got humbling</h3>
+  <p>Would the same idea work outside BFF? In our SUBLEQ soups, each new predictor worked once and then stumbled:</p>
+  <div class="chain">
+    <div class="step"><span class="t">Predictor 1 (pattern density): 11 of 12 "high" rules took off, 1 of 12 "low"</span><span class="pill y">passed</span></div>
+    <div class="step"><span class="t">Same predictor, a slightly different family of rules: 6 of 12 against 5 of 12</span><span class="pill n">failed</span></div>
+    <div class="step"><span class="t">Tracing origins: every founder was written in one single lucky meeting of two programs</span><span class="pill y">found</span></div>
+    <div class="step"><span class="t">Predictor 2 (how often a random meeting writes a copier), on fresh rules: 6 of 7 against 2 of 12</span><span class="pill m">undecided</span></div>
+  </div>
+  <p class="cap">"Undecided" because the plan required 8 rules in the first group and only 7 could be found. We report it as planned, not as a win.</p>
+  <div class="panel" style="margin-top:18px"><h3>The plain summary</h3><p style="margin:0">The birth of a replicator is the wait for one rare event: a single meeting of two programs that happens to write a working copier. A bigger soup has more meetings, so it gets there sooner. A friendlier rule makes each meeting more likely to succeed. That one idea explains most of what we saw.</p></div>
+</section>
+
+<section>
+  <div class="eyebrow">Result 3 of 3</div>
+  <div class="finding"><div class="let">C</div><div><h2 style="margin:0">Copying, yes. Inheritance, yes. Evolution, not yet.</h2></div></div>
+  <div class="cols">
+    <div>
+      <h3>Inheritance works</h3>
+      <p>We took the 9 replicators that had appeared by themselves, changed one byte at a time, and seeded each variant alone. Of 141 variants that could still copy, <em class="k">140 passed the change on</em> to most of their descendants. That is rung 4.</p>
+      <h3 style="margin-top:20px">But later is not better</h3>
+      <p>Evolution needs more than inheritance. Later generations should beat earlier ones. We checked four ways:</p>
+      <div class="scroll"><table style="min-width:0">
+        <tr><th>Test</th><th>Result</th></tr>
+        <tr><td>Head-to-head races, late against early</td><td><span class="pill n">no difference</span></td></tr>
+        <tr><td>Speed of spreading into random code</td><td><span class="pill n">no trend</span></td></tr>
+        <tr><td>Invading its own soup</td><td><span class="pill n">vanished with a fair control</span></td></tr>
+        <tr><td>Same, 7 soups, much longer gap</td><td><span class="pill n">no difference</span></td></tr>
+      </table></div>
+      <p class="small muted" style="margin-top:10px">Also absent: parasites, programs that get copied without doing any copying. Of 2,800 common programs, none was one. One exception to the flatness held up: a single "species" from one soup beat another soup's replicators in 70% of races.</p>
+    </div>
+    <div>
+      <h3>Did they just need space?</h3>
+      <p>In nature, neighbours compete with neighbours. Maybe mixing everyone together hides evolution. So we ran the longest experiment of the project (15.8 hours): seven soups, each continued two ways, fully mixed or on a grid where programs only meet their neighbours.</p>
+      <div class="panel">
+        <svg viewBox="0 0 470 150" role="img" aria-label="Fitness gain of the grid version minus the mixed version, for seven soups. Five are near zero, two are well below zero.">
+          <line x1="40" y1="70" x2="420" y2="70" stroke="var(--line)" stroke-width="1"/>
+          <line x1="342" y1="28" x2="342" y2="100" stroke="var(--faint)" stroke-dasharray="3 3"/>
+          <line x1="385" y1="28" x2="385" y2="100" stroke="var(--rose)" stroke-dasharray="3 3"/>
+          <g fill="var(--hot)"><circle cx="77" cy="70" r="7"/><circle cx="160" cy="70" r="7"/><circle cx="324" cy="62" r="7"/><circle cx="339" cy="78" r="7"/><circle cx="337" cy="60" r="7"/><circle cx="342" cy="70" r="7" fill-opacity=".8"/><circle cx="362" cy="70" r="7"/></g>
+          <text x="40" y="122" text-anchor="middle">−2</text><text x="191" y="122" text-anchor="middle">−1</text><text x="342" y="122" text-anchor="middle">0</text>
+          <text x="342" y="20" text-anchor="middle">no effect</text><text x="388" y="20" text-anchor="start" style="fill:var(--rose)">pass mark</text>
+          <text x="40" y="144">← grid did worse</text><text x="420" y="144" text-anchor="end">grid did better →</text>
+        </svg>
+        <p class="cap">Each dot is one soup: how much more fitness the grid version gained than the mixed version. To pass, the average had to clear +0.28. It came out at −0.42.</p>
+      </div>
+      <p style="margin-top:14px">Space did not help. The grid soups broke into a patchwork of small local families, but those families were no fitter. <b>Rung 5 is not reached.</b></p>
+      <h3 style="margin-top:22px">Then we measured fitness in space too</h3>
+      <p>That left a loophole: our fitness tests mixed everything, so an advantage that only shows between neighbours would be invisible to them. So we built a test that works on the grid: drop a small patch of code into a field of other code, let only neighbours meet, and see how far the patch spreads.</p>
+      <p>Before it was allowed to score anything, the test had to pass fairness checks: a copier sabotaged to die out lost in 24 of 24 trials, and identical code showed no difference. Then, overnight, 16 new soups (in a faster-starting variant of BFF) evolved two ways, on a grid or fully mixed, and their code raced on the grid.</p>
+      <div class="panel">
+        <svg viewBox="0 0 470 130" role="img" aria-label="Grid code minus mixed code, average over 16 soups: minus 0.05, with a 95% range from minus 0.11 to plus 0.02. The pass mark was plus 0.44.">
+          <line x1="40" y1="60" x2="420" y2="60" stroke="var(--line)" stroke-width="1"/>
+          <line x1="149" y1="28" x2="149" y2="90" stroke="var(--faint)" stroke-dasharray="3 3"/>
+          <line x1="376" y1="28" x2="376" y2="90" stroke="var(--rose)" stroke-dasharray="3 3"/>
+          <line x1="87" y1="60" x2="159" y2="60" stroke="var(--hot)" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="123" cy="60" r="8" fill="var(--hot)"/>
+          <text x="40" y="108" text-anchor="middle">−0.2</text><text x="149" y="108" text-anchor="middle">0</text><text x="257" y="108" text-anchor="middle">+0.2</text><text x="366" y="108" text-anchor="middle">+0.4</text>
+          <text x="149" y="20" text-anchor="middle">no effect</text><text x="372" y="20" text-anchor="end" style="fill:var(--rose)">pass mark</text>
+          <text x="40" y="128">← grid code did worse</text><text x="420" y="128" text-anchor="end">grid code did better →</text>
+        </svg>
+        <p class="cap">The dot is the average over 16 soups, the bar its 95% range. To pass, it had to clear +0.44. It came out at −0.05, and at most +0.02: about 2% of the gap between a working copier and the sabotaged one.</p>
+      </div>
+      <p style="margin-top:14px">This was the sharpest test of the project: sharp enough to rule out small advantages, not just large ones. Grid-evolved code spread no farther. <b>Rung 5 is still not reached.</b></p>
+      <p class="small muted">Careful wording matters here. "Not shown" is not "impossible". Each test used one rule and laptop-sized soups, and the grid test placed code among strangers, so an advantage that needs its own relatives nearby is still untested.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">The scoreboard</div>
+  <h2>How far each universe climbed</h2>
+  <div class="climb" role="img" aria-label="Highest rung reached: Life-like worlds 2, Lenia 2, SUBLEQ soups 3, BFF soups 4. Rung 5 reached by none.">
+    <div class="l5">Rung 5: open-ended evolution. Nobody yet.</div>
+    <div class="col"><div class="tower" style="height:40%"><b>2</b></div></div>
+    <div class="col"><div class="tower" style="height:40%"><b>2*</b></div></div>
+    <div class="col"><div class="tower" style="height:60%"><b>3</b></div></div>
+    <div class="col"><div class="tower" style="height:80%"><b>4</b></div></div>
+  </div>
+  <div class="climb-labels">
+    <div><b>Life-like</b>moving shapes</div>
+    <div><b>Lenia</b>moving creatures</div>
+    <div><b>SUBLEQ soups</b>self-copying code</div>
+    <div><b>BFF soups</b>copying with inheritance</div>
+  </div>
+  <p class="cap" style="margin-top:14px">* One Lenia variant out of 1,000 random ones made dividing spots, the weakest form of rung 3: the "children" cannot inherit anything from a particular parent.</p>
+
+  <div class="cols" style="margin-top:34px">
+    <div>
+      <h3>46 tests with a prediction written down in advance</h3>
+      <div class="sq" aria-hidden="true" id="sq"></div>
+      <div class="legend">
+        <span><i class="s-met"></i>23 came true</span><span><i class="s-not"></i>15 did not</span><span><i class="s-mix"></i>5 mixed</span><span><i class="s-und"></i>2 undecided</span><span><i class="s-nt" style="border:1px solid var(--faint)"></i>1 could not be tested</span>
+      </div>
+      <p class="small muted" style="margin-top:12px">Only about half came true. We count that as a sign the tests were real. Run enough tests and a few will pass by luck, so we applied a strict correction for that: 18 of the 20 statistical passes survive, and the two space tests stay fails. The two that do not are "bigger soups get there sooner" and one result about speed. When each rule counts once instead of each world, the lumpy-start result also falls short, so it holds firmly for worlds and only suggestively for rules.</p>
+    </div>
+    <div>
+      <h3>Thirteen days</h3>
+      <div class="tl">
+        <div class="row"><span>Life-like worlds</span><div class="trk"><i style="left:0%;width:7.6%"></i></div></div>
+        <div class="row"><span>Lenia</span><div class="trk"><i style="left:6.8%;width:17.8%"></i></div></div>
+        <div class="row"><span>BFF: after replicators</span><div class="trk"><i style="left:22%;width:12.7%"></i></div></div>
+        <div class="row"><span>BFF: which rules</span><div class="trk"><i style="left:28.8%;width:24.5%"></i></div></div>
+        <div class="row"><span>SUBLEQ soups</span><div class="trk"><i style="left:55.8%;width:17.8%"></i></div></div>
+        <div class="row"><span>Review, space tests, paper</span><div class="trk"><i style="left:73.6%;width:26.4%"></i></div></div>
+        <div class="row"><span></span><div class="axis"><span>Nov 5</span><span>Nov 11</span><span>Nov 17</span></div></div>
+      </div>
+      <p class="small muted" style="margin-top:12px">Also confirmed along the way: our guided search finds about 1.8 times more worlds with moving shapes than random search for the same computing time, ahead in 20 of 20 paired runs.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">In context</div>
+  <h2>How this compares with other research</h2>
+  <p>This field is called artificial life. Here is where our results sit next to the best-known work. This comes from a literature review run by AI agents on 16 November 2026. It is not exhaustive and no human expert has checked it, so "we found no earlier work" below never means "this is new".</p>
+  <div class="scroll" style="margin-top:12px"><table>
+    <tr><th style="width:27%">Other work</th><th>What they found</th><th>What we add, or where we differ</th></tr>
+    <tr><td><b>Lenia</b><br><span class="muted small">Chan, 2019</span></td><td>A smooth version of the Game of Life with hundreds of lifelike creatures, mostly found by search and careful tuning.</td><td>Researchers already avoid fine speckle because it is known to fail, but we found no published test of why. We measured how often creatures arise unaided and showed, with a shuffled control, that the arrangement of the starting matter is the cause.</td></tr>
+    <tr><td><b>Computational Life</b><br><span class="muted small">Agüera y Arcas and colleagues, 2024</span></td><td>Self-copying programs emerge from random code in BFF soups, with no reward. Also seen on a 2D grid, where replicators spread as waves.</td><td>We reproduced the core result at small scale (3 of 16 soups), at a rate that agrees with theirs. They had already seen backwards copying and noted that pointer positions matter; we add the explanation and a controlled test of it. We found no earlier version of our test for predicting which rule variants do this, or of our check that the replicators do not get fitter.</td></tr>
+    <tr><td><b>Tierra and Avida</b><br><span class="muted small">1990s onward</span></td><td>Digital organisms evolve in a computer, started from a hand-written ancestor. In Tierra, parasites appeared and programs became nearly six times more efficient, mostly by getting shorter.</td><td>Our replicators were never written by hand, but we saw no parasites and no gain. That is probably what BFF's design predicts: its programs have a fixed length and cannot read their neighbours' code, the two routes Tierra used.</td></tr>
+    <tr><td><b>Flow-Lenia</b><br><span class="muted small">Plantec and colleagues, 2023 to 2025</span></td><td>A Lenia where matter is conserved and several "species" can share one world. The authors call it a step toward open-ended evolution.</td><td>Our 400 worlds gave no travelling creatures, but the two are not comparable: we ran a simpler one-layer version from different starts, and the paper gives no rate. It is not a failed reproduction.</td></tr>
+    <tr><td><b>Automated search for artificial life</b><br><span class="muted small">Kumar and colleagues, 2024</span></td><td>Uses AI vision models to search huge spaces of toy worlds for interesting ones.</td><td>A different question. They ask what <i>can</i> exist; we ask what arises <i>unaided</i>, and test it against traps and controls.</td></tr>
+    <tr><td><b>Open-ended evolution</b><br><span class="muted small">the field's grand challenge</span></td><td>Reviews going back two decades describe it as unsolved: artificial worlds burst with novelty, then settle.</td><td>Our rung-5 result is in line with that. We also did not use the field's standard measures of open-endedness, so strictly we tested for improvement over time, not for open-endedness itself.</td></tr>
+  </table></div>
+  <p class="small muted" style="margin-top:12px">Sources: <a href="https://arxiv.org/abs/1812.05433">Lenia</a> · <a href="https://arxiv.org/abs/2406.19108">Computational Life</a> · <a href="https://arxiv.org/abs/2212.07906">Flow-Lenia</a> and its <a href="https://arxiv.org/abs/2506.08569">2025 follow-up</a> · <a href="https://arxiv.org/abs/2412.17799">Automated search</a> · open-ended evolution: <a href="https://arxiv.org/abs/nlin/0210027">Standish 2002</a>, <a href="https://arxiv.org/abs/1507.07403">Taylor 2015</a></p>
+  <div class="panel" style="margin-top:18px"><h3>What might be new here</h3><p style="margin:0">Not "replicators emerge" or "Lenia makes gliders"; both were known. The candidates are the controlled tests of things the field had treated as habit or anecdote: the shuffled-start experiment, the one-detail change with its control, a predictor tested in advance across rule families, and inheritance measured mutant by mutant. Our validation method turned out to be good practice applied systematically, not a new method.</p></div>
+</section>
+
+<section>
+  <div class="eyebrow">Read this before quoting anything</div>
+  <h2>What we cannot claim</h2>
+  <div class="cols">
+    <div class="panel"><h3>Small scale</h3><p class="small" style="margin:0">One laptop, no graphics card. Worlds a few hundred squares wide, soups of tens of thousands of programs, runs of hours. Real evolution took billions of years.</p></div>
+    <div class="panel"><h3>Few rules per test</h3><p class="small" style="margin:0">The lumpy-start result rests on 8 related rules. The evolution tests use 3 to 16 soups. Strong where tested, unproven beyond.</p></div>
+    <div class="panel"><h3>Worlds we shaped</h3><p class="small" style="margin:0">The SUBLEQ family includes features we added. The two published versions of that language made no replicators at all.</p></div>
+    <div class="panel"><h3>Who did the work</h3><p class="small" style="margin:0">AI agents designed, ran and wrote up most of it; the owner set goals and approved long runs. All five reviews were also by AI. No human expert has reviewed it yet.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Going forward</div>
+  <h2>Where this could go next</h2>
+  <p>The first item is our recommendation. The rest are real options, roughly from cheapest to most ambitious.</p>
+  <div class="next">
+    <div><span class="effort">Days · recommended first</span><h3>Get a human expert to read it</h3><p>The literature review is now done, by AI agents. The stricter statistical correction is done too. The next check is one or two researchers in the field reading the paper.</p></div>
+    <div><span class="effort">Weeks</span><h3>Give the programs room to change</h3><p>The review's main suggestion: BFF programs have a fixed length and no lasting body, which removes the routes other systems used to evolve. A variant with variable length or persistent bodies is a more informative next experiment than more soups of the same kind.</p></div>
+    <div><span class="effort">Days · partly done</span><h3>Test code among its own relatives</h3><p>The grid fitness test now exists and found nothing, but it drops code among strangers. Advantages that need kin nearby, such as families that protect each other, and parasites on a grid are still unmeasured.</p></div>
+    <div><span class="effort">Weeks · needs more computing power</span><h3>Go bigger and longer</h3><p>Soups a hundred times larger, run a hundred times longer, on a graphics card or cloud machines. The published work that saw richer behaviour ran at far larger scale than a laptop allows.</p></div>
+    <div><span class="effort">Days</span><h3>Turn the lumpy-start result into a law, or break it</h3><p>Test it in many more Lenia rules, not just the 8 near one famous creature, and find how lumpy is lumpy enough.</p></div>
+    <div><span class="effort">Days</span><h3>Chase the open puzzles</h3><p>Why do soups under one rule make replicators seven times faster than fresh random pairs do? Does inheritance also hold in the SUBLEQ soups? What made that one fitter "species" special?</p></div>
+    <div><span class="effort">Weeks</span><h3>Try a richer kind of world</h3><p>Worlds with something to compete for, such as limited energy or food. Many researchers suspect scarcity is what turns copying into an arms race.</p></div>
+    <div><span class="effort">After the review</span><h3>Publish</h3><p>A short paper or workshop submission, most likely centred on the method and the lumpy-start result.</p></div>
+  </div>
+</section>
+
+<footer>
+  Emergence Lab. Every number on this page comes from the <a href="paper.html">Paper</a>, where each is traced to its data file; the comparison with other research comes from the <a href="literature.html">Literature</a> page, a review by AI agents that no human expert has checked. Animations and images are recordings of the project's own simulations; the Game of Life at the top runs live. Last updated 17 November 2026.
+</footer>
+</div>
+
+<script>
+(function(){
+  // scorecard squares
+  var sq=document.getElementById('sq'), groups=[['s-met',23],['s-not',15],['s-mix',5],['s-und',2],['s-nt',1]];
+  groups.forEach(function(g){for(var i=0;i<g[1];i++){var e=document.createElement('i');e.className=g[0];sq.appendChild(e);}});
+
+  // Conway's Game of Life on a torus, coloured by cell age
+  var ramp=['#000000','#fcfdbf','#feca8d','#fd9668','#f1605d','#cd4071','#9e2f7f','#721f81','#51127c'];
+  function Life(canvas,cell,fps){
+    var W=Math.floor(canvas.width/cell),H=Math.floor(canvas.height/cell),ctx=canvas.getContext('2d');
+    var a=new Uint8Array(W*H),b=new Uint8Array(W*H);
+    function seed(){for(var i=0;i<a.length;i++)a[i]=Math.random()<0.3?1:0;}
+    function step(){
+      for(var y=0;y<H;y++){var yu=(y+H-1)%H,yd=(y+1)%H;
+        for(var x=0;x<W;x++){var xl=(x+W-1)%W,xr=(x+1)%W;
+          var n=(a[yu*W+xl]>0)+(a[yu*W+x]>0)+(a[yu*W+xr]>0)+(a[y*W+xl]>0)+(a[y*W+xr]>0)+(a[yd*W+xl]>0)+(a[yd*W+x]>0)+(a[yd*W+xr]>0);
+          var v=a[y*W+x];
+          b[y*W+x]= v? ((n===2||n===3)?Math.min(v+1,8):0) : (n===3?1:0);
+        }}
+      var t=a;a=b;b=t;
+    }
+    function draw(){
+      ctx.fillStyle='#000';ctx.fillRect(0,0,canvas.width,canvas.height);
+      for(var y=0;y<H;y++)for(var x=0;x<W;x++){var v=a[y*W+x];if(v){ctx.fillStyle=ramp[v];ctx.fillRect(x*cell,y*cell,cell-1,cell-1);}}
+    }
+    seed();for(var i=0;i<12;i++)step();draw();
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!still)setInterval(function(){if(!document.hidden){step();draw();}},1000/fps);
+    return {reseed:function(){seed();draw();}};
+  }
+  var big=Life(document.getElementById('life'),4,12);
+  Life(document.getElementById('life2'),4,8);
+  document.getElementById('reseed').addEventListener('click',function(){big.reseed();});
+})();
+</script>
+</body>
+</html>

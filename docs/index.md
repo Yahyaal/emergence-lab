@@ -20,7 +20,7 @@ This site is the project's **research journal**: what we did, why, what we found
 
 <div class="cards">
 <div class="card"><div class="stat">4 substrates</div><p>Life-like cellular automata, the Lenia family (Lenia, Flow-Lenia, multi-channel Lenia), and two kinds of <b>program soup</b>: BFF and a SUBLEQ family. The soups have no space and run in scripts, outside the engine, discovery engine and dashboard.</p></div>
-<div class="card"><div class="stat">4 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: <b>heritable variation</b> in BFF replicators that arose from random code (one-byte mutations inherited in 9 of 9, E-42). <b>Level 3</b> (self-replication) in one multi-channel Lenia rule (dividing spots of a single type, E-32) and in both soup languages (E-40, E-41; E-75). <b>Level 5 not shown:</b> later code is not fitter by four measures (E-48 to E-54), also when programs meet only their neighbours on a grid (E-78).</p></div>
+<div class="card"><div class="stat">4 / 5</div><p>Highest <a href="{{ '/research.html#evidence-ladder' | relative_url }}">evidence level</a> reached: <b>heritable variation</b> in BFF replicators that arose from random code (one-byte mutations inherited in 9 of 9, E-42). <b>Level 3</b> (self-replication) in one multi-channel Lenia rule (dividing spots of a single type, E-32) and in both soup languages (E-40, E-41; E-75). <b>Level 5 not shown:</b> later code is not fitter by four measures (E-48 to E-54), also when programs meet only their neighbours on a grid (E-78), and when fitness itself is measured on a grid (E-80: no advantage above 0.02 in relative area in 16 soups of a head-start variant).</p></div>
 <div class="card"><div class="stat">1.8×</div><p>How many more distinct rules with self-propelled structures the discovery engine finds than random search at equal compute, after removing near-duplicates; 3.4× for rules "complex" on every seed. Engine ahead on <b>20 of 20</b> paired seeds (E-77, pre-registered). Life-like rules only.</p></div>
 <div class="card"><div class="stat">170 / 170</div><p>Benchmark checks passing, as last reported: 39 standard checks plus 131 hard and deceptive controls (probes, knockouts, Lenia, Flow-Lenia, births, heredity, program soups).</p></div>
 </div>
@@ -48,6 +48,7 @@ More in the **[Gallery]({{ '/gallery.html' | relative_url }})**.
 
 ## How to read this journal
 
+- **[Story]({{ '/story.html' | relative_url }})**: the whole project for non-technical readers, with animations and a live simulation: why, the idea, the three results, how they compare with other research, and what could come next.
 - **[Paper]({{ '/paper.html' | relative_url }})**: a paper-style synthesis of the three main findings (Lenia movers, program-soup replicators, no open-ended evolution yet), with a claims table that traces every number to its source.
 - **[Literature]({{ '/literature.html' | relative_url }})**: how each claim compares with published work (published, partly known, not found in this search, tension), from a review by AI agents with no expert check.
 - **[Journal]({{ '/journal.html' | relative_url }})**: chronological entries, newest first.

@@ -243,3 +243,81 @@ def test_e78_resume_exact():
     import e78_run as R
     r = R.check_resume()
     assert r["pass"], r
+
+
+def test_lattice_assay_controls():
+    """E-80 groundwork (scripts/lattice_assay.py, J-093): lineage-tag lattice assay. Positive (replicator front, parent
+    trapped(0) outspreads handicapped trapped(1)), negative (same code, two labels), deceptive (filler smear fools byte
+    identity but not the tag; persisting non-copier; kin in the resident; no tag drift under noexec + mutation), null
+    (random-position garden blocks relabelled)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import lattice_assay as L
+    bad = [(n, d) for n, ok, d in L.controls() if not ok]
+    assert not bad, bad
+
+
+def test_lattice_tag_update_rules():
+    """Tag rules on hand-made before/after pairs: a forward or byte-reversed copy moves the tag, an unchanged half
+    keeps it, a wiped half loses it, a filler smear does not move it."""
+    import sys
+    from pathlib import Path
+    import numpy as np
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import lattice_assay as L
+    from emergence.programs import bff as B
+    rng = np.random.default_rng(0)
+    x, q = B.REPLICATOR.copy(), rng.integers(0, 256, 64, dtype=np.uint8)
+    before = np.stack([x, q, x, q, x, q, L.smear(), q])
+    after = before.copy()
+    after[1] = x               # pair 0: forward copy into the partner
+    after[3] = x[::-1]         # pair 1: byte-reversed copy
+    after[4] = 0               # pair 2: the tagged half is wiped (no copy)
+    after[7] = 0x80            # pair 3: smear output, 94% like the smear, none of its instructions
+    tags = np.array([1, 0, 1, 0, 1, 0, 1, 0], np.int32)
+    new, anc, ev = L.update_tags(before, after, np.arange(8, dtype=np.int32), tags)
+    assert list(new) == [1, 1, 1, 1, 0, 0, 1, 0], new
+    assert ev["copies"] == 2 and ev["lost"] == 1
+    assert (anc[1] == x).all() and (anc[3] == x).all()      # copies inherit the partner's anchor
+    # a copy between two members of the same block (different programs, same tag) passes the anchor on
+    y = x.copy()
+    y[40:50] ^= 0x33                                          # a relative, < 90% like x
+    nt, na, _ = L.update_tags(np.stack([x, y]), np.stack([x, x[::-1]]), np.array([0, 1], np.int32),
+                              np.array([1, 1], np.int32), np.stack([x, y]))
+    assert list(nt) == [1, 1] and (na[1] == x).all()
+    # drift: a tagged half edited 4 bytes per round keeps its tag while >= 90% of its anchor, then loses it
+    t, a2, cur = np.array([1, 0], np.int32), np.stack([x, q]), x.copy()
+    for r in range(3):
+        nxt = cur.copy()
+        nxt[30 + 4 * r: 34 + 4 * r] ^= 0x55
+        t, a2, _ = L.update_tags(np.stack([cur, q]), np.stack([nxt, q]), np.array([1, 0], np.int32), t, a2)
+        cur = nxt
+        assert t[0] == (1 if r == 0 else 0), (r, t)
+
+
+def test_e80b_resume_and_rule():
+    """E-80 Part B (scripts/e80b_run.py): an h = 64 arm interrupted and resumed equals an uninterrupted one (both
+    pairings); the lattice assay at h1 = 0 equals the standard path; the hand-written h = 64 copier copies and its
+    trap variant copies only when the partner's last byte is even."""
+    import sys
+    from pathlib import Path
+    import numpy as np
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bff_kernels as K
+    import e80b_run as E
+    import lattice_assay as L
+    from emergence.programs import bff as B
+    assert E.check_resume()["pass"]
+    rnd = np.random.default_rng(1).integers(0, 256, (1024, 64), dtype=np.uint8)
+    blk = np.repeat(B.REPLICATOR[None], 16, 0)
+    a = L.assay([blk], rnd, 5, k=4, rounds=12, identity=True)
+    b = L.assay([blk], rnd, 5, k=4, rounds=12, identity=True, h1=0)
+    assert a["series"] == b["series"] and a["identity"] == b["identity"]
+    for last, want in ((0x82, True), (0x83, False)):
+        q = rnd[0].copy()
+        q[-1] = last
+        for x, w in ((E.H0, True), (E.H1P, want)):
+            t = np.concatenate([x, q]).copy()
+            K.lib().run_tape(t.ctypes.data, 128, 8192, 64)
+            assert bool((t[64:] == x).all()) == w
