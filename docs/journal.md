@@ -273,6 +273,8 @@ The paper is not changed yet (one update after Part B).
 
 **Lesson:** a summary for outsiders is another place where claims can drift from the evidence, so it belongs under version control next to the paper it summarises.
 
+**Update (17 November):** E-80 added to the page (result C, "Then we measured fitness in space too": the Part B estimate −0.047 with its 95% interval up to 0.020 against the registered 0.435, and the validation gate's 24 of 24). Scoreboard brought to the paper's Appendix B tally (46 scored rows: 23 met, 15 not met, 5 mixed, 2 undecided, 1 not testable); timeline extended to 17 November; the "spatial instruments" next step replaced by "test code among its own relatives"; "3 to 7 soups" became "3 to 16". These numbers come from J-095 and J-096 on branch `v4.3-lattice-assay` (pull request 40), so this page should merge with or after it. Checked by rendering at desktop and phone widths.
+
 ---
 
 ## J-092 · 2026-11-16 · E-79: a Holm correction across the pre-registered primaries keeps 18 of 20 passes; with rules as the unit, far fewer survive (analysis of existing results)
