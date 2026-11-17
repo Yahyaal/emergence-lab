@@ -130,8 +130,9 @@ def update_tags(before: np.ndarray, after: np.ndarray, pairs: np.ndarray, tags: 
 class TagSoup(BS.ArmSoup):
     """bff_spatial.ArmSoup plus a lineage tag and anchor per site, updated between the pair run and mutation."""
 
-    def __init__(self, tags: np.ndarray, guard: bool = True, **kw):
+    def __init__(self, tags: np.ndarray, guard: bool = True, h1: int = 0, **kw):
         super().__init__(**kw)
+        self.h1 = h1   # head1 start (E-80 Part B: 64); 0 = standard BFF via bff.c
         self.tags = np.asarray(tags, np.int32).copy()
         self.anchors = self.programs.copy()
         self.guard = guard
@@ -140,8 +141,13 @@ class TagSoup(BS.ArmSoup):
     def epoch(self) -> int:
         pairs = self.pairs()
         before = self.programs.copy()
-        self.last_steps = int(B._lib().bff_epoch(self.programs.ctypes.data, self.length, pairs.ctypes.data,
-                                                 self.n // 2, self.max_steps, B.MODES[self.mode]))
+        if self.h1 and self.mode == "bff":
+            import bff_kernels as KH
+            self.last_steps = int(KH.lib().epoch_h(self.programs.ctypes.data, self.length, pairs.ctypes.data,
+                                                   self.n // 2, self.max_steps, self.h1))
+        else:
+            self.last_steps = int(B._lib().bff_epoch(self.programs.ctypes.data, self.length, pairs.ctypes.data,
+                                                     self.n // 2, self.max_steps, B.MODES[self.mode]))
         self.tags, self.anchors, ev = update_tags(before, self.programs, pairs, self.tags, self.anchors, self.guard)
         for k_, v in ev.items():
             self.events[k_] += v
@@ -219,7 +225,7 @@ def age_garden(programs: np.ndarray, rounds: int, seed, side: int = SIDE, mutati
 
 def assay(blocks: list[np.ndarray], resident: np.ndarray, seed, arm: str = "spatial", k: int = K,
           rounds: int = ROUNDS, checkpoints=CHECKPOINTS, positions=None, mode: str = "bff", guard: bool = True,
-          identity: bool = False, mutation: float = 0.0, max_steps: int = 8192) -> dict:
+          identity: bool = False, mutation: float = 0.0, max_steps: int = 8192, h1: int = 0) -> dict:
     """Plant each block (k*k programs, row-major) in a copy of `resident` (a side x side grid) with tag 1, 2, ...;
     run `rounds` rounds of `arm` pairing (spatial = E-78 S rules; mixed = well-mixed permutation, the old assay's
     geometry); record tag counts at checkpoints. positions: list of (y0, x0) or None (seeded random, blocks
@@ -248,13 +254,13 @@ def assay(blocks: list[np.ndarray], resident: np.ndarray, seed, arm: str = "spat
         P[st] = blk
         tags[st] = j
     soup_seed = int(rng.integers(2 ** 31))
-    s = TagSoup(tags, guard=guard, arm=arm, n=n, width=side, programs=P, seed=soup_seed, mutation=mutation,
+    s = TagSoup(tags, guard=guard, h1=h1, arm=arm, n=n, width=side, programs=P, seed=soup_seed, mutation=mutation,
                 mode=mode, max_steps=max_steps)
     refs = [np.unique(b, axis=0) for b in blocks]
     ctrl = None
     if identity:
-        ctrl = BS.ArmSoup(arm=arm, n=n, width=side, programs=resident, seed=soup_seed, mutation=mutation, mode=mode,
-                          max_steps=max_steps)
+        ctrl = TagSoup(np.zeros(n, np.int32), h1=h1, arm=arm, n=n, width=side, programs=resident, seed=soup_seed,
+                       mutation=mutation, mode=mode, max_steps=max_steps)
 
     def ident():
         return [int(like_any(s.programs, r).sum()) - (int(like_any(ctrl.programs, r).sum()) if ctrl is not None else 0)
