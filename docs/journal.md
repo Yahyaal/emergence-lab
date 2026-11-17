@@ -12,6 +12,90 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-096 · 2026-11-17 · E-80 Part B: in 16 new soups under the h = 64 rule, late lattice code spreads no farther than well-mixed code, and this time the test is precise (pre-registered amendment, fails)
+
+**Question (pre-registered amendment `docs/data/e80-partB-preregistration.md`, commit `c4d0918`, pushed before the run; code `c529a54`; D-068 Option 1, approved by the owner):** Part A (J-095) could rule out only effects of species size, because two well-mixed continuations of a soup differed about as much as S and M. In 16 new, independent soups, does late S code spread farther than late M code of the same soup, in a lattice garden made under the same rule?
+
+**Ran:**
+- **Command:** `scripts/e80b_run.py --confirm --workers 11`, detached under `systemd-inhibit`. It started at 01:00 and finished at 09:26 on 17 November: **8 h 26 min** (30,379 s; the amendment estimated 9 to 10.5 h). No interruption, no resume, no code change after the amendment.
+- **Design:**
+  - 16 soups under the h = 64 head-start rule, 2^14 programs, each forked at T + 2,000 into M, S (128 × 128 torus) and M′ for 10,000 rounds;
+  - a garden made under h = 64 from soup 8100;
+  - a validation gate G1 to G9;
+  - then 5,504 lattice assays.
+- **Export:** `docs/data/experiments/2026-11-17-e80-partB.json`. Caches are in `runs/e80/partB/` (not committed).
+
+**Admission:**
+- **All 16 primary seeds (8001 to 8016) were admitted.** No spare was needed and none was rejected.
+- **Jump rounds** (D-047 with the `classify_fid` copy test): T = 250 for 6 soups, 500 to 1,750 for 7, and 3,250, 3,750 and 5,500 for 8006, 8005 and 8009.
+- **The garden soup 8100** jumped at T = 750.
+- **Garden:** four replicates aged 2,000 rounds on the 64 × 64 lattice. They have 57 to 78% near-identical neighbours and 5,000 to 6,900 steps per pair, a mosaic like E-78's S.
+
+**Gate (criteria fixed in the amendment; all passed before any S block was scored):**
+
+| Control | Result |
+|---|---|
+| G1 tracking | the hand-written copier H0 in random code grew from 64 to 370–520 sites, all its own code |
+| G2 handicap (registered positive) | A(H0) − A(H1) = **0.87** (SD 0.38, z 11.1, H0 ahead 24 of 24); H0 −0.13, H1 −1.00 (extinct) |
+| G3 emergent knockout | the garden's commonest copier against its `.`/`,` knockout: 1.00 (z 8.9, 24 of 24) |
+| G4 negative | same code under two labels: d +0.22, p 0.20 |
+| G5 selection null | random-position garden blocks: d +0.10, p 0.62 |
+| G6 smear | tags stayed at 64 in all 8 replicates; byte identity reached 64–77, an excess of 66 sites in total |
+| G7 non-copier | stays at ≤ 64 |
+| G8 label drift | 64, with no transfers |
+| G9 kin | 100% of early blocks kin-free |
+
+Since the handicapped copier went extinct, the positive is "copier against a copier that dies", not a small handicap. **δ\* = 0.87 / 2 = 0.435.**
+
+**Found:**
+- **Primary: fail** (registered rule: the 95% interval's upper end is below δ\*). d = mean A(S) − mean A(M) over the 16 soups: mean **−0.047**, SD 0.126; one-sided p = 0.92 (exact, 2^16 sign patterns); 95% interval **−0.114 to 0.020**. Per soup, d ran from −0.25 to +0.16, positive in 6 of 16.
+- **No floor effect.** Focal blocks of every group stayed near neutral (median N_64 = 64 to 66 sites; 1.7% of assays extinct), so the null is not an artefact of everything dying.
+- **Seed null: not significant.** M′ − M mean +0.053, **SD 0.16**, two-sided p = 0.20.
+- **Holm** (E-79 convention; 44 p values with both E-80 primaries; `docs/data/experiments/2026-11-17-e80-holm44.json`): Part B adjusts to **1.000** and Part A to **1.000**. The other survivors do not change: 18 of 20 passes, with E-50 and E-71 P2 still lost (0.33 and 0.14). Both seed nulls are listed with the predicted nulls.
+- **Secondary 1 (late against early):** S − early −0.037 (one-sided p 0.77); M − early +0.010 (p 0.45); M′ − early +0.063 (p 0.13).
+- **Secondary 2 (structure preserved against shuffled):** −0.006 (SD 0.038, two-sided p 0.55).
+- **Secondary 3 (well-mixed pairing, 8 × 1):** S − M −0.03 (p 0.84). S − early −0.47 and M − early −0.43 (two-sided p 0.07 and 0.14): with mixing, late code of both arms tends to spread less than its fork-point code (not significant, descriptive). Lattice minus mixed −0.01 (p 0.93).
+- **Sensitivity:** T = 32: −0.035 (interval −0.086 to 0.016); log score: −0.066 (−0.160 to 0.028; seed null +0.045, p 0.45).
+
+**What this rules out, and in what units.** All three comparisons, which use different units and different gardens:
+
+| Test | Upper end of 95% interval | Against δ\* | Against the positive |
+|---|---|---|---|
+| E-80 Part B (h = 64, A after 64 rounds) | **0.020** | 0.435 (5%) | 0.87, copier against dying copier (2%) |
+| E-80 Part A (standard BFF, 901 garden, same score) | 0.83 | 1.24 (67%) | 2.48, a fitter species (33%) |
+| E-78 (well-mixed invasion, log units) | 0.25 | 0.28 | none on that scale |
+
+- **Part B:** an S advantage larger than 0.02 in relative area after 64 rounds is excluded. That is 5% of δ\* and 2% of the difference between a working copier and one that dies.
+- **Part A:** only S advantages above a third of a species-level effect are excluded.
+- **E-78:** excluded advantages above about 0.25 log units of invasion score.
+
+**Part B is the first informative negative of the level-5 thread.** Its continuation noise is about twelve times smaller than Part A's on the same score: seed-null SD 0.16 against 1.96. E-78's seed-null SD was 0.47, in different units. With small noise and 16 soups, the interval is narrow and centred on zero.
+
+**Interpretation (evidence level unchanged; level 5 not shown):** under the h = 64 rule, 10,000 rounds of neighbour-only meetings produced code that does not hold ground or spread among strangers on a lattice any better than code from a well-mixed continuation of the same soup, to within 2% of the copier-versus-dying-copier difference. Its local arrangement does not help either. Late code of neither arm spreads farther than its fork-point code. With E-78 and Part A, no lattice advantage has been seen in any of the three tests. Only this one is tight.
+
+**Limits, which stand:**
+- the h = 64 rule, not standard BFF;
+- soups a quarter of E-78's size (2^14);
+- 10,000 rounds, half of E-78's;
+- one garden from one h = 64 soup;
+- the positives are hand-written and knockout handicaps, both large, not a fitter species. The assay is shown to see "can copy against cannot", and the tight interval says the S − M effect is far smaller than that, not that the assay could see a subtle advantage;
+- the kin rule is weak under h = 64 (a working copier is about 5 bytes);
+- each block is planted among unrelated code, so an advantage that needs the soup's own neighbours (kin cooperation inside the mosaic) is untested.
+
+**Departures from the amendment, all disclosed:**
+1. **The gate came late.** G1 to G8 were evaluated at 07:25, not "about 1 h in": the gate jobs were queued behind the 48 arm jobs in the worker pool's first-in, first-out queue. They still ran before any S block, as required (S scoring started at 08:55), so the peeking rule held.
+2. **A restored export.** J-095's commit had overwritten the E-79 export (`2026-11-16-e79-holm.json`) when it reran `holm_primaries.py`. It is restored to the original 42-value result. The 44-value result is a separate file. From now on, rerun with `--out <date>-<exp>-holm<m>.json`.
+3. **Jump rounds:** 8009 jumped at T = 5,500, inside the 6,000-round window, and was admitted by the rule.
+
+**Changed:**
+- **Data:** `docs/data/experiments/2026-11-17-e80-partB.json`; `docs/data/experiments/2026-11-17-e80-holm44.json`; `docs/data/e79-primaries.json` (E-80B and its seed null).
+- **Records:** experiments row; D-068 outcome; `handoff.md`.
+- **Pages:** `paper.md` (abstract, sections 5 and 8, Appendices A, B, B2); `literature.md` (correction 12, the "Fitness lens" row).
+
+**Lesson:** the informative test was not the bigger sample of the same soups but new soups whose continuations are less noisy. Measure the seed null before deciding how many soups a test needs.
+
+---
+
 ## J-095 · 2026-11-17 · E-80 Part A: in a lattice-native garden, late S code does not spread farther than late M code (pre-registered, fails)
 
 (J-094 is used on another branch.)

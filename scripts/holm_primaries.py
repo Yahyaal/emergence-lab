@@ -3,7 +3,9 @@ primaries of the 45 experiments in docs/paper.md Appendix B (D-067; pre-registra
 
 Input:  docs/data/e79-primaries.json   one record per registered primary (family = in | excluded | predicted_null),
                                        each p value traced to a committed file and line.
-Output: docs/data/experiments/2026-11-16-e79-holm.json, and the tables on stdout.
+Output: docs/data/experiments/2026-11-16-e79-holm.json (the E-79 result, 42 p values), and the tables on stdout.
+        When later primaries are added to e79-primaries.json (E-80: 44 p values), write to a new file with --out
+        (e.g. docs/data/experiments/2026-11-17-e80-holm44.json) so the E-79 export is not overwritten.
 
 Methods (fixed in the pre-registration):
   primary     Holm step-down, family-wise alpha 0.05, over the 42 p values in the family;
