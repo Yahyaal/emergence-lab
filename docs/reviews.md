@@ -82,3 +82,11 @@ Reviewer: Claude, at the owner's request, on branch `v3.7-copiercount` (E-75 pha
 | **Question:** may the predictor thread end after one more run? | **Reviewer's suggestion, at the owner's request:** yes, after at most one more run; the owner has not confirmed |
 
 *Note (16 November 2026, J-091):* R-5 made no recommendation about a literature review; the need was recorded on the research page (J-013) and in the paper's limitations (J-090). A review by AI agents is now done: the [Literature]({{ '/literature.html' | relative_url }}) page. It is not exhaustive and has had no expert check. It led to D-066 (labels; Flow-Lenia "not comparable"; single-run origin limited to SUBLEQ) and D-067 (proposed: a Holm correction across the 45 primaries, awaiting the owner). *(16 November 2026, J-092: D-067 accepted and applied in E-79. Holm across the 42 registered primary p values keeps 18 of 20 passes; E-50 and E-71's within-variant test do not survive; with rules as the unit, the Lenia and most F-predictor passes do not. D-063 accepted: phase 8 will not be run as drafted.)*
+
+*Note (17 November 2026, J-093):* where the E-80 groundwork departs from the design intent it was given (the owner approved a lattice-native assay; the orchestrating agent proposed the design), with the evidence:
+1. **Primary garden.** The primary garden is soup 901's lattice-aged garden, not soup 5006's mosaic. Only the 901 garden showed a known fitness difference: the 5006 species ahead 24 of 24. In the 5006 garden, E-46's direction was not seen (3 of 24).
+2. **Score.** The primary score is the linear area change, not a log score. The log score is dominated by near-extinctions; its positive-to-noise ratio is 0.82, against 1.21.
+3. **Well-mixed comparison.** "The same blocks in the old well-mixed assay" becomes the same tagged assay with well-mixed pairing in the same garden, so only the pairing differs (`program_fitness.invasion` scores one program, not a block).
+4. **Seven soups.** A primary on the 7 soups cannot survive the E-79 Holm family (best possible p 1/128 → 0.17). It can detect only an effect about the size of a whole fitter species. It is pre-registered as Part A, but the informative test needs more soups (D-068).
+5. **Blocks per arm.** More blocks or seeds per arm do not help: block and assay noise are about 1% of a soup's variance.
+

@@ -12,6 +12,107 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-093 · 2026-11-17 · E-80 groundwork: a lattice-native fitness assay with lineage tags; with 7 soups it can see only effects the size of a fitter species (no confirmatory data)
+
+**Question / why:** E-78 measured fitness only in a well-mixed common garden. Spatial theory predicts that advantages arising under local interaction (holding ground, spreading as a front, restraint) are invisible there (J-091). The owner approved building a neighbour-aware assay and pre-registering an experiment with it (E-80). This entry is the groundwork: instrument, controls, noise, power and costs. **The confirmatory contrast (late S against late M, or late S against early code) was not computed, and no late-S snapshot was loaded.**
+
+**Built:**
+- **`scripts/lattice_assay.py` (the instrument).** An 8 × 8 block of focal programs is planted in a 64 × 64 resident lattice (the *garden*). The lattice then runs the E-78 S pairing (`bff_spatial.ArmSoup`: each round a random perfect matching of neighbours), with no mutation. The outcome is the number N of sites carrying the focal lineage after T rounds. Primary score: relative area change A = N_T / 64 − 1, a martingale under neutrality. Log score ln((N_T + 1) / 65) as sensitivity. Two transplant modes: *preserved* (a contiguous block cut from a lattice, positions kept) and *shuffled* (the same programs, positions permuted). Well-mixed sources give a random sample laid out at random.
+- **Descent is tracked by a lineage tag, not by byte identity (D-069).** The tag is carried outside the 64 bytes, together with an *anchor*: the focal program the lineage started from. After each pair run, a half takes its partner's tag and anchor only if four things hold:
+  - its bytes changed;
+  - they now match the partner (before or after the run, forward or byte-reversed) in ≥ 90% of bytes;
+  - they reproduce ≥ 75% of the partner's instruction bytes (the E-73 guard);
+  - they are closer to the partner than to their own previous bytes and ≥ 90% like the partner's anchor.
+
+  A tagged half that changes without a copy keeps its tag only while it is ≥ 90% like its own anchor. So a tag means: descended through detected copies, and still ≥ 90% the ancestral focal program.
+- **`scripts/e80_groundwork.py`:** gardens, calibration on allowed data, noise components, power, cost model; export `docs/data/experiments/2026-11-17-e80-groundwork.json`. **`scripts/e80_run.py`:** the confirmatory driver and analysis. It refuses late-S snapshots unless `docs/data/e80-preregistration.md` is committed and `--confirm` is given; `e80_groundwork.source()` refuses "S" outright. `--dry` substitutes fork snapshots for every arm (code path only).
+- **Controls** in `pytest` (`test_lattice_assay_controls`, `test_lattice_tag_update_rules`) and in `emergence benchmark --probes` (via `benchmark_programs`).
+
+**Gardens (resident lattices):** the resident must be kin-free for every focal source, so it comes from a soup outside the 7. Four replicates per garden: 4,096 programs sampled from an E-47 snapshot, aged 2,000 rounds on the 64 × 64 lattice with mutation 0.00024.
+- **g901** (soup 901 at round 40,000): 9–51% of neighbour pairs ≥ 90% identical (either orientation), 600–4,300 steps per pair.
+- **g5006** (soup 5006 at 32,000): a stationary mosaic like E-78's S, 43–78% neighbour identity, ~7,600 steps per pair.
+- **Rejected:** 901 at 20,000 and 5010 gardens (almost no neighbour identity, so weak copying), and the early snapshot of another of the 7 soups (it would not be a garden common to all 7).
+- **Kin share is 0** for every one of the 1,176 early, M and M′ blocks assayed, in every garden.
+- **Pitfall:** neighbour identity must be measured in both orientations. Mirror replicators put their byte-reverse next to them; the forward-only measure read 0 everywhere.
+
+**Controls (fast, 32 × 32 lattice, 4 × 4 blocks, 48 rounds; all pass):**
+- **Positive (tracking):** the hand-written replicator in random code spreads from 16 to 67 sites; every tagged site is its code; tag and byte-identity scores agree (1.39 and 1.39).
+- **Positive (known difference):** parent trapped(0) against handicapped trapped(1), in a garden of copiers whose tails make trapped(1) fail. Log scores 0.27 against −2.83, parent ahead in 8 of 8, z = 11.5.
+- **Negative:** the same code in two blocks with different labels, one garden: d = −0.47 (z = −1.0).
+- **Deceptive:**
+  - A filler smear in a garden of halting programs: byte identity grows from 16 to 23 sites, the tag stays at 16. Without the instruction guard the tag is fooled too (23).
+  - A persisting non-copier block: N stays at 16 (s = 0).
+  - Kin in the resident (half of the garden is the focal program itself): the kin rule fires (share 0.52). The tag's bias (+0.44) is smaller than byte identity's (−0.66). Under the tag, kin slows the voter-like drift, which raises the mean of the log score. Kin-free gardens are therefore required, and kin-carrying blocks are excluded.
+  - Label drift: under noexec with mutation 0.01, the tag count stays at exactly 16, with no transfers.
+- **Null:** random-position blocks of the garden itself, relabelled, 16 replicates: d = −0.94 (SE 0.60), two-sided p = 0.14. With 8 replicates this control once gave p = 0.03. That was chance: 24 replicates gave −0.36 ± 0.49. Scores are heavy-tailed because small blocks often die out. The control now uses 16 replicates at the 1% level.
+
+**Checks:**
+- `pytest`: 88 passed (5 min 28 s).
+- `emergence benchmark --probes`: 39/39 standard checks and **140/140 probe checks**: the 131 reported before, plus 9 for the lattice assay.
+
+**Calibration (64 × 64, T up to 192, allowed data only):** 960 assays, 6.3 CPU-h, 34 min on 11 workers.
+- **Emergent positive (E-46: the 5006 species beats soup 901's replicators):**
+  - **In g901,** 64 copies of the 5006 species beat a native block cut from the garden in **24 of 24** paired replicates: A difference 2.48 at T = 64 (log 1.67, z = 10.7). Kin bias favours the native block here, so this is conservative.
+  - **In g5006,** a native block did not beat 64 copies of 901's replicator: native ahead in 3 of 24, log difference −0.11. The E-46 direction is not seen there. A native block is a random sample of an aged soup, including non-copiers, while E-46 compared verified replicators. So g5006 has no validated emergent positive.
+- **Hand-made ladder** in a garden of copiers: trapped(0) −0.32, trapped(1) −4.17 (log, T = 64; trapped(1) is extinct by round 64).
+- **Two tag bugs, found by the emergent positives and fixed before any number below** (journalled as pitfalls; their 372 assays are kept apart in the cache and not used):
+  1. Without anchors, a mirror replicator that writes its reverse into a same-tag neighbour lost the tag, and tags drifted onto chimeras: only 21% of sites tagged as 901 code were still 901-like.
+  2. A copy between two different members of the same block did not pass the anchor on, so real (heterogeneous) blocks lost tags.
+
+  The synthetic controls passed both versions, because they use clonal blocks.
+
+**Noise (primary score A at T = 64 in g901, allowed data):**
+- **Continuation noise dominates.** Per-soup M′ − M differences run from −3.55 to +2.21 (SD 2.05; mean −0.73, two-sided p = 0.39). The true between-continuation SD is ≈ 1.95, close to the size of the species positive (2.48). Two well-mixed continuations of the same snapshot are as different, in this garden, as a fitter species is from native code.
+- **Assay and block noise are small after averaging.** The paired per-replicate variance is 1.61, so at 16 blocks × 4 seeds the sampling part of a soup's d is ~0.03 against 3.80 for continuation. In g5006 the between-block component beyond assay noise is 0 at every horizon. More blocks or seeds per soup buy almost nothing; only more soups do.
+- **g5006 is quieter** (continuation SD ≈ 0.49 on A, 1.52 on the log score), but E-54 code mostly declines there (22% of blocks extinct by round 64), and it has no validated positive.
+- **Score and horizon:** A at T = 64 has the best ratio of positive effect to continuation SD in g901: 1.21, against 0.82 for the log score and 1.04 at T = 32. T = 128 is no better (1.20) and costs twice as much.
+- **Selection-aware null** (M and M′ blocks of each soup pooled and split into random halves, 2,000 splits): p < 0.05 in 4.85%.
+
+**Power with 7 soups (16 blocks × 4 seeds, exact sign-flip test):**
+- **Detectable effects:** the minimum detectable mean d is 2.15 at 80% power, 87% of the species positive (1.39 at 50%).
+- **Verdict probabilities** (pre-registered rules, δ* = 1.24 = half the positive):
+
+  | True d | Pass | Fail | Undecided |
+  |---|---|---|---|
+  | 0 | 4% | 30% | 67% |
+  | 1.24 | 38% | 2% | 60% |
+  | 2.48 | 81% | 0% | 20% |
+
+- **No pass can survive the family correction.** The smallest attainable p, 1/128, adjusts to 0.17 in the E-79 Holm family (43 p values). At least 10 soups are needed before a pass can survive at all (1/1024 → 0.023).
+- **So 7 soups are enough only for an effect the size of a whole fitter species.** Detecting half of that at 80% power after the Holm correction (α ≈ 0.002) needs about 40 soups; at 16 soups that power is 25%, at 24 it is 48%, at 32 it is 68%. Nominal 80% power: 1.28 at 16 soups, 1.02 at 24, 0.78 at 40.
+
+**Costed options for more independent soups (D-068, awaiting the owner).** New jumped soups under the h = 64 head-start rule (E-57: they jump in 250 to 1,750 rounds). Each has 2^14 programs on a 128 × 128 torus and is forked at jump + 2,000 rounds into S, M and M′.
+- **Timing pilot** (one random h = 64 soup; HOE jumped between rounds 500 and 750): 0.6 s per round after the jump under 11 to 12 processes (spatial fork 0.62 s at 5,470 steps per pair).
+- **Cost model:** about 0.4 CPU-h to the fork, 1.67 CPU-h per 10,000-round arm, 0.5 CPU-h of assays per soup.
+- **Option 1, under 12 h:** 16 soups × 3 arms × 10,000 rounds. **94 CPU-h, about 8.6 h** on 11 workers. MDE80 1.28 (half the positive); Holm-level power for half the positive 25%, for the full positive 93%.
+- **Option 2, properly powered:** 40 soups × 3 arms × 10,000 rounds. **236 CPU-h, about 21.5 h**. Holm-level power for half the positive 82%. With E-78's 20,000 rounds per arm: 436 CPU-h, about 40 h.
+- **Cheaper variant (not recommended):** 24 soups at 5,000 rounds, 82 CPU-h, about 7.4 h. Its selection time is a quarter of E-78's.
+- **Caveats:**
+  - The continuation SD of the new soups is unknown. These numbers assume the E-78 value.
+  - The h = 64 rule makes forward copiers, so results there are about that rule.
+  - The new soups have a quarter of E-78's programs.
+
+**What was looked at before the pre-registration:** listed in full in `docs/data/e80-preregistration.md`. In short:
+- **Looked at:** synthetic programs and gardens; E-42 #0 and #5; E-47 snapshots of soups 901, 5006 and 5010, for gardens and garden diagnostics; the fork-point snapshot and the final M and M′ snapshots of all 7 E-78 soups (assay scores of early, M and M′ blocks, under all three tag versions); one new h = 64 soup, for timing.
+- **Not looked at:** no late-S snapshot and no S state file was opened, and no assay of S code was run. The S trajectories published in J-089 were known.
+
+**Where the groundwork departs from the design intent** (recorded in `reviews.md` under R-5):
+1. **Primary garden.** The primary garden is g901, not the mosaic-forming g5006. g901 is the only garden with a validated emergent positive. g5006 is kept as a sensitivity garden.
+2. **Score.** The primary score is the linear area change, not a log score. The log score is dominated by near-extinctions and has a worse positive-to-noise ratio.
+3. **The "old well-mixed assay" comparison.** It is replaced by the same tagged assay with well-mixed pairing in the same garden, so that only the pairing differs. `program_fitness.invasion` takes one program, not a block.
+4. **Seven soups.** A primary on 7 soups cannot survive the multiple-comparison family, and has useful power only for species-sized effects. It is still pre-registered (Part A, cheap), but the informative test needs Option 1 or 2.
+5. **Where power lies.** More blocks per arm do not help; only more soups do.
+
+**Changed:**
+- **New:** `scripts/lattice_assay.py`, `scripts/e80_groundwork.py`, `scripts/e80_run.py`; tests `test_lattice_assay_controls` and `test_lattice_tag_update_rules`; the export `docs/data/experiments/2026-11-17-e80-groundwork.json`.
+- **Edited:** `emergence/benchmark_programs.py` (new probe section).
+- **Records:** D-068 (proposed), D-069; the E-80 row (pre-registered, not run); `handoff.md`; a note in `reviews.md`.
+- **Caches (not committed):** `runs/e80/`, with the gardens, the calibration cache and the timing pilot log.
+
+**Lesson:** validate a lineage tracker on real, heterogeneous, mirror-replicating code, not only on clonal hand-made blocks. Both tag bugs passed every synthetic control and were caught by the emergent positive.
+
+---
+
 ## J-092 · 2026-11-16 · E-79: a Holm correction across the pre-registered primaries keeps 18 of 20 passes; with rules as the unit, far fewer survive (analysis of existing results)
 
 **Question / why:** the paper (J-090) scored 45 experiments with a pre-registered primary and corrected for none of them; the literature review (J-091, correction 4) and D-067 proposed a Holm correction. The owner approved D-067 and D-063 on 16 November 2026. Which passes survive a family-wise correction?
