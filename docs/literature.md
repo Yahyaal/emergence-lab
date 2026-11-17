@@ -5,7 +5,7 @@ description: How the project's claims compare with published work, claim by clai
 
 # Literature: prior work narrows our novelty claims
 
-<p class="lead">This review was done by AI agents (Claude) on 16 November 2026: about 190 searches and page reads across six research passes, many sources read through a summarising fetch tool. No human expert has checked it. It is not exhaustive. "Not found in this search" means only that our searches did not find it; it never means "new".</p>
+<p class="lead">This review was done by AI agents (Claude) on 16 November 2026: about 250 tool calls (searches, page reads and file reads) across six research passes, many sources read through a summarising fetch tool. No human expert has checked it. It is not exhaustive. "Not found in this search" means only that our searches did not find it; it never means "new".</p>
 
 The six working notes are in `docs/data/literature/`: [program soups and replicators]({{ '/data/literature/program_soups_and_replicators.md' | relative_url }}), [after replicators: open-ended evolution]({{ '/data/literature/after_replicators_open_ended_evolution.md' | relative_url }}), [Lenia and starting conditions]({{ '/data/literature/lenia_and_starting_conditions.md' | relative_url }}), [search methods and validation]({{ '/data/literature/search_methods_and_validation.md' | relative_url }}), and two gap-closing passes, [replicators and evolution]({{ '/data/literature/gaps_replicators_and_evolution.md' | relative_url }}) and [Lenia and cellular automata]({{ '/data/literature/gaps_lenia_and_cellular_automata.md' | relative_url }}). The [Paper]({{ '/paper.html' | relative_url }}) was revised with this review (J-091, D-066).
 

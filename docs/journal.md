@@ -65,7 +65,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 **Question / why:** the paper (J-090) said no literature review had been done, and the research page had asked for one since J-013. Which of our claims are already published, which are partly known, and which conflict with published work?
 
-**Ran:** no experiment and no new analysis, so there is no experiment row or JSON export. AI agents (Claude) searched and read the literature on 16 November 2026: about 190 searches and page reads across six research passes (four first-pass topics, two gap-closing passes), many sources read through a summarising fetch tool. The report and notes became the [Literature]({{ '/literature.html' | relative_url }}) page and `docs/data/literature/`.
+**Ran:** no experiment and no new analysis, so there is no experiment row or JSON export. AI agents (Claude) searched and read the literature on 16 November 2026: about 250 tool calls (searches, page reads and file reads) across six research passes (four first-pass topics, two gap-closing passes), many sources read through a summarising fetch tool. The report and notes became the [Literature]({{ '/literature.html' | relative_url }}) page and `docs/data/literature/`.
 
 **Found (by label; D-066):**
 - **Published (2):** replicators arise in random BFF soups, and plain SUBLEQ and RSUBLEQ4 make none (Agüera y Arcas et al. 2024). Also published, qualitatively: no reproducer in single-channel Lenia (Chan 2019, 2020); the rule as the unit is the textbook pseudoreplication fix.
