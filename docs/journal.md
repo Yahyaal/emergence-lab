@@ -12,6 +12,33 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-091 · 2026-11-16 · A literature review by AI agents: two results published, most partly known, the Flow-Lenia sentence corrected (writing only, no new results)
+
+**Question / why:** the paper (J-090) said no literature review had been done, and the research page had asked for one since J-013. Which of our claims are already published, which are partly known, and which conflict with published work?
+
+**Ran:** no experiment and no new analysis, so there is no experiment row or JSON export. AI agents (Claude) searched and read the literature on 16 November 2026: about 190 searches and page reads across six research passes (four first-pass topics, two gap-closing passes), many sources read through a summarising fetch tool. The report and notes became the [Literature]({{ '/literature.html' | relative_url }}) page and `docs/data/literature/`.
+
+**Found (by label; D-066):**
+- **Published (2):** replicators arise in random BFF soups, and plain SUBLEQ and RSUBLEQ4 make none (Agüera y Arcas et al. 2024). Also published, qualitatively: no reproducer in single-channel Lenia (Chan 2019, 2020); the rule as the unit is the textbook pseudoreplication fix.
+- **Partly known (most):** reverse and self-inverting BFF copiers, head offsets and heads 64 apart, timing emergence per interaction (Knierim et al. 2026), heredity-free division in Lenia variants (MaCE), the validation regime's parts (Bedau's neutral shadow, Bullock and Bedau, Lohn and Reggia), H1's design.
+- **Not found in this search (not "new"):** the shuffle-controlled smooth vs soup contrast at matched mass (E-14, E-19); the F predictor across BFF variants and the designed SUBLEQ family; the one-change head-start counterfactual with the h = 127 control; the soup-size sweep; heredity measured mutant by mutant (E-42).
+- **Tension:** the SUBLEQ single-pair-run origin, if applied to BFF (published BFF origins are staged and arise by mutation-only walks); the 1-in-1,000 multi-channel divider against Chan's "not rare"; "later code is not fitter" against Tierra's 5.75-fold gain and other systems' shortening; "no parasites" against Tierra and Stringmol. The negatives after emergence are what BFF's fixed length and interaction geometry and spatial theory predict.
+- **Not comparable:** the Flow-Lenia statement. The review's notes called J-018's "from their own patch start or from any other" wrong; that was too strong. E-16 (100 rules × 4 starts, 400 worlds) used soup, two smooth starts and Chan-style patches, with one channel, R = 13 and 1 to 3 kernels (35, 37 and 28 rules), but J-016 had already run the paper's centred 40×40 patch (80 float rules: 20 each with 3, 5 and 10 kernels at R = 13, 20 with 10 kernels and R in [8, 25]; plus 88 uint8 rules, 168 in all per the report). Either way the paper publishes no rate, our runs were single-channel with few kernels and mostly R = 13, and our detector counts only isolated translating structures. Dated note added in J-018.
+- **One small fix in the other direction:** Chan's code draws 15 to 39 patches; our `patch_mask` draws 15 to 40.
+
+**Changed:**
+- New `docs/literature.md` (nav entry next to Paper) and `docs/data/literature/` (the six working notes).
+- `docs/paper.md`: corrections 1, 3, 5 to 20 and 22 of the review's table applied (citations and rewording only; no number of ours changed). The Flow-Lenia sentence now reads "not comparable"; the single-pair-run origin is limited to SUBLEQ; the BFF rate comparison is given as the review's arithmetic with two caveats (head variant unverified, extrapolation beyond 2^16); section 9 rewritten; Appendix A rows A25 and A37 fixed, A158 to A165 added.
+- D-066 (accepted), D-067 (proposed: Holm correction across the 45 primaries). Notes in R-5 (`reviews.md`), `research.md`, `report.md` (Flow-Lenia card and section 7), `handoff.md`, `index.md`.
+
+**Still open:** a multiple-comparison correction across the 45 pre-registered primaries (correction 4, D-067, needs the owner's choice of method); field-standard open-ended-evolution statistics (evolutionary activity against a neutral shadow, MODES); a lattice-native fitness assay; a matched Flow-Lenia test (centred patch, R in [2, 25], about 10 kernels, 2 channels); the per-copy error rate of standard BFF replicators; the closed sources (Coreworld and Pargellis full texts, Channon's Geb papers, Kawaguchi et al. 2021, and others).
+
+**Limits of the review:** done by AI agents with no human expert check; not exhaustive (Google Scholar never queried; several key sources closed; many pages read through a summarising tool, so short quotes are as that tool returned them); "not found in this search" is never a claim of novelty.
+
+**Lesson:** our own wording created the worst tension the review found; a statement about another group's result has to say what we ran and what they published, not only what we did not see.
+
+---
+
 ## J-090 · 2026-11-16 · A paper-style synthesis of the findings (writing only, no new results)
 
 **Question / why:** review R-5 found the record redundant and grouped by date, not by finding, and the owner wants exploration held to paper-quality rigour. A reader who has not seen the project needs one page that states what was found, at what evidence level, and where each number comes from.
@@ -1826,7 +1853,7 @@ Every persistent track that moved ≥ 5 cells in the last 100 frames was isolate
 - **The `periodic` share is probably inflated.** Flow-Lenia's frame measures use an 8-bit view, so changes below about 0.016 in A count as none (J-016). The structure census, which decides "self-propelled", uses the true float state and is not affected.
 - **The start condition made no visible difference:** unsettled fractions 0.19–0.23 for soup and smooth starts, 0.10 for patches.
 
-**Interpretation:** Plantec et al. report that moving patterns are "quite common" in random Flow-Lenia, but give no counts. We cannot reproduce that, from their own patch start or from any other. Three explanations remain open:
+**Interpretation:** Plantec et al. report that moving patterns are "quite common" in random Flow-Lenia, but give no counts. We cannot reproduce that, from their own patch start or from any other. *(Corrected 2026-11-16, J-091: E-16 itself did not use the paper's start. Its "patches" start is Chan's multi-patch start, and its rules had one channel, R fixed at 13 (the paper samples R from [2, 25]) and 1 to 3 kernels. The paper's centred 40×40 patch was run in J-016: 80 float rules with 3, 5 or 10 kernels (20 of them with R in [8, 25]), 0 movers. The paper publishes no rate and counts gyrating patterns as dynamic, while our detector counts only isolated translating structures, so "cannot reproduce" should read "not comparable" (D-066).)* Three explanations remain open:
 1. Our implementation differs in details the paper does not specify (Sobel normalisation, displacement clipping, θ_A).
 2. Their "dynamic" patterns are mostly wobbling or rotating in place, which our detector correctly does not count as self-propelled.
 3. Single-channel movers are genuinely rare. The paper itself needed long optimisation for directed motion with one channel.
