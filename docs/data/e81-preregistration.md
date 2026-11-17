@@ -71,6 +71,25 @@ overwritten). The journal says whether each pass survives the family. With the M
 **Predictions (for the record, from the pilot):** P1 pass; P2 pass (pilot: the last step from 7–9 to 6 bytes often
 comes after T + 1,000); P3 fail (pilot: soups settle on the 6-byte copier `[.>}]!` or `[.}>]!`; there is nothing shorter).
 
+## What each outcome will and will not mean (added before any registered seed ran)
+
+Added by the coordinating session after reading this file, at a commit after `72ffb96` and before the launch; no
+design, threshold or seed above changed.
+
+- **Shortening is favoured by construction.** A copier makes about L_partner / L copies per pair, so in BFF-VL shorter
+  copiers win (groundwork: the race and the copyall length null). A P1 or P2 pass therefore shows that **this route
+  operates in soups whose replicators arose from random code**. It turns the literature review's inference (J-091:
+  BFF's fixed length is why later code is not fitter) into a tested statement for this rule. It is not a surprising
+  new capacity, and it is not open-ended evolution.
+- **Evidence level.** A P1 or P2 pass supports "later code is fitter than earlier code" (directional selection after
+  emergence) under this rule. It does **not** reach level 5, which needs continuing innovation. P3 is the test closest
+  to that question: a P3 fail means fitness stops rising once copiers reach the 6-byte floor (stasis, as in Squirm3).
+- **A P3 pass** would be the informative surprise, and would need a follow-up identifying what changed beyond
+  length before any claim. **A P1 fail** despite the gate passing would contradict the groundwork and would point
+  first to the sampling at T (long early copiers), not to biology.
+- **Scope.** One rule (BFF-VL with halting heads and the `!` marker, D-070), one soup size, laptop scale. Halting
+  heads and the marker are departures from BFF; results do not transfer to 64-byte BFF.
+
 ## Validation gate (before any race is scored)
 
 1. **Every control in `bffvl_assay.controls()` passes** (18 checks, also in `pytest` and the probe benchmark): the rule
