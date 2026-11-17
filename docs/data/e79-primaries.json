@@ -1997,6 +1997,63 @@
    "rule_level_note": "seed is the unit; not a world/soup test",
    "line_label": "E-77 engine vs random (H1)",
    "recomputed": false
+  },
+  {
+   "experiment": "E-80",
+   "thread": "BFF after emergence",
+   "journal": "J-095",
+   "preregistration": {
+    "file": "docs/data/e80-preregistration.md",
+    "commit": "75c39a7"
+   },
+   "unit": "soup (n = 7)",
+   "alpha": 0.05,
+   "p_kind": "exact",
+   "recomputed": false,
+   "id": "E-80",
+   "test": "exact one-sided sign-flip test of Σ d_k > 0, d_k = mean A(S preserved) − mean A(M), lattice garden g901, A = N_64/64 − 1",
+   "sidedness": "one-sided",
+   "p_raw": 0.828125,
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-17-e80-lattice.json",
+    "key": "summary → primary → p_one_sided",
+    "line": 109,
+    "quote": "\"p_one_sided\": 0.828125,"
+   },
+   "effect": "mean d = −0.61",
+   "original_verdict": "not met (fail: CI upper 0.83 < δ* 1.24)",
+   "test_met_alpha": false,
+   "family": "in",
+   "line_label": "E-80 Part A lattice garden S vs M"
+  },
+  {
+   "experiment": "E-80",
+   "thread": "BFF after emergence",
+   "journal": "J-095",
+   "preregistration": {
+    "file": "docs/data/e80-preregistration.md",
+    "commit": "75c39a7"
+   },
+   "unit": "soup (n = 7)",
+   "alpha": 0.05,
+   "p_kind": "exact",
+   "recomputed": false,
+   "id": "E-80/seed-null",
+   "test": "seed-null contrast: two-sided sign-flip test of Σ d′_k, d′_k = mean A(M′) − mean A(M) (had to be non-significant for a pass)",
+   "sidedness": "two-sided",
+   "p_raw": 0.328125,
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-17-e80-lattice.json",
+    "key": "summary → seed_null → p_two_sided",
+    "line": 138,
+    "quote": "\"p_two_sided\": 0.328125,"
+   },
+   "effect": "mean −0.80",
+   "original_verdict": "not significant",
+   "test_met_alpha": false,
+   "family": "predicted_null",
+   "reason": "a null check: the registered pass required it to be non-significant",
+   "line_label": "E-80 Part A seed null"
   }
  ],
  "rescores_reference": [

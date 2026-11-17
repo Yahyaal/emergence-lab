@@ -12,6 +12,68 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-095 · 2026-11-17 · E-80 Part A: in a lattice-native garden, late S code does not spread farther than late M code (pre-registered, fails)
+
+(J-094 is used on another branch.)
+
+**Question (pre-registered, `docs/data/e80-preregistration.md`, commit `75c39a7`, pushed before the run; groundwork J-093, D-069):** E-78 found late S code no fitter in a well-mixed common garden. Spatial theory predicts that null. In a garden where programs meet only lattice neighbours, does late S code of the 7 E-78 soups spread farther than late M code of the same soup?
+
+**Ran:**
+- **Command:** `scripts/e80_run.py --confirm --workers 11` on commit `75c39a7`. No code changes between the pre-registration and the run.
+- **Assays:** 2,856, in 12 min 54 s. Each planted an 8 × 8 block in the lattice-aged soup-901 garden, ran 64 rounds of S pairing and scored the area change A = N_64 / 64 − 1, with lineage tags. There were 16 blocks × 4 seeds per group and soup.
+- **Kin rule:** excluded no assay.
+- **Export:** `docs/data/experiments/2026-11-17-e80-lattice.json`.
+
+**Found:**
+- **Primary: fail** (registered rule: the upper end of the 95% t interval is below δ* = 1.24). d = mean A(S) − mean A(M), per soup:
+
+  | Soup | 5301 | 5302 | 5308 | 5401 | 5402 | 5406 | 5410 |
+  |---|---|---|---|---|---|---|---|
+  | d | +1.24 | −0.07 | −2.06 | −3.01 | −1.35 | +0.39 | +0.57 |
+
+  Mean −0.61 (SD 1.56), one-sided sign-flip p = 0.83, interval −2.05 to **0.83**.
+- **Seed null (required reference): not significant.** d′ = M′ − M per soup: +0.30, +0.21, −3.31, −3.14, +1.46, −1.94, +0.85. Mean −0.80 (SD 1.96), two-sided p = 0.33. Its SD matches the groundwork estimate (2.05), measured on other blocks. The S − M differences are no larger than the differences between two well-mixed continuations.
+- **Holm (E-79 family, now 43 p values):** E-80's p of 0.83 adjusts to 1.000. The other verdicts do not change. The seed null is listed with the predicted nulls.
+- **Secondary 1, late against early (lattice garden):**
+  - S − early: −0.33 (one-sided p 0.68);
+  - M − early: +0.28 (p 0.17);
+  - M′ − early: −0.51 (p 0.78).
+
+  No arm's late code spreads farther than its fork-point code.
+- **Secondary 2, structure preserved against shuffled:** S − Sshuf = +0.04 (SD 0.16, two-sided p 0.56; 5 of 7 positive, all within ±0.29). The local arrangement of the S mosaic makes no measurable difference to how far a block spreads.
+- **Secondary 3, the same blocks with well-mixed pairing (8 × 1):**
+  - S − M: −2.87, two-sided p 0.59. Soup 5401 dominates: its M code spreads very far when mixed, so S − M is −21.1 there.
+  - S − early: −2.28; M − early: +0.60.
+  - Lattice minus mixed (S − M): mean +2.26, two-sided p 0.66. This also rests on 5401 (+18.1); the other six soups give −3.7 to +2.0, median +0.02.
+- **Sensitivity (all as registered; every one also has an interval upper end below δ\*):**
+
+  | Analysis | Mean d | Interval upper end | Other |
+  |---|---|---|---|
+  | Without 5410 | −0.81 | 0.88 | |
+  | Without 5401 | −0.21 | 1.10 | |
+  | T = 32 | −0.15 | 0.50 | |
+  | Log score | −0.49 | 1.09 | seed null −0.95, p 0.38 |
+  | Second garden g5006 | +0.06 | 0.36 | interval −0.24 to 0.36; seed null −0.11, p 0.44 |
+
+**Predictions:** we gave pass ~10%, fail ~25%, undecided ~65%. The groundwork's power model gave P(fail | d = 0) = 30%. Fail came out, as the less likely of the two main outcomes.
+
+**Interpretation:**
+- **The result.** In a lattice-native common garden there is no S advantage as large as half the difference between a fitter species and native code (δ\* = 1.24 in A). That holds for structure-preserved and shuffled blocks, in a second garden, and at a shorter horizon.
+- **With E-78:** late S code is no fitter than late M code in a well-mixed garden (E-78) or in a lattice garden (E-80 A), and the mosaic's local arrangement does not help a block hold ground. **Level 5 is still not shown**, now with an instrument built for spatial advantages.
+- **What it does not exclude:** smaller lattice advantages. The interval reaches +0.83, about a third of a species-level effect. Advantages that need the soup's own neighbours (kin cooperation inside the mosaic) are also not excluded. Each assay puts a block among strangers.
+- **The noise.** The per-soup spread is again as large between two well-mixed continuations as between S and M (SD 1.96 against 1.56). Seven soups mainly measure that continuation noise. Part B (D-068, Option 1, approved) tests 16 new soups under the h = 64 rule.
+
+**Changed:**
+- `docs/data/experiments/2026-11-17-e80-lattice.json`;
+- `docs/data/e79-primaries.json` (E-80 and its seed null added) and the rerun `docs/data/experiments/2026-11-16-e79-holm.json`;
+- the E-80 row in experiments; D-068 and D-069 status; `handoff.md`.
+
+The paper is not changed yet (one update after Part B).
+
+**Lesson:** a fail here is a statement at δ\*, half a species-level effect. Set δ\* in units a reader can picture: a fraction of a known positive.
+
+---
+
 ## J-093 · 2026-11-17 · E-80 groundwork: a lattice-native fitness assay with lineage tags; with 7 soups it can see only effects the size of a fitter species (no confirmatory data)
 
 **Question / why:** E-78 measured fitness only in a well-mixed common garden. Spatial theory predicts that advantages arising under local interaction (holding ground, spreading as a front, restraint) are invisible there (J-091). The owner approved building a neighbour-aware assay and pre-registering an experiment with it (E-80). This entry is the groundwork: instrument, controls, noise, power and costs. **The confirmatory contrast (late S against late M, or late S against early code) was not computed, and no late-S snapshot was loaded.**
