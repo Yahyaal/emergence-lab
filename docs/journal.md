@@ -35,7 +35,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 **Power and design (D-073):** 40 soups, δ* = 0.10 (half the graded control). With the pilot SD the 95% interval half-width at n = 40 is about 0.004, a fortieth of δ*; power at δ* ≈ 1 even at the worst Holm threshold (0.05/49). P1 (parasites at all three samples in ≥ 75% of soups) is a criterion without a p value. Projected wall time 1.5 to 2.5 h on 11 workers.
 
-**Pre-registration:** `docs/data/e82-preregistration.md`, committed alone and pushed before any registered seed ran (commit in the E-82 groundwork row). Predictions: P1 pass, P2 fail, P3 fail.
+**Pre-registration:** `docs/data/e82-preregistration.md`, committed alone and pushed before any registered seed ran (commit `e8010f6`; groundwork `e980084`). Predictions: P1 pass, P2 fail, P3 fail.
 
 **What this does and does not say yet.** All numbers above are exploratory. Parasites are close to built in: once a program can run a neighbour's code, any program that falls off its end is copied by a neighbour copy loop, and host debris supplies such programs at once. The pilot answers "do parasites arise from random code?" with yes for this rule, but the more interesting half, an arms race, is not favoured by the rule: a read-only library in a well-mixed soup makes a host's refusal a public good that costs bytes. The pre-registration says so before the run. If P2 and P3 fail as predicted, the next informative variant is one where resistance pays the individual: local memory (kin), or a host that is consumed when used (the snapshot variant, unstable at this scale).
 
