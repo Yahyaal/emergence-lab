@@ -393,3 +393,16 @@ def test_bffx_controls():
     import bffx_assay as A
     bad = [(n, d) for n, ok, d in A.controls() if not ok]
     assert not bad, bad
+
+
+def test_bffxr_controls():
+    """E-83 groundwork (scripts/bffxr.py, bffxr_assay.py, J-101): the ring and deme geometries pair neighbours, conserve
+    bytes and keep copies and libraries local; designed resistant, sham and plain hosts; time-shift coverage and
+    protection scores (designed arms race, reversed labels, rewriting-host deceptive); parasite detector on ring soups
+    (positive, selection-aware null)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bffxr_assay as RA
+    bad = [(n, d) for n, ok, d in RA.controls() if not ok]
+    assert not bad, bad
