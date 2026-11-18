@@ -12,6 +12,98 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-098 · 2026-11-18 · E-81: when program length can change, later copiers are fitter because they are shorter, and then evolution stops at the 6-byte floor (pre-registered: P1 pass, P2 pass, P3 fail)
+
+**Question (pre-registered, `docs/data/e81-preregistration.md`; design commit `72ffb96`, interpretation section added before launch at `3a94c3a`, no design change; groundwork J-097, D-070, D-071):** in variable-length BFF (BFF-VL), does later code beat earlier code in head-to-head races, and does that continue once copiers are as short as they can be?
+
+**Ran:**
+- **Command:** `scripts/e81_run.py --confirm --workers 11`, detached under `systemd-inhibit`, launched by the coordinating session from commit `3a94c3a`. Finished in **3 h 36 min** (12,941 s; projected 2.5 to 4.5 h).
+- **Soups:** 40 admitted. Soup 8102 did not jump by epoch 10,000 and was replaced by spare 8141, as registered. No other exclusion.
+- **Export:** `docs/data/experiments/2026-11-17-e81.json`. Caches in `runs/e81/run/` (not committed).
+
+**Gate (passed before any race):** all 18 instrument controls; seeded positive 4 of 4 shorter (the 48-byte ancestor reached 6 to 8 bytes by epoch 100) and 4 of 4 ahead (descendants against ancestor d = 8.2 to 9.3).
+
+**Found (recomputed independently from the per-race scores; every number matches the stored summaries):**
+
+| Primary | Comparison | Mean d | 95% interval | Positive | One-sided p | Verdict (δ\* 0.79) | Holm (47) |
+|---|---|---|---|---|---|---|---|
+| P1 | T + 1,000 against T | **9.12** | 8.65 to 9.60 | 40 of 40 | 5 × 10⁻⁶ | **pass** | 1.7 × 10⁻⁴, survives |
+| P2 | T + 10,000 against T + 1,000 | **0.55** | 0.19 to 0.90 | 30 of 40 | 5 × 10⁻⁶ | **pass** | 1.7 × 10⁻⁴, survives |
+| P3 | T + 20,000 against T + 10,000 | **−0.025** | −0.078 to 0.028 | 17 of 40 | 0.81 | **fail** | 1.000 |
+
+- **P2's mean (0.55) is below δ\* (0.79).** It passes only because the upper end of its interval (0.90) reaches above δ\*, as the registered rule allows. Its effect sits in a few soups: 7 soups are above 0.79 (up to 5.5, soups whose T + 1,000 copiers were still 7 to 17 bytes long) and they carry 74% of the sum; 21 soups are within ±0.05 because both samples were already at the floor (77 of 583 pairs byte-identical). Read P2 as "the last bytes are lost after T + 1,000 in about a fifth of the soups", not as a typical advantage of δ\* size.
+- **P3 fails sharply.** The interval ends at 0.028, under 4% of δ\*. 121 of 458 pairs were byte-identical. **At T + 20,000 every soup's commonest copier is a 6-byte program: `[.>}]!` in 24 soups, `[.}>]!` in 16.**
+- **Holm** (`docs/data/experiments/2026-11-18-e81-holm47.json`, 47 p values; the E-79 and E-80 exports are unchanged, checked against git): both E-81 passes survive (1.7 × 10⁻⁴). The other survivors do not change: 20 of 22 passes survive, with E-50 (0.34) and E-71 P2 (0.15) still lost.
+
+**Secondaries (descriptive):**
+- **Length (S1–S3):** byte-weighted copier-family length, median 106 bytes at T (range 18 to 128), 6.2 at T + 1,000 (6.1 to 17), 6.19 at T + 10,000, 6.17 at T + 20,000. Shorter at T + 1,000 in 40 of 40 soups (mean −79 bytes).
+- **The noexec comparison has n = 14, not 40.** The null measures the T copier families after 1,000 epochs with nothing running. In 26 soups those families dissolve. Under noexec nothing copies them. Long copiers that end at a forced 128-byte cut, with no marker, are re-cut whenever they sit second in a pair. Rare early copiers (2 to 6 copies) are lost to mutation. So the null is undefined there. In the 14 soups where it is defined, BFF-VL shortened the families by 34 bytes more than noexec did (interval 21 to 46, 14 of 14). The noexec change itself was not always near zero: in soup 8104 the long marker-free families dissolved and left shorter ones, −80 bytes, a composition effect rather than shortening. This null is weaker than planned and is reported as such.
+- **"Faster" (S2):** median copies made in a random 128-byte partner went from 1.7 at T to 18.3 at T + 1,000, and median steps per run from 3,845 to 513. Both follow from length. The step limit (8,192) never binds for the short copiers, so speed in steps is not under selection separately.
+- **Jumps:** T ranged from 50 to 9,050 (median 1,425). In 5 soups slow copiers were already among the commonest programs at epoch 50.
+
+**Interpretation (as fixed in the pre-registration's "What each outcome will and will not mean"):**
+- **Shortening is favoured by construction.** A copier makes about L_partner / L copies per pair, so shorter copiers win. P1 and P2 show that this route operates in soups whose replicators arose from random code. Later code is fitter than earlier code, by large and pre-registered margins, from the first replicators (median 106 bytes) to the 6-byte floor. This turns the literature review's inference (J-091: BFF's fixed length is why later code is not fitter) into a tested statement **for this rule**. It is directional selection after emergence, not a surprising new capacity.
+- **It is not level 5.** P3 shows stasis once copiers reach the floor: within a 95% interval of ±0.05, code 20,000 epochs after the jump is no fitter than code at 10,000. Every soup ends on the same minimal copier. This is the Squirm3 pattern: selection shortens, then stops. **Evidence level unchanged (4 in BFF; level 5 not shown).**
+- **Scope.** One rule with two departures from BFF: heads halt at the tape ends instead of wrapping (needed: with wrapping, copiers overwrite themselves and take-overs do not last, J-097), and a marker byte `!` ends a program. One soup size (2^20 bytes), one race garden (random code), laptop scale. The results do not transfer to 64-byte BFF.
+
+**Changed:**
+- **Data:** `docs/data/experiments/2026-11-17-e81.json`, `docs/data/experiments/2026-11-18-e81-holm47.json`; `docs/data/e79-primaries.json` (E-81 P1–P3, family "in").
+- **Records:** experiments row; D-070 and D-071 status; `handoff.md`.
+- **Pages:** `paper.md` (abstract, §5, Appendices A, B, B2); `index.md` (level-5 card, H3); `research.md` (O5); `literature.md` (C4 row and discussion, correction 10, closing paragraph); `story.html` (result C, scoreboard).
+- **Checks:** `pytest` 91 passed; `emergence benchmark --probes` 39/39 and 158/158.
+
+**Lesson:** a null that tracks a family by identity is undefined when the family cannot persist without copying. Check before registering that the null is defined for every kind of family the jump rule can select (here: long copiers without a marker).
+
+---
+
+## J-097 · 2026-11-17 · E-81 groundwork: a variable-length BFF in which replicators still arise and then shrink to the shortest copier; instruments, seeded positive, power and pre-registration (no confirmatory data)
+
+**Question / why:** Finding C (later BFF code is not fitter, E-48 to E-54, E-78, E-80) may be what BFF's design predicts. The literature review (J-091) found that the main published route to fitness gain after emergence is getting shorter (Tierra 80 → 22 instructions; Squirm3), and BFF programs are fixed at 64 bytes. The owner asked for the groundwork of a variable-length variant: when length can change under simple, fixed, reward-free rules, does later code become fitter, and do replicators get shorter or faster? This entry is design, emergence check, instruments, seeded positive, power and pre-registration. **No registered seed was run.**
+
+**The variant (D-070, `scripts/bffvl.c`, `scripts/bffvl.py`):** BFF-VL.
+- The soup is a fixed budget of 2^20 bytes (as a 2^14 × 64 BFF soup), split into programs of 4 to 128 bytes.
+- Pairs are run by the unchanged BFF instruction set with head1 at the partner's first byte (the h = 64 rule, generalised), step limit 8192, except that **a head moving off either end of the tape halts the run**.
+- The tape is then **cut after every marker byte `!`** (a no-op for the interpreter) and at 128 bytes, never below 4. Bytes are conserved; the number of programs is not.
+- A copier of length L therefore leaves about L_B / L copies in a partner of L_B bytes. Being short helps only a copier: noexec soups keep a mean length of 101 to 104 bytes, and random BFF-VL soups lengthen to about 122 bytes before any replicator appears.
+- With the marker off, LMAX 64 and wrapping heads, the rule equals the h = 64 BFF soup bit for bit (control).
+
+**Design iteration (pilot, exploratory, seeds 9001–9006 and 9201–9203):** the first version kept BFF's wrapping heads. A copier whose tape is not a multiple of its own length then overwrites itself. Copiers appeared in all 6 soups, but copier families held ≥ 25% of the bytes at one checkpoint at most (2 soups), with waves of fragmentation in between. With halting heads, 6 of 6 soups were taken over and stayed taken over (21 to 45 of the checkpoints after take-over). Seeded 120-byte copiers collapsed to fragments under wrapping heads and to 6-byte copiers under halting heads.
+
+**Emergence (exploratory):**
+- **Replicators still arise, quickly.** Halting-heads pilot: 6 of 6 soups taken over by epoch 3,000. Protocol pilot (`e81_run.py --pilot 9401-9410`): 10 of 10 jumped (T = 600 to 8,250; 9 of 10 by 3,500). Slow copiers (one copy per ~66 steps per byte) are already among the commonest programs of some soups at epoch 50.
+- **They start long and shrink.** The first copiers were 21 to 128 bytes. Within 300 to 700 epochs the shortest copier was 6 to 8 bytes (e.g. 128 → 58 → 29 → 12 → 7 → 6 in soup 9404, one value per 100 epochs).
+- **Every soup ends on the minimal copier**, `[.>}]!` or `[.}>]!` (6 bytes; the same loop as the hand copier) plus 7- and 8-byte variants. Mean program length 6.4 to 8 bytes, about 160,000 programs.
+- Fecundity: a 128-byte early copier makes 1 copy in a 128-byte partner in ~4,500 steps; a 6-byte copier makes ~18 in ~500 steps.
+
+**Instruments (`scripts/bffvl_assay.py`; 18 controls in `pytest` and the probe benchmark, all pass):**
+- **Copy screen** (copies itself into 4 of 4 random 128-byte partners: piece within ±2 bytes, ≥ 90% of bytes, ≥ 75% of instruction bytes). Positives 6, 16, 48, 128 bytes; 0 of 200 random programs; broken copier, marker smear, filler smear, copier under noexec rejected; selection-aware null: top 40 of a noexec soup and of a soup full of marker-smear products (`!!!!` ×464): 0 copiers. A BFF-VL soup at epoch 50 is *not* a null here: its commonest programs include real copiers.
+- **Replicator detector** (8 copies grow to ≥ 64 and ≥ 4× in 2^15 bytes, two generations, rule null). Hand copiers of 6 to 48 bytes pass; random, broken, noexec, smear and its product do not; null on an early soup passes. **Limit:** copiers of 80 bytes or more do not grow in random code under this rule, so the detector is validated for 6 to 48 bytes only. Race samples therefore use the copy screen.
+- **Head-to-head race** (≈ 1,024 bytes of each in 2^16 bytes of random code, 8 epochs, no mutation, log byte ratio change). Ladder against a 12-byte copier padded to 13, 14, 16, 20, 24, 32, 64 bytes: s = 1.27, 1.88, 2.78, 3.92, 4.99, 5.49, 6.97 (8 of 8 each). Floor step 6 against 7 bytes: s = 1.59 (SD 0.29, 16 of 16), so **δ\* = 0.79**. Neutral one-byte variant: −0.03 to +0.12 (|z| < 2). Deceptive (short but cannot copy, 12 bytes, against a 48-byte copier): −4.5, long ahead 8 of 8. Repeat null: 0 of 8 "different". 32 epochs saturates at ±11, hence 8.
+- **Length-trend nulls:** noexec (cut rule and mutation alone) moves the mean length < 2 bytes in 1,000 epochs (103.3 → 104.2); in the protocol, a noexec fork of each T snapshot tracks the same families (length change 0.0 in the dry run). **Copyall** (every program copies itself whatever its code) collapses the soup to 4-byte pieces within 200 epochs: the rule rewards shortness in anything that copies, which is the route opened on purpose, and the reason the minimal copier is the end state.
+
+**Seeded positive (gate of the protocol pilot, seeds 10401–10404):** 64 copies of a 48-byte padded hand copier in random code shortened to 6 bytes within 200 epochs in 4 of 4 soups; their copiers beat the ancestor by d = 8.6, 9.0, 9.0, 9.2 (every race 8 of 8). **The variant can show the effect.**
+
+**Protocol pilot (exploratory, seeds 9401–9410; same code as the confirmatory driver):**
+- d1 (T + 1,000 against T): mean 8.97, SD 2.18, 10 of 10 positive.
+- d2 (T + 10,000 against T + 1,000): mean 0.90, SD 1.20, 8 of 10 positive. The last step from 7–9 to 6 bytes often comes after T + 1,000.
+- d3 (T + 20,000 against T + 10,000; P3 pilot, `scripts/e81_groundwork.py --extend`, fresh generator): mean 0.09, SD 0.25; 9 soups within ±0.05, one (9406) at +0.79, its 7-byte copier replaced by the 6-byte one.
+
+**Power and design (D-071):** 40 soups. At n = 40, P1 has power ≈ 1 at the seeded effect (5 soups would do); P2 has power 0.99 at δ\* nominally and 0.86 at the worst Holm threshold (0.05/47); P3's 95% interval half-width is ≈ 0.08, about a tenth of δ\*. A primary fails when its whole interval lies below δ\* even if p < 0.05 (a P3 drift of +0.02 would otherwise "pass" with 40 soups). Projected wall time 2.5 to 4.5 h on 11 workers.
+
+**Pre-registration:** `docs/data/e81-preregistration.md`, committed and pushed before any registered seed ran (commit in the E-81 experiments row). Predictions: P1 pass, P2 pass, P3 fail.
+
+**What this does and does not say yet.** All numbers above are exploratory, on pilot seeds. If the confirmatory run agrees, it shows directional adaptation (later code fitter, by getting shorter) from random code under a fixed, reward-free rule: the precondition of level 5 that BFF lacked, not level 5. The pilot also says where it ends. The shortest copier is reached within a few hundred epochs and nothing beats it, the Squirm3 pattern ("selection only shortens"). That end is a property of this rule: shortness is the only advantage it opens, and the step budget is too generous for speed in steps to matter.
+
+**Changed:**
+- **New:** `scripts/bffvl.c`, `scripts/bffvl.py`, `scripts/bffvl_assay.py`, `scripts/e81_pilot.py`, `scripts/e81_run.py`, `scripts/e81_groundwork.py`; tests `test_bffvl_cut_rule`, `test_bffvl_controls`; probe section in `emergence/benchmark_programs.py`.
+- **Records:** D-070, D-071 (proposed); the E-81 row; `handoff.md`; export `docs/data/experiments/2026-11-17-e81-groundwork.json`.
+- **Checks:** `pytest` 91 passed; `emergence benchmark --probes` 39/39 and 158/158 (140 + 18 new).
+- **Caches (not committed):** `runs/e81/pilot-wrap/`, `runs/e81/pilot/`, `runs/e81/pilot2/`, `runs/e81/dry/`.
+
+**Lesson:** a small change to how a pair is split back can decide whether replicators persist at all (wrapping against halting heads). Pilot the variant's stability before building instruments on it.
+
+---
+
 ## J-096 · 2026-11-17 · E-80 Part B: in 16 new soups under the h = 64 rule, late lattice code spreads no farther than well-mixed code, and this time the test is precise (pre-registered amendment, fails)
 
 **Question (pre-registered amendment `docs/data/e80-partB-preregistration.md`, commit `c4d0918`, pushed before the run; code `c529a54`; D-068 Option 1, approved by the owner):** Part A (J-095) could rule out only effects of species size, because two well-mixed continuations of a soup differed about as much as S and M. In 16 new, independent soups, does late S code spread farther than late M code of the same soup, in a lattice garden made under the same rule?

@@ -2111,6 +2111,90 @@
    "family": "predicted_null",
    "reason": "a null check: the registered pass required it to be non-significant",
    "line_label": "E-80 Part B seed null"
+  },
+  {
+   "experiment": "E-81",
+   "thread": "BFF after emergence",
+   "journal": "J-098",
+   "preregistration": {
+    "file": "docs/data/e81-preregistration.md",
+    "commit": "72ffb96"
+   },
+   "unit": "soup (n = 40)",
+   "alpha": 0.05,
+   "p_kind": "monte_carlo",
+   "recomputed": false,
+   "sidedness": "one-sided",
+   "family": "in",
+   "id": "E-81/P1",
+   "test": "one-sided sign-flip test (Monte Carlo, 200,000 patterns) of sum d_k > 0, d1 = mean race score s(T+1000 copiers vs T copiers), head-to-head race in random code, 8 epochs",
+   "p_raw": 4.9999750001249995e-06,
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-17-e81.json",
+    "key": "P1 → p_one_sided",
+    "line": 771,
+    "quote": "\"p_one_sided\": 4.9999750001249995e-06,"
+   },
+   "effect": "mean d1 = 9.12 (CI 8.65 to 9.60)",
+   "original_verdict": "met (pass)",
+   "test_met_alpha": true,
+   "line_label": "E-81 BFF-VL T+1000 vs T copiers"
+  },
+  {
+   "experiment": "E-81",
+   "thread": "BFF after emergence",
+   "journal": "J-098",
+   "preregistration": {
+    "file": "docs/data/e81-preregistration.md",
+    "commit": "72ffb96"
+   },
+   "unit": "soup (n = 40)",
+   "alpha": 0.05,
+   "p_kind": "monte_carlo",
+   "recomputed": false,
+   "sidedness": "one-sided",
+   "family": "in",
+   "id": "E-81/P2",
+   "test": "one-sided sign-flip test (Monte Carlo, 200,000 patterns) of sum d_k > 0, d2 = mean race score s(T+10000 vs T+1000 copiers), head-to-head race in random code, 8 epochs",
+   "p_raw": 4.9999750001249995e-06,
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-17-e81.json",
+    "key": "P2 → p_one_sided",
+    "line": 786,
+    "quote": "\"p_one_sided\": 4.9999750001249995e-06,"
+   },
+   "effect": "mean d2 = 0.55 (CI 0.19 to 0.90)",
+   "original_verdict": "met (pass; mean below delta* 0.79, CI upper 0.90 above it)",
+   "test_met_alpha": true,
+   "line_label": "E-81 BFF-VL T+10000 vs T+1000 copiers"
+  },
+  {
+   "experiment": "E-81",
+   "thread": "BFF after emergence",
+   "journal": "J-098",
+   "preregistration": {
+    "file": "docs/data/e81-preregistration.md",
+    "commit": "72ffb96"
+   },
+   "unit": "soup (n = 40)",
+   "alpha": 0.05,
+   "p_kind": "monte_carlo",
+   "recomputed": false,
+   "sidedness": "one-sided",
+   "family": "in",
+   "id": "E-81/P3",
+   "test": "one-sided sign-flip test (Monte Carlo, 200,000 patterns) of sum d_k > 0, d3 = mean race score s(T+20000 vs T+10000 copiers), head-to-head race in random code, 8 epochs",
+   "p_raw": 0.8144809275953621,
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-17-e81.json",
+    "key": "P3 → p_one_sided",
+    "line": 801,
+    "quote": "\"p_one_sided\": 0.8144809275953621,"
+   },
+   "effect": "mean d3 = -0.025 (CI -0.078 to 0.028)",
+   "original_verdict": "not met (fail: CI upper 0.028 < delta* 0.79)",
+   "test_met_alpha": false,
+   "line_label": "E-81 BFF-VL T+20000 vs T+10000 copiers"
   }
  ],
  "rescores_reference": [

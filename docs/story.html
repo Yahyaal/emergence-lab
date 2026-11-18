@@ -162,13 +162,13 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <div class="eyebrow">Emergence Lab · 5 to 17 November 2026</div>
+      <div class="eyebrow">Emergence Lab · 5 to 18 November 2026</div>
       <h1>Can a handful of fixed rules build something that looks alive?</h1>
       <p class="lead" style="margin-top:20px">We built tiny toy universes, switched them on, and watched without touching. Things started to move by themselves. Random computer code began copying itself. Evolution, so far, did not take off. This page tells the whole story.</p>
       <div class="facts">
         <div class="fact"><b>4</b><span>kinds of toy universe</span></div>
-        <div class="fact"><b>70+</b><span>experiments</span></div>
-        <div class="fact"><b>11</b><span>days, one laptop</span></div>
+        <div class="fact"><b>80+</b><span>experiments</span></div>
+        <div class="fact"><b>14</b><span>days, one laptop</span></div>
         <div class="fact"><b>13</b><span>times we caught ourselves fooled</span></div>
       </div>
     </div>
@@ -370,6 +370,23 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
       <p class="small muted">Careful wording matters here. "Not shown" is not "impossible". Each test used one rule and laptop-sized soups, and the grid test placed code among strangers, so an advantage that needs its own relatives nearby is still untested.</p>
     </div>
   </div>
+  <h3 style="margin-top:30px">Then we let programs change length</h3>
+  <p>Other researchers saw evolution mostly as programs getting shorter, so they copy faster. Our programs were all exactly 64 bytes, so that road was closed. We built a version where a program ends at a marker byte and can be any length, and the soup holds a fixed number of bytes. The instructions are otherwise the same. In 40 soups, copiers appeared from random code, started long (about 106 bytes) and shrank, and <em class="k">later copiers beat earlier ones in all 40</em>. Then every soup reached a 6-byte copier (one of two nearly identical forms), and nothing improved after that: copiers 20,000 rounds after the take-over were no better than at 10,000.</p>
+  <div class="panel">
+    <svg viewBox="0 0 470 175" role="img" aria-label="Typical copier length over time, on a log scale: about 106 bytes when copiers first take over, about 6 bytes after 1,000 rounds, and still 6 bytes at 10,000 and 20,000 rounds. Later copiers won the first comparison in 40 of 40 soups, won slightly in the second, and showed no difference in the third.">
+      <line x1="40" y1="130" x2="440" y2="130" stroke="var(--line)" stroke-width="1"/>
+      <polyline points="70,36 190,119 310,119 430,120" fill="none" stroke="var(--hot)" stroke-width="3"/>
+      <g fill="var(--hot)"><circle cx="70" cy="36" r="7"/><circle cx="190" cy="119" r="7"/><circle cx="310" cy="119" r="7"/><circle cx="430" cy="120" r="7"/></g>
+      <text x="84" y="30">106 bytes</text><text x="310" y="108" text-anchor="middle">6 bytes</text>
+      <text x="130" y="16" text-anchor="middle" style="fill:var(--yes)">won 40 of 40</text>
+      <text x="250" y="16" text-anchor="middle" style="fill:var(--yes)">won slightly</text>
+      <text x="370" y="16" text-anchor="middle" style="fill:var(--no)">no gain</text>
+      <text x="70" y="150" text-anchor="middle">take-over</text><text x="190" y="150" text-anchor="middle">+1,000</text><text x="310" y="150" text-anchor="middle">+10,000</text><text x="430" y="150" text-anchor="middle">+20,000</text>
+      <text x="255" y="170" text-anchor="middle">rounds after copiers take over</text>
+    </svg>
+    <p class="cap">Typical length of the commonest copiers (log scale). Along the top: how later copiers did when raced against the earlier ones. The middle win is small on average (0.55, below the pass mark of 0.79) and passes only because its range reaches above the mark; most of it comes from 7 soups still finishing their shrinking.</p>
+  </div>
+  <p style="margin-top:14px">This is real selection, from random code, of the kind the fixed-length soups never showed. But it was built in: when copies cost bytes, a shorter copier makes more copies, so shrinking is the expected winner. Once a copier is as short as it can be, there is nowhere left to go. That is the pattern seen in Squirm3, an older chemistry of copying molecules: selection shortens, then stops. The variant also changed two details of BFF (a moving head stops the program at the tape's edge instead of wrapping around, and the marker byte ends a program). <b>Rung 5 is still not reached.</b></p>
 </section>
 
 <section>
@@ -392,23 +409,24 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
 
   <div class="cols" style="margin-top:34px">
     <div>
-      <h3>46 tests with a prediction written down in advance</h3>
+      <h3>49 tests with a prediction written down in advance</h3>
       <div class="sq" aria-hidden="true" id="sq"></div>
       <div class="legend">
-        <span><i class="s-met"></i>23 came true</span><span><i class="s-not"></i>15 did not</span><span><i class="s-mix"></i>5 mixed</span><span><i class="s-und"></i>2 undecided</span><span><i class="s-nt" style="border:1px solid var(--faint)"></i>1 could not be tested</span>
+        <span><i class="s-met"></i>25 came true</span><span><i class="s-not"></i>16 did not</span><span><i class="s-mix"></i>5 mixed</span><span><i class="s-und"></i>2 undecided</span><span><i class="s-nt" style="border:1px solid var(--faint)"></i>1 could not be tested</span>
       </div>
-      <p class="small muted" style="margin-top:12px">Only about half came true. We count that as a sign the tests were real. Run enough tests and a few will pass by luck, so we applied a strict correction for that: 18 of the 20 statistical passes survive, and the two space tests stay fails. The two that do not are "bigger soups get there sooner" and one result about speed. When each rule counts once instead of each world, the lumpy-start result also falls short, so it holds firmly for worlds and only suggestively for rules.</p>
+      <p class="small muted" style="margin-top:12px">Only about half came true. We count that as a sign the tests were real. Run enough tests and a few will pass by luck, so we applied a strict correction for that: 20 of the 22 statistical passes survive, including both length-change passes, and the two space tests stay fails. The two that do not are "bigger soups get there sooner" and one result about speed. When each rule counts once instead of each world, the lumpy-start result also falls short, so it holds firmly for worlds and only suggestively for rules.</p>
     </div>
     <div>
-      <h3>Thirteen days</h3>
+      <h3>Fourteen days</h3>
       <div class="tl">
-        <div class="row"><span>Life-like worlds</span><div class="trk"><i style="left:0%;width:7.6%"></i></div></div>
-        <div class="row"><span>Lenia</span><div class="trk"><i style="left:6.8%;width:17.8%"></i></div></div>
-        <div class="row"><span>BFF: after replicators</span><div class="trk"><i style="left:22%;width:12.7%"></i></div></div>
-        <div class="row"><span>BFF: which rules</span><div class="trk"><i style="left:28.8%;width:24.5%"></i></div></div>
-        <div class="row"><span>SUBLEQ soups</span><div class="trk"><i style="left:55.8%;width:17.8%"></i></div></div>
-        <div class="row"><span>Review, space tests, paper</span><div class="trk"><i style="left:73.6%;width:26.4%"></i></div></div>
-        <div class="row"><span></span><div class="axis"><span>Nov 5</span><span>Nov 11</span><span>Nov 17</span></div></div>
+        <div class="row"><span>Life-like worlds</span><div class="trk"><i style="left:0%;width:7.1%"></i></div></div>
+        <div class="row"><span>Lenia</span><div class="trk"><i style="left:6.3%;width:16.5%"></i></div></div>
+        <div class="row"><span>BFF: after replicators</span><div class="trk"><i style="left:20.4%;width:11.8%"></i></div></div>
+        <div class="row"><span>BFF: which rules</span><div class="trk"><i style="left:26.7%;width:22.7%"></i></div></div>
+        <div class="row"><span>SUBLEQ soups</span><div class="trk"><i style="left:51.8%;width:16.5%"></i></div></div>
+        <div class="row"><span>Review, space tests, paper</span><div class="trk"><i style="left:68.3%;width:24.5%"></i></div></div>
+        <div class="row"><span>Variable-length soups</span><div class="trk"><i style="left:90.5%;width:9.5%"></i></div></div>
+        <div class="row"><span></span><div class="axis"><span>Nov 5</span><span>Nov 18</span></div></div>
       </div>
       <p class="small muted" style="margin-top:12px">Also confirmed along the way: our guided search finds about 1.8 times more worlds with moving shapes than random search for the same computing time, ahead in 20 of 20 paired runs.</p>
     </div>
@@ -437,7 +455,7 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
   <h2>What we cannot claim</h2>
   <div class="cols">
     <div class="panel"><h3>Small scale</h3><p class="small" style="margin:0">One laptop, no graphics card. Worlds a few hundred squares wide, soups of tens of thousands of programs, runs of hours. Real evolution took billions of years.</p></div>
-    <div class="panel"><h3>Few rules per test</h3><p class="small" style="margin:0">The lumpy-start result rests on 8 related rules. The evolution tests use 3 to 16 soups. Strong where tested, unproven beyond.</p></div>
+    <div class="panel"><h3>Few rules per test</h3><p class="small" style="margin:0">The lumpy-start result rests on 8 related rules. The evolution tests use 3 to 40 soups. Strong where tested, unproven beyond.</p></div>
     <div class="panel"><h3>Worlds we shaped</h3><p class="small" style="margin:0">The SUBLEQ family includes features we added. The two published versions of that language made no replicators at all.</p></div>
     <div class="panel"><h3>Who did the work</h3><p class="small" style="margin:0">AI agents designed, ran and wrote up most of it; the owner set goals and approved long runs. All five reviews were also by AI. No human expert has reviewed it yet.</p></div>
   </div>
@@ -449,7 +467,7 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
   <p>The first item is our recommendation. The rest are real options, roughly from cheapest to most ambitious.</p>
   <div class="next">
     <div><span class="effort">Days · recommended first</span><h3>Get a human expert to read it</h3><p>The literature review is now done, by AI agents. The stricter statistical correction is done too. The next check is one or two researchers in the field reading the paper.</p></div>
-    <div><span class="effort">Weeks</span><h3>Give the programs room to change</h3><p>The review's main suggestion: BFF programs have a fixed length and no lasting body, which removes the routes other systems used to evolve. A variant with variable length or persistent bodies is a more informative next experiment than more soups of the same kind.</p></div>
+    <div><span class="effort">Weeks · length done</span><h3>Give the programs room to change</h3><p>The review's main suggestion: BFF programs have a fixed length and no lasting body. The variable-length version is now done: programs shrank and then stopped. Next would be something that can keep improving once shrinking is over, such as a lasting body, limited time to copy, or limited energy.</p></div>
     <div><span class="effort">Days · partly done</span><h3>Test code among its own relatives</h3><p>The grid fitness test now exists and found nothing, but it drops code among strangers. Advantages that need kin nearby, such as families that protect each other, and parasites on a grid are still unmeasured.</p></div>
     <div><span class="effort">Weeks · needs more computing power</span><h3>Go bigger and longer</h3><p>Soups a hundred times larger, run a hundred times longer, on a graphics card or cloud machines. The published work that saw richer behaviour ran at far larger scale than a laptop allows.</p></div>
     <div><span class="effort">Days</span><h3>Turn the lumpy-start result into a law, or break it</h3><p>Test it in many more Lenia rules, not just the 8 near one famous creature, and find how lumpy is lumpy enough.</p></div>
@@ -460,14 +478,14 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
 </section>
 
 <footer>
-  Emergence Lab. Every number on this page comes from the <a href="paper.html">Paper</a>, where each is traced to its data file; the comparison with other research comes from the <a href="literature.html">Literature</a> page, a review by AI agents that no human expert has checked. Animations and images are recordings of the project's own simulations; the Game of Life at the top runs live. Last updated 17 November 2026.
+  Emergence Lab. Every number on this page comes from the <a href="paper.html">Paper</a>, where each is traced to its data file; the comparison with other research comes from the <a href="literature.html">Literature</a> page, a review by AI agents that no human expert has checked. Animations and images are recordings of the project's own simulations; the Game of Life at the top runs live. Last updated 18 November 2026.
 </footer>
 </div>
 
 <script>
 (function(){
   // scorecard squares
-  var sq=document.getElementById('sq'), groups=[['s-met',23],['s-not',15],['s-mix',5],['s-und',2],['s-nt',1]];
+  var sq=document.getElementById('sq'), groups=[['s-met',25],['s-not',16],['s-mix',5],['s-und',2],['s-nt',1]];
   groups.forEach(function(g){for(var i=0;i<g[1];i++){var e=document.createElement('i');e.className=g[0];sq.appendChild(e);}});
 
   // Conway's Game of Life on a torus, coloured by cell age
