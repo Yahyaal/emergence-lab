@@ -12,6 +12,43 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-099 · 2026-11-18 · E-82 groundwork: when a program can run a persistent neighbour's code, parasites appear with the first hosts, and nothing in the pilot resists them; instruments, seeded positive, power and pre-registration (no confirmatory data)
+
+**Question / why:** after E-81 (shortness is the only lever BFF-VL opens, and it ends at a 6-byte floor), the literature's other route to continuing change is parasites and the arms races they drive (Tierra, Stringmol). They need bodies that persist and code that can be borrowed; BFF has neither (J-091). The owner asked for the groundwork of a variant that opens this route with the smallest departure from BFF-VL: under simple, fixed, reward-free rules, do parasites arise from random code, and does the soup then keep changing in a directed way? Design, emergence pilot, instruments, seeded positive, power and pre-registration. **No registered seed was run.**
+
+**The variant (D-072, `scripts/bffx.c`, `scripts/bffx.py`):** BFF-X. Everything is BFF-VL, except that for each pair a third program C is drawn from the soup, and the instruction pointer runs through A and then through **C's code instead of B's**. C is read only (no head reaches it), so its body persists. A program whose run falls off its own end executes its neighbour's code on its own bytes: if C is a copy loop, the caller is copied into its partner. That is Tierra's parasite mechanism in its smallest BFF-VL form. With libmode live the rule equals BFF-VL bit for bit; libmode none (only A runs) is the no-borrowing control. Also piloted: **snapshot**, where B's code runs to its end from a copy taken at the start while B is overwritten (the host is consumed, like a lytic virus).
+
+**Emergence pilot (exploratory, seeds 9501–9505, 4,000 epochs, `scripts/e82_pilot.py`):**
+- **Neighbour:** 5 of 5 soups made hosts (programs that copy themselves with nothing to borrow), first at epoch 200 to 1,400. **Parasite candidates appeared at the same checkpoint as the first host in every soup.** The soups settle with `[.>}]!`-type host families at 10–12% of the bytes beside a crowd of 4-byte programs (`!!!!`, `![.!`, `...!`) that fall through into a host and are copied.
+- **None** (nothing to borrow): 5 of 5 made hosts, at 45–84% of the bytes. With parasites the hosts hold four to eight times fewer bytes.
+- **Snapshot:** copiers appeared in 5 of 5 but held ≥ 5% of the bytes in 3 of 5 and ≥ 25% at the end in 1 of 5; the soups churn between mean lengths 18 and 120. Unstable at this scale, so not the main arm.
+- A hand host of 16 to 48 bytes seeded into random code under neighbour is **overrun within 48 epochs by 4- to 5-byte parasites made from its own debris** (16 bytes: 8 → 1,105 → 11 copies); under none it grows normally. So the host detector certifies hosts with nothing to borrow.
+
+**Instruments (`scripts/bffx_assay.py`; 16 controls in `pytest` and the probe benchmark, all pass; D-073):**
+- **Host detector** (copy screen and growth test with nothing to borrow): hand hosts of 8, 24 and 48 bytes pass; random program, hand parasite (also under neighbour in random code, where it has no host) and dead host fail.
+- **Parasite detector** (D-048/D-049 adapted; host dependence replaces sequence specificity, because a host copies any caller): hand parasite at 5% among 50% hand hosts → parasite (q 0.51, random libraries 0, templated share 1.0). Random program → not copied; host → self-copier. Deceptive: a common dead host (92% like the host, so host copies look like its copies) → not copied; a common host fragment → self-copier (its loop runs by itself; not a parasite); a product Z made by many makers → by-product (F 0.07). The plain parasite among resistant hosts → not copied; the key-matched parasite → parasite. Selection-aware null: the top 20 programs of an epoch-50 soup → 0 parasites.
+- **Time-shift assay:** coverage q(P, H) = the share of a 128-byte partner P fills with copies of itself with H as library. RQ = mean over i < j of q(P_j, H_i) − q(P_i, H_j). Designed arms race (plain host and parasite, then a host that copies only callers whose first byte is its key, and a key-matched parasite) → 0.94; the same with time labels reversed → −0.94; 1 of 5 later hosts resistant → 0.19 (graded); a change of length without resistance → 0.00, with a remainder artefact of 0.047 when neither length divides 128. A first version scored the share of runs with ≥ 1 copy; it saturated at 1.0 in every pilot soup.
+
+**Seeded positive (`scripts/e82_seeded.py`):** 64 hand hosts (12 bytes) and 64 hand parasites (8 bytes) in 2^20 bytes of random code. In both arms the parasite first loses copies (it is overwritten as a partner before hosts are common); with hosts it then regrows 3.7 to 18-fold within 10 epochs, without hosts it keeps falling (rebound < 1), in 10 of 10 seeds (9621–9630). **A designed parasite spreads on designed hosts.** Over 2,000 epochs (9601–9604) the hosts shortened to `[.>}]!`, the 8-byte parasite was replaced by 4-byte ones, and **the hosts never stopped copying the ancestral parasite** (q 1.0 in 4 of 4).
+
+**Protocol pilot (`e82_run.py --pilot 9701-9710`; same code as the confirmatory driver):** 10 of 10 jumped (T 400 to 2,950; 22–24 min per soup to T + 10,000). Verified parasites at T + 1,000, T + 5,000 and T + 10,000 in 10 of 10 soups, mostly 4-byte programs, at 0.2–2.8% of the bytes. Hosts `[.>}]!`, or `[.}>]!` in 2 soups, replaced by `[.>}]!` by T + 10,000. **RQ mean 0.004 (SD 0.013; 9 of 10 exactly 0), d3 = 0 in 10 of 10.** Every host copies every parasite.
+
+**Power and design (D-073):** 40 soups, δ* = 0.10 (half the graded control). With the pilot SD the 95% interval half-width at n = 40 is about 0.004, a fortieth of δ*; power at δ* ≈ 1 even at the worst Holm threshold (0.05/49). P1 (parasites at all three samples in ≥ 75% of soups) is a criterion without a p value. Projected wall time 1.5 to 2.5 h on 11 workers.
+
+**Pre-registration:** `docs/data/e82-preregistration.md`, committed alone and pushed before any registered seed ran (commit in the E-82 groundwork row). Predictions: P1 pass, P2 fail, P3 fail.
+
+**What this does and does not say yet.** All numbers above are exploratory. Parasites are close to built in: once a program can run a neighbour's code, any program that falls off its end is copied by a neighbour copy loop, and host debris supplies such programs at once. The pilot answers "do parasites arise from random code?" with yes for this rule, but the more interesting half, an arms race, is not favoured by the rule: a read-only library in a well-mixed soup makes a host's refusal a public good that costs bytes. The pre-registration says so before the run. If P2 and P3 fail as predicted, the next informative variant is one where resistance pays the individual: local memory (kin), or a host that is consumed when used (the snapshot variant, unstable at this scale).
+
+**Changed:**
+- **New:** `scripts/bffx.c`, `scripts/bffx.py`, `scripts/bffx_assay.py`, `scripts/e82_pilot.py`, `scripts/e82_seeded.py`, `scripts/e82_run.py`, `scripts/e82_groundwork.py`; tests `test_bffx_rule`, `test_bffx_controls`; probe section in `emergence/benchmark_programs.py`.
+- **Records:** D-072, D-073 (proposed); the E-82 groundwork row; `handoff.md`; export `docs/data/experiments/2026-11-18-e82-groundwork.json`.
+- **Checks:** `pytest` 93 passed; `emergence benchmark --probes` 39/39 and 174/174 (158 + 16 new), both run from the worktree with `PYTHONPATH=.`.
+- **Caches (not committed):** `runs/e82/pilot/`, `runs/e82/seeded/`, `runs/e82/protopilot/`.
+
+**Lesson:** a growth test run under the rule being studied can fail a real replicator for an ecological reason (here, parasites made from its own debris): certify the replicator under a control rule, and treat the failure under the real rule as a finding.
+
+---
+
 ## J-098 · 2026-11-18 · E-81: when program length can change, later copiers are fitter because they are shorter, and then evolution stops at the 6-byte floor (pre-registered: P1 pass, P2 pass, P3 fail)
 
 **Question (pre-registered, `docs/data/e81-preregistration.md`; design commit `72ffb96`, interpretation section added before launch at `3a94c3a`, no design change; groundwork J-097, D-070, D-071):** in variable-length BFF (BFF-VL), does later code beat earlier code in head-to-head races, and does that continue once copiers are as short as they can be?

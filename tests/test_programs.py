@@ -359,3 +359,37 @@ def test_bffvl_controls():
     import bffvl_assay as A
     bad = [(n, d) for n, ok, d in A.controls() if not ok]
     assert not bad, bad
+
+
+def test_bffx_rule():
+    """E-82 (D-072): BFF-X equals BFF-VL with libmode live; the library is read only; an inert program that runs into a
+    host's code is copied (neighbour and snapshot modes), and not without a host or with nothing to borrow."""
+    import sys
+    from pathlib import Path
+    import numpy as np
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bffvl as V
+    import bffx as X
+    a, b = V.Soup(w=2 ** 14, seed=9), X.Soup(w=2 ** 14, seed=9, libmode="live")
+    for _ in range(20):
+        a.epoch()
+        b.epoch()
+    assert (a.buf == b.buf).all() and (a.lens == b.lens).all()
+    H, P = X.hand_copier(12), X.pad(b"", 8)
+    h0 = H.copy()
+    assert X.screen(P, 1, 8, host_c=H)[0] == 8 and (H == h0).all()
+    assert X.screen(P, 2, 8, host_b=X.hand_copier(64), libmode="snapshot")[0] == 8
+    assert X.screen(P, 3, 8)[0] == 0 and X.screen(P, 4, 8, host_c=H, libmode="none")[0] == 0
+    assert X.screen(H, 5, 8, libmode="none")[0] == 8
+
+
+def test_bffx_controls():
+    """E-82 groundwork (scripts/bffx_assay.py, J-099): host detector, parasite detector (positive, negative, dead-host
+    and fragment deceptive, by-product, key specificity, selection-aware null) and the time-shift assay (designed arms
+    race, graded control, change without resistance, reversed time labels)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bffx_assay as A
+    bad = [(n, d) for n, ok, d in A.controls() if not ok]
+    assert not bad, bad
