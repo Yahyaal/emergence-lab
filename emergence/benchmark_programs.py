@@ -25,6 +25,10 @@
 * variable-length BFF (scripts/bffvl.py, bffvl_assay.py, E-81 groundwork, J-097): rule == h = 64 BFF with the marker
                    off; copy screen, replicator detector, head-to-head assay (shorter copier ahead, one-byte floor step,
                    neutral variant, short non-copier, repeat null); length nulls (noexec stationary, copyall collapse)
+* BFF-X (scripts/bffx.py, bffx_assay.py, E-82 groundwork, J-099): rule == BFF-VL with libmode live; read-only library;
+                   host detector; parasite detector (hand parasite on hand hosts; random program, host; dead host,
+                   host fragment, by-product from makers; resistant-host key specificity; early-soup null); time-shift
+                   assay (designed arms race, graded 1-of-5 control, change without resistance, reversed labels)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -228,4 +232,10 @@ def run(check) -> None:
     if (scripts / "bffvl_assay.py").exists():
         import bffvl_assay as VLA
         for name, ok, det in VLA.controls():
+            check(name, ok, det)
+
+    # BFF-X: borrowed code from a persistent neighbour (scripts/bffx.py, scripts/bffx_assay.py, E-82, J-099, D-072)
+    if (scripts / "bffx_assay.py").exists():
+        import bffx_assay as XA
+        for name, ok, det in XA.controls():
             check(name, ok, det)

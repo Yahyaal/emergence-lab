@@ -1,0 +1,5630 @@
+{
+ "experiment": "E-82 groundwork",
+ "commit": "ba6593832dae94d1802cd3dcd732922b8ba6ef96",
+ "exploratory": true,
+ "emergence_pilot": [
+  {
+   "libmode": "neighbour",
+   "seed": 9501,
+   "first_copier": 700,
+   "first_share_05": 1100,
+   "first_parasite_candidate": 700,
+   "final": {
+    "cop_share": 0.0966,
+    "par_share": 0.0431,
+    "mean_len": 8.1,
+    "n": 129422
+   },
+   "final_copiers": [
+    [
+     "5b2e3e7d5d21",
+     4236
+    ],
+    [
+     "215b2e3e7d5d21",
+     1895
+    ],
+    [
+     "5b5b2e3e7d5d21",
+     1822
+    ],
+    [
+     "2e5b2e3e7d5d21",
+     1396
+    ],
+    [
+     "5b2e7d3e5d21",
+     1170
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "21212121",
+     2643
+    ],
+    [
+     "215b2e21",
+     1007
+    ],
+    [
+     "2e212121",
+     955
+    ],
+    [
+     "5b212121",
+     764
+    ],
+    [
+     "215b2121",
+     756
+    ]
+   ],
+   "seconds": 402
+  },
+  {
+   "libmode": "neighbour",
+   "seed": 9502,
+   "first_copier": 700,
+   "first_share_05": 1500,
+   "first_parasite_candidate": 700,
+   "final": {
+    "cop_share": 0.1159,
+    "par_share": 0.0424,
+    "mean_len": 8.16,
+    "n": 128547
+   },
+   "final_copiers": [
+    [
+     "5b2e3e7d5d21",
+     6134
+    ],
+    [
+     "215b2e3e7d5d21",
+     2963
+    ],
+    [
+     "5b5b2e3e7d5d21",
+     2588
+    ],
+    [
+     "2e5b2e3e7d5d21",
+     2074
+    ],
+    [
+     "5b2e5b2e3e7d5d21",
+     794
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "21212121",
+     2679
+    ],
+    [
+     "215b2e21",
+     1037
+    ],
+    [
+     "2e212121",
+     920
+    ],
+    [
+     "21215b21",
+     806
+    ],
+    [
+     "2e5b2e21",
+     766
+    ]
+   ],
+   "seconds": 350
+  },
+  {
+   "libmode": "neighbour",
+   "seed": 9503,
+   "first_copier": 1400,
+   "first_share_05": 1900,
+   "first_parasite_candidate": 1400,
+   "final": {
+    "cop_share": 0.1193,
+    "par_share": 0.0412,
+    "mean_len": 8.18,
+    "n": 128142
+   },
+   "final_copiers": [
+    [
+     "5b2e3e7d5d21",
+     6736
+    ],
+    [
+     "5b5b2e3e7d5d21",
+     2677
+    ],
+    [
+     "215b2e3e7d5d21",
+     2469
+    ],
+    [
+     "2e5b2e3e7d5d21",
+     1986
+    ],
+    [
+     "5b2e5b2e3e7d5d21",
+     724
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "21212121",
+     2540
+    ],
+    [
+     "2e212121",
+     917
+    ],
+    [
+     "215b2e21",
+     904
+    ],
+    [
+     "21215b21",
+     787
+    ],
+    [
+     "215b2121",
+     714
+    ]
+   ],
+   "seconds": 329
+  },
+  {
+   "libmode": "neighbour",
+   "seed": 9504,
+   "first_copier": 600,
+   "first_share_05": 1200,
+   "first_parasite_candidate": 600,
+   "final": {
+    "cop_share": 0.1197,
+    "par_share": 0.0431,
+    "mean_len": 8.12,
+    "n": 129151
+   },
+   "final_copiers": [
+    [
+     "5b2e3e7d5d21",
+     6032
+    ],
+    [
+     "215b2e3e7d5d21",
+     2614
+    ],
+    [
+     "5b5b2e3e7d5d21",
+     2518
+    ],
+    [
+     "2e5b2e3e7d5d21",
+     2066
+    ],
+    [
+     "5b2e5b2e3e7d5d21",
+     800
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "21212121",
+     2642
+    ],
+    [
+     "215b2e21",
+     1030
+    ],
+    [
+     "2e212121",
+     1008
+    ],
+    [
+     "21215b21",
+     806
+    ],
+    [
+     "215b2121",
+     795
+    ]
+   ],
+   "seconds": 369
+  },
+  {
+   "libmode": "neighbour",
+   "seed": 9505,
+   "first_copier": 200,
+   "first_share_05": 900,
+   "first_parasite_candidate": 200,
+   "final": {
+    "cop_share": 0.1116,
+    "par_share": 0.0852,
+    "mean_len": 8.19,
+    "n": 128109
+   },
+   "final_copiers": [
+    [
+     "5b2e3e7d5d21",
+     6166
+    ],
+    [
+     "215b2e3e7d5d21",
+     2673
+    ],
+    [
+     "5b5b2e3e7d5d21",
+     2408
+    ],
+    [
+     "2e5b2e3e7d5d21",
+     2002
+    ],
+    [
+     "5b2e5b2e3e7d5d21",
+     800
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "21212121",
+     2776
+    ],
+    [
+     "5b2e3e7d",
+     1157
+    ],
+    [
+     "215b2e21",
+     953
+    ],
+    [
+     "2e212121",
+     833
+    ],
+    [
+     "21215b21",
+     789
+    ]
+   ],
+   "seconds": 259
+  },
+  {
+   "libmode": "none",
+   "seed": 9501,
+   "first_copier": 100,
+   "first_share_05": 400,
+   "first_parasite_candidate": null,
+   "final": {
+    "cop_share": 0.8346,
+    "par_share": 0.0,
+    "mean_len": 6.63,
+    "n": 158119
+   },
+   "final_copiers": [
+    [
+     "5b2e3e7d5d21",
+     123937
+    ],
+    [
+     "5b5b2e3e7d5d21",
+     3373
+    ],
+    [
+     "5b2e5b2e3e7d5d21",
+     2463
+    ],
+    [
+     "5b2e5b2e3e7d5b2e3e7d5d21",
+     1607
+    ],
+    [
+     "5b2e3e7d5b2e3e7d5d21",
+     1089
+    ]
+   ],
+   "final_parasite_candidates": [],
+   "seconds": 295
+  },
+  {
+   "libmode": "none",
+   "seed": 9502,
+   "first_copier": 1400,
+   "first_share_05": 1600,
+   "first_parasite_candidate": null,
+   "final": {
+    "cop_share": 0.6925,
+    "par_share": 0.0,
+    "mean_len": 8.17,
+    "n": 128349
+   },
+   "final_copiers": [
+    [
+     "5b2e3e187d5d21",
+     80822
+    ],
+    [
+     "5b5b2e3e187d5d21",
+     3771
+    ],
+    [
+     "5b2e5b2e3e187d5d21",
+     2876
+    ],
+    [
+     "5b2e5b2e3e187d5b2e3e187d5d21",
+     1172
+    ],
+    [
+     "5b2e3ef77d5d21",
+     1049
+    ]
+   ],
+   "final_parasite_candidates": [],
+   "seconds": 406
+  },
+  {
+   "libmode": "none",
+   "seed": 9503,
+   "first_copier": 100,
+   "first_share_05": 100,
+   "first_parasite_candidate": null,
+   "final": {
+    "cop_share": 0.6153,
+    "par_share": 0.0,
+    "mean_len": 8.06,
+    "n": 130059
+   },
+   "final_copiers": [
+    [
+     "5b2e3eaa7d5d21",
+     70164
+    ],
+    [
+     "5b5b2e3eaa7d5d21",
+     2857
+    ],
+    [
+     "5b2e5b2e3eaa7d5d21",
+     2263
+    ],
+    [
+     "5b2e3ea17d5d21",
+     1452
+    ],
+    [
+     "5b2e3e277d5d21",
+     1290
+    ]
+   ],
+   "final_parasite_candidates": [],
+   "seconds": 243
+  },
+  {
+   "libmode": "none",
+   "seed": 9504,
+   "first_copier": 1900,
+   "first_share_05": 2000,
+   "first_parasite_candidate": null,
+   "final": {
+    "cop_share": 0.4533,
+    "par_share": 0.0,
+    "mean_len": 9.75,
+    "n": 107538
+   },
+   "final_copiers": [
+    [
+     "2e5b7d3e2e85f65d21",
+     40994
+    ],
+    [
+     "2e5b7d3e2e86f65d21",
+     1882
+    ],
+    [
+     "2e5b7d3e2eebf65d21",
+     1228
+    ],
+    [
+     "2e5b7d3e2e85f05d21",
+     1202
+    ],
+    [
+     "2e5b7d3e2e85305d21",
+     1166
+    ]
+   ],
+   "final_parasite_candidates": [],
+   "seconds": 205
+  },
+  {
+   "libmode": "none",
+   "seed": 9505,
+   "first_copier": 100,
+   "first_share_05": 100,
+   "first_parasite_candidate": null,
+   "final": {
+    "cop_share": 0.8369,
+    "par_share": 0.0,
+    "mean_len": 6.61,
+    "n": 158522
+   },
+   "final_copiers": [
+    [
+     "5b2e3e7d5d21",
+     124460
+    ],
+    [
+     "5b5b2e3e7d5d21",
+     3482
+    ],
+    [
+     "5b2e5b2e3e7d5d21",
+     2519
+    ],
+    [
+     "5b2e5b2e3e7d5b2e3e7d5d21",
+     1556
+    ],
+    [
+     "5b2e3e7d5b2e3e7d5d21",
+     1044
+    ]
+   ],
+   "final_parasite_candidates": [],
+   "seconds": 165
+  },
+  {
+   "libmode": "snapshot",
+   "seed": 9501,
+   "first_copier": 600,
+   "first_share_05": 3400,
+   "first_parasite_candidate": 600,
+   "final": {
+    "cop_share": 0.015,
+    "par_share": 0.0012,
+    "mean_len": 26.95,
+    "n": 38901
+   },
+   "final_copiers": [
+    [
+     "2e5b212e3e307d7e2e2c565d21",
+     754
+    ],
+    [
+     "215b212e3e307d7e2e2c565d21",
+     85
+    ],
+    [
+     "2e5b212e3e307d7e2e2c565d2e5b21",
+     44
+    ],
+    [
+     "2f5b212e3e307d7e2e2c565d21",
+     39
+    ],
+    [
+     "225b212e3e307d7e2e2c565d21",
+     25
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "2e2e2e21",
+     57
+    ],
+    [
+     "2e212121",
+     55
+    ],
+    [
+     "2e2e2121",
+     42
+    ],
+    [
+     "2e5b2e5b21",
+     25
+    ],
+    [
+     "2e2c2e21",
+     25
+    ]
+   ],
+   "seconds": 337
+  },
+  {
+   "libmode": "snapshot",
+   "seed": 9502,
+   "first_copier": 1100,
+   "first_share_05": 2500,
+   "first_parasite_candidate": 1100,
+   "final": {
+    "cop_share": 0.0052,
+    "par_share": 0.0007,
+    "mean_len": 18.25,
+    "n": 57461
+   },
+   "final_copiers": [
+    [
+     "2e025b392ebe6fa47d4b3e5d21",
+     76
+    ],
+    [
+     "2e2e5b392ebe6fa47d4b3e5d21",
+     68
+    ],
+    [
+     "01025bb32ebe6fa47d4b3e5d21",
+     66
+    ],
+    [
+     "09025b392ebe6fa47d4b3e5d21",
+     37
+    ],
+    [
+     "010201025b392ebe6fa47d4b3e5d21",
+     19
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "241d2321",
+     33
+    ],
+    [
+     "21212121",
+     30
+    ],
+    [
+     "2e2e2e21",
+     20
+    ],
+    [
+     "11fe0221",
+     16
+    ],
+    [
+     "2e212121",
+     13
+    ]
+   ],
+   "seconds": 289
+  },
+  {
+   "libmode": "snapshot",
+   "seed": 9503,
+   "first_copier": 800,
+   "first_share_05": null,
+   "first_parasite_candidate": 800,
+   "final": {
+    "cop_share": 0.0,
+    "par_share": 0.0,
+    "mean_len": 107.84,
+    "n": 9723
+   },
+   "final_copiers": [],
+   "final_parasite_candidates": [],
+   "seconds": 171
+  },
+  {
+   "libmode": "snapshot",
+   "seed": 9504,
+   "first_copier": 900,
+   "first_share_05": 3500,
+   "first_parasite_candidate": 900,
+   "final": {
+    "cop_share": 0.3967,
+    "par_share": 0.0,
+    "mean_len": 9.54,
+    "n": 109888
+   },
+   "final_copiers": [
+    [
+     "2e5b7d3e2e5d21",
+     42978
+    ],
+    [
+     "2e2e5b7d3e2e5d21",
+     5132
+    ],
+    [
+     "2e5b2e5b7d3e2e5d21",
+     2704
+    ],
+    [
+     "2e2e2e5b7d3e2e5d21",
+     346
+    ],
+    [
+     "2e5b2e5b7d3e2e5d",
+     176
+    ]
+   ],
+   "final_parasite_candidates": [],
+   "seconds": 386
+  },
+  {
+   "libmode": "snapshot",
+   "seed": 9505,
+   "first_copier": 1800,
+   "first_share_05": null,
+   "first_parasite_candidate": 1800,
+   "final": {
+    "cop_share": 0.0087,
+    "par_share": 0.0009,
+    "mean_len": 21.23,
+    "n": 49394
+   },
+   "final_copiers": [
+    [
+     "2e5b3e05057d5ee1672e32b75d1c21",
+     142
+    ],
+    [
+     "212e5b3e05057d5ee1672e32b75d1c21",
+     63
+    ],
+    [
+     "2e5b3e05057d5ee1672e32b75d2e21",
+     59
+    ],
+    [
+     "2e2e5b3e05057d5ee1672e32b75d1c21",
+     32
+    ],
+    [
+     "2e5b2e5b3e05057d5ee1672e32b75d2e21",
+     27
+    ]
+   ],
+   "final_parasite_candidates": [
+    [
+     "2e2e2e21",
+     79
+    ],
+    [
+     "2e2e2121",
+     26
+    ],
+    [
+     "2e2e2c21",
+     20
+    ],
+    [
+     "2e212121",
+     19
+    ],
+    [
+     "2e2f2e21",
+     14
+    ]
+   ],
+   "seconds": 183
+  }
+ ],
+ "seeded_pilot": [
+  {
+   "arm": "HP",
+   "seed": 9601,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10449,
+     "mean_len": 100.47,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "8080808080808021",
+      "199db8045ab36c7e745ab358452d5389b74b2a32aa2530ed32b921",
+      "cff1331388365732ad5009d058574aed41fb21",
+      "3324d96ef6bfb2ae563bdbb49306cb9d3fe9700f42bdaf9ca7117a9a758868344524334ade28ff49c8ee3a47f943b61b16f20820a0a90311b277e8535419add53e9dcda120180e32f23a3c35d4afda8e590665525ef79e1a31edb8c60279e702153bdc82cbf8580b95bffae5cc5f7116152596b1b9d1b566a640164a74d73122",
+      "7cd72bd58275367e2b0a056860a7f4272bfa41e39e0fa88121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 5,
+     "n": 49891,
+     "mean_len": 21.04,
+     "host_share": 0.3641,
+     "para_share": 0.0011,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "623f9521",
+      "7ec7593721",
+      "1bd51121",
+      "02bd15d821",
+      "af19afb16721"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 10,
+     "n": 100685,
+     "mean_len": 10.43,
+     "host_share": 0.428,
+     "para_share": 0.0006,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "623f9521",
+      "1bd51121",
+      "d6261721",
+      "d5261721",
+      "61212121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 20,
+     "n": 102878,
+     "mean_len": 10.2,
+     "host_share": 0.1199,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080"
+     ],
+     "paras": [
+      "623f9521",
+      "1bd51121",
+      "5b2e3e7d",
+      "d6261721",
+      "d5261721"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 50,
+     "n": 116128,
+     "mean_len": 9.04,
+     "host_share": 0.0007,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "2e212121",
+      "2e2e2e21",
+      "2e2e2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 100,
+     "n": 127476,
+     "mean_len": 8.24,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "2e212121",
+      "2e5b2e21",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 200,
+     "n": 128115,
+     "mean_len": 8.19,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "2e5b2e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 500,
+     "n": 129233,
+     "mean_len": 8.12,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "5b215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1000,
+     "n": 128980,
+     "mean_len": 8.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "2e5b2e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1500,
+     "n": 129148,
+     "mean_len": 8.13,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 129010,
+     "mean_len": 8.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "2e212121",
+      "2e5b2e21",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  },
+  {
+   "arm": "HP",
+   "seed": 9602,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10450,
+     "mean_len": 100.46,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "8080808080808021",
+      "4ac4243ab2fd85dec91721",
+      "e0e9e7ee499a17e13d6bfa4263a0cb4ee8a25565f732d97fc754a210b371e69e09266f31d49b5ed96c1858545e7eacf3f665df654dd1e2564da708a4134807cf5860ef2ce38c9e42127cb0175cffd9d5a8ec1e685edf20e4674f52587535a5e5111a98aa01d0c366aa2cb4b369023fed40d4b2c01acc43bc11896e26aaf97ae0",
+      "a306f84eecfacaf171b1a0cf9d22aff549522dfdf676967889a2a759ae3d9dab51deefad274d9ae88fa55b3357f6141c33aa679005379c3f253fc6cc2f23881965f8d1c559677f7ab16cccb7991cdc21",
+      "f9dea1033bf5a2ee1e78c182081dd32754f3de43b4a19ec2bf0c86ff90fe8dd99f1d12c5b021"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 5,
+     "n": 52683,
+     "mean_len": 19.93,
+     "host_share": 0.3775,
+     "para_share": 0.0002,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080"
+     ],
+     "paras": [
+      "850d1c21",
+      "22212121",
+      "21212121",
+      "5b2e3e7d",
+      "c390ad21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 10,
+     "n": 106163,
+     "mean_len": 9.89,
+     "host_share": 0.3953,
+     "para_share": 0.0001,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "22212121",
+      "850d1c21",
+      "21212121",
+      "c390ad21",
+      "33038321"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 20,
+     "n": 110084,
+     "mean_len": 9.54,
+     "host_share": 0.1089,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080"
+     ],
+     "paras": [
+      "21212121",
+      "22212121",
+      "850d1c21",
+      "c390ad21",
+      "5b212121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 50,
+     "n": 121775,
+     "mean_len": 8.62,
+     "host_share": 0.0003,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "2e212121",
+      "2e2e2e21",
+      "2e2e2121",
+      "5b2e3e7d"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 100,
+     "n": 127937,
+     "mean_len": 8.21,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "2e212e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 200,
+     "n": 129284,
+     "mean_len": 8.12,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "2e212121",
+      "215b2121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 500,
+     "n": 128921,
+     "mean_len": 8.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1000,
+     "n": 129611,
+     "mean_len": 8.1,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "2e5b2e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1500,
+     "n": 128976,
+     "mean_len": 8.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "2e212121",
+      "215b2e21",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 128569,
+     "mean_len": 8.17,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  },
+  {
+   "arm": "HP",
+   "seed": 9603,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10385,
+     "mean_len": 101.09,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "8080808080808021",
+      "90f3c1b8e3b0a1ffa781126701309867f9a621",
+      "8a4d2330a2115868e60931e721",
+      "98a49c6d84f720bd6e9ee884835621",
+      "8c56dc4b0e4329f7d33339ee707fb0ebadeb266f82b4c9917e7ad03d171a21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 5,
+     "n": 52355,
+     "mean_len": 20.05,
+     "host_share": 0.391,
+     "para_share": 0.0018,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080"
+     ],
+     "paras": [
+      "a739dc21",
+      "5b2e3e7d",
+      "21212121",
+      "8080808080808021",
+      "1d1e1f2021"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 10,
+     "n": 103274,
+     "mean_len": 10.17,
+     "host_share": 0.4263,
+     "para_share": 0.0016,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "a739dc21",
+      "5b2e3e7d",
+      "2b7f2d21",
+      "21212121",
+      "a768d121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 20,
+     "n": 107166,
+     "mean_len": 9.8,
+     "host_share": 0.1203,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080"
+     ],
+     "paras": [
+      "a739dc21",
+      "5b2e3e7d",
+      "21212121",
+      "2b7f2d21",
+      "a768d121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 50,
+     "n": 115411,
+     "mean_len": 9.1,
+     "host_share": 0.0005,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "2e212121",
+      "3e213e21",
+      "215b2e3e7d21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 100,
+     "n": 127200,
+     "mean_len": 8.25,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "215b2121",
+      "21215b21",
+      "2e212121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 200,
+     "n": 128682,
+     "mean_len": 8.16,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "21215b21",
+      "2e212121",
+      "215b2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 500,
+     "n": 129250,
+     "mean_len": 8.12,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1000,
+     "n": 128697,
+     "mean_len": 8.16,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "2e212121",
+      "21215b21",
+      "2e5b2e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1500,
+     "n": 128782,
+     "mean_len": 8.15,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "5b212121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 130392,
+     "mean_len": 8.05,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "5b215b21",
+      "2e212121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  },
+  {
+   "arm": "HP",
+   "seed": 9604,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10389,
+     "mean_len": 101.05,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "8080808080808021",
+      "d0314023d63d6b16265b56d11df5caa86c5a32fc9c78d7d623bbc48506551aa6288b424c92c8d8e143ed21",
+      "14193ff503ddeb530dc985edb6b58adb21",
+      "fa6f02ec1a8d235cfbbb89e2d8b8f037377aada3dcaf307bd8736bd211381dcd0a2303a003daafe2193bee8864b2de038635e550110aa1d859614e8b2bcb3f4f136482269448fa9dbf70caf6eacd5bf85cf4d1b324c5ee01106d2311307d80c2e5b878011eefb42738ca0cc2bec86728af573edb381a94053c084fc609dfe504",
+      "70556c21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 5,
+     "n": 49383,
+     "mean_len": 21.26,
+     "host_share": 0.3606,
+     "para_share": 0.0008,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808059808021"
+     ],
+     "paras": [
+      "20212121",
+      "66254321",
+      "dec30521",
+      "5b2e3e7d",
+      "c845be6d21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 10,
+     "n": 102600,
+     "mean_len": 10.23,
+     "host_share": 0.4242,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021"
+     ],
+     "paras": [
+      "5b2e3e7d",
+      "dec30521",
+      "66254321",
+      "20212121",
+      "e7ece321"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 20,
+     "n": 106175,
+     "mean_len": 9.89,
+     "host_share": 0.1113,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080"
+     ],
+     "paras": [
+      "5b2e3e7d",
+      "dec30521",
+      "20212121",
+      "66254321",
+      "2e212121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 50,
+     "n": 116859,
+     "mean_len": 8.98,
+     "host_share": 0.0005,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "2e2e2e21",
+      "2e212121",
+      "2e2e2121",
+      "2e212e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 100,
+     "n": 127892,
+     "mean_len": 8.21,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "2e212121",
+      "215b2e21",
+      "2e5b2e21",
+      "215b2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 200,
+     "n": 130223,
+     "mean_len": 8.06,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "2e5b2e21",
+      "2e212121",
+      "215b2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 500,
+     "n": 127987,
+     "mean_len": 8.2,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "2e212121",
+      "215b2e21",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1000,
+     "n": 128985,
+     "mean_len": 8.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1500,
+     "n": 129246,
+     "mean_len": 8.12,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "215b2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 129622,
+     "mean_len": 8.1,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "2e5b2e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  },
+  {
+   "arm": "HPn",
+   "seed": 9601,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10449,
+     "mean_len": 100.47,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 48151,
+     "mean_len": 21.8,
+     "host_share": 0.4276,
+     "para_share": 0.0002,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 10,
+     "n": 78746,
+     "mean_len": 13.33,
+     "host_share": 0.785,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5b2e3e7d5d8080805b2e3e7d",
+      "5b2e5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 20,
+     "n": 82097,
+     "mean_len": 12.79,
+     "host_share": 0.8467,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 50,
+     "n": 85120,
+     "mean_len": 12.33,
+     "host_share": 0.8383,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 165793,
+     "mean_len": 6.33,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 162796,
+     "mean_len": 6.45,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 158231,
+     "mean_len": 6.63,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1000,
+     "n": 157844,
+     "mean_len": 6.65,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1500,
+     "n": 158071,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 2000,
+     "n": 158356,
+     "mean_len": 6.63,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    }
+   ]
+  },
+  {
+   "arm": "HPn",
+   "seed": 9602,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10450,
+     "mean_len": 100.46,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 48193,
+     "mean_len": 21.78,
+     "host_share": 0.4308,
+     "para_share": 0.0001,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 10,
+     "n": 79124,
+     "mean_len": 13.27,
+     "host_share": 0.7898,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5b2e3e7d5d8080805b2e3e7d"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 20,
+     "n": 81901,
+     "mean_len": 12.82,
+     "host_share": 0.844,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 50,
+     "n": 83611,
+     "mean_len": 12.56,
+     "host_share": 0.8816,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 165101,
+     "mean_len": 6.36,
+     "host_share": 0.0005,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 162916,
+     "mean_len": 6.44,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 158143,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1000,
+     "n": 158122,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1500,
+     "n": 158492,
+     "mean_len": 6.62,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 2000,
+     "n": 158046,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    }
+   ]
+  },
+  {
+   "arm": "HPn",
+   "seed": 9603,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10385,
+     "mean_len": 101.09,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 47971,
+     "mean_len": 21.89,
+     "host_share": 0.4315,
+     "para_share": 0.0002,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080",
+      "5b2e3e7d5d6e808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 10,
+     "n": 78722,
+     "mean_len": 13.34,
+     "host_share": 0.7871,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5b2e3e7d5d8080805b2e3e7d"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 20,
+     "n": 82524,
+     "mean_len": 12.72,
+     "host_share": 0.8535,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 50,
+     "n": 83850,
+     "mean_len": 12.52,
+     "host_share": 0.8896,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d6e808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 83775,
+     "mean_len": 12.53,
+     "host_share": 0.8827,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d80f38080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 164710,
+     "mean_len": 6.37,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 158802,
+     "mean_len": 6.61,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1000,
+     "n": 157759,
+     "mean_len": 6.65,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1500,
+     "n": 158164,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 2000,
+     "n": 157990,
+     "mean_len": 6.65,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    }
+   ]
+  },
+  {
+   "arm": "HPn",
+   "seed": 9604,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10389,
+     "mean_len": 101.05,
+     "host_share": 0.0007,
+     "para_share": 0.0005,
+     "hosts": [
+      "5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 47842,
+     "mean_len": 21.94,
+     "host_share": 0.4215,
+     "para_share": 0.0002,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5d808080",
+      "5b5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 10,
+     "n": 78401,
+     "mean_len": 13.39,
+     "host_share": 0.7718,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d8080805b2e3e7d5d8080805b2e3e7d5b2e3e7d5d8080805b2e3e7d",
+      "5b2e3e7d5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 20,
+     "n": 81654,
+     "mean_len": 12.86,
+     "host_share": 0.8249,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d80808080808021",
+      "5b2e5b2e3e7d5d80808080808021",
+      "5b2e3e7d5d808080",
+      "5b2e3e7d5b2e3e7d5d80808080808021",
+      "5b5b2e3e7d5d80808080808021"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 50,
+     "n": 164426,
+     "mean_len": 6.38,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 163376,
+     "mean_len": 6.43,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 161053,
+     "mean_len": 6.52,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 158176,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1000,
+     "n": 158430,
+     "mean_len": 6.63,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1500,
+     "n": 158091,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 2000,
+     "n": 158221,
+     "mean_len": 6.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5b2e3e7d5d21",
+      "5b2e3e7d5b2e3e7d5d21"
+     ],
+     "paras": [],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": null
+    }
+   ]
+  },
+  {
+   "arm": "P",
+   "seed": 9601,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10385,
+     "mean_len": 101.02,
+     "host_share": 0.0,
+     "para_share": 0.0005,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 10321,
+     "mean_len": 101.65,
+     "host_share": 0.0,
+     "para_share": 0.0001,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 10,
+     "n": 10233,
+     "mean_len": 102.52,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 20,
+     "n": 10061,
+     "mean_len": 104.27,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 50,
+     "n": 9701,
+     "mean_len": 108.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 69331,
+     "mean_len": 15.13,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 50791,
+     "mean_len": 20.65,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 51539,
+     "mean_len": 20.36,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1000,
+     "n": 55506,
+     "mean_len": 18.9,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1500,
+     "n": 112151,
+     "mean_len": 9.35,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "2e5b3e7d2e5d21",
+      "2e2e5b3e7d2e5d21",
+      "2e5b3e7dba2e5d21",
+      "212e5b3e7d2e5d21",
+      "2e5b2e5b3e7d2e5d21"
+     ],
+     "paras": [
+      "21212121",
+      "2e212121",
+      "2e2e2e21",
+      "2e212e21",
+      "2e5b3e7d"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 133469,
+     "mean_len": 7.86,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e7d3e5d21",
+      "215b2e7d3e5d21",
+      "5b5b2e7d3e5d21",
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "21215b21",
+      "2e212121",
+      "215b5b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  },
+  {
+   "arm": "P",
+   "seed": 9602,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10386,
+     "mean_len": 101.01,
+     "host_share": 0.0,
+     "para_share": 0.0005,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 10341,
+     "mean_len": 101.45,
+     "host_share": 0.0,
+     "para_share": 0.0001,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 10,
+     "n": 10266,
+     "mean_len": 102.19,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 20,
+     "n": 10464,
+     "mean_len": 100.26,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 50,
+     "n": 65082,
+     "mean_len": 16.12,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 79828,
+     "mean_len": 13.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 67900,
+     "mean_len": 15.45,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 56797,
+     "mean_len": 18.47,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1000,
+     "n": 70950,
+     "mean_len": 14.79,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1500,
+     "n": 98672,
+     "mean_len": 10.63,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "2e5b2e3eadfd7d5d21",
+      "5b2e3eadfd7d5d21",
+      "215b2e3eadfd7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "2e212121",
+      "2e212e21",
+      "212e2121",
+      "2e2e2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 129095,
+     "mean_len": 8.13,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  },
+  {
+   "arm": "P",
+   "seed": 9603,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10321,
+     "mean_len": 101.65,
+     "host_share": 0.0,
+     "para_share": 0.0005,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 10288,
+     "mean_len": 101.97,
+     "host_share": 0.0,
+     "para_share": 0.0001,
+     "hosts": [
+      "8424a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c97ca7eda5885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff92788d895b0777fc4d8e773547fbe26c7620f3fa21"
+     ],
+     "paras": [
+      "91e8e4bbf5de1e986bbcc07e4a21",
+      "c58714abf5bde417df19e32ab6b6402bf879bf1f68e72f6aaa381221",
+      "0f686335f946a6b0d607143b917dcd376aa4934b655aa59cf2fc6a04201d18cff757c06e602d9b24256793d227541ed4e976a785fc3d73a11717ac9e83b76169a697aa06e486e0fd037910cd33d43331957b4134e9836ae1ac3d0169ffab269996e1930519a0384474f56fe7b7e14579623176a326caeedb6d829c7fa49a69e9",
+      "ce4deda4ae86a89c07fa5609d021",
+      "31d0e2e242d38a96a3472a762d5ada2b57091e81ad21"
+     ],
+     "q_anc_para_on_hosts": 0.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 10,
+     "n": 10201,
+     "mean_len": 102.84,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "6024a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c97ca7edb0885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff9278d424a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4",
+      "2e45a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c97ca7eda5885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff92788d895b0777fc4d8e773547fbe26c7620f3fa21"
+     ],
+     "paras": [
+      "91e8e4bbf5de1e986bbcc07e4a21",
+      "997c7f8285888b8e919497fc852c552beb2b39e09a5920c46316800b8ad34942def4ac9a090f13543a982a444f9dadfc609a672266d23dd4e1c18221",
+      "176bb4a90391fbec25df7055a231bbefa10fbdefdc48307b550972c9d837b719ba63265c3a26757e1a278227e188dc121546a45122b5d2863085f7e6eec1b50745120293a67dd592630483348f6f7fde84ad379e77bd39547af498dcde7e0a902e9f1c4798c9dbadbc0af1f32f830c0be5e6a20da7f3d9c8cc2566a73fcde56b",
+      "444a25c5fa75f5fc191448039c851f0f85c4e8421316282df8dc4a1606aa794317b152ad8c157003b2aba6fc800230ff4a67d37e75b8d8cbfde27cd597208e304b2d1089de4992911417dd3ef6aa712359ed30382457b0811d5aed524fae33a646b93c4f0322910d703dcba817d8eab313d31ba3d3911f025bf4dfb89c31772f",
+      "a815173fc3d22d8b42e91f77b438e5d4ae510343a5f3ea353728bb2f62cd6821"
+     ],
+     "q_anc_para_on_hosts": 0.5,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 20,
+     "n": 10450,
+     "mean_len": 100.39,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "2e24a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c97ca7eda5885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff92788d895b0777fc4d8e773547fbe26c7620f3fa21",
+      "2e34a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c90fa7eda5885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff92788d895b0777fc4d8e773547fbe26c7620f3fa21",
+      "2e24a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c90fa7eda5885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff92788d895b0777fc4d8e773547fbe26c7620f3fa21",
+      "2e4544669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c97ca7eda5885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff92788d895b0777fc4d8e773547fbe26c7620f3fa21",
+      "2e31a4669e4a72a2c1bbbadf5b7fea6c9c485c232cebeef675d2377c9db5b9c13e7da4bdfc63bfd4d4e32e06c97ca7eda5885df4dcb5a3fd30a0e229e43a988894025bb0488ce5843c5b3c9a8514cd66881b7c4bcecd46caae92ff92788d895b0777fc4d8e773547fbe26c7620f3fa21"
+     ],
+     "paras": [
+      "2e24a4669e4a72a2c1bbbadf5b7fea6c",
+      "2e7e808080808021",
+      "2ed73467f66d21",
+      "797866710ce492733945ca9f21",
+      "57322121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 50,
+     "n": 65697,
+     "mean_len": 15.97,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 69010,
+     "mean_len": 15.2,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 52972,
+     "mean_len": 19.8,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 81930,
+     "mean_len": 12.8,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "2e5b2e12a430c13e7da403c05d21",
+      "2e5b2e04a430c13e7da403c05d21",
+      "2e2a5b2e04a430c13e7da403c05d21",
+      "2e5b2e1ea4662eb9c13e7da403c05d21",
+      "2e2e5b2e04a430c13e7da403c05d21"
+     ],
+     "paras": [
+      "2e2e2e21",
+      "2e5b2e21",
+      "2e212121",
+      "2e5b5b21",
+      "2e2e2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1000,
+     "n": 115679,
+     "mean_len": 9.07,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d035d21",
+      "215b2e3e7d035d21",
+      "5b5b2e3e7d035d21",
+      "2e5b2e3e7d035d21",
+      "5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "215b2e21",
+      "2e5b2e21",
+      "2e212121",
+      "5b5b2e21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 1500,
+     "n": 129540,
+     "mean_len": 8.1,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "2e212121",
+      "215b2e21",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 129944,
+     "mean_len": 8.07,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "215b2121"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  },
+  {
+   "arm": "P",
+   "seed": 9604,
+   "traj": [
+    {
+     "epoch": 0,
+     "n": 10325,
+     "mean_len": 101.61,
+     "host_share": 0.0,
+     "para_share": 0.0005,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 5,
+     "n": 10327,
+     "mean_len": 101.59,
+     "host_share": 0.0,
+     "para_share": 0.0001,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 10,
+     "n": 10322,
+     "mean_len": 101.64,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 20,
+     "n": 11016,
+     "mean_len": 95.23,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 50,
+     "n": 36015,
+     "mean_len": 29.13,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 100,
+     "n": 30008,
+     "mean_len": 34.96,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 200,
+     "n": 32851,
+     "mean_len": 31.93,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 500,
+     "n": 50783,
+     "mean_len": 20.66,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1000,
+     "n": 81090,
+     "mean_len": 12.94,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [],
+     "paras": [],
+     "q_anc_para_on_hosts": null,
+     "q_cur_para_on_anc_host": null
+    },
+    {
+     "epoch": 1500,
+     "n": 129823,
+     "mean_len": 8.08,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "5b215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    },
+    {
+     "epoch": 2000,
+     "n": 128920,
+     "mean_len": 8.14,
+     "host_share": 0.0,
+     "para_share": 0.0,
+     "hosts": [
+      "5b2e3e7d5d21",
+      "5b5b2e3e7d5d21",
+      "215b2e3e7d5d21",
+      "2e5b2e3e7d5d21",
+      "5b2e5b2e3e7d5d21"
+     ],
+     "paras": [
+      "21212121",
+      "5b2e3e7d",
+      "215b2e21",
+      "2e212121",
+      "21215b21"
+     ],
+     "q_anc_para_on_hosts": 1.0,
+     "q_cur_para_on_anc_host": 1.0
+    }
+   ]
+  }
+ ],
+ "seeded_gate_pilot": {
+  "9621": {
+   "HP": {
+    "counts": [
+     64,
+     41,
+     35,
+     28,
+     81,
+     131,
+     116,
+     158,
+     134,
+     97,
+     61
+    ],
+    "rebound": 5.643,
+    "hosts": 33699
+   },
+   "P": {
+    "counts": [
+     64,
+     39,
+     24,
+     16,
+     9,
+     6,
+     3,
+     2,
+     1,
+     1,
+     1
+    ],
+    "rebound": 0.562,
+    "hosts": 0
+   }
+  },
+  "9622": {
+   "HP": {
+    "counts": [
+     64,
+     39,
+     40,
+     95,
+     206,
+     414,
+     521,
+     462,
+     419,
+     339,
+     285
+    ],
+    "rebound": 13.359,
+    "hosts": 33210
+   },
+   "P": {
+    "counts": [
+     64,
+     39,
+     28,
+     21,
+     16,
+     6,
+     3,
+     2,
+     1,
+     1,
+     1
+    ],
+    "rebound": 0.762,
+    "hosts": 0
+   }
+  },
+  "9623": {
+   "HP": {
+    "counts": [
+     64,
+     37,
+     40,
+     87,
+     255,
+     436,
+     594,
+     673,
+     640,
+     584,
+     459
+    ],
+    "rebound": 18.189,
+    "hosts": 32264
+   },
+   "P": {
+    "counts": [
+     64,
+     42,
+     29,
+     17,
+     12,
+     9,
+     4,
+     3,
+     3,
+     1,
+     0
+    ],
+    "rebound": 0.706,
+    "hosts": 0
+   }
+  },
+  "9624": {
+   "HP": {
+    "counts": [
+     64,
+     35,
+     21,
+     11,
+     41,
+     52,
+     56,
+     54,
+     69,
+     46,
+     40
+    ],
+    "rebound": 6.273,
+    "hosts": 31588
+   },
+   "P": {
+    "counts": [
+     64,
+     40,
+     26,
+     17,
+     14,
+     11,
+     8,
+     4,
+     5,
+     3,
+     2
+    ],
+    "rebound": 0.824,
+    "hosts": 0
+   }
+  },
+  "9625": {
+   "HP": {
+    "counts": [
+     64,
+     43,
+     42,
+     28,
+     83,
+     139,
+     154,
+     200,
+     156,
+     129,
+     103
+    ],
+    "rebound": 7.143,
+    "hosts": 39427
+   },
+   "P": {
+    "counts": [
+     64,
+     45,
+     30,
+     20,
+     14,
+     8,
+     6,
+     4,
+     2,
+     1,
+     1
+    ],
+    "rebound": 0.7,
+    "hosts": 0
+   }
+  },
+  "9626": {
+   "HP": {
+    "counts": [
+     64,
+     41,
+     41,
+     85,
+     81,
+     144,
+     155,
+     174,
+     143,
+     95,
+     86
+    ],
+    "rebound": 4.244,
+    "hosts": 27748
+   },
+   "P": {
+    "counts": [
+     64,
+     34,
+     20,
+     17,
+     16,
+     9,
+     6,
+     5,
+     1,
+     0,
+     1
+    ],
+    "rebound": 0.941,
+    "hosts": 0
+   }
+  },
+  "9627": {
+   "HP": {
+    "counts": [
+     64,
+     30,
+     18,
+     22,
+     27,
+     36,
+     47,
+     65,
+     62,
+     50,
+     66
+    ],
+    "rebound": 3.667,
+    "hosts": 35245
+   },
+   "P": {
+    "counts": [
+     64,
+     47,
+     30,
+     20,
+     13,
+     10,
+     7,
+     4,
+     4,
+     1,
+     1
+    ],
+    "rebound": 0.65,
+    "hosts": 0
+   }
+  },
+  "9628": {
+   "HP": {
+    "counts": [
+     64,
+     38,
+     26,
+     19,
+     62,
+     114,
+     141,
+     134,
+     116,
+     94,
+     66
+    ],
+    "rebound": 7.421,
+    "hosts": 35405
+   },
+   "P": {
+    "counts": [
+     64,
+     45,
+     24,
+     15,
+     12,
+     5,
+     6,
+     6,
+     5,
+     3,
+     3
+    ],
+    "rebound": 0.8,
+    "hosts": 0
+   }
+  },
+  "9629": {
+   "HP": {
+    "counts": [
+     64,
+     50,
+     28,
+     13,
+     26,
+     63,
+     46,
+     69,
+     54,
+     40,
+     29
+    ],
+    "rebound": 5.308,
+    "hosts": 30255
+   },
+   "P": {
+    "counts": [
+     64,
+     39,
+     27,
+     22,
+     15,
+     10,
+     7,
+     4,
+     4,
+     4,
+     3
+    ],
+    "rebound": 0.682,
+    "hosts": 0
+   }
+  },
+  "9630": {
+   "HP": {
+    "counts": [
+     64,
+     38,
+     44,
+     41,
+     105,
+     206,
+     271,
+     220,
+     187,
+     171,
+     113
+    ],
+    "rebound": 7.132,
+    "hosts": 30770
+   },
+   "P": {
+    "counts": [
+     64,
+     39,
+     32,
+     25,
+     15,
+     9,
+     5,
+     4,
+     3,
+     1,
+     1
+    ],
+    "rebound": 0.6,
+    "hosts": 0
+   }
+  }
+ },
+ "protocol_pilot": {
+  "soups": [
+   {
+    "seed": 9701,
+    "T": 2950,
+    "seconds": 1436,
+    "S1": {
+     "epoch": 3950,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6122
+      ],
+      [
+       "215b2e3e7d5d21",
+       2641
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2439
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2147
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       651
+      ]
+     ],
+     "host_share": 0.1116,
+     "parasites": [
+      [
+       "21212121",
+       2653
+      ],
+      [
+       "21215b21",
+       755
+      ],
+      [
+       "5b5b2e21",
+       663
+      ],
+      [
+       "212e2121",
+       564
+      ],
+      [
+       "2e2e5b21",
+       562
+      ]
+     ],
+     "para_share": 0.0234,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 3,
+      "by-product": 7,
+      "host-independent": 2,
+      "not copied": 1
+     },
+     "mean_len": 8.12,
+     "n": 129153
+    },
+    "S2": {
+     "epoch": 7950,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6112
+      ],
+      [
+       "215b2e3e7d5d21",
+       2722
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2559
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2160
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       805
+      ]
+     ],
+     "host_share": 0.1187,
+     "parasites": [
+      [
+       "2e212121",
+       913
+      ],
+      [
+       "5b215b21",
+       767
+      ],
+      [
+       "21215b21",
+       724
+      ],
+      [
+       "5b5b2e21",
+       705
+      ],
+      [
+       "2e212e21",
+       691
+      ]
+     ],
+     "para_share": 0.0169,
+     "verdicts": {
+      "self-copier": 2,
+      "by-product": 3,
+      "parasite": 5,
+      "host-independent": 2
+     },
+     "mean_len": 8.15,
+     "n": 128688
+    },
+    "S3": {
+     "epoch": 12950,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       5949
+      ],
+      [
+       "215b2e3e7d5d21",
+       2751
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2283
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1943
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       743
+      ]
+     ],
+     "host_share": 0.1137,
+     "parasites": [
+      [
+       "215b2e21",
+       1044
+      ],
+      [
+       "215b2121",
+       763
+      ],
+      [
+       "21215b21",
+       758
+      ],
+      [
+       "5b212121",
+       709
+      ],
+      [
+       "2e2e2121",
+       550
+      ]
+     ],
+     "para_share": 0.017,
+     "verdicts": {
+      "self-copier": 2,
+      "parasite": 5,
+      "by-product": 10,
+      "host-independent": 2,
+      "not copied": 3
+     },
+     "mean_len": 8.09,
+     "n": 129684
+    }
+   },
+   {
+    "seed": 9702,
+    "T": 1250,
+    "seconds": 1378,
+    "S1": {
+     "epoch": 2250,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       5596
+      ],
+      [
+       "215b2e3e7d5d21",
+       2346
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2310
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1840
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       613
+      ]
+     ],
+     "host_share": 0.1083,
+     "parasites": [
+      [
+       "21212121",
+       2644
+      ],
+      [
+       "215b2e21",
+       1009
+      ],
+      [
+       "2e212121",
+       903
+      ],
+      [
+       "21215b21",
+       828
+      ],
+      [
+       "2e5b2e21",
+       769
+      ]
+     ],
+     "para_share": 0.0277,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "host-independent": 1
+     },
+     "mean_len": 8.14,
+     "n": 128822
+    },
+    "S2": {
+     "epoch": 6250,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6161
+      ],
+      [
+       "215b2e3e7d5d21",
+       2848
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2494
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2273
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       698
+      ]
+     ],
+     "host_share": 0.1147,
+     "parasites": [
+      [
+       "21212121",
+       2682
+      ],
+      [
+       "215b2121",
+       782
+      ],
+      [
+       "2e5b2e21",
+       761
+      ],
+      [
+       "5b212121",
+       749
+      ],
+      [
+       "21212e21",
+       646
+      ]
+     ],
+     "para_share": 0.0254,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "by-product": 5,
+      "host-independent": 2
+     },
+     "mean_len": 8.13,
+     "n": 129021
+    },
+    "S3": {
+     "epoch": 11250,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       5912
+      ],
+      [
+       "215b2e3e7d5d21",
+       2769
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2414
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2115
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       732
+      ]
+     ],
+     "host_share": 0.1159,
+     "parasites": [
+      [
+       "21212121",
+       2536
+      ],
+      [
+       "5b215b21",
+       848
+      ],
+      [
+       "215b2121",
+       691
+      ],
+      [
+       "2e215b21",
+       548
+      ],
+      [
+       "2e2e5b21",
+       507
+      ]
+     ],
+     "para_share": 0.023,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 2,
+      "by-product": 11,
+      "host-independent": 2,
+      "not copied": 3
+     },
+     "mean_len": 8.15,
+     "n": 128710
+    }
+   },
+   {
+    "seed": 9703,
+    "T": 950,
+    "seconds": 1380,
+    "S1": {
+     "epoch": 1950,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6104
+      ],
+      [
+       "215b2e3e7d5d21",
+       2550
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2405
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1981
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       816
+      ]
+     ],
+     "host_share": 0.11,
+     "parasites": [
+      [
+       "21212121",
+       2840
+      ],
+      [
+       "2e5b2e21",
+       797
+      ],
+      [
+       "21215b21",
+       769
+      ],
+      [
+       "2e212e21",
+       616
+      ],
+      [
+       "21212e21",
+       606
+      ]
+     ],
+     "para_share": 0.0254,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "by-product": 7,
+      "host-independent": 2
+     },
+     "mean_len": 8.07,
+     "n": 129977
+    },
+    "S2": {
+     "epoch": 5950,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6062
+      ],
+      [
+       "215b2e3e7d5d21",
+       2743
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2409
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2072
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       691
+      ]
+     ],
+     "host_share": 0.1189,
+     "parasites": [
+      [
+       "21212121",
+       2672
+      ],
+      [
+       "5b215b21",
+       723
+      ],
+      [
+       "5b5b2e21",
+       654
+      ],
+      [
+       "5b212121",
+       584
+      ],
+      [
+       "5b2e2e21",
+       552
+      ]
+     ],
+     "para_share": 0.0232,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 2,
+      "by-product": 8,
+      "host-independent": 2,
+      "not copied": 2
+     },
+     "mean_len": 8.15,
+     "n": 128655
+    },
+    "S3": {
+     "epoch": 10950,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6621
+      ],
+      [
+       "215b2e3e7d5d21",
+       2686
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2439
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2058
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       806
+      ]
+     ],
+     "host_share": 0.1199,
+     "parasites": [
+      [
+       "5b215b21",
+       878
+      ],
+      [
+       "215b5b21",
+       569
+      ],
+      [
+       "5b5b5b21",
+       547
+      ],
+      [
+       "2e215b21",
+       516
+      ],
+      [
+       "2e5b2121",
+       445
+      ]
+     ],
+     "para_share": 0.0131,
+     "verdicts": {
+      "by-product": 14,
+      "self-copier": 4,
+      "host-independent": 2,
+      "parasite": 5,
+      "not copied": 3
+     },
+     "mean_len": 8.12,
+     "n": 129146
+    }
+   },
+   {
+    "seed": 9704,
+    "T": 2050,
+    "seconds": 1444,
+    "S1": {
+     "epoch": 3050,
+     "hosts": [
+      [
+       "215b2e7d3e5d21",
+       2571
+      ],
+      [
+       "5b2e7d3e5d21",
+       2416
+      ],
+      [
+       "2e5b2e7d3e5d21",
+       1464
+      ],
+      [
+       "5b5b2e7d3e5d21",
+       1449
+      ],
+      [
+       "21215b2e7d3e5d21",
+       772
+      ]
+     ],
+     "host_share": 0.072,
+     "parasites": [
+      [
+       "21215b5b21",
+       398
+      ]
+     ],
+     "para_share": 0.0022,
+     "verdicts": {
+      "by-product": 31,
+      "not copied": 5,
+      "host-independent": 1,
+      "self-copier": 2,
+      "parasite": 1
+     },
+     "mean_len": 7.61,
+     "n": 137719
+    },
+    "S2": {
+     "epoch": 7050,
+     "hosts": [
+      [
+       "5b2e7d3e5d21",
+       2523
+      ],
+      [
+       "215b2e7d3e5d21",
+       2490
+      ],
+      [
+       "2e5b2e7d3e5d21",
+       1605
+      ],
+      [
+       "5b5b2e7d3e5d21",
+       1527
+      ],
+      [
+       "21215b2e7d3e5d21",
+       714
+      ]
+     ],
+     "host_share": 0.0706,
+     "parasites": [
+      [
+       "212e2e21",
+       789
+      ]
+     ],
+     "para_share": 0.0034,
+     "verdicts": {
+      "by-product": 29,
+      "self-copier": 8,
+      "parasite": 1,
+      "not copied": 1,
+      "host-independent": 1
+     },
+     "mean_len": 7.63,
+     "n": 137445
+    },
+    "S3": {
+     "epoch": 12050,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6589
+      ],
+      [
+       "215b2e3e7d5d21",
+       2739
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2490
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1934
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       785
+      ]
+     ],
+     "host_share": 0.119,
+     "parasites": [
+      [
+       "21212121",
+       2612
+      ],
+      [
+       "215b2e21",
+       962
+      ],
+      [
+       "2e5b2e21",
+       811
+      ],
+      [
+       "2e212e21",
+       752
+      ],
+      [
+       "21215b21",
+       742
+      ]
+     ],
+     "para_share": 0.0262,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "by-product": 1,
+      "host-independent": 2
+     },
+     "mean_len": 8.18,
+     "n": 128194
+    }
+   },
+   {
+    "seed": 9705,
+    "T": 400,
+    "seconds": 1322,
+    "S1": {
+     "epoch": 1400,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6229
+      ],
+      [
+       "215b2e3e7d5d21",
+       2952
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2546
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2206
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       747
+      ]
+     ],
+     "host_share": 0.1206,
+     "parasites": [
+      [
+       "21212121",
+       2805
+      ],
+      [
+       "215b2e21",
+       952
+      ],
+      [
+       "5b212121",
+       734
+      ],
+      [
+       "5b215b21",
+       721
+      ],
+      [
+       "2e212e21",
+       694
+      ]
+     ],
+     "para_share": 0.0264,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "by-product": 3,
+      "host-independent": 2
+     },
+     "mean_len": 8.13,
+     "n": 128977
+    },
+    "S2": {
+     "epoch": 5400,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6164
+      ],
+      [
+       "215b2e3e7d5d21",
+       2681
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2435
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2097
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       697
+      ]
+     ],
+     "host_share": 0.1118,
+     "parasites": [
+      [
+       "21212121",
+       2955
+      ],
+      [
+       "2e5b2e21",
+       799
+      ],
+      [
+       "21215b21",
+       775
+      ],
+      [
+       "212e2121",
+       678
+      ],
+      [
+       "2e2e5b21",
+       551
+      ]
+     ],
+     "para_share": 0.0258,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 2,
+      "by-product": 8,
+      "host-independent": 2,
+      "not copied": 2
+     },
+     "mean_len": 8.1,
+     "n": 129442
+    },
+    "S3": {
+     "epoch": 10400,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       5856
+      ],
+      [
+       "215b2e3e7d5d21",
+       2705
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2513
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2202
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       692
+      ]
+     ],
+     "host_share": 0.1152,
+     "parasites": [
+      [
+       "215b2e21",
+       1010
+      ],
+      [
+       "2e212121",
+       992
+      ],
+      [
+       "5b212121",
+       766
+      ],
+      [
+       "2e212e21",
+       673
+      ],
+      [
+       "21212e21",
+       570
+      ]
+     ],
+     "para_share": 0.0177,
+     "verdicts": {
+      "by-product": 8,
+      "self-copier": 1,
+      "parasite": 5,
+      "host-independent": 2,
+      "not copied": 1
+     },
+     "mean_len": 8.12,
+     "n": 129077
+    }
+   },
+   {
+    "seed": 9706,
+    "T": 2250,
+    "seconds": 1426,
+    "S1": {
+     "epoch": 3250,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6194
+      ],
+      [
+       "215b2e3e7d5d21",
+       2550
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2466
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1979
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       724
+      ]
+     ],
+     "host_share": 0.1104,
+     "parasites": [
+      [
+       "21212121",
+       2608
+      ],
+      [
+       "2e212121",
+       954
+      ],
+      [
+       "215b2121",
+       842
+      ],
+      [
+       "21215b21",
+       798
+      ],
+      [
+       "5b215b21",
+       699
+      ]
+     ],
+     "para_share": 0.0263,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "by-product": 2,
+      "host-independent": 2
+     },
+     "mean_len": 8.16,
+     "n": 128576
+    },
+    "S2": {
+     "epoch": 7250,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6107
+      ],
+      [
+       "215b2e3e7d5d21",
+       2673
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2458
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1971
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       747
+      ]
+     ],
+     "host_share": 0.1114,
+     "parasites": [
+      [
+       "215b2e21",
+       1068
+      ],
+      [
+       "2e5b2e21",
+       767
+      ],
+      [
+       "5b5b5b21",
+       524
+      ],
+      [
+       "2e2e2121",
+       514
+      ],
+      [
+       "5b2e2e21",
+       497
+      ]
+     ],
+     "para_share": 0.015,
+     "verdicts": {
+      "by-product": 12,
+      "self-copier": 1,
+      "parasite": 5,
+      "host-independent": 2,
+      "not copied": 3
+     },
+     "mean_len": 8.12,
+     "n": 129095
+    },
+    "S3": {
+     "epoch": 12250,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6133
+      ],
+      [
+       "215b2e3e7d5d21",
+       2960
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2533
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1953
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       785
+      ]
+     ],
+     "host_share": 0.1155,
+     "parasites": [
+      [
+       "215b2e21",
+       950
+      ],
+      [
+       "2e212121",
+       936
+      ],
+      [
+       "2e5b2e21",
+       713
+      ],
+      [
+       "2e212e21",
+       705
+      ],
+      [
+       "5b215b21",
+       684
+      ]
+     ],
+     "para_share": 0.0177,
+     "verdicts": {
+      "by-product": 3,
+      "self-copier": 1,
+      "parasite": 5,
+      "host-independent": 2
+     },
+     "mean_len": 8.15,
+     "n": 128660
+    }
+   },
+   {
+    "seed": 9707,
+    "T": 500,
+    "seconds": 1413,
+    "S1": {
+     "epoch": 1500,
+     "hosts": [
+      [
+       "215b2e7d3e5d21",
+       2628
+      ],
+      [
+       "5b2e7d3e5d21",
+       2552
+      ],
+      [
+       "2e5b2e7d3e5d21",
+       1391
+      ],
+      [
+       "5b5b2e7d3e5d21",
+       1340
+      ],
+      [
+       "21215b2e7d3e5d21",
+       829
+      ]
+     ],
+     "host_share": 0.0735,
+     "parasites": [
+      [
+       "215b5b21",
+       963
+      ],
+      [
+       "2e2e5b21",
+       790
+      ],
+      [
+       "5b2e2121",
+       459
+      ],
+      [
+       "5b2e5b21",
+       425
+      ]
+     ],
+     "para_share": 0.0114,
+     "verdicts": {
+      "by-product": 28,
+      "parasite": 4,
+      "self-copier": 4,
+      "host-independent": 1,
+      "not copied": 3
+     },
+     "mean_len": 7.63,
+     "n": 137515
+    },
+    "S2": {
+     "epoch": 5500,
+     "hosts": [
+      [
+       "5b2e7d3e5d21",
+       2763
+      ],
+      [
+       "215b2e7d3e5d21",
+       2532
+      ],
+      [
+       "5b5b2e7d3e5d21",
+       1500
+      ],
+      [
+       "2e5b2e7d3e5d21",
+       1410
+      ],
+      [
+       "21215b2e7d3e5d21",
+       870
+      ]
+     ],
+     "host_share": 0.0754,
+     "parasites": [
+      [
+       "21215b21",
+       1475
+      ],
+      [
+       "215b2121",
+       1093
+      ],
+      [
+       "5b212121",
+       916
+      ],
+      [
+       "21215b2e21",
+       813
+      ],
+      [
+       "2e215b21",
+       533
+      ]
+     ],
+     "para_share": 0.0218,
+     "verdicts": {
+      "by-product": 18,
+      "parasite": 5,
+      "not copied": 1,
+      "host-independent": 2,
+      "self-copier": 2
+     },
+     "mean_len": 7.58,
+     "n": 138283
+    },
+    "S3": {
+     "epoch": 10500,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       4770
+      ],
+      [
+       "215b2e3e7d5d21",
+       2426
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2172
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1801
+      ],
+      [
+       "5b2e7d3e5d21",
+       1033
+      ]
+     ],
+     "host_share": 0.1048,
+     "parasites": [
+      [
+       "21215b21",
+       842
+      ],
+      [
+       "2e5b2e21",
+       829
+      ],
+      [
+       "215b2121",
+       703
+      ],
+      [
+       "2e2e2e21",
+       684
+      ],
+      [
+       "5b215b21",
+       667
+      ]
+     ],
+     "para_share": 0.0166,
+     "verdicts": {
+      "by-product": 5,
+      "self-copier": 1,
+      "parasite": 5,
+      "host-independent": 1
+     },
+     "mean_len": 8.1,
+     "n": 129383
+    }
+   },
+   {
+    "seed": 9708,
+    "T": 1050,
+    "seconds": 1369,
+    "S1": {
+     "epoch": 2050,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6542
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2654
+      ],
+      [
+       "215b2e3e7d5d21",
+       2586
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2003
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       692
+      ]
+     ],
+     "host_share": 0.1197,
+     "parasites": [
+      [
+       "21212121",
+       2826
+      ],
+      [
+       "2e212121",
+       887
+      ],
+      [
+       "21215b21",
+       749
+      ],
+      [
+       "215b2121",
+       743
+      ],
+      [
+       "5b215b21",
+       654
+      ]
+     ],
+     "para_share": 0.0262,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 2,
+      "host-independent": 2,
+      "by-product": 2,
+      "not copied": 1
+     },
+     "mean_len": 8.19,
+     "n": 128101
+    },
+    "S2": {
+     "epoch": 6050,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6583
+      ],
+      [
+       "215b2e3e7d5d21",
+       2732
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2517
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1926
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       784
+      ]
+     ],
+     "host_share": 0.1194,
+     "parasites": [
+      [
+       "21212121",
+       2620
+      ],
+      [
+       "215b2e21",
+       961
+      ],
+      [
+       "215b2121",
+       806
+      ],
+      [
+       "2e5b2e21",
+       724
+      ],
+      [
+       "5b212121",
+       719
+      ]
+     ],
+     "para_share": 0.0259,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "by-product": 2,
+      "host-independent": 2
+     },
+     "mean_len": 8.18,
+     "n": 128221
+    },
+    "S3": {
+     "epoch": 11050,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6388
+      ],
+      [
+       "215b2e3e7d5d21",
+       2867
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2472
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2169
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       688
+      ]
+     ],
+     "host_share": 0.1158,
+     "parasites": [
+      [
+       "21212121",
+       2531
+      ],
+      [
+       "2e212121",
+       856
+      ],
+      [
+       "5b215b21",
+       791
+      ],
+      [
+       "212e2121",
+       583
+      ],
+      [
+       "2e2e2e21",
+       579
+      ]
+     ],
+     "para_share": 0.0242,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 3,
+      "by-product": 8,
+      "host-independent": 2
+     },
+     "mean_len": 8.1,
+     "n": 129481
+    }
+   },
+   {
+    "seed": 9709,
+    "T": 600,
+    "seconds": 1363,
+    "S1": {
+     "epoch": 1600,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6308
+      ],
+      [
+       "215b2e3e7d5d21",
+       2708
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2478
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       1919
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       729
+      ]
+     ],
+     "host_share": 0.1175,
+     "parasites": [
+      [
+       "21212121",
+       2814
+      ],
+      [
+       "2e5b2e21",
+       820
+      ],
+      [
+       "5b212121",
+       816
+      ],
+      [
+       "2e212e21",
+       668
+      ],
+      [
+       "2e2e5b21",
+       628
+      ]
+     ],
+     "para_share": 0.0257,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 2,
+      "by-product": 5,
+      "host-independent": 2
+     },
+     "mean_len": 8.11,
+     "n": 129217
+    },
+    "S2": {
+     "epoch": 5600,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       5972
+      ],
+      [
+       "215b2e3e7d5d21",
+       2638
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2447
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2203
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       732
+      ]
+     ],
+     "host_share": 0.1149,
+     "parasites": [
+      [
+       "21212121",
+       2655
+      ],
+      [
+       "215b2121",
+       824
+      ],
+      [
+       "5b212121",
+       672
+      ],
+      [
+       "21212e21",
+       536
+      ],
+      [
+       "5b2e5b21",
+       527
+      ]
+     ],
+     "para_share": 0.0233,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 3,
+      "by-product": 8,
+      "host-independent": 2,
+      "not copied": 2
+     },
+     "mean_len": 8.13,
+     "n": 129052
+    },
+    "S3": {
+     "epoch": 10600,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6056
+      ],
+      [
+       "215b2e3e7d5d21",
+       2682
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2450
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2161
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       815
+      ]
+     ],
+     "host_share": 0.1124,
+     "parasites": [
+      [
+       "21212121",
+       2693
+      ],
+      [
+       "2e5b2e21",
+       800
+      ],
+      [
+       "5b215b21",
+       698
+      ],
+      [
+       "2e2e2e21",
+       684
+      ],
+      [
+       "21215b21",
+       676
+      ]
+     ],
+     "para_share": 0.025,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 1,
+      "by-product": 4,
+      "host-independent": 2
+     },
+     "mean_len": 8.13,
+     "n": 128935
+    }
+   },
+   {
+    "seed": 9710,
+    "T": 2400,
+    "seconds": 1430,
+    "S1": {
+     "epoch": 3400,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6328
+      ],
+      [
+       "215b2e3e7d5d21",
+       2761
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2502
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2141
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       816
+      ]
+     ],
+     "host_share": 0.1157,
+     "parasites": [
+      [
+       "21212121",
+       2792
+      ],
+      [
+       "2e212121",
+       872
+      ],
+      [
+       "215b2121",
+       804
+      ],
+      [
+       "5b212121",
+       686
+      ],
+      [
+       "5b5b5b21",
+       580
+      ]
+     ],
+     "para_share": 0.0257,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 3,
+      "host-independent": 2,
+      "by-product": 7,
+      "not copied": 1
+     },
+     "mean_len": 8.12,
+     "n": 129099
+    },
+    "S2": {
+     "epoch": 7400,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6322
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2549
+      ],
+      [
+       "215b2e3e7d5d21",
+       2487
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2107
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       727
+      ]
+     ],
+     "host_share": 0.1162,
+     "parasites": [
+      [
+       "21212121",
+       2593
+      ],
+      [
+       "5b215b21",
+       720
+      ],
+      [
+       "5b212121",
+       673
+      ],
+      [
+       "5b5b2e21",
+       611
+      ],
+      [
+       "21212e21",
+       575
+      ]
+     ],
+     "para_share": 0.0233,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 3,
+      "by-product": 7,
+      "host-independent": 2,
+      "not copied": 1
+     },
+     "mean_len": 8.21,
+     "n": 127695
+    },
+    "S3": {
+     "epoch": 12400,
+     "hosts": [
+      [
+       "5b2e3e7d5d21",
+       6433
+      ],
+      [
+       "215b2e3e7d5d21",
+       2693
+      ],
+      [
+       "5b5b2e3e7d5d21",
+       2661
+      ],
+      [
+       "2e5b2e3e7d5d21",
+       2277
+      ],
+      [
+       "5b2e5b2e3e7d5d21",
+       729
+      ]
+     ],
+     "host_share": 0.1175,
+     "parasites": [
+      [
+       "21212121",
+       2753
+      ],
+      [
+       "2e5b2e21",
+       705
+      ],
+      [
+       "2e2e2121",
+       548
+      ],
+      [
+       "212e2121",
+       528
+      ],
+      [
+       "212e5b21",
+       482
+      ]
+     ],
+     "para_share": 0.0225,
+     "verdicts": {
+      "parasite": 5,
+      "self-copier": 3,
+      "host-independent": 2,
+      "by-product": 13,
+      "not copied": 1
+     },
+     "mean_len": 8.12,
+     "n": 129126
+    }
+   }
+  ],
+  "scores": [
+   {
+    "seed": 9701,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9702,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9703,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9704,
+    "Q": [
+     [
+      0.9375,
+      0.9375,
+      0.9375
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0417,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9705,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9706,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9707,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      0.9875,
+      0.9875,
+      0.9875
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9708,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9709,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   },
+   {
+    "seed": 9710,
+    "Q": [
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "RQ": 0.0,
+    "d3": 0.0,
+    "parasites_all": true
+   }
+  ],
+  "P1": {
+   "soups": 10,
+   "with_parasites_S1_S2_S3": 10,
+   "share": 1.0,
+   "verdict": "pass"
+  },
+  "P2": {
+   "n": 10,
+   "mean": 0.0042,
+   "sd": 0.0132,
+   "ci": [
+    -0.0053,
+    0.0136
+   ],
+   "p": 0.4988425057874711,
+   "positive": 1,
+   "zero": 9,
+   "verdict": "fail"
+  },
+  "P3": {
+   "n": 10,
+   "mean": 0.0,
+   "sd": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "p": 1.0,
+   "positive": 0,
+   "zero": 10,
+   "verdict": "fail"
+  },
+  "seconds": 1444
+ },
+ "controls": [
+  [
+   "bffx rule: libmode live == BFF-VL (bffvl.Soup) bit for bit over 40 epochs",
+   true,
+   "identical True"
+  ],
+  [
+   "bffx rule (neighbour): bytes conserved, pieces within [LMIN, LMAX]",
+   true,
+   "conserved True, lengths 4..128"
+  ],
+  [
+   "bffx rule: the library is read only and an inert program that borrows the host's code leaves copies of itself (neighbour mode)",
+   true,
+   "exact parasite copies 9"
+  ],
+  [
+   "bffx rule: with nothing to borrow (libmode none) the inert program leaves only itself",
+   true,
+   "copies 1"
+  ],
+  [
+   "bffx hosts positive: hand hosts of 8, 24 and 48 bytes -> replicator (nothing borrowed)",
+   true,
+   "{8: 'replicator', 24: 'replicator', 48: 'replicator'}"
+  ],
+  [
+   "bffx hosts negative/deceptive: random program, hand parasite (also under the neighbour rule in random code, where it has no hosts), dead host -> no replication",
+   true,
+   "{'random': 'no replication', 'parasite': 'no replication', 'parasite, soup rule': 'no replication', 'dead host': 'no replication'}"
+  ],
+  [
+   "bffx parasites positive (neighbour): hand parasite at 5% among 50% hand hosts -> parasite",
+   true,
+   "verdict parasite, q 0.5078, q_random_lib 0.0, context_rate 0.0, templated_share 1.0, count 51"
+  ],
+  [
+   "bffx parasites negative (neighbour): a random program -> not parasite; the host -> self-copier",
+   true,
+   "not copied; self-copier"
+  ],
+  [
+   "bffx parasites deceptive (neighbour): common dead host (host copies look like it) and common host fragment -> not parasite",
+   true,
+   "dead host: verdict not copied, q 0.0, q_random_lib 0.0, context_rate 0.0, templated_share 0.0, count 716; fragment: verdict self-copier"
+  ],
+  [
+   "bffx parasites deceptive (neighbour): product Z made from many makers -> by-product",
+   true,
+   "verdict by-product, q 0.6406, q_random_lib 0.4141, context_rate 0.0, templated_share 0.0661, count 20"
+  ],
+  [
+   "bffx parasites specificity (neighbour): the plain parasite among resistant hosts -> not copied; the parasite with the host's key -> parasite",
+   true,
+   "not copied; parasite"
+  ],
+  [
+   "bffx parasites selection-aware null (neighbour): top 20 programs of a soup at epoch 50 (no hosts yet) -> 0 parasites",
+   true,
+   "Counter({'not copied': 20})"
+  ],
+  [
+   "bffx time-shift positive (neighbour): designed arms race (resistant host, then key-matched parasite) -> RQ ~ 1",
+   true,
+   "{'Q': [[0.9375, 0.0], [0.9375, 0.9375]], 'RQ': 0.9375}"
+  ],
+  [
+   "bffx time-shift graded (neighbour): 1 of 5 later hosts resistant -> RQ = 0.2",
+   true,
+   "RQ 0.1875"
+  ],
+  [
+   "bffx time-shift negative (neighbour): later parasites and hosts that changed length without resistance -> RQ = 0 (8 -> 16-byte parasites); length artefact of coverage (12 -> 14 bytes: 128 is not a multiple of either) below half of delta* 0.1",
+   true,
+   "RQ 0.0; artefact 0.0469"
+  ],
+  [
+   "bffx time-shift null (neighbour): the positive history with its time labels reversed -> RQ ~ -1",
+   true,
+   "RQ -0.9375"
+  ]
+ ],
+ "power": {
+  "delta": 0.1,
+  "P2_RQ": {
+   "n_pilot": 10,
+   "mean": 0.0042,
+   "sd": 0.0132,
+   "n10": {
+    "ci_halfwidth": 0.0094,
+    "power_at_delta_alpha0.05": 1.0,
+    "power_at_delta_alpha0.00102": 1.0
+   },
+   "n20": {
+    "ci_halfwidth": 0.0062,
+    "power_at_delta_alpha0.05": 1.0,
+    "power_at_delta_alpha0.00102": 1.0
+   },
+   "n40": {
+    "ci_halfwidth": 0.0042,
+    "power_at_delta_alpha0.05": 1.0,
+    "power_at_delta_alpha0.00102": 1.0
+   }
+  },
+  "P3_d3": {
+   "n_pilot": 10,
+   "mean": 0.0,
+   "sd": 0.0,
+   "n10": {
+    "ci_halfwidth": 0.0,
+    "power_at_delta_alpha0.05": 1.0,
+    "power_at_delta_alpha0.00102": 1.0
+   },
+   "n20": {
+    "ci_halfwidth": 0.0,
+    "power_at_delta_alpha0.05": 1.0,
+    "power_at_delta_alpha0.00102": 1.0
+   },
+   "n40": {
+    "ci_halfwidth": 0.0,
+    "power_at_delta_alpha0.05": 1.0,
+    "power_at_delta_alpha0.00102": 1.0
+   }
+  }
+ }
+}
