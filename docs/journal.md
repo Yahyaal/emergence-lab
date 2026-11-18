@@ -12,6 +12,45 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-100 · 2026-11-18 · E-82: when programs can borrow a persistent neighbour's code, parasites arise in every soup, but no arms race follows (pre-registered: P1 pass, P2 fail, P3 fail)
+
+**Question (pre-registered, `docs/data/e82-preregistration.md`, commit `e8010f6`, pushed before the run; groundwork J-099, D-072, D-073, code `e980084`):** in BFF-X (a pair's instruction pointer runs from the first program into a read-only neighbour's code), do parasites arise from random code, and does the soup then change in a directed way (hosts that resist, parasites that adapt)?
+
+**Ran:**
+- **Command:** `scripts/e82_run.py --confirm --workers 11`, detached under `systemd-inhibit`, launched by the coordinating session at 13:49 from the worktree at `45d8561`. Finished in **1 h 19 min** (4,751 s; projected 1.5 to 2.5 h).
+- **Soups:** 40 of 40 primary soups (8301–8340) jumped (T 250 to 3,050, median 950). **No exclusion; no spares used.** 4 none-arm soups (8381–8384, nothing to borrow) jumped and showed 0 parasites at S1, as they must.
+- **Export:** `docs/data/experiments/2026-11-18-e82.json`. Caches in `runs/e82/run/` (not committed).
+
+**Gate (passed before any score):** 16 of 16 controls; seeded parasite rebound with designed hosts 10.5, 6.0, 9.5, 7.7 and without them 0.77, 0.63, 0.71, 0.75 (4 of 4).
+
+**Found (recomputed independently from the per-soup scores; every number matches the stored summaries):**
+
+| Primary | Measure | Result | Verdict | Holm (49) |
+|---|---|---|---|---|
+| P1 | verified parasites at T + 1,000, 5,000 and 10,000 | **40 of 40** soups (criterion ≥ 75%) | **pass** | excluded (criterion) |
+| P2 | time-shift RQ | **0.0011** (−0.0004 to 0.0027); 6 positive, 2 negative, 32 zero; p 0.075 (exact sign flip over the 8 nonzero soups: 0.074) | **fail** (interval below δ\* 0.10) | 1.000 |
+| P3 | host resistance d3 | **0** in 40 of 40 | **fail** | 1.000 |
+
+- **P2's fail is sharp:** the interval ends at 0.0027, under 3% of δ\*. The eight nonzero soups (±0.008 to 0.014) come from parasite main effects (rows of the Q matrix differ slightly; within each soup the three host columns are identical), that is, small differences in how well a given parasite covers a partner, not from any host refusing anyone. Mean coverage over all parasite-host pairs 0.998 (minimum 0.979): **every host copies every parasite, early or late.**
+- **Composition:** at T + 10,000 the commonest host was `[.>}]!` in 36 soups and `![.}>]!`/`[.}>]!` in 4; it changed between S1 and S3 in 7 soups (`![.}>]!` → `[.>}]!`). Host families held a median 12% of the bytes (7 to 12%). Sampled verified parasites were 4 bytes (570 of 579) or 5 bytes (`.[.!`, `!!!!`, `![.!`, `!![!`, ...), their families 0.5 to 3.5% of the bytes. Of 2,242 tested non-hosts, 579 were parasites, 1,074 by-products, 234 self-copiers, 220 host-independent, 135 not copied.
+- **Holm** (`docs/data/experiments/2026-11-18-e82-holm49.json`, 49 p values; P1 entered as excluded): P2 and P3 1.000. The same 20 of 22 passes survive (E-50 0.37 and E-71 P2 0.16 still lost). The E-79, E-80 and E-81 Holm exports are byte-identical to git.
+
+**Interpretation (as fixed in the pre-registration's "What each outcome will and will not mean"):**
+- **Parasites are close to built in.** Any program whose run falls off its end is copied by a neighbour copy loop, and host debris supplies such programs at once. P1 shows that the borrowing rule turns debris into parasites from random code with no designed ancestor, which confirms the literature's mechanistic reading of C6 (BFF has nothing to borrow); it is not a surprising capacity and does not move the evidence level.
+- **No arms race, sharply.** Hosts did not come to resist parasites, and parasites had nothing to adapt to. The rule does not reward resistance: the library is read only and drawn from a well-mixed soup, so a host that refuses a caller spares a random third program, not itself or its kin, and resistance would cost bytes. **That an arms race needs a geometry where resistance pays the resisting host (Tierra's local memory, kin structure, or a host that is consumed when used) is a prediction, not a result.**
+- **Floors again.** Hosts sit at the 6-byte `[.>}]!` (E-81) and parasites at the 4-byte minimum length. With shortness and parasitism as the two levers, the soup reaches a host-parasite equilibrium and stops. **Evidence level unchanged (4 in BFF; level 5 not shown).**
+- **Scope.** One rule (BFF-X, libmode neighbour), one soup size, one detector with hand-made controls, laptop scale.
+
+**Changed:**
+- **Data:** `docs/data/experiments/2026-11-18-e82.json`, `docs/data/experiments/2026-11-18-e82-holm49.json`; `docs/data/e79-primaries.json` (E-82 P1 excluded, P2, P3 in the family).
+- **Records:** experiments row; D-072 and D-073 status; `handoff.md`.
+- **Pages:** `paper.md` (abstract, §5, §8, Appendices A, B, B2); `index.md` (level-5 card, H3); `research.md` (O5); `literature.md` (C6 row and discussion, closing paragraph); `story.html` (result C, scoreboard, next cards).
+- **Checks:** `PYTHONPATH=. python -m pytest` 93 passed; `emergence benchmark --probes` (run with `PYTHONPATH=.` from the worktree) 39/39 and 174/174.
+
+**Lesson:** a mechanism that makes an exploit possible (borrowable code) is not enough for an arms race; check before running who pays for resisting, because a well-mixed soup turns resistance into a public good.
+
+---
+
 ## J-099 · 2026-11-18 · E-82 groundwork: when a program can run a persistent neighbour's code, parasites appear with the first hosts, and nothing in the pilot resists them; instruments, seeded positive, power and pre-registration (no confirmatory data)
 
 **Question / why:** after E-81 (shortness is the only lever BFF-VL opens, and it ends at a 6-byte floor), the literature's other route to continuing change is parasites and the arms races they drive (Tierra, Stringmol). They need bodies that persist and code that can be borrowed; BFF has neither (J-091). The owner asked for the groundwork of a variant that opens this route with the smallest departure from BFF-VL: under simple, fixed, reward-free rules, do parasites arise from random code, and does the soup then keep changing in a directed way? Design, emergence pilot, instruments, seeded positive, power and pre-registration. **No registered seed was run.**
