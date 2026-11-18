@@ -12,6 +12,50 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-098 · 2026-11-18 · E-81: when program length can change, later copiers are fitter because they are shorter, and then evolution stops at the 6-byte floor (pre-registered: P1 pass, P2 pass, P3 fail)
+
+**Question (pre-registered, `docs/data/e81-preregistration.md`; design commit `72ffb96`, interpretation section added before launch at `3a94c3a`, no design change; groundwork J-097, D-070, D-071):** in variable-length BFF (BFF-VL), does later code beat earlier code in head-to-head races, and does that continue once copiers are as short as they can be?
+
+**Ran:**
+- **Command:** `scripts/e81_run.py --confirm --workers 11`, detached under `systemd-inhibit`, launched by the coordinating session from commit `3a94c3a`. Finished in **3 h 36 min** (12,941 s; projected 2.5 to 4.5 h).
+- **Soups:** 40 admitted. Soup 8102 did not jump by epoch 10,000 and was replaced by spare 8141, as registered. No other exclusion.
+- **Export:** `docs/data/experiments/2026-11-17-e81.json`. Caches in `runs/e81/run/` (not committed).
+
+**Gate (passed before any race):** all 18 instrument controls; seeded positive 4 of 4 shorter (the 48-byte ancestor reached 6 to 8 bytes by epoch 100) and 4 of 4 ahead (descendants against ancestor d = 8.2 to 9.3).
+
+**Found (recomputed independently from the per-race scores; every number matches the stored summaries):**
+
+| Primary | Comparison | Mean d | 95% interval | Positive | One-sided p | Verdict (δ\* 0.79) | Holm (47) |
+|---|---|---|---|---|---|---|---|
+| P1 | T + 1,000 against T | **9.12** | 8.65 to 9.60 | 40 of 40 | 5 × 10⁻⁶ | **pass** | 1.7 × 10⁻⁴, survives |
+| P2 | T + 10,000 against T + 1,000 | **0.55** | 0.19 to 0.90 | 30 of 40 | 5 × 10⁻⁶ | **pass** | 1.7 × 10⁻⁴, survives |
+| P3 | T + 20,000 against T + 10,000 | **−0.025** | −0.078 to 0.028 | 17 of 40 | 0.81 | **fail** | 1.000 |
+
+- **P2's mean (0.55) is below δ\* (0.79).** It passes only because the upper end of its interval (0.90) reaches above δ\*, as the registered rule allows. Its effect sits in a few soups: 7 soups are above 0.79 (up to 5.5, soups whose T + 1,000 copiers were still 7 to 17 bytes long) and they carry 74% of the sum; 21 soups are within ±0.05 because both samples were already at the floor (77 of 583 pairs byte-identical). Read P2 as "the last bytes are lost after T + 1,000 in about a fifth of the soups", not as a typical advantage of δ\* size.
+- **P3 fails sharply.** The interval ends at 0.028, under 4% of δ\*. 121 of 458 pairs were byte-identical. **At T + 20,000 every soup's commonest copier is a 6-byte program: `[.>}]!` in 24 soups, `[.}>]!` in 16.**
+- **Holm** (`docs/data/experiments/2026-11-18-e81-holm47.json`, 47 p values; the E-79 and E-80 exports are unchanged, checked against git): both E-81 passes survive (1.7 × 10⁻⁴). The other survivors do not change: 20 of 22 passes survive, with E-50 (0.34) and E-71 P2 (0.15) still lost.
+
+**Secondaries (descriptive):**
+- **Length (S1–S3):** byte-weighted copier-family length, median 106 bytes at T (range 18 to 128), 6.2 at T + 1,000 (6.1 to 17), 6.19 at T + 10,000, 6.17 at T + 20,000. Shorter at T + 1,000 in 40 of 40 soups (mean −79 bytes).
+- **The noexec comparison has n = 14, not 40.** The null measures the T copier families after 1,000 epochs with nothing running. In 26 soups those families dissolve. Under noexec nothing copies them. Long copiers that end at a forced 128-byte cut, with no marker, are re-cut whenever they sit second in a pair. Rare early copiers (2 to 6 copies) are lost to mutation. So the null is undefined there. In the 14 soups where it is defined, BFF-VL shortened the families by 34 bytes more than noexec did (interval 21 to 46, 14 of 14). The noexec change itself was not always near zero: in soup 8104 the long marker-free families dissolved and left shorter ones, −80 bytes, a composition effect rather than shortening. This null is weaker than planned and is reported as such.
+- **"Faster" (S2):** median copies made in a random 128-byte partner went from 1.7 at T to 18.3 at T + 1,000, and median steps per run from 3,845 to 513. Both follow from length. The step limit (8,192) never binds for the short copiers, so speed in steps is not under selection separately.
+- **Jumps:** T ranged from 50 to 9,050 (median 1,425). In 5 soups slow copiers were already among the commonest programs at epoch 50.
+
+**Interpretation (as fixed in the pre-registration's "What each outcome will and will not mean"):**
+- **Shortening is favoured by construction.** A copier makes about L_partner / L copies per pair, so shorter copiers win. P1 and P2 show that this route operates in soups whose replicators arose from random code. Later code is fitter than earlier code, by large and pre-registered margins, from the first replicators (median 106 bytes) to the 6-byte floor. This turns the literature review's inference (J-091: BFF's fixed length is why later code is not fitter) into a tested statement **for this rule**. It is directional selection after emergence, not a surprising new capacity.
+- **It is not level 5.** P3 shows stasis once copiers reach the floor: within a 95% interval of ±0.05, code 20,000 epochs after the jump is no fitter than code at 10,000. Every soup ends on the same minimal copier. This is the Squirm3 pattern: selection shortens, then stops. **Evidence level unchanged (4 in BFF; level 5 not shown).**
+- **Scope.** One rule with two departures from BFF: heads halt at the tape ends instead of wrapping (needed: with wrapping, copiers overwrite themselves and take-overs do not last, J-097), and a marker byte `!` ends a program. One soup size (2^20 bytes), one race garden (random code), laptop scale. The results do not transfer to 64-byte BFF.
+
+**Changed:**
+- **Data:** `docs/data/experiments/2026-11-17-e81.json`, `docs/data/experiments/2026-11-18-e81-holm47.json`; `docs/data/e79-primaries.json` (E-81 P1–P3, family "in").
+- **Records:** experiments row; D-070 and D-071 status; `handoff.md`.
+- **Pages:** `paper.md` (abstract, §5, Appendices A, B, B2); `index.md` (level-5 card, H3); `research.md` (O5); `literature.md` (C4 row and discussion, correction 10, closing paragraph); `story.html` (result C, scoreboard).
+- **Checks:** `pytest` 91 passed; `emergence benchmark --probes` 39/39 and 158/158.
+
+**Lesson:** a null that tracks a family by identity is undefined when the family cannot persist without copying. Check before registering that the null is defined for every kind of family the jump rule can select (here: long copiers without a marker).
+
+---
+
 ## J-097 · 2026-11-17 · E-81 groundwork: a variable-length BFF in which replicators still arise and then shrink to the shortest copier; instruments, seeded positive, power and pre-registration (no confirmatory data)
 
 **Question / why:** Finding C (later BFF code is not fitter, E-48 to E-54, E-78, E-80) may be what BFF's design predicts. The literature review (J-091) found that the main published route to fitness gain after emergence is getting shorter (Tierra 80 → 22 instructions; Squirm3), and BFF programs are fixed at 64 bytes. The owner asked for the groundwork of a variable-length variant: when length can change under simple, fixed, reward-free rules, does later code become fitter, and do replicators get shorter or faster? This entry is design, emergence check, instruments, seeded positive, power and pre-registration. **No registered seed was run.**
