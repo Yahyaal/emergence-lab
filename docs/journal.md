@@ -12,6 +12,56 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-104 · 2026-11-18 · E-85 groundwork: with a long minimal host and a short lock, parasites win, the lock is free and refusing pays kin, but no host population survives its own parasites; net control fails, not pre-registered
+
+**Question / why:** E-81 to E-84 hit one wall (D-077): a substrate for directed host–parasite change needs a parasite that out-replicates its host, a lock that costs a resistant host little, and a kin benefit of refusing under local interaction. The owner asked for the groundwork of E-85: **in a substrate where the shortest copier is long relative to the shortest lock, do resistant hosts arise from random code where resistance pays kin, and do hosts and parasites then change in a directed way?** Stage: design, decisive controls (0) to (4) in order with a stop at the first failure, then pilot, instruments, power and pre-registration. **No registered seed was run.**
+
+**Substrate options weighed (D-078):**
+- **SUBLEQ family (E-75):** its minimal replicator is one 4-operand instruction and a zero byte (5 bytes, `subleq.F_FORWARD`); programs are fixed at 64 bytes and nothing is borrowed. Its copier is shorter than BFF's, so it fails the premise; a variable-length, borrowed-code SUBLEQ would be a new system with no known emergence from random code.
+- **A BFF-like set whose copy needs explicit addressing:** a copier of about 30 specified bytes is not reachable from random code at 2^20 bytes, and in a general instruction set a check costs a comparable number of instructions.
+- **Chosen, BFF-XM (`scripts/bffxm.c/.py`):** BFF-XR deme64 (E-83) with one change in the interpreter: **a program shorter than XMIN = 32 bytes has no code of its own**; when it runs first, its instruction pointer starts in the borrowed code. So the shortest host is 32 bytes (`[.>}]` plus filler), a parasite can be 4 bytes and leaves about eight times as many copies per partner, and E-82's resistant host (11 bytes of code) fits inside 32, so the lock costs no length. With xmin 0 the interpreter equals `bffx.c` bit for bit. `bffxm.py` re-loads the E-82/E-83 modules bound to the new interpreter, so their instruments run unchanged.
+
+**Decisive controls (`scripts/e85_groundwork.py --controls`, `bffxm_assay.compete/invade`; seeds 1–4; no mutation; designed programs counted as exact copies, because the 32-byte R and its sham S differ in 2 bytes):**
+
+| Control | Result | Verdict |
+|---|---|---|
+| (0) hand host H (32 bytes) at 2% in random code | nothing borrowed: +3.6 in log bytes by 25 epochs (4/4; fills the soup). **With borrowing: ×18 by epoch 10, then extinct by epoch 100 (4/4)** | replicates; does not persist |
+| (0) copiers from random code (pilot, below) | hosts among the 40 commonest programs at epochs 50–850 in 8 of 10 soups | arise; never hold the soup |
+| (1) parasite P (4 bytes) vs H, H 30%, P 2% | ln(P/H) **+4.8 at 25 epochs** (4.6 to 4.8, 8/8, deme64 and mixed), +6.9 at 50; P alone (no hosts) −4.2; nothing borrowed −9.2 | **pass** |
+| (2) lock cost: R vs H, nothing borrowed (no parasite possible) | **+0.007 ± 0.12 at 50 epochs**, +0.03 ± 0.17 at 200 (deme64); mixed +0.01 (E-83: R gone within 25 epochs, about −12; E-84: −0.03) | **pass** |
+| (3) kin benefit: R vs sham S with P 5%, A = with minus without borrowing | deme64 **+0.50 ± 0.13 at 25 epochs** (4/4 > 0.10), +1.21 ± 0.08 at 50; mixed +0.03 ± 0.11 at 25, +0.18 ± 0.08 at 50 (as both collapse) | **pass** |
+| (4) net: H + P soup aged 10 epochs, then 5% of its H turned into R in place | R's bytes fall by −1.3 in log by 10 epochs and R is **extinct by epoch 50 in 4/4**; ln(R/H) at 25 −0.29 (−0.86 to +0.26); mixed the same | **fail** |
+
+- **Variants of (4), exploratory:** R as 5% of the hosts from epoch 0 (P 5%): ln(R/H) +0.36 at 25 epochs (3 of 4 positive), but R's own bytes fall (−1.1 to −2.7 by 25) and every host is gone by epoch 100; R as 20% of the hosts: the same; no designed parasites: R grows ×2.5 by epoch 10, then extinct by 100 in 3 of 4. **A rare resistant host gains on plain hosts for a while only as all hosts decline; it never increases in number beyond the first 10 epochs.** With an aged soup it does not gain even relatively.
+- **Why every host dies:** the remainder of a host's copies in a partner whose length is not a multiple of 32 is a piece under 32 bytes, so it has no code of its own and borrows: host debris are parasites with an eight-fold edge. In a race of H alone, 94% of programs at epoch 60 are under 32 bytes and every commonest one is copied by H (coverage 0.94–1.0).
+- **And the lock leaks:** in BFF a cheap check must change the byte it tests. R's `\x01-[]+` decrements the caller's first byte and traps on a mismatch, leaving it decremented, so every caller whose first byte is 2 becomes a key-matched parasite. In a race of R alone, the 7 commonest short programs at epoch 60 all begin with 0x01 and R copies them (coverage 0.91–1.0). The same holds for the 10-byte halting lock of J-101.
+
+**Emergence pilot (exploratory, `--pilot`, seeds 9851–9862, deme64):** with borrowing, hosts appeared in 8 of 10 soups (first at epochs 50 to 850) and never held more than 5.6% of the bytes, at one checkpoint in one soup, ≤ 1.3% otherwise; **0 hosts at epoch 4,000 in 6 of 6 soups and at 12,000 in 4 of 4** (one lone host at 8,500). These soups end with about 90% of programs under 32 bytes (mean 13–17 bytes; commonest `!!!!`). Two transient refusing hosts appeared among early long hosts (soup 9856, epochs 100–150). With nothing borrowed, hosts took over in 2 of 2 (from epoch 1,550; 17–19% of the bytes at most). By E-83's jump rule no borrowing soup would have been admitted.
+
+**Exploratory XMIN sweep (`scripts/e85_xsweep.py`; pilot `--xmin 8,12,16,24`, seeds 9871–9873, 4,000 epochs):** a hand host at 2% under borrowing still holds 0.36–0.54 MB at epoch 200 with XMIN 8, declines to 5–51 kB with 12, is extinct by 180–200 epochs with 16 and by 100–120 with 24. From random code no XMIN in 8–24 took over within 4,000 epochs (maximum host share 0.035), a horizon shorter than E-83's jump times (median 5,100). Hosts survive borrowing only when they are at most about two to three times as long as their parasites, and there a 5-byte check is again a large share of the body.
+
+**Instruments (`scripts/bffxm_assay.py`, 18 controls in `pytest` and the probe benchmark; all pass):**
+- **Rule:** xmin 0 equals BFF-X bit for bit; bytes conserved under deme64; the copy loop copies itself at 32 and 64 bytes, never at 6 or 31; a 4-byte program leaves 26 copies with a host library and only itself without; the 6-byte loop is a borrower.
+- **Designed programs:** 32-byte H, R and S copy themselves exactly; R refuses P and copies the key-matched parasite.
+- **Host detector:** 32-, 40- and 48-byte hosts are replicators; a random program, the parasite, the 6- and 31-byte copiers and a dead host are not. A 64-byte host fails the growth test in random code, so it is validated for 32–48 bytes.
+- **Copy screen:** H and R pass; H6 and P fail.
+- **Parasite detector:** positive, negative, a deceptive common dead host, the by-product Z, key specificity, and a selection-aware null on the top 20 of an epoch-50 soup (0 parasites).
+- **Time-shift:** positive 1.0; graded 0.20; negative 0.0; reversed −1.0; the rewriting-host deceptive fools coverage (1.0) but not protection (RQ_w −0.002).
+
+**Not done, by the stop rule:** the noise and power analysis, the sample size, and the pre-registration. E-85 has no confirmatory driver. **E-85 is not pre-registered.**
+
+**Interpretation:** the minimum body does what it was built for. Parasites out-replicate the host they borrow from (1), a lock costs nothing (2), and refusing pays kin under demes but not when mixed (3): the three requirements of D-077 hold at once for the first time in this line. The net control fails for a reason one level down: **with an eight-fold parasite edge, no host population survives**, plain or resistant, designed or emergent. Resistance cannot spread in a population that is gone within 100 to 200 epochs, and the lock it would use leaks parasites matched to it. In a length economy with borrowed code, one ratio, host length over parasite length, sets both the parasite's advantage and how fast hosts are destroyed. Hosts persist only when it is about 3 or less (E-82/E-83: 6 against 4 bytes; sweep: XMIN ≤ 12), and there a check costs about half a host. This substrate cannot answer the E-85 question. **Evidence level unchanged (4 in BFF; level 5 not shown).** Next options (D-079): a substrate where host debris cannot become parasites (for example, remainders below XMIN merged in the cut), plus a check that does not rewrite the caller; or XMIN 12, where the lock fits for free and hosts decline slowly, which is not a long minimal copier. Each needs its own groundwork; neither is a result.
+
+**Changed:**
+- **New:** `scripts/bffxm.c`, `scripts/bffxm.py`, `scripts/bffxm_assay.py`, `scripts/e85_groundwork.py`, `scripts/e85_xsweep.py`; test `test_bffxm_controls`; probe section in `emergence/benchmark_programs.py`.
+- **Records:** D-078, D-079 (proposed); E-85 groundwork row; `handoff.md`; export `docs/data/experiments/2026-11-18-e85-groundwork.json`.
+- **Checks:** `PYTHONPATH=. python -m pytest` 96 passed; `PYTHONPATH=. python -m emergence benchmark --probes` 39/39 and 221/221 (203 + 18 new).
+- **Caches (not committed):** `runs/e85/` (races, net, sweep, pilot trajectories and snapshots).
+
+**Lesson:** a parasite's edge and the host's survival are set by the same ratio. Before asking whether resistance spreads, check that a host population persists at the parasite advantage the design creates.
+
+---
+
 ## J-103 · 2026-11-18 · E-84 groundwork: with fixed 64-byte programs a lock costs nothing, but parasites lose to their hosts and refusing them earns kin nothing; decisive control fails, not pre-registered
 
 **Question / why:** E-83 (J-102) left one binding constraint: in variable-length BFF a lock costs bytes and bytes are fitness, so the 10-byte shortest resistant host loses to the 6-byte copier. The owner asked for the groundwork of a substrate where a lock is cheap relative to the copier: **does resistance then arise from random code where it pays kin, and do hosts and parasites change in a directed way?** Leading design: BFF's fixed 64-byte programs with E-82's borrowed read-only library and E-83's demes. Stage: design, decisive controls, pilot, instruments, power, pre-registration, with an explicit stop if the decisive controls fail. **No registered seed was run.**
