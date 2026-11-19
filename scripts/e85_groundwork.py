@@ -173,6 +173,39 @@ def pilot_job(arg) -> dict:
     return res
 
 
+def export(path: str) -> None:
+    """Groundwork export: control summaries, every race and net trajectory end point, the x sweep and pilot
+    trajectories (thinned to every 250 epochs)."""
+    import glob
+    import subprocess
+
+    def jl(f):
+        p = OUT / f
+        return [json.loads(l) for l in p.read_text().splitlines() if l.strip()] if p.exists() else []
+
+    rows = jl("controls.jsonl")
+    for r in rows:
+        r.pop("traj", None) if r["control"] not in ("c2_lock_cost", "c4_net") else None
+    net = jl("net.jsonl")
+    pil = []
+    for f in sorted(glob.glob(str(OUT / "pilot" / "*.json"))):
+        r = json.loads(Path(f).read_text())
+        tr = r["traj"]
+        pil.append({"seed": r["seed"], "geometry": r["geometry"], "libmode": r["libmode"],
+                    "xmin": r.get("xmin", M.XMIN), "sec": r["sec"],
+                    "checkpoints_with_hosts": [(t["epoch"], t["nhost"], t["host_share"]) for t in tr if t["nhost"]],
+                    "max_host_share": max(t["host_share"] for t in tr),
+                    "traj": [t for t in tr if t["epoch"] % 250 == 0]})
+    commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
+    out = {"experiment": "E-85 groundwork", "status": "decisive control (4) failed; not pre-registered",
+           "rule": "BFF-XM deme64 (D-078): BFF-XR deme64 in which a program shorter than 32 bytes has no code of its own",
+           "commit": commit,
+           "controls_summary": json.loads((OUT / "controls-summary.json").read_text()),
+           "controls": rows, "net": net, "xsweep": jl("xsweep.jsonl"), "pilot": pil}
+    Path(path).write_text(json.dumps(out, indent=0))
+    print("wrote", path)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--controls", action="store_true")
@@ -183,7 +216,11 @@ def main():
     ap.add_argument("--every", type=int, default=50)
     ap.add_argument("--xmin", default=str(M.XMIN), help="comma list; values other than 32 are an exploratory sweep")
     ap.add_argument("--workers", type=int, default=11)
+    ap.add_argument("--export", default=None)
     a = ap.parse_args()
+    if a.export:
+        export(a.export)
+        return
     if a.controls:
         controls(a.workers)
     if a.pilot:
