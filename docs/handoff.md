@@ -103,8 +103,8 @@ v0.5 adds a second physics family, **Lenia** (continuous states quantized to 256
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
-pytest                                   # 94 test functions
-emergence benchmark --probes             # 39 + 186 validation checks (J-101)
+pytest                                   # 95 test functions
+emergence benchmark --probes             # 39 + 203 validation checks (J-103)
 python scripts/verify_movers.py runs/X.db 1 2   # re-isolate every self-propelled structure, 1000 steps alone
 emergence explore --generations 6        # ~4 min on 4 cores -> lab.db
 emergence serve                          # dashboard at http://127.0.0.1:8000

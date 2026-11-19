@@ -47,6 +47,7 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 - **New:** `scripts/bffxf.py`, `scripts/bffxf_assay.py`, `scripts/e84_groundwork.py`, `scripts/e84_extra.py`, `scripts/e84_run.py` (draft, not run); test `test_bffxf_controls`; probe section in `emergence/benchmark_programs.py`.
 - **Edited:** `scripts/bffx.py`, `scripts/bffxr.py` (cut constants as class attributes; behaviour unchanged).
 - **Records:** D-076, D-077 (proposed); E-84 groundwork row; `handoff.md`; export `docs/data/experiments/2026-11-18-e84-groundwork.json`.
+- **Checks:** `PYTHONPATH=. python -m pytest` 95 passed; `PYTHONPATH=. python -m emergence benchmark --probes` 39/39 and 203/203 (186 + 17 new).
 - **Caches (not committed):** `runs/e84/` (races, pilot snapshots and census).
 
 **Lesson:** before removing a cost, ask what else that cost was paying for; here the price of length that kept locks out was also the parasites' only edge.
