@@ -38,6 +38,12 @@
                    program, host, dead host, by-product from makers, key specificity, early-soup null); designed
                    resistant / sham / plain hosts; coverage and protection time-shift (arms race, graded 1-of-5,
                    change without resistance, reversed labels, shifting-host deceptive)
+* BFF-X with a minimum body (scripts/bffxm.py, bffxm_assay.py, E-85 groundwork, J-104): xmin 0 equals BFF-X bit for
+                   bit; bytes conserved; the copy loop copies itself only at >= 32 bytes; short programs borrow;
+                   designed 32-byte resistant / sham / plain hosts; host detector (positive; random, parasite, 6- and
+                   31-byte copiers, dead host); copy screen; parasite detector (positive, negative, dead host, by-
+                   product from makers, key specificity, early-soup null); coverage and protection time-shift
+                   (arms race, graded 1-of-5, change without resistance, reversed labels, rewriting-host deceptive)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -259,4 +265,10 @@ def run(check) -> None:
     if (scripts / "bffxf_assay.py").exists():
         import bffxf_assay as XFA
         for name, ok, det in XFA.controls():
+            check(name, ok, det)
+
+    # BFF-X with a minimum body on demes (scripts/bffxm.py, scripts/bffxm_assay.py, E-85 groundwork, J-104, D-078)
+    if (scripts / "bffxm_assay.py").exists():
+        import bffxm_assay as XMA
+        for name, ok, det in XMA.controls() + XMA.instrument_controls():
             check(name, ok, det)
