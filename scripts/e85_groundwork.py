@@ -7,9 +7,12 @@ emergence pilot. Pilot seeds only (races 1-4; emergence 9851-9862). Results are 
       without hosts (P 2% alone) P does not grow; with nothing to borrow ln(P/H) falls;
   (2) lock cost: R against H, 10% each, no parasites (nothing borrowed; and borrowing on with no designed parasites);
   (3) kin benefit: R against its sham S with P 5%, A = ln(R/S) change with borrowing minus without, deme64 and mixed;
-  (4) net: an H + P soup aged 100 epochs, then 5% of its H turned into R in place: ln(R/H) and R's growth.
+  (4) net: an H + P soup aged 10 epochs, then 5% of its H turned into R in place: ln(R/H) and R's growth.
+      (J-104's first --controls run used invade's default age 100, by which no hosts were left; its reported age-10
+      runs are in net.jsonl, label "c4_net_age10". `summarize_net` covers both since J-107.)
 
     PYTHONPATH=.:scripts python scripts/e85_groundwork.py --controls --workers 11
+    PYTHONPATH=.:scripts python scripts/e85_groundwork.py --resummarize docs/data/experiments/2026-11-18-e85-groundwork.json
     PYTHONPATH=.:scripts python scripts/e85_groundwork.py --pilot 9851-9856 --workers 6 --epochs 6000
 """
 from __future__ import annotations
@@ -102,17 +105,58 @@ def summarize(rows: list[dict]) -> dict:
                 out[f"c3_kin A {geo} @{h}"] = {"mean": round(float(np.mean(d)), 3),
                                                "sd": round(float(np.std(d, ddof=1)), 3) if len(d) > 1 else None,
                                                "values": d}
-        for c in ("c4_net", "c4_clump", "c4_young"):
+    out.update(summarize_net(rows))
+    return out
+
+
+def summarize_net(rows: list[dict]) -> dict:
+    """Control (4) summaries, grouped by each row's own label (J-107 fix). The J-104 version matched only
+    control == "c4_net", i.e. the controls.jsonl rows run at invade's default age 100, by which time the H + P soup
+    had no hosts left (H_at_switch 0 in 7 of 8), so it reported zeros; the age-10 rows that J-104 reports live in
+    net.jsonl under the label "c4_net_age10" (and variant labels) and were never summarised. Now every row whose
+    label starts with "c4" is summarised under that label, with its age, and rows in which no R was introduced
+    (R_switched 0: ln(R/H) undefined) are counted, not averaged as zeros."""
+    out = {}
+    labels = sorted({r["control"] for r in rows if r["control"].startswith("c4")})
+    for c in labels:
+        for geo in ("deme64", "mixed"):
             for lm in ("neighbour", "none"):
+                grp = [r for r in rows if r["control"] == c and r["geometry"] == geo and r.get("libmode") == lm]
+                if not grp:
+                    continue
+                ok = [r for r in grp if r.get("R_switched", 1) > 0]
                 for h in (10, 25, 50, 100, 200):
-                    sel = [r for r in rows if r["control"] == c and r["geometry"] == geo and r.get("libmode") == lm
-                           and h in r["score_R_vs_H"]]
+                    sel = [r for r in ok if h in r["score_R_vs_H"]]
+                    if not sel:
+                        continue
                     v = [r["score_R_vs_H"][h] for r in sel]
                     g = [r["R_growth"][h] for r in sel]
-                    if v:
-                        out[f"{c} {geo} {lm} @{h}"] = {"lnR/H mean": round(float(np.mean(v)), 3), "values": v,
-                                                       "lnR growth mean": round(float(np.mean(g)), 3), "growth": g}
+                    out[f"{c} {geo} {lm} @{h}"] = {"lnR/H mean": round(float(np.mean(v)), 3), "values": v,
+                                                   "lnR growth mean": round(float(np.mean(g)), 3), "growth": g,
+                                                   "age": sorted({r.get("age") for r in sel}),
+                                                   "n_no_R": len(grp) - len(ok)}
+                if not ok:
+                    out[f"{c} {geo} {lm}"] = {"age": sorted({r.get("age") for r in grp}), "n_no_R": len(grp),
+                                              "note": "no H left at the switch in any seed: ln(R/H) undefined"}
     return out
+
+
+def _int_horizons(rows: list[dict]) -> list[dict]:
+    rows = [json.loads(json.dumps(r)) for r in rows]
+    for r in rows:
+        for k in ("scores", "score_R_vs_H", "R_growth"):
+            if k in r:
+                r[k] = {int(h): v for h, v in r[k].items()}
+    return rows
+
+
+def resummarize(path: str) -> None:
+    """Recompute only `controls_summary` of an existing export from its own raw rows (`controls` + `net`); every
+    other key is written back unchanged. No soup is run."""
+    d = json.loads(Path(path).read_text())
+    d["controls_summary"] = summarize(_int_horizons(d["controls"] + d.get("net", [])))
+    Path(path).write_text(json.dumps(d, indent=0))
+    print("re-summarised", path)
 
 
 def controls(workers: int) -> None:
@@ -132,12 +176,9 @@ def controls(workers: int) -> None:
             done.append(r)
             print(r["control"], r["seed"], r["geometry"], r.get("libmode"), r.get("scores") or r.get("score_R_vs_H"),
                   r["sec"], flush=True)
-    rows = [json.loads(json.dumps(r)) for r in done]
-    for r in rows:
-        for k in ("scores", "score_R_vs_H", "R_growth"):
-            if k in r:
-                r[k] = {int(h): v for h, v in r[k].items()}
-    summ = summarize(rows)
+    net = OUT / "net.jsonl"           # J-104's age-10 control (4) rows were written here, not to controls.jsonl
+    extra = [json.loads(l) for l in net.read_text().splitlines() if l.strip()] if net.exists() else []
+    summ = summarize(_int_horizons(done + extra))
     (OUT / "controls-summary.json").write_text(json.dumps(summ, indent=1))
     for k, v in summ.items():
         print(k, {a: b for a, b in v.items() if a not in ("values", "growth")}, v.get("values"))
@@ -238,9 +279,13 @@ def main():
     ap.add_argument("--workers", type=int, default=11)
     ap.add_argument("--export", default=None)
     ap.add_argument("--outdir", default="runs/e85/v2")
+    ap.add_argument("--resummarize", default=None, help="an existing export: recompute only its controls_summary")
     a = ap.parse_args()
     global OUT
     OUT = Path(a.outdir)
+    if a.resummarize:
+        resummarize(a.resummarize)
+        return
     if a.export:
         export(a.export)
         return

@@ -404,70 +404,6 @@
 3.0572
 ]
 },
-"c4_net deme64 @25": {
-"lnR/H mean": 0.0,
-"values": [
-0.0,
-0.0,
-0.0,
-0.0
-],
-"lnR growth mean": -0.874,
-"growth": [
--3.4965,
-0.0,
-0.0,
-0.0
-]
-},
-"c4_net deme64 @50": {
-"lnR/H mean": 0.0,
-"values": [
-0.0,
-0.0,
-0.0,
-0.0
-],
-"lnR growth mean": -0.874,
-"growth": [
--3.4965,
-0.0,
-0.0,
-0.0
-]
-},
-"c4_net deme64 @100": {
-"lnR/H mean": 0.0,
-"values": [
-0.0,
-0.0,
-0.0,
-0.0
-],
-"lnR growth mean": -0.874,
-"growth": [
--3.4965,
-0.0,
-0.0,
-0.0
-]
-},
-"c4_net deme64 @200": {
-"lnR/H mean": 0.0,
-"values": [
-0.0,
-0.0,
-0.0,
-0.0
-],
-"lnR growth mean": -0.874,
-"growth": [
--3.4965,
-0.0,
-0.0,
-0.0
-]
-},
 "c3_kin A mixed @10": {
 "mean": 0.008,
 "sd": 0.082,
@@ -508,69 +444,548 @@
 -0.5091
 ]
 },
-"c4_net mixed @25": {
+"c4_net deme64 neighbour @25": {
 "lnR/H mean": 0.0,
 "values": [
-0.0,
-0.0,
-0.0,
 0.0
 ],
-"lnR growth mean": 0.0,
+"lnR growth mean": -3.497,
 "growth": [
-0.0,
-0.0,
-0.0,
-0.0
-]
+-3.4965
+],
+"age": [
+100
+],
+"n_no_R": 3
 },
-"c4_net mixed @50": {
+"c4_net deme64 neighbour @50": {
 "lnR/H mean": 0.0,
 "values": [
-0.0,
-0.0,
-0.0,
 0.0
 ],
-"lnR growth mean": 0.0,
+"lnR growth mean": -3.497,
 "growth": [
-0.0,
-0.0,
-0.0,
-0.0
-]
+-3.4965
+],
+"age": [
+100
+],
+"n_no_R": 3
 },
-"c4_net mixed @100": {
+"c4_net deme64 neighbour @100": {
 "lnR/H mean": 0.0,
 "values": [
-0.0,
-0.0,
-0.0,
 0.0
 ],
-"lnR growth mean": 0.0,
+"lnR growth mean": -3.497,
 "growth": [
-0.0,
-0.0,
-0.0,
-0.0
-]
+-3.4965
+],
+"age": [
+100
+],
+"n_no_R": 3
 },
-"c4_net mixed @200": {
+"c4_net deme64 neighbour @200": {
 "lnR/H mean": 0.0,
 "values": [
-0.0,
-0.0,
-0.0,
 0.0
 ],
-"lnR growth mean": 0.0,
+"lnR growth mean": -3.497,
 "growth": [
-0.0,
-0.0,
-0.0,
-0.0
-]
+-3.4965
+],
+"age": [
+100
+],
+"n_no_R": 3
+},
+"c4_net mixed neighbour": {
+"age": [
+100
+],
+"n_no_R": 4,
+"note": "no H left at the switch in any seed: ln(R/H) undefined"
+},
+"c4_net_age0_p0.05_r0.05 deme64 neighbour @10": {
+"lnR/H mean": 0.22,
+"values": [
+0.0417,
+0.4389,
+0.0744,
+0.3248
+],
+"lnR growth mean": -0.1,
+"growth": [
+-0.3135,
+0.1528,
+-0.2565,
+0.0182
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.05_r0.05 deme64 neighbour @25": {
+"lnR/H mean": 0.358,
+"values": [
+-0.5149,
+1.1731,
+0.0554,
+0.7189
+],
+"lnR growth mean": -1.849,
+"growth": [
+-2.744,
+-1.0802,
+-2.1004,
+-1.4722
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.05_r0.05 deme64 neighbour @50": {
+"lnR/H mean": 0.263,
+"values": [
+-0.7612,
+1.3213,
+0.0496,
+0.4437
+],
+"lnR growth mean": -4.556,
+"growth": [
+-5.7593,
+-3.3893,
+-4.396,
+-4.6811
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.05_r0.05 deme64 neighbour @100": {
+"lnR/H mean": 2.946,
+"values": [
+2.9464,
+2.9464,
+2.9464,
+2.9464
+],
+"lnR growth mean": -9.256,
+"growth": [
+-9.2558,
+-9.2558,
+-9.2558,
+-9.2558
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.05_r0.2 deme64 neighbour @10": {
+"lnR/H mean": 0.252,
+"values": [
+0.2082,
+0.3246,
+0.2369,
+0.24
+],
+"lnR growth mean": 0.044,
+"growth": [
+0.0099,
+0.1186,
+0.0241,
+0.0241
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.05_r0.2 deme64 neighbour @25": {
+"lnR/H mean": 0.785,
+"values": [
+0.6358,
+0.8922,
+0.7997,
+0.8133
+],
+"lnR growth mean": -1.232,
+"growth": [
+-1.2669,
+-1.1256,
+-1.2297,
+-1.3056
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.05_r0.2 deme64 neighbour @50": {
+"lnR/H mean": 2.096,
+"values": [
+2.5356,
+1.9637,
+2.0627,
+1.8233
+],
+"lnR growth mean": -2.95,
+"growth": [
+-2.5624,
+-3.1342,
+-3.0997,
+-3.0029
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.05_r0.2 deme64 neighbour @100": {
+"lnR/H mean": 4.02,
+"values": [
+7.7447,
+1.3868,
+5.5612,
+1.3868
+],
+"lnR growth mean": -8.01,
+"growth": [
+-4.2857,
+-10.6435,
+-6.4692,
+-10.6435
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.0_r0.05 deme64 neighbour @10": {
+"lnR/H mean": 0.182,
+"values": [
+0.1017,
+0.1192,
+0.1875,
+0.3183
+],
+"lnR growth mean": 0.968,
+"growth": [
+0.8472,
+0.9107,
+0.9956,
+1.1167
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.0_r0.05 deme64 neighbour @25": {
+"lnR/H mean": 0.479,
+"values": [
+0.6734,
+0.549,
+0.2882,
+0.4059
+],
+"lnR growth mean": -0.233,
+"growth": [
+-0.2216,
+-0.1375,
+-0.3783,
+-0.1952
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.0_r0.05 deme64 neighbour @50": {
+"lnR/H mean": 1.591,
+"values": [
+1.7977,
+0.1224,
+2.3405,
+2.1029
+],
+"lnR growth mean": -2.242,
+"growth": [
+-2.3233,
+-3.0155,
+-1.5999,
+-2.0281
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age0_p0.0_r0.05 deme64 neighbour @100": {
+"lnR/H mean": 4.406,
+"values": [
+2.9464,
+1.3615,
+6.1946,
+7.1208
+],
+"lnR growth mean": -5.382,
+"growth": [
+-9.2558,
+-5.7593,
+-1.4329,
+-5.0814
+],
+"age": [
+0
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 neighbour @10": {
+"lnR/H mean": -0.258,
+"values": [
+-0.0033,
+-0.4032,
+-0.0103,
+-0.6159
+],
+"lnR growth mean": -1.543,
+"growth": [
+-1.347,
+-1.7177,
+-1.2881,
+-1.8192
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 neighbour @25": {
+"lnR/H mean": -0.292,
+"values": [
+-0.8587,
+0.2641,
+0.1544,
+-0.7285
+],
+"lnR growth mean": -3.404,
+"growth": [
+-4.031,
+-2.766,
+-3.0604,
+-3.7598
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 neighbour @50": {
+"lnR/H mean": -3.137,
+"values": [
+-3.0872,
+-3.5658,
+-3.2916,
+-2.6048
+],
+"lnR growth mean": -8.859,
+"growth": [
+-8.8908,
+-8.873,
+-8.8319,
+-8.8412
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 neighbour @100": {
+"lnR/H mean": 2.946,
+"values": [
+2.9459,
+2.946,
+2.9487,
+2.9443
+],
+"lnR growth mean": -8.859,
+"growth": [
+-8.8908,
+-8.873,
+-8.8319,
+-8.8412
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 none @10": {
+"lnR/H mean": 0.026,
+"values": [
+0.15,
+0.0242,
+-0.1419,
+0.0701
+],
+"lnR growth mean": 0.1,
+"growth": [
+0.2196,
+0.092,
+-0.0711,
+0.1608
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 none @25": {
+"lnR/H mean": 0.027,
+"values": [
+0.342,
+-0.0523,
+-0.2689,
+0.0855
+],
+"lnR growth mean": 0.262,
+"growth": [
+0.5674,
+0.1743,
+-0.0326,
+0.339
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 none @50": {
+"lnR/H mean": 0.015,
+"values": [
+0.315,
+-0.0697,
+-0.2783,
+0.0924
+],
+"lnR growth mean": 0.36,
+"growth": [
+0.6507,
+0.2715,
+0.0749,
+0.4412
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 deme64 none @100": {
+"lnR/H mean": 0.018,
+"values": [
+0.3016,
+-0.1804,
+0.0461,
+-0.0947
+],
+"lnR growth mean": 0.44,
+"growth": [
+0.7191,
+0.2413,
+0.4553,
+0.3456
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 mixed neighbour @10": {
+"lnR/H mean": -0.532,
+"values": [
+-0.3253,
+-0.8298,
+-0.4314,
+-0.5408
+],
+"lnR growth mean": -1.816,
+"growth": [
+-1.6006,
+-2.1207,
+-1.7085,
+-1.834
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 mixed neighbour @25": {
+"lnR/H mean": -0.874,
+"values": [
+-1.1191,
+-1.4405,
+-0.2397,
+-0.696
+],
+"lnR growth mean": -3.836,
+"growth": [
+-4.0783,
+-4.3801,
+-3.3635,
+-3.522
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 mixed neighbour @50": {
+"lnR/H mean": -2.615,
+"values": [
+-2.4696,
+-2.6013,
+-2.4711,
+-2.918
+],
+"lnR growth mean": -8.936,
+"growth": [
+-8.9381,
+-8.9548,
+-8.9126,
+-8.9381
+],
+"age": [
+10
+],
+"n_no_R": 0
+},
+"c4_net_age10 mixed neighbour @100": {
+"lnR/H mean": 2.947,
+"values": [
+2.9465,
+2.9478,
+2.945,
+2.9485
+],
+"lnR growth mean": -8.936,
+"growth": [
+-8.9381,
+-8.9548,
+-8.9126,
+-8.9381
+],
+"age": [
+10
+],
+"n_no_R": 0
 }
 },
 "controls": [

@@ -12,6 +12,29 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-107 · 2026-11-19 · Fixing the seven inconsistencies the expert review pack found (corrections only, no new results)
+
+**Question / why:** J-106 listed seven places where pages disagreed with each other or with the exports (`expert-review.md` section 9). The coordinator asked for each to be fixed before the pack goes out.
+
+**Ran:** no experiment. Recomputed from the exports with the project venv; re-ran the probe benchmark and `pytest`. No experiment row.
+
+**Fixed:**
+1. **Benchmark size.** Re-ran `emergence benchmark --probes`: 39/39 and 222/222 (261 checks in all). `index.md` (card), `research.md` (O1), `paper.md` §1 and A1, `report.md` (closing line) and `README.md` (probe count) updated; counts tied to a dated run are labelled with their date.
+2. **E-81 copier length at T + 20,000.** From `2026-11-17-e81.json` `per_soup[].len_late2`: median 6.19, mean 6.165. The sentence lists medians, so "6.17" becomes "median 6.19" in the experiments row and A204 (mean 6.17 noted); J-098 gets a dated correction note, its text unchanged.
+3. **E-85 revision, sham extinction.** The `alone` trajectories (every 20 epochs) reach 0 bytes at epoch 140 in 1 seed and 160 in 3; D-080 now says 140–160 (was 100–140). The experiments row said "by 160", now 140–160.
+4. **E-85 groundwork export summary (a code bug).** `summarize` in `scripts/e85_groundwork.py` (J-104 version) averaged only rows with `control == "c4_net"`. Those came from the first `--controls` run, which called `bffxm_assay.invade` with its default `age=100`; by then no hosts were left (H at the switch 0 in 7 of 8), so every ln(R/H) was 0. The age-10 runs J-104 reports were written to `net.jsonl` with labels `c4_net_age10` and `c4_net_age0_…`, and nothing summarised them. Fix: a new `summarize_net` groups every row whose label starts with `c4` by its own label, geometry and libmode, records the age, and counts rows with no R introduced instead of averaging them as zeros; `controls()` now also reads `net.jsonl`; a new `--resummarize <export>` recomputes only `controls_summary` from an export's own `controls` + `net` rows. Applied to `2026-11-18-e85-groundwork.json`: the bytes before `"controls_summary"` and from `"controls": [` to the end are byte-identical (sha256 of the raw tail `1d61b8aff882bcd7…` before and after; every other key's JSON identical), the 44 non-control-(4) summary entries are unchanged, and the control (4) entries now read `c4_net_age10 deme64 neighbour @25`: ln(R/H) −0.292 (−0.86, +0.26, +0.15, −0.73), R growth at 10 −1.543 (−1.29 to −1.82). J-104 gets a correction note: "−1.3 in log by 10 epochs" is the smallest of the four seeds; the mean is −1.54. **Checked for the same bug:** the revision export's summary is reproduced exactly by the fixed function (its control (4) rows are labelled `c4_net` and run at age 10), and `scripts/e85_net_variants.py` writes raw rows only, with no summary, so neither is affected.
+5. **"R alone holds the soup."** The `alone` R trajectories fall in all 4 seeds, from 0.58–0.65 MB at epoch 20 to 0.18–0.19 MB at 200 in 2 seeds (7–25 kB in the other 2). Reworded to "persists to 200 epochs in 2 of 4, declining" in D-080, `handoff.md` (two places), the experiments row, and with a dated note in the `reviews.md` J-105 note. J-105's own text ("still holds 0.18–0.19 MB") is accurate and left.
+6. **Holm family size.** Headline quotes moved to the latest family of 51 (`2026-11-18-e83-holm51.json`): `paper.md` abstract (20 of 22 survive; E-50 0.40, E-71 P2 0.17; E-81 1.9 × 10⁻⁴), §5 E-81 paragraph, §8 (a sentence for the 49- and 51-value families), A180; `handoff.md` state paragraph; `research.md` O5. Body quotes that stay in the 42-value family now say so, with the 51-value value beside them (§3 E-19a, §4.1 E-50, §4.3 E-71, §4.4 phases 6 and 7). Per-experiment journal entries are left as historical.
+7. **The report.** `report.md` gets sections 37 to 43 (E-79; E-80 Parts A and B; E-81; E-82; E-83; E-84 groundwork; E-85 groundwork and revision, both marked not pre-registered), numbers only from the journal and exports; a "since then" lead; updated title dates, evidence table rows 4 and 5, and "What next" (BFF-variant line paused, expert review pending).
+
+**Also:** `expert-review.md` section 9 now says each item was fixed (J-107) and keeps the list as a record.
+
+**Changed:** `scripts/e85_groundwork.py`; `docs/data/experiments/2026-11-18-e85-groundwork.json` (summary only); `docs/journal.md` (this entry; correction notes in J-098 and J-104); `decisions.md` (D-080 status); `experiments.md` (E-81, E-85 groundwork and revision rows); `handoff.md`; `paper.md`; `research.md`; `index.md`; `report.md`; `reviews.md`; `expert-review.md`; `README.md`. **Checks:** `PYTHONPATH=. python -m pytest -q` 96 passed; `PYTHONPATH=. python -m emergence benchmark --probes` 39/39 and 222/222.
+
+**Lesson:** a summary written by a different code path than the numbers in the text can drift silently; recompute summaries from the raw rows they claim to summarise, and keep the raw rows in the export so that this is possible.
+
+---
+
 ## J-106 · 2026-11-19 · An expert review pack for an outside artificial-life researcher (writing only, no new results)
 
 **Question / why:** the E-81 to E-85 chain ended with the recommendation to pause the BFF-variant thread and seek an expert review (J-102, J-105). The coordinator asked for a self-contained pack that gets the most useful critique per hour from someone who knows BFF, Tierra, Avida, Squirm3 and open-endedness work.
@@ -123,6 +146,8 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 - **Records:** D-078, D-079 (proposed); E-85 groundwork row; `handoff.md`; export `docs/data/experiments/2026-11-18-e85-groundwork.json`.
 - **Checks:** `PYTHONPATH=. python -m pytest` 96 passed; `PYTHONPATH=. python -m emergence benchmark --probes` 39/39 and 221/221 (203 + 18 new).
 - **Caches (not committed):** `runs/e85/` (races, net, sweep, pilot trajectories and snapshots).
+
+**Correction (J-107, 2026-11-19):** (a) In the control (4) row, "R's bytes fall by −1.3 in log by 10 epochs" is the smallest of the four seeds' drops (−1.29 to −1.82); their **mean is −1.54**. ln(R/H) at 25 (−0.29, −0.86 to +0.26) and the verdict stand. (b) The export's `controls_summary` reported control (4) as zeros: its summariser read only the `controls` rows labelled `c4_net`, which `--controls` had run at `invade`'s default age of 100 epochs, when no hosts were left (H at the switch 0 in 7 of 8), and never read the age-10 rows in `net` (label `c4_net_age10`) that this entry reports. Fixed in `scripts/e85_groundwork.py` (`summarize_net`) and only the summary of `2026-11-18-e85-groundwork.json` re-computed from its raw rows (`--resummarize`); the raw rows are byte-identical.
 
 **Lesson:** a parasite's edge and the host's survival are set by the same ratio. Before asking whether resistance spreads, check that a host population persists at the parasite advantage the design creates.
 
@@ -371,6 +396,8 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 - **Records:** experiments row; D-070 and D-071 status; `handoff.md`.
 - **Pages:** `paper.md` (abstract, §5, Appendices A, B, B2); `index.md` (level-5 card, H3); `research.md` (O5); `literature.md` (C4 row and discussion, correction 10, closing paragraph); `story.html` (result C, scoreboard).
 - **Checks:** `pytest` 91 passed; `emergence benchmark --probes` 39/39 and 158/158.
+
+**Correction (J-107, 2026-11-19):** in "Length (S1–S3)" above, "6.17 at T + 20,000" is the mean of `per_soup[].len_late2`; the median, matching the rest of that sentence, is **6.19** (mean 6.165). The experiments row and paper A204 now say median 6.19. No verdict changes.
 
 **Lesson:** a null that tracks a family by identity is undefined when the family cannot persist without copying. Check before registering that the null is defined for every kind of family the jump rule can select (here: long copiers without a marker).
 
