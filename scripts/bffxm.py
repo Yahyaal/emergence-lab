@@ -40,6 +40,7 @@ if str(HERE) not in sys.path:
 import bffx as _bffx  # noqa: E402  (the original, for the xmin = 0 equivalence control)
 
 XMIN = 32
+TAILMIN = 32          # D-080 (revised rule, J-105); 0 gives the first BFF-XM rule of J-104 (D-078)
 _LIBM = None
 
 
@@ -64,7 +65,10 @@ def _load_lib():
     L.x_match.argtypes = [P, P, I, P, I, I, I, I, P]
     L.x_set_xmin.restype, L.x_set_xmin.argtypes = None, [I]
     L.x_get_xmin.restype, L.x_get_xmin.argtypes = I, []
+    L.x_set_tailmin.restype, L.x_set_tailmin.argtypes = None, [I]
+    L.x_get_tailmin.restype, L.x_get_tailmin.argtypes = I, []
     L.x_set_xmin(XMIN)
+    L.x_set_tailmin(TAILMIN)
     return L
 
 
@@ -78,6 +82,15 @@ def lib():
 def set_xmin(v: int) -> None:
     """Change the interpreter's minimum body (controls only; the E-85 rule is XMIN = 32)."""
     lib().x_set_xmin(int(v))
+
+
+def set_tailmin(v: int) -> None:
+    """D-080 tail-merge threshold (0: the J-104 rule, D-078)."""
+    lib().x_set_tailmin(int(v))
+
+
+def get_tailmin() -> int:
+    return int(lib().x_get_tailmin())
 
 
 def get_xmin() -> int:
@@ -116,13 +129,24 @@ def host(length: int = XMIN) -> np.ndarray:
 
 
 def resistant_host(key: int = 1, length: int = XMIN) -> np.ndarray:
-    """R: copies its executor only if the executor's first byte is `key` (E-82's design, `length` bytes)."""
+    """R (D-080): copies its executor only if the executor's first byte is `key`, WITHOUT changing a refused caller:
+    byte 0 = key, '-' x key, then '[+<]' (on a mismatch: restore the byte, then '<' at head0 = 0 halts the run),
+    '+' x key (restore on a match), then the copy loop. Run by itself, byte 0 is its own key, so it copies itself."""
+    return X.pad(bytes([key]) + b"-" * key + b"[+<]" + b"+" * key + b"[.>}]", length)
+
+
+def resistant_host_rewriting(key: int = 1, length: int = XMIN) -> np.ndarray:
+    """E-82's R ('-[]+' trap), used in J-104: a refused caller is left with its first byte decremented."""
     return A.resistant_host(key, length)
 
 
 def sham_host(key: int = 1, length: int = XMIN) -> np.ndarray:
-    """S: R with its trap '[]' replaced by two filler bytes (same length, same bytes elsewhere; copies everyone)."""
-    return RA.sham_host(key, length)
+    """S: R with '[+<]' replaced by four filler bytes (same length, same bytes elsewhere; copies everyone)."""
+    r = resistant_host(key, length).copy()
+    i = 1 + key
+    assert bytes(r[i:i + 4]) == b"[+<]"
+    r[i:i + 4] = 0x80
+    return r
 
 
 def parasite(length: int = 4, key: int | None = None) -> np.ndarray:

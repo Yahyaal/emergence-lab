@@ -67,19 +67,52 @@ def compete(seed: int, geometry: str, libmode: str, shares: dict, focal: str = "
 
 def invade(seed: int, geometry: str = "deme64", age: int = 100, share_r: float = 0.05, horizons=(25, 50, 100, 200),
            h_share: float = 0.20, p_share: float = 0.05, libmode: str = "neighbour", every: int = 5,
-           w: int = X.W) -> dict:
-    """Age an H + P soup for `age` epochs (no mutation), then turn a random `share_r` of the exact H programs into R
-    (rng [85, 5, seed]); follow R, H and P bytes."""
+           w: int = X.W, placement: str = "scatter", rprog=None, hprog=None) -> dict:
+    """Age an H + P soup for `age` epochs (no mutation), then introduce R (rng [85, 5, seed]); follow R, H, P bytes.
+    placement "scatter": a random `share_r` of the exact H programs become R in place (E-85 control 4);
+              "clump":   the same number of R, as one run of consecutive programs (replacing whatever is there,
+                         bytes conserved: the last R absorbs the remainder) starting at a random program;
+              "deme":    the 64 consecutive programs from a random start replaced by R (one deme's worth)."""
+    H = hprog() if hprog else M.host()
+    Rh = rprog() if rprog else M.resistant_host()
+    P = M.parasite(4)
     s = soup(start(seed, {"H": h_share, "P": p_share}, w, tag=3), seed, geometry, libmode, tag=4)
-    H, Rh, P = M.host(), M.resistant_host(), M.parasite(4)
+    if hprog:   # replace the designed H of the start by hprog (same length)
+        progs = s.programs()
+        h0 = M.host()
+        for i, q in enumerate(progs):
+            if len(q) == len(h0) and (q == h0).all():
+                progs[i] = H.copy()
+        s.buf = X.u8(np.concatenate(progs))
     for _ in range(age):
         s.epoch()
     progs = s.programs()
     isH = np.flatnonzero(X.members(s.buf, s.lens, H, thr=100, opmin=100) & (s.lens == len(H)))
     rng = np.random.default_rng([85, 5, seed])
-    pick = rng.choice(isH, max(1, int(share_r * len(isH))), replace=False) if len(isH) else []
-    for i in pick:
-        progs[i] = Rh.copy()
+    k = max(1, int(share_r * len(isH))) if len(isH) else 0
+    if placement == "scatter":
+        pick = rng.choice(isH, k, replace=False) if len(isH) else []
+        for i in pick:
+            progs[i] = Rh.copy()
+        nr = len(pick)
+    else:
+        i0 = int(rng.integers(len(progs)))
+        j, tot = i0, 0
+        if placement == "deme":
+            j = min(len(progs), i0 + 64)
+            tot = int(sum(len(q) for q in progs[i0:j]))
+        else:
+            while j < len(progs) and tot < k * len(Rh):
+                tot += len(progs[j])
+                j += 1
+        nr = max(1, tot // len(Rh))
+        rem = tot - nr * len(Rh)
+        new = [Rh.copy() for _ in range(nr)]
+        if rem:
+            last = X.pad(bytes(Rh[:np.flatnonzero(Rh == X.MARKER)[-1]]), len(Rh) + rem)
+            new[-1] = last
+        progs = progs[:i0] + new + progs[j:]
+        s.lens = np.array([len(q) for q in progs], np.int32)
     s.buf = X.u8(np.concatenate(progs))
     traj = []
     t0 = time.time()
@@ -93,8 +126,8 @@ def invade(seed: int, geometry: str = "deme64", age: int = 100, share_r: float =
     sc = {h: round(float(np.log((by[h]["R"] + 1) / (by[h]["H"] + 1)) - np.log((a["R"] + 1) / (a["H"] + 1))), 4)
           for h in horizons}
     gr = {h: round(float(np.log((by[h]["R"] + 1) / (a["R"] + 1))), 4) for h in horizons}
-    return {"seed": seed, "geometry": geometry, "libmode": libmode, "age": age, "H_at_switch": int(len(isH)),
-            "R_switched": int(len(pick)), "score_R_vs_H": sc, "R_growth": gr, "traj": traj,
+    return {"seed": seed, "geometry": geometry, "libmode": libmode, "age": age, "placement": placement,
+            "H_at_switch": int(len(isH)), "R_switched": int(nr), "score_R_vs_H": sc, "R_growth": gr, "traj": traj,
             "sec": round(time.time() - t0, 1)}
 
 
@@ -105,6 +138,7 @@ def controls() -> list[tuple[str, bool, str]]:
     rng = np.random.default_rng(85)
     # the rule: xmin 0 equals BFF-X bit for bit; with xmin 32 bytes are conserved and pieces stay in range
     M.set_xmin(0)
+    M.set_tailmin(0)
     try:
         a = B.Soup(w=2 ** 16, seed=7, libmode="neighbour")
         b = X.Soup(w=2 ** 16, seed=7, libmode="neighbour")
@@ -114,7 +148,8 @@ def controls() -> list[tuple[str, bool, str]]:
         same = bool(len(a.buf) == len(b.buf) and (a.buf == b.buf).all() and (a.lens == b.lens).all())
     finally:
         M.set_xmin(M.XMIN)
-    out.append(("bffxm rule: with xmin = 0 the interpreter equals BFF-X (bffx.Soup, neighbour) bit for bit over 30 "
+        M.set_tailmin(M.TAILMIN)
+    out.append(("bffxm rule: with xmin = 0 and tailmin = 0 the interpreter equals BFF-X (bffx.Soup, neighbour) bit for bit over 30 "
                 "epochs", same, f"identical {same}"))
     s = M.make("deme64", w=2 ** 16, rng=np.random.default_rng(8))
     ok, lo, hi = True, 999, 0
@@ -142,6 +177,22 @@ def controls() -> list[tuple[str, bool, str]]:
                 "unchanged), only itself with nothing to borrow; the 6-byte copy loop is itself a borrower (q ~ 1)",
                 n_p >= 20 and n0 == 1 and bool((H == before).all()) and q6 > 0.9,
                 f"copies {n_p}, alone {n0}, q(H6 on H) {q6:.3f}"))
+    # D-080 tail merge: a host's copies in a 100-byte partner are 32, 32, 36 (the 4-byte remainder joins the last copy),
+    # 32, 32, 32, 4 under the J-104 cut; and the non-rewriting R leaves a refused caller unchanged
+    b = rng.integers(0, 256, 100, dtype=np.uint8)
+    l2 = [len(q) for q in X.run_pair(H, b, None, libmode="none")[0]]
+    M.set_tailmin(0)
+    try:
+        l1 = [len(q) for q in X.run_pair(H, b, None, libmode="none")[0]]
+    finally:
+        M.set_tailmin(M.TAILMIN)
+    caller = np.array([2, 0x80, 0x80, X.MARKER], np.uint8)
+    after = X.run_pair(caller, b, Rh)[0][0]
+    old_r = X.run_pair(caller, b, M.resistant_host_rewriting())[0][0]
+    out.append(("bffxm tail merge and non-rewriting lock: host copies in a 100-byte partner cut 32/32/32/36 (J-104 cut: "
+                "32/32/32/32/4 with the 4-byte host fragment); R leaves a refused caller unchanged (E-82's R decrements "
+                "it to its key)", l2 == [32, 32, 32, 36] and l1 == [32, 32, 32, 32, 4] and bool((after == caller).all())
+                and int(old_r[0]) == 1, f"tail {l2} vs {l1}; caller after R {after.tolist()}, after old R {old_r.tolist()}"))
     # designed programs: H, R, S copy themselves exactly; R refuses the plain parasite, copies the key-matched one
     exact = {k: X.screen(x, 9, 8, libmode="none", thr=100, opmin=100)[0] for k, x in (("H", H), ("R", Rh), ("S", S))}
     q = {k: round(A.q_pair(P, x, 10), 3) for k, x in (("H", H), ("R", Rh), ("S", S))}
@@ -159,8 +210,8 @@ def instrument_controls() -> list[tuple[str, bool, str]]:
     rng = np.random.default_rng(851)
     H, P, Rh = M.host(), M.parasite(4), M.resistant_host()
     # host detector: copy screen + growth test, nothing borrowed
-    v = {L: A.replication_test(M.host(L), rng)["verdict"] for L in (32, 40, 48)}
-    out.append(("bffxm hosts positive: hand hosts of 32, 40 and 48 bytes -> replicator (nothing borrowed)",
+    v = {L: A.replication_test(M.host(L), rng)["verdict"] for L in (32, 36, 40)}
+    out.append(("bffxm hosts positive: hand hosts of 32, 36 and 40 bytes -> replicator (nothing borrowed)",
                 all(x == "replicator" for x in v.values()), f"{v}"))
     v = {"random": A.replication_test(rng.integers(0, 256, 40, dtype=np.uint8), rng)["verdict"],
          "parasite": A.replication_test(P, rng)["verdict"],

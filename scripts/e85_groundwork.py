@@ -28,6 +28,7 @@ import bffxm as M  # noqa: E402
 import bffxm_assay as MA  # noqa: E402
 
 OUT = Path("runs/e85")
+REVISED = True        # D-080 rule (tail merge at 32, non-rewriting R); the J-104 runs used runs/e85/ with D-078
 SEEDS = (1, 2, 3, 4)
 HZ = (10, 25, 50, 100)
 
@@ -49,13 +50,19 @@ def jobs() -> list[tuple]:
                 J.append(("c3_kin", sd, geo, lm, {"R": 0.10, "S": 0.10, "P": 0.05}, "R", "S", HZ))
         for geo in ("deme64", "mixed"):
             J.append(("c4_net", sd, geo))
+        if REVISED:
+            J.append(("c4_net", sd, "deme64", "none"))              # nothing borrowed: R and H identical (null)
+            J.append(("c4_clump", sd, "deme64"))
+            J.append(("c4_young", sd, "deme64"))
     return J
 
 
 def run_job(j) -> dict:
     t0 = time.time()
-    if j[0] == "c4_net":
-        r = MA.invade(j[1], j[2])
+    if j[0].startswith("c4"):
+        pl, age = {"c4_net": ("scatter", 10), "c4_clump": ("clump", 10), "c4_young": ("scatter", 3)}[j[0]]
+        lm = j[3] if len(j) > 3 else "neighbour"
+        r = MA.invade(j[1], j[2], age=age, placement=pl, libmode=lm, horizons=(10, 25, 50, 100, 200))
     else:
         name, sd, geo, lm, sh, f, rv, hz = j
         r = MA.compete(sd, geo, lm, sh, f, rv, horizons=hz)
@@ -95,12 +102,16 @@ def summarize(rows: list[dict]) -> dict:
                 out[f"c3_kin A {geo} @{h}"] = {"mean": round(float(np.mean(d)), 3),
                                                "sd": round(float(np.std(d, ddof=1)), 3) if len(d) > 1 else None,
                                                "values": d}
-        for h in (25, 50, 100, 200):
-            v = [r["score_R_vs_H"][h] for r in rows if r["control"] == "c4_net" and r["geometry"] == geo]
-            g = [r["R_growth"][h] for r in rows if r["control"] == "c4_net" and r["geometry"] == geo]
-            if v:
-                out[f"c4_net {geo} @{h}"] = {"lnR/H mean": round(float(np.mean(v)), 3), "values": v,
-                                             "lnR growth mean": round(float(np.mean(g)), 3), "growth": g}
+        for c in ("c4_net", "c4_clump", "c4_young"):
+            for lm in ("neighbour", "none"):
+                for h in (10, 25, 50, 100, 200):
+                    sel = [r for r in rows if r["control"] == c and r["geometry"] == geo and r.get("libmode") == lm
+                           and h in r["score_R_vs_H"]]
+                    v = [r["score_R_vs_H"][h] for r in sel]
+                    g = [r["R_growth"][h] for r in sel]
+                    if v:
+                        out[f"{c} {geo} {lm} @{h}"] = {"lnR/H mean": round(float(np.mean(v)), 3), "values": v,
+                                                       "lnR growth mean": round(float(np.mean(g)), 3), "growth": g}
     return out
 
 
@@ -112,7 +123,8 @@ def controls(workers: int) -> None:
         done = [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
     key = lambda r: (r["control"], r["seed"], r["geometry"], r.get("libmode"))  # noqa: E731
     have = {key(r) for r in done}
-    todo = [j for j in jobs() if (j[0], j[1], j[2], j[3] if len(j) > 3 else "neighbour") not in have]
+    todo = [j for j in jobs() if (j[0], j[1], j[2], j[3] if len(j) > 3 and isinstance(j[3], str) else "neighbour")
+            not in have]
     with Pool(workers) as p, open(path, "a") as f:
         for r in p.imap_unordered(run_job, todo):
             f.write(json.dumps(r) + "\n")
@@ -202,6 +214,14 @@ def export(path: str) -> None:
            "commit": commit,
            "controls_summary": json.loads((OUT / "controls-summary.json").read_text()),
            "controls": rows, "net": net, "xsweep": jl("xsweep.jsonl"), "pilot": pil}
+    if REVISED and OUT.name == "v2":
+        out["status"] = "revised rule (D-080): decisive control (4) failed again; not pre-registered"
+        out["rule"] = ("BFF-XM deme64, revised (D-080): XMIN 32, the tape's unterminated tail merged into the preceding "
+                       "piece below 32 bytes, non-rewriting resistant host")
+        out["alone"] = jl("alone.jsonl")
+        p1 = OUT.parent / "net-variants.jsonl"
+        out["net_variants_D078"] = ([json.loads(l) for l in p1.read_text().splitlines() if l.strip()]
+                                    if p1.exists() else [])
     Path(path).write_text(json.dumps(out, indent=0))
     print("wrote", path)
 
@@ -217,7 +237,10 @@ def main():
     ap.add_argument("--xmin", default=str(M.XMIN), help="comma list; values other than 32 are an exploratory sweep")
     ap.add_argument("--workers", type=int, default=11)
     ap.add_argument("--export", default=None)
+    ap.add_argument("--outdir", default="runs/e85/v2")
     a = ap.parse_args()
+    global OUT
+    OUT = Path(a.outdir)
     if a.export:
         export(a.export)
         return

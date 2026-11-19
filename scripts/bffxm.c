@@ -7,6 +7,11 @@
    A's first byte, head1 at B's first byte) and the data tape is A ++ B as before. A program of xmin bytes or more
    runs exactly as in BFF-X. With xmin = 0 (or xmin <= LMIN) every function here is bit-identical to bffx.c.
 
+   D-080 (revision after control 4 failed, J-105): the unterminated tail of a cut tape is merged into the preceding
+   piece when it is shorter than `tailmin` (BFF-X merges it below LMIN). With tailmin = xmin = 32, a piece under 32
+   bytes can only arise ending in the marker, so the partial last copy a copier leaves in its partner is not cut off
+   as a codeless fragment; marker-terminated short programs (parasites) are unaffected.
+
    So a self-copier needs at least xmin bytes, while a program that only borrows code may be as short as LMIN: the
    shortest host is long, a partner check costs a few of its bytes, and parasites still win by being short. */
 #include <stdint.h>
@@ -16,9 +21,14 @@
 #define TAPE_MAX 1024
 
 static int xmin = 0;
+/* D-080: the tape's unterminated tail (the bytes after the last cut) is merged into the preceding piece when it is
+   shorter than tailmin (bffx.c: shorter than LMIN). tailmin <= LMIN reproduces bffx.c's cut exactly. */
+static int tailmin = 0;
 
 void x_set_xmin(int v) { xmin = v; }
 int x_get_xmin(void) { return xmin; }
+void x_set_tailmin(int v) { tailmin = v; }
+int x_get_tailmin(void) { return tailmin; }
 
 static inline uint8_t fetch(const uint8_t *t, int la, const uint8_t *lib, int i) {
     return i < la ? t[i] : lib[i - la];
@@ -92,11 +102,11 @@ int x_cut(const uint8_t *t, int n, int marker, int lmin, int lmax, int32_t *out)
             start = i + 1;
         }
     }
-    int r = n - start;
+    int r = n - start, tm = tailmin > lmin ? tailmin : lmin;
     if (r > 0) {
-        if (r >= lmin || k == 0) out[k++] = r;
+        if (r >= tm || k == 0) out[k++] = r;
         else if (out[k - 1] + r <= lmax) out[k - 1] += r;
-        else { out[k - 1] += r - lmin; out[k++] = lmin; }
+        else { out[k - 1] += r - tm; out[k++] = tm; }
     }
     return k;
 }
