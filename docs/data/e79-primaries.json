@@ -2268,6 +2268,79 @@
    "original_verdict": "not met (fail: CI upper 0 < delta* 0.10)",
    "test_met_alpha": false,
    "line_label": "E-82 BFF-X host resistance d3"
+  },
+  {
+   "experiment": "E-83",
+   "thread": "BFF after emergence",
+   "journal": "J-102",
+   "preregistration": {
+    "file": "docs/data/e83-preregistration.md",
+    "commit": "67331d3"
+   },
+   "unit": "soup (n = 40)",
+   "id": "E-83/P1",
+   "test": "criterion: share of admitted soups with >= 1 verified parasite at T+1000, T+5000 and T+10000 >= 0.75 (BFF-XR deme64)",
+   "family": "excluded",
+   "reason": "a pre-registered criterion without a p value (parasites close to built in by the rule)",
+   "original_verdict": "met (pass: 40 of 40)",
+   "p_raw": null,
+   "recomputed": false
+  },
+  {
+   "experiment": "E-83",
+   "thread": "BFF after emergence",
+   "journal": "J-102",
+   "preregistration": {
+    "file": "docs/data/e83-preregistration.md",
+    "commit": "67331d3"
+   },
+   "unit": "soup (n = 40)",
+   "alpha": 0.05,
+   "p_kind": "monte_carlo",
+   "recomputed": false,
+   "sidedness": "one-sided",
+   "family": "in",
+   "id": "E-83/P2",
+   "test": "one-sided sign-flip test (Monte Carlo, 200,000 patterns) of mean RQ > 0, RQ = mean over i < j of q(P_j, H_i) - q(P_i, H_j), coverage q, samples at T+1000, T+5000, T+10000 (BFF-XR deme64)",
+   "p_raw": 0.24952375238123808,
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-18-e83.json",
+    "key": "P2 → p",
+    "line": 1,
+    "quote": "\"P2\": {\"n\": 40 ... \"p\": 0.24952375238123808"
+   },
+   "effect": "mean RQ = 0.0004 (CI -0.0002 to 0.001; 38 of 40 zero)",
+   "original_verdict": "not met (fail: CI upper 0.001 < delta* 0.10)",
+   "test_met_alpha": false,
+   "line_label": "E-83 BFF-XR deme64 time-shift RQ"
+  },
+  {
+   "experiment": "E-83",
+   "thread": "BFF after emergence",
+   "journal": "J-102",
+   "preregistration": {
+    "file": "docs/data/e83-preregistration.md",
+    "commit": "67331d3"
+   },
+   "unit": "soup (n = 40)",
+   "alpha": 0.05,
+   "p_kind": "monte_carlo",
+   "recomputed": false,
+   "sidedness": "one-sided",
+   "family": "in",
+   "id": "E-83/P3",
+   "test": "one-sided sign-flip test (Monte Carlo, 200,000 patterns) of mean d3 > 0, d3 = q(P_1, H_1) - q(P_1, H_3) (BFF-XR deme64)",
+   "p_raw": 1.0,
+   "p_source": {
+    "file": "docs/data/experiments/2026-11-18-e83.json",
+    "key": "P3 → p",
+    "line": 1,
+    "quote": "\"P3\": {\"n\": 40 ... \"p\": 1.0"
+   },
+   "effect": "mean d3 = 0 (CI 0 to 0; 0 in 40 of 40)",
+   "original_verdict": "not met (fail: CI upper 0 < delta* 0.10)",
+   "test_met_alpha": false,
+   "line_label": "E-83 BFF-XR deme64 host resistance d3"
   }
  ],
  "rescores_reference": [

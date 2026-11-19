@@ -377,7 +377,7 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
       <line x1="40" y1="130" x2="440" y2="130" stroke="var(--line)" stroke-width="1"/>
       <polyline points="70,36 190,119 310,119 430,120" fill="none" stroke="var(--hot)" stroke-width="3"/>
       <g fill="var(--hot)"><circle cx="70" cy="36" r="7"/><circle cx="190" cy="119" r="7"/><circle cx="310" cy="119" r="7"/><circle cx="430" cy="120" r="7"/></g>
-      <text x="84" y="30">106 bytes</text><text x="310" y="108" text-anchor="middle">6 bytes</text>
+      <text x="84" y="41">106 bytes</text><text x="310" y="108" text-anchor="middle">6 bytes</text>
       <text x="130" y="16" text-anchor="middle" style="fill:var(--yes)">won 40 of 40</text>
       <text x="250" y="16" text-anchor="middle" style="fill:var(--yes)">won slightly</text>
       <text x="370" y="16" text-anchor="middle" style="fill:var(--no)">no gain</text>
@@ -400,7 +400,24 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
     </svg>
     <p class="cap">Rounds after copiers took over. A full square means the copiers of that time copied the parasites of that time. An arms race would have left squares empty above the diagonal (later copiers refusing earlier parasites). Averaged over 40 soups, every square is 99.8% full.</p>
   </div>
-  <p style="margin-top:14px">Two honest caveats. The parasites were close to guaranteed: in this world any program that runs off its own end gets copied by a neighbour's copy loop. And nothing rewarded fighting back: a copier that refuses a parasite protects some random stranger, not itself or its family, and the extra code makes it longer and slower. Our guess, which we have not tested, is that an arms race needs a world where resisting pays the resister, such as Tierra's, where a program's neighbours are its own offspring. Copiers again settled at 6 bytes, parasites at 4. <b>Rung 5 is still not reached.</b></p>
+  <p style="margin-top:14px">Two honest caveats. The parasites were close to guaranteed: in this world any program that runs off its own end gets copied by a neighbour's copy loop. And nothing rewarded fighting back: a copier that refuses a parasite protects some random stranger, not itself or its family, and the extra code makes it longer and slower. Our guess was that an arms race needs a world where resisting pays the resister, such as Tierra's, where a program's neighbours are its own offspring. Copiers again settled at 6 bytes, parasites at 4. <b>Rung 5 is still not reached.</b></p>
+  <h3 style="margin-top:30px">Then we made fighting back pay, and there was no room for it</h3>
+  <p>So we tested the guess. We split the soup into small neighbourhoods of 64 programs, where copies land next to their parent and parasites borrow from copiers nearby. Now a copier that refuses parasites protects its own family. We checked that this works with hand-built programs: a copier with a "lock" (it copies a caller only if the caller carries the right first byte) beat an otherwise identical copier without the lock, in these neighbourhoods and not in a mixed soup. Then we ran 40 soups from random code. <em class="k">Not one copier ever grew a lock.</em> The reason is size. The best copiers are 6 bytes long, and the smallest lock we could find, by trying every short program, needs 4 more. Those 4 bytes cost far more than the lock earns, so the short copier wins every time. (We picked the neighbourhood size after trying smaller and larger ones, and we expected this result before the run.)</p>
+  <div class="panel">
+    <svg viewBox="0 0 380 178" role="img" aria-label="Two programs drawn as rows of byte boxes. Top: the 6-byte copier that wins, square-bracket dot greater-than close-brace square-bracket exclamation mark. Bottom: the shortest copier with a lock, 10 bytes; its first 4 bytes are the lock that checks who is calling, followed by the same 6-byte copier.">
+      <text x="20" y="20">the copier that wins: 6 bytes</text>
+      <g fill="var(--bg3)" stroke="var(--line)"><rect x="20" y="30" width="30" height="30" rx="3"/><rect x="54" y="30" width="30" height="30" rx="3"/><rect x="88" y="30" width="30" height="30" rx="3"/><rect x="122" y="30" width="30" height="30" rx="3"/><rect x="156" y="30" width="30" height="30" rx="3"/><rect x="190" y="30" width="30" height="30" rx="3"/></g>
+      <g text-anchor="middle" style="fill:var(--fg);font-size:15px"><text x="35" y="50">[</text><text x="69" y="50">.</text><text x="103" y="50">&gt;</text><text x="137" y="50">}</text><text x="171" y="50">]</text><text x="205" y="50">!</text></g>
+      <text x="20" y="96">the shortest copier with a lock: 10 bytes</text>
+      <g fill="var(--rose)"><rect x="20" y="106" width="30" height="30" rx="3"/><rect x="54" y="106" width="30" height="30" rx="3"/><rect x="88" y="106" width="30" height="30" rx="3"/><rect x="122" y="106" width="30" height="30" rx="3"/></g>
+      <g fill="var(--bg3)" stroke="var(--line)"><rect x="156" y="106" width="30" height="30" rx="3"/><rect x="190" y="106" width="30" height="30" rx="3"/><rect x="224" y="106" width="30" height="30" rx="3"/><rect x="258" y="106" width="30" height="30" rx="3"/><rect x="292" y="106" width="30" height="30" rx="3"/><rect x="326" y="106" width="30" height="30" rx="3"/></g>
+      <g text-anchor="middle" style="fill:#fff;font-size:15px"><text x="35" y="126" style="fill:#fff;font-size:11px">01</text><text x="69" y="126" style="fill:#fff">-</text><text x="103" y="126" style="fill:#fff">]</text><text x="137" y="126" style="fill:#fff">+</text></g><g text-anchor="middle" style="fill:var(--fg);font-size:15px"><text x="171" y="126">[</text><text x="205" y="126">.</text><text x="239" y="126">&gt;</text><text x="273" y="126">}</text><text x="307" y="126">]</text><text x="341" y="126">!</text></g>
+      <path d="M20 144 L20 150 L152 150 L152 144" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+      <text x="20" y="168" style="fill:var(--rose)">the lock: 4 extra bytes</text>
+    </svg>
+    <p class="cap">Room for a lock. In these soups a copier earns its keep by being short, so the 4 bytes of the lock cost more than refusing parasites gains, even when refusing protects the copier's own family.</p>
+  </div>
+  <p style="margin-top:14px">Read together, the last three experiments tell one story. Getting shorter was the only improvement selection found, and it stops at 6 bytes. Letting programs borrow code brought parasites at once, but fighting back did not pay in a mixed soup. Where it did pay, there was no room for it. We think this line of variants has taught what it can at this scale. That is a recommendation, not a result. <b>Rung 5 is still not reached.</b></p>
 </section>
 
 <section>
@@ -423,12 +440,12 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
 
   <div class="cols" style="margin-top:34px">
     <div>
-      <h3>52 tests with a prediction written down in advance</h3>
+      <h3>55 tests with a prediction written down in advance</h3>
       <div class="sq" aria-hidden="true" id="sq"></div>
       <div class="legend">
-        <span><i class="s-met"></i>26 came true</span><span><i class="s-not"></i>18 did not</span><span><i class="s-mix"></i>5 mixed</span><span><i class="s-und"></i>2 undecided</span><span><i class="s-nt" style="border:1px solid var(--faint)"></i>1 could not be tested</span>
+        <span><i class="s-met"></i>27 came true</span><span><i class="s-not"></i>20 did not</span><span><i class="s-mix"></i>5 mixed</span><span><i class="s-und"></i>2 undecided</span><span><i class="s-nt" style="border:1px solid var(--faint)"></i>1 could not be tested</span>
       </div>
-      <p class="small muted" style="margin-top:12px">Only about half came true. We count that as a sign the tests were real. Run enough tests and a few will pass by luck, so we applied a strict correction for that: 20 of the 22 statistical passes survive, including both length-change passes, and the two space tests and the two arms-race tests stay fails. The two that do not are "bigger soups get there sooner" and one result about speed. When each rule counts once instead of each world, the lumpy-start result also falls short, so it holds firmly for worlds and only suggestively for rules.</p>
+      <p class="small muted" style="margin-top:12px">Only about half came true. We count that as a sign the tests were real. Run enough tests and a few will pass by luck, so we applied a strict correction for that: 20 of the 22 statistical passes survive, including both length-change passes, and the two space tests and the four arms-race tests stay fails. The two that do not are "bigger soups get there sooner" and one result about speed. When each rule counts once instead of each world, the lumpy-start result also falls short, so it holds firmly for worlds and only suggestively for rules.</p>
     </div>
     <div>
       <h3>Fourteen days</h3>
@@ -441,6 +458,7 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
         <div class="row"><span>Review, space tests, paper</span><div class="trk"><i style="left:68.3%;width:24.5%"></i></div></div>
         <div class="row"><span>Variable-length soups</span><div class="trk"><i style="left:90.5%;width:9.5%"></i></div></div>
         <div class="row"><span>Parasite soups</span><div class="trk"><i style="left:96%;width:4%"></i></div></div>
+        <div class="row"><span>Parasites among kin</span><div class="trk"><i style="left:98%;width:2%"></i></div></div>
         <div class="row"><span></span><div class="axis"><span>Nov 5</span><span>Nov 18</span></div></div>
       </div>
       <p class="small muted" style="margin-top:12px">Also confirmed along the way: our guided search finds about 1.8 times more worlds with moving shapes than random search for the same computing time, ahead in 20 of 20 paired runs.</p>
@@ -482,8 +500,8 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
   <p>The first item is our recommendation. The rest are real options, roughly from cheapest to most ambitious.</p>
   <div class="next">
     <div><span class="effort">Days · recommended first</span><h3>Get a human expert to read it</h3><p>The literature review is now done, by AI agents. The stricter statistical correction is done too. The next check is one or two researchers in the field reading the paper.</p></div>
-    <div><span class="effort">Weeks · length and borrowing done</span><h3>Make fighting back pay</h3><p>The review's main suggestions are done: programs that can change length shrank and then stopped, and programs that can borrow a neighbour's code made parasites but no arms race. Next would be a world where resisting a parasite helps the resister or its relatives, for example neighbours that are mostly family, or a copier that is used up when a parasite borrows it.</p></div>
-    <div><span class="effort">Days · partly done</span><h3>Test code among its own relatives</h3><p>The grid fitness test now exists and found nothing, but it drops code among strangers. Advantages that need kin nearby, such as families that protect each other against parasites, are still unmeasured.</p></div>
+    <div><span class="effort">Weeks · length, borrowing and kin done</span><h3>A world where a lock is cheap</h3><p>Programs that can change length shrank and then stopped; programs that can borrow code made parasites but no arms race; and where fighting back paid the family, the shortest lock was too big to fit. We suggest pausing these variants. The next informative world is one where checking who you copy costs little next to copying itself, for example longer copying machinery or a different language.</p></div>
+    <div><span class="effort">Days · partly done</span><h3>Test code among its own relatives</h3><p>The grid fitness test now exists and found nothing, but it drops code among strangers. Families protecting each other against parasites were tested with hand-built programs (it pays, in small neighbourhoods); other advantages that need kin nearby are still unmeasured.</p></div>
     <div><span class="effort">Weeks · needs more computing power</span><h3>Go bigger and longer</h3><p>Soups a hundred times larger, run a hundred times longer, on a graphics card or cloud machines. The published work that saw richer behaviour ran at far larger scale than a laptop allows.</p></div>
     <div><span class="effort">Days</span><h3>Turn the lumpy-start result into a law, or break it</h3><p>Test it in many more Lenia rules, not just the 8 near one famous creature, and find how lumpy is lumpy enough.</p></div>
     <div><span class="effort">Days</span><h3>Chase the open puzzles</h3><p>Why do soups under one rule make replicators seven times faster than fresh random pairs do? Does inheritance also hold in the SUBLEQ soups? What made that one fitter "species" special?</p></div>
@@ -500,7 +518,7 @@ footer{padding-block:34px 60px;border-top:1px solid var(--line);color:var(--fain
 <script>
 (function(){
   // scorecard squares
-  var sq=document.getElementById('sq'), groups=[['s-met',26],['s-not',18],['s-mix',5],['s-und',2],['s-nt',1]];
+  var sq=document.getElementById('sq'), groups=[['s-met',27],['s-not',20],['s-mix',5],['s-und',2],['s-nt',1]];
   groups.forEach(function(g){for(var i=0;i<g[1];i++){var e=document.createElement('i');e.className=g[0];sq.appendChild(e);}});
 
   // Conway's Game of Life on a torus, coloured by cell age
