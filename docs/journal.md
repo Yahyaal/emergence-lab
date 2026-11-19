@@ -12,6 +12,50 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-105 · 2026-11-19 · E-85 revision: without host debris and with a lock that does not rewrite callers, a resistant host can hold a soup alone, but a rare one still cannot spread; net control fails again, E-85 stopped
+
+**Question / why:** after J-104 the coordinator asked for one more design round: run the two untested variants of control (4) under the J-104 rule, then revise the rule so that host debris do not become parasites and the lock does not alter callers, keeping control (1) passing; rerun (0) to (4) in order and stop at the first failure, or pre-register. **No registered seed was run; everything here is on pilot seeds.**
+
+**The two untested variants under the J-104 rule (D-078; `scripts/e85_net_variants.py`, seeds 1–4, deme64):**
+- **Rare R in a young soup** (5% of H turned into R at epoch 3): R's bytes fall by −0.8 to −1.1 in log by epoch 10 and R is extinct by 50–100 in 4/4; ln(R/H) at 25 −0.17 to +0.41.
+- **Rare R as a clump** (the scattered count as one run of consecutive programs): ln(R/H) rises (+1.4 to +2.1 at 25 epochs, 8/8 at ages 0 and 10), but R's own bytes fall (−0.35 to −1.3 by 25) and R is extinct by 100–200 in 7 of 8. **One deme's worth** (64 consecutive programs, 18–82 R): extinct by 25–100 in 8/8.
+- So no placement or age lets a rare resistant host increase in number: it gains on plain hosts only while all hosts decline.
+
+**The revision (D-080; `scripts/bffxm.c` `x_set_tailmin`, `bffxm.TAILMIN = 32`):**
+- **Tail merge:** the unterminated tail of a cut tape is merged into the preceding piece when it is under 32 bytes (BFF-X: under 4). A piece under 32 bytes can then only arise ending in the marker, so a host's partial last copy joins its last full copy (a host in a 100-byte partner leaves 32/32/36 instead of 32/32/32/4), while marker-terminated short parasites stay. Merging every short piece was rejected, as it would remove the parasites' edge (E-84's problem).
+- **A non-rewriting lock:** R = `\x01-[+<]+[.>}]` + filler (32 bytes): on a mismatch it restores the caller's byte and halts, so a refused caller is unchanged (E-82's R left callers with first byte 2 at the key). Sham S: `[+<]` replaced by four filler bytes.
+
+**Controls (0) to (4), revised rule, in order (seeds 1–4, same protocol and numbers as J-104; `e85_groundwork.py --controls --outdir runs/e85/v2`):**
+
+| Control | Result | Verdict |
+|---|---|---|
+| (0) hand H at 2% in random code | nothing borrowed +3.4 by 25 epochs (4/4); with borrowing ×11 by epoch 10, extinct by 100 in 3/4 | replicates; does not persist |
+| (1) P vs H (H 30%, P 2%) | **+6.6 at 25 epochs** (8/8, deme64 and mixed); P alone −4.3; nothing borrowed −10.5 | **pass** |
+| (2) R vs H, nothing borrowed | **+0.10 ± 0.10 at 50 epochs**; mixed +0.07 | **pass** |
+| (3) R vs sham, A with minus without borrowing | deme64 **+0.27 ± 0.14 at 25** (4/4 > 0.10), +0.54 ± 0.13 at 50; mixed −0.10 ± 0.18 at 25, −0.20 at 50 | **pass** |
+| (4) net: 5% of H turned into R after 10 epochs of H + P | R's bytes −2.5 in log by epoch 10, **extinct by 25–50 in 4/4**; ln(R/H) −3.3 at 25; mixed the same; nothing borrowed: R tracks H (−0.004 at 25) | **fail** |
+| (4) clump / young soup | clump (32–33 R in one run): extinct by 25–100 (4/4); young (epoch 3, about 220 R): extinct by 50–100 (4/4) | fail |
+
+- **Why it still fails:** with the debris gone, the short parasites come from random code itself: about 10% of the pieces of random tapes are short and end in a marker, and with an eight-fold edge they multiply on the first hosts (H alone: 94% of programs under 32 bytes by epoch 30, the commonest ten all 4-byte programs copied by H). Plain hosts collapse within 50–100 epochs, and a rare R among them is overwritten by parasites borrowing H faster than its refusals protect its kin.
+- **But resistance can carry a population (exploratory, `runs/e85/v2/alone.jsonl`):** R alone at 2% in random code under borrowing reaches 0.58–0.65 MB by epoch 20 and still holds 0.18–0.19 MB at 200 in 2 of 4 (declining to 7–25 kB in the other 2); its sham is extinct by 140–160 in 4/4. **In this rule a host population persists only if it resists from the start**; resistance cannot spread into one that does not.
+- **Emergence pilot (revised rule, seeds 9881–9886, 6,000 epochs, exploratory):** hosts appeared in 2 of 6 soups, only at single early checkpoints (epochs 50–300; at most 1.35% of the bytes); in soup 9885 at epoch 300, 9 of its 20 hosts refused the inert parasite, and they were gone by the next checkpoint. 0 hosts after epoch 300 in 6/6; the soups end with 87–90% of programs under 32 bytes (mean 12–14 bytes).
+
+**Instruments:** 19 controls pass (J-104's 18, with the equivalence control now also setting tailmin 0 and hosts validated at 32–40 bytes, plus one new: the tail merge and the non-rewriting lock). They are in `pytest` and the probe benchmark.
+
+**Not done, by the stop rule:** pilot analysis beyond the above, noise, power, n, δ\*, wall time, pre-registration. **E-85 is not pre-registered, and by the coordinator's instruction the line stops here.**
+
+**Interpretation:** the revision removes both mechanisms named in J-104 (host debris and the leaking lock) and keeps (1) to (3) passing, and (4) fails again, for the deeper reason J-104 suggested: at an eight-fold parasite edge plain hosts cannot persist, so there is no host population for resistance to spread into. The order the arms-race question assumes (hosts first, parasites next, then resistance spreading among hosts) cannot occur here; only a host that resists from the start survives, which the time-shift design cannot score as directed change. Disclosure: this revision was designed after seeing (4) fail, on pilot seeds only. **Evidence level unchanged (4 in BFF; level 5 not shown).**
+
+**Changed:**
+- **Code:** `scripts/bffxm.c` (tail merge, `x_set_tailmin`), `scripts/bffxm.py` (TAILMIN, non-rewriting R and its sham; the old R kept as `resistant_host_rewriting`), `scripts/bffxm_assay.py` (`invade` placements, controls), `scripts/e85_groundwork.py` (`--outdir`, clump/young/none arms), new `scripts/e85_net_variants.py`.
+- **Records:** D-080 (proposed); experiments row; `handoff.md`; export `docs/data/experiments/2026-11-19-e85-revision.json`.
+- **Checks:** `PYTHONPATH=. python -m pytest` 96 passed; `PYTHONPATH=. python -m emergence benchmark --probes` 39/39 and 222/222 (221 + 1 new).
+- **Caches (not committed):** `runs/e85/v2/`, `runs/e85/net-variants.jsonl`.
+
+**Lesson:** a control that asks whether a rare mutant spreads presupposes a resident population that persists; check the resident first.
+
+---
+
 ## J-104 · 2026-11-18 · E-85 groundwork: with a long minimal host and a short lock, parasites win, the lock is free and refusing pays kin, but no host population survives its own parasites; net control fails, not pre-registered
 
 **Question / why:** E-81 to E-84 hit one wall (D-077): a substrate for directed host–parasite change needs a parasite that out-replicates its host, a lock that costs a resistant host little, and a kin benefit of refusing under local interaction. The owner asked for the groundwork of E-85: **in a substrate where the shortest copier is long relative to the shortest lock, do resistant hosts arise from random code where resistance pays kin, and do hosts and parasites then change in a directed way?** Stage: design, decisive controls (0) to (4) in order with a stop at the first failure, then pilot, instruments, power and pre-registration. **No registered seed was run.**
