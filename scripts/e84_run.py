@@ -1,4 +1,7 @@
-"""E-84 (docs/data/e84-preregistration.md): when a lock costs no length, does resistance to parasites arise from random
+"""DRAFT, NOT PRE-REGISTERED AND NOT RUN (J-103, D-077): the decisive control (a) failed in the groundwork, so no
+docs/data/e84-preregistration.md exists. Kept as the driver a fixed-length follow-up would start from.
+
+E-84 draft: when a lock costs no length, does resistance to parasites arise from random
 code where it pays kin, and do hosts and parasites change in a directed way? Rule: fixed-length BFF-X on demes
 (scripts/bffxf.py, D-076): 2^14 programs of 64 bytes; the instruction pointer runs through A and then through a
 read-only library C; heads read and write A ++ B only, halt at its ends; pairs and C within demes of 64 programs on a

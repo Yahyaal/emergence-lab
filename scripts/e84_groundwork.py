@@ -72,6 +72,22 @@ def pilot_job(arg) -> dict:
     return res
 
 
+def snap_job(path: str) -> dict:
+    """Census of a pilot snapshot: hosts, host share, hosts refusing the inert parasite; the E-84 sampler (verified
+    parasites among the 40 commonest non-hosts)."""
+    f = Path(path)
+    seed, geo, lm, ep = f.stem.split("-")
+    d = np.load(f)
+    s = F.make(geo, buf=d["buf"], lens=d["lens"], libmode=lm)
+    s.epochs = int(ep)
+    c = census(s, int(seed) * 7 + int(ep))
+    smp = FA.sample(s, int(seed), int(ep), exp=842) if lm == "neighbour" else None
+    return {"seed": int(seed), "geometry": geo, "libmode": lm, "epoch": int(ep), "share": c["share"],
+            "nhost": c["nhost"], "refusing": sum(h["q"] < 0.5 for h in c["hosts"]),
+            "parasites": len(smp["parasites"]) if smp else None, "verdicts": smp["verdicts"] if smp else None,
+            "distinct": len(set(map(bytes, s.buf.reshape(-1, F.L))))}
+
+
 def compete_job(arg) -> dict:
     return FA.compete(**arg)
 
@@ -81,6 +97,8 @@ def main():
     ap.add_argument("--pilot", action="store_true")
     ap.add_argument("--compete", action="store_true")
     ap.add_argument("--seeded", action="store_true")
+    ap.add_argument("--snapshots", action="store_true")
+    ap.add_argument("--export", default=None)
     ap.add_argument("--seeds", default="9801-9805")
     ap.add_argument("--arms", default="deme64:neighbour,mixed:neighbour,mixed:live,deme64:none")
     ap.add_argument("--epochs", type=int, default=10000)
@@ -113,6 +131,26 @@ def main():
         Path(a.out or OUT / "compete.json").write_text(json.dumps(rr))
         for r in rr:
             print(r["seed"], r["geometry"], r["libmode"], r["focal"], "vs", r["rival"], r["scores"], flush=True)
+    if a.snapshots:
+        files = sorted(str(f) for f in (OUT / "pilot").glob("*.npz"))
+        with Pool(a.workers) as p:
+            rr = p.map(snap_job, files)
+        (OUT / "snapshots.json").write_text(json.dumps(rr))
+        for r in sorted(rr, key=lambda r: (r["geometry"], r["libmode"], r["seed"], r["epoch"])):
+            print(r, flush=True)
+    if a.export:
+        import subprocess
+        ex = {"experiment": "E-84 groundwork", "status": "decisive control (a) failed; not pre-registered",
+              "commit": subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip(),
+              "controls": [(n, bool(o), d) for n, o, d in FA.controls()]}
+        for k in ("compete", "extra", "snapshots"):
+            fp = OUT / f"{k}.json"
+            if fp.exists():
+                rr = json.loads(fp.read_text())
+                for r in rr:
+                    r.pop("traj", None) if k == "snapshots" else None
+                ex[k] = rr
+        Path(a.export).write_text(json.dumps(ex, indent=1))
     if a.seeded:
         with Pool(a.workers) as p:
             rr = p.map(FA.seeded_job, [(sd, g) for sd in seeds for g in ("deme64", "mixed")])
