@@ -406,3 +406,16 @@ def test_bffxr_controls():
     import bffxr_assay as RA
     bad = [(n, d) for n, ok, d in RA.controls() if not ok]
     assert not bad, bad
+
+
+def test_bffxf_controls():
+    """E-84 groundwork (scripts/bffxf.py, bffxf_assay.py, J-103): fixed-length BFF-X on demes. Rule (64-byte programs,
+    read-only library, local demes), host detector, parasite detector (positive, negative, deceptive, selection-aware
+    null), designed resistant/sham/plain hosts, coverage and protection time-shift (positive, graded, negative, null,
+    deceptive)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bffxf_assay as FA
+    bad = [(n, d) for n, ok, d in FA.controls() if not ok]
+    assert not bad, bad

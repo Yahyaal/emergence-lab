@@ -92,13 +92,13 @@ class RingSoup(X.Soup):
         else:
             libidx = np.zeros(1, np.int32)
         dst = np.empty_like(self.buf)
-        cap = len(self.buf) // X.LMIN + 2
+        cap = len(self.buf) // self.LMIN + 2
         nl, org = np.empty(cap, np.int32), np.empty(cap, np.int32)
         nout = ctypes.c_int(0)
         self.last_steps = int(X.lib().x_epoch(self.buf.ctypes.data, self.lens.ctypes.data, N, perm.ctypes.data,
                                               libidx.ctypes.data, dst.ctypes.data, nl.ctypes.data, org.ctypes.data,
                                               ctypes.byref(nout), self.steps, X.MODES[self.mode],
-                                              X.LIBMODES[self.libmode], X.MARKER, X.LMIN, X.LMAX))
+                                              X.LIBMODES[self.libmode], self.MARKER, self.LMIN, self.LMAX))
         k = nout.value
         self.buf, self.lens, self.origin = dst, nl[:k].copy(), org[:k].copy()
         if self.mutation > 0:
