@@ -12,6 +12,28 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-106 · 2026-11-19 · An expert review pack for an outside artificial-life researcher (writing only, no new results)
+
+**Question / why:** the E-81 to E-85 chain ended with the recommendation to pause the BFF-variant thread and seek an expert review (J-102, J-105). The coordinator asked for a self-contained pack that gets the most useful critique per hour from someone who knows BFF, Tierra, Avida, Squirm3 and open-endedness work.
+
+**Ran:** no experiment. Read `AGENTS.md`, `handoff.md`, `research.md`, `paper.md`, `report.md`, `literature.md`, `reviews.md`, `decisions.md` and journal entries J-090 to J-105; recomputed a few headline numbers from the exports with the project venv (no simulation).
+
+**Found:**
+- **Written:** `docs/expert-review.md`: summary; methods (substrates, detectors, pre-registration rules, Holm family); findings table; the E-81 to E-85 chain with the synthesis (parasites that win, cheap resistance, resident hosts and room for a lock pull against each other), with E-84 and E-85 marked as groundwork only; ten claims ranked by importance × uncertainty with re-run commands and recorded runtimes; weaknesses; eight questions; reproduction.
+- **Spot-checks, all matching:** Holm across the 51 p values recomputed from `p_raw` (20 of 22 passes survive; E-50 0.396, E-71 P2 0.175); E-81 P1–P3 from `per_soup` (9.12, 8.65–9.60; 0.547, 0.19–0.90; −0.025, −0.078 to 0.028); E-82 and E-83 RQ from `scores` (0.0011, −0.0004 to 0.0027; 0.0004, −0.0002 to 0.001) and their jump epochs; E-80 Part B (−0.047, −0.114 to 0.020) and E-78 (−0.42, −1.10 to 0.25) from per-soup d; E-85 controls (1)–(4) of the groundwork and the revision; E-54, E-66, E-42 summaries.
+- **Disagreements found (listed in the pack, section 9; none changes a verdict):**
+  1. Benchmark size: `index.md` and `research.md` say 170 checks, `paper.md` A1 says 225, J-105 says 39 + 222.
+  2. E-81 copier length at T + 20,000: "median 6.17" (J-098, experiments row, A204) is the mean; the median of `per_soup[].len_late2` is 6.19.
+  3. E-85 revision sham extinction: J-105 says 140–160 epochs (matches the export), D-080 says 100–140.
+  4. `2026-11-18-e85-groundwork.json` → `controls_summary` reports control (4) as zeros; the raw `net` rows give −0.29 at 25 epochs, as J-104 says. J-104's "−1.3 in log by 10 epochs" is the smallest of the four seeds' drops (mean −1.54).
+  5. "R alone holds the soup to 200 epochs in 2 of 4" (D-080, handoff): R persists but declines steadily (0.58–0.65 MB at epoch 20 to 0.18–0.19 MB at 200).
+
+**Changed:** new `docs/expert-review.md`; links from `index.md` (news line, reading list) and `handoff.md` (state paragraph, item 0). No experiment row (no experiment). The stale pages in point 1, the J-098 median and the D-080 status text are not corrected here; the pack records them.
+
+**Lesson:** recomputing a pack's headline numbers from the exports found five small inconsistencies across pages that each had been checked on its own; a cross-page spot-check is cheap and worth doing before anything leaves the project.
+
+---
+
 ## J-105 · 2026-11-19 · E-85 revision: without host debris and with a lock that does not rewrite callers, a resistant host can hold a soup alone, but a rare one still cannot spread; net control fails again, E-85 stopped
 
 **Question / why:** after J-104 the coordinator asked for one more design round: run the two untested variants of control (4) under the J-104 rule, then revise the rule so that host debris do not become parasites and the lock does not alter callers, keeping control (1) passing; rerun (0) to (4) in order and stop at the first failure, or pre-register. **No registered seed was run; everything here is on pilot seeds.**

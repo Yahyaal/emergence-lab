@@ -12,7 +12,9 @@ title: Overview
 
 This site is the project's **research journal**: what we did, why, what we found, what turned out to be wrong, and what comes next. It is written so that a person or an AI agent can pick up the work with no other context. Start at **[Handoff]({{ '/handoff.html' | relative_url }})** if you are continuing the work.
 
-<p><b>New (16 November):</b> <a href="{{ '/paper.html' | relative_url }}">a paper-style synthesis</a> of the work to date, written for a reader who has not seen the project. It adds no new results. A <a href="{{ '/literature.html' | relative_url }}">literature review</a> by AI agents (not exhaustive, no expert check) followed: two of our results were already published and most others are partly known.</p>
+<p><b>New (19 November):</b> an <a href="{{ '/expert-review.html' | relative_url }}">expert review pack</a> for an outside artificial-life researcher: what we claim, at what evidence level, how strong the evidence is, and the ten claims we most want checked. It adds no new results.</p>
+
+<p><b>Earlier (16 November):</b> <a href="{{ '/paper.html' | relative_url }}">a paper-style synthesis</a> of the work to date, written for a reader who has not seen the project. It adds no new results. A <a href="{{ '/literature.html' | relative_url }}">literature review</a> by AI agents (not exhaustive, no expert check) followed: two of our results were already published and most others are partly known.</p>
 
 <p><b>Earlier:</b> <a href="{{ '/report.html' | relative_url }}">the report</a> now covers 6 to 14 November. Its latest section (34) is a prospective test in the SUBLEQ soups: versions chosen by how often random pairs write a replicator made replicators in 33 of 42 soups, against 12 of 72, but the pre-registered test came out undecided (7 high-rate versions, not 8). A <a href="{{ '/reviews.html#r-5' | relative_url }}">goal and approach review (R-5)</a> led to the next steps on the <a href="{{ '/handoff.html' | relative_url }}">Handoff</a> page.</p>
 
@@ -51,6 +53,7 @@ More in the **[Gallery]({{ '/gallery.html' | relative_url }})**.
 - **[Story]({{ '/story.html' | relative_url }})**: the whole project for non-technical readers, with animations and a live simulation: why, the idea, the three results, how they compare with other research, and what could come next.
 - **[Paper]({{ '/paper.html' | relative_url }})**: a paper-style synthesis of the three main findings (Lenia movers, program-soup replicators, no open-ended evolution yet), with a claims table that traces every number to its source.
 - **[Literature]({{ '/literature.html' | relative_url }})**: how each claim compares with published work (published, partly known, not found in this search, tension), from a review by AI agents with no expert check.
+- **[Expert review pack]({{ '/expert-review.html' | relative_url }})**: a self-contained summary for an outside reviewer, with the claims ranked by how much we want them checked and how to re-run each one.
 - **[Journal]({{ '/journal.html' | relative_url }})**: chronological entries, newest first.
 - **[Decisions]({{ '/decisions.html' | relative_url }})**: why the system is the way it is, with the alternatives we rejected.
 - **[Experiments]({{ '/experiments.html' | relative_url }})**: every experiment, with its exact command, code commit, results and raw data.
