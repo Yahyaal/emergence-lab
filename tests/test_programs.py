@@ -419,3 +419,16 @@ def test_bffxf_controls():
     import bffxf_assay as FA
     bad = [(n, d) for n, ok, d in FA.controls() if not ok]
     assert not bad, bad
+
+
+def test_bffxm_controls():
+    """E-85 groundwork (scripts/bffxm.py, bffxm_assay.py, J-104): BFF-X in which a program shorter than 32 bytes has no
+    code of its own, on demes. Rule (xmin 0 equals BFF-X, conservation, minimum body, borrowing), designed 32-byte
+    resistant/sham/plain hosts, host detector, copy screen, parasite detector (positive, negative, deceptive,
+    selection-aware null), coverage and protection time-shift (positive, graded, negative, null, deceptive)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+    import bffxm_assay as MA
+    bad = [(n, d) for n, ok, d in MA.controls() + MA.instrument_controls() if not ok]
+    assert not bad, bad
