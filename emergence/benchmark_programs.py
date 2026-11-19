@@ -33,6 +33,11 @@
                    local copies and local library (ring and demes); designed resistant / sham / plain hosts; coverage
                    and protection time-shift (arms race, reversed labels, rewriting-host deceptive); parasite detector
                    on ring soups (positive, selection-aware null)
+* fixed-length BFF-X (scripts/bffxf.py, bffxf_assay.py, E-84 groundwork, J-103): 64-byte programs conserved, read-only
+                   library, local deme matching and library; host detector; parasite detector (positive, halting
+                   program, host, dead host, by-product from makers, key specificity, early-soup null); designed
+                   resistant / sham / plain hosts; coverage and protection time-shift (arms race, graded 1-of-5,
+                   change without resistance, reversed labels, shifting-host deceptive)
 * selection-aware null  `replicators.scan` (most common programs) on a noexec soup after 300
                    epochs and on a BFF soup at epoch 50 (before any transition): 0 replicators
 """
@@ -248,4 +253,10 @@ def run(check) -> None:
     if (scripts / "bffxr_assay.py").exists():
         import bffxr_assay as XRA
         for name, ok, det in XRA.controls():
+            check(name, ok, det)
+
+    # fixed-length BFF-X on demes (scripts/bffxf.py, scripts/bffxf_assay.py, E-84 groundwork, J-103, D-076, D-077)
+    if (scripts / "bffxf_assay.py").exists():
+        import bffxf_assay as XFA
+        for name, ok, det in XFA.controls():
             check(name, ok, det)

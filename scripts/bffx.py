@@ -107,7 +107,10 @@ def hand_copier(length: int = 6, rng=None, fill: int | None = 0x80) -> np.ndarra
 
 
 class Soup:
-    """BFF-X soup. `buf` holds the programs back to back, `lens` their lengths."""
+    """BFF-X soup. `buf` holds the programs back to back, `lens` their lengths. The cut constants are class attributes
+    so that a fixed-length variant (scripts/bffxf.py, E-84) can reuse the epoch; their defaults are BFF-X's."""
+
+    MARKER, LMIN, LMAX = MARKER, LMIN, LMAX
 
     def __init__(self, w: int = W, seed: int = 0, libmode: str = "neighbour", mode: str = "bff",
                  mutation: float = MUT, steps: int = STEPS, buf=None, lens=None, rng=None):
@@ -141,13 +144,13 @@ class Soup:
         libidx = (self.rng.integers(0, N, max(1, N // 2)).astype(np.int32) if self.libmode == "neighbour"
                   else np.zeros(1, np.int32))
         dst = np.empty_like(self.buf)
-        cap = len(self.buf) // LMIN + 2
+        cap = len(self.buf) // self.LMIN + 2
         nl, org = np.empty(cap, np.int32), np.empty(cap, np.int32)
         nout = ctypes.c_int(0)
         self.last_steps = int(lib().x_epoch(self.buf.ctypes.data, self.lens.ctypes.data, N, perm.ctypes.data,
                                             libidx.ctypes.data, dst.ctypes.data, nl.ctypes.data, org.ctypes.data,
                                             ctypes.byref(nout), self.steps, MODES[self.mode],
-                                            LIBMODES[self.libmode], MARKER, LMIN, LMAX))
+                                            LIBMODES[self.libmode], self.MARKER, self.LMIN, self.LMAX))
         k = nout.value
         self.buf, self.lens, self.origin = dst, nl[:k].copy(), org[:k].copy()
         if self.mutation > 0:
