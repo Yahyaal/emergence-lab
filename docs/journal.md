@@ -12,6 +12,45 @@ Experiment IDs (E-xx) link to the [Experiments]({{ '/experiments.html' | relativ
 
 ---
 
+## J-102 · 2026-11-18 · E-83: when resisting parasites pays a host's kin, still no host resists, because the shortest refusing host is longer than the copier that wins (pre-registered: P1 pass, P2 fail, P3 fail)
+
+**Question (pre-registered, `docs/data/e83-preregistration.md`, commit `67331d3`, pushed before the run; groundwork J-101, D-074, D-075, code `f1254d7`):** in BFF-XR deme64 (pairs and borrowed code within demes of 64 programs on a ring, pieces written back in place), where a host that refuses callers protects its own neighbourhood, do hosts and parasites arising from random code change in a directed way?
+
+**Ran:**
+- **Command:** `scripts/e83_run.py --confirm --workers 11`, detached under `systemd-inhibit`, launched by the coordinating session at 16:54 from the worktree at `a5b867a`. Finished at 18:31: **1 h 38 min** including the gate (5,855 s; projected 2 to 2.5 h).
+- **Soups:** 40 admitted. **Soup 8417 had no jump by epoch 10,000** (its host share never exceeded 0.0015) and was excluded as registered; spare 8441 replaced it. No other exclusion. T 1,850 to 9,200 (median 5,100).
+- **Export:** `docs/data/experiments/2026-11-18-e83.json`. Caches `runs/e83/run/` (not committed).
+
+**Gate (passed before any score):** 28 of 28 controls (E-82's 16, the 12 ring/deme controls); decisive race, resistant host against its equal-length sham under deme64, advantage over 50 epochs 0.23, 0.19, 0.32, 0.17 (4 of 4 above 0.10).
+
+**Found (recomputed independently from the per-soup scores with the registered `verdict`; every number matches the stored summaries to 4 decimals):**
+
+| Primary | Measure | Result | Verdict | Holm (51) |
+|---|---|---|---|---|
+| P1 | verified parasites at T + 1,000, 5,000 and 10,000 | **40 of 40** soups | **pass** | excluded (criterion) |
+| P2 | time-shift RQ | **0.0004** (−0.0002 to 0.001); 2 positive (8439, 8440: 0.0083 each), 38 zero; p 0.25 | **fail** (interval below δ\* 0.10) | 1.000 |
+| P3 | host resistance d3 | **0** in 40 of 40 | **fail** | 1.000 |
+
+- **No host resisted anything.** No S3 host copies any S1 parasite with coverage below 0.5, in any soup; mean coverage over all parasite–host pairs 0.9998 (minimum 0.988); protection RQ_w 0.00002 (−0.0003 to 0.0004 per soup), so nothing was refusal or rewriting. The two nonzero RQ values are small parasite main effects, as in E-82.
+- **Composition:** the shortest host at T was `[.>}]!` in 40 of 40 (the soup shortens before hosts take over); the commonest host at T + 10,000 was `[.>}]!` in 40 of 40; host families held a median 6.6% of the bytes at S1 and 12.5% at S3 (8.9 to 13.2%). Sampled parasites: 591 of 4 bytes, 2 of 5. Of 1,804 tested non-hosts: 593 parasites, 843 by-products, 177 self-copiers, 147 host-independent, 44 not copied.
+- **Holm** (`docs/data/experiments/2026-11-18-e83-holm51.json`, 51 p values; P1 entered as excluded): P2 and P3 1.000 (BH 0.40 and 1). The same 20 of 22 passes survive (E-50 0.40 and E-71 P2 0.17 still lost); BH keeps all 24 significant tests. The E-79, E-80, E-81 and E-82 Holm exports are byte-identical to git.
+
+**Interpretation (as fixed in the pre-registration's "What each outcome will and will not mean"):**
+- **The fail is predicted by the length floor, not by a lack of kin benefit.** The gate's decisive race passed: under deme64 refusing pays a host's kin, and in E-82's well-mixed rule it does not. So "resistance is a public good" no longer explains the missing arms race. What does: the cheapest refusing host (exhaustive search, J-101) has 10 bytes, the copier every soup converges on has 6, and in designed races the four extra bytes cost about ten times what refusing earns. **A pass would have needed resistance to arise in hosts shorter than the shortest possible resistant host, which is impossible in this rule.** The run confirms, pre-registered and from random code, what the designed controls predicted.
+- **Deme64 was chosen after pilots:** more local geometries (adjacent pairs on the ring, demes of 16) gave a larger kin benefit but no take-over from random code; demes of 256 or a global library gave no kin benefit. The result holds for this one geometry.
+- **The chain E-81 to E-83:** shortening is the only lever selection found in this BFF line, and it stops at a 6-byte copier (E-81); borrowing code adds parasites at once, but resisting does not pay in a mixed soup (E-82); on demes resisting pays, but at the 6-byte floor there is no room for a check (E-83). **Recommendation (not a result):** pause the BFF-variant thread here. The next informative step is a substrate where checking a partner is cheap relative to copying (longer minimal copiers, or a check that costs no length), or an expert review of the line. **Evidence level unchanged (4 in BFF; level 5 not shown).**
+- **Scope.** One rule (BFF-XR deme64), one soup size, laptop scale, E-82's instruments; kin benefit shown with designed programs only.
+
+**Changed:**
+- **Data:** `docs/data/experiments/2026-11-18-e83.json`, `docs/data/experiments/2026-11-18-e83-holm51.json`; `docs/data/e79-primaries.json` (E-83 P1 excluded; P2, P3 in the family).
+- **Records:** experiments row; D-074 and D-075 status; `handoff.md` (state paragraph, item 0).
+- **Pages:** `paper.md` (abstract, §5 new E-83 and chain paragraphs, level-5 paragraph, §8, Appendices A rows A1, A145, A217–A225, B with tally 52 → 55, B2); `index.md` (level-5 card, H3); `research.md` (O5); `literature.md` (C6 row and discussion, closing paragraph); `story.html` (a "room for a lock" section with a byte diagram, scoreboard 55 / 27 / 20, timeline row, next cards; checked with headless Chrome at 375 px: no label overlaps, no horizontal scroll; one older label in the length chart was moved to fix an overlap).
+- **Checks:** `PYTHONPATH=. python -m pytest` 94 passed; `PYTHONPATH=. python -m emergence benchmark --probes` 39/39 and 186/186.
+
+**Lesson:** a benefit that is real can still be unreachable; before asking whether selection favours a trait, ask whether the trait fits under the floor that selection has already pushed the organism to.
+
+---
+
 ## J-101 · 2026-11-18 · E-83 groundwork: with demes, refusing parasites pays a host's kin, but the cheapest resistant host costs four bytes and the 6-byte host wins anyway; instruments, seeded arm, power and pre-registration (no confirmatory data)
 
 **Question / why:** E-82 (J-100) found parasites in every BFF-X soup and no arms race, and its pre-registered reading was that in a well-mixed soup with a read-only library a host that refuses callers protects a random stranger, so resistance has no individual benefit. The owner asked for the groundwork of the step that reading predicted: **when resisting parasites pays the resisting host or its kin, do hosts and parasites change in a directed way?** Design, emergence pilot, instruments, seeded arm, power and pre-registration. **No registered seed was run.**
